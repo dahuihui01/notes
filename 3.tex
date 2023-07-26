@@ -1,0 +1,29 @@
+\section*{Lecture 2}
+Now we begin with some building blocks.
+
+Suppose $\Omega=[0,N], \theta_j=[j-1. j], \Omega=\bigsqcup_{j=1}^N\theta_j$. And we ask the question, if we have $supp(\widehat{f})\subset[0,1]$, could $|f|$ look like several narrow peaks and almost 0 elsewhere?
+
+We recall how we decouple the function $f$: for $supp(\widehat{f})\subset\Omega$, define $f_{\theta_j}=\int_{[j-1, j]}\widehat{f}(\omega)e^{i\omega x}d\omega$, then $f=\sum_jf_{\theta_j}$.
+
+Now we remind ourselves of the height of $f$.
+\begin{proposition}
+    Let $f\in\mathcal{S}$ be such that $supp(\widehat{f})\subset[0,1]$, and we have
+    \begin{equation*}
+        ||f||_{L^\infty}\lesssim||f||_{L^1}
+    \end{equation*}
+\end{proposition}
+\begin{proof}
+    We define a cutoff function $\eta\in\mathcal{S}$ such that $\eta=1$ on $[0,1]$, then $\widehat{f}=\eta\widehat{f}$, then $f=f\ast\check{\eta}$, also a Schwartz function.
+\begin{align*}
+    ||f||_{L^\infty}&=||f\ast\check{\eta}||_{L^\infty}\\
+    &\leq||f||_{L^1}||\check{\eta}||_{L^\infty}\\
+    &\lesssim||f||_{L^1}
+\end{align*}
+\end{proof}
+Hence the answer is no, because if we have narrow peaks with controlled heights, $||f||_{L^1}$ would be small, which would violate $||f||_{L^\infty}\lesssim||f||_{L^1}$.
+
+Now we ask the following question, can we have flat parts of $|f|$ where $||f||_{L^1}$ is dominated by the flat parts, but still has narrow peaks? To address that, we introduce an important lemma which allows us to control the height of $f$ in one interval using its $L^1$ norm in an even larger interval.
+
+\begin{proposition}[Locally Constant Lemma]
+    
+\end{proposition}
