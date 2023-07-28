@@ -1,0 +1,46 @@
+\section*{Introduction to decoupling}
+Now we move to the overview of decoupling.
+
+If we denote a region $\Omega$ of $\R^n$ as the Fourier space, and we decompose it into small regions $\Omega=\bigsqcup\theta$.
+
+If we assume the function $f$ whose Fourier transform has support in the region $\Omega$, then we can decompose $\Omega$, we will now make the definition as follows.
+\begin{definition}[Decoupling]
+    Let $f$ be a sufficiently regular function whose $supp(\widehat{f})\subset\Omega$, if we define
+    \begin{equation*}
+        f_\theta=\int_\theta\widehat{f}(\omega)e^{ix\omega}d\omega
+    \end{equation*}
+    Then by Fourier inverse formula, we get
+    \begin{equation*}
+        f=\sum_\theta f_\theta
+    \end{equation*}
+\end{definition}
+\begin{proof}
+    $\sum_\theta f\theta=\int_\Omega \widehat{f}(\omega)e^{ix\omega}d\omega=f(x)$
+\end{proof}
+
+One would like to control the norm $||f||_{L^p}$, using what you know about $||f_\theta||_{L^p}$. To give a general idea what we are heading towards, we can fine a constant $D_p$, dependent on $\Omega, \theta$, such that the following inequality is achieved.
+\begin{equation*}
+    ||f||_{L^p}(\R^n)\leq D_p(\Omega=\bigsqcup\theta)\left(\sum_\theta||f_\theta||_{L^p}^2\right)^{1/2}
+\end{equation*}
+Hence if we fix a specific decoupling choice, i.e. $\Omega=\bigsqcup_\theta\theta$, we can find an absolute constant such that
+\begin{equation*}
+    ||f||_{L^p}\leq C\left(\sum_\theta ||f_\theta||_{L^p}^2\right)^{1/2}
+\end{equation*}
+And we define the decoupling constant $D_p(\Omega=\bigsqcup\theta)$ to be the smallest of all $C$, for a fixed decoupling choice.
+
+
+
+\begin{remark}
+    Are there different ways of decomposing omega? Is the most intuitive way of decomposing the Fourier space based on frequency?
+\end{remark}
+
+\begin{proposition}[Estimate of sum]
+    Let $R>0$, and pick Fourier space decomposition $\Omega=\bigsqcup_j\theta_j$, and let $g=\sum_ja_je^{i\omega_j\cdot x}$. If $B_{1/R}(\omega_j)\subset\theta_j$, for all $j$, then for any ball of radius $R$, $B_R$, we have
+    \begin{equation*}
+        ||g||_{L^p(B_R)}\lesssim D_p\left(\sum_j|a_j|^2 \right)^{1/2}R^{1/p}
+    \end{equation*}
+\end{proposition}
+\begin{proof}
+    Let $f=\eta g$, such that $supp(\widehat{\eta})\subset B_{1/R}$, such that $|\eta|\sim 1$ on $B_R$ and decays rapidly outside of $B_R$.
+\end{proof}
+
