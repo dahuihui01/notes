@@ -25,5 +25,13 @@ Hence the answer is no, because if we have narrow peaks with controlled heights,
 Now we ask the following question, can we have flat parts of $|f|$ where $||f||_{L^1}$ is dominated by the flat parts, but still has narrow peaks? To address that, we introduce an important lemma which allows us to control the height of $f$ in one interval using its $L^1$ norm in an even larger interval.
 
 \begin{proposition}[Locally Constant Lemma]
-    
+    If $supp\widehat{f_1}\subset[0,1]$, and $I$ is the unit interval $[0,1]$, then we have
+    \begin{equation*}
+        ||f||_{L^\infty(I)}\lesssim ||f||_{L^1(\omega_I}
+    \end{equation*}
+    Where the weighted $L^1$ norm is defined to be $||f||_{L^1(\omega_I)}=\int_{\R}|f_1|\omega_I$
 \end{proposition}
+
+
+
+Why is this not composing?
