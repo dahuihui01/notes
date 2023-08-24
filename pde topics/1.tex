@@ -1,6 +1,122 @@
-\chapter*{Lecture 1}
+\chapter{Lecture 1}
 
 here we go.
 
 \section*{Course overview}
+We will be discussing the nonlinear Schrodinger quations, which is a subcategory of nonlinear pde's, nonlinear dispersive equations, and infinite speed of propogation, 
+
+Let's start with the linear Schrondinger equation.
+
+\begin{equation*}
+    i\partial_tu+\Delta u=0 \text{ in } \R\times\R^n, u(t=0)=u_0
+\end{equation*}
+The fundamental solution to a Schrondinger equation, is the $K(t,x)$ is such that $u_0=\delta_0$.
+
+Instead, one could look at other intial data, for exmaple, $\widehat{u}_0=\delta_{\xi_0}$, or $u_0=e^{ix\xi_0}$.
+
+\begin{remark}
+    If you localize the initial data in the physical space, then the fourier transform is constant and therefore cannot be localized in the Fourier space. The reverse is also true if you try to localize in the Foureir space.
+\end{remark}
+
+If we have
+\begin{equation*}
+    u_0=e^{-\frac{(x-x_0)^2}{2}}e^{i(x-x_0)\cdot\xi_0}
+\end{equation*}
+For this type of initial data, we call it the coherent state, localized at $(x_0, \xi_0)$
+
+In non-coherent state, the solution spreads out immediately; in the coherent state, the solution remains nicely behaved and coherent for a period of time, then it spreads out evenetually.
+
+\begin{remark}
+    This is the idea of group velocity, waves with frequence $\xi_0$ move with velocity $2\xi_0$. This $2\xi_0$ is called the group velocity. 
+\end{remark}
+
+Dispersive equation: waves with different frequencies travel in different directions.
+
+
+\section{Nonlinear}
+We will start with the nonlinear boys now.
+\begin{equation*}
+    i\partial_tu+\Delta u=\lambda u\cdot |u|^p
+\end{equation*}
+We will ask the following standard pde questions.
+\begin{enumerate}
+    \item existence
+    \item uniqueness
+    \item continuous dependent
+    \item global in time behavior, i.e. linear vs nonlinear effects
+\end{enumerate}
+\begin{remark}
+    If one just observes the RHS, then there is linear and nonlinear contributions, and one probalby would expect that one dominates over the other over time.
+\end{remark}
+
+\textbf{linear}: scattering. nonlinear solution looks like the linear solution
+
+\textbf{nonlinear}: solitons (solutions that remain concentrated for a very long time, such as a bump function), blow-ups.
+
+We will comment on the dispersive aspect of the Schrondinger equation before the nonlinear aspect.
+
+
+\section{Dispersion}
+Here are ways to measure dispersion. Given nicely behaved initial data, $u(t=0)=u_0\in H^s$.
+\begin{enumerate}
+    \item  dispersive estimates $\|u\|_{L^\infty}\leq t^{O(1)}\|u_0\|_{L^1}$
+    \item Strichartz estimates $\|u\|_{L_t^pL_x^q}\leq \|u_0\|_{L^2}$
+    \item Lateral Strichartz esiamtes, exchanging the role of $t, x$.
+    \item Improved function spaces (Bourgain spaces, $U^p$, $V^p$)
+    \item Local energy decay. If you have a dispersive solution, instead of measuring the solution everywhere, say, you measure it in the vertical cylinder.
+\end{enumerate}
+
+\textbf{Back to NLS.}
+\begin{equation*}
+    i\partial_t u+\Delta u=\lambda u|u|^p
+\end{equation*}
+
+We will talk about the following:
+\begin{enumerate}
+    \item local well-posedness
+    \item global well-posedness for small initial data
+    \item large initial data problem 
+    \item energy critical problem $\int|\nabla u|^2$ and the mass critical problem $\int|u|^2$
+\end{enumerate}
+\begin{remark}
+    The exponenet $p$ that we put on the RHS plays an important role int he above questions.
+\end{remark}
+Some topics in the foreseeable future: Littlewood-Paley theory, Bessel's problem, etc
+
+\textbf{References}: Tao's on nonlinear and dispersive pde.
+
+Now we will talk about Schrondinger maps
+\begin{equation*}
+    u: \R\times \R^n\to (M, g)
+\end{equation*}
+Sasy we have $u_t=i\Delta u$, then $u_t\in TM$, where $T$ stands for tangent, as we have rotated $\Delta u$ 90 degrees hence should live in the tangent of the manifold.
+\begin{equation*}
+    u_t=P\Delta u, P \text{ projection on } TM
+\end{equation*}
+The RHS $P\Delta u$ is called the heat flow. Let $M$ be a kahlan manifold.
+
+Spherical case, $(M,g)=\mathbb{S}^2$. One can identify $\mathbb{S}^2$ as the comlex plane and compactified.
+Hence if we would like an object that is perpendicular to both $u$ and $\Delta u$, and rotate by 90 degrees, then we look at the following equation
+\begin{equation*}
+    u_t=u\times \Delta u, u(t=0)=u_0
+\end{equation*}
+
+
+Then we come to the next section of the class, Quasilinear Schrondinger equations.
+\begin{equation*}
+    iu_t+g^{jk}(u)\partial_j\partial_k(u)=N(u, \nabla u), u(t=0)=u_0
+\end{equation*}
+Suppose $g^{jk}$ is a positive definite matrix, and the $N$ stands for nonlinear We will look at the local solvability. 
+
+If we start with a simple guess, $N=\partial_j u$, and this becomes a ill-posed linear problem due to exponential growth (by taking the Fourier transform). Then we can probably repalce $N=(\nabla u)^2, N=(\nabla)^3$.
+
+Another difficulty is how waves propogate, and ``trapping'' refers to when waves are localized eternally and do not propogate (sit in the vertical cylinder for example). This leads to the discussion of local well-posed theory.
+
+For the \textbf{last part of the course}, we wil look at global solutions for quasilinear Schrondinger equations for small initial data, if $n\geq 3$, then somehow you can use the dispersive estimates mentioned above, via Strichartz. In higher dimension, the decay is faster, than the estimate is stronger, and the linear component plays more role. In low dimension, the nonlinear interactiosn are more prominennt. 
+
+In $n=1$, there exists a following conjecture.
+\begin{proposition}[Conjecture]
+    If one has $1-d$ dispersive problem, that is defocusing, then there exists a global solution for small data $u_0$.
+\end{proposition}
+In the case of QNLS, there is a proved theorem as above in 2023.
 
