@@ -1,0 +1,62 @@
+This is for myself.
+
+\section{Chapter 1: Hilbert Spaces}
+-orthogonality
+
+-riesz representation
+
+We will state the Riesz representation theorem here, if $T:\mathcal{H}\to\mathbb{F}$ is a bounded linear functional, then there is a unique vector $h_0$ in $\mathcal{H}$ such that
+\begin{equation*}
+    T(h)=\langle h, h_0\rangle, \forall h\in\mathcal{H}
+\end{equation*}
+Moreover, we have
+\begin{equation*}
+    \|T\|=\|h_0\|
+\end{equation*}
+
+
+-orthonormal sets of vectors and bases
+-isomorphic hilbert spaces and the fourier transform for the circle
+
+We define an isomorphism between two Hilbert spaces as follows:
+\begin{definition}
+    Let $\mathcal{H}, \mathcal{K}$ be Hilbert spaces, then an isomorophism $U$ is a surjective isometry, i.e.
+    \begin{equation*}
+        \langle Uh, Ug\rangle=\langle h, g\rangle
+    \end{equation*}
+    Here we use $U$ to highlight such isomorphism is also called the unitary operator.
+\end{definition}
+We conclude this section by a few theorems regarding the Fourier transform.
+\begin{proposition}
+    $\{e^{2\pi inx}\}_{n\in\mathbb{Z}}$ is a basis for $L_\mathbb{C}^2[0,2\pi]$.
+\end{proposition}
+And we also have
+\begin{theorem}
+    The Fourier transform is a linear isometry from $L_\mathbb{C}^2[0,2\pi]$ to $l^2(\mathbb{Z})$.
+\end{theorem}
+
+Then we talk a little bit about the direct sum of hilbert spaces
+
+\section{Chapter 2: Operators on Hilbert Space}
+-We start with some properties of operators on the Hilbert space, such as the Schur's test.
+
+\begin{proposition}[Schur's test]
+    If we have a kernel $k(x,y)$, and such that
+    \begin{equation*}
+        \int|k(x,y)|d\mu(x)\leq c_1
+    \end{equation*}
+    \begin{equation*}
+        \int|k(x,y)|d\mu(y)\leq c_2
+    \end{equation*}
+    Then if we define an operator $K:L^2(\mu)\to L^2(\mu)$ as
+    \begin{equation*}
+        T(f)(x)=\int k(x,y)f(y)d\mu(y)
+    \end{equation*}
+    Then we have $L^2$ boundedness of $T$, and that
+    \begin{equation*}
+        \|T\|\leq(c_1c_2)^{1/2}
+    \end{equation*}
+\end{proposition}
+
+
+
