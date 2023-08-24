@@ -1,0 +1,35 @@
+\chapter{Preface}
+\section{Lecture 1}
+Here we go.
+\subsection{Logistics}
+\textbf{OH}: Wednesday 1-2pm virtual, 2-4pm Evans 813.
+
+\textbf{Textbook}: Fourier Analysis by J. Duoandikoetxea (plan to cover chapter 1-6, and sections 1-4 of chapter 8); other texts: \textit{Introduction to Fourier Analysis on Euclidean Spaces} by Stein and Weiss, \textit{Singular Integrals and Differential Properties of Functions} by Stein, \textit{Harmonic Analysis} by Stein.
+
+\textbf{Topics}: Fourier series, Fourier transform, maximal functions, Hilbert transform, singular integrals, Littlewood-Paley theorem, multipliers, oscillatory integrals
+
+\textbf{Grading}: The grading will be entirely dependent on 3 problem sets given throughout the semester (with an ample amount of optional problems).
+
+
+\subsection{Course Overview}
+We will begin by defining what ``Harmonic'' means in the context of Math 258: to us, this word harmonic refers to "Euclidean Fourier analysis." And more specifically, we will study Fourier analysis on the $n$-dimensional torus, in $\R^n$. One justification for studying on/in these spaces is that many are equipped with translation invariance, which among other things, gives us nice behaving eigenfunctions.
+
+Consider the function $e(x):=e^{2\pi inx}$, and consider the translation operator $f_t(x)=f(x+t)$, we have
+\begin{equation*}
+    f_t(e(x))=e^{2\pi in(x+t)}=e^{2\pi int}\cdot e^{2\pi inx}
+\end{equation*}
+
+Here, $e^{2\pi inx}$ can be seen as an eigenfunction of translations. Another obvious example is differentiation. Consider the differentiation operator on $e(x)$, we have
+\begin{equation*}
+    \partial_x(e(x))=2\pi in(e^{2\pi inx})
+\end{equation*}
+
+Again, $e^{2\pi inx}$ is an eigenfunction. In the forseeable future, we will see $\{e^{2\pi inx}\}_{n\in\mathbb{N}}$ forms a basis of funcitons on the 1-dim torus, $\mathbb{T}=\R/\mathbb{Z}$ i.e. functions on the circle. Likewise, we have $\{e^{2\pi i\sum n_ix_i}\}_{n_i\in\mathbb{Z}}$ as the basis of functions in the $n$-dim torus, defined as $\mathbb{T}^n=(\R/\mathbb{Z})^n$. They have the nice properties of diagonalizing translation, differentiation operators as they are eigenfunctions.
+
+\begin{remark}
+    This property gives them the importance of in studying differential operators with constant coefficients
+\end{remark}
+
+We will go through various technical things along the way, one of them being ``cancellation.'' In the most general sense, using triangle inequality for everything is quite of a waste, for example, for highly oscillatory functions. We would like to exploit whenever we can, such as the oscillations of functions, kernels of operators, etc. More importantly, we will use different methods for different parts, to treat different issues. In other words, one should go to the dentist when they broke their ankle.
+
+We will  first study the question when do partial sums of a Fourier series (of functions on the cirlce) or Fourier transform of functions in the Euclidean space converge, and converge in what sense. Convergence usually has two ''senses:'' pointwise convergence and $L^p$ norm convergence. We will study both.
