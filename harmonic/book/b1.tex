@@ -1,0 +1,38 @@
+\chapter{Fourier Series and Integrals}
+
+We will go through the book's notes in this document.
+Chapter 1 is organized as follows:
+\begin{enumerate}
+    \item Fourier coefficients and Series
+    \item Criteria for pointwise convergence
+    \item Convergence in norm
+    \item summability methods
+    \item The fourier transform of $L^1$ functions
+    \item Schwartz class and tempered distributions
+    \item Fourier transform on $L^p$, for $1<p\leq 2$
+    \item Convergence and summability of Fourier Integrals
+    \item Further results
+\end{enumerate}
+
+The Lebesgue measure in $\R^n$ will be denoted using $dx$, and on the unit sphere $S^{n-1}$ will be $d\sigma$.
+
+Let $a=(a_1, ..., a_n)\in\mathbb{N}^n$ be a multiindex, and $f:\R^n\to\C$, then
+\begin{equation*}
+    D^af=\frac{\partial^{|a|}f}{\partial_{x_1}^{a_1}...\partial_{x_n}^{a_n}}
+\end{equation*}
+where $|a|=a_1+...+a_n$.
+
+
+\begin{theorem}[Minkowski's integral inequality.]
+    Given $(X,\mu), (Y,\nu)$ as $\sigma$-finite measure spaces, we have the following inequality
+    \begin{equation*}
+        \left(\int_X\left|\int_Yf(x,y)d\nu(y) \right|^pd\mu(x) \right)^{1/p}\leq\int_Y \left(\int_X|f(x,y)^pd\mu(x) \right)^{1/p}d\nu(y)
+    \end{equation*}
+\end{theorem}
+
+Taking $\nu$ to be the counting measure over a two point set $S={1,2}$ gives the usual Minkowski inequality
+\begin{equation*}
+    \|f_1+f_2\|_{L^p}\leq\|f_!\|_{L^p}+\|f_2\|_{L^p}
+\end{equation*}
+
+We will use $\mathcal{D}$ to denote the space of test functions, i.e. $C_c^\infty$, and $\mathcal{S}$ to denote the space of Schwartz functions. 
