@@ -24,7 +24,7 @@ Here, $e^{2\pi inx}$ can be seen as an eigenfunction of translations. Another ob
     \partial_x(e(x))=2\pi in(e^{2\pi inx})
 \end{equation*}
 
-Again, $e^{2\pi inx}$ is an eigenfunction. In the forseeable future, we will see $\{e^{2\pi inx}\}_{n\in\mathbb{N}}$ forms a basis of funcitons on the 1-dim torus, $\mathbb{T}=\R/\mathbb{Z}$ i.e. functions on the circle. Likewise, we have $\{e^{2\pi i\sum n_ix_i}\}_{n_i\in\mathbb{Z}}$ as the basis of functions in the $n$-dim torus, defined as $\mathbb{T}^n=(\R/\mathbb{Z})^n$. They have the nice properties of diagonalizing translation, differentiation operators as they are eigenfunctions.
+Again, $e^{2\pi inx}$ is an eigenfunction. In the forseeable future, we will see $\{e^{2\pi inx}\}_{n\in\mathbb{N}}$ forms a basis of funcitons on the 1-dim torus, $\mathbb{T}=\R/\mathbb{Z}$ i.e. functions on the circle. Likewise, we have $\{e^{2\pi i\sum n_ix_i}\}_{n_i\in\mathbb{Z}}$ as the basis of functions in the $n$-dim torus, defined as $\mathbb{T}^n=(\R/\mathbb{Z})^n$. They have the nice properties of diagonalizing translation, differentiation operators as they are eigenfunctions. Similarly, we have $\{e^{2\pi i\sum n_ix_i}\}_{n_i\in\mathbb{Z}}$ for $\R^n$, and we say they are ``almost in $L^2$,'' or $L^2$-wannabes as they are not far from $L^2$, but not quite in $L^2(\R^n)$.
 
 \begin{remark}
     This property gives them the importance of in studying differential operators with constant coefficients
@@ -33,3 +33,166 @@ Again, $e^{2\pi inx}$ is an eigenfunction. In the forseeable future, we will see
 We will go through various technical things along the way, one of them being ``cancellation.'' In the most general sense, using triangle inequality for everything is quite of a waste, for example, for highly oscillatory functions. We would like to exploit whenever we can, such as the oscillations of functions, kernels of operators, etc. More importantly, we will use different methods for different parts, to treat different issues. In other words, one should go to the dentist when they broke their ankle.
 
 We will  first study the question when do partial sums of a Fourier series (of functions on the cirlce) or Fourier transform of functions in the Euclidean space converge, and converge in what sense. Convergence usually has two ''senses:'' pointwise convergence and $L^p$ norm convergence. We will study both.
+
+\newpage
+\chapter{Fourier Series and Fourier transform}
+\section{Lecture 2}
+\textbf{More logistics}: OH's have been updated as follows: Wednesday 10:30am-11:30am, 2-3pm.
+
+We now begin Chapter 1 of our text.
+
+Recall we define the 1-d torus as $\mathbb{T}=\R/\mathbb{Z}$, and the functions on the torus are naturally identified with the functions on the unit interval. Fourier analysis began when Fourier asked the following question: given a function $f$ on the circle, can we find $a_k, b_k$ such that the following is true:
+\begin{equation*}
+    f(x)=\sum_{k=0}^\infty a_k\cos(2\pi kx)+b_k\sin(2\pi kx)
+\end{equation*}
+
+The modern Fourier analysis asks the following, can we find $c_k$ such the following is true:
+\begin{equation*}
+    f(x)=\sum_{k=0}^\infty c_ke^{2\pi ikx}
+\end{equation*}
+
+One intuitioin for having $2\pi k$ in the $\cos, \sin$ is that we would like to have periodic functions with period 1 to approximate $f$. Now we introduce the Fourier coefficients, and we first motivate this using trigonometric polynomials of the form 
+\begin{equation*}
+    f(x)=\sum_{k=0}^N c_ke^{2\pi ikx}
+\end{equation*}
+
+We only know $f$ is a finite sum of $e^{2\pi ikx}$, yet we would like to know the $c_k$'s. And we do this by exploiting the orthogonality of $\{e^{2\pi ikx}\}$. Notice we have the following:
+\begin{equation*}
+    \int_0^1 e^{2\pi ik_1x}\overline{e^{2\pi ik_2x}}dx=\begin{cases}
+        1, k_1=k_2\\
+        0, k_1\neq k_2\\
+    \end{cases}
+\end{equation*}
+
+We therefore have, for any fixed $k$, 
+\begin{equation*}
+    \int_0^1f(x)e^{-2\pi ikx}dx=\int_0^1\left(\sum_{k=0}^nc_ke^{2\pi ikx}\right)e^{-2\pi ikx}dx=c_k
+\end{equation*}
+
+
+\begin{definition}[Fourier coefficients, Fourier series]
+    Given $f\in L^1(\mathbb{T})$, or any periodic function on $\R$ with period 1 that is locally integrable, we define its $k$-th Fourier coefficient as follows:
+    \begin{equation*}
+        \hat{f}(k)=\int_0^1f(x)e^{-2\pi ixk}dx
+    \end{equation*}
+    Given the Fourier coefficients, we write $f$'s Fourier series as follows:
+    \begin{equation*}
+        f(x)\sim \sum_{k\in\mathbb{Z}}\hat{f}(k)e^{2\pi ikx}
+    \end{equation*}
+\end{definition}
+
+For trigonometric polynomials, as we saw, its Fourier series agrees exactly with itself, and its Fourier series will only have finitely many terms. However, more often than not, arbitrary $f$'s Fourier series will have infinitely many terms, and now we go back to the question: when will $f$'s Fourier series converge and converge in what sense.
+
+We define partial sums of Fourier series as $S_N(f)(x)=\sum_{|k|\leq N}\hat{f}e^{2\pi ikx}$, and pointwise convergence asks the question: for fixed $x$, when do we have
+\begin{equation*}
+    \lim_{N\to\infty}S_N(f)(x)=f(x)
+\end{equation*}
+
+We now introduce two theorems on pointwise convergence (that will be proved in the next lecture).
+\begin{theorem}[Dini's criterion]
+    Fix $x\in\mathbb{T}$, if we have
+    \begin{equation*}
+        \int_{|t|<\delta}\left|\frac{f(x+t)f(x)}{t} \right|<\infty
+    \end{equation*}
+    Then we have
+    \begin{equation*}
+        \lim_{N\to\infty}S_N(f)(x)=f(x)
+    \end{equation*}
+\end{theorem}
+
+For example, Lipshitz functions would have their Fourier series pointwisely converge. More generally, if a function blows up around a point only slightly, then we would have its Fourier series converge to it at that point.
+
+\begin{theorem}[Jordan's criterion]
+    Fix $x\in\mathbb{T}$, and some $\delta>0$, if $f$ is of bounded variation in $(x-\delta, x+\delta)$, then we have
+    \begin{equation*}
+        \lim_{N\to\infty}S_N(f)(x)=f(x)
+    \end{equation*}
+\end{theorem}
+
+Again, we delay the proof till next time.
+
+To study pointwise convergence, we first note that $S_N(f)$ is a convolution operator.
+\begin{align*}
+    S_N(f)(x)&=\sum_{|k|\leq N}\hat{f}(k)e^{2\pi ikx}\\
+    &=\sum_k\left(\int_0^1f(t)e^{-2\pi ikt}dt \right)e^{2\pi ikx}\\
+    &=\int_0^1f(t)\sum_ke^{2\pi ik(x-t)}dt\\
+    &=f(x)\ast D_N(x)
+\end{align*}
+where $D_N(x)=\sum_{|k|\leq N}e^{2\pi ikx}$, and this kernel is called the Dirichlet kernel.
+
+\begin{remark}
+    To study the pointwise convergence of functions on the circle, it suffices to study the point $x=0$, and by translation invariance, we have the same conclusion hold for $x=x_0$.
+\end{remark}
+
+The convolution can be thought of as ``redistribution of mass,'' and we show the total mass of the Dirichlet kernel is 1.
+\begin{equation*}
+    \int_0^1D_N(t)dt=\int_0^1e^{2\pi ikt}dt=1
+\end{equation*}
+
+We now introduce a simple expression for the Dirichlet's kernel.
+\begin{proposition}[Dirichelt kernel]
+    We have
+    \begin{equation*}
+        D_N(t)=\frac{\sin(2N+1)\pi t}{\sin(\pi t)}
+    \end{equation*}
+\end{proposition}
+\begin{proof}
+    $D_N(t)=\sum_{k=-N}^Ne^{2\pi ikt}$ is a geometric series, with the ratio$=e^{-2\pi it}$, hence by the formula of partial sums, we have
+    \begin{equation*}
+        LHS=\frac{e^{2\pi i2Nt}(1-e^{-2\pi it(2N+1)})}{1-e^{-2\pi it}}
+    \end{equation*}
+    Now we examine the RHS. $\sin(t)=(e^{it}-e^{-it})/2i$, hence we have
+    \begin{equation*}
+        RHS=\frac{e^{(2N+1)\pi it}-e^{-(2N+1)\pi it}}{e^{i\pi t}-e^{-i\pi t}}
+    \end{equation*}
+    Dividing top and bottom by $e^{i\pi t}$ gives us the LHS.
+\end{proof}
+\qed
+
+Can we comment on the bound of $D_N$? If one draws out a picture, then it is clear that $D_N$ have a blow-up at $t=0$, and $|D_N(t)|\to 2N+1$ as $t\to 0$, one could also see this using the expression above. Also we have the following:
+\begin{equation*}
+    |D_N(t)|\leq\frac{1}{\sin(\pi t)}, 0<t\leq\frac{1}{2}
+\end{equation*}
+
+To prove the above two theorems, we introduce some tools.
+\begin{lemma}[Riemann-Lebesgue Lemma]
+    If $f\in L^1(\mathbb{T})$, then as $|k|\to\infty$, the Fourier coefficent tends to 0, i.e. we have
+    \begin{equation*}
+        \lim_{|k|\to\infty}|\hat{f}(k)|=\lim_{|k|\to\infty}\left|\int_0^1f(x)e^{-2\pi ikx} \right|=0
+    \end{equation*}
+\end{lemma}
+\begin{proof}
+    For $f\in L^1(\T)$, there exists $g,h$ such that $f=g+h$, where $g$ is a simple function of the form $g=\sum_{i=1}^nc_i\chi_{E_i}$, and $\|h\|_{L^1}<\epsilon$.
+
+    For $g$ simple function, the Fourier coefficent decays with rate $O(1/k)$ by integration by parts.
+    \begin{equation*}
+        |\hat{g}(k)|=\left|\int_0^1\sum_ic_i\chi_{E_i}e^{-2\pi ikx}\right|\leq\sum|c_i|\chi_{E_i}\left|\int_0^1e^{-2\pi ikx} \right|=\sum|c_i|\chi_{E_i}\frac{1}{2\pi ik}\left|\int_0^1xe^{-2\pi ikx} \right|\lesssim O(1/|k|)
+    \end{equation*}
+
+    For $\hat{h}(k)$, we have,
+    \begin{equation*}
+        \left|\hat{h}(k)\right|=\left|\int_0^1h(x)e^{-2\pi ikx}\right|\leq\int_0^1|h(x)|dx<\epsilon
+    \end{equation*}
+    Hence we have $|\hat{f}(k)|\leq O(1/k)$, and as $|k|\to\infty$, we have $\hat{f}(k)\to 0$ if $f\in L^1(\T)$.
+\end{proof}
+\qed
+
+Next we a result that guarantees pointwise convergence.
+\begin{theorem}[Riemann Localization principle]
+    If $f=0$ in a neighborhood of $x$, say, $(x-\delta, x+\delta)$, then we have
+    \begin{equation*}
+        \lim_{N\to\infty}S_N(f)(x)=0=f(x)
+    \end{equation*}
+\end{theorem}
+\begin{proof}
+    If we write $S_N(f)$ as $D_N\ast f$, where $D_N(t)=\frac{\sin((2N+1)\pi t)}{\sin(\pi t)}$, then we see the badness of the denominator is avoided around $x$ by $f=0$ around $x$, and if we are far away from $x$, then nice bound ensues. We now do explicit computation.
+
+    \begin{align*}
+        S_N(f)&=\int_0^1 D_N(t)f(x-t)dt\\
+        &\int_{\delta\leq t\leq 1}\frac{\sin((2N+1)\pi t)}{\sin(\pi t)}f(x-t)dt\\
+        &=\int_{\delta\leq t\leq 1}\frac{f(x-t)}{\sin(\pi t)}\frac{e^{i(2N+1)\pi t}-e^{i(2N+1)\pi t}}{2i}dt\\
+        &=\frac{1}{2i}\widehat{\frac{f(x-t)}{\sin(\pi t)}e^{i\pi t}}(-N)+\widehat{\frac{f(x-t)}{\sin(\pi t)}e^{-i\pi t}}(N)
+    \end{align*}
+    And we note that both $\frac{f(x-t)}{\sin(\pi t)}e^{i\pi t}$ and $\frac{f(x-t)}{\sin(\pi t)}e^{-i\pi t}$ are in $L^1(\T)$. Hence by the Riemann-Lebesgue lemma, their Fourier coefficients tend to 0 as $N\to\infty$. 
+\end{proof}
+\qed

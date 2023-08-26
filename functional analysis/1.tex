@@ -109,3 +109,96 @@ If $G$ is commutative, then we have
 where $X$ is some compact space.
 Note that $C_c(G)$ operators on $l^2(G)$, and $\|\alpha_f\|\leq\|f\|_{l^1}$.
 
+\newpage
+\section{Lecture 2}
+Let's do some math.
+
+Let $X$ be a Hausdorff compact space, and let $C(X)$ denote the space of continuous functions defined on $X$. This is an algebra. You can multiply them, associatively and commutatively. We equip it with a norm $\|\cdot\|_{L^\infty}$. Note $X$, by assumption, is a normal space, you could have continuous functions mapped to 1 on one subset, 0 to the other subset. Hence there are many elements from $C(X)$.
+
+\begin{definition}[Normed Algebra]
+    Let $\mathcal{A}$ be an algebra on $\R$ or $\mathbb{C}$, is a normed algebra if it has a norm $\| \|$, as a vector space, such that for for $a,b\in\mathcal{A}$, we have
+    \begin{equation*}
+        \|ab\|\leq\|a\|\|b\|
+    \end{equation*}
+    The above is called submultiplicity.
+\end{definition}
+\begin{definition}[Banach Algebra]
+    A Banach Algebra is a normed algebra that is complete in the metric space from the norm.
+\end{definition}
+
+
+Given $x\in X$, define $\varphi_x: C(X)$ the evaluation map such that
+\begin{equation*}
+    \varphi_x(f)=f(x)
+\end{equation*}
+
+$\varphi_x$ is an algebra homomorphisms between $C(X)\to\R$ or $C(X)\to\mathbb{C}$. This simply implies
+\begin{equation*}
+    \varphi_x(f+g)=(f+g)(x)=f(x)+g(x), \varphi_x(fg)=(fg)(x)=f(x)g(x)
+\end{equation*}
+
+We now make the note that, $C(X)$ has an identity element, which is the constant function $1$, under multiplication. Hence $C(X)$ is a unital algebra. Note that $\varphi_x$ defined above is a unital homomorphism, meaning that it sends identity to identity.
+
+Note $\varphi_x$ is also a multiplicative linear functional, also unital.
+
+\begin{proposition}
+    Every multiplicative linear functional on $C(X)$ is of the form $\varphi_x$ for some $x\in X$.
+\end{proposition}
+\begin{proof}
+    Main Claim: given a multiplicative linear functional $\varphi$, there exists a point $x_0$ and if we have some $f\in C(X)$, we have $\varphi(f)=0$, then we have $f(x_0)=0$. To prove this claim, we need compactness. Suppose the contrary of the claim. Suppose that for each $x\in X$, there is an $f_x\in C(X)$ such that $f(x)\neq 0$, but $\varphi(f)=0$.
+
+    Set $g_x=\overline{f}_xf_x$, then we have $g_x(x)=0$, $g_x\geq 0$, but $\varphi(g_x)=\varphi(f_x)\varphi(\overline{f}_x)=0$, then there is an open set $O_x$ such that $x\in O_x$, and $g_x(y)>0$ for all $y\in O_x$. Now by compactness, there is $x_1, ..., x_n$ such that $X=\bigcup_{j=1}^nO_{x_j}$, let $g=g_{x_1}+... g_{x_n}$, then we have $g(y)>0$ for all $y\in X$, and $\varphi(y)=0$. Note that $g$ is a continuous function, and $g$ is invertable, and also $re(\frac{1}{g})\in C(X)$, but we also have
+    \begin{equation*}
+        \varphi \left(g\cdot\frac{1}{g}\right)=1
+    \end{equation*}
+    Hence we've reached a contradiction.
+    Then there exists $x_0\in X$ such that if $\varphi(f)=0$, this means $f(x_0)=0$. For any $f$, consider $f-\varphi(f)\cdot 1$, apply $\varphi$, we have
+    \begin{equation*}
+        \varphi(f-\varphi(f)\cdot 1)=0, \text{ this implies there exists } x_0, \text{ such that } (f-\varphi(f)1)(x_0)=0
+    \end{equation*}
+    This implies $f(x_0)=\varphi(f)$ which implies $\varphi(f)=\varphi_{x_0}(f)$.
+\end{proof}
+
+For any unital commutative algebra $\mathcal{A}$ and let $\widehat{\mathcal{A}}$ be the set of unital homomorphisms of $\mathcal{A}$ into the field.
+
+For $\mathcal{A}=C(X)$, and $\varphi\in\widehat{\mathcal{A}}$. 
+\begin{definition}[spectra of $\mathcal{A}$]
+    For any unital commutative algebra $\mathcal{A}$ and let $\widehat{\mathcal{A}}$ be the set of unital homomorphisms of $\mathcal{A}$ into the field, we call the set $\mathcal{A}$ the spectra of $\mathcal{A}$. Sometimes we call $\widehat{\mathcal{A}}$ is called the maximal ideal space of $\mathcal{A}$.
+\end{definition}
+\begin{remark}
+    We have $|\varphi(f)|\leq\|\varphi\|\|f\|_{L^\infty}$, since $\varphi$ is unital, we have $\|\varphi\|=1$.
+\end{remark}
+
+Thss is not always true for normed algebra,
+Let
+\begin{equation*}
+    \mathcal{A}:= Poly\subset C([0,1])
+\end{equation*}
+We define $\varphi(p)=p(2)$, $p$ is a polynomial. This is not continuous, nor is the $\|\varphi\|=1$.
+
+
+\begin{proposition}
+    If $\mathcal{A}$ is a nital commutative Banach algebra, and if $\phi\in\widehat{\mathcal{A}}$, then we have $\|\varphi\|=1$.
+\end{proposition}
+\begin{proposition}
+    Let $\mathcal{A}$ be a unital Banach algebra (not necessarily commutative), then if $a\in\mathcal{A}$, and $\|a\|\leq 1$, then we have
+    \begin{equation*}
+        1_\mathcal{A}-a \text{ is invertible in } \mathcal{A}
+    \end{equation*}
+\end{proposition}
+\begin{proof}
+    For this, we use completeness.
+    $\frac{1}{1-a}=?\sum_{n=0}^\infty a^n, a^0=1_\mathcal{A}$
+    You could look at the partial sums. $S_m=\sum_{n=0}^ma^n$, you want to show that $\{S_m\}$ is a Cauchy sequence, and use completeness of Banach algebras. $\lim_{m\to\infty}S_m=\frac{1}{1-a}$.
+    
+    To rove this is a cauchy sequence:
+    \begin{equation*}
+        \|S_n-S_m\|=\|\sum_{j=m+1}^na^j\|\leq\sum_{m+1}^n\|a^j\|\leq\sum_{m+1}^n\|a\|^j
+    \end{equation*}
+    And the fact that $\|a\|\leq 1$, we have the sum bounded by $\epsilon$, hence $\{S_n\}$ is a Cauchy sequence. Let $b=\sum_{n=0}^\infty a^n$, we want to show that $b(1-a)=1$.
+    \begin{equation*}
+        b(1-a)=\lim_{n\to\infty}{S_n}(1-a)=\lim_{n\to\infty}\left(\sum_{n=0}^\infty a^n\right)(1-a)=\lim_{n\to\infty}(1-a^{n+1})=0
+    \end{equation*}
+    The last inequality follows from $\|a^{n+1}\|\leq\|a\|^{n+1}\to 0$.
+\end{proof}
+
