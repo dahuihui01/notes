@@ -14,6 +14,7 @@ Chapter 1 is organized as follows:
     \item Further results
 \end{enumerate}
 
+\textbf{Some Notations}
 The Lebesgue measure in $\R^n$ will be denoted using $dx$, and on the unit sphere $S^{n-1}$ will be $d\sigma$.
 
 Let $a=(a_1, ..., a_n)\in\mathbb{N}^n$ be a multiindex, and $f:\R^n\to\C$, then
@@ -35,4 +36,46 @@ Taking $\nu$ to be the counting measure over a two point set $S={1,2}$ gives the
     \|f_1+f_2\|_{L^p}\leq\|f_!\|_{L^p}+\|f_2\|_{L^p}
 \end{equation*}
 
-We will use $\mathcal{D}$ to denote the space of test functions, i.e. $C_c^\infty$, and $\mathcal{S}$ to denote the space of Schwartz functions. 
+We will use $\mathcal{D}$ to denote the space of test functions, i.e. $C_c^\infty$, and $\mathcal{S}$ to denote the space of Schwartz functions. Recall the dual of $\mathcal{D}$, denoted as $\mathcal{D}'$ is the space of distrubitons, and $\mathcal{S}'$ is the space of temperate distributions.
+
+\begin{definition}[Convolution of distribution]
+    Let $T\in\mathcal{D}'$, and $f\in\mathcal{D}$, then we define
+    \begin{equation*}
+        T\ast f(x)=\langle T, \tau_x\tilde{f}\rangle
+    \end{equation*}
+    where $\tilde{f}(y)=f(-y)$, and $\tau_xf(y)=f(x+y)$. Hence it can be read as $T\ast f(x)=\langle T, f(x-y)\rangle$
+\end{definition}
+\begin{comment}
+The theory of distribution will come in when we need meaningful differentiation but derivatives don't exist in the classical sense.
+\end{comment}
+\begin{comment}
+    Tradionally, functions are thought of as sending points to points, but distributions are linear functions that act on a test function and send it to a point. In other words, distributions send functions to points using $\phi\mapsto\int u\phi dx$.
+\end{comment}
+
+\subsection{1.1 Review of definitions}
+We now do some math.
+If $f$ is a trigonometric series, of the form
+\begin{equation*}
+    f(x)=\sum_{n=-\infty}^\infty c_ne^{2\pi inx}
+\end{equation*}
+Then we find $c_n$ for any fixed $n$ by multiplying $f(x)$ by $e^{-2\pi inx}$, and integrate. Namely, we have
+\begin{equation*}
+    \int_0^1\sum_nc_ne^{2\pi inx}\cdot e^{-2\pi inx}=\int_0^1 c_n=c_n
+\end{equation*}
+
+We denote the additive group of $\R/\mathbb{Z}$ by $\T$, which gives $[0,1)$, and naturally identifies with $S^1$. Hence, saying a function $f$ defined on $\T$ is the same as saying $f$ is defined on $\R$ with period 1.
+
+\begin{definition}[Fourier coefficients]
+    Fix $f\in L^1(\T)$, we associate the sequence $\{\hat{f}(n)\}$ of $f$ defined by
+    \begin{equation*}
+        \hat{f}(k)=\int_0^1f(x)e^{-2\pi inx}dx
+    \end{equation*}
+    And its Fourier series defined as
+    \begin{equation*}
+        \sum_{n=-\infty}^\infty \hat{f}(n)e^{2\pi inx}
+    \end{equation*}
+\end{definition}
+
+
+\subsection{1.2}
+
