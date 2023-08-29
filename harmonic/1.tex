@@ -198,3 +198,77 @@ Next we a result that guarantees pointwise convergence.
     And we note that both $\frac{f(x-t)}{\sin(\pi t)}e^{i\pi t}$ and $\frac{f(x-t)}{\sin(\pi t)}e^{-i\pi t}$ are in $L^1(\T)$. Hence by the Riemann-Lebesgue lemma, their Fourier coefficients tend to 0 as $N\to\infty$. 
 \end{proof}
 \qed
+
+
+\section{Lecture 3}
+Recall Riemann localization principle.
+\begin{remark}
+    
+\end{remark}
+
+We will prove Dini's criterion.
+
+\begin{theorem}[Dini's Criterion]
+    If $x\in\T$, $\delta>0$ such that
+    \begin{equation*}
+        \int_{|t|<\delta}\left|\frac{f(x+t)-f(x)}{t} \right|<\infty
+    \end{equation*}
+    Then the partial sum converges at $x$.
+\end{theorem}
+\begin{proof}
+    Assume $\delta<\frac{1}{2}$, and we would like to show $S_N(f)(x)-f(x)\to 0$.
+    \begin{align*}
+        S_N(f(x)-f(x))&=\int_{|t|\leq1/2}(f(x-t)-f(x))D_N(t)dt\\
+        &=\int_{|t|\leq\delta}(f(x-t)-f(x))D_N(t)dt+\int_{\delta\leq|t|\leq1/2}(f(x-t)-f(x))D_N(t)dt
+    \end{align*}
+    We notice that
+    \begin{equation*}
+        \left|\int_{|t|\leq\delta}(f(x-t)-f(x))D_N(t)dt\right|\leq\int_{|t|\leq\delta}\frac{|f(x-t)-f(x)|}{|\sin(t)|}<\infty
+    \end{equation*}
+    By the condition that the integral is $\infty$, we can choose a even smaller $\delta_1<\delta$ such that $\int_{|t|<\delta}<\epsilon$. Finishing the proof.
+\end{proof}
+\qed
+
+\begin{remark}
+     For Holder continuous functions, they all satisfy the the assumptions of Dini. Note, a function being continuosu does not guarantee that the partial sum of Fourier series would converge.
+\end{remark}
+
+
+Now we begin Jordan's Criterion.
+\begin{theorem}[Jordan's Criterion]
+    If $x\in\T$, and $f$ is of bounded variation in $(x-\delta, x+\delta)$, then we have
+    \begin{equation*}
+        \lim_{N\to\infty}S_Nf(x)=\frac{1}{2}(f(x+)+f(x-))
+    \end{equation*}
+\end{theorem}
+\begin{remark}
+    We don't expect $f$ to be continuous or even defined at $f(x)$.
+\end{remark}
+\begin{proof}
+    WLOG, we assume $\delta<1/2$, and by the Riemann localization theorem, we assume $f=0$ outside of $(x-\delta, x+\delta)$. (What happens outside of a neighborhood of $\delta$ does not matter).
+
+    Using the symmetry of the kernel. We have
+    \begin{align*}
+        S_Nf(x)(x)=\int_{|t|\leq1/2}f(x-t)D_N(t)dt=\int_0^{1/2}(f(x+t)+f(x-t))D_N(t)dt
+    \end{align*}
+    Let $g(t)=f(x+t)+f(x-t)$, and we would want to show that $\int_0^{1/2}g(t)D_N(t)dt\to\frac{1}{2}g(0)$.
+
+    We can also assume $g$ is monotonic. And we want to show that $\int_{|t|\leq1/2}g(t)D_N(t)dt$ tends to $\frac{1}{2}g(0)$. Again we separate the integral into two parts and the second part is 0, and we use the second mean value theorem of definite integrals.
+    \begin{lemma}
+        For $f$ continuous and $g$ monotonic, we have
+        \begin{equation*}
+            \int_a^bfg=g(a+)\int_a^c f(t)dt+g(b-)\int_c^bf(t)dt
+        \end{equation*}
+    \end{lemma}
+    We would want to show that $g(\delta-)\int_\nu^\delta f(t)dt$ tends to 0.
+
+    \begin{align*}
+        \left|\int_\nu^\delta D_N(t)dt\right|&\left|\int_\nu^\delta \frac{\sin((2N+1)\pi t)}{\sin(\pi t)}\right|\\
+        &\leq\left|\int\sin((2N+1)\pi t)(1/\sin(\pi t)-1/\sin(t))\right|+\left|\int\sin((2N+1)\pi t)\frac{1}{t} \right|\\
+    \end{align*}
+    The first term is bounded by a constant, and the second term, by integration by parts, is also bounded.
+
+    \begin{remark}
+        If we take $\delta_1$ arbitrarily small, such that the integral is arbitrarily small.
+    \end{remark}
+\end{proof}

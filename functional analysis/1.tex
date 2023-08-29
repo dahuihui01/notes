@@ -202,3 +202,124 @@ We define $\varphi(p)=p(2)$, $p$ is a polynomial. This is not continuous, nor is
     The last inequality follows from $\|a^{n+1}\|\leq\|a\|^{n+1}\to 0$.
 \end{proof}
 
+
+\section{Lecture 3}
+We now begin.
+
+Let $\mathcal{A}$ be a unital Banach algebra, and if $a\in\mathcal{A}$ and $\|a\|<1$, then we have $(1-a)$ has an inverse and if $\mathcal{A}=\mathcal{B}(B)$, where $B$ is some Banach space, then $T\in\mathcal{A}$, and $\|T\|<1$, then we have
+\begin{equation*}
+    (1-T)^{-1}=\sum T^n
+\end{equation*} 
+
+The above is called the Newmann series.
+
+Now we have the following corollary.
+\begin{corollary}
+    If $a\in\mathcal{A}$ and $\|1-a\|<1$, then $a$ is invertible.
+\end{corollary}
+\begin{proof}
+    $a=1-(1-a)$.
+\end{proof}
+
+the open ball abount 1 consists of invertible elements. If $d$ is any invertible element, then we define $a\mapsto ad$ is continuous. Then this operation is a continuous homeomorphism of $\mathcal{A}$ onto itself.
+
+Denote the unit ball about $1$ as $O$, and let $d$ be some invertible element, under the above homeomorphism, $O\mapsto Od$, is open and consists of invertible elements.
+
+\begin{proposition}
+    The set of invertible elements of $\mathcal{A}$ is an open subset of $\mathcal{A}$.
+\end{proposition}
+
+
+Let $f\in C(X)$, and if $\alpha\in$ range of $f$, so $\alpha=f(x_0)$ for some $x_0$. then
+\begin{equation*}
+    (f-\alpha\cdot 1)(x_0)=0
+\end{equation*}
+Hence $f(-\alpha\cdot 1)$ is not invertible.
+
+Conversely, if we have $f-\alpha 1$ is not invertible, then there exists $x_0\in X$ such that
+\begin{equation*}
+    (f-\alpha\cdot1)(x_0)=0
+\end{equation*}
+Hence $f(x_0)=\alpha$, i.e., $\alpha\in$ range of $f$.
+
+\begin{definition}[spectrum of an element]
+    For any unital algebra $\mathcal{A}$ over some field $\mathbb{F}$, for any $a\in\mathcal{A}$, the set
+    \begin{equation*}
+        \{\alpha: a-\alpha 1_\mathcal{A}\text{ is not invertible }\}
+    \end{equation*}
+    is called the spectrum of $a$, denoted as $\sigma(a)$.
+\end{definition}
+
+\begin{proposition}
+    Let $\mathcal{A}$ be a unital Banach algebra, and let $a\in\mathcal{A}$, then if $\alpha\in\sigma(a)$, then
+    \begin{equation*}
+        |\alpha|\leq\|a\|
+    \end{equation*}
+\end{proposition}
+\begin{proof}
+    Suppose $|\alpha|>\|a\|$, then $\alpha\neq 0$, then
+    \begin{equation*}
+        \alpha-\alpha\cdot 1=-\alpha(1-\frac{a}{\alpha})
+    \end{equation*}
+    And by assumption, $\|a/\alpha\|\leq 1$, hence $(1-a/\alpha)$ is invertible. Hence $\alpha\not\in\sigma(a)$.
+\end{proof}
+
+let $\varphi$ be a multiplicative linear functional, i.e. $\varphi\in\widehat{\mathcal{A}}$, and then $\varphi(a)\in\sigma(a)$, and we have
+\begin{equation*}
+    |\varphi(a)|\leq\|a\|, \|\varphi\|=1
+\end{equation*}
+\begin{proof}
+    $\varphi(a-\varphi(a)\cdot 1)=0$
+\end{proof}
+Hence $a-\varphi(a)1$ is not invertible.
+
+
+\begin{proposition}
+    $\sigma(a)$ is a closed subset of $\mathbb{R}, \mathbb{C}$.
+\end{proposition}
+\begin{proof}
+    $\lambda\mapsto a-\lambda1$ is not invertible, and the map is continuous. And $\sigma(a)$ is the preimage of the complement of the set of invertible elements, and the set of invertible elemtns is open. And the preimage of a closed set is closed.
+\end{proof}
+
+Let $\varphi(\widehat{\mathcal{A}})$ then $\|\varphi\|=1$. So $\widehat{\mathcal{A}}$ is a subset of the unit ball of $\mathcal{A}'$, which denotes the dual vector space of continuous linear transformations.
+
+
+On $\mathcal{A}'$, we can equip the weak-* topology, i.e. the weakest topology, making the map $\psi\mapsto\psi(a)$ continuous. 
+
+\begin{proposition}
+    $\widehat{\mathcal{A}}$ is closed for the weak-* topology.
+\end{proposition}
+\begin{proof}
+    let $\{\varphi_\lambda\}$ be a net of elemnts of $\widehat{\mathcal{A}}$, that converges to some $\psi\in\mathcal{A}'$ in the weak-* topology, i.e., for every $a\in\mathcal{A}$, $\varphi_\lambda(a)\to\psi(a)$ for all $a\in\mathcal{A}$.
+
+    Then $\varphi(a,b)=\lim\varphi_\lambda(ab)=\lim\varphi_\lambda(a)\varphi_\lambda(b)=\varphi(a)\varphi(b)$.
+
+    $\varphi(1)=\lim(\varphi_\lambda(1))=\lim 1=1$.
+\end{proof}
+
+\begin{theorem}[Alaoglu's theorem]
+    For any normed vector space $V$, the closed unit ball of $V'$ is compact in the weak-* topology. 
+\end{theorem}
+As an immediate corollary, we have the following.
+\begin{corollary}
+    $\widehat{\mathcal{A}}$ is compact with respect to the weak-* toplogy.
+\end{corollary}
+
+Let $\mathcal{A}=C(X)$, and $\widehat{\mathcal{A}}$, we define $x\mapsto\varphi_X$ is a bijection. The weak-* topology in $\widehat{\mathcal{A}}$ makes $\varphi_x\mapsto\varphi_x(f)=f(X)$ continuous. Such $x\mapsto\varphi_x$ is a homeomorphism of $X$ onto $\mathcal{A}$.
+
+For $\mathcal{A}$ unital Banach algebra, commutative, for any $a\in\mathcal{A}$, define
+\begin{equation*}
+    \widehat{a}\in C(\widehat{\mathcal{A}}), \widehat{a}(\varphi)=\varphi(a)
+\end{equation*}
+we have
+\begin{equation*}
+    \widehat{ab}(\varphi)=\varphi(ab)=\varphi(a)\varphi(b)=\widehat{a}(\varphi)\widehat{b}(\varphi)=(\widehat{a}\widehat{b})(\varphi)
+\end{equation*}
+
+Hence
+\begin{equation*}
+    (\widehat{ab})=\widehat{a}\widehat{b}, \widehat{(a+b)}=\widehat{a}+\widehat{b}, \widehat{1_a}=1
+\end{equation*}
+
+we have
+$a\mapsto\widehat{a}$ is a unital algebra homeomorphism from $\mathcal{A}$ into $C(\widehat{\mathcal{A}})$.
