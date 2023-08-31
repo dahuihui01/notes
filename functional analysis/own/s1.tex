@@ -1,0 +1,63 @@
+\chapter{Prep work}
+We will start from the beginning and take baby steps. It's going to be okay.
+
+
+An algebra is a vector space (with addition and scalar multiplication, usually over $\R, \C$), with an extra multiplication operation such that it is associative, and distributive. Then a normed algebra is an algebra with a sub-multiplicative norm, such that for all $a,b\in\mathcal{A}$, we have
+\begin{equation*}
+    \|ab\|\leq\|a\|\|b\|
+\end{equation*}
+\begin{comment}
+    We don't know how to multiply two vectors if we are just given a vector space. Hence giving it a norm gives us the ability to multiply. Note such multiplication is only sub-multiplicative.
+\end{comment}
+
+A Banach algebra is a normed algebra that is complete under the metric induced by the norm. And we can form a Banach algebra by starting with a normed algebra and form its completion and by uniform continuity of addition and multiplicatoin extend to the completion of the algebra to form a Banach algebra.
+
+We will begin with some important examples of Banach algebras.
+Let $X$ be a compact topological space, and let $C(X)$ be the space of continuous functions, equip it with $\|\cdot\|_{L^\infty}$ norm, then $(C(X), \|\cdot\|_{L^\infty})$ is a Banach algebra. Similarly, if $X$ is only locally compact, then $C_b(X)$, the space of bounded continuous functions under the $\|\cdot\|_{L^\infty}$ norm is also a Banach algebra.
+
+\begin{proposition}
+    Multiplication is continuous in Banach algebras.
+\end{proposition}
+\begin{proof}
+    Multiplication $\cdot: \mathcal{A}\times\mathcal{A}\to\mathcal{A}$, hence if we have $x_n, y_n$ such that $x_n\to x, y_n\to y$, then we have
+    \begin{equation*}
+        \|x_ny_n-xy\|\leq\|x_n-x\|\|y_n\|+\|x\|\|y_n-y\|<\epsilon
+    \end{equation*}
+    Hence multiplication is continuous.
+\end{proof}
+
+\begin{definition}[Unital Banach algebra and invertibility] 
+    A Banach algebra (let's repeat, a complete vector space with addition, scalar multiplicatin, and multiplication such that the norm is sub-multiplicative) is called unital if there exists a multiplicative inverse.
+
+    An element $a\in\mathcal{A}$ is called invertible if there exists an element $a^{-1}\in\mathcal{A}$ such that
+    \begin{equation*}
+        aa^{-1}=a^{-1}a=e
+    \end{equation*}
+\end{definition}
+
+Another important example is that let $X$ be a Banach space, and the space of all bounded/continuous operators on $X$, denoted by $\mathcal{B}(X)$ is a Banach algebra with the operator norm. Any closed subalgebra of $B(X)$ is also Banach.
+
+If $X$ is a Hilbert space, then we also have the operation of taking adjoints, namely $\|T\|=\|T^*\|$.
+
+\begin{definition}
+    A $C^*$ algebra is a closed subalgebra of the space of bounded (equivalently) functions defined on a Hilbert space, $\mathcal{B}(\mathcal{H})$. 
+\end{definition}
+\begin{remark}
+    The space of continuous/bdd operators on a Hilbert space, under the operator norm, then closed under the norm topology and taking adjoints of the operators. On wikipedia, C* algebra is defined to be a Banach algebra equipped with an involution that acts like a adjoint.
+\end{remark}
+
+
+One of the goals of this course is to develop the following theorem.
+\begin{theorem}
+    Let $\mathcal{A}$ be a commutative $C^*$-algebra of $\mathcal{B}(\mathcal{H})$, then $\mathcal{A}$ is isometrically and *-algebraically isomorphic to some $C(X)$, where $X$ is some locally compact space.
+\end{theorem}
+
+
+
+
+
+
+
+
+
+
