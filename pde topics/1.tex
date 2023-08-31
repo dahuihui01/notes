@@ -283,6 +283,277 @@ By this scaling relation, We can adjust the time of the coherent state.
 
 We can also think of LS solutions as superpositions of wave packets.
 
+\section{Lecture 3}
+We recall what we did last time.
+\begin{equation*}
+    (i\partial_t+\Delta)u=0, u(0)=u_0
+\end{equation*}
+And we have
+\begin{equation*}
+    u_0(x)=e^{-(x-x_0)^2/2}e^{ix_0(x-x_0)}
+\end{equation*}
+This refers to the coherent state, and it suffices to study $x_0=\xi_0=0$, and use translation invariance.
 
 
+And note that we have $(x_0, \xi_0)$ as the center and the scales are $\delta x=1, \delta\xi=1$. 
 
+We note this is not the only scale. We could instead have $\delta x=\sqrt{T}, \delta\xi=\frac{1}{\sqrt{T}}$, and for scale=1, we have coherent $T=1$. And for the other scale, we have the coherent time $T$ as $T$.
+
+Now we ask the following questions:
+Question: can we think of arbitrary solutions as superpositions of wave packets?
+
+We want $u_0$= linear combination of coherent states. In other words, we now replace our typical $e^{-x^2/2}$ with any Schwartz function $\varphi$, and we have
+\begin{equation*}
+    u_0(x)=\varphi(x-x_0)e^{i\xi_0(x-x_0)}
+\end{equation*}
+Moreover, another justification to use arbitrary schwartz function is that if we are trying to solve
+\begin{equation*}
+    i\partial_tu-A(D)u=0, a\mapsto a(\xi)
+\end{equation*}
+Then there is no reason to use $u_0$ as the Gausssian $e^{-x^2/2}$ because the Gaussian does not stay Gaussian as it evolves.
+
+We could use partition of unity. Let $\mathbb{Z}\subset\mathbb{R}^n$, we have
+\begin{equation*}
+    1=\sum_{j\in\mathbb{Z}^n}\chi_j(x)
+\end{equation*}
+And $\chi_j(x)=\chi(x-x_j)\in\mathcal{S}$. Now we have each $\chi_j$ contained in a unit cube.
+
+And we have
+\begin{equation*}
+    u_0=\sum\chi_j(x)u_0=\sum_{k\in\mathbb{Z}^n}\sum_{j\in\mathbb{Z}^n}\chi_k(D)\chi_j(x)\cdot u_0
+\end{equation*}
+The above is called the spatial unit scale decomposition. However, this decomposition is not smooth compared to our initial form of the data.
+
+Now we ask the question, how about a smooth wave packet decomposition.
+\begin{equation*}
+    u=\int f(x_0, \xi_0)u_{x_0, \xi_0}(x)dx_0d\xi_0
+\end{equation*}
+\begin{remark}
+    The representation is not unique, and it one wishes to make this unique, they would have to have some sort of restriction on $f(x_0, \xi_0)$
+\end{remark}
+
+This is the Bargmann trnsform, or the Segal transform. If one includes the scaling, this is called FBi transform.
+
+\begin{definition}
+    Let $T$ be defined as follows: (using Gaussians)
+    \begin{equation*}
+        f(x_0, \xi_0)=Tu(x_0, \xi_0)=\int e^{-(x-x_0)^2/2}e^{-i\xi_0(x-x_0)}u(x)dx
+    \end{equation*}
+    Note we cannot hope this to be surjective, hence we have twice the amount of variables of $x_0, \xi_0$. Note we start with $x$, and end with a function in two variables.
+\end{definition}
+
+If we differentiate with respect to $\xi_0$, we get a $i(x-x_0)$ term, and if we differentiate with respect to $x_0$, we get a $(x-x_0)$ term, as well as $i \xi_0$ term, hence we have the following operator that kills the phase.
+\begin{equation*}
+    \left[\partial_{\xi_0}-i(\partial_{x_0}-\xi_0)\right]Tu=0
+\end{equation*}
+
+\begin{proposition}
+    Such $T$ defined above, as the Bargmann transform, is an $L^2$ isometry.
+    \begin{equation*}
+        T*\circ T=I
+    \end{equation*}
+\end{proposition}
+
+
+We define a slightly different transform:
+\begin{equation*}
+    \tilde{T}u(z)=\int e^{-1/2(x-z)^2}u(x)dx, z=x_0-i\xi_0
+\end{equation*}
+And now we have
+\begin{equation*}
+    \tilde{T}: L^2\to L^2(e^{-\xi_0^2})
+\end{equation*}
+
+
+\begin{definition}
+    The FBi transform is simply a recaled version of the Bargmann transform.
+    \begin{equation*}
+        T_\lambda u(x_0, \xi_0)=\int e^{-(x-x_0)^2/2\lambda}e^{-i\xi_0(x-x_0)}u(x)dx
+    \end{equation*}
+\end{definition}
+Now we have $\Delta x=\sqrt{\lambda}$, and $\xi=1/\sqrt{\lambda}$.
+
+We have
+\begin{equation*}
+    u_0=\sum_{x_0, \xi_0\in\mathbb{Z}^n}c_{x_0, \xi_0}u_0^{x_0, \xi_0}
+\end{equation*}
+Then we have
+\begin{equation*}
+    u=\sum c_{x_0, \xi_0}e^{-itD^2}u_0(x_0, \xi_0)
+\end{equation*}
+The above is the solution to the linear Schrondinger. This is useful up to time 1, and it is viewed as a superposition of wave packets.
+
+We shall approximate wave packets, we have $u_0$ localized at $(x_0, \xi_0)$. We approximate the solution as follows:
+\begin{equation*}
+    u(x,t)\sim u_0(x-2t\xi_0)e^{it\xi_0^2}
+\end{equation*}
+If we start with $e^{i(x-x_0)\xi_0}$, then roughtly it is $e^{i(x-2t\xi_0-x_0)}\xi_0$, where $\xi\sim\xi_0$, and $\tau\sim-\xi_0^2$. 
+
+Then $u$ is a good approximate solution, you can verify this by 
+\begin{equation*}
+    (i\partial_t+\Delta)u\sim O(1)
+\end{equation*}
+However, this error adds up and is acceptable if $t<< 1$. Especially if you have nonhomogenous equation, the error adds up as time progresses.
+
+We have
+\begin{equation*}
+    u(t,x)=\sum_{x_0,\xi_0}c_{x_0, \xi_0}u_0(x-2t\xi_0)e^{it\xi_0^2}
+\end{equation*}
+And this is a good approxiamte solution up to time 1.
+
+\begin{remark}
+    We note that the composition here is almost orthogonal, hence we have different frequencies, just like we had agove when we had $u=\sum c_{x_0,\xi_0}e^{-itD^2}u_0(x_0, \xi_0)$
+\end{remark}
+
+In the constant coefficient case, you start with $(x_0, \xi_0)$, at $t=0$, you end up at $(x_0+2\xi_0, \xi_0)$
+But in variable coefficients, you have
+\begin{equation*}
+    (x_0, \xi_0)\to (x_t, \xi_t)
+\end{equation*}
+We no longer move in the linear fashion.
+
+We now explore the case where we don't assume infinitely many derivatives. 
+
+Let's consider wave packets with less localization. Simply consider the case at $(0,0)$ and use translation invariance and Galilean symmetry.
+
+Take $u_0\in L^2$, what does it mean for this to be localized at (0,0)?
+
+One proposition could be
+\begin{equation*}
+    x\cdot u_0\in L^2
+\end{equation*}
+This means as long as you move away from (0,0), $u_0$ decays. And we would also like to have decay in frequence, hence
+\begin{equation*}
+    \partial_xu_0(x,\xi)\in L^2
+\end{equation*}
+The above implies decay in $\xi$. Together they imply the solution $u$ is localizated at $(0,0)$ up to time $O(1)$.
+
+If you wish it to localize at $(x_0-2t\xi_0, \xi_0)$, then we can have
+\begin{equation*}
+    (x-x_0-2t\xi_0)u\in L^2, [D_x-\xi_0]u_0\in L^2
+\end{equation*}
+
+By energy estimates, we have if $u$ solves the equation, then $D_xu$ also solves the equation, we have
+\begin{equation*}
+    \|D_xu\|_{L^2}=\|D_xu(0)\|_{L^2}
+\end{equation*}
+So it remains to consider $xu$, and how it interacts with the equation. We have
+\begin{equation*}
+    (i\partial_t+\Delta)x_ju=x_j(i\partial_t+\Delta)u+2\partial_ju
+\end{equation*}
+And the first term is 0, hence we have
+\begin{equation*}
+    \frac{d}{dt}\|xu\|_{L^2}^2=Re\int 2\overline{u}\partial_j udx=O(1)
+\end{equation*}
+Then we have $\overline{u}\in O_{L^2}(1), \partial_j u\in O_{l^2}(1)$, hence the entire term is of $O(1)$ in $L^2$.
+
+Recall the fundamental solution of linear Schrondinger equation.
+\begin{equation*}
+    K(t,x)=\frac{1}{(4\pi it)^{n/2}}e^{ix^2/4t}, |K|\lesssim t^{-n/2}
+\end{equation*}
+Hence we have $u(t)=K(t)\ast u_0$. 
+And we have the dispersive estimate for linear Schrondinger
+\begin{equation*}
+    \|u(t)\|_{L^\infty}\leq\|K(t)\|_{L^\infty}\|u_0\|_{L^1}\lesssim t^{-n/2}\|u_0\|_{L^1}
+\end{equation*}
+
+Dispersive estimates via stationary phase.
+
+Let's generalize to variable coefficents.
+\begin{equation*}
+    (i\partial_t+A(D)\Delta)u=0
+\end{equation*}
+And our solution is of the form
+\begin{equation*}
+    u(t)=e^{itA(D)}u(0)
+\end{equation*}
+and
+\begin{equation*}
+    K(t)=\int_{\R^n}e^{ix\xi}e^{-ita(\xi)}d\xi
+\end{equation*}
+
+We have the oscillatory integral
+\begin{equation*}
+    I_\lambda=\int e^{i\lambda \varphi(\xi)}a(\xi)d\xi
+\end{equation*}
+Where we assume $a(\xi)$ having compact support.
+
+
+And the value of the integral depends on the stationary points, defined by $D\varphi=0$.
+
+If there are no stationary points, then we get
+\begin{equation*}
+    |I_\lambda|\leq \lambda^{-N}
+\end{equation*}
+
+Replace $\varphi$ with a quadratic expansion, and ``replace'' with a Gaussian. If we have nondegenerate points, $D\varphi\neq 0$. We have
+\begin{equation*}
+    |I_\lambda|\leq\lambda^{-n/2}
+\end{equation*}
+It's like putting $\varphi$ in $n-1$ dimension and operate with separation of variables.
+
+We now examine our solution to the Schrondinger equation, and find the critical points here. We differentiate with respect to $x_j$
+\begin{equation*}
+    x_j+t\partial_{\xi_j}a(\xi)=0
+\end{equation*}
+We have
+\begin{equation*}
+    v\sim x/t=a_\xi
+\end{equation*}
+where $a_\xi$ is our previous group velocity.
+
+The nondegenerate points are characterized as nonvanishing Hessian, which is $\sim D^2a$.
+\begin{definition}
+    The nondegenerate points are defined by the Hessian $\sim D^2a$, being a nondegenerate matrix.
+\end{definition}
+In LS, we have
+\begin{equation*}
+    a=\xi^2, D^2a=2I
+\end{equation*}
+
+Now we introduce a third way of viewing dispersive estimates, which is via \textbf{wave packets}.
+
+We first note that the dispersive estimate
+\begin{equation*}
+    \|u\|_{L^\infty}\lesssim t^{-n/2}\|u_0\|_{L^1}
+\end{equation*}
+is scale invariant.  Hence it suffices to focus at $t=1$.
+
+Let's take
+\begin{equation*}
+    u_0=\delta_0=\sum_{x_0,\xi_0\in\mathbb{Z}^n}c_{x_0, \xi_0}\varphi_{x_0, \xi_0}
+\end{equation*}
+we have
+\begin{equation*}
+    u_0=\sum\chi_j(x)u_0=u_0
+\end{equation*}
+And we want to localize frequency
+\begin{equation*}
+    \widehat{u_0}=\widehat{\delta_0}=1=\sum_{k\in\mathbb{Z}^n}\chi_k(\xi)
+\end{equation*}
+We have the $\|\chi_k\|_{L^2}=1$, and this says the Fourier coefficents are of $O(1)$.
+
+Then
+\begin{equation*}
+    u=\sum_{x_0=0,\xi_0\in\mathbb{Z}^n}c u_{x_0, \xi_0}
+\end{equation*}
+At time $t=1$, we get one of the wave packet each, hence we have
+\begin{equation*}
+    |K(t=1)|\leq \sup_{\xi_0}|u_{x_0,\xi_0}|=1
+\end{equation*}
+\begin{remark}
+    This no longe words for $t<<1$, hence there exists overlappings now. But to fix this, we rescale $\delta x=\sqrt{T}$, to get smaller and thinner tubes, nonoverlapping at time $T$.
+\end{remark}
+
+Now we ask the question, what is the good way to measure dispersive decay for $u_0\in L^2$.
+
+\textbf{A1}: there is no uniform decay bound of the form
+\begin{equation*}
+    \|u(t)\|_{Sobolev}\leq C(t)\|u_0\|_{L^2}, \lim_{t\to\infty}C(t)=0
+\end{equation*}
+This is because $\|u(t)\|_{L^2}=\|u_0\|_{L^2}$, and taking $t$ infinitely large, $C(t)$ tends to 0, and we would get 
+\begin{equation*}
+    \|u\|_{sobolev}\leq 0, and t\to\infty
+\end{equation*}
+
+Next time, we will talk about Strichartaz estimates, not in a uniform way, but in an average sense of $\|u\|_{L_t^pL_x^2}$. 

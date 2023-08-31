@@ -53,11 +53,51 @@ One of the goals of this course is to develop the following theorem.
 \end{theorem}
 
 
+We will mostly follow the lecture and the previous lecture notes.
+\begin{definition}[Algebra homomorphism]
+    An algebra homomorphism is a homomorphism between two algebras. For example, consider $X$ a compact space, and $C(X)$ the space of continuous functions, hence if we define the evalutation map as follows:
+    \begin{equation*}
+        \varphi_x(f)=f(x)
+    \end{equation*}
+    This is an algebra homomorphism between $C(X)$ and $(\C)$. Namely, the homomorphism property is justified as: (under both addition and multiplication)
+    \begin{equation*}
+        \varphi_x(f+g)=f+g(x)=f(x)+g(x)=\varphi_x(f)+\varphi_x(g)
+    \end{equation*}
+    \begin{equation*}
+        \varphi_x(fg)=(fg)(x)=f(x)g(x)=\varphi_x(f)\varphi_x(g)
+    \end{equation*}
+    And of course, same thing follows for scalar multiplication. 
+\end{definition}
+\begin{remark}
+    We need to check all three conditions to make sure such $\varphi$ preserves the structures between the algebras.
+\end{remark}
+
+An algebra homomorphism is called unital if if maps the (multiplicative identity) unity to unity. In the above example, a unital homomorphism would be $\varphi(1)=1$, where the left 1 is the constant 1 function, and the right 1 is the number.
 
 
 
+Now we will introduce the proposition that every multiplicative linear functional on $C(X)$. Note we can use algebra homomorphism and multiplicative linear functional synonomously on $C(X)$, hence they entail the same information.
+\begin{proposition}
+    Let $\varphi$ be a multiplicative linear functional on $C(X)$, i.e. a nontrivial algebra homomorphism, then $\varphi(f)=f(x_0)$ for some $x_0\in X$. In other words, a multiplicative linear functional always takes this form.
+\end{proposition}
+\begin{proof}
+    It suffices to show the following lemma: 
+    \begin{lemma}
+        There exists $x_0$ such that if $\varphi(f)=0$, then we have $f(x_0)=0$.
+    \end{lemma}
+    We will first show how the lemma implies $\varphi(f)=f(x_0)$. Consider the function $f-\varphi(f)\cdot 1$, then we know
+    \begin{equation*}
+        \varphi(f-\varphi(f)\cdot 1)=0
+    \end{equation*}
+    Then there exists $x_0$ such that $f(x_0)-\varphi(f)=0$, this gives $\varphi(f)=f(x_0)$.  
 
+    Now we prove the lemma.
+    \begin{proof}
+        Our claim is that there exists $x_0$ such that if $\varphi(f)=0$, then we have $f(x_0)=0$. 
 
-
-
+        This is different 
+        Suppose the contrary, i.e., if $\varphi(f)=0$, then for all $x$, we have $f(x)\neq 0$.
+        We shall use compact of $X$ to finish this proof. Denote open neighborhoods of $x$ as $O_x$, then we can extract a finite subcover such that $X=\bigcup_{n=1}^kO_{x_n}$, and for 
+    \end{proof}
+\end{proof}
 
