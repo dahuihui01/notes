@@ -202,11 +202,12 @@ Next we a result that guarantees pointwise convergence.
 
 \section{Lecture 3}
 Recall Riemann localization principle.
+
 \begin{remark}
-    
+    Given the localization principle, if we'd like to examine whether Fourier series converges at a particular point, we can assume $f=0$ outside a small neighborhood of that point.
 \end{remark}
 
-We will prove Dini's criterion.
+We now will prove Dini's criterion.
 
 \begin{theorem}[Dini's Criterion]
     If $x\in\T$, $\delta>0$ such that
@@ -221,10 +222,12 @@ We will prove Dini's criterion.
         S_N(f(x)-f(x))&=\int_{|t|\leq1/2}(f(x-t)-f(x))D_N(t)dt\\
         &=\int_{|t|\leq\delta}(f(x-t)-f(x))D_N(t)dt+\int_{\delta\leq|t|\leq1/2}(f(x-t)-f(x))D_N(t)dt
     \end{align*}
+
     We notice that
     \begin{equation*}
         \left|\int_{|t|\leq\delta}(f(x-t)-f(x))D_N(t)dt\right|\leq\int_{|t|\leq\delta}\frac{|f(x-t)-f(x)|}{|\sin(t)|}<\infty
     \end{equation*}
+
     By the condition that the integral is $\infty$, we can choose a even smaller $\delta_1<\delta$ such that $\int_{|t|<\delta}<\epsilon$. Finishing the proof.
 \end{proof}
 \qed
@@ -263,12 +266,110 @@ Now we begin Jordan's Criterion.
     We would want to show that $g(\delta-)\int_\nu^\delta f(t)dt$ tends to 0.
 
     \begin{align*}
-        \left|\int_\nu^\delta D_N(t)dt\right|&\left|\int_\nu^\delta \frac{\sin((2N+1)\pi t)}{\sin(\pi t)}\right|\\
+        \left|\int_\nu^\delta D_N(t)dt\right|&=\left|\int_\nu^\delta \frac{\sin((2N+1)\pi t)}{\sin(\pi t)}\right|\\
         &\leq\left|\int\sin((2N+1)\pi t)(1/\sin(\pi t)-1/\sin(t))\right|+\left|\int\sin((2N+1)\pi t)\frac{1}{t} \right|\\
     \end{align*}
     The first term is bounded by a constant, and the second term, by integration by parts, is also bounded.
 
     \begin{remark}
-        If we take $\delta_1$ arbitrarily small, such that the integral is arbitrarily small.
+        If we take $\delta_1$ arbitrarily small, then we get that the integral is arbitrarily small.
     \end{remark}
+    Hence we can take $\delta$ to be arbitrarily small, to finish the proof.
 \end{proof}
+\qed
+
+
+
+
+\section{Lecture 4}
+We will now prove continuity is too rough of a condition to ensure Fourier series converges to $f$. Namely, we will show the existence of continuous functions whose Fourier series diverges at a particular point. 
+
+\begin{theorem}
+    There exists a continuous function whose ourier series diverges at a point.
+\end{theorem}
+\begin{proof}
+    WLOG, we take this point to be $x=0$. We shall use UBP. Let $X=C(\T), Y=\C$, and equip $X$ with the $\|\cdot\|_\infty$ norm. Hence $X$ is a Banach space. 
+
+    Then we define $T_N$ on $X$ as follows:
+    \begin{equation*}
+        T_N(f)=S_Nf(0)=\int_{|t|\leq 1/2}f(t)D(t)dt 
+    \end{equation*}
+    Hence it suffices to show $\|T_N\|=\infty$ as $N\to\infty$. We define a new quantity $L_N$ as follows:
+    \begin{equation*}
+        L_N=\int_{|t|\leq1/2}|D_N(t)|dt
+    \end{equation*}
+    We would like to show that $\|T_N\|=L_N$, and then prove $L_N$ tends to $\infty$ as $N\to\infty$.
+    We first note that we have
+    \begin{equation*}
+        |T_N(f)|\leq\int |f(t)||D_N(t)|dt\leq\|f\|_\infty L_N
+    \end{equation*}
+    Then for the reverse direction, we note that $|D_N(t)|=D_N(t)\cdot sgn(D_N)(t)$, and by noting that $D_N(t)$ has only finitely many zeros, we can modify $sgn(D_N)$ into a function $f$ with $\|f\|_\infty$, and $f\in C(\T)$ and also that $|T_N(f)|\geq L_N-\epsilon$. Then we get
+    \begin{equation*}
+        \|T_N\|\geq L_N-\epsilon
+    \end{equation*}
+    Hence $\|T_N\|=L_N$. We next show, via computation, that $L_N\to\infty$ as $N\to\infty$.
+
+    \begin{lemma}
+        Define $L_N=\int_{-1/2}^{1/2}|D_N(t)|dt$, then we have
+        \begin{equation*}
+            L_N=\frac{4}{\pi^2}\log(N)+O(1)
+        \end{equation*}
+    \end{lemma}
+    \begin{proof}
+        \begin{align*}
+            L_N&=2\int_0^{1/2}\left|\frac{\sin((2N+1)\pi t)}{\sin{\pi t}}\right|dt\\
+            &=2\int_0^{1/2}\left|\frac{\sin((2N+1)\pi t)}{{\pi t}}\right|dt+O(1)\\
+            &=2\int_0^{N+1/2}\left|\frac{\sin(\pi t)}{\pi t} \right|dt+O(1)\\
+            &=\frac{2}{\pi}\sum_{k=0}^{N-1}\int_k^{k+1}\left|\frac{\sin(\pi t)}{\pi t} \right|dt + O(1)\\
+            &=\frac{2}{\pi}\sum_{k=0}^{N-1}\int_{k}^{k+1}\left|\frac{\sin(\pi t)}{k+1} \right|dt + O(1)\\
+            &=\frac{2}{\pi}\log(N)\cdot\frac{2}{\pi}+ O(1)
+        \end{align*}
+    \end{proof}
+    \qed
+
+    Now we've shown $\|T_N\|\to\infty$ as $N\to\infty$, then by UBP, there exists $f\in C(\T)$ such that $|T_N(f)|\to\infty$, the Fourier series diverges.
+\end{proof}
+\qed
+
+Now we would like to address the next two questions on convergence in $L^p$ norm. Namely, do we necessarily have if $f\in L^p, 1\leq p<\infty$, then
+\begin{enumerate}
+    \item Do we have
+     \begin{equation*}
+        \lim_{N\to\infty}\|S_N(f)-f\|_{L^p}=0
+    \end{equation*}
+    \item Do we have
+        \begin{equation*}
+            \lim_{N\to\infty}S_N(f)(x)=f(x), \text{ for almost every } x
+        \end{equation*}
+\end{enumerate}
+
+We will address Q1.
+\begin{lemma}
+    $\lim_{N\to\infty}\|S_N(f)-f\|_{L^p}=0$ if and only if there exists a constant $C_p$ such that
+    \begin{equation*}
+        \|S_N(f)\|_{L^p}\leq C_p\|f\|_{L^p}
+    \end{equation*}
+\end{lemma}
+\begin{proof}
+    $(\Rightarrow)$ This follows from UBP.
+
+    $(\Leftarrow)$ We note that trigonometric polynomials are dense in $L^p$, hence we can find $g$ a trig polynomial such that $\|f-g\|_{L^p}<\epsilon$. Hence we have,
+    \begin{equation*}
+        \|S_N(f)-f\|_{L^p}\leq\|S_N(f)-S_N(g)\|_{L^p}+\|S_N(g)-g\|_{L^p}+\|f-g\|_{L^p}
+    \end{equation*}
+    We note the first term is
+    \begin{equation*}
+        \|S_N(f-g)\|_{L^p}\lesssim \|f-g\|_{L^p}<\epsilon
+    \end{equation*}
+    Hence we get convergence in the $L^p$ norm.
+\end{proof}
+\qed
+
+We note that when $1<p<\infty$, we indeed have
+\begin{equation*}
+    \|S_N(f)\|_{L^p}\leq C_p\|f\|_{L^p}
+\end{equation*}
+but for $p=1$, we have $\|S_N(f)\|_{L^1}=L_N$ as above. 
+
+
+
