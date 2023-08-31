@@ -93,11 +93,42 @@ Now we will introduce the proposition that every multiplicative linear functiona
 
     Now we prove the lemma.
     \begin{proof}
-        Our claim is that there exists $x_0$ such that if $\varphi(f)=0$, then we have $f(x_0)=0$. 
-
-        This is different 
-        Suppose the contrary, i.e., if $\varphi(f)=0$, then for all $x$, we have $f(x)\neq 0$.
-        We shall use compact of $X$ to finish this proof. Denote open neighborhoods of $x$ as $O_x$, then we can extract a finite subcover such that $X=\bigcup_{n=1}^kO_{x_n}$, and for 
+        Our claim is that there exists $x_0$ such that if $\varphi(f)=0$, then we have $f(x_0)=0$. Assume the contrary, which states for all $x$, there exists an $f_x$ such that $\varphi(f_x)=0$, but $f(x)\neq 0$. We define a nonnegative function $g_x=f_x\overline{f_x}$. And by multiplicativity, we have $\varphi(g_x)=0$. We now note that because $g$ is continuous, in a small nbd of $x$, denoted by $O_x$, we have $g(y)>0$ for all $y\in O_x$.
+        
+        Now using compactness, we can write $X$ as a finite union of small neighborhoods $X=\bigcup_{j=1}^nO_{x_j}$, and define
+        \begin{equation*}
+            g=g_{x_1}+...+g_{x_n}
+        \end{equation*}
+        Then for each $y\in X$, $y\in O_{x_j}$ for some $j$, hence $g(y)>0$ for all $y\in X$. This implies that $g$ is invertible hence we have
+        \begin{equation*}
+            \varphi(g\cdot 1/g)=1
+        \end{equation*}
+        This contradicts with the fact that $\varphi(g)=0$. And we are done.
     \end{proof}
 \end{proof}
+\qed
+
+Hence we have the following corollary.
+\begin{corollary}
+    Let $X$ be compact, and $C(X)$ the space of continuous functions, then $\varphi$ is a multiplicative linear functional (i.e. a algebra homomorphism with $\C$) if and only if it is a point evaluation.
+\end{corollary}
+
+\begin{definition}[$\widehat{\mathcal{A}}$]
+    Given a unital commutative (or Banach) algebra, for example, $C(X)$ with $\|\cdot\|_{L^\infty}$, we define the set of unital homomorphisms, i.e., nonzero unital multiplicative linear functionals on $\mathcal{A}$ as $\widehat{\mathcal{A}}$.
+\end{definition}
+\begin{proposition}
+    If $\mathcal{A}$ is a unital algebra, then for $\varphi\in\widehat{\mathcal{A}}$, we have $\|\varphi\|=1$
+\end{proposition}
+\begin{proof}
+    We have
+    \begin{equation*}
+        \|\varphi\|=\sup\{|\varphi(f)|:\|f\|_{L^\infty}=1 \}
+    \end{equation*}
+    Because $|\varphi(f)|=|f(x_0)|$ for some $x_0$, we always have $\|\varphi\|\leq 1$, but with the unity, we have $|\varphi(e)|=1$, and taking the sup we have $\|\varphi\|=1$.
+\end{proof}
+\qed
+
+
+
+
 
