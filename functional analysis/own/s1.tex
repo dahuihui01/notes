@@ -234,8 +234,68 @@ We have a bound on the size of $\lambda$ given $\|a\|$.
 \end{remark}
 
 \begin{corollary}
-    For the above, $|varphi(a)|\leq\|a\|$, and again, $\|\varphi\|=1$.
+    For the above, $|\varphi(a)|\leq\|a\|$, and again, $\|\varphi\|=1$.
 \end{corollary}
+\begin{remark}
+    This is to say, every unital homomorphism  $\varphi\in\mathcal{A}$ is continuous.
+\end{remark}
 
+We now show that the spectrum of an element is always closed.
+\begin{proposition}
+    Let $a\in\mathcal{A}$, then $\sigma(a)$ is closed.
+\end{proposition}
+\begin{proof}
+    We define a map $\phi:\mathbb{F}\to\mathcal{A}$ as 
+    \begin{equation*}
+        \phi(\lambda)=a-\lambda\cdot 1
+    \end{equation*}
+    The map is continuous, and we notice that the $\sigma(a)$ is the complement of the preimage of invertible elements under $\phi$, i.e.
+    \begin{equation*}
+        \sigma(a)=(\phi^{-1}(\text{ invertible }))^c
+    \end{equation*}
+    Using the fact that the set of invertible elements is open, we get $\sigma(a)$ is closed.
+\end{proof}
+\qed
 
+\subsection{Weak-* topology}
+
+We now do some topology. Fix $\mathcal{A}$, Recall the weak-* topology is defined on $\mathcal{A}'$ and it is the weakest topology such that the map $\psi\in\mathcal{A}'$,
+\begin{equation*}
+    \psi\mapsto \psi(a) \text{ continuous }
+\end{equation*}
+
+We first note that if $\varphi\in\widehat{\mathcal{A}}$, then $\|\varphi\|=1$. Hence $\widehat{\mathcal{A}}$ is a subset of the closed unit ball in $\mathcal{A}'$. Now with respect to the weak-* topology, we have some nice properties.
+\begin{theorem}
+    $\widehat{\mathcal{A}}$ is closed with respect to the weak-* topology.
+\end{theorem}
+\begin{proof}
+    Let $\{\varphi_\lambda\}$ be a net that converges to some $\varphi$ in the weak-* topology, which is a linear functional, i.e. $\varphi\in\mathcal{A}'$. Weak-* convergence implies for all $a\in\mathcal{A}$, we have
+    \begin{equation*}
+        \varphi_\lambda(a)\to \varphi(a)
+    \end{equation*}
+    We show that $\varphi$ is multiplicative.
+    \begin{equation*}
+        \varphi(ab)=\lim\varphi_\lambda(ab)=\lim\varphi_\lambda(a)\lim\varphi_\lambda(b)=\varphi(a)\varphi(b)
+    \end{equation*}
+    Now  it remains to show that $\|\varphi\|=1$ to show that it is closed. It suffices to show $\varphi$ is unital.
+    \begin{equation*}
+        \varphi(1)=\lim\varphi_\lambda(1)=1
+    \end{equation*}
+    Hence $|\varphi(1)|\leq\|\varphi\|$, hence $\|\varphi\|=1$.
+\end{proof}
+\qed
+
+Now we recall Alaoglu's theorem.
+\begin{theorem}[Alaoglu's]
+    The closed unit ball is compact in the weak-* topology.
+\end{theorem}
+
+Hence as an immediate corollary,
+\begin{corollary}
+    $\widehat{\mathcal{A}}$ is compact with respect to the weak-* topology.
+\end{corollary}
+\begin{proof}
+    $\widehat{\mathcal{A}}$ is a closed subset of a compact set, hence is also compact.
+\end{proof}
+\qed
 

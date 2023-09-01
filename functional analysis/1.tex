@@ -308,7 +308,7 @@ Interpret this in our familiar linear map: $\lambda$ is called an eigenvalue, i.
 \qed
 
 
-Let $\varphi(\widehat{\mathcal{A}})$ then $\|\varphi\|=1$. So $\widehat{\mathcal{A}}$ is a subset of the unit ball of $\mathcal{A}'$, which denotes the dual vector space of continuous linear transformations.
+Let $\varphi\in\widehat{\mathcal{A}}$ then $\|\varphi\|=1$. So $\widehat{\mathcal{A}}$ is a subset of the unit ball of $\mathcal{A}'$, which denotes the dual vector space of continuous linear transformations.
 
 
 On $\mathcal{A}'$, we can equip the weak-* topology, i.e. the weakest topology, making the map $\psi\mapsto\psi(a)$ continuous. 
@@ -331,14 +331,23 @@ As an immediate corollary, we have the following.
 \begin{corollary}
     $\widehat{\mathcal{A}}$ is compact with respect to the weak-* toplogy.
 \end{corollary}
+\begin{proof}
+    $\widehat{\mathcal{A}}$ is a closed subset of a compact set, hence is also compact.
+\end{proof}
+\qed
 
-Let $\mathcal{A}=C(X)$, and $\widehat{\mathcal{A}}$, we define $x\mapsto\varphi_X$ is a bijection. The weak-* topology in $\widehat{\mathcal{A}}$ makes $\varphi_x\mapsto\varphi_x(f)=f(X)$ continuous. Such $x\mapsto\varphi_x$ is a homeomorphism of $X$ onto $\mathcal{A}$.
+Let $\mathcal{A}=C(X)$, and $\widehat{\mathcal{A}}$, we define $x\mapsto\varphi_x$ is a bijection. The weak-* topology in $\widehat{\mathcal{A}}$ makes $\varphi_x\mapsto\varphi_x(f)=f(x)$ continuous. Such $x\mapsto\varphi_x$ is a homomorphism of $X$ onto $\mathcal{A}$.
 
 For $\mathcal{A}$ unital Banach algebra, commutative, for any $a\in\mathcal{A}$, define
 \begin{equation*}
     \widehat{a}\in C(\widehat{\mathcal{A}}), \widehat{a}(\varphi)=\varphi(a)
 \end{equation*}
-we have
+
+\begin{proposition}
+    The map $a\mapsto\widehat{a}$ is a unital algebra homomorphism from $\mathcal{A}$ into $C(\mathcal{A})$.
+\end{proposition}
+\begin{proof}
+    we have
 \begin{equation*}
     \widehat{ab}(\varphi)=\varphi(ab)=\varphi(a)\varphi(b)=\widehat{a}(\varphi)\widehat{b}(\varphi)=(\widehat{a}\widehat{b})(\varphi)
 \end{equation*}
@@ -347,9 +356,12 @@ Hence
 \begin{equation*}
     (\widehat{ab})=\widehat{a}\widehat{b}, \widehat{(a+b)}=\widehat{a}+\widehat{b}, \widehat{1_a}=1
 \end{equation*}
+\end{proof}
+\qed
 
-we have
-$a\mapsto\widehat{a}$ is a unital algebra homeomorphism from $\mathcal{A}$ into $C(\widehat{\mathcal{A}})$.
+
+
+
 
 
 
