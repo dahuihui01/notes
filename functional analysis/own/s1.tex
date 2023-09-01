@@ -14,6 +14,27 @@ A Banach algebra is a normed algebra that is complete under the metric induced b
 
 We will begin with some important examples of Banach algebras.
 Let $X$ be a compact topological space, and let $C(X)$ be the space of continuous functions, equip it with $\|\cdot\|_{L^\infty}$ norm, then $(C(X), \|\cdot\|_{L^\infty})$ is a Banach algebra. Similarly, if $X$ is only locally compact, then $C_b(X)$, the space of bounded continuous functions under the $\|\cdot\|_{L^\infty}$ norm is also a Banach algebra.
+\subsection{Some Banach algebra examples}
+
+Another important example is that let $X$ be a Banach space, and the space of all bounded/continuous operators on $X$, denoted by $\mathcal{B}(X)$ is a Banach algebra with the operator norm. Any closed subalgebra of $B(X)$ is also Banach.
+
+If $X$ is a Hilbert space, then we also have the operation of taking adjoints, namely $\|T\|=\|T^*\|$.
+
+
+
+\begin{definition}
+    A $C^*$ algebra is a closed subalgebra of the space of bounded (equivalently) functions defined on a Hilbert space, $\mathcal{B}(\mathcal{H})$. 
+\end{definition}
+\begin{remark}
+    The space of continuous/bdd operators on a Hilbert space, under the operator norm, then closed under the norm topology and taking adjoints of the operators. On wikipedia, C* algebra is defined to be a Banach algebra equipped with an involution that acts like a adjoint.
+\end{remark}
+
+
+One of the goals of this course is to develop the following theorem.
+\begin{theorem}
+    Let $\mathcal{A}$ be a commutative $C^*$-algebra of $\mathcal{B}(\mathcal{H})$, then $\mathcal{A}$ is isometrically and *-algebraically isomorphic to some $C(X)$, where $X$ is some locally compact space.
+\end{theorem}
+
 
 \begin{proposition}
     Multiplication is continuous in Banach algebras.
@@ -34,26 +55,66 @@ Let $X$ be a compact topological space, and let $C(X)$ be the space of continuou
         aa^{-1}=a^{-1}a=e
     \end{equation*}
 \end{definition}
+Regarding invertibility, we can determine whether an element is invertible by knowing a related element's norm.
+\begin{proposition}
+    Let $\mathcal{A}$ be a unital Banach algebra, and if $\|a\|<1$, then $(1-a)$ is invertible.
+\end{proposition}
+\begin{proof}
+We would like to use the fact that every Cauchy sequence converges. Define
+\begin{equation*}
+    (1-a)^{-1}=\sum_{n=0}^\infty a^n
+\end{equation*}
+where $a^0=1$ by definition. We first show that this geometric series converges to an element in $\mathcal{A}$, and we will show that the quantity defined above is indeed the inverse of $(1-a)$.
 
-Another important example is that let $X$ be a Banach space, and the space of all bounded/continuous operators on $X$, denoted by $\mathcal{B}(X)$ is a Banach algebra with the operator norm. Any closed subalgebra of $B(X)$ is also Banach.
+Note that we define the partial sum $S_N=\sum_{n=0}^Na^n$, then
+\begin{equation*}
+    \|S_N-S_M\|\leq\sum_{M+1}^N\|a\|^n<\epsilon
+\end{equation*}
+Hence $\{S_N\}$ is a cauchy sequence, hence converges to some element which we denoted as $(1-a)^{-1}\in\mathcal{A}$. Now
+\begin{equation*}
+    (1-a)\cdot (1-a)^{-1}=(1-a)\cdot\lim_{N\to\infty}S_N=(1-a)\cdot\frac{1}{1-a}=1
+\end{equation*}
+Likewise for the other side. Notice our $(1-a)^{-1}$ is a defined quantity, while $\frac{1}{1-a}$ is the sum of geometric series.
+\end{proof}
+\qed
 
-If $X$ is a Hilbert space, then we also have the operation of taking adjoints, namely $\|T\|=\|T^*\|$.
+\begin{corollary}
+    Let $\mathcal{A}$ be a unital Banach algebra, then if $\|(1-a)\|<1$, then we have, $a$ is invertible.
+\end{corollary}
 
-\begin{definition}
-    A $C^*$ algebra is a closed subalgebra of the space of bounded (equivalently) functions defined on a Hilbert space, $\mathcal{B}(\mathcal{H})$. 
-\end{definition}
-\begin{remark}
-    The space of continuous/bdd operators on a Hilbert space, under the operator norm, then closed under the norm topology and taking adjoints of the operators. On wikipedia, C* algebra is defined to be a Banach algebra equipped with an involution that acts like a adjoint.
-\end{remark}
+The implication of this corollary is interesting.
+\begin{corollary} 
+    The open ball of radius 1 around the identity element $1_\mathcal{A}$ consists of invertible elements.
+\begin{equation*}
+    \|1-a\|<1 \Rightarrow a\in B_1(1_\mathcal{A})
+\end{equation*}
+And we know $a$ is invertible.
+\end{corollary}
+
+\begin{proposition}
+    The set of invertible elements of a unital Banach algebra is an open subset.
+\end{proposition}
+\begin{proof}
+    We use the fact that $B_1(1_\mathcal{A})$ is an open set. Note that for any invertible element $d$, we define the map, for all $a\in\mathcal{A}$,
+    \begin{equation*}
+        L_d(a)=da
+    \end{equation*}
+    We observe this map is continuous, and by $d$ be invertible, the inverse is also continuous, hence a homeomorphism. Bijectivity follows from $da=db\Rightarrow a=b$, and for every $c\in\mathcal{A}$, we can find $a=d^{-1}c$ such that $L_d(a)=c$.
+
+    Hence for every $d$ invertible, we have $d\cdot O$ an open ball of invertible elements, and taking all union of these open balls give us the set of invertible elements, which is an open set.
+\end{proof}
+\qed
+
+\begin{proposition}
+    For $f\in C(X)$, we have $\alpha$ is in the range of $f$ if and only if $(f-1\cdot\alpha)$ is invertible.
+\end{proposition}
+\begin{proof}
+    Refer to the lecture notes. In function spaces, the word \textbf{invertible} means having trivial kernel, i.e. $f(x)=0$ implies $x=0$.
+\end{proof}
+\qed
 
 
-One of the goals of this course is to develop the following theorem.
-\begin{theorem}
-    Let $\mathcal{A}$ be a commutative $C^*$-algebra of $\mathcal{B}(\mathcal{H})$, then $\mathcal{A}$ is isometrically and *-algebraically isomorphic to some $C(X)$, where $X$ is some locally compact space.
-\end{theorem}
-
-
-We will mostly follow the lecture and the previous lecture notes.
+\subsection{Algebra homomorphisms on $C(X)$}
 \begin{definition}[Algebra homomorphism]
     An algebra homomorphism is a homomorphism between two algebras. For example, consider $X$ a compact space, and $C(X)$ the space of continuous functions, hence if we define the evalutation map as follows:
     \begin{equation*}
@@ -128,7 +189,53 @@ Hence we have the following corollary.
 \end{proof}
 \qed
 
+\subsection{Spectrum}
+We now define the spectrum of an element in a Banach algebra.
+\begin{definition}[spectrum]
+    Let $\mathcal{A}$ be a Banach algebra, fix $a\in\mathcal{A}$, we define the following set to be the spectrum of $a$, denoted by $\sigma(a)$.
+    \begin{equation*}
+        \sigma(a)=\{\lambda\in\mathbb{F}:a-\lambda\cdot 1_\mathcal{A} \text{ is not invertible } \}
+    \end{equation*}
+\end{definition}
 
+We have a bound on the size of $\lambda$ given $\|a\|$.
+\begin{proposition}
+    For $\lambda\in\sigma(a)$, we have
+    \begin{equation*}
+        |\lambda|\leq\|a\|
+    \end{equation*}
+\end{proposition}
+\begin{proof}
+    Assume the contrary, we have $|\lambda|>\|a\|$, then $a/\lambda$ has norm $\|a/\lambda\|<1$. Thus, $(1-a/\lambda)$ is invertible.
+    \begin{equation*}
+        a-\lambda\cdot 1=-\lambda(1-a/\lambda)
+    \end{equation*}
+    Because the product of two invertible elements is again, invertible, we get that $\lambda\not\in\sigma(a)$. Hence a contradiction.
+\end{proof}
+\qed
+
+\begin{proposition}
+    Let $\mathcal{A}$ be a unital Banach algebra, and let $\varphi\in\widehat{\mathcal{A}}$, then we have
+    \begin{equation*}
+        \varphi(a)\in\sigma(a)
+    \end{equation*}
+\end{proposition}
+\begin{proof}
+    It suffices to show that $a-\varphi(a)\cdot 1$ is not invertible. Assuming that it is, denote its inverse by $(a-\varphi(a))^{-1}$, then
+    \begin{equation*}
+        \varphi\left((a-\varphi(a)1)\frac{1}{a-\varphi(a)}\right)=1
+    \end{equation*}
+    However, $\varphi(a-\varphi(a)\cdot 1)=0$. Hence a contradiction.
+\end{proof}
+\qed
+
+\begin{remark}
+    To prove an element $a\in\mathcal{A}$ is not invertible, it suffices to prove $\varphi(a)=0$.
+\end{remark}
+
+\begin{corollary}
+    For the above, $|varphi(a)|\leq\|a\|$, and again, $\|\varphi\|=1$.
+\end{corollary}
 
 
 

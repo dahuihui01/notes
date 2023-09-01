@@ -162,7 +162,7 @@ Note $\varphi_x$ is also a multiplicative linear functional, also unital.
 For any unital commutative algebra $\mathcal{A}$ and let $\widehat{\mathcal{A}}$ be the set of unital homomorphisms of $\mathcal{A}$ into the field.
 
 For $\mathcal{A}=C(X)$, and $\varphi\in\widehat{\mathcal{A}}$. 
-\begin{definition}[spectra of $\mathcal{A}$]
+\begin{definition}
     For any unital commutative algebra $\mathcal{A}$ and let $\widehat{\mathcal{A}}$ be the set of unital homomorphisms of $\mathcal{A}$ into the field.
 \end{definition}
 \begin{remark}
@@ -184,7 +184,7 @@ We define $\varphi(p)=p(2)$, $p$ is a polynomial. This is not continuous, nor is
 The word ``unital'' is key here.
 
 \begin{proposition}
-    Let $\mathcal{A}$ be a unital Banach algebra (not necessarily commutative), then if $a\in\mathcal{A}$, and $\|a\|\leq 1$, then we have
+    Let $\mathcal{A}$ be a unital Banach algebra (not necessarily commutative), then if $a\in\mathcal{A}$, and $\|a\|< 1$, then we have
     \begin{equation*}
         1_\mathcal{A}-a \text{ is invertible in } \mathcal{A}
     \end{equation*}
@@ -224,65 +224,89 @@ Now we have the following corollary.
     $a=1-(1-a)$.
 \end{proof}
 
-the open ball abount 1 consists of invertible elements. If $d$ is any invertible element, then we define $a\mapsto ad$ is continuous. Then this operation is a continuous homeomorphism of $\mathcal{A}$ onto itself.
-
-Denote the unit ball about $1$ as $O$, and let $d$ be some invertible element, under the above homeomorphism, $O\mapsto Od$, is open and consists of invertible elements.
 
 \begin{proposition}
     The set of invertible elements of $\mathcal{A}$ is an open subset of $\mathcal{A}$.
 \end{proposition}
+\begin{proof}
+    The open ball about 1 consists of invertible elements. If $d$ is any invertible element, then we define $a\mapsto da$. This map is continuous, i.e. it is the left representation $L_b(a)=ab$ for all $a\in\mathcal{A}$. If $d$ is invertible, then the inverse is also continuous, hence it is a homeomorphism of $\mathcal{A}$ onto itself.
 
+    Denote the unit ball about $1$ as $B_1(1)$, and let $d$ be some invertible element, under $L_d$, homeomorphism, $O\mapsto d\cdot O$, this set is open, and consists of invertible elements. We take the union of all these elements, which give us an open set including every invertible elements.
+\end{proof}
+\qed
 
+\begin{proposition}
+    Let $C(X)$ be the unital Banach algebra, and for $f\in C(X)$, we have $\alpha\in Range(f)$ if and only if $(f-\alpha\cdot 1)$ is not invertible.
+\end{proposition}
+\begin{proof}
 Let $f\in C(X)$, and if $\alpha\in$ range of $f$, so $\alpha=f(x_0)$ for some $x_0$. then
 \begin{equation*}
     (f-\alpha\cdot 1)(x_0)=0
 \end{equation*}
 Hence $f(-\alpha\cdot 1)$ is not invertible.
-
 Conversely, if we have $f-\alpha 1$ is not invertible, then there exists $x_0\in X$ such that
 \begin{equation*}
     (f-\alpha\cdot1)(x_0)=0
 \end{equation*}
 Hence $f(x_0)=\alpha$, i.e., $\alpha\in$ range of $f$.
+\end{proof}
+\qed
+
 
 \begin{definition}[spectrum of an element]
     For any unital algebra $\mathcal{A}$ over some field $\mathbb{F}$, for any $a\in\mathcal{A}$, the set
     \begin{equation*}
-        \{\alpha: a-\alpha 1_\mathcal{A}\text{ is not invertible }\}
+        \{\lambda\in\mathbb{F}: a-\lambda 1_\mathcal{A}\text{ is not invertible }\}
     \end{equation*}
     is called the spectrum of $a$, denoted as $\sigma(a)$.
 \end{definition}
 
+Interpret this in our familiar linear map: $\lambda$ is called an eigenvalue, i.e. is in the spectrum of $T$ if we have $T-\lambda I$ is not invertible.
+
 \begin{proposition}
-    Let $\mathcal{A}$ be a unital Banach algebra, and let $a\in\mathcal{A}$, then if $\alpha\in\sigma(a)$, then
+    Let $\mathcal{A}$ be a unital Banach algebra, and let $a\in\mathcal{A}$, then if $\lambda\in\sigma(a)$, then
     \begin{equation*}
-        |\alpha|\leq\|a\|
+        |\lambda|\leq\|a\|
     \end{equation*}
 \end{proposition}
 \begin{proof}
-    Suppose $|\alpha|>\|a\|$, then $\alpha\neq 0$, then
+    Suppose $|\lambda|>\|a\|$, then $\lambda\neq 0$, then
     \begin{equation*}
-        \alpha-\alpha\cdot 1=-\alpha(1-\frac{a}{\alpha})
+        a-\lambda\cdot 1=-\lambda(1-\frac{a}{\lambda})
     \end{equation*}
-    And by assumption, $\|a/\alpha\|\leq 1$, hence $(1-a/\alpha)$ is invertible. Hence $\alpha\not\in\sigma(a)$.
+    And by assumption, $\|a/\lambda\|\leq 1$, hence $(1-a/\lambda)$ is invertible. Hence $a-\lambda\cdot 1$ is invertible (product of two invertible elements),  meaning $\alpha\not\in\sigma(a)$.
 \end{proof}
+\qed
 
-let $\varphi$ be a multiplicative linear functional, i.e. $\varphi\in\widehat{\mathcal{A}}$, and then $\varphi(a)\in\sigma(a)$, and we have
-\begin{equation*}
-    |\varphi(a)|\leq\|a\|, \|\varphi\|=1
-\end{equation*}
+\begin{proposition}
+    Let $\varphi$ be a multiplicative linear functional on $\mathcal{A}$, i.e. $\varphi\in\widehat{\mathcal{A}}$, and then $\varphi(a)\in\sigma(a)$, and we have
+    \begin{equation*}
+        |\varphi(a)|\leq\|a\|, \|\varphi\|=1
+    \end{equation*}
+\end{proposition}
 \begin{proof}
-    $\varphi(a-\varphi(a)\cdot 1)=0$
+    $\varphi(a-\varphi(a)\cdot 1)=0$.
+    Hence $a-\varphi(a)1$ is not invertible.
 \end{proof}
-Hence $a-\varphi(a)1$ is not invertible.
+\qed
 
 
 \begin{proposition}
     $\sigma(a)$ is a closed subset of $\mathbb{R}, \mathbb{C}$.
 \end{proposition}
 \begin{proof}
-    $\lambda\mapsto a-\lambda1$ is not invertible, and the map is continuous. And $\sigma(a)$ is the preimage of the complement of the set of invertible elements, and the set of invertible elemtns is open. And the preimage of a closed set is closed.
+    Define the map $\phi: \lambda\mapsto a-\lambda1$, the map $\phi$ is continuous (multiplication and subtraction are both continuous). We know the set of invertible elements of $\mathcal{A}$ is open, hence
+    \begin{equation*}
+        \sigma(a)=\phi^{-1}(\text{ noninvertible})=\phi^{-1}(\mathcal{A}\setminus\text{ invertible })
+    \end{equation*}
+    Or simply,
+    \begin{equation*}
+        \sigma(a)=(\phi^{-1}(\text{ invertible }))^c
+    \end{equation*}
+    Hence the spectrum of an element is closed.
 \end{proof}
+\qed
+
 
 Let $\varphi(\widehat{\mathcal{A}})$ then $\|\varphi\|=1$. So $\widehat{\mathcal{A}}$ is a subset of the unit ball of $\mathcal{A}'$, which denotes the dual vector space of continuous linear transformations.
 
@@ -326,4 +350,6 @@ Hence
 
 we have
 $a\mapsto\widehat{a}$ is a unital algebra homeomorphism from $\mathcal{A}$ into $C(\widehat{\mathcal{A}})$.
+
+
 
