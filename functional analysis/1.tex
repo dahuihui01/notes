@@ -626,3 +626,191 @@ A quick reminder:
     For $X$ compact, the weak-* topology coincides with the standard topology.
 \end{remark}
 
+\section{Lecture 6}
+
+Now we begin. From Aren "not talking to you is torture."
+
+Let $\mathcal{A}$ be a unital Banach algebra.
+
+We write $GL_n(\mathcal{A})$ to denote the general linear group, the group formed by $n\times n$ matrices with entries from $\mathcal{A}$. 
+
+The less standard notation is $GL_I(\mathcal{A})$ is the group of invertible elements in $\mathcal{A}$. As we have shown previously, this is a closed subset of $\mathcal{A}$. This is the notation that we will use.
+
+\begin{remark}
+    It is easy to see that the product is jointly continuous.
+\end{remark}
+
+\begin{proposition}
+    The following map is continuous.
+    \begin{equation*}
+        a\mapsto a^{-1}
+    \end{equation*}
+\end{proposition}
+\begin{proof}
+    Given $\|a-b\|<\delta$, we would like to show $\|a^{-1}-b^{-1}\|<\epsilon$. We first rewrite
+    \begin{equation*}
+        a^{-1}-b^{-1}=a^{-1}(b-a)b^{-1}
+    \end{equation*}
+    Hence we have
+    \begin{equation*}
+        \|a^{-1}-b^{-1}\|\leq\|a^{-1}\|\|b-a\|\|b^{-1}\|
+    \end{equation*}
+    Take $\delta=\epsilon/\|a^{-1}\|\|b^{-1}\|$ would suffice.
+\end{proof}
+\qed
+
+\begin{proposition}
+    Fix $a\in GL(\mathcal{A})$, there exists a neighborhood $O$ of $a$ and a constant $K$ such that for all $y\in O$, we have
+    \begin{equation*}
+        \|c^{-1}\|<K
+    \end{equation*}
+\end{proposition}
+\begin{proof}
+    Let $V=\{d\in\mathcal{A}: \|1-d\|<1/2\}$, then $d$ is invertible and
+    \begin{equation*}
+        d^{-1}=\sum_{n=0}^\infty(1-d)^n
+    \end{equation*}
+    We thus have
+    \begin{equation*}
+        \|d^{-1}\|\leq\frac{1}{1-\|1-d\|}\leq \frac{1}{1-1/2}=2
+    \end{equation*}
+    We then identify what our $O$ should be. Let $O=aV$, then we want to show that every $ad$ has an inverse with bounded norm. Because $a,d$ are both invertible, $ad$ is also invertible.
+    \begin{equation*}
+        \|(ad^{-1})\|=\|d^{-1}a^{-1}\|\leq \|d^{-1}\|\|a^{-1}\|\leq 2\|a^{-1}\|
+    \end{equation*}
+\end{proof}
+\qed
+
+\begin{remark}
+    For each invertible element, we can find a neighborhood of invertible elements around it, and using that $(1-d)$ is bounded, then $d$ is invertible, we can bound $\|d^{-1}\|$.
+\end{remark}
+
+\begin{definition}
+    Fix $a\in\mathcal{A}$, the resolvent set of $\mathcal{A}$ is the complement of spectrum of $\mathcal{A}$, i.e. it is the set
+    \begin{equation*}
+        \{\lambda\in\mathbb{F}: a-\lambda I \text{ is invertible } \}
+    \end{equation*}
+\end{definition}
+
+Hence the resolvent set is an open, unbounded suset of $\C$ or $\R$.
+
+\begin{definition}[Resolvent function]
+    On the resolvent set, $\{\lambda\in\mathbb{F}: a-\lambda1 \text{ is invertible }\}$ is as follows:
+    \begin{equation*}
+        R(a,\lambda)=(\lambda1_\mathcal{A}-a)^{-1}
+    \end{equation*}
+    note that $a$ is fixed, and $\lambda$ is the variable here.
+\end{definition}
+
+Now we note that this $R_a(\lambda)$ function is nicely behaved.
+\begin{proposition}
+    The resolvent function $R_a(z)$ is analytic on the resolvent set, and vanishes as $z\to\infty$.
+\end{proposition}
+\begin{proof}
+    We first define the notation of analyticity on an open subset of $\R, \C$: this means for every point in the open set $O$, we can find a power series expansion of the function such that its radius of convergence $>0$.
+
+    Fix $z_0$ in the resolvent set. We know $z_01_\mathcal{A}-a$ is invertible. We consider $(z1_\mathcal{A}-a)$, for $z$ in the resolvent set. We will omit the $1_\mathcal{A}$ for simplicity.
+    \begin{equation*}
+        z1_\mathcal{A}-a=(z_0-a)-(z_0-z)=(z_0-a)\left(1_\mathcal{A}-\frac{z_0-z}{z_0-a}\right)
+    \end{equation*}
+    We know the the latter term is invertible if $\|\frac{z_0-z}{z_0-a}\|<1$ has norm, hence we have
+    \begin{equation*}
+        (z-a)^{-1}=\sum_{n=0}^\infty\left(\frac{z_0-z}{z_0-a}^n \right)(z_0-a)^{-1}
+    \end{equation*}
+
+    What happens when we let $z\to\infty$, we consider $R_a(1/z)$, and let $z\to 0$. Note that we have the following:
+    \begin{equation*}
+        R_a\left(\frac{1}{z}\right)=\left(\frac{1}{z}-a\right)^{-1}=\left(\frac{1-az}{z} \right)^{-1}=z(1-az)^{-1}
+    \end{equation*}
+    Let $z\to 0$ makes $R_a(1/z)$ go to zero.
+\end{proof}
+\qed
+
+Now given that $R_a(z)$ is analytic and bounded at $\infty$, we can state the following important theorem.
+\begin{theorem}[Nonemptyness of spectrum]
+    Let $\mathcal{A}$ be a unital Banach algebra over $\C$, then for any $a\in\mathcal{A}$, we have $\sigma(a)\neq\emptyset$.
+\end{theorem}
+\begin{proof}
+    Assume there exists $a\in\mathcal{A}$, such that $\sigma(a)=\emptyset$.
+    If $\mathcal{A}=\mathcal{C}$, then we would have $R_a(\lambda)$ be a bounded entire, complex-valued function defined on all of $\C$. By Liouville's theorem, we must have $R_a(z)$ a constant function, but we know $z\to\infty$, $R_a\to 0$, hence $R_a(z)$ is constantly 0, but this cannot be true. 
+
+    If our $\mathcal{A}$ is a more general Banach algebra, then we take a slight detour of creating an entire bounded function, via the following map
+    \begin{equation*}
+        z\mapsto \phi(R_a(z))
+    \end{equation*}
+    where $\phi$ is some nonzero element in $\mathcal{A}'$, guaranteed by Hahn-Banach theorem. Then we have the above map is complex-valued, entire, bounded at $\infty$. Again, the function is constantly 0. 
+\end{proof}
+
+With the nonemptyness of spectrum theorem, we now state the Gelfand-Mazur theorem.
+\begin{theorem}[Gelfand-Mazur]
+    Let $\mathcal{A}$ be a unital Banach algebra over $\C$, if any nonzero element of $\mathcal{A}$ is invertible, then $\mathcal{A}$ is isomorphic to $\C$.
+\end{theorem}
+\begin{proof}
+    For any $a\in\mathcal{A}$, we know $\sigma(a)\neq\emptyset$, hence there exists $\lambda$ such that $\lambda1_\mathcal{A}-a$ is invertible, i.e. $a=\lambda1_\mathcal{A}$, hence establishing an isomorphism between $\mathcal{A}$ and $\C$. In other words, $\mathcal{A}=\C1_\mathcal{A}$.
+\end{proof}
+\qed
+
+
+\subsection{Functional Calculus}
+\begin{proposition}
+    Let $a\in\mathcal{A}$, then if $f(z)=\sum_{n=0}^\infty \alpha_nz^n$ converges for $|z|<r$, where $r>\|a\|$, then $\sum_{n=0}^\infty\alpha_na^n$ converges as well.
+\end{proposition}
+
+We first start with proving the following statement.
+\begin{lemma}
+    Let $f$ be a polynomial, $\mathcal{A}$ is a unital Banach algebra over $\C$, $f=\sum_{n=0}^ka_nx^n$, then for $a\in\mathcal{A}$, we have
+    \begin{equation*}
+        \sigma(f(a))=f(\sigma(a))
+    \end{equation*}
+    This states the spectrum of $a$ under $f$ is exactly the spectrum of $f$ evaluated at $a$.
+\end{lemma}
+\begin{proof}
+    $(\Leftarrow)$. We take $\lambda\in\sigma(a)$, and we would like to show $f(\lambda)$ is in the spectrum of $f(a)$. We note that if $\lambda\in\sigma(a)$, then $a=\lambda1_\mathcal{A}$, and $f(\lambda1_\mathcal{A})=f(a)$, hence by definition, $f(a)-f(\lambda)1_\mathcal{A}$ is not invertible implying $f(\lambda)$ is in the spectrum of $f(a)$. Note that this also implies $f(a)-f(\lambda)=(a-\lambda)Q(z)$ for some polynomial $Q(z)$.
+
+    $(\Rightarrow)$. We take $\lambda\in\sigma(f(a))$, i.e. $f(a)=\lambda1_\mathcal{A}$. we would like to show $\lambda=f(y)$, where $y\in\sigma(a)$. If $f$ is some polynomial, then we can rewrite as follows:
+    \begin{equation*}
+        f(z)-\lambda=d(z-c_1)...(z-c_n)
+    \end{equation*}
+    Plugging in $a$ we get
+    \begin{equation*}
+        f(a)-\lambda=d(a-c_11_\mathcal{A})...(a-c_n1_\mathcal{A})
+    \end{equation*}
+    If $f(a)-\lambda$ is not invertible, then there exists $j$ such that $(a-c_j1_\mathcal{A})$ is not invertible. This implies,
+    \begin{equation*}
+        c_j\in\sigma(a)
+    \end{equation*}
+    Recall we would like to show $\lambda=f(y)$, where $y\in\sigma(a)$. In fact, we have $\lambda=f(c_j)$ by knowing $f(c_j)-\lambda=0$. 
+\end{proof}
+\qed
+
+Now let $f(z)=z^n$, and if $\lambda\in\sigma(a)$, then $\lambda^n\in\sigma(a^n)$ by the previous lemma. Then we know that 
+\begin{equation*}
+    |\lambda^n|=|\lambda|^n\leq\|a^n\|
+\end{equation*}
+This implies
+\begin{equation*}
+    |\lambda|\leq\|a^n\|^{1/n}, \forall n
+\end{equation*}
+Hence we have
+\begin{equation*}
+    |\lambda|\leq\liminf_n\{\|a^n\|^{1/n}\}
+\end{equation*}
+
+\begin{definition}
+    Fix $a\in\mathcal{A}$, we define the spectral radius of $a$, denoted by $r(a)$,
+    \begin{equation*}
+        r(a)=\sup_\lambda\{|\lambda|:\lambda\in\sigma(a)\}
+    \end{equation*}
+\end{definition}
+\begin{corollary}
+    \begin{equation*}
+        r(a)\leq\limsup_n\{\|a^n\|^{1/n}\}
+    \end{equation*}
+\end{corollary}
+\begin{proof}
+From the previous remark that $|\lambda|\leq\|a^n\|^{1/n}$, hence this follows.
+\end{proof}
+
+
+\section{Lecture 7}
+

@@ -188,3 +188,167 @@ We now state two local pointwise results, using the theorems we proved above.
 
 \subsection{1.3 Fourier series of continuous functions}
 
+\section{1.5}
+
+We will now begin the next portion of the book, which we introduce summability methods. The first one we will talk about is the Cesaro sum.
+
+Our motivating example begins like this:
+\begin{example}
+    Define a sequence $\{1, -1, 1, -1, ...\}$, we now ask what is the partial sum of first $N$ terms as $N$ gets large. It is easy to check that if $N$ is odd, we get $S_N=1$, and when $N$ is even, we get $S_N=0$. And this partial sum seems very badly beahved. But this is not the case. We can think of the true partial sum as oscilatting between 1 and 0, hence $1/2$ would be a reasonable number to ``capture the reality.'' This aligns with the notation of Cesaro sum.
+\end{example}
+
+\begin{definition}[Cesaro sum]
+    Let a sequence $\{s_n\}$ be fixed, and define the $N$-th Cesaro sum as the average of first $N$ partial sums:
+    \begin{equation*}
+        \sigma_N(s_n)=\frac{1}{N+1}\sum_{k=0}^{N}S_k(s_n)
+    \end{equation*} 
+    Of course, we can interpret this in terms of Fourier series. Given a function $f$, we let $S_N$ denotes its $N$-th Fourier series, and the $N$-th Cesaro sum would be
+    \begin{equation*}
+        \sigma_N(f)(x)=\frac{1}{N+1}\sum_{k=0}^NS_k(f)
+    \end{equation*}
+\end{definition}
+
+We will show this notation of average sum ensures convergence to $f$ in the $L^p$ norm.
+
+Just like how we wrote $S_N(f)(x)=D_n\ast f(x)$, we can write $\sigma(f)$ as a convolution.
+\begin{proposition}
+    For $f\in L^p, 1\leq p<\infty$, we have
+    \begin{equation*}
+        \sigma(f)(x)=F_N\ast f(x)
+    \end{equation*}
+    where $F_N(t)=\frac{1}{N+1}\left(\frac{\sin((N+1)\pi t}{\sin(\pi t)} \right)^2$ is the Fejer kernel.
+\end{proposition}
+\begin{proof}
+    \begin{align*}
+        \sigma(f)(x)&=\frac{1}{N+1}\sum_{k=0}^NS_k(f)\\
+        &= \frac{1}{N+1}\sum_{k=0}^N\int_0^1D_N(x-t)f(t)dt\\
+        &=\int_0^1f(t)\frac{1}{N+1}\sum_{k=0}^ND_N(x-t)dt\\
+    \end{align*}
+    We then let $F_N(t)=\frac{1}{N+1}\sum_{k=0}^ND_N(t)$. And remember we define $D_N(t)=\sum_{n=-N}^Ne^{2\pi int}$, hence via arithmatic manipulation, we can show that 
+    \begin{equation*}
+        F_N(t)=\frac{1}{N+1}\left(\frac{\sin((N+1)\pi t)}{\sin(\pi t)}\right)^2
+    \end{equation*}
+\end{proof}
+\qed
+
+\begin{remark}
+    This gives several good properties for $F_N(t)$, namely since the RHS is squared
+    \begin{enumerate}
+        \item $F_N(t)\geq 0$
+        \item $\int_0^1F_n(t)=1$, hence we can again think of it as distributing mass
+        \item For all $\delta>0$,
+         \begin{equation*}
+            \lim_{N\to\infty}\int_{\delta\leq|t|\leq1/2}F_N(t)=0
+        \end{equation*}
+        This means that $F_N$ does a really good job concentrating all mass at the origin, and behaving like the dirac function, which is the convolution identity.
+    \end{enumerate}
+
+    This gives us good intuition on why $\sigma_N(f)=F_N\ast f\to f$, because as $N\to\infty$, we are better at approximating $f$.
+\end{remark}
+
+\begin{remark}
+    Another advantage of Fejer kernerl is that when we integrate 
+    \begin{equation*}
+        \int_{0\leq|t|\leq\delta}|F_N(t)|dt
+    \end{equation*}
+    This quantity is bounded by the fact that $F_N(t)$ is nonnegative. We cannot apply the same bound on $D_N(t)$ like
+    \begin{equation*}
+        \int_{0\leq |t|\leq\delta}|D_N(t)|dt
+    \end{equation*}
+    Because $D_N(t)$ oscillates and taking the absolute value would make this quantity blow up. (Hence we require stronger criterion like Dini's criterion).
+\end{remark}
+
+\begin{theorem}[The $p=\infty$ case]
+    For $p=\infty$, if $f$ is conitnuous, then we have
+    \begin{equation*}
+        \lim_{N\to\infty}\|\sigma_N(f)-f\|_{L^\infty}=0
+    \end{equation*}
+\end{theorem}
+\begin{proof}
+    It suffices to show that for each $x\in\T$, we have
+    \begin{equation*}
+        |F_N\ast f(x)-f(x)|\to 0, N\to\infty
+    \end{equation*}
+    \begin{align*}
+        |F_N(t)\ast f(x)-f(x)|&=\left|\int_{0\leq t\leq 1/2}F_N(t)(f(x-t)-f(t))dt \right|\\
+        &\leq \int_{0\leq t\leq\delta}F_N(t)|f(x-t)-f(t)|dt +\int_{\delta\leq|t|\leq 1/2}F_N(t)|f(x-t)-f(t)|dt\\
+        &\leq\epsilon\int_{0\leq |t|\leq\delta}F_N(t)dt+2\|f\|_{L^\infty}\int_{\delta\leq|t|\leq 1/2}F_N(t)dt\\
+        &<\epsilon
+    \end{align*}
+\end{proof}
+\qed
+
+We next show a very similar proof for the rest of $p$.
+\begin{theorem}
+    Let $1\leq p<\infty$, then if $f\in L^p$, then we have
+    \begin{equation*}
+        \lim_{N\to\infty}\|\sigma_N(f)-f\|_{L^p}=0
+    \end{equation*}
+\end{theorem}
+\begin{proof}
+    By Minkowski's inequality for integrals, we can exchange the order of the integral, i.e.
+    \begin{equation*}
+        \|\sigma_N(f)-f\|_{L^p}\leq \int_{|t|\leq1/2} F_N(t)\|f(x-t)-f(x)\|_{L^p}dt
+    \end{equation*}
+    We agree break this integral up into two.
+    \begin{equation*}
+        \|\sigma_N(f)-f\|_{L^p}\leq \int_{|t|\leq\delta}F_N(t)\|f(x-t)-f(t)\|_{L^p}dt+\int_{\delta\leq t\leq1/2}F_N(t)\|f(x-t)-f(t)\|_{L^p}dt
+    \end{equation*}
+    The first integral tends to 0 since as $t\to 0$, we have
+    \begin{equation*}
+        \|f(x-t)-f(t)\|_{L^p}\to 0
+    \end{equation*}
+    And the second integral tends to 0 as it is bounded by $2\|f\|_{L^p}\int_{\delta\leq t\leq 1/2}F_N(t)dt$. Hence tends to 0 by the property of $F_N(t)$.
+\end{proof}
+\qed
+
+\begin{corollary}[Trig polynomials are dense in $L^p$]
+    By the above approximations, we know $\sigma_N(f)$ is an average of $S_K$'s, which are trigonometric polynomials, hence $\sigma_N$ itself is also a trig polynomial. For each $f\in L^p$, there exists a $\sigma_N(f)$ a trig polynomial, such that 
+    \begin{equation*}
+        \|\sigma_N(f)-f\|_{L^p}\to 0
+    \end{equation*}
+    Hence trig polynomials are dense in $L^p$, $1\leq p\leq\infty$.
+\end{corollary}
+
+\begin{corollary}
+    If $f$ is integrable, (assume it's defined everywhere, same works if it's only defined almost everywhere), then if $\hat{f}(n)=0$ for all $n$, then $f=0$ identically.
+\end{corollary}
+\begin{proof}
+    If $\hat{f}(n)=0$ for all $n$, then $S_k(f)=0$ for all $k$, hence $\sigma_N(f)=0$ for all $N$. We also have
+    \begin{equation*}
+        \|\sigma_N(f)-f\|_{L^1}=0\Rightarrow \int|f|=0
+    \end{equation*} 
+    Hence $f=0$ identically,
+\end{proof}
+\qed
+
+Next we will introduce Abel summation, another summability method that guarantees convergence of Fourier partial sums.
+\begin{definition}[Abel summation]
+    Given a sequqence $a_n$, we define its $N$-th partial sum as $S_N$. And its $N$-th Abel sum is defined as
+    \begin{equation*}
+        A_r(a_n)=\sum_{n=0}^\infty r^na_n
+    \end{equation*}
+    And if $A_r$ converges as $r\to 1$, then the series is called Abel summable.
+\end{definition}
+\begin{example}
+    Let's consider the following sequence: 
+    \begin{equation*}
+        \{1, -2, 3, -4, ...\}
+    \end{equation*}
+    We can write $a_{n+1}=(-1)^n(n+1)$, then the Abel sum would be
+    \begin{equation*}
+        A_r(a_n)=\sum_{n=0}^\infty(-1)^nr^n(n+1)
+    \end{equation*}
+    We note that
+    \begin{equation*}
+        \sum_{n=0}^\infty(-r)^n(n+1)=\sum_{n=0}^\infty(-r)^n+\sum_{n=0}^\infty n(-r)^n
+    \end{equation*}
+    The first term is a geometric series, and the second term is computed by differentiating the sum of the first term. And we have
+    \begin{equation*}
+        A_r(a_n)=\frac{1}{(1+r^2)}
+    \end{equation*}
+    Hence the series is Abel summable.
+\end{example}
+However, this sequence does not converge in the usual sense, nor is it Cesaro summable.
+
+We now 

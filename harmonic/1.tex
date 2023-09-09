@@ -345,13 +345,13 @@ Now we would like to address the next two questions on convergence in $L^p$ norm
 
 We will address Q1.
 \begin{lemma}
-    $\lim_{N\to\infty}\|S_N(f)-f\|_{L^p}=0$ if and only if there exists a constant $C_p$ such that
+    Let $1\leq p<\infty$, for all $f\in L^p$, we have $\lim_{N\to\infty}\|S_N(f)-f\|_{L^p}=0$ if and only if there exists a constant $C_p$ such that
     \begin{equation*}
         \|S_N(f)\|_{L^p}\leq C_p\|f\|_{L^p}
     \end{equation*}
 \end{lemma}
 \begin{proof}
-    $(\Rightarrow)$ This follows from UBP.
+    $(\Rightarrow)$ This follows from UBP. If $\|S_N\|$ is unbounded, then by UBP, there exists an $f$ such that $\|S_N(f)\|_{L^p}\to\infty$. Hence would not converge to $f$ in the $L^p$ sense.
 
     $(\Leftarrow)$ We note that trigonometric polynomials are dense in $L^p$, hence we can find $g$ a trig polynomial such that $\|f-g\|_{L^p}<\epsilon$. Hence we have,
     \begin{equation*}
@@ -369,7 +369,45 @@ We note that when $1<p<\infty$, we indeed have
 \begin{equation*}
     \|S_N(f)\|_{L^p}\leq C_p\|f\|_{L^p}
 \end{equation*}
-but for $p=1$, we have $\|S_N(f)\|_{L^1}=L_N$ as above. 
+but for $p=1$, we have $\|S_N(f)\|_{L^1}=L_N$ as above, hence there is no convergence for $S_N(f)$ to $f$ in the $L^p$ sense. We will reformulate this theorem as follows.
 
+\begin{theorem}[Convergence of $S_N(f)$ for $1<p<\infty$]
+    If $1<p<infty$, for all $f\in L^p$, we have
+    \begin{equation*}
+        \lim_{N\to\infty}\|S_N(f)-f\|_{L^p}=0
+    \end{equation*}
+\end{theorem}
 
+\section{Lecture 5}
+We started late today.
 
+Recall last night, we mentioned in order to ensure $S_N(f)$ converges to $f$ in the $L^p$ sense, we need to have uniform boundedness. specifically for $p=2$, the functions $e^{2\pi inx}$ form an orthonormal basis (by trig polynomials dense in $L^p$), hence we get
+\begin{equation*}
+    \|f\|_{L^2}^2=\sum_{n=-\infty}^\infty |\hat{f}(n)|^2
+\end{equation*}
+
+Last time we asked for $1\leq p<\infty$, and $f\in L^p$, whether we have
+\begin{equation*}
+    S_N(f)(x)\to f(x) \text{ almost everywhere }
+\end{equation*}
+We won't discuss in detail the answer to this question. For $p=1$, we know that this is not true, by Kolmogov constructing an integrable function whose Fourier series diverges almost everywhere. And we know that the answer is yes for all $p>1$.
+
+We now begin section 1.5 of the book.
+\begin{definition}[Cesaro sum]
+    Define the $N$-th Cesaro sum of Fourier series as follows:
+    \begin{equation*}
+        \sigma_N(f)=\frac{1}{N+1}\sum_{k=0}^NS_k(f)
+    \end{equation*}
+\end{definition}
+One can show, via the following,
+\begin{align*}
+    \sigma_N(f)(x)&=\frac{1}{N+1}\sum_[k=0]^NS_k(f)(x)\\
+    &=\int_0^1f(t)\left(\frac{1}{N+1}\sum_{k=0}^ND_k(x-t) \right)dt\\
+    &=\int_0^1f(t)F_N(x-t)dt
+\end{align*}
+where $F_n(t)=\frac{1}{N+1}\sum_{k=0}^ND_k(t)$, we call this the Fejer kernel, and one can show that 
+\begin{equation*}
+    F_N(t)=\frac{1}{N+1}\left(\frac{\sin((N+1)\pi t)}{\sin(\pi t)} \right)^2
+\end{equation*}
+
+We now note a few important and nice properties of $F_N(t)$.We have
