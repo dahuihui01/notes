@@ -946,7 +946,7 @@ if $\mathcal{A}$ is unital, and if $\mathcal{A}\subset\mathcal{B}$ with some uni
 \begin{proposition}[Spectral radius is preserved]
     For $\mathcal{A}\subset\mathcal{B}$, we have
     \begin{equation*}
-        r_\mathcal{A}(a)=\|a^n\|^{1/n}=r_\mathcal{B}(a)
+        r_\mathcal{A}(a)=\lim\|a^n\|^{1/n}=r_\mathcal{B}(a)
     \end{equation*}
 \end{proposition}
 
@@ -957,7 +957,7 @@ if $\mathcal{A}$ is unital, and if $\mathcal{A}\subset\mathcal{B}$ with some uni
     \end{equation*}
 \end{proposition}
 \begin{proof}
-    Look at where $f$ takes $\|f\|_\infty$, and sqaure it.
+    Look at where $f$ takes $\|f\|_\infty$, and sqaure it, since when $X$ is compact, you can actually obtain the point where $|f(x)|=\|f\|_\infty$ .
 \end{proof}
 
 \begin{remark}
@@ -981,7 +981,7 @@ Hence by taking $1/2^n$-root of both sides, we get that the spectral radius of $
     r(a)=\|a^{2^n}\|^{1/2^n}=\|a\|
 \end{equation*}
 
-Let $\mathcal{H}$ be a Hilbert space, over $\C$, and let $\mathcal{A}=B(H)$, i.e. the bounded lineaer operators on $\mathcal{H}$., and equip with the operation of taking adjoint. $T\mapsto T^*$.
+Let $\mathcal{H}$ be a Hilbert space, over $\C$, and let $\mathcal{A}=B(H)$, i.e. the bounded linear operators on $\mathcal{H}$., and equip with the operation of taking adjoint. $T\mapsto T^*$.
 
 \begin{proposition}
     For any $T\in B(\mathcal{H})$, we have
@@ -1022,11 +1022,11 @@ Let $\mathcal{H}$ be a Hilbert space, over $\C$, and let $\mathcal{A}=B(H)$, i.e
     where the spectral radius is determined by the algebra elements.
 \end{corollary}
 
-Note that for general $T$, we have
+Note that for general $T$, we have  $T^*T$ is always self-adjoint,
 \begin{equation*}
     \|T\|^2=\|T^*T\|=r(T^*T)
 \end{equation*}
-Because $T^*T$ is self-adjoint. Then we have
+Then we have
 \begin{equation*}
     \|T\|=(r(T^*T))^{1/2}
 \end{equation*}

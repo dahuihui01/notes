@@ -410,4 +410,104 @@ where $F_n(t)=\frac{1}{N+1}\sum_{k=0}^ND_k(t)$, we call this the Fejer kernel, a
     F_N(t)=\frac{1}{N+1}\left(\frac{\sin((N+1)\pi t)}{\sin(\pi t)} \right)^2
 \end{equation*}
 
-We now note a few important and nice properties of $F_N(t)$.We have
+We now note a few important and nice properties of $F_N(t)$. We have
+\begin{enumerate}
+    \item $F_N\geq 0$
+    \item $\int_0^1 F_N(t)dt=\|F_N\|_{L^1}=1$
+    \item $\lim_{N\to\infty}\int_{\delta\leq|t|\leq 1/2}F_N(t)dt=0$, for all $\delta>0$.
+\end{enumerate}
+Note that the third property follows from the fact that
+\begin{equation*}
+    F_N(t)\leq\frac{1}{(N+1)(\sin(\pi t)^2)}
+\end{equation*}
+Hence it's nicely behaved when staying away from 0.
+
+\begin{theorem}
+    For the following two cases,
+    \begin{enumerate}
+        \item $\forall f\in L^p$, where $1\leq p<\infty$
+        \item $f\in C(\T)$, for $p=\infty$.
+    \end{enumerate}
+    we get convergence in $L^p$ norm for the Cesaro sum:
+    \begin{equation*}
+        \lim_{N\to\infty}\|\sigma_N(f)-f\|_{L^p}=0
+    \end{equation*}
+\end{theorem}
+\begin{proof}[sketch]
+    For $f\in L^p$, where $1\leq p<\infty$, we have 
+    \begin{equation*}
+        \int_{|t|<1/2}\|f(x-t)-f(x)\|_{L^p}F_N(t)dt
+    \end{equation*}
+    Hence separating into $\int_{|t|<\delta}$, and $\int_{\delta\leq|t|<1/2}$, the second one tends to 0, where the first one also tends to zero as we choose $\delta$ to be arbitrarily small and by $f\in L^p$. Hence the entire integral tends to 0. Similar proof for $f\in C(\T)$, and $p=\infty$.
+\end{proof}
+\qed
+
+\section{Lecture 6}
+From the above theorem, we are above to conclude the following statements regarding denseness of trig polynomials and the Fourier coefficients uniquely determine $f$, if $f$ is integrable.
+\begin{corollary}
+    For $1\leq p<\infty$, trigonometric polynomials are dense in $L^p$.
+\end{corollary}
+\begin{proof}
+    Note that $\sigma_N(f)$ is a finite average of $S_k$'s, which are trigonometric polynomials.
+\end{proof}
+
+\begin{corollary}
+    For $f\in L^1$, if $\widehat{f}(k)=0$, for all $k$, then $f$ is identically 0.
+\end{corollary}
+
+We now introduce a different summability method, by treating Fourier series as the formal limit on the unit circle.
+
+\begin{comment}
+    If you just try to make a text red, use \textcolor{color}{text}
+\end{comment}
+
+\textcolor{red}{Finish Poisson kernel!}
+
+\section{Lecture 7}
+We now define FT on the most intuitive class of functions.
+\begin{definition}[FT on $L^1$]
+    For $f\in L^1(\R^n)$, we define its Fourier transform to be the following transformation:
+    \begin{equation*}
+        \widehat{f}(\xi)=\int f(x)e^{-2\pi ix\cdot\xi}dx
+    \end{equation*}
+    where $x\cdot\xi=x_1\xi_1+...x_n\xi_n$. 
+\end{definition}
+FT has nice following properties that are easily verified.
+\begin{proposition}
+    \begin{enumerate}
+        \item FT is linear. 
+        \begin{equation*}
+            \mathcal{F}(\alpha f+\beta g)=\alpha\hat{f}+\beta\hat{g}
+        \end{equation*}
+        \item Clearly $\|f\|_\infty\leq\|f\|_1$, and by DCT, $\hat{f}$ is continuous.
+        \item Riemann-Lebesgue states that 
+        \begin{equation*}
+            \lim_{|\xi|\to\infty}\hat{f}(\xi)=0
+        \end{equation*}
+        \item Convolution in the physical space is pointwise multiplication in the Fourier space. $\widehat{f\ast g}=\hat{f}\hat{g}$
+        \item Translation in the physical space is phase shift in the Fourier space; phase shift in the physical space is translation in the Fourier space.
+        \begin{equation*}
+            \widehat{f(x+h)}(\xi)=e^{2\pi ih\dot\xi}\hat{f}(\xi)
+        \end{equation*}
+        \begin{equation*}
+            \widehat{e^{2\pi ih\cdot x}f}(\xi)=\hat{f}(\xi-h)
+        \end{equation*}
+        \item If $\rho$ is an orthogonal transformation, then 
+        \begin{equation*}
+            \widehat{f(\rho)}(\xi)=\hat{f}(\rho\xi)
+        \end{equation*}
+        \item FT under scaling. If $g(x)=\lambda^{-n}f(\lambda^{-1}x)$, then $\hat{g}(\xi)=\hat{f}(\lambda\xi)$
+        \item FT with derivative. $\widehat{\partial_{x_j f}}=2\pi i\xi_j\hat{f}$.
+        \item FT with multiplication by $x_j$. $\widehat{x_jf}=2\pi i\partial_{\xi_j}\hat{f}$.
+    \end{enumerate}
+\end{proposition}
+
+Note that for finite dimensional measure spaces $\T$, by Holder's inequality $L^p(\T)$ embeds in $L^1(\T)$ for $p>1$. However, the same embedding does not hold for $L^p(\R^n)$, and $L^1(\R^n)$. We've only defined the Fourier transform on $L^1(\R^n)$, but not all other $p>1$ yet. To define FT on these spaces, we start by defining it on a nicer class, the Schwartz functions.
+
+\begin{definition}
+    $f$ is in the Schwartz space, $\mathcal{S}(\R^n)$ if $f\in C^\infty$, and if $f$ and all its derivatives decrease rapidly at infinity. Rigorously, it means for all $\alpha, \beta\in\N^n$, we have
+    \begin{equation*}
+        \sup_x|x^\alpha D^\beta f(x)|<\infty
+    \end{equation*}
+\end{definition}
+
