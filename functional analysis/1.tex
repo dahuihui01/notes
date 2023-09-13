@@ -605,20 +605,19 @@ Now we build an important intuition that given a unital algebra homomorphism map
     \begin{equation*}
         \varphi_y=\varphi_x\circ F
     \end{equation*}
-    We thus define $\check{F}(x)=y$ as such that it satisfies the above equation. We need to show $\check{F}$ is continuous. Note that $X,Y$ are compact Hausdorff spaces, and the topology on $Y$ is the coarest topology making all functions $g\in C(X)$ continuous.
+    We thus define $\check{F}(x)=y$ as such that it satisfies the above equation. We need to show $\check{F}$ is continuous. Note that $X,Y$ are compact Hausdorff spaces, and the topology on $Y$ is the coarest topology making all functions $g\in C(Y)$ continuous.
     \begin{align*}
         g\circ\check{F}(x)&=g(\check{F}(x))\\
         &=g(y: \varphi_y=\varphi_x\circ F)\\
         &=\varphi_y(g: \varphi_y=\varphi_x\circ F)\\
         &=\varphi_x\circ F(g)\\
-        &=F(g)(x)\\
-        &=F\circ g(x)
+        &=F(g)(x)
     \end{align*}
     Hence by $F,g$ being continuous, we have $\check{F}$ is also continuous. 
 \end{proof}
 \qed
 
-There is a natural bijection between the continuous functiosn from $X$ to $Y$, and the unital algebra homomorphism from $C(X)$ to $C(X)$.
+There is a natural bijection between the continuous functiosn from $X$ to $Y$, and the unital algebra homomorphism from $C(X)$ to $C(Y)$.
 
 A quick reminder:
 
@@ -813,4 +812,222 @@ From the previous remark that $|\lambda|\leq\|a^n\|^{1/n}$, hence this follows.
 
 
 \section{Lecture 7}
+I have not typed up for this?
 
+
+\section{Lecture 8}
+Let $\mathcal{A}$ be a unital Banach algebra. Then for $a\in\mathcal{A}$, and we look at the resolvent of $a$, $R_a(\lambda)$, we've noted that as $\lambda\to\infty$, we have
+\begin{equation*}
+    \lim_{\lambda\to\infty}R_a(\lambda)=\lim_{\lambda\to\infty}(\lambda1_\mathcal{A}-a)^{-1}=\lim_{\lambda\to\infty}\lambda^{-1}\sum_{n=0}^\infty a^n\lambda^{-n}
+\end{equation*}
+And the above Laurent series converges for $|\lambda|\geq\|a\|$.
+
+Recall that we define the spectral raidus, $r(a)$, as 
+\begin{equation*}
+    r(a)=\sup\{|\lambda|:\lambda\in\sigma(a)\}\leq\|a\|
+\end{equation*}
+
+Now we would like to prove the following proposition.
+\begin{proposition}
+    \begin{equation*}
+        r(a)=\lim\|a^n\|^{1/n}
+    \end{equation*}
+\end{proposition}
+\begin{proof}
+
+If we let $\lambda=1/z$, then 
+\begin{equation*}
+    R(a,z)=z\sum_{n=0}^\infty a^nz^n
+\end{equation*}
+This converges for $|z|\leq\|a\|^{-1}$, but maybe?? also for $|z|< r(a)^{-1}$?
+
+For $r>r(a)$, i.e. $|z|\leq r^{-1}$, we  know $\sum_na^nr^n$ converges for $r>r(a)$. 
+
+know $z\sum a^nz^n$ converges absolutely. In particular,
+\begin{equation*}
+    a^nz^n\to 0
+\end{equation*}
+Hence there exists $M$ such that for $n\geq M$, we have
+\begin{equation*}
+    \|a^nr^{-n}\|\leq 1
+\end{equation*}
+This implies that
+\begin{equation*}
+    \|a^n\|\leq r^n \Rightarrow \|a^n\|^{1/n}\leq r 
+\end{equation*}
+for all $n\geq M$.
+
+This implies that
+\begin{equation*}
+    \limsup \|a^n\|^{1/n}\leq r
+\end{equation*}
+And note that $r$ is arbitrary close to the spectral radius $r(a)$. Hence we have
+\begin{equation*}
+    \limsup \|a^n\|^{1/n}\leq r(a)\leq\liminf\|a^n\|^{1/n}
+\end{equation*}
+We've derived the second inequality from last class. Hence all inequalities become equalities.
+This gives us
+\begin{equation*}
+    r(a)=\lim \|a^n\|^{1/n}
+\end{equation*}
+
+\end{proof}
+\qed
+
+
+For each $\varphi\in\mathcal{A}'$, consider the map
+\begin{equation*}
+    \lambda\mapsto\lambda^{-1}\sum\varphi(a^n)\lambda^{-n}
+\end{equation*}
+This series converges for $r>r(a)$.
+We can apply the same process, to argue that there exists $M_\varphi$ such that
+\begin{equation*}
+    \|\varphi(a^n)r^{-n}\|\leq M_\varphi
+\end{equation*}
+for all $n\geq 0$. Note that $M_\varphi$ could be different for all $\varphi$. 
+
+Note that 
+\begin{equation*}
+    \mathcal{A}\to \mathcal{A}'\to \mathcal{A}''
+\end{equation*}
+there is a natural injection of $a\mapsto\widehat{a}\in\mathcal{A}''$.
+
+For each $n$, definite $F_n\in\mathcal{A}''$, by $F_n(\varphi)=|\varphi(a^nr^{-n})|\leq M_\varphi$. Applying the UBP, we have
+\begin{equation*}
+    |F_n(\varphi)|\leq M\Rightarrow |\varphi(a^n)r^{-n}|\leq M
+\end{equation*}
+This implies that 
+\begin{equation*}
+    |\varphi(a^n)|\leq r^nM
+\end{equation*}
+Note that by Hahn-Banach, for any $b\in\mathcal{A}$, we have
+\begin{equation*}
+    \|b\|=\sup\{|\varphi(b)|:\|\varphi\|=1\}
+\end{equation*}
+Taking $n$-th root of both sides, we gets
+\begin{equation*}
+    \|a^n\|\leq r^nM\Rightarrow \|a^n\|^{1/n}\leq rM^{1/n}\to r
+\end{equation*}
+Hence we again obtain the same result.
+
+\qed
+
+
+
+Recall UBP.
+\begin{theorem}[Uniform Boudnedness Principle]
+    Let $X$ be Banach, and $Y$ be normed, let $T_n:X\to Y$ be a family of linear operators, and if for all $x\in X$, we have
+    \begin{equation*}
+        \|T_n(x)\|<\infty
+    \end{equation*}
+    Then for all $n$, we have
+    \begin{equation*}
+        \|T_n\|<\infty
+    \end{equation*}
+\end{theorem}
+
+Note that 
+if $\mathcal{A}$ is unital, and if $\mathcal{A}\subset\mathcal{B}$ with some unit. For $a\in\mathcal{A}$, if $a$ is not invertible in $A$, then it might be invertible in $\mathcal{B}$. Hence if we use $\sigma_\mathcal{A}(a)$ to denote the spectrum of $a$ in $\mathcal{A}$.
+\begin{proposition}
+    \begin{equation*}
+        \sigma_\mathcal{B}(a)\subset \sigma_\mathcal{A}(a)
+    \end{equation*}
+\end{proposition}
+
+
+\begin{example}
+    Let $\mathcal{B}=l^1(\mathbb{Z})$, and let $\mathcal{A}=l^1(\N)$, equipped with convolution. 
+    
+    Clearly $\mathcal{A}\subset\mathcal{B}$. And note that the delta function at 1, $\delta_1$ is not invertible in $\mathcal{A}$ but it has an inverse $\delta_{-1}$ in $\mathcal{B}$. Hence we see $0\in\sigma_\mathcal{A}(a)$, but $0\not\in\sigma_\mathcal{B}(a)$.
+
+
+\end{example}
+
+\begin{proposition}[Spectral radius is preserved]
+    For $\mathcal{A}\subset\mathcal{B}$, we have
+    \begin{equation*}
+        r_\mathcal{A}(a)=\|a^n\|^{1/n}=r_\mathcal{B}(a)
+    \end{equation*}
+\end{proposition}
+
+\begin{proposition}
+    Let $X$ be compact, and let $\mathcal{A}=C(X)$. Then for $f\in C(X)$, we have
+    \begin{equation*}
+        \|f^2\|_\infty=\|f\|_\infty^2
+    \end{equation*}
+\end{proposition}
+\begin{proof}
+    Look at where $f$ takes $\|f\|_\infty$, and sqaure it.
+\end{proof}
+
+\begin{remark}
+The same property holds for $f$ in any unitla subalgebra of $C(X)$, for example, if $X\subset\C$, and let $\mathcal{A}$=functions that are holomorphic on an open subset of $\C$ that are in $X$.
+\end{remark}
+
+Let $\mathcal{A}$ be a unital Banach alagebra with the property such that for any $a\in\mathcal{A}$, we have
+\begin{equation*}
+    \|a^2\|=\|a\|^2
+\end{equation*}
+This implies that
+\begin{equation*}
+    \|a^4\|=\|a\|^4
+\end{equation*}
+By induction, for any $n$, we have
+\begin{equation*}
+    \|a^{2^n}\|=\|a\|^{2^n}
+\end{equation*}
+Hence by taking $1/2^n$-root of both sides, we get that the spectral radius of $r(a)$
+\begin{equation*}
+    r(a)=\|a^{2^n}\|^{1/2^n}=\|a\|
+\end{equation*}
+
+Let $\mathcal{H}$ be a Hilbert space, over $\C$, and let $\mathcal{A}=B(H)$, i.e. the bounded lineaer operators on $\mathcal{H}$., and equip with the operation of taking adjoint. $T\mapsto T^*$.
+
+\begin{proposition}
+    For any $T\in B(\mathcal{H})$, we have
+    \begin{equation*}
+        \|T^*T\|=\|T\|^2
+    \end{equation*}
+\end{proposition}
+\begin{proof}
+    We know that $\|T^*\|=\|T\|$. And thus
+    \begin{equation*}
+        \|T^*T\|\leq\|T^*\|\|T\|=\|T\|^2
+    \end{equation*}
+    For the reverse direction, let $\xi\in\mathcal{H}$, then
+    \begin{equation*}
+        \|T(\xi)\|^2=\langle T\xi, T\xi\rangle=\langle \xi, T^*T\xi\rangle\leq \|T^*T\|\|\xi\|^2
+    \end{equation*} 
+    where the last inequality follows form Cauchy-Schwartz. This implies that
+    \begin{equation*}
+        \|T(\xi)\|\leq \|T^*T\|^{1/2}\|\xi\|
+    \end{equation*}
+    which by definition, gives
+    \begin{equation*}
+        \|T\|\leq\|T^*T\|^{1/2}
+    \end{equation*}
+    Taking squares we get the desired result.
+\end{proof}
+\qed
+
+\begin{corollary}
+    If $T^*=T$, then
+    \begin{equation*}
+        \|T^2\|=\|T\|^2
+    \end{equation*}
+    And we have
+    \begin{equation*}
+        r(T)=\|T\|
+    \end{equation*}
+    where the spectral radius is determined by the algebra elements.
+\end{corollary}
+
+Note that for general $T$, we have
+\begin{equation*}
+    \|T\|^2=\|T^*T\|=r(T^*T)
+\end{equation*}
+Because $T^*T$ is self-adjoint. Then we have
+\begin{equation*}
+    \|T\|=(r(T^*T))^{1/2}
+\end{equation*}
+where the spectral radius is determined by the *-algebra structure.
