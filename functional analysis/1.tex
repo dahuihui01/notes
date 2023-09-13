@@ -1031,3 +1031,146 @@ Then we have
     \|T\|=(r(T^*T))^{1/2}
 \end{equation*}
 where the spectral radius is determined by the *-algebra structure.
+
+
+\section{Lecture 9}
+Let $\mathcal{H}$ be a hilbert space over $\C$, and $\mathcal{B}(\mathcal{H})$ with $\|\cdot\|_\infty$, and closed under taking involutions. If $T\in\mathcal{B}(\mathcal{H})$, then
+\begin{equation*}
+    \|T^*T\|=\|T\|^2
+\end{equation*}
+So if $T^*=T$, then we have
+\begin{equation*}
+    \sigma(T)=\|T\|
+\end{equation*}
+
+\begin{definition}
+    A concrete $C^*$-algebra is a norm-closed sub-algebra $\mathcal{A}$ of $\mathcal{B}(\mathcal{H})$, for some $\mathcal{H}$ (could be finite or infinitely dimensional) such that is self-adjoint, i.e., if $T\in\mathcal{A}$, then $T^*\in\mathcal{A}$.
+
+    Again, we call $\mathcal{A}$ is unital if $1_\mathcal{H}\in\mathcal{A}$. 
+\end{definition}
+
+\begin{corollary}
+    If $\mathcal{A}$ is a $C^*$ algebra, then for all $a\in\mathcal{A}$,
+    \begin{equation*}
+        \|a^*a\|=\|a\|^2
+    \end{equation*}
+    If $\mathcal{A}$ is unital $C^*$-algebra, and if $a^*=a$, then $r(a)=\|a\|$.
+\end{corollary}
+
+Next we say a bit about the Gelfand transform.
+\begin{definition}
+    Let $\mathcal{A}$ be a unital Banach algebra, and commutative, then we have the Gelfand transform $\Gamma:\mathcal{A}\to C(\widehat{A})$:
+    \begin{equation*}
+        \Gamma(a)(\varphi)=\varphi(a)
+    \end{equation*}
+    \textcolor{red}{then he said something of homomor to the complex numbers or something}
+\end{definition}
+
+Note that if $a\in\mathcal{A}$, and $\varphi\in\widehat{A}$, then $\varphi(a)\in\sigma(a)$, then we have
+\begin{equation*}
+    |\varphi(a)|\leq\|a\|=r(a)
+\end{equation*}
+then $\|\widehat{a}\|_\infty\leq r(a)$. Now we would like to show
+\begin{equation*}
+    \|\widehat{a}\|_\infty=r(a)
+\end{equation*}
+
+We will now dedicate the next 50 minutes of our life to proving this theorem.
+\begin{theorem}
+    If $\lambda\in\sigma(a)$, then there exists $\varphi\in\widehat{A}$ such that $\varphi(a)=\lambda$. This is equiavalent to saying: if $(a-\lambda1)$ is not invertible, then there is a $\varphi\in\widehat{\mathcal{A}}$, such that 
+    \begin{equation*}
+        \varphi(a-\lambda1)=0
+    \end{equation*}
+
+    This means if $a$ is not invertible, then there exists $\varphi\in\widehat{\mathcal{A}}$ such that $\varphi(a)=0$.
+\end{theorem}
+\begin{proof}
+    Suppose $a\in\mathcal{A}$, and consider
+    \begin{equation*}
+        a\mathcal{A}=\{ab: b\in\mathcal{A}\}
+    \end{equation*}
+    The set $a\mathcal{A}$ does not contain the identity element i.e. $1_\mathcal{A}\not\in a\mathcal{A}$ (otherwise it would imply it has an inverse). And $a\mathcal{A}$ is a two-sided proper ideal (by $\mathcal{A}$ being commutative).
+
+    We now introduce a fact that we will use.
+    \begin{definition}
+        An ideal $I$ is maximal if $I$ is proper in $R$, and not contained in any bigger proper ideals.
+    \end{definition}
+        
+    \begin{lemma}
+        Let $R$ be a unital ring commutatitve, every proper ideal is contained in a maximal ideal (by Zorn's lemma).
+    \end{lemma}
+
+    \begin{lemma}
+    For $\mathcal{A}$ unital commutative Banach algebra, if $I$ is a proper ideal, then its closure is a proper ideal.
+    \end{lemma}
+        \begin{proof}
+        We have seen that $GL(\mathcal{A})$, the set of invertible elements, is open. Hence its complement is closed. Any proper ideal does not contain any elements in $GL(\mathcal{A})$, hence its closure is closed inside a closed set. 
+        \end{proof}
+    
+    \begin{remark}
+        Let $X$ be locally compact, but compact, such as $\R$, then we have $C_c(X)\subset C_\infty(X)$. Note that $C_c(X)$ is a proper ideal of $C_\infty(X)$, but it's dense in $C_\infty(X)$, hence its closure is the entire space, hence no longer proper. This tells us the closure of a proper ideal is not always proper, if $\mathcal{A}$ is not unital.
+    \end{remark}
+
+    \begin{theorem}
+        Every maximal ideal of $\mathcal{A}$ is closed.
+    \end{theorem}
+        \begin{proof}
+        The closure of any proper ideal is closed in unital algebras, hence its closure is itself.
+        \end{proof}
+    First let $V$ be a normed vector space. Let $W$ be a closed subspace, and form the quotient space $V/W$. There is a natrual way to equip $V/W$ with a norm
+    \begin{equation*}
+        \|\dot{v}\|=\inf\{\|v-w\|: w\in W \}
+    \end{equation*}
+    i.e. the distance between $v$ to $W$. This is a norm. Further if $V$ is complete, so is $V/W$.
+
+    Let $\mathcal{A}$ be a normed algebra, commutative, unital. Let $I$ be a closed ideal.
+    \begin{proposition}
+        For $a,b\in\mathcal{A}$, we have 
+        \begin{equation*}
+            \|\dot{a}\dot{b}\|=\|\dot{ab}\|\leq \|\dot{a}\|\|\dot{b}\|
+        \end{equation*}
+        so that $\mathcal{A}/I$ is a normed algebra.
+    \end{proposition}
+        \begin{proof}
+            Let $c,d\in I$, and
+            \begin{equation*}
+                (a-c)(b-d)=ab-(ad+cb-cd)
+            \end{equation*}
+            Note that $(ad+cb-cd)\in I$, hence 
+            \begin{equation*}
+                \|\dot{ab}\|\leq \|ab-(ad+cb-cd)\|=\|(a-c)(b-d)\|\leq\|(a-c)\|\|(b-d)\|
+            \end{equation*}
+            Taking infimum over all $c,d$, we get
+            \begin{equation*}
+                \|(\dot{ab})\|\leq\|\dot{a}\|\|\dot{b}\|
+            \end{equation*}
+        \end{proof}
+        \qed
+
+    \begin{proposition}
+        If $\mathcal{A}$ is a Banach algebra and if $I$ is a closed ideal, then $\mathcal{A}/I$ is a Banach algebra for the norm $\|\dot{a}\|$ defined above.
+    \end{proposition}
+    Let $\mathcal{A}$ be a unital commutative Banach algebra over $\C$, let $I$ be a maximal ideal of $\mathcal{A}$, then $\mathcal{A}/I$ is a Banach algebra, if $\mathcal{A}/I$ has a proper ideal, then you can put this ideal back in $\mathcal{A}$ such that it contains $I$. By $I$ already being ideal, this implies that $\mathcal{A}/I$ does not contain any proper ideals.
+
+    Now coming back. Let nonzero element in $\mathcal{A}/I$ is invertible. The Gelfand Mazur theorem tells us
+    \begin{equation*}
+        \mathcal{A}/I\cong \C
+    \end{equation*}
+    Moreover, $\mathcal{A}/I=1_{\mathcal{A}/I}\C$. Then the quotient map
+    \begin{equation*}
+        \mathcal{A}\to\mathcal{A}/I\cong\C
+    \end{equation*}
+    is an element of $\mathcal{A}$, i.e. an algebra homomorphism $\varphi$, with the property $\varphi(I)=0$.
+
+    If $a\mathcal{A}\subset I$, then for $y\in a\mathcal{A}$, we have
+    \begin{equation*}
+        \varphi(y)=0
+    \end{equation*}
+    And we are therefore finally done. We thus have
+    \begin{equation*}
+        \|\widehat{a}\|=r(a)
+    \end{equation*}
+\end{proof}
+\qed
+
+
