@@ -763,9 +763,120 @@ Note it is easy to handle the direction from $1_{t\geq s}e^{i(t-s)D^2}$ to $e^{i
 By next time, this C-K will become obselete in the context of the Schrodinger equation. In $n\geq 3$, we need to discuss the endpoint case.
 
 \subsection{The forbidden endpoint in $n=2$}
+We start with $n\geq 2$. The endpoint when $n\geq 3$ is resolved by Keel-Tao in 1996. When $n\geq 3$, the endpoint case is
+\begin{equation*}
+    \mathcal{S}=L_t^2L_x^\frac{2n}{n-2}
+\end{equation*}
+There is not much difference from looking at the inhomogeneous or homogeneous operator. We consider
+\begin{equation*}
+    f(s)\mapsto \int e^{i(t-s)D^2}f(s)ds, L^2L^\frac{2n}{n+2}\to L^2L^\frac{2n}{n-2}
+\end{equation*}
+where the integral is over $\R$ or $t>s$ dependeing on inhomogeneous or homogeneous case. To avoid writing notations, we note $q_c=\frac{2n}{n-2}$, the difficulty is that
+\begin{equation*}
+    \|e^{it D^2}\|_{L^{q_c'\to L_{q_c}}}\lesssim\frac{1}{t}
+\end{equation*}
+where the convolution with $\frac{1}{t}$ does not have the mapping property $L^2\to L^2$, so we cannot apply Young's inequality in this case directly. This is also the reason why the endpoint case fails is dimension 2 (forbidden endpoint) since the kernel $K(t,x=0)=\frac{1}{t}1_{t\geq 0}$.
 
+If we focus on the integral over domain over $\R$, then it is just the $TT^*$ operator, which is expected to have the mapping property $L^2L^1\to L^2L^\infty$ in dimension 2.
+
+Suppose by contradiction that it is, then one looks at $*K; L^2L^1\to L^2L^\infty$, $f(t)\delta_{x=0}\to u(t,x=0)$, where $\delta_{x=0}$ can be chosen to be a limit of $L^1$ functions.
+\begin{equation*}
+    u(t,x=0)=\left(\frac{1}{t}1_{t\geq 0} \right)\ast f(t)
+\end{equation*}
+where does not map $L_t^2\to L_t^2$. Also, the first term, if one tries to make sense of it as a distribution, then its Fourier transform will not have a log component on it.
+
+However, $\ast\frac{1}{t}:L^2\to L^2$, which is called the Hilbert transform.
 
 \section{Lecture 5}
+\subsection{Endpoint case when $n=3$}
+We prove the case in $n\geq 3$ by restricting $t$ to $t\approx 2^j$
+\begin{equation*}
+    \frac{1}{t}1_{t\approx 2^j}\in L^1
+\end{equation*}
+To ge from fixed dyadic scale to various ones, we draw a picture.
+Suppose we focus on the case $t>s$, unlike the proof of CK lemma, we want to split inot equal pieces. We write
+\begin{equation*}
+    T=\sum_j T_j, T_j=\sum_{Q\in 2_j}1_Q\cdot e^{i(t-s)D^2}
+\end{equation*}
+where we let the output restricted to $Q$. In $Q_j$, $t-s\approx 2^j$. Using notations from last time, we have
+\begin{equation*}
+    1_Q\cdot e^{i(t-s)D^2}=1_{I_q}(t)1_{J_Q}(s)e^{i(t-s)D^2}
+\end{equation*}
+so we can apply Young's inequality:
+\begin{equation*}
+    \|T_j\|_{L^2L^{q_c'}\to L^2L^{q_c}}\lesssim 1(R)
+\end{equation*}
+which is called the restricted inequality. Now we want to add up different pieces but we cannot so far.
+
+In $(R)$, we cannot sum up. The idea of Keel-Tao is to expand the restricted inequality. We not only have this for $T_j$, instead of thinking of these as a linear operator $L^2L^{q_c'}\to L^2L^{q_c}$, we test the element in the dual space.
+\begin{equation*}
+    f\mapsto T_jf
+\end{equation*}
+changes to
+\begin{equation*}
+    \langle f,g\rangle \mapsto \langle T_jf, g\rangle
+\end{equation*}
+The restricted inequlaity $(R)$ tells us
+\begin{equation*}
+    |\langle T_jf, g\rangle|\leq\|f\|_{L^2L^{a_c'}}\|g\|_{L^2L^{q_c'}}
+\end{equation*}
+and what we want is to have
+\begin{equation*}
+    \sum_j|\langle T_jf, g\rangle|\leq \|f\|_{L^2L^{q_c'}}\|g\|_{L^2L^{q_c'}}
+\end{equation*}
+which is praphrased into a bilinear setting instead of a linear fashion. This idea is useful in nonlinear PDE's. You can match the properties of $f$ with properties of $g$ in some sense and to play with.
+
+As an intermediate step, we are going to have $(E)$.
+\begin{equation*}
+    |\langle T_jf, g\rangle|\leq 2^{j\beta(q_1,q_2)}\|f\|_{L^2L^{q_1}}\|g\|_{L^2L^{q_2}} (E)
+\end{equation*}
+the scale of rectangle will be changed if you change the scaling, so this can hold if one puts a factor in front. The factor contains a function $\beta$, which is nontrivial and linear in $1/q_1$ and linear in $1/q_2$. $\beta$ is also symmetric and is zero when $q_1=q_2=q_c$. So $\beta(q_1, q_2)$ is of the form $c(1/q_1+1/q_2-2/q_c)$.
+\begin{proof}[E]
+    We want to have enough points so that the convex hull contains the point $(1/q_c, 1/q_c)$ so that we can obtain the desired result by interpolation.
+
+    Since $|K(t,x)|\leq 1/t^{n/2}$, it maps $L^2L^1\to L^2L^\infty$ and mapping $L^2$ to $L^2$ since we are in a finite interval $(q_1'=1, q_2=\infty)$.
+
+    On the other hand, we want to use the nonendpoint estimates
+    \begin{equation*}
+        \langle T_jf, g\rangle \leq\|f\|_{L^{p_1'}L^{q_1'}}\|g\|_{L^{p_2'}L^{q_2'}}
+    \end{equation*}
+    Also we can restrict to intervals $t-s\approx 2^j$, and in such intervals, we can replace $p_1', p_2'$ by 2 using Holder inequality.
+    \begin{equation*}
+        \langle T_jf, g\rangle\leq 2^j\|f\|_{L^2L^{q_1'}}\|g\|_{L^2L^{q_2'}}
+    \end{equation*}
+    which holds for all $2\leq q_1,q_2\leq<q_c$.
+
+    Now we know $l_j^\infty$ estimates and we want $l_1^j$ estimates, interpolation theory would allow to replace $l^\infty$ by $l^1$, where one can find in Bergh-Loefstrom/ Triebel.
+
+    We can think of this in a concrete way. We look at spatial support of $f,g$:
+    \begin{equation*}
+        f=f_k(t)1_{I(t)}, g=g_l(s)1_{J(s)}, |I(t)|=2^k, |J(t)|=2^l
+    \end{equation*}
+    We thus have
+    \begin{equation*}
+        \|f\|_{L^2L^{q_1'}}=\|f_k\|_{L^2}e^{k/q_1'},  \|g\|_{L^2L^{q_2'}}=\|g_l\|_{L^2}e^{l/q_2'}
+    \end{equation*}
+    (E) implies
+    \begin{equation*}
+        |\langle T_jf, g\rangle|\leq 2^{j\beta(q_1,q_2)}\|f\|_{L^2L^{q_1}}\|g\|_{L^2L^{q_2}}\leq 2^{j\beta(q_1,q_2)}\|f_k\|_{L^2}e^{k/q_1'}\|g_l\|_{L^2}e^{l/q_2'}
+    \end{equation*}
+    We write $f=\sum f_k(t)1_{I_k(t)}, g=\sum g_l(s)1_{J_l(s)}$, and apply the upgraded version of estimate above to obtain. Last task: to decompose
+    \begin{equation*}
+        f=\sum f_k1_{I_k}, |I_k|=2^k, \|f\|_{L^{q'}}^{q'}\approx 2^k\|f_k\|_{L^\infty}^{q'}
+    \end{equation*}
+    suppose $f\in\R^+$ by replacing to $|f|f\to f^*$ a nondecreasing rearrangement of $f$, where the way to choose $F^*$ is
+    \begin{equation*}
+        |\{f^*\geq\lambda\}|=|\{|f|\geq\lambda\}|
+    \end{equation*}
+    Here, the dyadic decomposition is done on the base.
+    \begin{equation*}
+        |\langle T_jf, g\rangle|\leq \|(\|f_k2^{k/{q_c'}}\|_{l_k^2})\|_{L_t^2}\|(\|g_l2^{l/{q_c'}}\|_{l_l^2})\|_{L_t^2}
+    \end{equation*}
+    where we interchange $l, L^2$ and apply the estimate obtained from rearrangements and then we take advantage of $q_c'<2$, so we have $l^{q_c'}\subset l^2$.
+
+    Strichartz estimates are sharp for wave packets, and no other things make these sharp.
+\end{proof}
+
 
 \section{Lecture 6}
 We look at the Schrodinger equation $iu_t+\Delta u=f, u(t=0)=u_0$. Last time, we looked at Strichartz estimates:
@@ -970,4 +1081,266 @@ We would like to prove something like $X^{0,b}\subset L^{p_1}L^{q_1}$, then we l
 
 \end{proof}
 
+
+
+\section{Lecture 7}
+$X^{s,b}$ Bourgain spaces and
+\begin{equation*}
+    u\in X^{S,b} if \widehat{u}\langle\xi\rangle^x \langle \tau+\xi^2\rangle^b\in L^2
+\end{equation*}
+
+\begin{equation*}
+    \frac{i\partial_t+\Delta}{-\tau-\xi^2}: X^{S,b}\to X^{S,b-1}
+\end{equation*}
+Bouragin  solve in inhomogeneous spaces
+\begin{equation*}
+    (i\partial_t+\Delta)u-f, u(0)=u_0
+\end{equation*}
+\begin{equation*}
+    (u_0, f)\to u
+\end{equation*}
+where $u_0\in H^s$, and $f\in X^{S,b-1}$, where $u\in X^{S,b}$.
+
+Now we ask the question: is the follwoing bound true?
+\begin{equation*}
+    \|u\|_{X^{S,b}}\leq \|u_0\|_{H^s}+\|f\|_{X^{S,b-1}}
+\end{equation*}
+Suppose $f=0, s=0$, then we have
+\begin{equation*}
+    \widehat{u}=\widehat{u_0}(\xi)\cdot\delta_{\tau=|\xi|^2}\not\in X^{S,b}, \text{ for all } s, b
+\end{equation*}
+
+Hence, we only look at solutions that are local in time, i.e. we insert a cutoff funciton.
+
+Hence we ask if the following bound holds:
+\begin{equation*}
+    \|\chi u\|_{X^{S,b}}\leq \|u_0\|_{H^s}+\|f\|_{X^{S,b-1}}
+\end{equation*}
+
+\begin{equation*}
+    \widehat{\chi u}=\widehat{\chi}\ast_\tau\widehat{u}=\widehat{\chi}\ast_\tau\widehat{u_0}(\xi)\delta_{\tau+|\xi^2}=\widehat{u_0}(\xi)\widehat{\chi}(\tau+\xi^2)
+\end{equation*}
+
+Now we get
+\begin{equation*}
+    \|\chi u\|_{X^{0,b}}=\|\widehat{u_0}(\xi)\widehat{\chi}(\tau+\xi^2)\langle \tau+\xi^2\rangle^b\|_{L^2}\leq \|\widehat{u_0}\|_{L^2}
+\end{equation*}
+Note this is because $\widehat{\chi}(\tau+\xi^2)\langle \tau+\xi^2\rangle^b\in\mathcal{S}$, and $\mathcal{S}\subset L^2$. Hence, we lok at the contribution of $f$,
+\begin{equation*}
+    (i\partial_t+\Delta)(\chi u)=\chi(i\partial_t+\Delta)u_i\chi_t u
+\end{equation*}
+
+We would like to separate $\|\chi u\|_{X^{S,b}}$ into two parts into $\langle \tau+\xi^2\rangle>1$ or not.
+\begin{equation*}
+    \|\chi u\|_{X^{S,b}}=\|(i\partial_t+\Delta)(\chi u)\|_{X^{S,b-1}}+\|\chi u\|_{X^{S,0}}
+\end{equation*}
+For $\langle \tau+\xi^2\rangle<1$, we have the second term in $L^2$.
+
+\begin{equation*}
+    \|\chi u\|_{X^{S,b}}\leq \|f\|_{X^{S,b-1}}+\|u\|_{X^{S,0}}
+\end{equation*}
+Hence it remains to show
+\begin{equation*}
+    \|\chi u\|_{L^2H^s}\leq\|f\|_{X^{S,b-1}}+\|u_0\|_{H^s}
+\end{equation*}
+We will replace $\|\chi u\|_{L^2H^s}$ with $\|\chi u\|_{L^\infty H^s}$.
+Note that if we have $u_0\in H^s$, we have $\chi u\in L^\infty H^s$. Now it remains to examine the contribution of $f$.
+\begin{equation*}
+    u(t)=\int_0^t e^{i(t-s)D^2}f(s)ds
+\end{equation*}
+Note that
+\begin{equation*}
+    \widehat{u}(t)=\int_0^t e^{i(t-s)\xi^2}\widehat{f}(s)ds
+\end{equation*}
+Now it's enough to consider fixed $\xi$. Hence we have
+\begin{equation*}
+    \widehat{u}(t,\xi)=e^{it\xi^2}\int_0^t e^{-is\xi^2}\widehat{f}(s,\xi)ds
+\end{equation*}
+Let
+\begin{equation*}
+    \widehat{g}(s,\xi)=e^{-is\xi^2}\widehat{f}(s,\xi)
+\end{equation*}
+Now we ask, where is $\widehat{g}$?
+Note $e^{-is\xi^2}$ is a translation in the Fourier time varialbe.
+\begin{equation*}
+    \widehat{g}(\tau,\xi)=\widehat{f}(\tau-\xi^2,\xi)
+\end{equation*}
+where $\widehat{f}\in L_{\langle\xi\rangle^s, \langle\tau+\xi^2\rangle^{b-1}}^2$, hence this puts $\widehat{g}$ in $L_{\langle\xi\rangle^s, \langle\tau\rangle^{b-1}}^2$. This gives $g\in H_t^{b-1}H_x^S$.
+
+We have shown we are trying to bound the following in $L_{loc}^\infty$.
+\begin{equation*}
+    \int_0^tg(s)ds
+\end{equation*}
+If $b=1$, then this is $L^2$, hence is computable. If $b<1$, consider
+\begin{equation*}
+    I=\langle g, 1_{[0,t]}\rangle
+\end{equation*}
+For $g\in H^{b-1}$, we would like to have $1_{[0,t]}\in H^{1-b}$.
+
+\begin{equation*}
+    \mathcal{F}_{1_{[0,t]}}=\frac{1}{\tau}(1-e^{it\tau})
+\end{equation*}
+and this gives $\frac{1}{\tau^{1/2+}}\in L^2$.
+\begin{proposition}
+    We have
+    \begin{equation*}
+        1_{[0,t]}\in H^s, \text{ for } s<1/2
+    \end{equation*}
+\end{proposition}
+\begin{remark}
+$H^s$ embeds into $C^0$ the space of continuous functions, for $s>1/2$, hence agrees with our computation.
+\end{remark}
+
+Now we come back and consider
+\begin{equation*}
+    \begin{cases}
+    iu_t+\Delta u=u^2\\
+    u(0)=u_0\in H^S
+    \end{cases}
+\end{equation*}
+Goal: show there is a local solution in $X^{S,b}$. Note that
+\begin{equation*}
+    u=e^{itD^2}u_0+\int_0^te^{i(t-s)D^2}u^2ds
+\end{equation*}
+where we think of $u= N(\chi u)$, and try to apply the contraction principle in $X^{S,b}$. We can make $\chi(0)=1$ such that $\chi u(0)=u_0$, i.e. it agrees with our initial data. However, this is not the solution to our original problem anymore.
+\begin{equation*}
+    \begin{cases}
+        (i\partial_t+\Delta)u=(\chi u)^2\\
+        u(0)=u_0
+    \end{cases}
+\end{equation*}
+This coincides with the original solution as along as $\chi(t)=1$. Now we consider
+\begin{equation*}
+    \chi u=\chi N(\chi u)
+\end{equation*}
+And we apply contraction principle for $\chi u$. However, this contraction defeats scaling. 
+
+Now we ask the question, is there a counterpart of the Bourgain space which works at $b=\pm\frac{1}{2}$. These spaces are important because scaling works and linear equations are taken into consideration.
+
+For $u\in X^{S,b}$, we consider
+\begin{equation*}
+    v(t)=e^{-itD^2}u(t), u(t)=e^{itD^2}v(t)
+\end{equation*}
+This multiplier pushes $u$ back to time 0 along the Schrodinger flow. For example, if $u$ solves the homogeneous equation, then
+\begin{equation*}
+    u(t)=e^{itD^2}u_0\Rightarrow v(t)=u_0
+\end{equation*}
+
+If we try to measure $\|u\|_{X^{S,b}}$, it is like measuring 
+\begin{equation*}
+    \|u\|_{L_{\langle\xi\rangle^s, \langle\tau+\xi^2\rangle^{b-1}}^2}=\|v\|_{L_{\langle \xi\rangle^2\langle \tau\rangle^b}^2}
+\end{equation*}
+This is to say
+\begin{equation*}
+    \|u\|_{X^{S,b}}=\|v\|_{H_t^b\dot{H}_x^s}
+\end{equation*}
+Hence we get,
+\begin{equation*}
+    \|v\|_{L^\infty H^s}=\|u\|_{L^\infty H^s}\leq\|u\|_{X^{S,b}}, b>1/2
+\end{equation*}
+Writing this in terms of $v$, we get
+\begin{equation*}
+    \|v\|_{L^\infty H^s}\leq \|v\|_{H_t^bH_x^s}
+\end{equation*}
+And note $H^b\subset L^\infty$, when $b>1/2$. 
+
+Note that if $b=1/2$, we have
+\begin{equation*}
+    \dot{H}^{1/2}\not\subset L^\infty, \dot{H}^{1/2}\subset BMO
+\end{equation*}
+
+Now can we find a space where $b=1/2$ and is scale invariant?
+\begin{equation*}
+    \begin{cases}
+        L^\infty\subset L^\infty\\
+        \dot{W}^{1,1}\subset L^\infty
+    \end{cases}
+\end{equation*}
+$W^{1,1}$ is the space of functions with continuous derivatives. We interpolate between $L^\infty$ and $\dot{W}^{1,1}$. And note 2 is between 1 and $\infty$, we have
+\begin{equation*}
+    [L^\infty, \dot{W}^{1,1}]_{[1/2]}
+\end{equation*}
+
+However, there are spaces that come very close to it.
+\begin{equation*}
+    []_{[1/2]}\sim V^2, U^2\subset L^\infty
+\end{equation*}
+And $V^1=BV$, the space of functions of boudned variation. 
+We have the norm defined as folows:
+\begin{equation*}
+    \|u\|_{V^1}=\sup_{t_j}\sum|u(t_{j+1})-u(t_j)|
+\end{equation*}
+Note that
+\begin{equation*}
+    W^{1,1}\subset BV
+\end{equation*}
+We would like to replace 1 with $p$,
+\begin{equation*}
+    \|u\|_{V^p}^p=\sup_{t_j}\sum|u(t_{j+1})-u(t_j)|^p
+\end{equation*}
+As $p\to\infty$, we have that this resembles the $L^\infty$ norm.
+Note that the pointwise values of functions in $u\in V^p$ is important, but we only care about functions that are defined almost everywhere.
+
+Hence to avoid this issue, we know for any $u$ of boudned variation, we could have a left and right limit, hence we can enforce $u$ to be left or right continuous.
+
+Thus, we have
+\begin{equation*}
+    BV=V^1\subset V^p\subset V^q\subset L^\infty
+\end{equation*}
+for any $p,q$, and we do not care about the distance between $p$ and $q$.
+
+Note that
+\begin{equation*}
+    U^2\subset [L^\infty, W^{1,1}]_{1/2}\subset V^2
+\end{equation*}
+And for the LHS inclusion, we have $U^2$, which is an atomic space.
+
+Atoms $a\in\mathcal{A}$, are objects of size 1. and for every $u$ in the space,
+\begin{equation*}
+    u=\sum c_ja_j, a_j\in\mathcal{A}
+\end{equation*}
+We can think of $c_j$'s as basis of our space. We would like the sum to converge, hence we have
+\begin{equation*}
+    \|u\|=\inf\sum|c_j|
+\end{equation*}
+taking the infimimum to ensure this is unique.
+
+Now it remains to specify the atoms.
+\begin{equation*}
+    a=\sum_j b_j1_{I_j}, \text{ where } I_j \text{ are disjoint }
+\end{equation*}
+And we would like to have $a$ to have size 1, hence we have
+\begin{equation*}
+    \sum_j|b_j|^2=1, i.e. l^2
+\end{equation*}
+Note $I_j$'s can be as large and as small as you want.
+
+\begin{example}
+    $l^1$ is an atomic space, with $a=\delta_{j=j_0}$. (can also heuristically think of $L^1$ as an atomic space, with atoms being the dirac delta functions)
+\end{example}
+\begin{lemma}
+    We have
+    \begin{equation*}
+        U^2\subset V^2
+    \end{equation*}
+\end{lemma}
+\begin{proof}
+    Take $a\in U^2$, do we have $a\in V^2$? Note that 
+    \begin{equation*}
+        \sum_j|a(t_{j+1})-a(t_j)^2\leq\sum|b_{j_{k+1}}-b_{jk}|^2\leq\sum b_j^2=1
+    \end{equation*}
+\end{proof}
+
+Now consider $U^2(\R), V^2(\R)$, and recall the transformation:
+\begin{equation*}
+    u\to v=e^{-itD^2}u
+\end{equation*}
+where $u\in X^{S,b}$, and $v\in H^bH^S$, and 
+\begin{equation*}
+    u\in U_\Delta ^pH^s\iff v\in U^pH^s
+\end{equation*}
+and 
+\begin{equation*}
+    \|u\|_{V_\Delta^pH^s}^p=\|v\|_{V^pH^s}^2=\inf \sum\|v(t_{j+1})-v(t_j)\|_{H^s}^p=\inf\sum\|u(t_{j+1})-e^{i(t_{j+1}-t_j)D^2}u(t_j)\|_{H^s}^p
+\end{equation*}
 

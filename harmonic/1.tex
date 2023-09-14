@@ -504,10 +504,63 @@ FT has nice following properties that are easily verified.
 
 Note that for finite dimensional measure spaces $\T$, by Holder's inequality $L^p(\T)$ embeds in $L^1(\T)$ for $p>1$. However, the same embedding does not hold for $L^p(\R^n)$, and $L^1(\R^n)$. We've only defined the Fourier transform on $L^1(\R^n)$, but not all other $p>1$ yet. To define FT on these spaces, we start by defining it on a nicer class, the Schwartz functions.
 
-\begin{definition}
+\begin{definition}[Schwartz Space]
     $f$ is in the Schwartz space, $\mathcal{S}(\R^n)$ if $f\in C^\infty$, and if $f$ and all its derivatives decrease rapidly at infinity. Rigorously, it means for all $\alpha, \beta\in\N^n$, we have
     \begin{equation*}
         \sup_x|x^\alpha D^\beta f(x)|<\infty
     \end{equation*}
 \end{definition}
 
+This means at infinity, the functions decay faster than any powers of $x$. Note that
+\begin{equation*}
+    \mathcal{D}\subset\mathcal{S}
+\end{equation*}
+
+However, there exists elements such as $e^{-|x|^2}$ the Gaussian, which do not have compact support, yet the Gaussian is a Schwartz function.
+
+
+\begin{definition}[Tempered distributions]
+    $\mathcal{S}'$ is the space of linear functions on $\mathcal{S}$. $T\in\mathcal{S}'$ if for every sequence $\{\phi_n\}\subset\mathcal{S}$, such that $\phi_n\to\phi$, then we have
+    \begin{equation*}
+        \lim_{n\to\infty}T(\phi_n)=T(\phi)
+    \end{equation*}
+\end{definition}
+\begin{remark}
+    A sequence of functions $\{\phi_n\}$ converges to $\phi\in\mathcal{S}$, if for all $\alpha, \beta$, we have
+    \begin{equation*}
+        \sup_x|x^\alpha D^\beta(\phi_n(x)-\phi(x))|<\epsilon
+    \end{equation*}
+\end{remark}
+
+\begin{theorem}
+    The Fourier transform on $\mathcal{S}$ is continuous, and $\mathcal{S}$ is closed under taking Fourier transforms.
+
+    For any $f,g\in\mathcal{S}$, we have
+    \begin{equation*}
+        \int\hat{f}g=\int f\hat{g}
+    \end{equation*}
+    Moreover, for any $f\in\mathcal{S}$, we have the Fourier inversion formula:
+    \begin{equation*}
+        f(x)=\int_{\R^n} e^{2\pi ix\cdot\xi}f(\xi)d\xi
+    \end{equation*}
+\end{theorem}
+\begin{proof}
+    For $f,g\in\mathcal{S}$, we have $fg$ are integrable over $\R^n\times\R^n$. Hence
+    \begin{equation*}
+        \int\hat{f}g=\int f\hat{g}
+    \end{equation*}
+    follows from Fubini's theorem.
+    We will use the fact that if $f=e^{-\pi|x|^2}$, then $\hat{f}=f$. Given this, we have that
+    \begin{equation*}
+        f(0)\int \hat{g}=g(0)\int\hat{f}
+    \end{equation*}
+    If we take $g(x)=e^{-\pi|x|^2}$, thus we have
+    \begin{equation*}
+        f(0)=\int\hat{f}(\xi)d\xi
+    \end{equation*}
+    Then a translation in the physical space is a phase shift in the Fourier space, hence we have
+    \begin{equation*}
+        f(x)=\int e^{2\pi ix\cdot\xi}\hat{f}(\xi)d\xi
+    \end{equation*}
+\end{proof}
+\qed
