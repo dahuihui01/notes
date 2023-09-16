@@ -564,3 +564,113 @@ However, there exists elements such as $e^{-|x|^2}$ the Gaussian, which do not h
     \end{equation*}
 \end{proof}
 \qed
+
+
+\section{Lecture 10}
+Last time we introduced the approxiation to identity funcitons, and 
+\begin{exercise}
+    If $\{\phi_t\}$ are approxiation of identities and $f\ast \phi_t$ converges a.e. for all $f\in L^p, 1\leq p<\infty$, then it converges to $f$ pointwise almost everywhere.
+\end{exercise}
+\begin{remark}
+    Note that you can pick $\{\phi_t\}$ compactly supported and smooth, and would result in a Fourier transform that preserves where $f$ originally lies, i.e. if $f\in L^p$, we have $\phi_t\ast f\in L^p$ as well. Even you can't take derivatives of $f$, $\phi\ast f$ is smooth for $\phi\in\mathcal{S}$, since convolution picks up the better derivatives.
+\end{remark}
+
+Now we go back to the question of almost everywhere pointwise convergence.
+
+Fix $f$, we could approximate $f$ with a sequence by $\{f_n\}\subset\mathcal{S}$, for $f\in C_\infty(X)$, we do get almost everywhere convergence by remark from last time.
+
+Now we look at
+\begin{equation*}
+    \phi_t(f-f_n)
+\end{equation*}
+we would want this as an ``error'' for all large $n$, and all small $t$ on some $E\subset\R^n$, such that $m(\R^n\setminus E)<\epsilon$. This guarantees almost everywhere convergence, $\phi_t(f_n-f)$ could behave wildly on $\R^n\setminus E$, and it would not have mattered.
+
+Note this is a two parameter family in $t$ and $n$, taking advantage of what $\phi_t$ have in common, for all $t$.
+
+\begin{enumerate}
+    \item $\int \phi_t=1$.
+    \item They all seem to have some sort of bump near 0, and could be thought of as an average.
+\end{enumerate}
+
+\subsection{Weal type inequalities and a.e. convergence}
+
+
+\begin{theorem}
+    Let $\{T_t\}$ be a family linear of sublinear operators on $L^p(X,\mu)$, $t\in A\subset\R$, and define
+    \begin{equation*}
+        T^*f(x)=\sup_t|T_tf(x)|
+    \end{equation*}
+    this is definfed as the maximal funciton. If $T^*$ is of weak type-$(p,q)$, then the set
+    \begin{equation*}
+        \{f\in L^p(X,\mu): \lim_{t\to t_0}T_t(f)(x)=f(x), a.e. \}
+    \end{equation*}
+    is closed in $L^p(X,\mu)$.
+\end{theorem}
+\begin{remark}
+    If $T: L^p\to L^q$, then if $T$ is bounded then $T$ is of weak type $(p,q)$. In most situations, we will define $p=q$.
+\end{remark}
+
+Let $(X,\mu)$, $(Y,\nu)$ be measure spaces, and $T$ be an operator on $L^p(X,\mu)$ to measurable functions on $L^q$. All elements are $\geq 1$.
+\begin{definition}[weakly bounded]
+    For $q<\infty$, $T$ is weak type $(p,q)$ if there exists $C>0$,
+    \begin{equation*}
+        \nu\left(\{y\in Y: |T(f)(y)|>\lambda\} \right)\leq\left(\frac{C\|f\|_{L^p}}{\lambda} \right)^q
+    \end{equation*}
+\end{definition}
+\begin{example}
+    For $p=q=1$, we take $X=Y=\R$. We allow $T(f)$ to be the function $1/x$, which is not bounded of strong type.
+\end{example}
+
+\begin{exercise}
+    Weak type $(p,\infty)$ is equivalent to saying bounded from $L^p$ to $L^\infty$.
+
+    Strong $(p,q)$ means bounded from $L^p$ to $L^q$. And the exercise is to show the strong type implies the weak type. (This can be done using Chebyshev's inequality).
+\end{exercise}
+
+\begin{proof}[of theorem]
+    WLOG assume $t_0=0$. Assume $f_n\to f$ in $L^p$, and that
+    \begin{equation*}
+        T_t(f_n)\to f_n
+    \end{equation*}
+    as $t\to 0$ a.e. for every $f_n$.
+
+    The idea of ``oscilation.'' The goal is to show $T_t(f)\to f$ as $t\to 0$ almsot everywhere.
+
+    Define
+    \begin{equation*}
+        W_\lambda=\{x: \limsup_{t\to 0}|(T_t(f)-f)(x)|>\lambda \}
+    \end{equation*}
+    for each $\lambda>0$. We are done if we show 
+    \begin{equation*}
+        \mu(W_\lambda)=0
+    \end{equation*}
+    Note that 
+    \begin{equation*}
+        W_\lambda\subset\{x:\limsup_{t\to 0}|(T_t(f)-T_t(f_n))(x)|>\lambda/3\}\cup \{x: |(f-f_n)(x)|>\lambda/3\}
+    \end{equation*}
+    for any fixed $n$. Note that if we denote the first set as $A$, the second as $B$, then 
+    \begin{equation*}
+        \mu(B)\lesssim \left(\frac{\|f-f_n\|_{L^p}}{\lambda} \right)^p
+    \end{equation*}
+    For $A$, note that 
+    \begin{equation*}
+        A\subset \{x: T^*(f-f_n)(x)\geq\lambda/3\}
+    \end{equation*}
+    By weak type $(p,q)$ of $T^*$, hence we have
+    \begin{equation*}
+        \mu(B)\lesssim \left(\frac{\|f-f_n\|^p}{\lambda} \right)^p
+    \end{equation*}
+    We can make $\mu(A), \mu(B)<\epsilon$, by choosing $n$ large enough. Hence we have
+    \begin{equation*}
+        \mu(W_\lambda)<2\epsilon
+    \end{equation*}
+\end{proof}
+\qed
+
+\begin{definition}[Sublinear operator]
+    $T$ is called sublinear, we have 
+    \begin{equation*}
+        T(f+g)\leq T(f)+T(g), T(\lambda f)=\lambda T(f)
+    \end{equation*}
+\end{definition}
+

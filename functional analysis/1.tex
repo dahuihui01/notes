@@ -1173,4 +1173,153 @@ We will now dedicate the next 50 minutes of our life to proving this theorem.
 \end{proof}
 \qed
 
+\section{Lecture 10}
+It's Friday.
+
+Consider $C_\infty(\R)\subset C_b(\R)$, and $C_\infty(\R)$ is an ideal of $C_b(\R)$.
+
+And the abstract $C^*$-algebra is a Banach algebra with involution $*$, such that
+\begin{equation*}
+    \|a^*a\|=\|a\|^2
+\end{equation*}
+Zorn's lemma states that $C_\infty(\R)$ is contained in a maximal ideal, in a commutative Banach algebras, maximal ideals give rise to bounded multiplcative linear functionals.
+
+\begin{remark}
+    There is ideals of $C_b(\R)$ that are bigger than $C_\infty(\R)$.
+\end{remark}
+
+There exists linear functionals that are 0 on $C_\infty(\R)$, but nonzero on $C_b(\R)$, but such functional is not ``constructable.''
+
+We also have $c_0\subset l^\infty(\N)$, where $c_0$ are sequences that converge to 0 at infinity. Again, nonzero linear functionals exist on $l^\infty(\N)$, and is identically zero on $c_0$, but such is also not constructable.
+
+\begin{definition}
+    $\prod_{j=1}^\infty \Z_5$= the sequences of elements of $\Z_5$.
+    $\bigoplus \Z_5$ all sequences that are 0 except for finitely many number of entries.
+\end{definition}
+Note that $\bigoplus\Z_5$ is an ideal of $\prod^\infty\Z_5$. 
+
+\begin{proposition}
+    $l^\infty(\N)$ is not separable, $\prod^\infty \Z_5$ is not separable, nor is it finitely generated.
+\end{proposition}
+
+\begin{proposition}
+    If $\mathcal{A}$ is a unital commutative Banach algebra over $\C$, which is separable, and if $I$ is a closed ideal, then one can construct a maximal ideal containing $I$ by countable \textcolor{red}{what}
+\end{proposition}
+\begin{proof}
+    Let $\{a_n\}$ be a countable subset of $\mathcal{A}$, whose linear span is dense.  
+    \begin{lemma}
+        Note that $\mathcal{A}/I$ contains noninvertible elements if and only if $I$ is not maximal.
+    \end{lemma}
+    If $I$ is not maximal, then you can find the first $a_n$ such that $a_n\in\C 1_\mathcal{A}$ such that $a_n\not\in \mathcal{A}/I$, then 
+    \begin{equation*}
+        \overline{a_n\mathcal{A}/I} \text{ is a proper ideal of } \mathcal{A}
+    \end{equation*}
+    hence it generates a proper ideal in $\mathcal{A}$, we denote it as $I_1$. If $I_1$ is not maximal, then repeat the process. By $\{a_n\}$ being countable, and that they are dense, we have a countable addition, which gives a maximal ideal containing $I$ by countable inclusions.
+\end{proof}
+\qed
+
+\begin{remark}
+    $C_\infty(\R)$ is separable, and $C_b(\R)$ is not separable.
+\end{remark}
+
+Let's look at $L^\infty([0,1], m)$, where $m$ denotes the Lebesgue measure. This is a $C^*$-algebra, commutaitve, unital.
+
+Could you exhibit any linear functionals on $L^\infty$
+
+Note that $L^2([0,1],m)$, a Hilbert space, as an algebra on $L^2$, $L^\infty$ is clsoed for the strong operator topology on $\mathcal{B}(\mathcal{H})$ by the seminorm,
+\begin{equation*}
+    T\in\mathcal{B}(\mathcal{H}), T\to\|t\xi\|, \text{ for } \xi\in\mathcal{H}
+\end{equation*}
+
+For example, figure 1. We say that $L^\infty([0,1])$ is a von Neumann algebra. Every commutative von Neumann algebra looks like some $L^2([0,1], \mu)$. But note that noncommutative ones are quite interesting.
+
+For a commutative Banach algebra over $\C$, the Gelfand transform
+\begin{equation*}
+    a\mapsto\widehat{a}
+\end{equation*}
+We have
+\begin{equation*}
+    \|\widehat{a}\|_\infty=r(a)
+\end{equation*}
+\begin{proposition}
+    If $\|a^2\|=\|a\|^2$, then the Gelfand transform is isometric. Thus we have
+\begin{equation*}
+    \|\widehat{a}\|_\infty=\|a\|
+\end{equation*}
+\end{proposition}
+
+\begin{definition}
+    For $a_n$ involution on an algebra over $\C$, is a map $*$ from $\mathcal{A}\to\mathcal{A}$, with the properties
+\begin{enumerate}
+    \item $(a^*)^*=a$
+    \item $(a+b)^*=a^*+b^*$
+    \item $(\alpha a)^*=\overline{\alpha}a^*$ for $\alpha\in\C$.
+    \item $(ab)^*=b^*a^*$
+\end{enumerate}
+\end{definition}
+
+\begin{definition}[Banach $*$ algebra]
+    If $\mathcal{A}$ has a norm, then we say it is a $*$ normed if
+\begin{equation*}
+    \|a^*\|=\|a\|
+\end{equation*}
+If $\mathcal{A}$ is complete, then it is called a Banach $*$ algebra.
+\end{definition}
+
+Let $G$ be a discrete group, let $\mathcal{H}$ be a Hilbert space, then $Aut(\mathcal{H})=U(\mathcal{H})$ is the group of unitary operators on $\mathcal{H}$ to itself. By a unitary representation of $G$ on $\mathcal{H}$, we mean 
+\begin{definition}[Unitary representation]
+    A unitary representation of $G$ on $\mathcal{H}$ is a homomorphism $\pi: G\to U(\mathcal{H})$.
+\end{definition}
+We note that $C_c(G)\subset l^1(G)$, and
+\begin{equation*}
+    \pi_f=\sum_{x\in G}f(x)\pi_x, \pi_f\pi_g=\pi_{f\ast g}
+\end{equation*}
+Now we ask what is $(\pi_f)^*$?
+\begin{equation*}
+    (\pi_f)^*=\sum \overline{f(x)}\pi_x^*=\sum_{x\in G}\overline{f(x)}\pi_{x^{-1}}=\sum\overline{f(x^{-1})}\pi_x
+\end{equation*}
+So we gets
+\begin{equation*}
+    (f^*)(x)=\overline{f(x^{-1})}
+\end{equation*}
+This defines an involution on $l^1(G)$. And it is easy to check that 
+\begin{equation*}
+    \|f^*\|_{1}=\|f\|_1
+\end{equation*}
+\begin{remark}
+    The same process would not work for semingroups without the presence of $x^{-1}$ necessarily.
+\end{remark}
+
+We would like to think of this involution as some sort of complex conjugation.
+
+\begin{definition}
+    Let $\mathcal{A}$ be a Banach $*$-algebra is symmetric if whenever $a\in\mathcal{A}$, and $a^*=a$, then
+    \begin{equation*}
+        \sigma(a)\subset\R
+    \end{equation*}
+\end{definition}
+If one looks at $l^1$ over noncommutative groups, some are symmetric, some are not.
+
+\begin{example}
+    Let $\mathcal{A}=\C\bigoplus\C$, with $\|\cdot\|_\infty$. We define an involution:
+    \begin{equation*}
+        (\alpha, \beta)^*=(\overline{\beta}, \overline{a})
+    \end{equation*}
+    This is a well-defined involution. However, this is not symmetric under this involution.
+\end{example}
+
+\begin{proposition}
+    If $G$ is commutative, then $l^1(G)$ is symmetric.
+\end{proposition}
+\begin{equation*}
+    \widehat{\mathcal{A}}=\{\text{ set of homomorphisms } G\to\T\}
+\end{equation*}
+This is symmetric.
+
+\begin{proposition}
+    Let $\mathcal{A}$ be an abstract, unital $C^*$-algebra, then $\mathcal{A}$ is symmetric.
+\end{proposition}
+This is quite strong! (Every $C^*$-algebra is symmetric).
+
+
 
