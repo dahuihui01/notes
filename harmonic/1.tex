@@ -708,7 +708,7 @@ Note that we have
 \begin{equation*}
     S_R(f)=\check{X_{B_R}}\ast f:=D_R\ast f
 \end{equation*}
-where $D_R:=\int_{B_R}e^{2\pi ix\cdot\xi}d\xi$.
+where $D_R(x):=\int_{B_R}e^{2\pi ix\cdot\xi}d\xi$.
 
 \begin{proposition}
     (Like with the Fourier series), we have
@@ -723,6 +723,104 @@ where $D_R:=\int_{B_R}e^{2\pi ix\cdot\xi}d\xi$.
 \begin{remark}
     We have $\|S_R\|<\infty$ for $n=1$, but for $n>1$, this is only true for $p=2$. We will discuss this in the upcoming lectures.
 \end{remark}
+\begin{definition}[Dirichelt Kernel]
+    We've defined the Dirichlet series as $D_N(x)=\sum_{n=-N}^Ne^{2\pi inx}$, and likewise, in $n=1$, we define the Dirichlet kernel as
+    \begin{equation*}
+        D_R(x)=\int_{-R}^R e^{2\pi ix\cdot\xi}d\xi
+    \end{equation*}
+\end{definition}
+Note that
+\begin{equation*}
+    \int_{-R}^Re^{2\pi ix\cdot\xi}d\xi=\left.\frac{e^{2\pi ix\xi}}{2\pi ix}\right\vert_{-R}^R=\frac{1}{2\pi x}\sin(2\pi Rx)-\sin(-2\pi Rx)=\frac{\sin(2\pi Rx)}{\pi x}
+\end{equation*}
+\begin{lemma}
+    (We might use this in the future). We have
+    \begin{equation*}
+        D_R\not\in L^1
+    \end{equation*}
+    However, for any $p>1$, we have
+    \begin{equation*}
+        D_R\in L^p
+    \end{equation*}
+\end{lemma}
+\begin{proof}
+    We have $\int_{-R}^R \sin(2\pi Rx)/(\pi x)$ not integrable, however for $p>1$, we have
+    \begin{equation*}
+        \int |D_R|^p\lesssim\int_{-R}^R \frac{1}{|x|^p}<\infty
+    \end{equation*}
+\end{proof}
+\qed
+
+\section{Lecture 9}
+Recall we defined Dirichlet kernel for $n=1$, we first note that when $n>1$, we have $D_R$ integrates over a sphere with respect to a surface measure. Now we introduce partial summability methods just like with the Fourier series.
+\begin{equation*}
+    \sigma_R(f)=\frac{1}{R}\int_0^R S_r(f)dr
+\end{equation*}
+We have
+\begin{equation*}
+    \sigma_R(f)(x)=F_R\ast f(x)
+\end{equation*}
+where $F_R(x)=\frac{1}{R}\int_0^RD_r(x)dr$. 
+We thus have
+\begin{equation*}
+    F_R(x)=\frac{1}{R\pi x}(1-cos(2\pi xR)/2\pi x)=\frac{\sin(\pi Rx)}{R(\pi x)^2}
+\end{equation*}
+We have
+\begin{enumerate}
+    \item $F_R\geq 0$
+    \item $\|F_R\|_{L^1}=1$.
+\end{enumerate}
+Hence it's again, a redistribution of mass, and as $R\to\infty$, $F_R$ acts more and more like the dirac mass, the convolution identity. For $1\leq p<\infty$, we have
+\begin{equation*}
+    \lim_{R\to\infty}\|\sigma_R(f)-f\|_{L^p}=0
+\end{equation*}
+
+\subsection{Chapter 2}
+We will talk about partial sum convergence, and better behaved summability methods for $S_Rf$, and we disucss both cases in the sense of $L^p$ and a.e. pointwise convergence.
+
+\subsection{Chapter 2.1}
+\begin{definition}[Approximation of the identity]
+    Let $\phi\in L^1(\R^n)$, and $\int\phi=1$, and we define 
+    \begin{equation*}
+        \phi_t=t^{-n}\phi\left(\frac{x}{t} \right)
+    \end{equation*} 
+    And we call the family $\{\phi_t\}_{t>0}$ approxiation of the identity.
+\end{definition}
+We shall justify the name.
+\begin{proposition}
+    Let $\phi_t$ be defined above, then for any $f\in\mathcal{S}$, we have
+    \begin{equation*}
+        \lim_{t\to 0}\phi_t\ast f(x)=f(x)
+    \end{equation*}
+\end{proposition}
+\begin{proof}
+    It suffices to show that $\phi_t\to\delta$ in $\mathcal{S}'$, since it would imply
+    \begin{equation*}
+        \lim_{t\to 0}\phi_t\ast f(x)=\delta\ast f(x)=f(x)
+    \end{equation*}
+    And for any $f\in\mathcal{S}$, we have
+    \begin{equation*}
+        \phi_t(f)=\int t^{-n}\phi\left(\frac{x}{t}\right)f(x)dx=\int \phi(y)f(ty)dy
+    \end{equation*}
+    Hence as $t\to 0$, we have
+    \begin{equation*}
+        \lim_{t\to 0}\phi_t(f)=\int\phi(y)f(0)dy=f(0)
+    \end{equation*}
+    Hence $\phi_t\to\delta$, as $t\to 0$ in $\mathcal{S}'$.
+\end{proof}
+\qed
+
+\begin{remark}
+    Note that for Cesaro partial sum, we have the Fejer kernel as $F_R=\frac{1}{R}\int_0^R D_r(x)dr$, and in fact $F_R=\phi_{1/R}$.
+\end{remark}
+Next we see that the family of $\phi_t$ allows for convergence in $L^p$ norm as well.
+\begin{theorem}
+    Let $\{\phi_t\}_{t>0}$ be an approximation of the identity, then for any $f\in L^p$, $1\leq p<\infty$, we have
+    \begin{equation*}
+        \lim_{t\to 0}\|\phi_t\ast f-f\|_{L^p}=0
+    \end{equation*}
+\end{theorem}
+
 
 
 
