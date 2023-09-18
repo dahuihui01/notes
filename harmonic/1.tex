@@ -820,6 +820,24 @@ Next we see that the family of $\phi_t$ allows for convergence in $L^p$ norm as 
         \lim_{t\to 0}\|\phi_t\ast f-f\|_{L^p}=0
     \end{equation*}
 \end{theorem}
+\begin{proof}
+    We have
+    \begin{equation*}
+        \phi_t\ast f=\int\phi(y)[f(x-ty)-f(x)]dy
+    \end{equation*}
+    Note that there exists $\delta>0$, for $|ty|<\delta$, we have
+    \begin{equation*}
+        \|f(x-ty)-f(x)\|_{L_x^p}<\frac{\epsilon}{2\|\phi\|_{L^1}}
+    \end{equation*}
+    Hence we separate the integral to $|y|<\frac{\delta}{t}$, and $|y|>\frac{\delta}{t}$. We thus have
+    \begin{align*}
+        \|\phi_t\ast f-f\|_{L^p}&\leq \int|\phi(y)|\|f(x-ty)-f(x)\|_{L_x^p}dy\\
+        &=\int_{|y|<\delta/t}|\phi(y)|\|f(x-ty)-f(x)\|_{L_x^p}dy+\int_{|y|>\delta/t}|\phi(y)|\|f(x-ty)-f(x)\|_{L_x^p}dy\\
+        &<\frac{\epsilon}{2\|\phi\|_{L^1}}\int_{|y|<\delta/t}|\phi(y)|dy+2\|f\|_{L^p}\int_{|y|>\delta/t}|\phi(y)|dy\\
+        &<\epsilon
+    \end{align*}
+\end{proof}
+\qed
 
 
 
@@ -931,4 +949,74 @@ Let $(X,\mu)$, $(Y,\nu)$ be measure spaces, and $T$ be an operator on $L^p(X,\mu
         T(f+g)\leq T(f)+T(g), T(\lambda f)=\lambda T(f)
     \end{equation*}
 \end{definition}
+
+\section{Lecture 11}
+We will begin with one comment. (This is in 8.3 of the book)
+\begin{definition}[Lorentz space]
+    For $1\leq p<\infty$, we take $f\in L^{p,\infty}$ if and only if
+    \begin{equation*}
+        \lambda^p|\{|f|\geq\lambda\}|<C(f), \text{ for all } \lambda
+    \end{equation*}
+\end{definition}
+Note that this connects to the weak type definition that we introduced,
+we have $T$ is weak $(p,p)$, if and only if 
+\begin{equation*}
+    \|Tf\|_{p,\infty}\lesssim \|f\|_{L^p}
+\end{equation*}
+Note that $\|\cdot\|_{p,\infty}$ is a quasinorm, however, for $p\neq 1$, we have $\|\cdot\|_{p,\infty}$ generates a normable sapce.
+
+\begin{definition}[dyadic number]
+    For $k\in\mathbb{Z}$, we have $\lambda=2^k$ is a dyadic number.
+\end{definition}
+We could decompose $\R$ into dyadic intervals.
+\begin{equation*}
+    \R^+=...\bigsqcup (1,2]\bigsqcup (2,4]...
+\end{equation*}
+This type of decomposition is mild, i.e. if we try to estimate the $L^p$ norm of a function, then it is not too different from knowing how $f$ behaves within one $\lambda$ interval.
+
+\begin{definition}[mid-level sets]
+    For dyadic $\lambda$, define
+    \begin{equation*}
+        b_\lambda(f)=|\{lambda: \lambda<|f(x)|\leq 2\lambda\}|
+    \end{equation*}
+\end{definition}
+\begin{exercise}
+    \begin{enumerate}
+        \item $f\in L^p$ if and only if $\sum_{\lambda, dyadic}\lambda^pb_\lambda(f)<\infty$.
+        \item $f\in L^p$, if and oly if each $\lambda^pb_\lambda(f)$ is uniformly bounded.
+    \end{enumerate}
+\end{exercise}
+\begin{remark}
+    Note that the only way for $\sum_\lambda^p b_\lambda(f)$ to blow up is to have many $b_\lambda(f)$ to be 1 for n many lambda's, i.e. blow up in a log fashion.
+\end{remark}
+We recall that for $f\in\mathcal{S}$, we have
+\begin{equation*}
+    \phi_t\ast f\to f \text{ pointwise a.e.}
+\end{equation*}
+
+Hence if $\limsup_{t\to 0}|\phi_t\ast f(x)|$ is weak type $(p,p)$, we know a.e. convergence for $p\in [1,\infty)$. This is indeed true, and we will prove it in the upcoming lectures.
+\begin{exercise}
+    Show that this holds for weak$ (\infty,\infty)$.
+\end{exercise}
+
+\subsection{Chapter 2.3 Marcinkiewicz interpolation theorem}
+
+This interpolation thoerem allows us to reduce the case to $p=1$ (given that we know it holds for $p=\infty$, for the convergence of $|\phi_t\ast f|$.
+
+\begin{remark}
+    We cannot apply Riesz Thorin, since $\limsup_{t\to 0}|\phi_t\ast f(x)|$ is not linear.
+\end{remark}
+
+\begin{theorem}[Marcinkiewicz interpolation theorem]
+    Let $(X,\mu), (Y,\nu)$ be measure spaces, and $1\leq p_0<p_1<\infty$. Let $T$ be a sublinear operator form $L^p(X,\mu)+ L^{p_1}(X,\nu)$ to measurable functions on $Y$.
+
+    If $T$ is weak type $(p_0, p_0)$ and weak $(p_1, p_1)$, then $T$ is strong type $(p,p)$, for $p_0<p<p_1$.
+\end{theorem}
+\begin{remark}
+    Marcinkiewicz is applicable to sublinear operators, but only from $L^p\to L^p$. Riesz-Thorin only allows for linear operators, but could go from $L^p\to L^q$. The complex interpolation that stems from Riesz-Thorin also can be applied to a family of operators.
+\end{remark}
+\begin{remark}
+    Tomas-Stein constructed a family of operators, and then we applied Riesz-Thorin.
+\end{remark}
+
 
