@@ -999,16 +999,15 @@ Hence if $\limsup_{t\to 0}|\phi_t\ast f(x)|$ is weak type $(p,p)$, we know a.e. 
     Show that this holds for weak$ (\infty,\infty)$.
 \end{exercise}
 
-\subsection{Chapter 2.3 Marcinkiewicz interpolation theorem}
-
-This interpolation thoerem allows us to reduce the case to $p=1$ (given that we know it holds for $p=\infty$, for the convergence of $|\phi_t\ast f|$.
+\section{Chapter 2.3 Marcinkiewicz interpolation theorem}
+This interpolation thoerem allows us to reduce the case to $p=1$ (given that we know it holds for $p=\infty$). for the convergence of $|\phi_t\ast f|$.
 
 \begin{remark}
     We cannot apply Riesz Thorin, since $\limsup_{t\to 0}|\phi_t\ast f(x)|$ is not linear.
 \end{remark}
 
 \begin{theorem}[Marcinkiewicz interpolation theorem]
-    Let $(X,\mu), (Y,\nu)$ be measure spaces, and $1\leq p_0<p_1<\infty$. Let $T$ be a sublinear operator form $L^p(X,\mu)+ L^{p_1}(X,\nu)$ to measurable functions on $Y$.
+    Let $(X,\mu), (Y,\nu)$ be measure spaces, and $1\leq p_0<p_1\leq\infty$. Let $T$ be a sublinear operator form $L^p(X,\mu)+ L^{p_1}(X,\nu)$ to measurable functions on $Y$.
 
     If $T$ is weak type $(p_0, p_0)$ and weak $(p_1, p_1)$, then $T$ is strong type $(p,p)$, for $p_0<p<p_1$.
 \end{theorem}
@@ -1018,5 +1017,59 @@ This interpolation thoerem allows us to reduce the case to $p=1$ (given that we 
 \begin{remark}
     Tomas-Stein constructed a family of operators, and then we applied Riesz-Thorin.
 \end{remark}
+\begin{proof}
+    We define super-level sets as follows. For $f: X\to\C$, measuralbe, define
+    \begin{equation*}
+        a_f(\lambda)=\mu(\{x\in X: |f(x)|>\lambda\})
+    \end{equation*}
+\begin{proposition}
+    Let $\phi:[0,\infty)\to [0,\infty)$ be differentiable, increasing with $\phi(0)=0$, then we have
+    \begin{equation*}
+        \int_X\phi(|f(x))|d\mu=\int_0^\infty\phi'(\lambda)a_f(\lambda) d\lambda
+    \end{equation*}
+\end{proposition}
+The proof is let as an exercise.
+\begin{exercise}
+    What is the LHS in terms of $b_f(\lambda)$.
+\end{exercise}
+We will let $\phi(t)=t^p$.
+
+Let $f=f_0+f_1$, where $f_0=f\chi_{x:|f(x)|>c\lambda}$, and $f_1=f\chi_{x:|f(x)|\leq c\lambda}$, for some $c>0$ to be determined later.
+
+We have a simple observation that
+\begin{equation*}
+    a_{Tf}(\lambda)\leq a_{Tf_0}\left(\frac{\lambda}{2} \right)+a_{Tf_1}\left(\frac{\lambda}{2} \right)
+\end{equation*}
+We will prove the $p_1<\infty$ case.
+\begin{exercise}
+    Prove it for $p_1=\infty$ case.
+\end{exercise}
+
+
+Note that we have
+\begin{align*}
+    \int_X|Tf|^pd\nu&=\int_0^\infty p\lambda^{p-1}a_{Tf}(\lambda)d\nu\\
+    &\leq p\int_0^\infty\lambda^{p-1}a_{Tf_0}\left(\frac{\lambda}{2} \right)d\nu+p\int_0^\infty\lambda^{p-1}a_{Tf_1}\left(\frac{\lambda}{2} \right)d\nu\\
+    &=p\int_0^\infty\lambda^{p-1}\left(\frac{A_0}{\lambda/2}\|f_0\|_{L^{p_0}} \right)^{p_0}d\nu+p\int_0^\infty\lambda^{p-1}\left(\frac{A_1}{\lambda/2}\|f_1\|_{L^{p_1}} \right)^{p_1}d\nu\\
+    &\leq p\int_0^\infty \lambda^{p-1}A_0^{p_0}2^{p_0}\lambda^{-p_0}\int_{\{x: |f(x)|>c\lambda\}}|f(x)|^{p_0}d\mu+\text{ similar term }\\
+    &=p\int |f(x)|^{p_0}2^{p_0}A_0^{p_0}\int_0^{|f(x)|/c}\lambda^{p-p_0-1}d\lambda
+\end{align*}
+Optimizing $c$, we have
+\begin{equation*}
+    \|Tf\|_{L^p}2p^{1/p}\left(\frac{1}{p-p_0}+\frac{1}{p_1-p} \right)^\frac{1}{p}A_0^{1-\theta}A_1^\theta\|f\|_{L^p}
+\end{equation*}
+
+where $A_0=\|T\|_{L^{p_0}\to L^{p_0}}, A_1=\|T\|_{L^{p_1}\to L^{p_1}}$.
+
+
+Note that for the first term, we have
+\begin{equation*}
+    \|f_0\|_{p_0}^{p_0}=\int|f_0|^{p_0}d\mu\leq (c\lambda)^{p_0-p}\int|f_0|^pd\mu=(c\lambda)^{p_0-p}\|f\|_{L^p}^p
+\end{equation*}
+
+
+
+
+\end{proof}
 
 

@@ -1323,3 +1323,138 @@ This is quite strong! (Every $C^*$-algebra is symmetric).
 
 
 
+\section*{Lecture 11}
+Let $\mathcal{A}$ be a *-Banach algebra.
+\begin{definition}
+    $\mathcal{A}$ is symmetric if for any $a\in\mathcal{A}$, we have
+    \begin{equation*}
+        a^*=a
+    \end{equation*}
+    we have $\sigma(a)\in\R$.
+\end{definition}
+
+Note that a $C^*$ algebra is necessarily a *-algebra. Hence we have
+\begin{equation*}
+    \|a\|^2=\|a^*a\|\leq\|a^*\|\|a\|
+\end{equation*}
+And we apply it to $a^*$, hence we get
+\begin{equation*}
+    \|a^*\|\leq\|a\|
+\end{equation*}
+Hence the involution property is satisfied.
+
+\begin{proposition}
+    Let $\mathcal{A}$ be a unital $C^*$-algebra, i.e. we have
+    \begin{equation*}
+        \|a^*a\|=\|a\|^2, \forall a\in\mathcal{A}
+    \end{equation*}
+    Then $\mathcal{A}$ is symmetric.
+\end{proposition}
+In the Gelfand Noimark paper (1943), 
+\begin{proof}[Arens Truck, 1946]
+    Given $a\in\mathcal{A}$ with $a^*=a$, for any $t\in\R$, let $b=a+it$, we look at $b^*b=(a-it)(a+it)=a^2+t^2$. So we have
+    \begin{equation*}
+        \|b^*b\|\leq\|a^2\|+t^2
+    \end{equation*}
+    Now let $\lambda\in\sigma(a)$, with $\lambda=r+is$, we would like to show $s=0$. Note we have $\lambda+it\in\sigma(b)$, this gives
+    \begin{equation*}
+        \lambda+it=r+i(s+t)\in\sigma(b)
+    \end{equation*}
+    Then we have
+    \begin{equation*}
+        |r+i(s+t)|\leq\|b\|
+    \end{equation*}
+    Hence
+    \begin{equation*}
+        r^2+(s+t)^2|r+i(s+t)|^2\leq\|b^2\|=\|b\|^2=\|b^*b\|\leq\|a^2\|+t^2
+    \end{equation*}
+    We thus have
+    \begin{equation*}
+        r^2+s^2+2st\leq\|a^2\|, \text{ for all } t
+    \end{equation*}
+    This gives $s=0$.
+\end{proof}
+\qed
+
+Let's step back. Let $\mathcal{A}$ be a commutative symmetric Banach *-algebra. Then if $a\in\mathcal{A}$, and if $a^*=a$, so $\sigma(a)\subset\R$. But $\sigma(a)=\text{ range } of \widehat{a}$, so $\mathcal{A}$ is an $\R$-valued function on $\mathcal{A}$.
+
+For any $a\in\mathcal{A}$, we have
+\begin{equation*}
+    a=\frac{a+a^*}{2}+i\frac{a-a^*}{2i}=a_r+ia_i
+\end{equation*}
+then $\widehat{a}=\widehat{a_r}+i\widehat{a_i}$, note $a^*=a_r-ia_i$, then we have
+\begin{equation*}
+    \widehat{a^*}=\widehat{a_r}-i\widehat{a_i}=\overline{\widehat{a}}
+\end{equation*} 
+Thus, we have
+\begin{equation*}
+    \widehat{a^*}=\overline{\widehat{a}}
+\end{equation*}
+So $a\mapsto\widehat{a}$ is a *-algebra homomorphism of $\mathcal{A}$ into $C(\widehat{\mathcal{A}})$.
+
+For any unital commutative Banach algebra $\mathcal{A}$, then the image of the Gelfand transform $\Gamma$, separates the points of $\widehat{\mathcal{A}}$.
+
+\begin{proof}
+    If $\varphi,\psi\in\in\widehat{\mathcal{A}}$, and $\Gamma(a)(\varphi)=\Gamma(a)(\psi)$, then 
+    \begin{equation*}
+        \varphi(a)=\psi(a), \text{ for all } a
+    \end{equation*}
+    Hence $\varphi=\psi$.
+\end{proof}
+\qed
+
+\begin{proposition}
+    If $\mathcal{A}$ is a unital symmetric Banach *-algebra, then the image of $\Gamma$ is dense in $C(\widehat{\mathcal{A}})$.
+\end{proposition}
+\begin{proof}[Key ingredient: Stone-Weierstrass]
+    $\{\Gamma(\varphi):\varphi\in\widehat{\mathcal{A}}\}$ is a unital subalgebra of $C(\widehat{\mathcal{A}})$ that separates the points of $\mathcal{A}$, and is closed under taking complex conjugates, so Stone-Weierstrass theorem applies (a compact space and a unital subalgebra of continuous functions that separates the points of the space, and closed under complex conjugation, then this algebra is dense for the $\|\cdot\|_\infty$ norm).
+\end{proof}
+\qed
+
+\begin{theorem}[Little Galfand-Naimark theorem]
+    Let $\mathcal{A}$ be a unital commutative $C^*$-algebra (abstract, which doesn't include hilbert space), then the Gelfand transform
+    \begin{equation*}
+        \Gamma(a)(\varphi)=\varphi(a)
+    \end{equation*}
+    is an isometric *-isomorphism of $\mathcal{A}$ into $C(\widehat{\mathcal{A}})$.    
+\end{theorem}
+\begin{proof}
+    Since $\mathcal{A}$ is symmetric, the range of the Gelfand transform is dense. We also saw that $\|a^{2^n}\|=\|a\|^{2^n}$, so the spectral radius of $a$, $r(a)=\|a\|=\|\Gamma(a)\|$. 
+
+    Therefore $a\mapsto\Gamma(a)$ is isometric, and the range of $\Gamma(a)$ is norm-closed.
+\end{proof}
+\qed
+
+\begin{remark}
+    In a commutative Banach algebra, we have $r(a)=\|\widehat{a}\|_\infty$, and have $r(ab)\leq r(a)r(b)$, hence $\|a^*a\|=\|a\|^2, r(a^*a)\leq r(a)^2$, we have
+    \begin{equation*}
+        \|a\|^2\leq r(a)^2\leq \|a\|^2
+    \end{equation*}
+\end{remark}
+
+For $T\in\mathcal{B}(\mathcal{H})$, and $T=T^*$, then
+\begin{equation*}
+    C^*(T,I)=\cong C(\sigma(T))
+\end{equation*}
+
+\begin{proposition}
+    Let $G$ be a commutative group, then $l^1(G)$ with its * is symmetric.
+\end{proposition}
+\begin{proof}
+    Let $\mathcal{A}=l^1(G)$, then $\widehat{\mathcal{A}}$ is isomorphic to the homomorphisms of $G$ into $T$.
+
+    If $\varphi\in\widehat{\mathcal{A}}$, then
+    \begin{equation*}
+        \varphi(f):=\sum_{x\in G} f(x)\varphi(x), f\in l^1(G)
+    \end{equation*}
+    Then \begin{equation*}
+        \varphi(f^*)=\sum f^*(x)\varphi(x)=\sum\overline{f(x^{-1})}\varphi(x)=\sum\overline{f(x)}\varphi(x^{-1})=\sum\overline{f(x)}\overline{\varphi(x)}=\overline{\varphi(f)}
+    \end{equation*}
+
+    Note how we might have homomorphisms not mapping into $\T$ if $G$ is not commutative.
+\end{proof}
+\qed
+
+\begin{proposition}
+    For $G$ commutative, the range of the Gelfand transform $\Gamma$, which is the Fourier transform in this setting, this is dense in $C(\widehat{G})$. However, this is not isometric, and the range is not norm-closed unless $G$ is finite.
+\end{proposition}
