@@ -550,7 +550,7 @@ However, there exists elements such as $e^{-|x|^2}$ the Gaussian, which do not h
         \int\hat{f}g=\int f\hat{g}
     \end{equation*}
     follows from Fubini's theorem.
-    We will use the fact that if $f=e^{-\pi|x|^2}$, then $\hat{f}=f$. Given this, we have that
+    In the following lemma, we show if $f=e^{-\pi|x|^2}$, then $\hat{f}=f$. Given this, we have that
     \begin{equation*}
         f(0)\int \hat{g}=g(0)\int\hat{f}
     \end{equation*}
@@ -562,8 +562,168 @@ However, there exists elements such as $e^{-|x|^2}$ the Gaussian, which do not h
     \begin{equation*}
         f(x)=\int e^{2\pi ix\cdot\xi}\hat{f}(\xi)d\xi
     \end{equation*}
+    \begin{lemma}[Gaussian is invariant under FT]
+       If $f=e^{-\pi|x|^2}$, then we have
+       \begin{equation*}
+        \hat{f}(\xi)=e^{-\pi|\xi|^2}
+       \end{equation*}
+    \end{lemma}
+    \begin{proof}
+        We note that it suffices to show this for the $n=1$ case. And $f=^{-\pi x^2}$ solves the differential equation below:
+        \begin{equation*}
+            \begin{cases}
+                u'+2\pi xu=0\\
+                u(0)=1
+            \end{cases}
+        \end{equation*}
+        To show $\hat{f}=f$, it suffices to show $\hat{f}$ solves the same equation and by uniqueness of solution.
+
+        We take the Fourier transform of both sides, we get
+        \begin{equation*}
+            (u')^{\widehat{\phantom{.}}}+(2\pi xu)^{\widehat{\phantom{.}}}
+        \end{equation*}
+        Hence we get
+        \begin{equation*}
+            2\pi i\xi\hat{u}+\partial_\xi u=0
+        \end{equation*}
+        And also
+        \begin{equation*}
+            \hat{u}(0)=\int u(x)dx=\int e^{-\pi x^2}=1
+        \end{equation*}
+        Hence by uniqueness of ode, we get $\hat{u}=u$.
+    \end{proof}
+    \qed
 \end{proof}
 \qed
+
+Once we have the Fourier inversion formula for $f\in\mathcal{S}$, we note that
+\begin{equation*}
+    (\hat{f})^{\widehat{\phantom{.}}}(x)=\int \hat{f}(\xi)e^{-2\pi ix\cdot\xi}d\xi=f(-x)
+\end{equation*}
+\begin{corollary}
+    The Fourier transform has period 4.
+\end{corollary}
+
+Next, we define Fourier transform on the space of tempered distributions, $\mathcal{S}'$.
+\begin{definition}
+    If $T\in\mathcal{S}'$, then we define its Fourier transform as follows:
+    \begin{equation*}
+        \hat{T}(f)=T(\hat{f}), f\in\mathcal{S}
+    \end{equation*}
+\end{definition}
+We do the check that $\hat{T}\in\mathcal{S}'$ is well defined. We check $\hat{T}$ is linear:
+\begin{equation*}
+    \hat{T}(f+g)=T(\hat{f}+\hat{g})=T(\hat{f})+T(\hat{g})=\hat{T}(f)+\hat{T}(g)
+\end{equation*}
+Similarly for scalar multiplication.
+
+\begin{theorem}
+    FT is a linear, bounded bijection from $\mathcal{S}'\to\mathcal{S}'$. Moreover, it is invertible and its inverse is bounded as well.
+\end{theorem}
+\begin{proof}
+    It is bounded if and only if it is continuous, hence we check for $T_n\to T$ in $\mathcal{S}'$, we have, for any $f\in\mathcal{S}$,
+    \begin{equation*}
+        \hat{T_n}(f)=T_n(\hat{f})\to T(\hat{f})=\hat{T}(f)
+    \end{equation*}
+    Hence $\hat{T_n}\to\hat{T}$. And the invertability follows from FT has period 4. 
+\end{proof}
+\qed
+
+\section{Lecture 8}
+Now we've defined FT on $\mathcal{S}$, by density of $\mathcal{S}$ in $L^p$, we have a well-defined FT on $L^p$. We start by proving the Plancherel identity.
+\begin{theorem}
+    FT on $L^2$ is an isometry, i.e.
+    \begin{equation*}
+        \|f\|_{L^2}=\|\hat{f}\|_{L^2}, f\in L^2
+    \end{equation*}
+\end{theorem}
+\begin{proof}
+    For any $f,h\in\mathcal{S}$, we let $\hat{g}=\overline{h}$, then we have
+    \begin{equation*}
+        g=(\overline{h})^{\check{\phantom{.}}}=\int h(-x)e^{2\pi ix\cdot\xi}d\xi=\int h(y)e^{-2\pi iy\cdot\xi}d\xi=\hat{\overline{h}}
+    \end{equation*}
+    Hence by the duality formula, we have
+    \begin{equation*}
+        \int f\overline{h}=\int f\hat{g}=\int \hat{f}g=\int \hat{f}\hat{\overline{h}}
+    \end{equation*}
+    Setting $f=h$, we get
+    \begin{equation*}
+        \|f\|_{L^2}=\|\hat{f}\|_{L^2}
+    \end{equation*}
+\end{proof}
+\qed
+
+Next we stated Riesz-Thorin interpolation theorem and used it to show Hausdorff Young, and Young's inequality. We leave the proof of Riesz-Thorin as a homework question.
+\begin{theorem}[Hausdorff Young]
+    For $1\leq p\leq 2$, if $f\in L^p$, then $\hat{f}\in L^{p'}$, and 
+    \begin{equation*}
+        \|\hat{f}\|_{L^{p'}}\leq\|f\|_{L^p}
+    \end{equation*}
+\end{theorem}
+\begin{proof}
+    This follows from noting the inequality holds for $p=1, p'=\infty$, and $p=p'=2$.
+\end{proof}
+\qed
+
+\begin{theorem}[Young's inequality]
+    For $f\in L^p, g\in L^q$, if we let $\frac{1}{r}+1=\frac{1}{p}+\frac{1}{q}$, then we get
+    \begin{equation*}
+        \|f\ast g\|_{L^r}\leq\|f\|_{L^p}\|g\|_{L^q}
+    \end{equation*}
+\end{theorem}
+\begin{proof}
+    We note that 
+    \begin{equation*}
+        \|f\ast g\|_{L^p}=\left(\int\left|\int f(y)g(x-y)dy\right|^pdx\right)^{1/p}\leq\|f\|_{L^p}\|g\|_{L^1}
+    \end{equation*}
+    And by Holder, we have
+    \begin{equation*}
+        \|f\ast g\|_{L^\infty}\leq\|f\|_{L^p}\|g\|_{L^{p'}}
+    \end{equation*}
+    And then we apply Riesz-Thorin.
+\end{proof}
+\qed
+
+\subsection{Convergence and partial summability methods}
+Recall what we did with the Fourier series: given $S_N(f)=\sum_{n=-N}^N\hat{f}(n)e^{2\pi inx}$, what can we say about 
+\begin{equation*}
+    \lim_{N\to\infty}S_N(f)\to f(x)
+\end{equation*}
+And in both pointwise and $L^p$ sense. We now introduce the parallel concept with Fourier transform. We ask the question: when do we have
+\begin{equation*}
+    \lim_{R\to\infty}\int_{B_R}\hat{f}(\xi)e^{2\pi ix\cdot\xi}=f(x)
+\end{equation*}
+And we ask when this will converge to the original function.
+\begin{definition}[Paritial Sum operator]
+    Like how we want the partial sum of Fourier series to capture how $f$ behaves, we define the partial sum operator for Fourier transform as follows:
+    \begin{equation*}
+        (S_R(f))^{\widehat{\phantom{.}}}=\chi_{B_R}\hat{f}
+    \end{equation*}
+\end{definition}
+Note that in the Fourier space, $S_R(f)\to\hat{f}$, and we would like to ask the question, does this $S_R(f)$ approximate $f$ in the physical space? In other words, this becomes the question whether we have
+\begin{equation*}
+    \lim_{R\to\infty}S_R(f)=f
+\end{equation*}
+Note that we have
+\begin{equation*}
+    S_R(f)=\check{X_{B_R}}\ast f:=D_R\ast f
+\end{equation*}
+where $D_R:=\int_{B_R}e^{2\pi ix\cdot\xi}d\xi$.
+
+\begin{proposition}
+    (Like with the Fourier series), we have
+    \begin{equation*}
+        \lim_{R\to\infty}\|S_R(f)-f\|_{L^p}=0
+    \end{equation*}
+    if and only if, there exists $C>0$ such that
+    \begin{equation*}
+        \|S_R(f)\|_{L^p}\leq C\|f\|_{L^p}
+    \end{equation*}
+\end{proposition}
+\begin{remark}
+    We have $\|S_R\|<\infty$ for $n=1$, but for $n>1$, this is only true for $p=2$. We will discuss this in the upcoming lectures.
+\end{remark}
+
 
 
 \section{Lecture 10}
