@@ -839,7 +839,10 @@ Next we see that the family of $\phi_t$ allows for convergence in $L^p$ norm as 
 \end{proof}
 \qed
 
-
+This convergence in $L^p$ implies that there exists a sequence $t_n$ such that as $t_n\to 0$, for almost every $x$, we have
+\begin{equation*}
+    \lim\phi_{t_n}\ast f(x)\to f(x)
+\end{equation*}
 
 
 \section{Lecture 10}
@@ -876,14 +879,14 @@ Note this is a two parameter family in $t$ and $n$, taking advantage of what $\p
     \begin{equation*}
         T^*f(x)=\sup_t|T_tf(x)|
     \end{equation*}
-    this is definfed as the maximal funciton. If $T^*$ is of weak type-$(p,q)$, then the set
+    this is definfed as the maximal function. If $T^*$ is of weak type-$(p,q)$, then the set
     \begin{equation*}
         \{f\in L^p(X,\mu): \lim_{t\to t_0}T_t(f)(x)=f(x), a.e. \}
     \end{equation*}
     is closed in $L^p(X,\mu)$.
 \end{theorem}
 \begin{remark}
-    If $T: L^p\to L^q$, then if $T$ is bounded then $T$ is of weak type $(p,q)$. In most situations, we will define $p=q$.
+    If $T: L^p\to L^q$, then if $T$ is bounded, we call it strong-type $(p,q)$, and strong type implies that $T$ is of weak type $(p,q)$. In most situations, we will define $p=q$.
 \end{remark}
 
 Let $(X,\mu)$, $(Y,\nu)$ be measure spaces, and $T$ be an operator on $L^p(X,\mu)$ to measurable functions on $L^q$. All elements are $\geq 1$.
@@ -899,9 +902,27 @@ Let $(X,\mu)$, $(Y,\nu)$ be measure spaces, and $T$ be an operator on $L^p(X,\mu
 
 \begin{exercise}
     Weak type $(p,\infty)$ is equivalent to saying bounded from $L^p$ to $L^\infty$.
-
-    Strong $(p,q)$ means bounded from $L^p$ to $L^q$. And the exercise is to show the strong type implies the weak type. (This can be done using Chebyshev's inequality).
 \end{exercise}
+\begin{proof}
+    For $T$ of weak type $(p,\infty)$, we have
+    \begin{equation*}
+        \lambda\left(\nu\left(\{y\in Y: |T(f)(y)|>\lambda\} \right) \right)^\frac{1}{p}\leq C\|f\|_{L^p}
+    \end{equation*}
+    Hence we have $p\to\infty$, $(\nu\left(\{y\in Y: |T(f)(y)|>\lambda\} \right))^\frac{1}{p}\to 1$ for any $\nu\left(\{y\in Y: |T(f)(y)|>\lambda\} \right)\neq 0$, hence if we let $\lambda\to\infty$, we get a contradiction. Hence we could allow allow $\nu\left(\{y\in Y: |T(f)(y)|>\lambda\} \right)<\epsilon$, for all $\epsilon>0$.
+\end{proof}
+\qed
+
+\begin{exercise}
+Strong type $(p,q)$ implies the weak type $(p,q)$.
+\end{exercise}
+\begin{proof}
+    We denote the set $\{y\in Y: |T(f)(y)|>\lambda\}$ as $E_\lambda$, then we have
+    \begin{equation*}
+        \nu(E_\lambda)=\int_{E_\lambda}1d\nu\leq\int_{E_\lambda}\left(\frac{|T(f)y|}{\lambda}\right)^qd\nu\leq\left(\frac{C\|f\|_{L^p}}{\lambda}\right)^q
+    \end{equation*}
+    in the last inequality, we used the fact that $T$ is bounded from $L^p$ to $L^q$.
+\end{proof}
+\qed
 
 \begin{proof}[of theorem]
     WLOG assume $t_0=0$. Assume $f_n\to f$ in $L^p$, and that
