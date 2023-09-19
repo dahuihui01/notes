@@ -1344,3 +1344,261 @@ and
     \|u\|_{V_\Delta^pH^s}^p=\|v\|_{V^pH^s}^2=\inf \sum\|v(t_{j+1})-v(t_j)\|_{H^s}^p=\inf\sum\|u(t_{j+1})-e^{i(t_{j+1}-t_j)D^2}u(t_j)\|_{H^s}^p
 \end{equation*}
 
+\section{Lecture 8}
+We will continue our discussion of $U^p, V^p$ spaces, and they are defined for functions defined on $\R$.
+
+\begin{definition}[$U^p, V^p$]
+    $V^p$ is the bounded $p$ variation, and we have the norm as follows:
+    \begin{equation*}
+        \|u\|_{V^p}^p=\sup_{t_k}\sum|u(t_{k+1}-u(t_k))|^p
+    \end{equation*}
+    Note that we include left continuous in the definition for $V^p$ since they have only countably many jump discontinuities and we define the value at that point to be the left limit.
+
+    $U^p$ is the atomic space, and the atoms are define as
+    \begin{equation*}
+        a=\sum c_k1_{[t_k, t_{k+1}]}, \sum_k c_k^p=1
+    \end{equation*}
+    And for $u\in U^p$, we have
+    \begin{equation*}
+        u=\sum_k\lambda_k a_k, \|u\|=\inf\sum_k|\lambda_k|
+    \end{equation*}
+\end{definition}
+
+Last time we have
+\begin{equation*}
+    U^p\subset V^p
+\end{equation*}
+The reverse inclusion is not correct, but we have the following proposition if we change up the exponents a bit.
+\begin{proposition}
+    We have
+    \begin{equation*}
+        V^p\subset U^q, \text{ if } p>q
+    \end{equation*}
+\end{proposition}
+Suppose that $\|v\|_{V^p}=1$ and the range of $v$, $Range(v)\subset [0,1]$, and our first guess is that $u_1$ is a step function so that $|v-u_1|\leq\frac{1}{2}$. And we look at the number of steps, in each step, we produce a difference of $1/2$, by the norm, $\left(\frac{1}{2}\right)^p$. If we denote the number of steps as $N_1$, we thus have
+\begin{equation*}
+    \left(\frac{1}{2}\right)^pN_1\leq 1\Rightarrow N_1\leq 2^p
+\end{equation*}
+
+Every step if we divide the range in 2, we get a sequence $v_n$ such that (we increase our accuracy by $1/2$ at each step)
+\begin{equation*}\leq 2^{-n}
+    v-(u_1+... u_n)
+\end{equation*}
+and $u_n$ is a step function with steps $\leq 2^{-n+1}$. Then we count the number of steps $N_n$,
+\begin{equation*}
+    2^{-np}N_n\leq 1\Rightarrow N_n\leq 2^{np}
+\end{equation*}
+These steps have preassigned dyadic size. Now we compute $\|u_n\|_{U^q}$, we have
+\begin{equation*}
+    \|u_n\|_{U^q}^q\leq 2^{(-n+1)q}\cdot N_n\approx 2^{n(p-q)}
+\end{equation*}
+Since we have $p<q$, hence we have the converges absolutely.
+\begin{equation*}
+    \|v\|_{U^q}\leq\sum 2^{n(p-q)}\lesssim 1
+\end{equation*}
+\qed
+
+\begin{remark}
+    Just like Christ-Kiselev lemma, we don't split the function based on equidistant intervals, but instead, we split the intervals based on the size of the function $|f(x)|$.
+\end{remark}
+
+We discuss the connection with the Schrodinger.
+\begin{equation*}
+    U_\Delta^p L^2=\{u\in L^\infty L^2: e^{-itD^2}u\in U^pL^2\}
+\end{equation*}
+For $u\in U_\Delta^p$, we have
+\begin{equation*}
+    e^{-itD^2}(i\partial_t+\Delta)u=i\partial_t e^{-itD^2}u
+\end{equation*}
+Hence we have 
+\begin{equation*}
+    (i\partial_t+\Delta), \text{ and } e^{itD^2}
+\end{equation*}
+as conjugate operators with respect to $e^{-itD^2}$.
+
+Note that we have
+\begin{equation*}
+    i\partial_t+\Delta: \dot{X}^{S,b}\to\dot{X}^{S, b-1}, \partial_t: \dot{H}^b\to \dot{H}^{b-1}
+\end{equation*}
+And we have the following duality relation:
+\begin{equation*}
+    \left(X^{S,b} \right)^*=X^{-S, -b}
+\end{equation*}
+Similarly, we have the following duality relations:
+\begin{equation*}
+    \left(\dot{H} \right)^*=\dot{H}^{-b}
+\end{equation*}
+And
+\begin{equation*}
+    \partial_t: H^b\to H^{b-1}, \left(\dot{H}^\frac{1}{2} \right)^*=\dot{H}^\frac{1}{2}, \partial\dot{H}^\frac{1}{2}=\dot{H}^\frac{-1}{2}
+\end{equation*}
+Moreover, we would like
+\begin{equation*}
+    U^2, V^2\approx \dot{H}^\frac{1}{2}
+\end{equation*}
+
+\begin{proposition}
+    We have
+    \begin{equation*}
+        (\partial U^2)^*=V^2
+    \end{equation*}
+\end{proposition}
+First we observe that, for the Schrodinger equaiton, we have
+\begin{equation*}
+    \left[(i\partial_t+\Delta)U_\Delta^2L^2 \right]^*=V_\Delta^2L^2
+\end{equation*}
+And
+\begin{equation*}
+    \begin{cases}
+        (i\partial_t+\Delta)u=f\\
+        u(0)=u_0
+    \end{cases}
+\end{equation*}
+Hence we have
+\begin{equation*}
+    \|u\|_{U_\Delta^2L^2}\leq\|u_0\|_{L^2}+\|f\|_{DU_\Delta L^2}
+\end{equation*}
+Note that we have $U_\Delta L^2$ as our $X^{S,b}$, and $S$ the Strichartz space, and $DU_\Delta^2L^2$ as $S'$, and $X^{S,b-1}$.
+
+We look at the Riemann-Stiegjer integral, 
+\begin{equation*}
+    \langle \partial_t u, v\rangle=\int vdu=\lim_{\Delta t_n\to 0}\sum v(t_j)\left(u(t_{j+1}-u(t_j)) \right)=\lim_{\Delta t_n\to 0}\sum u(t_{j+1})(v(t_{j+1})-v(t_j))
+\end{equation*}
+where $u\in U^2, v\in V^2$, we take a sequence of points $t_n$ increasing, and $t_{j+1}-t_j\to 0.$ (Exactly how we defined the Riemann integral).
+
+We have
+\begin{equation*}
+    \|v\|_{(\partial U^2)^*}=\sup_{\|u\|\leq 1}\langle \partial_t u, v\rangle=\sup_{atoms}\langle \partial_t a, v\rangle
+\end{equation*}
+hence we have
+\begin{equation*}
+    \langle \partial_ta, v\rangle=\sum c_j(v(t_{j+1})-v(t_j)), a=\sum c_j1_{[t_j, t_{j+1})}\leq\left(\sum(v(t_{j+1})-v(t_j))^2 \right)^\frac{1}{2}
+\end{equation*}
+due to $(l^2)^*=l^2$, hence it embeds into $V^2$, as this is exactly the $V^2$ norm.
+\qed
+
+
+\begin{equation*}
+    \begin{cases}
+        U^p\subset V^p\\
+        (DU^p)^*=V^{p'}
+    \end{cases}
+\end{equation*}
+These are called Besov norms.
+And we have $U^2, V^2\approx \dot{H}^\frac{1}{2}$. Dyadic definition of $\dot{H}^\frac{1}{2}$, and $u\in\dot{H}^\frac{1}{2}$, this implies $\hat{u}|\xi|^\frac{1}{2}\in L^2$, we have
+\begin{equation*}
+    |\xi|\approx 2^j, 1=\sum_j\chi_j(\xi)
+\end{equation*}
+and we have
+\begin{equation*}
+    \hat{u}=\sum\chi_j\hat{u}=\sum\hat{u}_j
+\end{equation*}
+
+\begin{definition}[Besov norm]
+    $B_{p,q}^s$ is defined as 
+    \begin{equation*}
+        \|u\|_{B_{p,q}^s}=\sum\left( 2^\frac{j}{s}\|u_j\|_{L^2}\right)^q
+    \end{equation*}
+    Hence we have
+    \begin{equation*}
+        \|u\|_{B_{2p}^\frac{1}{2}}=\sum\left( 2^{j/2}\|u_j\|_{L^2}\right)^p
+    \end{equation*}
+\end{definition}
+Note that we have
+\begin{equation*}
+    \dot{B}_{2,1}^\frac{1}{2}\subset \dot{H}^\frac{1}{2}=\dot{B}_{2,2}^\frac{1}{2}\subset\dot{B}_{2,\infty}^{1/2}
+\end{equation*}
+For the above, we used the following embedding:
+\begin{equation*}
+    l^1\subset l^2\subset l^\infty
+\end{equation*}
+and we have
+\begin{equation*}
+    \partial\dot{H}^\frac{1}{2}\to\dot{H}^{-1/2}=(H^\frac{1}{2})^*
+\end{equation*}
+And 
+
+
+\begin{proposition}
+    We have the following embedding:
+    \begin{equation*}
+        \dot{B}_{2,1}^\frac{1}{2}\subset U^2\subset V^2\subset \dot{B}_{2,\infty}^\frac{1}{2}
+    \end{equation*}
+\end{proposition}
+\begin{proof}
+    It suffices to prove the first embedding, since if we have
+    \begin{equation*}
+        B_{2,1}^\frac{1}{2}\subset U^2\Rightarrow \subset DU^2\Rightarrow V^2\subset B_{2,\infty}^\frac{1}{2}
+    \end{equation*}
+\end{proof}
+Recall we have
+\begin{equation*}
+    \|u\|_{B_{2,1}^\frac{1}{2}}=\sum_j2^{j/2}\|u_j\|_{L^2}
+\end{equation*}
+We have
+\begin{equation*}
+    \|u\|_{U^2}\leq\|u\|_{B_{2,1}^\frac{1}{2}}
+\end{equation*}
+by triangle inequality, this gets reduced to the following:
+\begin{equation*}
+    \|u_j\|_{U^2}\leq 2^{j/2}\|u_j\|_{L^2}
+\end{equation*}
+By rescaling, we could take $j\to 0$. And we look at $u_0=u\in L^2$, localized in 
+\begin{equation*}
+    \{|\xi|=1\}\Rightarrow u\in U^2
+\end{equation*}
+Enough to look at $u\in H^1\Rightarrow u\in H^2$, and we decompose $u$ based on unit intervals,
+\begin{equation*}
+    u=\sum_k u_k
+\end{equation*}
+where $supp(u_k)\subset [k-1, k]$. Hence if we take $u_k\in V^1$, and $\{u_k\}\in l_k^2V^1\subset U^2$, where we used the embedding $V^1\subset U^2$. Hence we are done.
+
+Local orthogonality gives us
+\begin{equation*}
+    \|u\|_{L^2}^2\approx\sum_k\|u_k\|_{L^2}^2
+\end{equation*}
+\qed
+
+\begin{corollary}
+    We have $U_\Delta^2L^2\approx V_\Delta^2L^2\approx\dot{X}^{0,\frac{1}{2}}$ for functions localized in $|\tau^2+\xi^2|\approx 2^j$.
+\end{corollary}
+
+\begin{proposition}
+    Suppose $L^pL^q$ is a Strichartz esimate, then we have
+    \begin{equation*}
+        U_\Delta^pL^2\subset L^pL^q
+    \end{equation*}
+\end{proposition}
+\begin{proof}
+    It is enough to show it for atoms, and the same $p$ allows us to use Strichartz.
+\end{proof}
+
+\begin{corollary}
+    For $p_1<p$, we have
+    \begin{equation*}
+        V_\Delta^{p_1}L^2\subset L^pL^q
+    \end{equation*}
+\end{corollary}
+\begin{equation*}
+    \|u\|_{L^{p_1}L^{q_1}}\leq \|u_0\|_{L^2}+\|f\|_{L^{p_2'}L^{q_2'}}\Rightarrow \text{ Christ-Kiselev} p_1>p_2'
+\end{equation*}
+
+And note that we have
+\begin{equation*}
+    \|u\|_{U_\Delta^r L^2}\leq\|u_0\|_{L^2}+\|f\|_{DU_\Delta^rL^2}
+\end{equation*}
+where $r\leq p_1$ this implies
+\begin{equation*}
+    U_\Delta^rL^2\subset L^{p_1}L^{q_1}
+\end{equation*}
+And for $r>p_2'$, this implies
+\begin{equation*}
+    L^{p_2'L^{q_2'}}\subset DU_\Delta^rL^2
+\end{equation*}
+And this gives
+\begin{equation*}
+    V_\Delta^{r_1}L^2\subset L^{L^{p_2}}L^{q_2}
+\end{equation*}
+
+
+

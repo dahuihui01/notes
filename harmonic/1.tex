@@ -879,7 +879,7 @@ Note this is a two parameter family in $t$ and $n$, taking advantage of what $\p
     \begin{equation*}
         T^*f(x)=\sup_t|T_tf(x)|
     \end{equation*}
-    this is definfed as the maximal function. If $T^*$ is of weak type-$(p,q)$, then the set
+    this is defined as the maximal function. If $T^*$ is of weak type-$(p,q)$, then the set
     \begin{equation*}
         \{f\in L^p(X,\mu): \lim_{t\to t_0}T_t(f)(x)=f(x), a.e. \}
     \end{equation*}
@@ -925,13 +925,15 @@ Strong type $(p,q)$ implies the weak type $(p,q)$.
 \qed
 
 \begin{proof}[of theorem]
+    We would like to show the set is closed, hence we take a sequence of $\{f_n\}$ such that $\|f_n-f\|_{L^p}\to 0$, and $T_t(f_n)(x)\to f_n(x)$ for almost every $x$. 
+
     WLOG assume $t_0=0$. Assume $f_n\to f$ in $L^p$, and that
     \begin{equation*}
-        T_t(f_n)\to f_n
+        T_t(f_n)(x)\to f_n(x) \text{ for almost every } x
     \end{equation*}
     as $t\to 0$ a.e. for every $f_n$.
 
-    The idea of ``oscilation.'' The goal is to show $T_t(f)\to f$ as $t\to 0$ almsot everywhere.
+    The idea of ``oscillation.'' The goal is to show $T_t(f)\to f$ as $t\to 0$ almost everywhere.
 
     Define
     \begin{equation*}
@@ -955,7 +957,7 @@ Strong type $(p,q)$ implies the weak type $(p,q)$.
     \end{equation*}
     By weak type $(p,q)$ of $T^*$, hence we have
     \begin{equation*}
-        \mu(B)\lesssim \left(\frac{\|f-f_n\|^p}{\lambda} \right)^p
+        \mu(B)\lesssim \left(\frac{\|f-f_n\|^p}{\lambda} \right)^q
     \end{equation*}
     We can make $\mu(A), \mu(B)<\epsilon$, by choosing $n$ large enough. Hence we have
     \begin{equation*}
@@ -998,7 +1000,7 @@ This type of decomposition is mild, i.e. if we try to estimate the $L^p$ norm of
 \begin{definition}[mid-level sets]
     For dyadic $\lambda$, define
     \begin{equation*}
-        b_\lambda(f)=|\{lambda: \lambda<|f(x)|\leq 2\lambda\}|
+        b_\lambda(f)=|\{\lambda: \lambda<|f(x)|\leq 2\lambda\}|
     \end{equation*}
 \end{definition}
 \begin{exercise}
@@ -1038,18 +1040,26 @@ This interpolation thoerem allows us to reduce the case to $p=1$ (given that we 
 \begin{remark}
     Tomas-Stein constructed a family of operators, and then we applied Riesz-Thorin.
 \end{remark}
-\begin{proof}
-    We define super-level sets as follows. For $f: X\to\C$, measuralbe, define
+We first introduce the definition of distribution function of $f$.
+\begin{definition}[distribution function of $f$]
+    Let $f:X\to\C$ be measurable, define 
     \begin{equation*}
         a_f(\lambda)=\mu(\{x\in X: |f(x)|>\lambda\})
     \end{equation*}
+    to be the distribution function of $f$, and note that it is a decreasing function of $\lambda$. Sets of the form $\{x\in X:|f(x)|>\lambda\}$ are sometimes called the super-level sets.
+\end{definition}
+
+\begin{proof}
 \begin{proposition}
     Let $\phi:[0,\infty)\to [0,\infty)$ be differentiable, increasing with $\phi(0)=0$, then we have
     \begin{equation*}
         \int_X\phi(|f(x))|d\mu=\int_0^\infty\phi'(\lambda)a_f(\lambda) d\lambda
     \end{equation*}
 \end{proposition}
-The proof is let as an exercise.
+The proof is let as an exercise. And this proposition gives us a way to express the $L^p$ norm in terms of the distribution function of $f$.
+\begin{equation*}
+    \int|f(x)|^pdx=\int_0^\infty p\lambda^{p-1}a_{f}(\lambda)d\lambda
+\end{equation*}
 \begin{exercise}
     What is the LHS in terms of $b_f(\lambda)$.
 \end{exercise}
@@ -1069,8 +1079,8 @@ We will prove the $p_1<\infty$ case.
 
 Note that we have
 \begin{align*}
-    \int_X|Tf|^pd\nu&=\int_0^\infty p\lambda^{p-1}a_{Tf}(\lambda)d\nu\\
-    &\leq p\int_0^\infty\lambda^{p-1}a_{Tf_0}\left(\frac{\lambda}{2} \right)d\nu+p\int_0^\infty\lambda^{p-1}a_{Tf_1}\left(\frac{\lambda}{2} \right)d\nu\\
+    \int_X|Tf|^pd\nu&=\int_0^\infty p\lambda^{p-1}a_{Tf}(\lambda)d\lambda\\
+    &\leq p\int_0^\infty\lambda^{p-1}a_{Tf_0}\left(\frac{\lambda}{2} \right)d\lambda+p\int_0^\infty\lambda^{p-1}a_{Tf_1}\left(\frac{\lambda}{2} \right)d\lambda\\
     &=p\int_0^\infty\lambda^{p-1}\left(\frac{A_0}{\lambda/2}\|f_0\|_{L^{p_0}} \right)^{p_0}d\nu+p\int_0^\infty\lambda^{p-1}\left(\frac{A_1}{\lambda/2}\|f_1\|_{L^{p_1}} \right)^{p_1}d\nu\\
     &\leq p\int_0^\infty \lambda^{p-1}A_0^{p_0}2^{p_0}\lambda^{-p_0}\int_{\{x: |f(x)|>c\lambda\}}|f(x)|^{p_0}d\mu+\text{ similar term }\\
     &=p\int |f(x)|^{p_0}2^{p_0}A_0^{p_0}\int_0^{|f(x)|/c}\lambda^{p-p_0-1}d\lambda
