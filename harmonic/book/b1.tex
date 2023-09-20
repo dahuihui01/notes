@@ -351,4 +351,22 @@ Next we will introduce Abel summation, another summability method that guarantee
 \end{example}
 However, this sequence does not converge in the usual sense, nor is it Cesaro summable.
 
-We now 
+
+We make the note that for any $f\in L_{loc}^1$, by definition, for any compact set $K$, we have
+\begin{equation*}
+    \int_K|f|dx<\infty
+\end{equation*}
+And for every $f\in L_{loc}^1$, we have the following association with a tempered distribution.
+\begin{proposition}
+    For every $f\in L_{loc}^1$, we can view $f$ as a tempered distribution, since
+    \begin{equation*}
+        \int_K|f|dx<\infty
+    \end{equation*}
+    if and only if for any $\varphi\in\mathcal{S}$, we have
+    \begin{equation*}
+        \int|f\varphi|dx<\infty
+    \end{equation*}
+\end{proposition}
+
+
+

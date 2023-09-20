@@ -1049,21 +1049,31 @@ We first introduce the definition of distribution function of $f$.
     to be the distribution function of $f$, and note that it is a decreasing function of $\lambda$. Sets of the form $\{x\in X:|f(x)|>\lambda\}$ are sometimes called the super-level sets.
 \end{definition}
 
-\begin{proof}
+
 \begin{proposition}
     Let $\phi:[0,\infty)\to [0,\infty)$ be differentiable, increasing with $\phi(0)=0$, then we have
     \begin{equation*}
         \int_X\phi(|f(x))|d\mu=\int_0^\infty\phi'(\lambda)a_f(\lambda) d\lambda
     \end{equation*}
 \end{proposition}
-The proof is let as an exercise. And this proposition gives us a way to express the $L^p$ norm in terms of the distribution function of $f$.
-\begin{equation*}
-    \int|f(x)|^pdx=\int_0^\infty p\lambda^{p-1}a_{f}(\lambda)d\lambda
-\end{equation*}
+\begin{proof}
+    We note that for the LHS, we have
+    \begin{equation*}
+        \int_X\phi(|f(x)|)d\mu=\int_X\int_0^{|f(x)|}\phi'(\lambda)d\lambda d\mu=\int_0^\infty\phi'(\lambda)\int_{\{x:|f(x)|>\lambda\}}d\mu d\lambda=\int_0^\infty\phi'(\lambda)a_f(\lambda)d\lambda
+    \end{equation*}
+\end{proof}
+\qed
+
+\begin{corollary}[$L^p$ norm in terms of $a_f(\lambda)$]
+    Following is an alternative way to express the $L^p$ norm in terms of the distribution function of $f$.
+    \begin{equation*}
+        \int|f(x)|^pdx=\int_0^\infty p\lambda^{p-1}a_{f}(\lambda)d\lambda
+    \end{equation*}
+\end{corollary}
 \begin{exercise}
     What is the LHS in terms of $b_f(\lambda)$.
 \end{exercise}
-We will let $\phi(t)=t^p$.
+\begin{proof}[of the interpolation theorem]
 
 Let $f=f_0+f_1$, where $f_0=f\chi_{x:|f(x)|>c\lambda}$, and $f_1=f\chi_{x:|f(x)|\leq c\lambda}$, for some $c>0$ to be determined later.
 
@@ -1075,6 +1085,11 @@ We will prove the $p_1<\infty$ case.
 \begin{exercise}
     Prove it for $p_1=\infty$ case.
 \end{exercise}
+\begin{proof}
+    For $p_1=\infty$, we have $T$ as a bounded operator from $L^\infty$ to $L^\infty$, hence we denote $\|T\|_{L^\infty\to L^\infty}=A_1$. 
+
+
+\end{proof}
 
 
 Note that we have
@@ -1098,9 +1113,102 @@ Note that for the first term, we have
     \|f_0\|_{p_0}^{p_0}=\int|f_0|^{p_0}d\mu\leq (c\lambda)^{p_0-p}\int|f_0|^pd\mu=(c\lambda)^{p_0-p}\|f\|_{L^p}^p
 \end{equation*}
 
-
-
-
 \end{proof}
+\qed
+
+
+
+\section{Lecture 12}
+We now begin our discussion of Hardy-Littlewood maximal function.
+
+
+\begin{definition}[Hardy-Littlewood maximal function]
+    Let $f\in L_{loc}^1(\R^n)$, then we define the Hardy-Littlewood maximal function as followS:
+    \begin{equation*}
+        Mf(x)=\frac{1}{|B_r|}\int_{B_r}|f(x-y)|dy
+    \end{equation*}
+    where $B_r$ is the ball of radius of $r$ around 0. 
+\end{definition}
+Note that this is equivalent to $M'f$ where the balls are replaced with cubes, and we could non-center the tubes to define $M''(f)$.
+
+\begin{theorem}
+    $M$ is weak (1,1) and strong $(p,p)$ for $1<p\leq\infty$.
+\end{theorem}
+\begin{proof}
+    We have the following:
+    \begin{equation*}
+        \|Mf\|_\infty\leq\|f\|_{\infty}
+    \end{equation*}
+    Hence $M$ is bounded from $M:L^\infty\to L^\infty$.
+    
+    Hence by Marcinkiewicz interpolation theorem, it suffices to prove that $M$ is weak (1,1). We need to investigate $a_{Mf}$. 
+    \begin{lemma}
+        Let $\{I_\alpha\}$ be a collection of open intervals of $\R$, and let $K$ be a compact subset such that $K\subset\bigcup_\alpha I_\alpha$. There exists a finite subcover such that $\{I_j\}_{j=1}^n$ such that for each $x\in \R$, it is not contained in more than two $I_j$'s.
+    \end{lemma}
+    \begin{exercise}
+        complete the proof of the lemma. Hint: for each $x$, consider all the intervals that $x$ is contained in, and only keep the left and right most ones.
+    \end{exercise}
+
+    Now for $n=1$, we let
+    \begin{equation*}
+        E_\lambda=\{x\in\R: Mf(x)>\lambda\}
+    \end{equation*}
+    We would like to show that $\mu(E_\lambda)\lesssim \|f\|_{L^1}$. It suffices to show this for any $K$ compact contained in $E_\lambda$.
+
+    Note that for each $x\in E_\lambda$, there exists an interval $I_x$ such that 
+    \begin{equation*}
+        \int_{I_x}|f|\leq\lambda|I_x|
+    \end{equation*}
+    Hence by lemma above, for any compact set $K$ contained in $I_x$, there exists a finite subcollection of $\{I_j\}$, such that 
+    \begin{equation*}
+        \sum_j\chi_{I_j}\leq 2
+    \end{equation*}
+    Thus we have the following:
+    \begin{equation*}
+        \lambda|K|\leq\lambda\sum_j|I_j|\leq\sum_j\int_{I_j}|f|dy= \int_\R|f(y)|\sum_j\chi_{I_j}dy\leq \lambda2\|f\|_{L^1}
+    \end{equation*}
+\end{proof}
+\qed
+
+\begin{proposition}
+    Let $\phi$ be positive, radial and decreasing, and $\phi\in L^1$, then 
+    \begin{equation*}
+        \sup_{t>0}|\phi_t\ast f(x)|\leq\|\phi\|_{L^1}Mf(x)
+    \end{equation*}
+\end{proposition}
+\begin{proof}
+    One could show this using approximation, i.e. approximate $\phi$ by step funcitons such that in Figure 1. We let $\phi=\sum_ja_j\chi_{B_j}(x)$, with $a_j\geq 0$. It suffices to show the proposition holds for $\phi$ simples functions like above.
+
+    We have
+    \begin{equation*}
+        \sup_{t>0}\|\phi_t\ast f(x)\|\leq\sum_j\sup_{t>0}|a_j\chi_{B_j}\ast f(x)|\leq\sum_j a_j|B_j|\frac{1}{|B_j|}\int_{B_j}f(x-y)\leq \sum_ja_j|B_j|Mf(x)=\|\phi\|_{L^1}Mf(x)
+    \end{equation*}
+    Then we approximate $\phi$ using this in the general case.
+\end{proof}
+\qed
+
+\begin{corollary}
+    If $|\phi|\leq\psi$, $\psi$ such that it is positive, radial, and decreasing, then we have
+    $\sup_t|\phi_t\ast f|$ is weak (1,1), and strong $(p,p)$, for $1<p\leq\infty$.
+\end{corollary}
+Hence we resolved a pointwise convergence issue that we raised previously.
+\begin{corollary}
+    If $|\phi|\leq\psi$, and $\psi$ is such that is positive, radial and decreasing, then in particular for Cesaro, Abel-Poisson, and Guass-Weierstrass kernels, we have if $f\in L^p$, $1\leq p<\infty$, or if $f\in C_0$, then we have
+    \begin{equation*}
+        \lim_{t\to 0}\phi_t\ast f=\left(\int\phi(y)dy\right)\cdot f, \text{ almost everywhere }
+    \end{equation*}
+\end{corollary}
+
+
+\subsection{Dyadic maximal function}
+We define a $r$-cube in $\R^n$ by $[0,1)^n$, and translating it.
+
+\begin{definition}
+    We define $Q_0=\{\text{ lattice cubes in } \R^n\}$, where they are unit cubes such that the corners are lattices. We define the dyadic lattice cubes as follows:
+    \begin{equation*}
+        Q_k=\{ 2^{-k}-\text{ unit cubes in} \R^n, k\in\mathbb{Z}\}
+    \end{equation*}
+    $\bigcup_{k\in\mathbb{Z}}Q_k$ is dyadic cubes.
+\end{definition}
 
 
