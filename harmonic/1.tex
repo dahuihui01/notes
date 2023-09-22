@@ -1211,4 +1211,84 @@ We define a $r$-cube in $\R^n$ by $[0,1)^n$, and translating it.
     $\bigcup_{k\in\mathbb{Z}}Q_k$ is dyadic cubes.
 \end{definition}
 
+\section{Lecture 13}
+insert first three boards here
+
+\begin{definition}
+    For $f\in L_{loc}^1(\R^n)$, define
+    \begin{equation*}
+        E_kf(x)=\sum_{Q\in \mathcal{Q}_k}\left(\frac{1}{|Q|}\int_Qf\right)\chi_{Q}(x)
+    \end{equation*}
+\end{definition}
+
+\begin{definition}[Dyadic maximal function]
+    Let the following $M_d$ be the dyadic maximal function
+    \begin{equation*}
+        M_df(x)=\sup_{k\in\mathbb{Z}}E_k(|f(x)|)
+    \end{equation*}
+\end{definition}
+
+\begin{theorem}
+    We have the two following for the dyadic maximal function.
+    \begin{enumerate}
+        \item The dyadic maximal function is weak $(1,1)$
+        \item If $f\in L_{loc}^1$, we have
+            \begin{equation*}
+                \lim_{k\to\infty}E_kf(x)=f(x), \text{ almost everywhere }
+            \end{equation*}
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    Consider $f\in L^1$, and $\lambda>0$, WLOG and $f\geq 0$. For each $x$ such that $M_df(x)>\lambda$, we can find $Q_x\in \mathcal{Q}_k$ for some $k$, and we have
+    \begin{equation*}
+        \int_{Q_x}fdx>\lambda|Q_x|
+    \end{equation*}
+    And we note that this $k$ is $>$ some constant, depending on $f$, since the $L^1$ norm of the function is bounded.
+
+    (Now we use the property if two dyadic cubes intersect, then one is contained in another). Take all such $Q_x$ to form a collection of $S$, and take a subcollection of $S$ as follows:
+
+    Put all $Q\in S\cap Q_{k+1}$ in $S'$ And all $Q\in S\cap O_j$ such that $Q$ not contained in every $\tilde{Q}$ in $S'\cap(Q_{k_0+1}\cup...\cup Q_{j-1})$ in $S'$ for $j>k_0+1$.
+
+    We are left with a subcollection of $S'$ such that each $x$ such that $M_df(x)>\lambda$ is contained in some $Q\in S'$. (contained in a larger one) And the $Q$'s in $S'$ are disjoint and satisfy 
+    \begin{equation*}
+        \int_Qfdx>\lambda|Q|
+    \end{equation*}
+    Hence we have
+    \begin{equation*}
+        |\{x: M_df(x)>\lambda\}|\leq|\bigsqcup_{Q\in S'}Q |\leq\sum_{Q\in S'}|Q|\leq \frac{1}{\lambda}\int_{\bigsqcup_Q}fdx\leq\frac{1}{\lambda}\|f\|_{L^1}
+    \end{equation*}
+\end{proof}
+\qed
+
+\begin{remark}
+    We can make the chocie such that on the parent of $Q$, the average of $f$ is $\leq\lambda$. This ensures that 
+    \begin{equation*}
+        \lambda<\frac{1}{|Q|}\int_Qf\leq 2^n\lambda
+    \end{equation*}
+
+    Recall that weak (1,1) implies the almost everywhere convergence of good functions $f\in L^1$. This is theorem 2.2. To go from $L^1$ to $L_{loc}^1$, we note that this is a local property, as $k\to\infty$, and it is still contained in a ball (i.e. cover $\R^n$ with balls).
+\end{remark}
+
+\begin{theorem}[Calderon-Zygmund decomposition]
+    Given $f\in L^1$ and $f\geq 0$, and some $\lambda>0$, there exists $\{Q_j\}$ dyadic cubes such that
+    \begin{enumerate}
+        \item $f(x)\leq\lambda$, almost everywhere for $x\not\in\bigsqcup_jQ_j$
+        \item $\left|\bigsqcup_jQ_j \right|\leq\frac{1}{\lambda}\|f\|_{L^1}$
+        \item For all $j$, also have
+            \begin{equation*}
+                \lambda<\frac{1}{|Q_j|}\int_{Q_j}f\leq 2^n\lambda
+            \end{equation*}
+    \end{enumerate}
+\end{theorem}
+\begin{remark}
+    Note that (3) is good since this means average of $f$ over any $Q_j$ is bounded by $\lambda$ and a constant times $\lambda$ (great if you don't care about constants).
+\end{remark}
+\begin{proof}
+    (1) follows from Theorem 2.10(2), and the observation that if $x\not\in\bigsqcup_jQ_j$, then 
+    \begin{equation*}
+        \int_{Q}|f|\leq\lambda|Q|
+    \end{equation*}
+    for all dyadic $Q$ such that $x\in Q$. And (2), (3) follow form part of Theorem 2.10.
+\end{proof}
+\qed
 
