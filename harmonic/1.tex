@@ -888,6 +888,9 @@ Note this is a two parameter family in $t$ and $n$, taking advantage of what $\p
 \begin{remark}
     If $T: L^p\to L^q$, then if $T$ is bounded, we call it strong-type $(p,q)$, and strong type implies that $T$ is of weak type $(p,q)$. In most situations, we will define $p=q$.
 \end{remark}
+\begin{note}
+    Note that we will use the word ``sublinear'' in the definition in the future, where we wanted to show the sublinear operator $\sup|\phi_t\ast f(x)|$ converges to $\int\phi f(x)$ almost everywhere, given that $\sup|\phi_t\ast f(x)|$ is weak (1,1).
+\end{note}
 
 Let $(X,\mu)$, $(Y,\nu)$ be measure spaces, and $T$ be an operator on $L^p(X,\mu)$ to measurable functions on $L^q$. All elements are $\geq 1$.
 \begin{definition}[weakly bounded]
@@ -1022,7 +1025,7 @@ Hence if $\limsup_{t\to 0}|\phi_t\ast f(x)|$ is weak type $(p,p)$, we know a.e. 
     Show that this holds for weak$ (\infty,\infty)$.
 \end{exercise}
 
-\section{Chapter 2.3 Marcinkiewicz interpolation theorem}
+\subsection{Chapter 2.3 Marcinkiewicz interpolation theorem}
 This interpolation thoerem allows us to reduce the case to $p=1$ (given that we know it holds for $p=\infty$). for the convergence of $|\phi_t\ast f|$.
 
 \begin{remark}
@@ -1141,7 +1144,7 @@ Note that this is equivalent to $M'f$ where the balls are replaced with cubes, a
     \end{equation*}
     Hence $M$ is bounded from $M:L^\infty\to L^\infty$.
     
-    Hence by Marcinkiewicz interpolation theorem, it suffices to prove that $M$ is weak (1,1). We need to investigate $a_{Mf}$. 
+    Hence by Marcinkiewicz interpolation theorem, it suffices to prove that $M$ is weak (1,1). We investigate $a_{Mf}(\lambda)$. 
     \begin{lemma}
         Let $\{I_\alpha\}$ be a collection of open intervals of $\R$, and let $K$ be a compact subset such that $K\subset\bigcup_\alpha I_\alpha$. There exists a finite subcover such that $\{I_j\}_{j=1}^n$ such that for each $x\in \R$, it is not contained in more than two $I_j$'s.
     \end{lemma}
@@ -1149,7 +1152,7 @@ Note that this is equivalent to $M'f$ where the balls are replaced with cubes, a
         complete the proof of the lemma. Hint: for each $x$, consider all the intervals that $x$ is contained in, and only keep the left and right most ones.
     \end{exercise}
 
-    Now for $n=1$, we let
+    Now for we prove that $M$ is weak (1,1) for \textbf{$n=1$}, we let
     \begin{equation*}
         E_\lambda=\{x\in\R: Mf(x)>\lambda\}
     \end{equation*}
@@ -1165,12 +1168,12 @@ Note that this is equivalent to $M'f$ where the balls are replaced with cubes, a
     \end{equation*}
     Thus we have the following:
     \begin{equation*}
-        \lambda|K|\leq\lambda\sum_j|I_j|\leq\sum_j\int_{I_j}|f|dy= \int_\R|f(y)|\sum_j\chi_{I_j}dy\leq \lambda2\|f\|_{L^1}
+        |K|\leq\sum_j|I_j|\leq\sum_j\frac{1}{\lambda}\int_{I_j}|f|dy= \frac{1}{\lambda}\int_\R|f(y)|\sum_j\chi_{I_j}dy\leq \frac{1}{\lambda}\|f\|_{L^1}
     \end{equation*}
 \end{proof}
 \qed
 
-\begin{proposition}
+\begin{proposition}[Hardy-Littlewood implies a.e. for some summability methods]
     Let $\phi$ be positive, radial and decreasing, and $\phi\in L^1$, then 
     \begin{equation*}
         \sup_{t>0}|\phi_t\ast f(x)|\leq\|\phi\|_{L^1}Mf(x)
@@ -1186,6 +1189,10 @@ Note that this is equivalent to $M'f$ where the balls are replaced with cubes, a
     Then we approximate $\phi$ using this in the general case.
 \end{proof}
 \qed
+
+\begin{note}
+    Under appropriate conditions, this allows us to say the sublinear operator $\sup|\phi_t\ast f(x)|$ is weak (1,1).
+\end{note}
 
 \begin{corollary}
     If $|\phi|\leq\psi$, $\psi$ such that it is positive, radial, and decreasing, then we have
@@ -1298,4 +1305,119 @@ There are some nice properties that we would like to note about dyadic cubes.
     for all dyadic $Q$ such that $x\in Q$. And (2), (3) follow form part of Theorem 2.10.
 \end{proof}
 \qed
+
+
+\section{Lecture 14}
+We now prove that the Hardy-Littlewood maximal funtion is weak (1,1) for higher dimensions. (We proved it for $n=1$.)
+
+\begin{lemma}
+    If $f\geq 0$, then 
+    \begin{equation*}
+        |\{x\in\R^n: M'f(x)>4^n\lambda\}\leq 2^n|\{x\in \R^n: M_df(x)>\lambda\}
+    \end{equation*}
+\end{lemma}
+\begin{proof}
+    Note for $x$ such that $M'f(x)$ is large, then we should have $M_df(x)$ should also be large (in  a cube near it), and for this we utilize how dyadic cubes are aligned. ($x$ must be close to other dyadic cubes such that the average value is large.)
+
+    We dissect a level set into dyadic cubes. 
+    \begin{equation*}
+        \{x\in\R^n: M_df(x)>\lambda\}=\bigsqcup_j Q_j
+    \end{equation*}
+    where $Q_j$ are dyadic cubes. We now shouw that 
+    \begin{equation*}
+        \{x\in\R^n: M'f(x)>4^n\lambda\}\subset \cup_j(2Q_j)
+    \end{equation*} 
+    Note that we do not quite get the level set is inside of $\bigsqcup_jQ_j$, but  instead a slightly ``swollen '' union of $\cup_j(2Q_j)$. For every $x$ such that $x\not\in \cup_j(2Q_j)$. Let $Q$ be any  cube centered at $x$. Then $Q$ could be ``disected'' into different regions, where each region is contained in a dyadic cube $Q_j$. Assuming the edge length $l$ of $Q$ is
+    \begin{equation*}
+        l(Q)\in (2^{k-1}, 2^k]
+    \end{equation*}
+    Consider all the dyadic cubes with length $2^k$ that intersect $Q$, and one could prove the number of dyadic cubes $Q_j$ that intersect $Q$ is $\leq 2^n$ ($n$ is the dimension.)
+    \begin{note}
+        This gives rise to the $2^n$ factor.
+    \end{note}
+    Note that for each such dyadic cube $\tilde{Q}$ that intersects $Q$, we have $x\in 2\tilde{Q}$ ($x$ is the center, and is covered when we ``swell'' $\tilde{Q}$). Recall we proved last time, if dyadic cube $\tilde{Q}$ is not contained in any $Q_j$, then we have
+    \begin{equation*}
+        \int_{\tilde{Q}}fdx\leq\lambda|\tilde{Q}|
+    \end{equation*}
+    This gives that
+    \begin{equation*}
+        \int_Qfdx\leq\sum_{\tilde{Q}}\int_{\tilde{Q}}fdx\leq 2^n\int_{\tilde{Q}}\lambda|\tilde{Q}|=2^n(2^k)^n\lambda=4^n 2^{(k-1)n}\lambda\leq\leq 4^n\lambda|Q|
+    \end{equation*}
+    This shows that we have $M'f(x)\leq 4^n\lambda$.
+\end{proof}
+\qed
+
+\begin{note}
+    The $2^n$ is a bit unusual. 
+\end{note}
+Note that this implies $M$ and $M'$ are dyadic.
+
+\begin{corollary}[Lebesgue differentiation theorem]
+    For $f\in L_{loc}^1(\R^n)$, we have
+    \begin{equation*}
+        \lim_{r\to 0^+}\frac{1}{|B_r|}\int_{B_r}f(x-y)dy=f(x), a.e.
+    \end{equation*}
+\end{corollary}
+\begin{proof}
+    We first note that this is a local property, hence we can replace $L^1$ with $L_{loc}^1$. We have that the Hardy-Littlewood function is of type weak (1,1). In fact, we have the stronger limit:
+    \begin{equation*}
+        \lim_{r\to 0^+}\frac{1}{|B_r|}\int_{B_r}|f(x-y)-f(x)|dy=0, a.e.
+    \end{equation*}
+    This follows from $\frac{1}{|B_r|}\int_{B_r}|f(x-y)-f(y)|\leq Mf(x)+|f(x)|$. 
+    \textcolor{red}{finish the proof}
+\end{proof}
+
+\begin{definition}[Lebesgue point]
+    If $x$ is such that 
+    \begin{equation*}
+        \lim_{r\to 0^+}\frac{1}{|B_r|}\int_{B_r}|f(x-y)-f(x)|dy=0
+    \end{equation*}
+    Then we call $x$ a Lebesgue point of $f$. Note almost every point is a Lebesgue point.
+\end{definition}
+\begin{proposition}
+    If $x$ is a Lebesgue point of $f$, and $\{B_j\}$ is a decreasing sequence of balls such that $x\in B_j$ for all $j$, and $\cap_jB_j=x$, then we have
+    \begin{equation*}
+        \lim_{j\to\infty}\int_{B_j}fdx=f
+    \end{equation*}
+    The same would hold if we replace $B_j$ with cubes.
+\end{proposition}
+\begin{remark}
+    \textcolor{red}{prove this} We replace $B_j$ with something smaller, with a fixed constant of $2^n$.
+\end{remark}
+
+\begin{problem}
+    How far are $M$, $M'$ from strong (1,1)?
+\end{problem}
+We now address this by noting that weak (1,1) is best we can do, especially when we exmaine the behavior at infinity.
+\begin{proposition}
+    If $f\in L^1, f\neq 0$, then $Mf\not\in L^1$.
+\end{proposition}
+\begin{proof}
+    Without loss of generality, $f\neq 0$ on $B$, the unit ball. Then we have
+    \begin{equation*}
+        Mf(x)\geq C\frac{1}{|x|^n}\int_{B}|f|dx
+    \end{equation*}
+    The third term $\int_B|f|dx$ is a constant, but the term $\frac{1}{|x|^n}$ just fails to be integrable. Hence $Mf(x)$ is not integrable.
+\end{proof}
+
+\begin{theorem}
+    If $B$ is bounded and measurable in $\R^n$, then we have the following bound
+    \begin{equation*}
+        \int_BMf(x)dx\leq 2|B|+\int_{\R^n}f\log^+|f|dx
+    \end{equation*}
+    where $\log^+t=\max{\{\log t, 0\}}$
+\end{theorem}
+\begin{proof}
+    Note that
+    \begin{align*}
+        \int_BMf(x)dx&\leq 2\int_0^\infty|\{x\in B: Mf(x)>2\lambda\}d\lambda\\
+        &\leq 2|B|+2\int_1^\infty a_f(2\lambda)d\lambda
+    \end{align*}
+    Let $f=f_1+f_2$, where $f_1=f\cdot\chi_{x:|f|>\lambda}$
+    Then we have
+    \begin{equation*}
+        \int_1^\infty a_f(2\lambda)d\lambda\leq \int_1^\infty a_f(\lambda)d\lambda\leq\int_1^\infty\frac{1}{\lambda}\int_{\{x: |f(x)|>\lambda}|f|dxd\lambda
+    \end{equation*}
+    Now we would like to apply the strong $L^\infty\to L^\infty$ bound.
+\end{proof}
 

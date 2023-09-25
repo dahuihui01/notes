@@ -1733,3 +1733,49 @@ Now assume that $G$ is commutative, then we consider $l^1(G)$ acts on $l^2(G)$, 
 \end{equation*}
 note that we still have $\|f\|_{C_r^*(G)}\leq\|f\|_{L^1}$.
 
+\section{Lecture 13}
+Let $G$ be commutative, and $(l^2(G), U)$ be the left regular representation. We have the interal form $U_f, hf\in l^1(G)$, and 
+\begin{equation*}
+    U: l^1(G)\to \mathcal{B}(l^2(G))
+\end{equation*}
+and we let
+\begin{equation*}
+    C_r^*(G)=\{U_f: f\in l^1(G)\}^{\overline{\phantom{.}}}
+\end{equation*}
+where we take the closure with respect to the operator norm.
+
+For $G$ commutative, we have $C_r^*(G)$ is a commutative $C^*$-algebra hence
+\begin{equation*}
+    \mathcal{A}:=C_r^*(G)\cong C(\widehat{\mathcal{A}})
+\end{equation*}
+
+We've shown last time, that $U$ is injective from $l^1(G)$ to $C_r^*(G)$. Each $\varphi\in\widehat{\mathcal{A}}$ a multiplicative linear functional, we have
+\begin{equation*}
+    f\mapsto \varphi(\pi_f)\in(l^1(G))^{\widehat{\phantom{.}}}
+\end{equation*}
+
+For any $f\in l^1(G)$, and $f\neq 0$, we have $U_f=0$, and the map is injective, hence $\pi_f=0$, we have, there exists $\varphi$ such that $\varphi(\pi_f)\neq 0$.
+
+\begin{corollary}[largeness of the dual group]
+    $\widehat{G}$ is big enough given that $f,g\in l^1(G)$, if $f\neq g$, then there exists $\varphi\in\widehat{G}$ succh that 
+    \begin{equation*}
+        \widehat{f}(\varphi)\neq\widehat{g}(\varphi)
+    \end{equation*}
+    In other words $\varphi(f)\neq\varphi(g)$.
+\end{corollary}
+
+We now state the big Galfand-Naimark theorem.
+\begin{theorem}[Big Gelfand-Naimark]
+    Let $\mathcal{A}$ be an abstract $C^*$-algebra, e.g. a Banach *-algebra such that 
+    \begin{equation*}
+        \|a^*a\|=\|a\|^2, \forall a\in\mathcal{A}
+    \end{equation*}
+    Then there exists a *-representation $\pi$ of $\mathcal{A}$ on a Hilbert space $\mathcal{H}$ which is isometric, i.e.
+    \begin{equation*}
+        \|\pi(a)\|=\|a\|
+    \end{equation*}
+    And
+    \begin{equation*}
+        \mathcal{A}\cong \{\pi(a): a\in\mathcal{A}\}
+    \end{equation*}
+\end{theorem}
