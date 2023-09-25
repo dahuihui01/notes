@@ -1779,3 +1779,56 @@ We now state the big Galfand-Naimark theorem.
         \mathcal{A}\cong \{\pi(a): a\in\mathcal{A}\}
     \end{equation*}
 \end{theorem}
+\begin{note}
+    In little Galfand-Naimark, $C(\widehat{\mathcal{A}})$ is explicitly determined, but for big, it is not determined.
+\end{note}
+
+For $X$ a compact space, $C(X)$ is a $C^*$-algebra.
+
+Consider $X_d$, which is discrete, and take $l^1(X_d)$ with the counting measure, is called the atomic representation.
+
+Take any Borel measure $\mu$ on $X$, we have
+\begin{equation*}
+    L^2(X,\mu)
+\end{equation*}
+If $\mu$ has full support, then map of $C(X)$ is isometric.
+
+Let $\mathcal{A}$ be a *-algebra, and $\pi:\mathcal{A}\to\mathcal{B}(\mathcal{H})$ a *-representation. Let's take any $\xi\in\mathcal{H}$, and $\xi\neq 0$, define
+\begin{equation*}
+    \varphi_\xi(\mathcal{A})=\langle \pi(a)\xi, \xi\rangle 
+\end{equation*}
+then we look at 
+\begin{equation*}
+    \varphi(a^*a)=\langle\pi(a^*a)\xi, \xi\rangle=\langle \pi(a)\xi, \pi(a)\xi\rangle\geq 0
+\end{equation*}
+\begin{note}
+    For $f\in C(X)$, we always have $f^*f\geq 0$.
+\end{note}
+\begin{definition}[Positive linear functionals]
+    If $\varphi$ is a linear functional on $C(X)$, such that for all $f$,
+    \begin{equation*}
+        \varphi(f^*f)\geq 0
+    \end{equation*}
+\end{definition}
+\begin{remark}
+    They are always continuous. And they give rise to a measure $\mu_\varphi$ on $X$.
+\end{remark}
+You think of $a^*a$ as being ``positive.''
+
+\begin{proposition}
+    If $\mathcal{A}$ is a $C^*$-algebra, if $a,b\in\mathcal{A}$, there exists $c$ such that
+    \begin{equation*}
+        a^*a+b^*b=c^*c
+    \end{equation*}
+\end{proposition}
+
+\begin{definition}[positive linear functionals]
+    It $\mathcal{A}$ is a *-algebra, and if $\varphi$ is a linear functional on $\mathcal{A}$, if for all $a\in\mathcal{A}$, we have
+    \begin{equation*}
+        \varphi(a^*a)\geq 0
+    \end{equation*}
+    then we call $\varphi$ \textbf{positive}.
+\end{definition}
+\begin{proposition}
+    If $\varphi, \psi$ are positive, then $r\varphi+s\psi$, with $r,s\in\R^+$, then the positive linear functionals form a \textbf{cone}.
+\end{proposition}
