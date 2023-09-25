@@ -490,5 +490,99 @@ And this is the Fourier series!
     The Gelfand transformation is onto for $\mathcal{A}$ Banach algebras that are self-adjoint. It is also an isometry.
 \end{proposition}
 
+Our goal for the following few propositions is to establish the relationship between the spectral radius, Gelfand transform, and maximal ideals.
+
+Let $\mathcal{A}$ be a commutative Banach algebra.
+\begin{proposition}
+    There is a natural correspondance between the multiplication functionals $\varphi$ on $\mathcal{A}$ and the set of maximal ideals in $\mathcal{A}$. 
+
+    Namely, for every maximal ideal $\mathcal{M}$ in $\mathcal{A}$, we can find a $\varphi\in\widehat{\mathcal{A}}$ such that $\ker(\varphi)=\mathcal{M}$.
+\end{proposition}
+The proof uses algebra, and we did it in class, so we do not illustrate here. The important thing is the following result.
+
+\begin{corollary}
+    $a\in\mathcal{A}$ is invertible if and only if $\widehat{a}$ is invertible, where $\widehat{a}=\Gamma(a)$ is the Gelfand transform.
+\end{corollary}
+\begin{proof}
+    We know if $a$ is invertible, then 
+    \begin{equation*}
+        \Gamma(aa^{-1})=\Gamma(a)\Gamma(a^{-1})=1
+    \end{equation*}
+    Hence $\Gamma(a^{-1})$ is the inverse of $\Gamma(a)=\widehat{a}$, hence is invertible.
+
+    Now we want to show if $\widehat{a}$ is invertible, then $a$ is invertible. Suppose $a$ is not invertible, we show $\widehat{a}$ is not invertible. In other words, there exists $\varphi$ such that 
+    \begin{equation*}
+        \widehat{a}(\varphi)=\varphi(a)=0
+    \end{equation*}
+    Using the previous proposition, we notice that the set
+    \begin{equation*}
+        \{ab: b\in\mathcal{A}\} \text{ is a proper ideal of } \mathcal{A}
+    \end{equation*}
+    This is due to $a$ be not invertible, hence does not contain $1_\mathcal{A}$. And every proper ideal is contained in some maximal ideal $\mathcal{M}$, hence there exists $\varphi\in\widehat{\mathcal{A}}$ such that $\varphi(a)=0$, and we are therefore done.
+\end{proof}
+\qed
+
+Now we connect the spectral radius with the Gelfand transform. Recall the definition of the spectral radius.
+\begin{definition}[spectral radius]
+    Let $a\in\mathcal{A}$, then we define
+    \begin{equation*}
+        r(a)=\sup\{|\lambda|: \lambda\in\sigma(a)\}
+    \end{equation*}
+\end{definition}
+We now have the following claim.
+\begin{proposition}
+    We have
+    \begin{equation*}
+        r(a)=\|\widehat{a}\|_\infty
+    \end{equation*}
+\end{proposition}
+\begin{proof}
+    We already know that for every $a\in\mathcal{A}$, $\widehat{a}(\varphi)=\varphi(a)\in\sigma(a)$, hence $\|\widehat{a}\|_\infty\leq r(a)$.
+    \begin{lemma}
+        For $a\in\mathcal{A}$, we have
+        \begin{equation*}
+            \sigma(a)\subset Range(\widehat{a})
+        \end{equation*}
+    \end{lemma}
+    \begin{proof}
+        Suppose $\lambda$ is not in the range of $\widehat{a}$, then $\widehat{a}-\lambda(\varphi)\neq 0$ for all $\varphi$, hence
+        \begin{equation*}
+            \widehat{a}-\lambda \text{ is invertible} \Rightarrow a-\lambda \text{ is invertible }
+        \end{equation*}
+        Hence $\lambda\not\in\sigma(a)$. Hence this implies $\lambda\in\sigma(a)$ implies $\lambda=\varphi(a)$ for some $a$.
+    \end{proof}
+    \qed
+
+    Hence $r(a)\leq\|\widehat{a}\|_\infty$. Hence $r(a)=\|\widehat{a}\|$.
+\end{proof}
+\qed
+
+In class we saw if $\|a^2\|=\|a\|^2$, then 
+\begin{equation*}
+    r(a)=\|a\|
+\end{equation*}
+Now we connect this with the Gelfand transform.
+\begin{proposition}
+    The Gelfand transform is an isometry i.e. $\|\widehat{a}\|=\|a\|$ if and only if 
+    \begin{equation*}
+        \|a^2\|=\|a\|^2
+    \end{equation*}
+\end{proposition}
+\begin{proof}
+    We have $\|\widehat{a}\|=r(a)$, and by the previous remark, we already have one direction. Now we want to show if $r(a)=\|a\|$, then $\|a^2\|=\|a\|^2$.
+    \begin{lemma}[Spectral mapping theorem]
+        For $a\in\mathcal{A}$, we have
+        \begin{equation*}
+            \varphi(\sigma(a))=\sigma(\varphi(a))
+        \end{equation*}
+    \end{lemma}
+    \textcolor{red}{what}
+    Hence we have $r(a^2)=(r(a))^2$, then we have
+    \begin{equation*}
+        \|a^2\|=r(a^2)=(r(a))^2=\|a\|^2
+    \end{equation*}
+\end{proof}
+\qed
+
 
 

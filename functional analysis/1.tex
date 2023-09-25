@@ -795,12 +795,23 @@ Hence we have
     |\lambda|\leq\liminf_n\{\|a^n\|^{1/n}\}
 \end{equation*}
 
-\begin{definition}
+\begin{definition}[spectral radius]
     Fix $a\in\mathcal{A}$, we define the spectral radius of $a$, denoted by $r(a)$,
     \begin{equation*}
         r(a)=\sup_\lambda\{|\lambda|:\lambda\in\sigma(a)\}
     \end{equation*}
 \end{definition}
+Next we introduce an equivalent definition of the spectral radius which connects to the Gelfand transform.
+\begin{proposition}
+    For $\mathcal{A}$ a Banach algebra, we have the following relationship:
+    \begin{equation*}
+        r(a)=\sup\{|\lambda|:\lambda\in\sigma(a)\}=\|\Gamma(a)\|_\infty
+    \end{equation*}
+\end{proposition}
+
+\begin{example}
+    Note it we have a self-adjoint operator $T$, then the spectral radius of $T$ would be the absolute value of the largest eigenvalue, $|\lambda|$.
+\end{example}
 \begin{corollary}
     \begin{equation*}
         r(a)\leq\limsup_n\{\|a^n\|^{1/n}\}
@@ -828,11 +839,12 @@ Recall that we define the spectral raidus, $r(a)$, as
 \end{equation*}
 
 Now we would like to prove the following proposition.
-\begin{proposition}
+\begin{proposition}[Gelfand-Beurling]
     \begin{equation*}
         r(a)=\lim\|a^n\|^{1/n}
     \end{equation*}
 \end{proposition}
+
 \begin{proof}
 
 If we let $\lambda=1/z$, then 
@@ -949,6 +961,7 @@ if $\mathcal{A}$ is unital, and if $\mathcal{A}\subset\mathcal{B}$ with some uni
         r_\mathcal{A}(a)=\lim\|a^n\|^{1/n}=r_\mathcal{B}(a)
     \end{equation*}
 \end{proposition}
+This proposition tells us that the spectral radius of an element $a\in\mathcal{A}$ is independent of the Banach algebra it is considered in, but rather only depends on itself.
 
 \begin{proposition}
     Let $X$ be compact, and let $\mathcal{A}=C(X)$. Then for $f\in C(X)$, we have
@@ -961,27 +974,40 @@ if $\mathcal{A}$ is unital, and if $\mathcal{A}\subset\mathcal{B}$ with some uni
 \end{proof}
 
 \begin{remark}
-The same property holds for $f$ in any unitla subalgebra of $C(X)$, for example, if $X\subset\C$, and let $\mathcal{A}$=functions that are holomorphic on an open subset of $\C$ that are in $X$.
+The same property holds for $f$ in any unital subalgebra of $C(X)$, for example, if $X\subset\C$, and let $\mathcal{A}$=functions that are holomorphic on an open subset of $\C$ that are in $X$.
 \end{remark}
 
-Let $\mathcal{A}$ be a unital Banach alagebra with the property such that for any $a\in\mathcal{A}$, we have
-\begin{equation*}
-    \|a^2\|=\|a\|^2
-\end{equation*}
-This implies that
-\begin{equation*}
-    \|a^4\|=\|a\|^4
-\end{equation*}
-By induction, for any $n$, we have
-\begin{equation*}
-    \|a^{2^n}\|=\|a\|^{2^n}
-\end{equation*}
-Hence by taking $1/2^n$-root of both sides, we get that the spectral radius of $r(a)$
-\begin{equation*}
-    r(a)=\|a^{2^n}\|^{1/2^n}=\|a\|
-\end{equation*}
+\begin{proposition}
+    Let $\mathcal{A}$ be a unital Banach algebra such that for $a\in\mathcal{A}$, we have
+    \begin{equation*}
+        \|a^2\|=\|a\|^2
+    \end{equation*}
+    Then we have
+    \begin{equation*}
+        r(a)=\|a\|
+    \end{equation*}
+\end{proposition}
+\begin{proof}
+    If we have
+    \begin{equation*}
+        \|a^2\|=\|a\|^2
+    \end{equation*}
+    This implies that
+    \begin{equation*}
+        \|a^4\|=\|a\|^4
+    \end{equation*}
+    By induction, for any $n$, we have
+    \begin{equation*}
+        \|a^{2^n}\|=\|a\|^{2^n}
+    \end{equation*}
+    Hence by taking $1/2^n$-root of both sides, we get that the spectral radius of $r(a)$
+    \begin{equation*}
+        r(a)=\|a^{2^n}\|^{1/2^n}=\|a\|
+    \end{equation*}
+\end{proof}
+\qed
 
-Let $\mathcal{H}$ be a Hilbert space, over $\C$, and let $\mathcal{A}=B(H)$, i.e. the bounded linear operators on $\mathcal{H}$., and equip with the operation of taking adjoint. $T\mapsto T^*$.
+Let $\mathcal{H}$ be a Hilbert space, over $\C$, and let $\mathcal{A}=B(H)$, i.e. the bounded linear operators on $\mathcal{H}$, and equip with the operation of taking adjoint. $T\mapsto T^*$.
 
 \begin{proposition}
     For any $T\in B(\mathcal{H})$, we have
@@ -1002,7 +1028,7 @@ Let $\mathcal{H}$ be a Hilbert space, over $\C$, and let $\mathcal{A}=B(H)$, i.e
     \begin{equation*}
         \|T(\xi)\|\leq \|T^*T\|^{1/2}\|\xi\|
     \end{equation*}
-    which by definition, gives
+    which by definition ($\|T\|$ is the smallest constant for the inequality), gives
     \begin{equation*}
         \|T\|\leq\|T^*T\|^{1/2}
     \end{equation*}
@@ -1010,6 +1036,9 @@ Let $\mathcal{H}$ be a Hilbert space, over $\C$, and let $\mathcal{A}=B(H)$, i.e
 \end{proof}
 \qed
 
+\begin{note}
+    We used the inner product to justify $\|T\|^2\leq\|T^*T\|$, which we cannot necessarily do in a non-Hilbert space.
+\end{note}
 \begin{corollary}
     If $T^*=T$, then
     \begin{equation*}
@@ -1043,10 +1072,8 @@ So if $T^*=T$, then we have
     \sigma(T)=\|T\|
 \end{equation*}
 
-\begin{definition}
-    A concrete $C^*$-algebra is a norm-closed sub-algebra $\mathcal{A}$ of $\mathcal{B}(\mathcal{H})$, for some $\mathcal{H}$ (could be finite or infinitely dimensional) such that is self-adjoint, i.e., if $T\in\mathcal{A}$, then $T^*\in\mathcal{A}$.
-
-    Again, we call $\mathcal{A}$ is unital if $1_\mathcal{H}\in\mathcal{A}$. 
+\begin{definition}[Concrete $C^*$-algebra]
+    A concrete $C^*$-algebra is a norm-closed sub-algebra $\mathcal{A}$ of $\mathcal{B}(\mathcal{H})$, for some $\mathcal{H}$ such that is \textbf{self-adjoint}, i.e., if $T\in\mathcal{A}$, then $T^*\in\mathcal{A}$. We call $\mathcal{A}$ is unital if $1_\mathcal{H}\in\mathcal{A}$. 
 \end{definition}
 
 \begin{corollary}
@@ -1056,8 +1083,7 @@ So if $T^*=T$, then we have
     \end{equation*}
     If $\mathcal{A}$ is unital $C^*$-algebra, and if $a^*=a$, then $r(a)=\|a\|$.
 \end{corollary}
-
-Next we say a bit about the Gelfand transform.
+This follows from our discussio above. Next we say a bit about the Gelfand transform.
 \begin{definition}
     Let $\mathcal{A}$ be a unital Banach algebra, and commutative, then we have the Gelfand transform $\Gamma:\mathcal{A}\to C(\widehat{A})$:
     \begin{equation*}
@@ -1070,13 +1096,22 @@ Note that if $a\in\mathcal{A}$, and $\varphi\in\widehat{A}$, then $\varphi(a)\in
 \begin{equation*}
     |\varphi(a)|\leq\|a\|=r(a)
 \end{equation*}
+
 then $\|\widehat{a}\|_\infty\leq r(a)$. Now we would like to show
 \begin{equation*}
     \|\widehat{a}\|_\infty=r(a)
 \end{equation*}
+\begin{theorem}
+    $r(a)$ is the spectral radius of $a$, which is defined as $r(a)=\sup\{|\lambda|:\lambda\in\sigma(a)\}$, and we have
+    \begin{equation*}
+        r(a)=\|\widehat{a}\|_\infty
+    \end{equation*}
+\end{theorem}\begin{note}
+    This gives us a correspondance between $\varphi$ and non-invertible elements of $\mathcal{A}$. This says if $a$ is not invertible, then we can find some $\varphi$ such that $\varphi(a)=0$, i.e. a $\varphi$ kills the non-invertible element.
+\end{note}
 
 We will now dedicate the next 50 minutes of our life to proving this theorem.
-\begin{theorem}
+\begin{theorem}[$\varphi$ and maximal ideal]
     If $\lambda\in\sigma(a)$, then there exists $\varphi\in\widehat{A}$ such that $\varphi(a)=\lambda$. This is equiavalent to saying: if $(a-\lambda1)$ is not invertible, then there is a $\varphi\in\widehat{\mathcal{A}}$, such that 
     \begin{equation*}
         \varphi(a-\lambda1)=0
@@ -1173,17 +1208,25 @@ We will now dedicate the next 50 minutes of our life to proving this theorem.
 \end{proof}
 \qed
 
-\section{Lecture 10}
-It's Friday.
+\begin{corollary}
+    We have
+    \begin{equation*}
+        \sigma(a)=Range(\widehat{a})
+    \end{equation*}
+\end{corollary}
 
+\section{Lecture 10}
 Consider $C_\infty(\R)\subset C_b(\R)$, and $C_\infty(\R)$ is an ideal of $C_b(\R)$.
 
-And the abstract $C^*$-algebra is a Banach algebra with involution $*$, such that
-\begin{equation*}
-    \|a^*a\|=\|a\|^2
-\end{equation*}
-Zorn's lemma states that $C_\infty(\R)$ is contained in a maximal ideal, in a commutative Banach algebras, maximal ideals give rise to bounded multiplcative linear functionals.
-
+\begin{definition}[Abstract $C^*$-algebra]
+    An abstract $C^*$-algebra is a Banach algebra with an involution, such that 
+    \begin{equation*}
+        \|a^*a\|=\|a\|^2
+    \end{equation*}
+\end{definition}
+\begin{remark}
+    Zorn's lemma states that $C_\infty(\R)$ is contained in a maximal ideal, in a commutative Banach algebras, maximal ideals give rise to bounded multiplcative linear functionals.
+\end{remark}
 \begin{remark}
     There is ideals of $C_b(\R)$ that are bigger than $C_\infty(\R)$.
 \end{remark}
@@ -1237,19 +1280,20 @@ For a commutative Banach algebra over $\C$, the Gelfand transform
 \begin{equation*}
     a\mapsto\widehat{a}
 \end{equation*}
+
 We have
 \begin{equation*}
     \|\widehat{a}\|_\infty=r(a)
 \end{equation*}
-\begin{proposition}
+\begin{proposition}[Gelfand isometric condition]
     If $\|a^2\|=\|a\|^2$, then the Gelfand transform is isometric. Thus we have
 \begin{equation*}
     \|\widehat{a}\|_\infty=\|a\|
 \end{equation*}
 \end{proposition}
 
-\begin{definition}
-    For $a_n$ involution on an algebra over $\C$, is a map $*$ from $\mathcal{A}\to\mathcal{A}$, with the properties
+\begin{definition}[Involution $*$]
+    For an involution on an algebra over $\C$, is a map $*$ from $\mathcal{A}\to\mathcal{A}$, with the properties
 \begin{enumerate}
     \item $(a^*)^*=a$
     \item $(a+b)^*=a^*+b^*$
@@ -1325,7 +1369,7 @@ This is quite strong! (Every $C^*$-algebra is symmetric).
 
 \section*{Lecture 11}
 Let $\mathcal{A}$ be a *-Banach algebra.
-\begin{definition}
+\begin{definition}[symmetric $*$-algebra]
     $\mathcal{A}$ is symmetric if for any $a\in\mathcal{A}$, we have
     \begin{equation*}
         a^*=a
@@ -1343,12 +1387,12 @@ And we apply it to $a^*$, hence we get
 \end{equation*}
 Hence the involution property is satisfied.
 
-\begin{proposition}
+\begin{proposition}[$C^*$-algebras are symmetric]
     Let $\mathcal{A}$ be a unital $C^*$-algebra, i.e. we have
     \begin{equation*}
         \|a^*a\|=\|a\|^2, \forall a\in\mathcal{A}
     \end{equation*}
-    Then $\mathcal{A}$ is symmetric.
+    Then $\mathcal{A}$ is symmetric, i.e. $a^*=a$.
 \end{proposition}
 In the Gelfand Noimark paper (1943), 
 \begin{proof}[Arens Truck, 1946]
@@ -1376,7 +1420,7 @@ In the Gelfand Noimark paper (1943),
 \end{proof}
 \qed
 
-Let's step back. Let $\mathcal{A}$ be a commutative symmetric Banach *-algebra. Then if $a\in\mathcal{A}$, and if $a^*=a$, so $\sigma(a)\subset\R$. But $\sigma(a)=\text{ range } of \widehat{a}$, so $\mathcal{A}$ is an $\R$-valued function on $\mathcal{A}$.
+Let's step back. Let $\mathcal{A}$ be a commutative symmetric Banach *-algebra. Then if $a\in\mathcal{A}$, and if $a^*=a$, so $\sigma(a)\subset\R$. But $\sigma(a)=Range(\widehat{a})$, so $\mathcal{A}$ is an $\R$-valued function on $\mathcal{A}$.
 
 For any $a\in\mathcal{A}$, we have
 \begin{equation*}
@@ -1392,10 +1436,18 @@ Thus, we have
 \end{equation*}
 So $a\mapsto\widehat{a}$ is a *-algebra homomorphism of $\mathcal{A}$ into $C(\widehat{\mathcal{A}})$.
 
-For any unital commutative Banach algebra $\mathcal{A}$, then the image of the Gelfand transform $\Gamma$, separates the points of $\widehat{\mathcal{A}}$.
-
+\begin{definition}[separation of points by functions]
+    A collection of functions $\{f\}_j$ defined on $X$ is said to separate points if for all $x,y\in X$, such that $x\neq y$, there exists $f$ such that we have
+    \begin{equation*}
+        f(x)\neq f(y)
+    \end{equation*}
+\end{definition}
+\begin{proposition}
+    For any unital commutative Banach algebra $\mathcal{A}$, then Gelfand transform $a\mapsto\widehat{a}$, separates the points of $\widehat{\mathcal{A}}$.
+\end{proposition}
 \begin{proof}
-    If $\varphi,\psi\in\in\widehat{\mathcal{A}}$, and $\Gamma(a)(\varphi)=\Gamma(a)(\psi)$, then 
+    We prove the contrapositive, if we assume for all $\widehat{a}$, we have $\widehat{a}(\varphi)=\widehat{a}(\psi)$, then we would like to show $\varphi=\psi$.
+    If $\varphi,\psi\in\widehat{\mathcal{A}}$, and $\widehat{a}(\varphi)=\widehat{a}(\psi)$, then 
     \begin{equation*}
         \varphi(a)=\psi(a), \text{ for all } a
     \end{equation*}
@@ -1414,9 +1466,9 @@ For any unital commutative Banach algebra $\mathcal{A}$, then the image of the G
 \begin{theorem}[Little Galfand-Naimark theorem]
     Let $\mathcal{A}$ be a unital commutative $C^*$-algebra (abstract, which doesn't include hilbert space), then the Gelfand transform
     \begin{equation*}
-        \Gamma(a)(\varphi)=\varphi(a)
+        \widehat{a}(\varphi)=\varphi(a)
     \end{equation*}
-    is an isometric *-isomorphism of $\mathcal{A}$ into $C(\widehat{\mathcal{A}})$.    
+    is an isometric *-isomorphism of $\mathcal{A}$ into $C(\widehat{\mathcal{A}})$, i.e. $\|\widehat{a}\|=\|a\|$.   
 \end{theorem}
 \begin{proof}
     Since $\mathcal{A}$ is symmetric, the range of the Gelfand transform is dense. We also saw that $\|a^{2^n}\|=\|a\|^{2^n}$, so the spectral radius of $a$, $r(a)=\|a\|=\|\Gamma(a)\|$. 
@@ -1458,7 +1510,6 @@ For $T\in\mathcal{B}(\mathcal{H})$, and $T=T^*$, then
 \begin{proposition}
     For $G$ commutative, the range of the Gelfand transform $\Gamma$, which is the Fourier transform (for $f\in l^1(\mathbb{Z})$, we have $\widehat{f}(e^{i\theta})=\sum f(n)e^{{i\theta}^n}$, note $\widehat{\mathbb{Z}}=\T$ ) in this setting, this is dense in $C(\widehat{G})$. However, this is not isometric, and the range is not norm-closed unless $G$ is finite.
 \end{proposition}
-
 
 
 \section{Lecture 12}
