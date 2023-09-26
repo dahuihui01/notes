@@ -1602,7 +1602,7 @@ And this gives
 
 
 
-\section{Lecture ?}
+\section{Lecture 10}
 Next we make the transition from linear to nonlinear Schrodinger equations (NLS).
 \begin{equation*}
     \begin{cases}
@@ -1647,4 +1647,137 @@ We have the solution in the form:
     $\overline{u}$ kills the phase rotation, Galilean symmetry.
 \end{note}
 
+\begin{proposition}
+    $u\mapsto N(u)$ is a contraction, i.e. it converges to a fixed point.
+\end{proposition}
+First we would like to define the notion of ``contraction'' given a metric, we pick our Banach space to be the Strichartz estimate $S$.
 
+By the linear Strichartz estimate, it suffices to look at the source term:
+\begin{align*}
+    \|N(u)-N(v)\|_S&\leq \|u|u|^p-v|v|^p\|_{S'}\\
+    &\leq\||u-v|\cdot(|u|^p+|v|^p)\|_{S'}\\
+    &\leq\|u-v\|_{L^\frac{2n+1}{n}}\|(u,v)\|_[L^\frac{2n+2}{n}]
+\end{align*}
+Instead of $S'$. we replace it with $L^\frac{2(n+2)}{n+4}$, where the last term is the Lipschitz solution, hence we look for small data solutions.
+
+Assume $\|u_0\|_{L^2}<\epsilon$, then we look for solutions in $B_{L^\frac{2(n+1)}{n}}(0,100\epsilon)$.
+
+\begin{theorem}
+    NLS with $p=\frac{4}{n}$ is \textbf{globally} well posed for initial data $u_0$ which is small in $L^2$. 
+\end{theorem}
+\begin{note}
+    Two caveats: we fixed $p$, do not have understanding of other $p$'s, and we can only work with small initial data $u_0$.
+\end{note}
+\begin{remark}
+    When $p$ is even, we are given the nice properties that $u$ could be made analytic, hence $n=1, 2$ cases are interesting.
+\end{remark}
+\begin{problem}
+    How do we proceed with other $p$'s?
+\end{problem}
+
+\textbf{n=1} $p=4$. Can $p$ go lower? $0<p<4$. Say, we pick $p=2$. Hence we estimate: $u\cdot|u|^2$. The Strichartz space:
+\begin{equation*}
+    L^\infty L^2\to L^4L^\infty, S': L^1L^2\to L^\frac{4}{3}L^1
+\end{equation*}
+
+For the following:
+\begin{equation*}
+    |u|^2\cdot u=\overline{u}\cdot u\cdot u
+\end{equation*}
+where $\overline{u}, u\in L^4L^\infty$, and the third $u\in L^\infty L^2$, hence taking the produt of both in time and space, we get our $|u|^2\cdot u\in L^2L^2$, and for fixed time interval $T$, we have
+\begin{equation*}
+    L^2L^2\subset L^1L^2
+\end{equation*}
+
+Now going back to the contraction $N(u)$, we get 
+\begin{align*}
+    \|N(u)-N(v)\|_S&\leq\||u|^2u-|v|^2v\|_{L^1L^2}\\
+    &\leq\sqrt{T}\|\cdot\|_{L^2L^2}\\
+    &\leq \sqrt{T}\|(u,v)\|_S^2\\
+\end{align*}
+Hence now, our Lipschitz constant is
+\begin{equation*}
+    L=\sqrt{T}\left(\|(u,v)\|_S^2 \right)^2
+\end{equation*}
+Hence we can choose our $T$ corresponding to kill the contribution of the rightmost term.
+
+\begin{corollary}
+    For $\|u_0\|_{L^2}\leq M$, and $\|u\|_S\leq 10^5M$, we can choose $T=10^{-10}M^{-4}$, then $u$ exists by the contraction principle.
+\end{corollary}
+
+Hence we have the theorem.
+\begin{theorem}
+    For the above NLS, with $0<p<\frac{4}{n}$, it is locally (then globally) well-posed for initial data $u_0\in L^2$. 
+\end{theorem}
+\begin{remark}
+    We recall, if our ODE solution exists locally, and does not increase after that local time period, then the solution exists globally. Hence we check if solution $u$ grows, we have $\frac{d}{dt}\|u\|_{L^2}^2=0$, as for the nonlinear portion, we have $\int Im(\pm u|u|^p\overline{u})$, hence picking $u$ to be real, we have that NLS is well-posed globally.
+\end{remark}
+
+Note that under scaling, the linear Schrodinger:
+\begin{equation*}
+    u(t,x)\to\mu u(\lambda^2t, \lambda x)
+\end{equation*}
+and for the nonlinear equation it is the same, however, $t,x$ are coupled:
+\begin{equation*}
+    (iu_t+\Delta u)=|u|^p\cdot u
+\end{equation*}
+Hence we have
+\begin{equation*}
+    u-\lambda^2=\mu^{p+1}\Rightarrow \mu=\lambda^\frac{2}{p}
+\end{equation*}
+
+Then we ask the question: how about the $L^2$ norm of the data?
+\begin{equation*}
+    \|u_\lambda\|_{L^2}^2=\int\mu^2|u(\lambda x)|^2dx=\mu^2\lambda^{-n}\|u\|_{L^2}^2=\lambda^\frac{4}{p}\lambda^{-n}\|u\|_{L^2}^2
+\end{equation*}
+Note that when $p=\frac{4}{n}$, the magical exponent for $p$!
+\begin{corollary}[$L^2$ critical]
+    When $p=\frac{n}{4}$, the $L^2$ problem is scale-invariant. (The $L^2$ norm does not change when you scale the solution). 
+
+    This is called the $L^2$ critical problem, and we get global well-posedness for small data.
+\end{corollary}
+
+Now suppose $p<\frac{4}{n}$, this is called the \textbf{subcritical} problem, and $u(t)\in [0,T]$, and $u_\lambda$ lives for $[0,\lambda^{-2}T]$. We could scale our data to preserve the size, we could have the data live longer by scaling the size at particular $t$ to be smaller; or have the data live shorter by increasing the size.
+
+Now suppose $p>\frac{4}{n}$ , this is called the \textbf{supercritical} $L^2$ problem, and this problem is ill-posed. this is because the scaling is reversed as in the subcritical case. We obtain a ``better'' solution, larger and lives longer by scaling, which should be impossible.
+
+\begin{note}
+    What do we mean by saying a problem is ill-posed? It means the nonexistence (where), or nonuniqueness. And maybe a third one is the continuous dependence on the initial data. This could happen with two initial data that start really close together, but the solution differs a lot.
+\end{note}
+
+One could define well-posedness in $S$ the Strichartz space, or one could talk about the unconditional uniqueness in $C(L^2)$, where it is continuous in $L^2$. One could surely do a combination of the two, where one compares $S$ and one $C(L^2)$.
+
+Recall we came up with $p=\frac{4}{n}$, since we look at $u_0\in L^2$, (and we did this because the conservation law holds in $L^2$), and used the Strichartz estimate given that our intial data is in $L^2$.
+
+Now we would like to move $u_0$ away from $L^2\to \dot{H}^s$, and the reason for homogeneous Sobolev space is that we would like to do scaling. Now how does $\|u\|_{H^s}$ change under sclaing?
+\begin{equation*}
+    \|u_\lambda\|_{H^s}^2\approx \|D^su_\lambda\|_{L^2}^2\approx \int u^2\lambda^{2s}|D^su(\lambda x)|^2dx\approx \lambda^{\frac{4}{p}}\lambda^{-n}\lambda^{2s}\|u\|_{H^s}^2
+\end{equation*}
+Hence the dependence now also includes $s$. This gives us $\frac{4}{p}=n-2s$, and $p_s=\frac{4}{n-2s}$. Now we again separate into three cases, and the only thing we no longer have the conservation in $H^s$.
+\begin{enumerate}
+    \item $p<p_s$
+    \item $p=p_s$
+    \item $p>p_s$
+\end{enumerate}
+\begin{remark}
+    Subcritical means everything nice, and critical is when it is scale-invariant, and supercritical is ill-posed.
+\end{remark}
+
+\textbf{s=1} This gives rise to another conservation situation.
+\begin{equation*}
+    iu_t+\Delta u=u\cdot|u|^p
+\end{equation*}
+$H^1$ conservation law is the following: recall the mass $M=\frac{1}{2}\int |u|^2dx$,
+\begin{equation*}
+    E=\int\frac{1}{2}|\nabla u|^2+\frac{1}{p+2}|u|^{p+2}dx
+\end{equation*}
+Hence for $H^1$ critical, we have $p_c=\frac{4}{n-2}$, and this only makes sense when $n\geq 3$.
+
+\begin{note}
+    In $n=2$, $H^1$ is almost like $L^\infty$, and hence loses meaning.
+\end{note}
+Note
+\begin{equation*}
+    0<\frac{4}{n-2}<\frac{4}{n}
+\end{equation*}
+and the middle one is the energy critical point, and the right $4/n$ is the mass critical point.
