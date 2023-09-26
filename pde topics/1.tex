@@ -1602,3 +1602,49 @@ And this gives
 
 
 
+\section{Lecture ?}
+Next we make the transition from linear to nonlinear Schrodinger equations (NLS).
+\begin{equation*}
+    \begin{cases}
+        iu_t+\Delta u=\pm u|u|^p, p>0,1\\
+        u(t=0)=u_0, u_0\in H^s, \text{ or } \dot{H}^s
+    \end{cases}
+\end{equation*}
+Next we ask the question, is this question well-posed? and is it globally well-posed?
+
+We first begin with $u_0\in L^2$, and try to find if we can solutions $u\in C(L^2)$. 
+\begin{equation*}
+    \begin{cases}
+        iu_t+\Delta u=f\\
+        u(0)=u_0
+    \end{cases}
+\end{equation*}
+And we have the Strichartz estimates:
+\begin{equation*}
+    \|u\|_{L^\infty L^2}+\|u\|_{S}\leq\|u_0\|_{L^2}+\|f\|_{S'}
+\end{equation*}
+where $S=\cap L_t^pL_x^q$, and $S'$ is the dual Strichartz space.
+
+We will ``replace the line with a number,'' namely, we will choose $p=q$, and
+\begin{equation*}
+    S=L_{t,x}^{\frac{2(n+2)}{n}}, S'=L_{t,x}^\frac{2(n+2)}{(n+4)}
+\end{equation*}
+where our $f=u\cdot|u|^p$.
+
+\begin{equation*}
+    u\rightarrow |u|^p\cdot u, L_{t,x}^{\frac{2(n+2)}{n}}\to L_{t,x}^\frac{2(n+2)}{(n+4)}
+\end{equation*}
+hence we obtain, $p=\frac{4}{n}$. 
+
+\textbf{Using the contraction principle} to solve the NLS.
+
+We have the solution in the form:
+\begin{equation*}
+    u(t)=e^{itD^2}u_0+\int_0^te^{i(t-s)D^2}u\cdot |u|^pds:= N(u)
+\end{equation*}
+\begin{note}
+    Why do we pick out $f=u\cdot|u|^p$ instead of, say $|u|^{p+1}$, this is because this $u\cdot|u|^p$ preserves all the nice properties of solutions to the equation, such as the rotation symmetry, Galilean symmetry, etc. For example, 
+    $\overline{u}$ kills the phase rotation, Galilean symmetry.
+\end{note}
+
+
