@@ -1832,3 +1832,37 @@ You think of $a^*a$ as being ``positive.''
 \begin{proposition}
     If $\varphi, \psi$ are positive, then $r\varphi+s\psi$, with $r,s\in\R^+$, then the positive linear functionals form a \textbf{cone}.
 \end{proposition}
+
+Let $\mathcal{A}$ be a *-algebra, and let $\varphi$ be a positive linear functional on $\mathcal{A}$, then define a pre-inner product on $\mathcal{A}$ by
+\begin{equation*}
+    \langle a, b\rangle_\varphi=\varphi(b^*a)
+\end{equation*}
+
+Then we have
+\begin{equation*}
+    \langle a, a\rangle_\varphi=\varphi(a^*a)\geq 0
+\end{equation*}
+\begin{exercise}
+\textcolor{red}{finish this}
+    We have $\overline{\langle a,b\rangle_\varphi}=\langle b, a\rangle_\varphi$
+\end{exercise}
+Let $\eta_\varphi=\{a\in\mathcal{A}: \langle a, a\rangle_\varphi=0\} $, then if $b\in\mathcal{A}, a\in\eta_\varphi$, then we have
+\begin{equation*}
+    |\langle ba, ba\rangle|=|\langle b^*ba, a\rangle|\leq \langle a, a\rangle^{1/2}=0
+\end{equation*}
+So if $\eta_\varphi$ is an ideal of $\mathcal{A}$, so form $\mathcal{A}/\eta_\varphi$, then
+\begin{equation*}
+    \langle, \rangle_\varphi
+\end{equation*}
+drops to an inner product on $\mathcal{A}/\eta_\varphi$, denote its complement by $L^2(a,\varphi)$, if we are given $c\in\mathcal{A}$, let $\pi$ be the left regular representation of $\mathcal{A}$ on $\mathcal{A}$ via
+\begin{equation*}
+    \pi_ca=ca
+\end{equation*}
+then we have
+\begin{equation*}
+    \langle \pi_ca, b\rangle_\varphi=\langle ca, b\rangle=\varphi(b^*ca)=\varphi((c^*b)^*a)=\langle a, c^*b\rangle=\langle a, \pi(c^*)\rangle b
+\end{equation*}
+Then the left regular representation ``is'' a *-representation, this drops to a *-representation on $\mathcal{A}/\eta_\varphi$.
+
+Next time: we show $\pi_c$ is not continuous, and we will use polynomials. Now if you assume $\mathcal{A}$ is Banach *-algebra, then this $\pi_c$ are always bounded.
+\textbf{GNS representation}, where $S$ is Siegel. 

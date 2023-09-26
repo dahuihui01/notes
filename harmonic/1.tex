@@ -1131,6 +1131,12 @@ We now begin our discussion of Hardy-Littlewood maximal function.
         Mf(x)=\frac{1}{|B_r|}\int_{B_r}|f(x-y)|dy
     \end{equation*}
     where $B_r$ is the ball of radius of $r$ around 0. 
+
+    Alternatively, we have the following equivalent definition of the Hardy-Littlewood maximal function:
+    \begin{equation*}
+        Mf(x)=\frac{1}{|B_r(x)}\int_{B_r(x)}|f(y)|dy
+    \end{equation*}
+    where $B_r(x)$ is the ball of radius $r$ centered at $x$.
 \end{definition}
 Note that this is equivalent to $M'f$ where the balls are replaced with cubes, and we could non-center the tubes to define $M''(f)$.
 
@@ -1158,7 +1164,7 @@ Note that this is equivalent to $M'f$ where the balls are replaced with cubes, a
     \end{equation*}
     We would like to show that $\mu(E_\lambda)\lesssim \|f\|_{L^1}$. It suffices to show this for any $K$ compact contained in $E_\lambda$.
 
-    Note that for each $x\in E_\lambda$, there exists an interval $I_x$ such that 
+    Note that for each $x\in E_\lambda$, there exists an interval $I_x$ (this is by the alternative definition of the Hardy-Littlewood maximal function) such that 
     \begin{equation*}
         \int_{I_x}|f|\leq\lambda|I_x|
     \end{equation*}
@@ -1225,24 +1231,38 @@ There are some nice properties that we would like to note about dyadic cubes.
 \begin{enumerate}
     \item $\forall x\in\R^n$, and for all $k\in\mathbb{Z}$, there exists a unique $Q\in\mathcal{Q}_k$ such that $x\in Q$.
     \item Any two dyadic cubes either are disjoint, or one is contained in the other. In other words, if two dyadic cubes intersect, then one is contained in the other.
-    \item If $j<k$, then for all $Q\in\mathcal{Q}_k$ is contained in a unique $Q\in\mathcal{Q}_j$.
+    \item For each $j<k$, all $Q\in\mathcal{Q}_k$ is contained in a unique $Q\in\mathcal{Q}_j$, and contains $2^n$ cubes in $\mathcal{Q}_{k+1}$.
 \end{enumerate}
 
-\begin{definition}
-    For $f\in L_{loc}^1(\R^n)$, define
+\begin{definition}[Dyadic maximal function]
+    For $f\in L_{loc}^1(\R^n)$, define the conditional expectation of $f$ as follows:
     \begin{equation*}
         E_kf(x)=\sum_{Q\in \mathcal{Q}_k}\left(\frac{1}{|Q|}\int_Qf\right)\chi_{Q}(x)
     \end{equation*}
-\end{definition}
-
-\begin{definition}[Dyadic maximal function]
-    Let the following $M_d$ be the dyadic maximal function
+    And define the dyadic maximal function $M_d$ as follows:
     \begin{equation*}
         M_df(x)=\sup_{k\in\mathbb{Z}}E_k(|f(x)|)
     \end{equation*}
+
+\end{definition}
+\begin{note}
+    We notice that the conditional expectation of $f$ satisfy the following nice property: let $\Omega$ be the collection of all dyadic cubes in $\mathcal{Q}_k$, then we have
+    \begin{equation*}
+        \int_\Omega E_kf=\int_\Omega f
+    \end{equation*}
+    we will use this to prove dyadic maximal function is weak (1,1).
+\end{note}
+
+Alternatively, we could define the dyadic maximal function in a more intuitive way.
+\begin{definition}[Dyadic maximal function-take 2]
+    Let $Q$ be dyadic cubes of different sizes, then the following is the dyadic maximal function:
+    \begin{equation*}
+        M_df(x)=\sup_{Q\ni x}\frac{1}{|Q|}\int_Q|f(y)|dy
+    \end{equation*}
+    where we take the supremum of all $Q$ such that $x\in Q$.
 \end{definition}
 
-\begin{theorem}
+\begin{theorem}[dyadic maximal function is weak (1,1)]
     We have the two following for the dyadic maximal function.
     \begin{enumerate}
         \item The dyadic maximal function is weak $(1,1)$
@@ -1251,15 +1271,18 @@ There are some nice properties that we would like to note about dyadic cubes.
                 \lim_{k\to\infty}E_kf(x)=f(x), \text{ almost everywhere }
             \end{equation*}
     \end{enumerate}
+    This should be intuitive, since as $k\to\infty$, our dyadic cube gets smaller and smaller, should recover how $f(x)$ behaves. This is the same as, in our alterantive definition, as $l(Q)\to 0$.
 \end{theorem}
 \begin{proof}
     Consider $f\in L^1$, and $\lambda>0$, WLOG and $f\geq 0$. For each $x$ such that $M_df(x)>\lambda$, we can find $Q_x\in \mathcal{Q}_k$ for some $k$, and we have
     \begin{equation*}
         \int_{Q_x}fdx>\lambda|Q_x|
     \end{equation*}
-    And we note that this $k$ is $>$ some constant, depending on $f$, since the $L^1$ norm of the function is bounded.
+    And we note that this $k$ is $>$ some constant, depending on $f$, since the $L^1$ norm of the function is bounded. (We should have $|Q_x|=2^{-kn}<\infty$, hence $k$ greater than some constant).
 
-    (Now we use the property if two dyadic cubes intersect, then one is contained in another). Take all such $Q_x$ to form a collection of $S$, and take a subcollection of $S$ as follows:
+    \textbf{Proof sketch:} we would like to show that for each $x$ such that $M_df(x)>\lambda$, we can put this $x$ in some dyadic $Q$ such that it satisfies $\int_Qf(y)dy>\lambda|Q|$, hence the volume of $Q$ is bounded, and such all $Q$ are all disjoint (hence we control how much they overlap) when we take the integral, is bounded by $\|f\|_{L^1}$.
+
+    Now we use the property if two dyadic cubes intersect, then one is contained in another. Take all such $Q_x$ to form a collection of $S$, and take a subcollection of $S$ as follows:
 
     Put all $Q\in S\cap Q_{k+1}$ in $S'$ And all $Q\in S\cap O_j$ such that $Q$ not contained in every $\tilde{Q}$ in $S'\cap(Q_{k_0+1}\cup...\cup Q_{j-1})$ in $S'$ for $j>k_0+1$.
 
@@ -1274,6 +1297,7 @@ There are some nice properties that we would like to note about dyadic cubes.
 \end{proof}
 \qed
 
+
 \begin{remark}
     We can make the chocie such that on the parent of $Q$, the average of $f$ is $\leq\lambda$. This ensures that 
     \begin{equation*}
@@ -1282,6 +1306,25 @@ There are some nice properties that we would like to note about dyadic cubes.
 
     Recall that weak (1,1) implies the almost everywhere convergence of good functions $f\in L^1$. This is theorem 2.2. To go from $L^1$ to $L_{loc}^1$, we note that this is a local property, as $k\to\infty$, and it is still contained in a ball (i.e. cover $\R^n$ with balls).
 \end{remark}
+
+The book gives the alterantive proof on dyadic maximal function being weak (1,1) using the same ideas but more straight forward ``disjointness'' method. We will also insert it here.
+\begin{proof}[dyadic maximal function is weak (1,1) take 2]
+    If we examine the set $\{x: M_df(x)>\lambda\}$, we would like to write it as a disjoint union. Hence we have the following:
+    \begin{equation*}
+        \{x: M_df(x)>\lambda\}\subset\bigsqcup_k\Omega_k
+    \end{equation*}
+    where $\Omega_k=\{x: E_kf(x)>\lambda \text{ and } E_jf(x)\leq\lambda, \forall j<k\}$. This ensures that all $\Omega_k$'s are disjoint. And we have $\int_{\Omega_k}E_kf(x)\geq\int_{\Omega_k}\lambda=|\Omega_k|\lambda$, hence we have the following:
+    \begin{align*}
+        |\{x: M_df(x)>\lambda\}|&=\sum_{k}|\Omega_k|\\
+        &\leq\sum_{k}\frac{1}{\lambda}\int_{\Omega_k}E_kf(y)dy\\
+        &=\sum_{k}\frac{1}{\lambda}\int_{\Omega_k}f(y)dy\\
+        &\leq\frac{1}{\lambda}\|f\|_{L^1}
+    \end{align*}
+    where we noted that we could write $\Omega_k$ as a union of disjoint dyadic cubes, and using $\int_{\Omega_k}E_kf(x)dx=\int_{\Omega_k}f(x)dx$.
+\end{proof}
+\qed
+
+
 
 \begin{theorem}[Calderon-Zygmund decomposition]
     Given $f\in L^1$ and $f\geq 0$, and some $\lambda>0$, there exists $\{Q_j\}$ dyadic cubes such that
@@ -1302,7 +1345,11 @@ There are some nice properties that we would like to note about dyadic cubes.
     \begin{equation*}
         \int_{Q}|f|\leq\lambda|Q|
     \end{equation*}
-    for all dyadic $Q$ such that $x\in Q$. And (2), (3) follow form part of Theorem 2.10.
+    for all dyadic $Q$ such that $x\in Q$. And (2) is the dyadic maximal function being weak (1,1), and (3) is noting that by definition of $\Omega_k$, we have
+    \begin{equation*}
+        \int_{Q_j}\leq\int_{Q_{j-1}}f\leq \lambda|Q_{j-1}|
+    \end{equation*}
+    And $|Q_{j-1}|/|Q_j|=2^n$. Hence we are done.
 \end{proof}
 \qed
 
@@ -1310,6 +1357,7 @@ There are some nice properties that we would like to note about dyadic cubes.
 \section{Lecture 14}
 We now prove that the Hardy-Littlewood maximal funtion is weak (1,1) for higher dimensions. (We proved it for $n=1$.)
 
+\textbf{Proof sketch:} We will use the dyadic function being weak (1,1) to relate the Hardy-Littlewood maximal function $M'f(x)$ super level-set with that of $\{x: M_df(x)>\lambda\}$.
 \begin{lemma}
     If $f\geq 0$, then 
     \begin{equation*}
@@ -1323,34 +1371,32 @@ We now prove that the Hardy-Littlewood maximal funtion is weak (1,1) for higher 
     \begin{equation*}
         \{x\in\R^n: M_df(x)>\lambda\}=\bigsqcup_j Q_j
     \end{equation*}
-    where $Q_j$ are dyadic cubes. We now shouw that 
+    
+    where $Q_j$ are dyadic cubes. Now it suffices to show that 
     \begin{equation*}
         \{x\in\R^n: M'f(x)>4^n\lambda\}\subset \cup_j(2Q_j)
     \end{equation*} 
-    Note that we do not quite get the level set is inside of $\bigsqcup_jQ_j$, but  instead a slightly ``swollen '' union of $\cup_j(2Q_j)$. For every $x$ such that $x\not\in \cup_j(2Q_j)$. Let $Q$ be any  cube centered at $x$. Then $Q$ could be ``disected'' into different regions, where each region is contained in a dyadic cube $Q_j$. Assuming the edge length $l$ of $Q$ is
+    Note that we do not quite get the level set is inside of $\bigsqcup_jQ_j$, but  instead a slightly ``swollen '' union of $\cup_j(2Q_j)$. For every $x$ such that $x\not\in \cup_j(2Q_j)$. Let $Q$ be any  cube centered at $x$. Then $Q$ could be ``disected'' into different regions (see figure 1), where each region is contained in a dyadic cube $Q_j$. Assuming the edge length $l$ of $Q$ is
     \begin{equation*}
-        l(Q)\in (2^{k-1}, 2^k]
+        l(Q)\in [2^{k-1}, 2^k)
     \end{equation*}
     Consider all the dyadic cubes with length $2^k$ that intersect $Q$, and one could prove the number of dyadic cubes $Q_j$ that intersect $Q$ is $\leq 2^n$ ($n$ is the dimension.)
     \begin{note}
         This gives rise to the $2^n$ factor.
     \end{note}
-    Note that for each such dyadic cube $\tilde{Q}$ that intersects $Q$, we have $x\in 2\tilde{Q}$ ($x$ is the center, and is covered when we ``swell'' $\tilde{Q}$). Recall we proved last time, if dyadic cube $\tilde{Q}$ is not contained in any $Q_j$, then we have
+    Note that for each such dyadic cube $\tilde{Q}$ with lenght $2^k$ that intersects $Q$, we have $x\in 2\tilde{Q}$ ($x$ is the center, and is covered when we ``swell'' $\tilde{Q}$). 
+    Recall we proved last time, if dyadic cube $\tilde{Q}$ is not contained in any $Q_j$, then otherwise we would have $x\in\cup_j(2Q_j)$, then we have 
     \begin{equation*}
         \int_{\tilde{Q}}fdx\leq\lambda|\tilde{Q}|
     \end{equation*}
     This gives that
     \begin{equation*}
-        \int_Qfdx\leq\sum_{\tilde{Q}}\int_{\tilde{Q}}fdx\leq 2^n\int_{\tilde{Q}}\lambda|\tilde{Q}|=2^n(2^k)^n\lambda=4^n 2^{(k-1)n}\lambda\leq\leq 4^n\lambda|Q|
+        \int_Qfdx\leq\sum_{\tilde{Q}}\int_{\tilde{Q}}fdx\leq 2^n\int_{\tilde{Q}}\lambda|\tilde{Q}|=2^n(2^k)^n\lambda=4^n 2^{(k-1)n}\lambda\leq 4^n\lambda|Q|
     \end{equation*}
     This shows that we have $M'f(x)\leq 4^n\lambda$.
 \end{proof}
 \qed
 
-\begin{note}
-    The $2^n$ is a bit unusual. 
-\end{note}
-Note that this implies $M$ and $M'$ are dyadic.
 
 \begin{corollary}[Lebesgue differentiation theorem]
     For $f\in L_{loc}^1(\R^n)$, we have
