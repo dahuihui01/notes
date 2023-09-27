@@ -1250,6 +1250,10 @@ There are some nice properties that we would like to note about dyadic cubes.
     \begin{equation*}
         \int_\Omega E_kf=\int_\Omega f
     \end{equation*}
+    This can be seen as follows:
+    \begin{equation}
+        \int_\Omega \sum_{Q\in\mathcal{Q}_k}\frac{1}{|Q|}\int_Qf(y)dy\chi_Q(x)=\sum_{Q\in\mathcal{Q}_k}\int_Qf(y)dy=\int_{\Omega=\mathcal{Q}_k}f(y)dy
+    \end{equation}
     we will use this to prove dyadic maximal function is weak (1,1).
 \end{note}
 
@@ -1385,20 +1389,28 @@ We now prove that the Hardy-Littlewood maximal funtion is weak (1,1) for higher 
     \begin{equation*}
         l(Q)\in [2^{k-1}, 2^k)
     \end{equation*}
-    Consider all the dyadic cubes with length $2^k$ that intersect $Q$, and one could prove the number of dyadic cubes $Q_j$ that intersect $Q$ is $\leq 2^n$ ($n$ is the dimension.)
+    Consider all the dyadic cubes with length $2^k$ that intersect $Q$, and one could prove the number of dyadic cubes $Q_k$ that intersect $Q$ is $\leq 2^n$
     \begin{note}
         This gives rise to the $2^n$ factor.
     \end{note}
-    Note that for each such dyadic cube $\tilde{Q}$ with lenght $2^k$ that intersects $Q$, we have $x\in 2\tilde{Q}$ ($x$ is the center, and is covered when we ``swell'' $\tilde{Q}$). 
-    Recall we proved last time, if dyadic cube $\tilde{Q}$ is not contained in any $Q_j$, then otherwise we would have $x\in\cup_j(2Q_j)$, then we have 
-    \begin{equation*}
-        \int_{\tilde{Q}}fdx\leq\lambda|\tilde{Q}|
-    \end{equation*}
+    We denote the dyadic cubes of length $2^k$ that intersect $Q$ as $R_1, ..., R_m$, then we note that $R_1, ..., R_m$ are not contained in any $Q_j$ for any $j$, because otherwise $x\in\cup_j 2Q_j$. Hence we have
+    \begin{equation}
+        \frac{1}{|R_j|}\int_{R_j}f(y)dy\leq \lambda
+    \end{equation}
+    %Note that for each such dyadic cube $\tilde{Q}$ with lenght $2^k$ that intersects $Q$, we have $x\in 2\tilde{Q}$ ($x$ is the center, and is covered when we ``swell'' $\tilde{Q}$). 
+    %Recall we proved last time, if dyadic cube $\tilde{Q}$ is not contained in any $Q_j$, then otherwise we would have $x\in\cup_j(2Q_j)$, then we have 
+    %\begin{equation*}
+       %\int_{\tilde{Q}}fdx\leq\lambda|\tilde{Q}|
+    %\end{equation*}
+    %This gives that
+    %\begin{equation*}
+        %\int_Qfdx\leq\sum_{\tilde{Q}}\int_{\tilde{Q}}fdx\leq 2^n\int_{\tilde{Q}}\lambda|\tilde{Q}|=2^n(2^k)^n\lambda=4^n 2^{(k-1)n}\lambda\leq 4^n\lambda|Q|
+    %\end{equation*}
     This gives that
-    \begin{equation*}
-        \int_Qfdx\leq\sum_{\tilde{Q}}\int_{\tilde{Q}}fdx\leq 2^n\int_{\tilde{Q}}\lambda|\tilde{Q}|=2^n(2^k)^n\lambda=4^n 2^{(k-1)n}\lambda\leq 4^n\lambda|Q|
-    \end{equation*}
-    This shows that we have $M'f(x)\leq 4^n\lambda$.
+    \begin{equation}
+        \frac{1}{|Q|}\int_Qf(y)dy\leq \frac{1}{|Q|}2^n\sum_j\int_{Q\cap R_j}f(y)dy\leq\frac{1}{|Q|}\sum_j\int_{R_j}f(y)dy\leq 2^n \frac{|R_j|}{|Q|}\lambda\leq 4^n\lambda
+    \end{equation}
+    This shows that we have $M'f(x)\leq 4^n\lambda$ for $x\not\in\cup_j(2Q_j)$.
 \end{proof}
 \qed
 
@@ -1423,8 +1435,10 @@ We now prove that the Hardy-Littlewood maximal funtion is weak (1,1) for higher 
     \begin{equation*}
         \lim_{r\to 0^+}\frac{1}{|B_r|}\int_{B_r}|f(x-y)-f(x)|dy=0
     \end{equation*}
-    Then we call $x$ a Lebesgue point of $f$. Note almost every point is a Lebesgue point.
 \end{definition}
+\begin{note}
+    Hence the Lebesgue differentiation theorem can also be stated as, for $f\in L_{loc}^1$, almost every $x$ is a Lebesgue point for $f$.
+\end{note}
 \begin{proposition}
     If $x$ is a Lebesgue point of $f$, and $\{B_j\}$ is a decreasing sequence of balls such that $x\in B_j$ for all $j$, and $\cap_jB_j=x$, then we have
     \begin{equation*}
