@@ -1,4 +1,4 @@
-\chapter{Preface}
+\chapter*{Logistics}
 \section{Lecture 1}
 Here we go.
 \subsection{Logistics}
@@ -775,7 +775,7 @@ Hence it's again, a redistribution of mass, and as $R\to\infty$, $F_R$ acts more
     \lim_{R\to\infty}\|\sigma_R(f)-f\|_{L^p}=0
 \end{equation*}
 
-\subsection{Chapter 2}
+\chapter{Hardy-Littlewood Maximal function}
 We will talk about partial sum convergence, and better behaved summability methods for $S_Rf$, and we disucss both cases in the sense of $L^p$ and a.e. pointwise convergence.
 
 \subsection{Chapter 2.1}
@@ -1426,8 +1426,7 @@ We now prove that the Hardy-Littlewood maximal funtion is weak (1,1) for higher 
     \begin{equation*}
         \lim_{r\to 0^+}\frac{1}{|B_r|}\int_{B_r}|f(x-y)-f(x)|dy=0, a.e.
     \end{equation*}
-    This follows from $\frac{1}{|B_r|}\int_{B_r}|f(x-y)-f(y)|\leq Mf(x)+|f(x)|$. 
-    \textcolor{red}{finish the proof}
+    This follows from $\frac{1}{|B_r|}\int_{B_r}|f(x-y)-f(y)|\leq Mf(x)+|f(x)|$.  
 \end{proof}
 
 \begin{definition}[Lebesgue point]
@@ -1464,7 +1463,9 @@ We now address this by noting that weak (1,1) is best we can do, especially when
     \end{equation*}
     The third term $\int_B|f|dx$ is a constant, but the term $\frac{1}{|x|^n}$ just fails to be integrable. Hence $Mf(x)$ is not integrable.
 \end{proof}
+\qed
 
+Even though $Mf$ is not in $L^1$, however, we coul obtain some bound over any bounded set $B$ in $\R^n$.
 \begin{theorem}
     If $B$ is bounded and measurable in $\R^n$, then we have the following bound
     \begin{equation*}
@@ -1481,8 +1482,112 @@ We now address this by noting that weak (1,1) is best we can do, especially when
     Let $f=f_1+f_2$, where $f_1=f\cdot\chi_{x:|f|>\lambda}$
     Then we have
     \begin{equation*}
-        \int_1^\infty a_f(2\lambda)d\lambda\leq \int_1^\infty a_f(\lambda)d\lambda\leq\int_1^\infty\frac{1}{\lambda}\int_{\{x: |f(x)|>\lambda}|f|dxd\lambda
+        \int_1^\infty a_f(2\lambda)d\lambda\leq \int_1^\infty a_{f_1}(\lambda)d\lambda\leq\int_1^\infty\frac{1}{\lambda}\int_{\{x: |f_1(x)|>\lambda\}}|f|dxd\lambda
     \end{equation*}
-    Now we would like to apply the strong $L^\infty\to L^\infty$ bound.
+    Then we apply Fubini to get 
+    \begin{equation}
+        2|B|+C\int_{\R^n}\int_1^{|f(x)|}\frac{1}{\lambda}d\lambda |f|dx
+    \end{equation}
+\end{proof}
+\qed
+
+\chapter{Hilbert Transform}
+
+\section{Lecture 15}
+We now begin our discussion of chapter 3.
+
+\subsection{Conjugate Poisson Kernel}
+We fix a poisson kernel, and form a holomorphic function by integrating 
+
+\begin{definition}[Harmonic extension]
+    Given $f\in\mathcal{S}(\R)$, we define its harmonic extension to $\R_+^2$ as $=\{(x,y): y>0\}$, i.e.the upper half plane as
+    \begin{equation}
+        u(x,t)=P_t\ast f(x)
+    \end{equation}
+    where $P_t$ is the Poisson kernel.
+\end{definition}
+
+Our $P_t=\frac{1}{\pi}\frac{t}{t^2+x^2}$, and if $z=x+it$, then
+\begin{equation}
+    u(z)=\int_0^\infty\hat{f}(\xi)e^{2\pi iz\cdot\xi}+\int_{\infty}^0\hat{f}(\xi)e^{2\pi i\overline{z}\cdot\xi}d\xi
+\end{equation}
+\begin{note}
+    You can view this harmonic extension as a sum of a harmonic function and an anti-harmonic function.
+\end{note}
+Note that if we define
+\begin{equation*}
+    iv(z)=\int_0^\infty \hat{f}(\xi)e^{2\pi iz\cdot\xi}-\int_{-\infty}^0\hat{f}(\xi)e^{2\pi i\overline{z}\cdot\xi}d\xi
+\end{equation*}
+\begin{exercise}
+    If $f$ is real, then one can show that $u,v$ are real.
+\end{exercise}
+Note that by construction, $v$ is also harmonic, and $u+iv$ is hence analytic. This gives that $v$ could be a good candidate for the harmonic conjugate for $u$.
+
+\begin{definition}[Harmonic conjugate]
+    We define $v(z)$ as follows:
+    \begin{equation*}
+        v(z)=\int_{\R}-isgn(\xi)e^{2\pi t|\xi|}\hat{f}(\xi)e^{2\pi i x\cdot\xi}d\xi
+    \end{equation*}
+    Here $v(x,t)=Q_t\ast f(x)$, where
+    \begin{equation*}
+        \hat{Q}_t(\xi)=-isgn(\xi)e^{-2\pi t|\xi|}
+    \end{equation*}
+\end{definition}
+\begin{exercise}
+    Show that
+    \begin{equation*}
+        Q_t(x)=\frac{1}{\pi}\frac{x}{x^2+t^2}
+    \end{equation*}
+\end{exercise}
+We define $Q_t$ to be the conjugate Poisson kernel, where $Q_t$ is harmonic in $\R_+^2$, conjugate to $P_t$, and we also have
+\begin{equation*}
+    P_t(x)+iQ_x(x)=\frac{1}{\pi}\cdot\frac{i}{z}
+\end{equation*}
+which is analytic on $\R_+^2$, and is the approximation of identity as $t\to 0$.
+\begin{equation*}
+    u(x,t)\to u(x), \text{ almost everywhere}
+\end{equation*}
+\begin{note}
+    $Q_t$ is not an approximation to identity, and $Q_t\not\in L^1$.
+\end{note}
+
+Formally, $Q_t\to \frac{1}{\pi x}$ which is not locally integrble, but is defined as a tempered distribution by looking at its limiting values. (principle values), 
+\begin{remark}
+    This gives rise to the study of the Hilbert transform.
+\end{remark}
+
+\subsection{Principal value of $\frac{1}{x}$}
+\begin{definition}
+    The principal value of $\frac{1}{x}$ is a tempered distribution, as is define as follows: for $\phi\in\mathcal{S}$,
+    \begin{equation*}
+        p.v.\left(\frac{1}{x}\right)(\phi)=\lim_{\epsilon\to 0^+}\int_{|x|>\epsilon}\frac{\phi(x)}{x}
+    \end{equation*}
+    The difference of $\phi$ around 0 will cancel out $x$ as $\epsilon\to 0$.
+\end{definition}
+
+There is an alternative, which replaces the $\epsilon$ around the origin with the value $\phi(0)$, which is as follows: for $\phi\in\mathcal{S}$, we have
+\begin{equation*}
+    p.v.\left(\frac{1}{x}\right)(\phi)=\int_{|x|<1}\frac{\phi(x)-\phi(0)}{x}dx+\int_{|x|>1}\frac{\phi(x)}{x}dx
+\end{equation*}
+We could express $\phi(x)-\phi(0)$ as some constant $C$ times $x$, hence the left integral is well-defined. And p.v. is therefore a well-defined tempered distribtuion because it continuously depends on $\phi$.
+
+\begin{proposition}
+    $Q_t$ converges to $\frac{1}{\pi}p.v.\frac{1}{x}$ in $\mathcal{S}'$.
+\end{proposition}
+\begin{proof}
+    Let $\psi_\epsilon=\frac{1}{x}\psi_{|x|>\epsilon}$, and we have
+    \begin{equation*}
+        \lim_{\epsilon\to 0}\psi_\epsilon=p.v.\frac{1}{x}
+    \end{equation*}
+    Hence now we show that $\lim_{\epsilon\to 0}\psi_\epsilon-\pi Q_t$ is 0. This interpreted as a tempered distribtuion is as follows: for all $\phi\in\mathcal{S}'$, we have
+    \begin{equation*}
+        \int (\pi Q_t-\psi_\epsilon)\phi\to 0
+    \end{equation*}
+    Hence we get
+    \begin{align*}
+        (\pi Q_t-\psi_\epsilon,\phi)&=\int_\R\frac{\phi(x)}{t^2+x^2}dx-\int_{|x|>\epsilon}\frac{\phi(x)}{x}dx\\
+        &=\int_{|x|<t}\frac{x\phi(x)}{t^2+x^2}dx-\int_{|x|>t}\frac{t^2\phi(x)}{x(t^2+x^2)}dx\\
+        &=\int_{|x|<1}\frac{x\phi(tx)}{1+x^2}dx-\int_{|x|>1}\frac{\phi(tx)}{x(1+x^2)}dx
+    \end{align*}
 \end{proof}
 
