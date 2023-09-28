@@ -1781,3 +1781,219 @@ Note
     0<\frac{4}{n-2}<\frac{4}{n}
 \end{equation*}
 and the middle one is the energy critical point, and the right $4/n$ is the mass critical point.
+
+
+\section{Lecture 11}
+We've been discussing the semi-linear equation:
+\begin{equation*}
+    \begin{cases}
+        iu_t+\Delta u=\pm|u|^p\cdot u\\
+        u(0)=u_0
+    \end{cases}
+\end{equation*}
+And we've seen the operator $P\to S_p$, where $p=\frac{4}{n-2}$, and we separate them into three cases, the $s>s_p, s=s_p, s<s_p$, where we have $s>s_p$ is LWP, the second being GWP for small dadta, and $s<s_p$ is ill-posed.
+
+We also discussed the conservation of mass
+\begin{equation*}
+    M=\frac{1}{2}\int|u|^2dx
+\end{equation*}
+And the conservation of energy
+\begin{equation*}
+    E=\int\frac{1}{2}|\nabla u|^2\pm \frac{1}{p+2}|u|^{p+2}dx
+\end{equation*}
+
+The conservation of mass lives in $L^2$, where $p=\frac{4}{n}$, and $n\geq 1$, and we call this the mass critical problem; and the conservation of energy, we want it to be $\dot{H}^1$, where $p\frac{4}{n-2}$, and $n\geq 3$, and we call this is the mass critical problem.
+
+Next we discuss the Hamiltonian structure: we have
+\begin{equation*}
+    w(u,v)=\int Im(u\cdot\overline{v})\Rightarrow J=i
+\end{equation*}
+where $J$ denotes the sympletic form. If we have the Hamiltonian form $H=H(x)$, relaxed to the sympletic form $J$, and we should have
+\begin{equation*}
+    u_t=JDH(u)
+\end{equation*}
+We take the flow associated to the mass, $u_t=iu, u(t)=u(0)e^{it}$ where this acts as a phase rotation. Then if we take the energy:
+\begin{equation*}
+    u_t=i\left(-\Delta u\pm u|u|^{p-1}\right)\rightarrow (NLS)
+\end{equation*}
+\begin{theorem}[Noether's theorem]
+    Phase rotation symmetry corresponds exactly to mass conservation.
+\end{theorem}
+We have another version of symmetry, the translation symmetry, where we have $u(t,x)\to u(t,x+he_j)$, and we thus have $u_t=-u_{x_j}$. 
+
+
+\begin{proposition}[The mass critical case. ]
+    If we start with $\|u_0\|\ll 1$, then we have $u\in S$.
+\end{proposition}
+we considered the Strichartz space, where $p=q$, and thus consider $L_{t,x}^\frac{2(n+2)}{n}$, and have $u\cdot |u|^p\in S'$.
+
+Once we obtain a global solution. This gives rise to our discussion of scattering, which is how the solution behaves at infinity.
+\begin{remark}
+    We would like to say this $u$ to the NLS behaves just like the solution to the linear equation at $\infty$.
+\end{remark}
+\begin{theorem}[scattering]
+    If $u$ is a small $L^2$ solution to mass critical problem. Then there exists $u^+\in L^2$ such that 
+    \begin{equation*}
+        \lim_{t\to\infty}u(t)-e^{it\Delta}u^+=0 \text{ in } L^2
+    \end{equation*}
+    where we have $e^{it\Delta}u^+$ is our solution to the linear equation.
+\end{theorem}
+\begin{proof}
+    We should have 
+    \begin{equation*}
+        u^+=\lim_{t\to\infty}e^{-it\Delta}u(t)
+    \end{equation*}
+    We first have $u(t)$ the nonliear flow at time $t$, then we come back to $u_0$ for NLS, and also back to $t=0$ for th linear flow, then we push it to $t\to\infty$. 
+
+    $u(t)=e^{it\Delta}u(0)+\int_0^te^{i(t-s)\Delta}f(s)ds$. Applying $e^{-it\Delta}$, we have
+    \begin{equation*}
+        e^{-it\Delta}u(t)=u(0)+\int_0^te^{-is\Delta}f(s)ds
+    \end{equation*}
+    where the RHS, we have $f\in S'$, and $e^{-is\Delta}$ send it back to dual Strichartz, and land in $L^2$.
+
+    Then $f\in L^\frac{2(n+2)}{n}([0,\infty)\times \R^n)$, hence
+    \begin{equation*}
+        1_{[0,t]}f\to f \text{ as } t\to\infty
+    \end{equation*}
+    Hence we get our scattering property.
+\end{proof}
+\qed
+
+\begin{note}
+    If $p<\frac{4}{n}$, this is our subcritical problem, then local well-posedness implies global well-poseness, this gives us $u|u|^p\in S'$ on $I$. 
+\end{note}
+We are still a bit unhappy since for mass critical problem, we are only working with small intiial data $\|u_0\|_{L^2}\ll 1$. 
+\begin{problem}
+    What if our initial data is large?
+\end{problem}
+Let's start witht he easier version: local well-posedness.
+
+\begin{theorem}
+    If $u_0\in L^2$, then there exists some time $T=T(u_0)$ such that the problem has a solution in $[0,T]$. (By having a solution, we again mean we can put the source term $f$ in the dual Strichartz estimate).
+\end{theorem}
+\begin{proof}
+    We formulate this as a fixed point problem. 
+    \begin{equation*}
+        u(t)=e^{it\Delta}u_0+\int_00^t e^{i(t-s)\Delta}u\cdot|u|^{p-1}(s)ds
+    \end{equation*}
+    If $u=N(u)$, then you need some $X$ such that $N: X\to X$, and such that $N$ is a contraction. If you start with a small initial data, then there is no bad way to choose $X$. 
+
+    Again we would like to look at the Lipschitz constant for $u\cdot|u|^{p-1}$, because we need $u$ to be small in $X$. Note that we would like
+    \begin{equation*}
+        L^\infty L^2\not\subset X
+    \end{equation*}
+    We choose $X=B(0,\epsilon)$ in $L_{t,x}^\frac{2(n+2)}{n}$, to have a small Lipschitz constant for nonliearity.
+
+    Note that we have
+    \begin{equation*}
+        \|e^{it\Delta}u_0\|_{L^2}\leq\|u_0\|_{L^2}
+    \end{equation*}
+    But note that our RHS could be large, then we could choose $T$ such that
+    \begin{equation*}
+        \|e^{it\Delta}u_0\|_{L^\frac{2(n+2)}{n}}\leq\epsilon
+    \end{equation*}
+    Note that we have $L^\frac{2(n+2)}{n}([0,T]\times\R^n)$.
+    Wave packets can live on any time scale, and depending on how we choose the scale, we might stop at a very very small $T$, yet it is positive.
+\end{proof}
+\qed
+
+The scattering we had is $t\to\infty$, and we could also investigate $t\to -\infty$. 
+\begin{equation*}
+    u_0\to u^+(\infty), u_0\to u^-(-\infty), L^2\to L^2
+\end{equation*}
+Then we have a reverse problem (asymptotic completeness).
+\begin{problem}
+    Given $u^+\in L^2$, is there a solution $u$ that matches our $u^+$ at infinity.
+\end{problem}
+
+\begin{theorem}
+    Given $u^+\in L^2$, then there exists $T$ and a solution $u$ in $[T,\infty)$.
+\end{theorem}
+\begin{proof}
+    We apply the exact same argument, but just writing it from $\infty$.
+    \begin{equation*}
+        u=e^{it\Delta}u^+-\int_t^\infty e^{i(t-s)\Delta}u\cdot|u|^p(s)ds
+    \end{equation*}
+    Choose $T$ such that 
+    \begin{equation*}
+        \|e^{it\Delta}u^+\|_{L^\frac{2(n+2)}{n}([T,\infty)\times\R^n}\leq\epsilon
+    \end{equation*}
+    We choose $T$ for as long as it keeps the norm small.
+\end{proof}
+\qed
+
+\begin{note}
+    The solution $u$ is global if our $u^+$ is small.
+\end{note}
+We know how to solve for $u_0$ is large from $t=0$, and from $\infty$. Now we ask if we can have \textbf{blow-up} if the initial data $u_0$ is large?
+
+First we need to identify ``blow-up.'' It is impossible to have $\|u(t)\|_{L^2}\to\infty$. Find maximal $T$ such that $[0,T)$ maximal time interval of existence (not specified which space yet). Then
+\begin{equation*}
+    \lim_{t\to T}u(t):=u(T) \in L^2
+\end{equation*}
+If we above limit exists, then we could denote it as $u(T)$, and it leaves in $L^2$ since it is a limit of an $L^2$ sequence. Then we could continue to extend our solution for larger $T$.
+
+\begin{proposition}
+    If the solution $u: [0,T)\to L^2$ is a maximal solution, then
+    \begin{equation*}
+        \lim_{t\to T}u(T)
+    \end{equation*}
+    does not exist.
+\end{proposition}
+\begin{note}
+    We also mean the limit does not even exist for any subsequence. However, this is not a good enough criterion, since all continuous functions are by definition, cannot blow up.
+\end{note}
+
+Next we introduce a better blow-up criterion. 
+
+We have $\|e^{it\Delta}u_0\|_{L^\frac{2(n+2)}{n}}=\epsilon$, and note now we use this as an initial data, and extend our solution, hence we have $T(u_0), T(u_1), ...$.
+
+If we don't have a global solution, then we must have stopped somwhere, then we get a solution on $[0,T)$, and then we have
+\begin{equation*}
+    \|u\|_{L^\frac{2(n+2)}{n}([0,T)}=\infty
+\end{equation*}
+\begin{theorem}
+    The solution $u$ blows up at time $T$ if and only if 
+    \begin{equation*}
+        \|u\|_{L^\frac{2(n+2)}{n}([0,T)\times\R^n}=\infty
+    \end{equation*}
+\end{theorem}
+Same at $\infty$, where either $ \|u\|_{L^\frac{2(n+2)}{n}([0,T)\times\R^n}<\infty$ with scattering or $ \|u\|_{L^\frac{2(n+2)}{n}([0,T)\times\R^n}=\infty$ in which case we have no scattering.
+
+The magical signs:
+\begin{equation*}
+    E(u)=\frac{1}{2}\int|\nabla u|^2\pm\frac{1}{p+2}|u|^{p+2}dx
+\end{equation*}
+For $u\in L^2$, we have the GNS inequality:
+\begin{equation*}
+    \|u\|_{L^2*}\leq\|\nabla u\|_{L^2}
+\end{equation*}
+where
+\begin{equation*}
+    \frac{1}{2}>\frac{1}{p+2}=\frac{1}{2}-\frac{1}{n+2}>\frac{1}{2^*}=\frac{1}{2}-\frac{1}{n}
+\end{equation*}
+Note that we have the interpolation inequality.
+\begin{equation*}
+    \|u\|_{L^{p+2}}^{p+2}\leq\|\nabla u\|_{L^2}^2\|u\|_{L^2}^p
+\end{equation*}
+
+Let's think about global solutions, and those that scatter and those that don't. 
+
+The simplest solution that does not scatter is those that are constant in time, and we call them the \textbf{ steady state}. 
+\begin{equation*}
+    u_t=i\cdot\frac{\delta E(u)}{\delta u}
+\end{equation*}
+Steady state is if and only if critical points for $E$.
+
+In the sign in the energy formula is +, then $E$ is convex and there is no steady state; if the sign is -, then we have the mountain pass lemma. After we cross a critical convex point, then we pass the hill, and look for the smallest height that we can reach.
+
+\begin{lemma}
+    There exists a smallest size steady state $Q$, the ground state, which is
+    \begin{equation*}
+        \Delta Q=-|Q|^p\cdot Q
+    \end{equation*}
+    where $Q$ is real-valued.
+\end{lemma}
+And we come to the conjecture that for the $+$ sign, we have the defocusing problem:  we have well-posedness and scattering for large data; the $-$ sign, we have the focusing problem, and we have scattering and global solution for $\|u_0\|_{L^2}\leq\|Q\|_{L^2}$. (i.e. if you are stuck in the bowl) This is a theorem by Dodsin.
+
+
