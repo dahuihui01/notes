@@ -1591,3 +1591,141 @@ We could express $\phi(x)-\phi(0)$ as some constant $C$ times $x$, hence the lef
     \end{align*}
 \end{proof}
 
+\section{Lecture 16}
+\begin{proposition}
+    $Q_t$ converges to $\frac{1}{\pi}p.v.\frac{1}{x}$ for $t\to 0^+$.
+\end{proposition}
+\begin{proof}
+    We showed last time that
+    \begin{equation*}
+        (\pi Q_t-\psi_\epsilon,\phi)=\int_{|x|<1}\frac{x\phi(tx)}{1+x^2}dx-\int_{|x|>1}\frac{\phi(tx)}{x(1+x^2)}dx
+    \end{equation*}
+    The limit is 0 by dominated convergence theorem and that $\frac{x}{1+x^2},\frac{1}{x(1+x^2)}$ are odd.
+\end{proof}
+\qed
+
+By the weak continuity of FT, we have
+\begin{equation*}
+    \left(\frac{1}{\pi}p.v.\frac{1}{x}\right)^{\widehat{\phantom{.}}}(\xi)=-isgn(\xi)
+\end{equation*}
+
+Now we formally define the Hilbert transform.
+\begin{definition}[Hilbert transform]
+    The Hilbert transform $H$ is defined as follows: given $f\in\mathcal{S}$,
+    \begin{equation*}
+        Hf=\lim_{t\to0}Q_t\ast f
+    \end{equation*}
+    \begin{equation*}
+        Hf=\frac{1}{\pi}p.v.\frac{1}{x}\ast f
+    \end{equation*}
+    or equivalently
+    \begin{equation*}
+        (Hf)^{\widehat{\phantom{.}}}(\xi)=-isgn(\xi)\hat{f}(\xi)\in L^2
+    \end{equation*}
+\end{definition}
+\begin{exercise}
+    Prove the equivalence the above three definitions as an exercise.
+\end{exercise}
+
+\begin{remark}
+    Recall that $v(x_it)=Q_t\ast f=P_t\ast Hf$. This establishes a direct usage of the Hilbert transform.
+\end{remark}
+
+\begin{definition}
+    For $f\in L^2$, we define the Fourier transform of $Hf$ as follows;
+    \begin{equation*}
+        \widehat{Hf}=-isgn(\xi)\cdot\hat{f}
+    \end{equation*}
+\end{definition}
+
+\begin{proposition}
+    $H$ is an $L^2$-isometry, and we have $H(Hf)=-f$. Moreover, we have
+    \begin{equation*}
+        \int (Hf)\cdot g=-\it f\cdot Hg
+    \end{equation*}
+\end{proposition}
+\begin{proof}
+    We will only prove the last inequality.
+    \begin{equation*}
+        \int Hf\cdot g=\langle Hf, \overline{g}\rangle=\langle -isgn(\xi)\cdot\hat{f},\tilde{\hat{f}}\rangle =\langle \hat{f}, isgn(\xi)\cdot\hat{f}^{\tilde{\phantom{.}}}\rangle=\langle f, -\overline{Hg}\rangle
+    \end{equation*}
+\end{proof}
+\qed
+
+\begin{remark}
+    You could find some applications in the section 6.3 in chapter 3.
+\end{remark}
+
+We now begin the theorems of Riesz and Kolmogorov.
+\subsection{3.3}
+Note for any theorems regarding the Fourier transform of tempered distributions, it suffcies to prove it for the Schwartz functions.
+\begin{theorem}
+    For $f\in\mathcal{S}(\R)$, we have the following two inequalities.
+    \begin{enumerate}
+        \item (Kolmogorov) $H$ is weak (1,1):
+        \begin{equation*}
+            |\{x\in\R: |Hf(x)|>\lambda\}|\lesssim\frac{1}{\lambda}\|f\|_{L^1}
+        \end{equation*}
+        \item (Riesz) $H$ is strong $(p,p)$, and $1<p<\infty$, we have
+        \begin{equation*}
+            \|Hf\|_{L^p}\lesssim_p\|f\|_{L^p}
+        \end{equation*}
+    \end{enumerate}
+\end{theorem}
+\begin{note}
+    $H$ is not strong type (1,1), however, it is not far from it either. If we modify $H$ somehow, we could show it as a bounded operator from $L^1\to L^1$.
+\end{note}
+\begin{proof}
+    We will first show that $H$ is weak (1,1). We would like to apply Calderon-Zygmund decomposition. We first assume $f\geq 0$, for all $\lambda>0$, we have the following C-Z decomposition results: there exists disjoint intervals $I_j$ such that
+    \begin{equation*}
+        f(x)\leq\lambda, \text{ for a.e. } x, \text{if } x\not\in\bigsqcup_j I_j:=\Omega
+    \end{equation*}
+    And We have 
+    \begin{equation*}
+        |\Omega|\leq\frac{1}{\lambda}\|f\|_{L^1}
+    \end{equation*}
+    Moreover, we have
+    \begin{equation*}
+        \lambda\leq\int_{I_j}f\leq 2\lambda
+    \end{equation*}
+    Let $f=g+b$, where
+    \begin{equation*}
+        g(x)=\begin{cases}
+            f(x), x\not\in\Omega\\
+            \frac{1}{|I_j|}\int_{I_j}f, x\in I_j, b(x)=\sum_jb_j(x)
+        \end{cases}
+    \end{equation*}
+    Intuitively, $\Omega$ is the disjoint union of all the bad intervals. 
+    For the Hilbert transform of $b$ is not quite defined, hence we for now take it to be the $f-g$ and take the Hilbert transform.
+
+    Note that we have
+    \begin{equation*}
+        b_j=(f(x)-\frac{1}{|I_j|}\int_{I_j}f)\chi_{I_j}(x)
+    \end{equation*}
+    And we have $Hb=Hf-Hg$, and $g\in L^2$ since we have $0\geq g\leq 2\lambda$.
+
+    Then we split the contribution of $g,h$:
+    \begin{equation*}
+        |\{x: |Hf(x)>\lambda\}|\leq |\{x: |Hg(x)>\frac{\lambda}{2}\}|+|\{x: |Hb(x)>\frac{\lambda}{2}\}|
+    \end{equation*}
+   We use $I$ to denote the first term in the sum. Key: we use the $L^2$ boundedness of the Hilbert transform given $g\in L^2$.
+   \begin{equation*}
+    I\lesssim\frac{1}{\lambda^2}\|Hg\|_{L^2}^2=\frac{1}{\lambda^2}\|g\|_{L^2}^2=\frac{1}{\lambda^2}\int g 2\lambda dx\leq\frac{2}{\lambda}\|g\|_{L^1}\leq\frac{2}{\lambda}\|f\|_{L^1}
+   \end{equation*}
+   We will deal with the contribution of $b$. We can protect the points by enlarging the intervals by twice the length. Define
+   \begin{equation*}
+        \Omega^*=\cup_j2I_j
+   \end{equation*}
+   We only look at $Hb(x)$ for $x\not\in\Omega^*$ since
+   \begin{equation*}
+    |\Omega|^*\leq 2|\Omega|\leq\frac{2}{\lambda}\|f\|_{L^1}
+   \end{equation*}
+   Note that we have
+   \begin{equation*}
+    |Hb(x)|\leq\sum_j|Hb_j(x)|
+   \end{equation*}
+   Suffices to know that
+   \begin{equation*}
+    \sum_j\int_{\R\setminus 2I_j}|Hb_j(x)|dx\leq c\|f\|_{L^1}
+   \end{equation*}
+\end{proof}
