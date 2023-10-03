@@ -1997,3 +1997,152 @@ In the sign in the energy formula is +, then $E$ is convex and there is no stead
 And we come to the conjecture that for the $+$ sign, we have the defocusing problem:  we have well-posedness and scattering for large data; the $-$ sign, we have the focusing problem, and we have scattering and global solution for $\|u_0\|_{L^2}\leq\|Q\|_{L^2}$. (i.e. if you are stuck in the bowl) This is a theorem by Dodsin.
 
 
+\section{Lecture 10/3}
+We were looking at the mass critical problem:
+\begin{equation*}
+    \begin{cases}
+        i u_t+\Delta u=|u|^p, p=\frac{4}{n}
+    \end{cases}
+\end{equation*}
+where we have GWP fro small data, and LWP for large initial data, and blow up at $\|u\|_[L^\frac{2(n+2)}{n}]=\infty$. 
+
+We now talk about focusing and defocusing. The energy is
+\begin{equation*}
+    E(u)=\int \frac{1}{2}|\Delta u|^2\pm \frac{1}{p+2}|u|^{p+2}dx
+\end{equation*}
+where we noted that if we have $+$, then it is defocusing and it is convex and coercive, and focusing when we have $-$.
+
+\begin{equation*}
+    \int|u|^{p+2}\lesssim \int |\Delta u|^2\left(\int|u|^2\right)^\frac{p}{2}
+\end{equation*}
+Hence the energy is controlled by $|u|_{L^2}$ then $E$ is coercive, and but not if $\|u\|_{L^2}$ gets large.
+
+Now we ask the question how exactly is $\|u\|_{L^2}$ small, and what is the \textbf{threshold} for $\|u\|_{L^2}$ such that the energy stays positive definite? And for this, we need to find the sharp constant such that inequality in G-N
+\begin{equation*}
+    \int|u|^{p+2}\leq C\int|\Delta u|^2\left(\int|\nabla u|^2 \right)^\frac{p}{2}
+\end{equation*}
+
+And we look for the smallest constant such that the above holds, or equivalently,
+\begin{equation*}
+    \max\frac{\int\frac{1}{p+2}|u|^{p+2}}{\int\frac{1}{2}|\nabla u|^2}:=H(u)
+\end{equation*} 
+with $\|u\|_{L^2}=c$. This should remind you of the Lagrange multipliers, subject to some constraint.The existence of the maximizer will be delayed till later discussions.
+
+Now we look at the following and would like to set this to 0.
+\begin{equation*}
+    \frac{d}{dh}H(u+hv)=\frac{d}{dh}\log H(i+hv)=\frac{\int |u|^pRe(u\overline{v})}{\int\frac{1}{p+2}|u|^{p+2}}-\frac{\int Re(\nabla u\nabla \overline{v})}{\int\frac{1}{2}|\nabla u|^2}
+\end{equation*}
+And $v\perp u$, hence we get 
+\begin{equation*}
+    Re\int \left(\frac{|u|^pu}{\int\frac{1}{p+2}|u|^{p+2}dx}+\frac{\int\Delta x}{\int\frac{1}{2}|\nabla u|^2} \right)\cdot\overline{u}dx=0
+\end{equation*}
+This gives that
+\begin{equation*}
+    \frac{|u|^pu}{\int\frac{1}{p+2}|u|^{p+2}dx}+\frac{\int\Delta x}{\int\frac{1}{2}|\nabla u|^2}=\lambda u
+\end{equation*}
+where $\lambda$ is the Lagrange multiplier. As we move away from 0, i.e. $u\mapsto au$, as $a$ increases, we get a positive power of $a$, $a^p$
+
+We choose $c$ such that the maximum is exactly 1. Then the denominators in the above equation are exactly equal, hence we move them to the RHS into $\lambda$, thus
+\begin{equation*}
+    |u|^pu+\Delta u=\lambda u, \lambda>0
+\end{equation*}
+Because of the presence of $\lambda u$, this is not a steady state problem. However, $u$
+\begin{equation*}
+    v(x,t)=u(x)e^{i\lambda t}
+\end{equation*}
+solves the NLS. This is called a soliton.
+\begin{equation*}
+    iv_t+\Delta v=(-\lambda u+\Delta u)e^{i\lambda t}=|u|^p ue^{i\lambda t}=v^p\cdot v
+\end{equation*}
+Hence we get the conclusion that there exists some $c_0$ such that at $c_0$, the max is 1, $E(v)\geq 0$, and the maximizer, $E(Q)=0$, and $Qe^{i\lambda t}$ then solves the NLS.
+
+\begin{proposition}
+    $c_0=\|Q\|_{L^2}$ is the critical mass. And $\|u\|_{L^2}< c_0$ implies that $E$ is coercive, and $\|u\|_{L^2}=c_0$ we have the extreme case where $u=Q_1$, and $E(Q)=0$. 
+\end{proposition}
+\begin{equation*}
+    \max\frac{|u|^{p+2}}{\int|\nabla u|^2}dx
+\end{equation*}
+First by separating $u$ into real and imaginary parts, we conclude that $u$ is real. Then notice the quantity does not change if we replace $u$ with $|u|$, then we can take $u\geq 0$. And we do the rearrangement: we take the decreasing rearrangement of $\lambda$, And we have $|\{u\geq\lambda\}|=|\{u^*\geq\lambda\}|$, and we want $u^*$ in 1-d, and to generalize, we want $u^*$ to be spherically symmetric in n-dim.
+
+First we rewrite
+\begin{equation*}
+    -\Delta u+\lambda u=|u|^p\cdot u
+\end{equation*}
+And we take the Fourier transform: where the LHS is $\xi^2+\lambda$. This implies exponential decay for the fundamental solution. This implies that $u$ is smooth and decays exponentially at $\infty$.
+\begin{equation*}
+    ()\partial_r+\frac{r}{r-1}\partial_r+\lambda)u=u^{p+1}
+\end{equation*}
+This gives the solution in the form:
+\begin{equation*}
+    u\approx cr^{-\frac{n-1}{2}}e^{-\sqrt{\lambda}r}
+\end{equation*}
+\begin{note}
+    This is the shooting problem, and usually, the slope is not zero, and this ensures the uniqueness of solution.
+\end{note}
+
+\begin{theorem}
+    There is a unique smooth nonnegative radial ground state.
+\end{theorem}
+
+Our first soliton is as follows: $u=e^{it}Q$, and we could do the following:
+\begin{enumerate}
+    \item translate it
+    \item rescale it, making it wider and shorter
+    \item Galilean motion/transform, due to Galilean invariance. 
+\end{enumerate}
+To summerize, we can choose scale, position and velocity.  These are the enemies of scattering.
+
+There is a Schrodinger counterpart to Euclidean inversion:
+Euclidean:$ x\mapsto\frac{1}{x}$, where the Schrodinger is
+\begin{equation*}
+    (t,x)\mapsto \left(\frac{1}{t}, \frac{x}{t}\right)
+\end{equation*}
+And 
+\begin{equation*}
+    u(t,x)\mapsto \frac{1}{t^{-\frac{n}{2}}}e^{i(x^2+4)/(4t)}u(\frac{1}{t}, \frac{x}{t})
+\end{equation*}
+This is calle dhte pseudoconformal transformation. If $u=Q$, then $\tilde{Q}$ and note that $\tilde{Q}$ blows up at $t=0$, and 
+\begin{equation*}
+    \|\tilde{u}\|_{L^2}=\|u|_{L^2}
+\end{equation*}
+We have the solitons, and solutions that blow up at finite times. 
+
+\begin{equation*}
+    iu_t=-\Delta u\pm|u|^{p-1}u
+\end{equation*}
+On the RHS, $-\Delta u$ is the linear part, and it wants to disperse, the second term is $|u|^{p-1}u$, and wants to behave, together with the LHS, like an ODE.
+
+And suppose $u_0=A\cdot e^\frac{(x-x_0)^2}{T}e^{i(x-x_0)\cdot\xi_0}$, where $A$ is some amplitude:
+\begin{equation*}
+    \delta_x\approx\sqrt{T}, \delta_\xi=\frac{1}{\sqrt{T}}
+\end{equation*}
+And linear flow stays coherent up to time $T$.
+
+We note that $|u|^p$ is a conserved quantity, and we have
+\begin{equation*}
+    iu_t=\pm|u|^p\cdot u
+\end{equation*}
+and we have
+\begin{equation*}
+    u(t,x)=u_0(t,x)\cdot e^{\pm it|u_0(t,x)|^p}
+\end{equation*}
+We solved it using the fact it is now an ODE.
+
+Now we ask the question, is the nonlinear effect slower of faster than the linear one?
+
+We assumed $x_0=0$, and $\xi_0=0$. and note that the size of the phase is up to $T\cdot A^p$, and we have
+\begin{equation*}
+    T\cdot A^p\begin{cases}
+        \ll 1, \text{ linear } wins\\
+        \approx 1, \text{ balance }\\
+        \gg 1, \text{ Nonlinear wins}
+    \end{cases}
+\end{equation*}
+And 
+\begin{equation*}
+    \|u_0\|_{L^2}\approx 1\approx A(\sqrt{T})^\frac{n}{2}=AT^\frac{n}{4}\approx 1
+\end{equation*}
+
+If we have $p>\frac{4}{n}$, the linear part wins and you expect scattering, and $p=\frac{4}{n}$ (we assume $\|u_0\|_{L^2}\approx 1$), and if we drop the assumption, it depends on the size of the initial data, and $p<\frac{4}{n}$, and nonlinear wins, and expect no classical scattering.
+
+You start with a bump funciton for initial data, and the nonlinear portion turns into quite oscillatory, then linear makes waves move along their group velocity. 

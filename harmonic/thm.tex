@@ -1,0 +1,301 @@
+\documentclass[lang=en,10pt, color=none]{elegantbook}
+\usepackage{amsmath}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{yhmath}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{comment}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\T}{\mathbb{T}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\qed}{\hfill \ensuremath{\Box}}
+
+\definecolor{structurecolor}{rgb}{1,0.71,0.76}
+\definecolor{main}{rgb}{1,0.71,0.76}
+\definecolor{second}{rgb}{0.99,0.56,0.67}
+\definecolor{third}{rgb}{0.96,0.6,0.76}
+
+\title{Fourier Analysis}
+\author{Javier Duoandikoetxea}
+\date{\today}
+
+
+\cover{cover.jpg}
+\usepackage{array}
+\newcommand{\ccr}[1]{\makecell{{\color{#1}\rule{1cm}{1cm}}}}
+\colorlet{coverlinecolor}{white}
+
+\begin{document}
+\maketitle
+\frontmatter
+\newpage
+
+\tableofcontents
+\mainmatter
+
+\chapter{Fourier series and Integrals}
+This chapter is an introduction to the Fourier series and Fourier integrals.
+
+We begin with two ways to check pointwise convergence of partial sums of Fourier series
+\begin{theorem}[Dini's criterion]
+    If for some $x$, there exists $\delta>0$ such that 
+    \begin{equation*}
+        \int_{|t|<\delta}\left|\frac{f(x+t)-f(x)}{t} \right|dt<\infty
+    \end{equation*}
+    then we have
+    \begin{equation*}
+        \lim_{N\to\infty}S_Nf(x)=f(x)
+    \end{equation*}
+\end{theorem}
+
+\begin{theorem}[Jordan's criterion]
+    If $f$ is a function of bounded variation in a neighborhood of $x$, then
+    \begin{equation*}
+        \lim_{N\to\infty}S_Nf(x)=\frac{1}{2}[f(x+)+f(x-)]
+    \end{equation*}
+\end{theorem}
+\begin{remark}
+    If $f$ is continuous at $x$, then $f(x+)=f(x-)=f(x)$, we actually have $\lim_{N\to\infty}S_Nf(x)=f(x)$.
+\end{remark}
+\begin{note}
+    All these convergence results of the partial sums are local. And it is made clear using the following lemma.
+\end{note}
+
+\begin{theorem}[Riemann-Lebesgue localization principle]
+    If $f$ is zero in a neighborhood of $x$, then 
+    \begin{equation*}
+        \lim_{N\to\infty}S_Nf(x)=0
+    \end{equation*}
+\end{theorem}
+
+To show that, using the following lemma.
+\begin{lemma}[Riemann-Lebesgue lemma]
+    If $f\in L^1(\T)$, then we have
+    \begin{equation*}
+        \lim_{|n|\to\infty}\hat{f}(n)=0
+    \end{equation*}
+\end{lemma}
+
+Then we discuss the Fourier series of continuous functions.
+\begin{theorem}
+    Ther exists a continuous function $f$ whose Fourier series diverges at some point $x$, i.e.
+    \begin{equation*}
+        \lim_{N\to\infty}S_Nf(x)=+\infty
+    \end{equation*}
+\end{theorem}
+\begin{comment}
+    We showed this using uniform boundedness principle.
+\end{comment}
+
+Next, we move away from pointwise convergence, and instead we talked about convergence in the $L^p$ norm.
+\begin{lemma}
+    $S_Nf$ converges to $f$ in $L^p$, for $1\leq p<\infty$, if and only if $S_N: L^p\to L^p$ has $\|S_N\|<\infty$, i.e. the following holds:
+    \begin{equation*}
+        \|S_Nf\|_{L^p}\lesssim \|f\|_{L^p}
+    \end{equation*}
+\end{lemma}
+
+next we note that take the Fourier series, is just like taking the fouier trasform, where it is a isometry from $L^2$ to $l^2(\N)$.
+\begin{theorem}
+    The mapping $f\mapsto \{\hat{f}(n)\}_{n\in\Z}$ is an isometry from $L^2$ to $l^2$, i.e.
+    \begin{equation*}
+        \|f\|_{L^2}^2=\sum_{n=-\infty}^\infty |\hat{f}(n)|^2
+    \end{equation*}
+\end{theorem}
+
+Now we discuss some better summability methods, such as the Cesaro and Abel sum.
+\begin{theorem}
+    If $f\in L^p$, where $1\leq p<\infty$, then we have
+    \begin{equation*}
+        \lim_{N\to\infty}\|\sigma_Nf-f\|_{L^p}=0
+    \end{equation*}
+
+    If $p=\infty$, and if $f$ is continuous, then the above also holds.
+\end{theorem}
+
+\begin{corollary}
+    The trigonometric polynomials are dense in $L^p$, for $1\leq p<\infty$.
+
+    And if $f$ is integrable, where $\hat{f}(n)=0$ for all $n$, then $f$ is identically 0.
+\end{corollary}
+\begin{comment}
+    The first one is by $\sigma_N(f)$ being a trig polynomials. And the second one is by Cesaro sum of Fourier series of $L^1$ functions would be 0, then $\int |f|=0$.
+\end{comment}
+\begin{note}
+    The above all hold if we replace $\sigma_N$ with $P_r$, and letting $r$ go to $1-$.
+\end{note}
+
+\begin{theorem}
+    The Fourier transform is a continuous map from $\mathcal{S}$ to $\mathcal{S}$, such that for $f,g\in\mathcal{S}$, we have
+    \begin{equation*}
+        \int f\hat{g}=\int \hat{f}g
+    \end{equation*}
+    and we also have
+    \begin{equation*}
+        f(x)=\int_{\R^n}\hat{f}(\xi)e^{2\pi in\cdot\xi}d\xi
+    \end{equation*}
+\end{theorem}
+\begin{comment}
+    Note just like for a lot of things, we can assume $x=0$ for the Fourier inversion formula. And that translation by $x$ is just $e^{2\pi in\cdot\xi}$ in the Fourier space.
+\end{comment}
+\begin{corollary}
+    For $f\in\mathcal{S}$, we have
+    \begin{equation*}
+        (\hat{f})^{\widehat{\phantom{.}}}=f(-x)
+    \end{equation*}
+    Hence the Fourier transform has period 4.
+\end{corollary}
+
+\begin{theorem}
+    The Fourier transform is a bounded linear bijection from $\mathcal{S}'$ to $\mathcal{S}'$ whose inverse is also bounded.
+\end{theorem}
+\begin{comment}
+    Recall we define the Fourier transform on $\mathcal{S}'$ by 
+    \begin{equation*}
+        \hat{T}(f)=T(\hat{f})
+    \end{equation*}
+\end{comment}
+
+Since we've defined the Fourier transform on $\mathcal{S}$, we have it defined on $L^p$.
+\begin{theorem}[Plancherel]
+    The Fourier transform is an isometry on $L^2$, that is $\hat{f}\in L^2$, and we have
+    \begin{equation*}
+        \|f\|_{L^2}=\|\hat{f}\|_{L^2}
+    \end{equation*}
+\end{theorem}
+\begin{comment}
+    Note that we proved this using the duality formula in Theorem 1.7 by setting $\oveline{f}=\hat{g}$ for some $g$, and have $g=\overline{\hat{f}}$.
+\end{comment}
+
+Next we like to have some general bounds on Fourier transforms of $L^p$ functions, namely, the following two.
+\begin{theorem}
+    If $f\in L^p$ and $1\leq p\leq 2$, then we have $f\in L^{p'}$ where $p'$ is the dual exponent of $p$. And we have
+    \begin{equation*}
+        \|\hat{f}\|_{L^{p'}}\leq\|f\|_{L^p}
+    \end{equation*}
+\end{theorem}
+\begin{comment}
+    It was proven using the Riesz-Thorin. We have $\|\hat{f}\|_{L^\infty}\leq\|f\|_{L^1}$, and $\|\hat{f}\|_{L^2}=\|f\|_{L^2}$.
+\end{comment}
+\begin{theorem}[Young's inequality]
+    For $1+\frac{1}{r}=\frac{1}{p}+\frac{1}{q}$, and $f\in L^p$, $g\in L^q$, we have 
+    \begin{equation*}
+        \|f\ast g\|_{L^r}\leq\|f\|_{L^p}\|g\|_{L^q}
+    \end{equation*}
+\end{theorem}
+
+We will state the Riesz-Thorin interpolation theorem here.
+\begin{theorem}[Riesz-Thorin]
+    Let $1\leq p_0, p_1, q_0, q_1\leq\infty$, and for $0<\theta<1$ define $p,q$ by
+    \begin{equation*}
+        \frac{1}{p}=\frac{1-\theta}{p_0}+\frac{\theta}{p_1}, \frac{1}{q}=\frac{1-\theta}{q_0}+\frac{\theta}{q_1}
+    \end{equation*}
+    If $T$ is a linear operator from $L^{p_0}+L^{p_1}$, to $L^{q_0}+L^{q_1}$ such that
+    \begin{equation*}
+        \|Tf\|_{q_0}\leq A\|f\|_{p_0}
+    \end{equation*}
+    \begin{equation*}
+        \|Tf\|_{q_1}\leq B\|f\|_{p_1}
+    \end{equation*}
+    Then we have
+    \begin{equation*}
+        \|Tf\|_{L^q}\leq A^{1-\theta}B^\theta\|f\|_{L^p}
+    \end{equation*}
+\end{theorem}
+\begin{proposition}
+    We state some useful here. For any $f\in L^p$, whre $1<p<2$, we can disect $f=f_1+f_2$ where $f_1\in L^1, f_2\in L^2$.
+\end{proposition}
+\begin{comment}
+    We simply choose $f_1=f\chi_{x:|f(x)|>1}$.
+\end{comment}
+
+
+\chapter{The Hardy-Littlewood Maximal function}
+\begin{proposition}[Pointwise convergence of $\phi_t$]
+    For $\phi\in L^1(\R^n)$ and $\int\phi=1$, we define $\phi_t=t^{-n}\phi(t^{-1}x)$, we have for $g\in\mathcal{S}$, we have
+    \begin{equation*}
+        \lim_{t\to 0}\phi_t\ast g(x)=g(x)
+    \end{equation*}
+\end{proposition}
+Now we address the $L^p$ convergence of $\phi_t\ast f$. We have
+\begin{theorem}
+    Let $\{\phi_t: t>0\}$ be an approxiation of the identity, and $f\in L^p, 1\leq p<\infty$, then we have
+    \begin{equation*}
+        \lim_{t\to 0}\|\phi_t\ast f-f\|_{L^p}=0
+    \end{equation*}
+\end{theorem}
+\begin{corollary}
+    There exists a sequence $\{t_k\}$, depending on $f$, such that as $t_k\to 0$, we have
+    \begin{equation*}
+        \lim_{k\to\infty}\phi_{t_k}\ast f(x)=f(x) \text{ a.e. }
+    \end{equation*}
+\end{corollary}
+
+\begin{theorem}
+    Let $\{T_t\}$ be a family of linear and sublinear operators on $L^p$ and define the maximal function as 
+    \begin{equation*}
+        T^*f(x)=\sup_t|T_tf(x)|
+    \end{equation*}
+    And if this maximal function $T^*$ is weak (p,q), then the set
+    \begin{equation*}
+        \{f\in L^p: \lim_{t\to t_0}T_tf(x)=f(x)a.e. \}
+    \end{equation*}
+    is closed in $L^p$.
+\end{theorem}
+Hence if we show that pointwise limit of any linear or sublinear operator $Tf(x)=f(x)$ a.e. holds for $f\in\mathcal{S}$, then we know this is true for all $f\in L^p$.
+
+\begin{proposition}
+    We have an alternative form of the $L^p$ norm:
+    \begin{equation*}
+        \|f\|_{L^p}^p=\int_0^\infty\lambda^{p-1}a_f(\lambda)d\lambda
+    \end{equation*}
+    More specifically, if we have $p=1$, we then have
+    \begin{equation*}
+        \|f\|_{L^1}=\int_0^\infty a_f(\lambda)d\lambda
+    \end{equation*}
+\end{proposition}
+
+Next we introduced the Hardy-Littlewood maximal function:
+\begin{equation*}
+    Mf(x)=\sup_r\frac{1}{|B_r(x)|}\int_{B_r(x)}|f(y)|dy
+\end{equation*}
+
+\begin{theorem}
+    $M$ is weak (1,1) and strong (p,p), for $1<p\leq\infty$.
+\end{theorem}
+\begin{comment}
+    And we first showed that it is true for $n=1$, using a covering lemma.
+\end{comment}
+
+\begin{proposition}
+    For $\phi$ a radial function, i.e. $\phi(t)=\phi(|t|)$, such that it is positive, decreasing (from $(0,\infty)$), then we have
+    \begin{equation*}
+        \sup_t|\phi_t\ast f(x)|\leq\|\phi\|_{L^1}Mf(x)
+    \end{equation*}
+\end{proposition}
+\begin{comment}
+    We showed that it is true for simple functions, and take the limit.
+\end{comment}
+
+\begin{corollary}
+    If $|\phi(x)|\leq\psi(x)$ a.e., where $\psi$ is positive, radial, and decreasing, then we have note that $|\phi(x)\ast f(x)|\leq\psi(x)$, and from the previous proposition, we have
+    \begin{equation*}
+        \sup_t|\phi_t\ast f(x)|\leq\sup_t|\psi_t\ast f(x)|\leq\|\psi\|_{L^1}Mf(x)
+    \end{equation*}
+    Hence $\sup_t|\phi_t\ast f(x)|$ is weak (1,1), and strong (p,p), for $1<p\leq\infty$.
+\end{corollary}
+\begin{corollary}
+    All assumptions remain the same, and if $f\in L^p$, $1\leq p<\infty$, we have
+    \begin{equation*}
+        \lim_{t\to 0}\phi_t\ast f(x)=\left(\int\phi\right)f(x) \text{ a.e. }
+    \end{equation*}
+\end{corollary}
+
+
+
+
+
+\end{document}

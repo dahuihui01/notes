@@ -1866,3 +1866,187 @@ Then the left regular representation ``is'' a *-representation, this drops to a 
 
 Next time: we show $\pi_c$ is not continuous, and we will use polynomials. Now if you assume $\mathcal{A}$ is Banach *-algebra, then this $\pi_c$ are always bounded.
 \textbf{GNS representation}, where $S$ is Siegel. 
+
+\section{Lecture 15}
+Recall the GNS construction. Given a *-normed unital algebra $\mathcal{A}$, and a positive linear functional $\mu$ on $\mathcal{A}$, we mean
+\begin{equation*}
+    \mu(a^*a)\geq 0, \forall a\in\mathcal{A}
+\end{equation*}
+
+Now we define a pre-innner product on $\mathcal{A}$ by
+\begin{equation*}
+    \langle a,b\rangle_\mu=\mu(b^*a)
+\end{equation*}
+And one could check this is indeed a pre-inner product.
+\begin{enumerate}
+    \item $\overline{\langle a,b\rangle_\mu}=\langle b,a\rangle$
+    \item $\langle a+b, a+b\rangle_\mu\geq 0$
+\end{enumerate}
+If we let $\eta_\mu=\{a\in\mathcal{A}:\langle a,a\rangle=0\}$, then by Cauchy-Schwarz inequality, we would show that $\eta_\mu$ is a left ideal. Form $\mathcal{A}/\eta_\mu$, then $\langle, \rangle$ becomes an inner product on $\mathcal{A}/\eta_\mu$.
+
+One could complete $A/\eta_\mu$ to get a Hilbert space $L^2(\mathcal{A},\mu)$. Then we have
+\begin{equation*}
+    \langle f,g\rangle=\int f\overline{g}d\mu
+\end{equation*}
+
+\begin{definition}[left regular representation]
+    For $c\in\mathcal{A}$ , define the left regular representation $\pi$ on $\mathcal{A}$ and on $\mathcal{A}/\eta_\mu$ via
+    \begin{equation*}
+        \pi_ca=ca, a\in\mathcal{A}
+    \end{equation*}
+    Then we have
+    \begin{equation*}
+        \langle \pi_ca,b\rangle_\mu=\langle ca, b\rangle_\mu=\langle a, \pi_c^*b\rangle
+    \end{equation*}
+    Hence $\pi$ is a 8-representation.
+\end{definition}
+
+\textcolor{red}{Unfinished here}
+
+\section{Lecture 16}
+We now discuss classical physics and quantum physics.
+
+All possible ``states'' for the system. Then you have observables. 
+$\R$-valued for the phase space $P$. 
+
+
+If the configuration space is $\R$, the velocities are given as $\R$ numbers, then the phase space is the cartesian product $\R\times\R$, and the Poisson bracket is given by
+\begin{equation*}
+    \{f,g\}=\left(\frac{\partial f}{\partial x}\frac{\partial g}{\partial y}-\frac{\partial f}{\partial y}-\frac{\partial g}{\partial x}\right)(p)
+\end{equation*}
+
+In quantum physics, there is no configuration space that we work with. The phase space becomes a $C^*$-algebra, usually non-commutative. And the observables are the self-adjoint elements of $\mathcal{A}$, where $\mathcal{A}=\mathcal{B}(\mathcal{H})$, and such choice of Hilbert space is not unique. Possibles values for an observalbe $a=a^*$ form $\sigma(a)$.
+
+When you observe a system in a certain state, and you measure and observable $a$ several times, you can get different values (all in $\sigma(a))$.
+
+For the system in a given state, there is a porobablity measure on $\sigma(a)$ that gives you the probability of getting a particular value of $a$. As the system evolves, this probably changes.
+
+The \textbf{state} (this is why we call them states, i.e. the set of linear transformations that have norm 1) space is the set of all positive linear transformations on $\mathcal{A}$ of norm 1, $\mu$, then for any observable $a$, form 
+\begin{equation*}
+    C^*(a,1)\cong C(\sigma(a))
+\end{equation*}
+Then the restriction  of $\mu$ to $C^*(a,1)$ give syou a probability measure on $\sigma(a)$.
+
+Experiments show that for certain pairs of observables $a,b$, it is impossible to measure both simultaneously at high accuracy.
+
+The way this is modeled is that it happens exactly if $ab\neq ba$, i.e. non-commutativity makes us impossible to measure them simultaneously.
+
+\begin{definition}[Poisson bracket]
+    For $a,b$ observables such that they are noncommutative, we define the Poisson bracket as follows:
+    \begin{equation*}
+        i[a,b]=ab-ba
+    \end{equation*}
+\end{definition}
+
+For the evolution of a quantum system given by $\R\mapsto Aut(\mathcal{A})$, and $t\mapsto \alpha_t$, and states evolve by $\mu\mapsto \mu\circ\alpha_t$.
+
+If we let this Planck's constant $h$ go to 0, then we have
+\begin{equation*}
+    ih[a,b]\to \text{ Poisson bracket }
+\end{equation*}
+i.e. getting back from quantum back to the classical system.
+
+Let $\mathcal{A}$ be a *-normed unital algebra, and $\mu$ is a continuous positive linear functional, then
+$L^2(\mathcal{A}, \mu)$ and $\pi^\mathcal{H}: \mathcal{A}\to \mathcal{B}(L^2(\mathcal{A}, \mu))$. 
+
+Let $\xi_\mu=1_\mathcal{A}$, viewed as an element of $L^2(\mathcal{A}, \mu)$, and 
+\begin{equation*}
+    \{ \pi_\mu(a)\xi_\mu: a\in\mathcal{A}\}=\mathcal{A}/\pi_\mu
+\end{equation*}
+viewed in $L^2(\mathcal{A}, \mu)$ is dense in $L^2(\mathcal{A}, \mu)$.
+
+\begin{definition}
+    If we have $\mathcal{A}$ some representation $(\mathcal{H}, \pi)$, and a vector $\xi\in\mathcal{H}$ is said to be a cyclic vector of $
+    \{\pi_\mu\xi: a\in\mathcal{A}\}$ is dense in $\mathcal{H}$.
+\end{definition}
+
+\section{Lecture 17}
+If you look at $\mathcal{A}$ a *-normed unital algebra, and $\mu$ a continuous linear functional, and the GHS representation: $(\mathcal{H}_\mu, \pi_\mu, \xi_\mu)$, where $\overline{\mathcal{A}/\eta_\mu}$, where $\xi_\mu$ is the unital element $1_\mathcal{A}$ in the Hilbert space.
+
+Given any *-representation of $\mathcal{A}$ on $K$, and any vector $\xi\in K$, let 
+\begin{equation*}
+    \mu_\xi(a)=\langle \pi(a)\xi, \xi\rangle
+\end{equation*} 
+Now we ask what positive linear functional comes from the cyclic vector $\xi_\mu$, and we look at 
+\begin{equation*}
+    \langle \pi_mu(a)\xi_\mu, \xi_\mu\rangle_\mu
+\end{equation*}
+where it is essentially
+\begin{equation*}
+    \langle a1_\mathcal{A}, 1\rangle=\mu(a)
+\end{equation*}
+
+Every state is a vector state, for some representation, namely, the GNS representation.
+
+Consider the set $\{\pi(a): a\in\mathcal{A}\}$, or for a unitary representation $U$ of a group $G$, consider the set
+\begin{equation*}
+    \{U_x: x\in G\}
+\end{equation*}
+More importantly, given a Hilbert space $\mathcal{H}$, let $S$ be a subset of the bounded operators on $\mathcal{H}$, $\mathcal{B}(\mathcal{H})$ such that if $a\in S$, then $a^*\in S$, and $I_H\in S$.
+
+\begin{definition}
+    A subspace $K\subset H$ is said to be $S$-invariant (where $S\subset\mathcal{B}(\mathcal{H}))$, if whenever $\xi\in K$, and $a\in S$, and $a\xi\in K$. You could write $aK\subset K$.
+\end{definition}
+
+\begin{proposition}
+    If $K$ is $S$-invariant, then so is $K^\perp$.
+\end{proposition}
+\begin{proof}
+    Let $\xi\in K^\perp, a\in S$, want to show that $a\xi\in K^\perp$.
+
+    Let $\eta\in K$, then $\langle a\xi, \eta\rangle=\langle \xi, a^*\eta\rangle =0$. This is true for all $\eta$, hence $a\xi\in K^\perp$.
+\end{proof}
+
+Let $\mathcal{A}$ be *-normed unital algebra, and let $(\mathcal{H}, \pi)$ be a *-representation of $\mathcal{A}$ on $\mathcal{H}$. Choose $\xi\in\mathcal{H}$, and let 
+\begin{equation*}
+    K_\xi=\overline{\{\pi(a)\xi: a\in\mathcal{A}\}}\subset\mathcal{H}
+\end{equation*}
+
+This is a $\{\pi(a): a\in\mathcal{A}\}$-invariant subspace. If we look at $K_\xi^\perp$, this is also $\{\pi(a):a\in\mathcal{A}\}$-invariant. 
+
+\begin{definition}
+    If $(\mathcal{H}, \pi)$ a representation of $\mathcal{A}$, and $H$ contains no proper nonempty $\pi$-invariant closed subspaces, we say then $(\mathcal{H}, \pi)$ is irreducible. (This gives the name ``simple moduel.'')
+\end{definition}
+
+If $K_\xi^perp$ is not the zero subspace, then you can choose $\xi_1\in K_\xi^\perp, \xi_1\neq 0$.
+
+Set $K_{\xi_1}$ to be the cyclic subspace generated by $\xi_1$, and $\pi$-invariant, if $K_{\xi_1}^\perp$ is $\pi$-invariant. And if it's not the zero subspace, then you could repeat this process.
+
+If $\mathcal{H}$ is finite-dimensional, then can what we said above to get 
+\begin{equation*}
+    \mathcal{H}=K_1\bigoplus K_2\bigoplus... \bigoplus K_n
+\end{equation*}
+And for each $K_j$, we have $\pi$ on these is irreducible. You could decompose any $\mathcal{H}$ into a direct sum of irreducible representations. 
+
+What happens when the space is infinite-dimensional? Group $G$ has a representation on $l^2(G)$. Given any $(\mathcal{H}, \pi)$ with $\mathcal{H}$ infinite-dimensional, you can apply the above process, and may not get any irreducible representations, but you could keep getting \textbf{ cyclic representations}.
+
+For any Hilbert space, pick unit vector, look at orthogonal subspace, pick a unit vector in that, etc... What happens when you keep on going. Note that \textbf{ when you keep going, you use Zorn's lemma}.
+
+Via Zorn's lemma, every representation is a possibly infinite direct sum of cyclic representations. And we need to define infinite sum of representations.
+
+Let $\{\mathcal{H}_\lambda\}_{\lambda\in\Lambda}$ be a collection of Hilbert spaces. Set the direct sum of these Hilbert spaces $\biguplus\mathcal{H}$, and functions on these to be $\xi:\Lambda\to \cup \mathcal{H}_\lambda: \xi(\lambda)\in\mathcal{H}_\lambda$ for all $\lambda$ and $\sum_{\lambda\in\Lambda}\|\xi_\lambda\|^2<\infty$, hence we have $\xi_\lambda=0$ except for a finite number of $\lambda$'s.
+
+And define $\langle \xi, \eta\rangle=\sum_{\lambda\in\Lambda}\langle \xi_\lambda, \eta_\lambda\rangle$, such that the sum $\sum\|\xi_n\|^2<\infty$, and $\langle \xi, \eta\rangle=\sum\xi_\lambda\overline{\eta}_\lambda$.
+
+You know how to show $\mathcal{H}$ is complete under $\langle \xi, \eta\rangle=\sum\xi_\lambda\overline{\eta}_\lambda$, then you know how to show $\bigoplus\mathcal{H}_\lambda$ is complete under $\langle \xi, \eta\rangle=\sum_{\lambda\in\Lambda}\langle \xi_\lambda, \eta_\lambda\rangle$.
+
+If $\{T_\lambda: T_\lambda\in\mathcal{B}(\mathcal{H}_\lambda)\}$, and $\bigoplus_{\lambda\in\Lambda}T_\lambda$, and if we define
+\begin{equation*}
+    (\bigoplus T_\lambda)(\xi):=\{T_\lambda\xi_\lambda\}_{\lambda\in\Lambda}
+\end{equation*}
+and we would like to put these in $\bigoplus\mathcal{H}_\lambda$, there is a constant $c$ such that $\|T_\lambda\|\leq c$ for all $\lambda$, i.e. ${T_\lambda}$ is bounded in norm.
+
+Hence
+\begin{equation*}
+    \|T_\lambda\xi_\lambda\|\leq\|T_\lambda\|\cdot\|\xi_\lambda\|\leq c\|\xi_\lambda\|
+\end{equation*}
+
+If $\mathcal{A}$ is a *-normed unital algebra, and $(\mathcal{H}_\lambda, \pi_\lambda)$ is a collection of *-representation of $\mathcal{A}$, continuous, then for $\bigoplus_{\lambda\in\Lambda}\mathcal{H}_\lambda$, and for $a\in\mathcal{A}$, set
+\begin{equation*}
+    \bigoplus(\pi_\lambda)(a)\xi=\{\pi_\lambda(a)\xi_\lambda: \|\pi_\lambda(a)\|\leq\|a\|\}
+\end{equation*}
+and $\{\xi_\lambda\}\in\bigoplus_\lambda \mathcal{H}_\lambda$.
+
+By Zorn's lemma, every Hilbert space is a direct sum of cyclic representations.
+
+Next: spectral theorem for self-adjoint operators.

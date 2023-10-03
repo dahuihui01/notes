@@ -1729,3 +1729,77 @@ Note for any theorems regarding the Fourier transform of tempered distributions,
     \sum_j\int_{\R\setminus 2I_j}|Hb_j(x)|dx\leq c\|f\|_{L^1}
    \end{equation*}
 \end{proof}
+
+\section{Lecture 17}
+We continue with the proof that the Hilbert transform is weak (1,1).
+To deal with $\frac{1}{x}$ at $\infty$, we use $\int_{I_j}b_j=0$ and use the smoothness of $\frac{1}{x}$
+
+It suffces to show that
+\begin{equation*}
+    \int_{\R\setminus\Omega^*}|Hb(x)|\lesssim \|b_j\|_{L^1}
+\end{equation*}
+Since we can sum over all $j$, note that
+\begin{equation*}
+    \sum_j\|b_j\|_{L^1}\leq\sum_j\left(\|f\|_{L^1(I_j)}+\|g\|_{L^1(I_j)} \right)=2\|f\|_{L^1}
+\end{equation*}
+
+Note that there exists formula for the Hilbert transform:
+\begin{equation*}
+    Hb_j(x)=\frac{1}{\pi}\int_{I_j}\frac{b_j(y)}{x-y}dy, x\not\in 2I_j
+\end{equation*}
+For this one, we note that we can fix $y$ and use the smoothness of $\frac{1}{x}$.
+
+Let $c_j$ be the center of $I_j$, then we have
+\begin{align*}
+    \int_{\R\setminus 2I_j}|Hb_j(x)|dx&=\frac{1}{\pi}\int_{\R\setminus 2I_j}|\int_{I_j}\frac{b_j}{x-y}dydx\\
+    &=\frac{1}{\pi}\int_{\R\setminus 2I_j}\left|\int_{I_j}\frac{b_j}{x-y}-\frac{c_j}{x-y} \right|dydx\\
+    &\lesssim \int_{\R\setminus 2I_j}\int_I|b_j(y)|\cdot\frac{|y-c_j|}{|x-y||x-c_j|}dydx\\
+    &\lesssim \int_{\R\setminus 2I_j}\int_I|b_j(y)|\frac{|I_j|}{|x-c_j|^2}\\
+    &=\int_I|b_j(y)|\left(\int_{\R\setminus 2I_j}\frac{|I_j|}{|x-c_j|^2}dx \right)dy\\
+    &\lesssim \int_I|b_j(y)|dy=\|b_j\|_{L^1}
+\end{align*}
+(using the fact that $\int_{I_j}b_j=0$.) Hence we are done!.
+\qed
+
+\begin{note}
+    The same proof works for $f\in L^1\cap L^2$.
+\end{note}
+
+
+One can use the fact that the Hilbert transform is weak (1,1) to defeine the Hilbert transform for all $f\in L^1$. We take a sequence $f_n\xrightarrow{L^1}f, f_n\in\mathcal{S}$, and  we then have $\{Hf_n\}$ is a cauchy sequence in measure, thus converges to a funciton $Hf$.
+
+Now we show that $H$ is strong $(p,p)$, and for that we duality. We already know that $H$ is strong $(p,p)$ by interpolation theorems for $1<p<2$, since we have $p=2$ is bounded.
+
+\textbf{ Now we extend to $\infty$ using duality. } For $p>2$, for $\|g\|_{p'}=1$,
+\begin{align*}
+    \|Hf\|_{L^p}&=\sup_{g\in\mathcal{S}}\left|\int_\R Hf\cdot g \right|\\
+    &=\sup_{g\in\mathcal{S}} \left| \int_\R f\cdot Hg\right|\\
+    &\leq C_{p'}\|f\|_{L^p}\|g\|_{L^{p'}}
+\end{align*}
+where the last line, we used Holder's inequality, and using the fact that $H$ is bounded for $1<p<2$.
+
+\begin{note}
+    If you know an operator is bounded for $1<p<2$, and the middle line holds where you can exchange the transformation onto the other one, you immediately get that the operator is bounded for all others using duality.
+\end{note}
+
+\begin{proposition}
+    The Hilbert transform is not strong (1,1).
+\end{proposition}
+\begin{proof}
+    Take $\chi_{[0,1]}$, and note that
+    \begin{equation*}
+        H\chi_{[0,1]}(x)=\frac{1}{\pi}\log\left|\frac{x}{x-1} \right|
+    \end{equation*}
+    
+\end{proof}
+
+\begin{proposition}
+    If $\phi\in\mathcal{S}$, then $H\phi\in L^1$ if and only if $\int\phi=0$.
+\end{proposition}
+
+\subsection{Truncated integrals and pointwise convergence}
+We define
+\begin{equation*}
+    H_\epsilon f(x)=\frac{1}{\pi}\int_{|y|>\epsilon}\frac{f(x-y)}{y}dy
+\end{equation*}
+This is well defined if $f\in L^p$, for $1\leq p<\infty$, and since the kernel in $L^q, q>1$.
