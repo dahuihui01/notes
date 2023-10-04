@@ -1805,3 +1805,86 @@ We define
 This is well defined if $f\in L^p$, for $1\leq p<\infty$, and since the kernel in $L^q, q>1$.
 
 
+\section{Lecture 18}
+\subsection{Truncated integrals}
+If we define
+\begin{equation*}
+    H_\epsilon f(x)=\int_{|y|>\epsilon}\frac{f(x-y)}{y}dy
+\end{equation*}
+can be directly defined in $L^p$, for $1\leq p<\infty$, since the kernel is in $L^{1+\epsilon}$.
+
+Note that we clearly have a convolution, and we would like to find out what it is multiplied by on the Fourier side.
+\begin{align*}
+    \frac{1}{y}\chi_{|y|<\epsilon}^{\widehat{\phantom{.}}}(\xi)&=
+    \lim_{N\to\infty}\int_{\epsilon<|y|< N}\\
+    &=-i\lim_{N\to\infty}\int_{\epsilon<|y|<N}\frac{\sin(2\pi\xi)}{y}dy\\
+    &=-isgn(\xi)\int_{N\to\infty}\int_{2\pi\epsilon|xi|}^{2\pi N|\xi|}\frac{\sin(t)}{t}dt
+\end{align*}
+We note that this is uniformly bounded, and hence is strong (2,2).
+\begin{note}
+    We can show in the same way as the weak (1,1) holds uniformly.
+\end{note}
+
+This implies that for $f\in L^p$, we have $H_\epsilon f\to Hf$ as $\epsilon\to 0^+$, in $L^p$ for $1<p<\infty$, and in measure if $p=1$.
+
+\begin{exercise}
+    Approximate $f$ by $\{f_n\}\subset\mathcal{S}$ and use uniformity.
+\end{exercise}
+For almost everywhere convergence, we'll prove that the following.
+\begin{theorem}
+    Given $f\in L^p$, $1\leq p<\infty$, we have
+    \begin{equation*}
+        Hf_\epsilon(x)\to Hf(x), \text{a.e. } x\in\R
+    \end{equation*}
+    as $\epsilon\to 0^+$.
+\end{theorem}
+
+By theorem 2.2, it suffices to show that it holds for 
+\begin{equation*}
+    H^*f(x)=\sup_{\epsilon.0}|H_\epsilon f(x)|
+\end{equation*}
+is weak $(p,p)$, and for $f\in\mathcal{S}$. For this we show the following:
+\begin{theorem}
+    $H^*$ is strong $(p,p)$ and weak $(1,1)$, for $1<p<\infty$.
+\end{theorem}
+\begin{proof}
+    For $1<p<\infty$, the strong $(p,p)$ property follows from
+    \begin{lemma}[Cotlar's inequality]
+        If $f\in\mathcal{S}$, we have
+        \begin{equation*}
+            H^* f(x)\leq M(Hf)(x)+CMf(x)
+        \end{equation*}
+    \end{lemma}
+    This gives $H^*$ strong $(p,p)$ for all $1<p<\infty$. However, it fails to give weak (1,1) bound, since we don't know $M(Hf)$ behaves. (The proof of the Cotlar's inequality is by comparing $H_\epsilon f$ to $Q_\epsilon\ast f$).
+
+    We will prove this inequality with $H^*$ replaced by $H_\epsilon$ with an absolute constant on the RHS. Fix $\phi\in\mathcal{S}(\R)$, non-negative, and even, decaying with $supp(\phi)\subset [-1/2, 1/2]$ and $\int\phi=1$. Then if we let $\phi_\epsilon(x)=\frac{1}{\epsilon}\phi\left(\frac{x}{\epsilon}\right)$
+
+    \begin{equation*}
+        \frac{1}{y}\chi_{|y|>\epsilon}=(\phi_\epsilon\ast p.v.\frac{1}{x})+\left(\frac{1}{y}\chi_{|y|>\epsilon}-\phi_\epsilon\ast p.v.\frac{1}{x}\right)
+    \end{equation*}
+    Convolutoin with the first term is bounded by M(Hf)(x), and we bound the kernel by an integrable, decaying function as follows:
+
+    It suffices to do this for $\epsilon=1$, and for $|y|<1$, wehave
+    \begin{equation*}
+        |\phi_1\ast p.v.\frac{1}{x}(y)|=\left|\lim_{\delta\to 0}\int_{|x|>\delta}\frac{\phi(y-x)}{x}dx\right|\leq\|\phi\|_{C^1}
+    \end{equation*}
+    And for $|y|\geq 1$, we have
+    \begin{equation*}
+        \left|\frac{1}{y}-\int_{|x|<1/2}\frac{\phi(x)}{y-x}dx\right|=\left|\int_{|x|<1/2}\phi(x)\left(\frac{1}{y}-\frac{1}{y-x}\right) \right|\leq\frac{C}{y^2}
+    \end{equation*}
+    Thus the contribution from the 2nd term is $\leq CMf(x)$.
+    
+\end{proof}
+\qed
+
+Now we show that lemma 3.5 implies theorem 3.4 for strong $(p,p)$. Now we give the proof of weak $(1,1)$ of theorem 3.4, WLOG, assume $f\geq 0$, and fix $\lambda>0$, C-Z decomposition at $\lambda$ gives $f=g+\sum_jb_j$.
+
+Now for exercise, since $H^*$ is strong (2,2), and $g$ can be handled in the old way.
+\begin{note}
+    We will achieve this also in almost the old way with one additional help of the maximal function, And note that the average of $b_j$ might no longer tend to 0.
+    It suffices to show that 
+    \begin{equation*}
+        |\{x\not\in\Omega^*: H^*b(x)>\lambda\}|\leq\frac{C}{\lambda}\|b\|_{L^1}
+    \end{equation*}
+\end{note}
+
