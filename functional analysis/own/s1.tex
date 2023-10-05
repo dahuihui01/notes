@@ -584,5 +584,37 @@ Now we connect this with the Gelfand transform.
 \end{proof}
 \qed
 
+Now we enter the realm of Hilbert spaces.
 
+\begin{theorem}
+    For $T\in\alb(\mathcal{H})$ if $\langle T\xi, \xi\rangle=0$ for all $\xi\in\mathcal{H}$, then we have $T=0$
+\end{theorem}
+\begin{remark}
+    This is proved by polarization.
+\end{remark}
+
+\begin{proposition}
+    By the same reasoning, if $\langle T\xi, \xi\rangle$ is real for all $\xi$, then $T=T^*$.
+\end{proposition}
+\begin{proof}
+    \begin{equation*}
+        \langle T\xi, \xi\rangle =\langle \xi, T^*\xi\rangle=\langle T^*\xi, \xi\rangle
+    \end{equation*}
+    By the previous theorem, we know $T=T^*$.
+\end{proof}
+
+\begin{proposition}
+    If we have $\|T\xi\|\geq a\|\xi\|$, and similarly $\|T^*\xi\|\geq b\|\xi\|$, then we have $T$ is invertible.
+\end{proposition}
+\begin{proof}
+    For $T\xi=0$, we have $\xi=0$, hence $T$ is injective. And similarly, $T^*$ is injective, and we have
+    \begin{equation*}
+        \ker T^*=(Range(T))^\perp=\{0\}
+    \end{equation*}
+    Hence we have $Range(T)$ is dense in $\mathcal{H}$. Thus, by $T$ is injective, we can define $T^{-1}$ on $Range(T)$. It now suffices to show that $T^{-1}$ is bounded on $Range(T)$, then it will extend. Let $\xi\in Range(T)$, we have
+    \begin{equation*}
+        \|\xi\|=\|TT^{-1}\xi\|\geq a\|T^{-1}\xi\|
+    \end{equation*}
+    Hence $T^{-1}$ is bounded on a dense subset of $\mathcal{H}$.
+\end{proof}
 

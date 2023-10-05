@@ -1658,7 +1658,7 @@ where $P_{e_1}$ is the projection onto $e_1$.
 
 Let $\mathcal{A}=l^1(\N_{\geq 0})$, and let $\mathcal{D}=\{z\in\C: |z|\leq 1\}$.
 \begin{theorem}
-    If $f\in l^1(\N)$, and if $\hat{f}\in C(D)$, then nowhere takes value 0, then $hat{f}$ is invertible as a function in $C(D)$, and $\hat{f}$ has absolutely convergence power series, then $\frac{1}{\hat{f}}$ also has an absolutely convergence power series.
+    If $f\in l^1(\N)$, and if $\hat{f}\in C(D)$, then nowhere takes value 0, then $\hat{f}$ is invertible as a function in $C(D)$, and $\hat{f}$ has absolutely convergence power series, then $\frac{1}{\hat{f}}$ also has an absolutely convergence power series.
 \end{theorem}
 \begin{note}
     If we take $\mathcal{A}=l^1(\Z)$, so $\widehat{\mathcal{A}}=\T$, and if $\hat{f}$, which is the Fourier series, nowhere takes value 0 on $\T$, then the function $\frac{1}{\hat{f}}$ has absolutely convergent Fourier series. (This is much harder to prove).
@@ -1687,14 +1687,15 @@ $G$ acts on $G$ by left translations $\alpha$ (actions), and acts on $G/H$ (sets
 \end{equation*}
 In particular, this action on $l^2(M)$ is unitary.
 
-\begin{definition}
-    The representaiton of $G$ on $l^2(G)$ is called the left regular representation of $G$ if we define
+\begin{definition}[Left regular representation]
+    The representaiton $U$ of $G$ on $l^1(G)$ is called the left regular representation of $G$ if we define, for $x,y\in G$, $\xi\in l^2(G)$, we have
     \begin{equation*}
         (U_x\xi)(y)=\xi(x^{-1}y)
     \end{equation*}
 \end{definition}
 $U_f$ is said to have ``integrated form'' if $U_f$ for $f\in l^1(G)$, $U_f=\sum_{x\in G} f(x)U_x$ (and we naturally replace with $U_f=\int f(x)U_x$ if our group is not discrete).
 
+We now, naturally define the integrated form of the representation of $G$ on $l^1(G)$
 \begin{definition}[Reduced $C^*$-algebra]
     The operator norm closure of $\{U_f: f\in l^1(G)\}\in \mathcal{B}(l^1(G))$ is called the reduced $C^*$-algebra of $G$, denoted as $C_r^*(G)$.
 \end{definition}
@@ -1713,8 +1714,14 @@ In 1975, we see that $C_r^*(F_2)$ is simple, and has no proper ideals, note $F_2
     All commutative groups are amenable.
 \end{note}
 
+\begin{definition}[Non-degenerate representation]
+    Let $\pi$ be a representation of $\mathcal{A}$ on $V$, $\pi:\ala\to V$, then $\pi$ is non-degenerate if
+    \begin{equation*}
+        \text{ the linear span of }\{\pi(a)v: a\in\ala, v\in V\} \text{ is dense in } V
+    \end{equation*}
+\end{definition}
 \begin{definition}[faithful representations]
-    The left representation is faithful if whenever $U_f=0$, then we have
+    (In short, it's a representation that is injective.) The left representation is faithful if whenever $U_f=0$, then we have
     \begin{equation*}
         f=0, f\in l^1(G)
     \end{equation*}
@@ -2050,3 +2057,93 @@ and $\{\xi_\lambda\}\in\bigoplus_\lambda \mathcal{H}_\lambda$.
 By Zorn's lemma, every Hilbert space is a direct sum of cyclic representations.
 
 Next: spectral theorem for self-adjoint operators.
+
+\section{Lecture 18}
+\begin{definition}
+    Let $\mathcal{A}$ be a (group) a *-algebra, and let $(\mathcal{H}, \pi)$, and $(K, \rho)$ are two *-representations of $\mathcal{A}$, then these representations are equivalent, if there is a unitary operator $U: H\to K$, $(U^{-1}: K\to H)$, such that
+    \begin{equation*}
+        U\pi(a)=\rho(a)U
+    \end{equation*}
+    $U$ is the representation that equivalates $\pi$ and $\rho$. ``U intertwines $\pi$ and $\rho$''
+\end{definition}
+
+\begin{proposition}
+    Let $\mathcal{A}$ be a unital *-normed algebra, and let $(\mathcal{H}, \pi, \xi)$ and $(K, \rho, \eta)$, where $\xi, \eta$ are cyclic vectors, and they each determine a positive linear functional on $\mathcal{A}$. 
+
+    Let $\mu_\xi$, and $\mu_\eta$ be the correspondonig positive linear functionals, and if $\mu_\xi=\mu_\eta$, then $(\mathcal{H}, \pi)$ and $(K, \rho)$ are unitarily equiavalent via a unitary operator such that $U\xi=\eta$.
+\end{proposition}
+\begin{comment}
+    If your representation is non-irreducible, then every nonzero vector is a cyclic vector.
+\end{comment}
+\begin{proof}
+    Since we want that $U\xi=\eta$, then we want 
+    \begin{equation*}
+        U(\pi(a)\xi)=U\pi(a)(\xi)=\rho(a)U\xi=\rho(a)\eta
+    \end{equation*}
+    Start by try and define $U$ by 
+    \begin{equation*}
+        U(\pi(a)\xi)=\rho(a)\xi
+    \end{equation*}
+    However, this raises the question, is this well-defined? If $\pi(a)\xi=\pi(b)\xi$, for some $a,b$, then do we have $\rho(a)\eta=\rho(b)\eta$? (This would imply $U$ is well-defined).
+
+    \begin{remark}
+        In linear situations like this, if $\pi(a-b)\xi=0$, is it true that $\rho(a-b)\eta=0$?
+    \end{remark}
+    In other words, \textbf{ it suffices to show that } if $\pi(\xi)=0$,  we have $\rho(c)=0?$. 
+    \begin{equation*}
+        \|\rho(c)\eta\|^2=\langle \rho(c)\eta, \rho(c)\eta\rangle=\langle \rho(c^*c)\eta, \eta\rangle=\mu_\eta(c^*c)=\mu_\xi(c^*c)=\langle \pi(c)\xi, \pi(c)\xi\rangle =0
+    \end{equation*}
+    We note that
+    \begin{equation*}
+        \|\rho(c)\eta\|^2=\|\pi(c)\xi\|^2
+    \end{equation*}
+    The operator preserves norm on a dense subspace, we further have $U$ is unitary.
+
+    We now see that $U$ intertwines $\pi, \rho$, we have
+    \begin{equation*}
+        U\pi(a)(\pi(c)\xi)=U\pi(ac)\xi=\rho(ac)\eta=\rho(a)\rho(c)\eta=\rho(a)U(\pi(c)\xi)
+    \end{equation*}
+    From this we see
+    \begin{equation*}
+        U\pi(a)=\rho(a)U
+    \end{equation*}
+    One could say there is a bijection between the positive linear functionals on $\mathcal{A}$, and the pointed cyclic representations on $\mathcal{A}$. 
+\end{proof}
+\begin{comment}
+    You start with $\mu_\xi$, and do GNS, and get something unitarily equivalent to what you start with.
+\end{comment}
+
+Let $\mathcal{A}$ be a commutative unital *-normed algebra and let $(\mathcal{H}, \mu)$ be a cyclic *-representation with cyclic vector $\xi$. Then let $\mathcal{B}=\overline{\pi(a)}$ be the norm closure is a $C^*$-algebra. So $\mathcal{B}=C(X)$.
+
+Then $\mu_\xi$ is a positive linear functional on $\mathcal{B}=C(X)$. Hence $\mu_\xi$ gives a finite regular Borel measure on $X$, $\tilde{\mu}_\xi$, so you can form the $L^2(X,\tilde{\mu}_\xi)$ with $\mathcal{B}$ acting on $L^2(X, \tilde{\mu}_\xi)$ by pointwise multiplication. \textbf{ This is basically the GNS representation.} Then you have the cyclic vector as the constant function 1. And find that $\mu_1=\mu_\xi$, so
+\begin{equation*}
+    (\mathcal{H}, \pi, \xi)\cong (L^2(X, \tilde{\mu}_\xi), 1)
+\end{equation*}
+via the unitary $U$ such that $U\xi=1$.
+
+Given $C(X)$ and any *-representation of it, $(H, \pi)$ and you decompose $(\mathcal{H}, \pi)$ into direct sum of cyclic representations, $\bigoplus(H_\lambda, \pi_\lambda, \xi_\mu)$ where each $\xi_\mu$ is cyclic.
+
+Each one $(H_\lambda, \pi_\lambda, \xi_\mu)$ is isomorphic to some $L^2(X,\mu_\lambda, \xi_\lambda)$, with $C(X)$ acts pointwise on each $L^2(X,\mu_\lambda, \xi_\lambda)$.
+
+Let $X=[0,1]$, and $L^2(X, m)$, where $m$ is the Lebesgue measure. And let 
+\begin{equation*}
+    \nu=\delta_\frac{1}{4}+\delta_\frac{1}{2}+\delta_\frac{1}{5}
+\end{equation*}
+All the measures above and mutually exclusive to $m$, and $L^2(X, m+\nu)$.
+
+This gives the Borel functional calculus. For any bounded Borel function on $X$ (Borel functions are those that are measurable with respect to all possible Borel measures), it acts on each $L^2(X,\mu_\lambda)$ by pointwise multiplication, hence acts on $\mathcal{H}$. If you have a given Hilbert space $\mathcal{H}$, $T\in\mathcal{B}(\mathcal{H})$, and $T^*=T$, and
+\begin{equation*}
+    C^*(T, I_\mathcal{H})=C(\sigma(T))
+\end{equation*}
+so $C(\sigma(T))$ acts on $\mathcal{H}$, hence every Borel function acts on $\mathcal{H}$. 
+
+Again we have $C(X)$ acting on $\mathcal{H}$ and the bounded Borel functions acting on $\mathcal{H}$, let $E$ be any Borel subset of $X$, so $\chi_E$ acts on $\mathcal{H}$ and is a projection. So we have $E\mapsto \chi_E\in\mathcal{B}(\mathcal{H})$ via $\nu$, and this is a projection-valued measure on $X$. 
+
+If $E, F$ are disjoint, then
+\begin{equation*}
+    \chi_E\chi_F=\chi_{E\cap F}, \chi_{E\biguplus F}=\chi_E+\chi_F
+\end{equation*}
+\begin{remark}
+    This is somewhat countably additive in a weak sense.
+\end{remark}
+

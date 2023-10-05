@@ -2070,7 +2070,7 @@ First we rewrite
 \end{equation*}
 And we take the Fourier transform: where the LHS is $\xi^2+\lambda$. This implies exponential decay for the fundamental solution. This implies that $u$ is smooth and decays exponentially at $\infty$.
 \begin{equation*}
-    ()\partial_r+\frac{r}{r-1}\partial_r+\lambda)u=u^{p+1}
+    (\partial_r+\frac{r}{r-1}\partial_r+\lambda)u=u^{p+1}
 \end{equation*}
 This gives the solution in the form:
 \begin{equation*}
@@ -2146,3 +2146,133 @@ And
 If we have $p>\frac{4}{n}$, the linear part wins and you expect scattering, and $p=\frac{4}{n}$ (we assume $\|u_0\|_{L^2}\approx 1$), and if we drop the assumption, it depends on the size of the initial data, and $p<\frac{4}{n}$, and nonlinear wins, and expect no classical scattering.
 
 You start with a bump funciton for initial data, and the nonlinear portion turns into quite oscillatory, then linear makes waves move along their group velocity. 
+
+
+\section{Lecture 10/5}
+If we look at the energy critical problem, re call the equal of interest, for $p=\frac{4}{n-2}$, and $n\geq 3$:
+\begin{equation*}
+    iu_t+\Delta u=\pm|u|^p\cdot u
+\end{equation*}
+and $\dot{H}^1$ is critical , recall the energy is defined as 
+\begin{equation*}
+    E(u)=\int\frac{1}{2}|\nabla u|^2\pm \frac{1}{p+2}|u|^{p+2}dx
+\end{equation*}
+and we noted that the energy is conserved and scale invariant for this choice of $p$.
+
+Local well-posedness gives us $u_0\in H^1$, and gives $u\in S'$. Where $S$ is the strichartz space, and $S=\cap L^pL^q$, and $S'=\{u, \nabla_x u\in S\}$. 
+
+We also introduced the following theorem.
+\begin{theorem}
+    If $\|u_0\|_{\dot{H}^1}\ll 1$, then there exists a global solution $u\in S'$. 
+\end{theorem}
+\begin{proof}
+    We gave this proof before, via the contraction principle, and with the same  term in $N'=(S')^1$.
+\end{proof}
+We would like $u\in S'$, and $|u|^p\cdot u\in N'$, and note
+\begin{equation*}
+    \||u|^p u\|_{N'}\leq\|u\|_S^{p+1}
+\end{equation*}
+And we would like to minimize this strichartz norm.
+\begin{equation*}
+    \||u|^pu\|_{N'}=\|\nabla (|u|^p\cdot u)\|_N=\|\nabla u u^p\|_N
+\end{equation*}
+where $\nabla u\in L^\infty L^2$, hence to put it in a good space, we would also like $u^p$ to be in the mixed $L^p$ norm.
+We have
+\begin{equation*}
+    \nabla u \in L^2L^r, u\in L^qL^{r^*}\Rightarrow |u|^p\in L^{q/p}L^{r^*/p}
+\end{equation*}
+We make the choice that $q=r^*$, and 
+\begin{equation*}
+    u_0\in H^1, u\in L_t^q L_x^2
+\end{equation*}
+Hence by the scaling relation:
+\begin{equation*}
+    \frac{n}{2}-1=\frac{2}{q}+\frac{n}{q}
+\end{equation*}
+This gives that 
+\begin{equation*}
+    \frac{r^*}{p}=\frac{2(n+2)}{n}\geq 2
+\end{equation*}
+where $u\in L^\frac{2(n+2)}{2}$, and is $\geq 2$, when $n\geq 3$. Hence the solution does not blow up.
+
+\begin{theorem}
+    For $u_0\in\dot{H}^1$, there exists a unique local solution $u\in S^1[0,T]$, furthermore, this solution may be continued, for as long as $\|u\|_{L_{t,x}^\frac{2(n+2)}{n-2}}$ remains finite.
+\end{theorem}
+
+\begin{theorem}
+    If $u$ is a global solution with $\|u\|_{L^\frac{2(n+2)}{2}}$, then the solution $u$ is scattering, and there exists $u^+\in \dot{H}^1$, such that 
+    \begin{equation*}
+        \lim_{t\to\infty}\|u(t)-e^{it\Delta^2}u^+\|_{\dot{H}^1}=0
+    \end{equation*}
+\end{theorem}
+
+Now we investigate the main problem, namely what happens for large inital data? We have the following defocusing conjecture.
+\begin{proposition}[Conjecture]
+    There is well-posedness for large data (i.e. $u\in L^\frac{2(n+1)}{2}$).
+\end{proposition}
+For the focusing case, the energy is
+\begin{equation*}
+    E=\int\frac{1}{2}|\nabla u|^2-\frac{1}{p+2}|u|^{p+2}dx
+\end{equation*}
+$u_t=i\frac{\delta E}{\delta t}$, which gives us steady state, i.e. critical points for $E$.
+
+By scaling, via GNS, we have
+\begin{equation*}
+    \|u\|_{L^{p+2}}\leq c\|\nabla u\|_{L^2}
+\end{equation*}
+Note that the second term in the energy is dominated by the first term. For $\|u\|_{\dot{H}^1}\ll 1$, the energy is essentially quadratic and coercive. For large $\|u\|$, we might have our $E$ being negative. Essentially by the mountain pass lemma, which states to cross a mountain, ``you must obtain a point where it is the lowest.''
+
+Now we look at the best constant in GNS, i.e. the minimizer. And from the small data ball to $E(u)<0$, we cross the highest point, and the minimzer which gives the best constant is a scalar multiple of the lowest moutain pass. This gives us
+\begin{equation*}
+    -\Delta u=\lambda |u|^p u
+\end{equation*}
+and if we scale $u$ to $cu$, we could get $\lambda=1$, which gives our critical point. Via the above equation, we found the ground state to be $Q=(1+r^2)^\frac{-(n-2)}{2}$. Now for the threshold conjecture.
+\begin{proposition}[Conjecture]
+    Global well-posedness holds for $E(u)<E(Q)$ in the good region, where the good region includes the small initial data region, and the bad region is outside, where $E(u)<0$.
+
+    furthermore, we ave finite time blowup holds for $E(u)<E(Q)$, in the good region as above.
+\end{proposition}
+
+The $L^2$ case, the defocusing conjecture by Dodson in the book, and the threshold conjecture is also done by Dodson.
+
+The $\dot{H}^1$ case , the defocusing conjecture, we will follow Visann notes, and the threshold conjecture is only known for $n\geq 5$, where $n=3,4$ still remain open.
+
+Now we look at the in-between cases, where $\dot{H}^s$, and $s\in (0,1)$, then $p=\frac{4}{n-2s}$. The defocusing conjecture remains largely open, but there is a note such that no type II blowup can occur(remain bounded on a finite time interval), but remains open for the type I blowup(where the solution grows). The threshold conjecture: 
+\begin{equation*}
+    -\Delta Q+Q=|Q|^pQ
+\end{equation*}
+where $Q$ is the critical point of $E$ on the level set of $M$.
+\begin{equation*}
+    -\Delta Q-Q^{p+1}=Q
+\end{equation*}
+where the LHS is $\delta E$, and RHS from $\delta M$. If we are limmited to $\dot{H}^s$, we do not know where mass or energy is finite. 
+
+We ask the question for $H^1$, nonhomogenous initial data, $E<\infty, M<\infty$.
+\begin{equation*}
+    E^s M^{1-s}
+\end{equation*}
+and this is the scale invariant quantity. And the threshold conjecture asks
+\begin{equation*}
+    E^s(u)M^{1-s}(u)\leq E^s(Q)M^{1-s}(Q)
+\end{equation*}
+
+For $\|u_0\|\ll 1$, we have GWP. And
+\begin{equation*}
+    A=\{u_0\in L^2: \text{ we have GWP}\} 
+\end{equation*}
+note that
+\begin{equation*}
+    B(0,\epsilon)\subset A
+\end{equation*}
+\begin{proposition}
+    $A$ is open.
+\end{proposition}
+\begin{proof}
+    Exactly because $B(0,\epsilon)\subset A$. If you have an initial data such that you have GWP, then all data that lives in a small neigbhorhood of it, you still should get GWP.
+\end{proof}
+
+Now we try to move to the boundary of $A$, and $\|u\|_{L^p}\to\infty, p=\frac{2(n+2)}{n}$. Hence we take a point inside of $A$, very close to the boundary, and how can we make the $u$'s norm large?
+
+We first note that we must have wave packets, and if we suppose that the wave packets are spread out in more than one direction: this is because we can separate the initial energy into these two packets, and their energy is small, and separate, they are nice solutions, with controlled strichartz norms. And our operator is sublienar, hence the overall strichartz norm is nicely bounded. When they intersect, the norm is already small due to decay, hence the norm is again, well-controlled. This cannot happen. (Hence there can exist only one wave packet in one direction at any given time, and that packet could propogate over time, but when you dissect it, you should still obtain a wave packet. )
+
+And to prove the above, there are two approaches: one by Bourgain (95), which is the induction on energy; and the other is by contradiction, where we deal with the ``minimal enemy.''
