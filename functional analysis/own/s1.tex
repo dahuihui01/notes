@@ -618,3 +618,67 @@ Now we enter the realm of Hilbert spaces.
     Hence $T^{-1}$ is bounded on a dense subset of $\mathcal{H}$.
 \end{proof}
 
+We recall both big and small Gelfand-Naimark theorems.
+\begin{theorem}[Little Gelfand-Naimark theorem]
+    Let $\mathcal{A}$ be a unital commutative $C^*$-algebra, then it is isomorphic to $C(\widehat{\mathcal{A}})$, via the Gelfand transform $a\mapsto\widehat{a}$.
+\end{theorem}
+
+\begin{theorem}[Big Gelfand-Naimark theorem]
+    Let $\mathcal{A}$ be a commutative $^*$-algebra, then there exists a *-representation $\pi$ of $\mathcal{A}$ on such that 
+    \begin{equation*}
+        \mathcal{A}\cong \{\pi(a): a\in\mathcal{A}\}
+    \end{equation*}
+    This is to say every $C^*$-algebra is isomorphic to another $C^*$-algebra of bounded operators on a Hilbert space.
+\end{theorem}
+
+\subsection{GNS construction}
+Let $\mathcal{A}$ be a unital commutative $C^*$-algebra, and we next define a correspondance between the cyclic *-representations of $\mathcal{A}$ and the states on $\mathcal{A}$.
+\begin{definition}[*-representation]
+    Let $\mathcal{A}$ be a unital commutative $C^*$-algebra, and let $\pi$ be a non-degenerate representation on $\mathcal{A}$, such that $\pi$ takes involution on $\mathcal{A}$ to involution of operators.
+\end{definition}
+\begin{note}
+    For 
+\end{note}
+
+\begin{definition}[Cyclic vector]
+    For $\xi\in\mathcal{H}$, and $\xi\neq 0$, it is called a cyclic vector if the set
+    \begin{equation*}
+        \{\pi(a)\xi: a\in\mathcal{A}\}
+    \end{equation*}
+    is norm dense in $\mathcal{H}$. Then we call $\pi$ a cyclic representation.
+\end{definition}
+Not all Hilbert spaces have a cyclic representation of course, but they can be dissected into orthogonal subspaces that are $\pi$-cyclic.
+\begin{proposition}
+    Given a *-representation $\pi$ of $\mathcal{A}$ on $\mathcal{H}$, and take $\xi\neq 0, \xi\in\mathcal{H}$, and $K=\overline{\{\pi(a)\xi: a\in\mathcal{A}\}}$, then $K$ is called the $\pi$-cyclic subspace of $\mathcal{H}$. For any $\mathcal{H}$, there exists a family of orthogonal $\pi$-cyclic subspaces such that 
+    \begin{equation*}
+        \mathcal{H}=\bigoplus_\lambda K_\lambda
+    \end{equation*} 
+\end{proposition}
+\begin{remark}
+    Any nonzero vector in an irreducible representation is cyclic.
+\end{remark}
+
+\begin{definition}[state]
+    Let $\varphi$ be a linear functional on $\mathcal{A}$, we say $\varphi$ is \textbf{positive} if for all $a\in\mathcal{A}$, we have
+    \begin{equation*}
+        \varphi(aa^*)\geq 0
+    \end{equation*}
+    Moreover, if $\varphi$ has norm 1, then we call them states.
+\end{definition}
+
+\begin{proposition}
+    Let $\xi$ be a cyclic vector, and $\pi$ a *-representation (or any $\xi\neq 0$), and the map $a\mapsto \langle \pi(a)\xi, \xi\rangle $ is a state on $\mathcal{A}$.
+\end{proposition}
+\begin{proof}
+    Denote this map as $\pi(a)=\langle \pi(a)\xi, \xi\rangle$.
+    \begin{equation*}
+        \varphi(a^*a)=\langle \pi(a^*a)\xi, \xi\rangle =\langle \pi(a)\xi, \pi(a)\xi\rangle \geq 0
+    \end{equation*}
+\end{proof}
+\qed
+
+
+Is it true that $\varphi(a)=\overline{\varphi(a^*)}$ for $\varphi$ a positive linear functional on $\mathcal{A}$.
+If $\varphi(a)=\varphi(a^*)$, but if $\lambda\in\C$, we have $\varphi(\lambda a)=\lambda (\varphi(a))=\lambda\varphi(a^*)$, but $\varphi((\lambda a)^*)=\overline{\lambda}\varphi(a^*)$. Hence not equal.
+
+It then suffices to show that $|\varphi(a)|=|\varphi(a^*)$.

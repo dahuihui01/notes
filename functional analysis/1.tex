@@ -1464,7 +1464,7 @@ So $a\mapsto\widehat{a}$ is a *-algebra homomorphism of $\mathcal{A}$ into $C(\w
 \qed
 
 \begin{theorem}[Little Galfand-Naimark theorem]
-    Let $\mathcal{A}$ be a unital commutative $C^*$-algebra (abstract, which doesn't include hilbert space), then the Gelfand transform
+    Let $\mathcal{A}$ be a unital commutative $C^*$-algebra (abstract, which doesn't have to include hilbert space), then the Gelfand transform
     \begin{equation*}
         \widehat{a}(\varphi)=\varphi(a)
     \end{equation*}
@@ -1693,9 +1693,20 @@ In particular, this action on $l^2(M)$ is unitary.
         (U_x\xi)(y)=\xi(x^{-1}y)
     \end{equation*}
 \end{definition}
-$U_f$ is said to have ``integrated form'' if $U_f$ for $f\in l^1(G)$, $U_f=\sum_{x\in G} f(x)U_x$ (and we naturally replace with $U_f=\int f(x)U_x$ if our group is not discrete).
 
-We now, naturally define the integrated form of the representation of $G$ on $l^1(G)$
+We now, naturally define the integrated form of the representation of $G$ on $l^1(G)$:
+\begin{definition}[integrated form of a representation]
+    We define $U_f\in End(l^1(G))$, we define $U_f$ naturally as follows: let $\xi\in l^1(G)$, and 
+    \begin{equation*}
+        U_f(\xi)=\sum_{g\in G}f(g)U_x(\xi)
+    \end{equation*}
+    i.e. $U_f=\sum_{x\in G}f(x)U_x$, where $U_x\in End(V)$ by
+    \begin{equation*}
+        x\xrightarrow{U}U_x
+    \end{equation*}
+    where $U$ is the map $: G\to End(l^1(G))$.
+\end{definition}
+
 \begin{definition}[Reduced $C^*$-algebra]
     The operator norm closure of $\{U_f: f\in l^1(G)\}\in \mathcal{B}(l^1(G))$ is called the reduced $C^*$-algebra of $G$, denoted as $C_r^*(G)$.
 \end{definition}
@@ -1787,7 +1798,7 @@ We now state the big Galfand-Naimark theorem.
     \end{equation*}
 \end{theorem}
 \begin{note}
-    In little Galfand-Naimark, $C(\widehat{\mathcal{A}})$ is explicitly determined, but for big, it is not determined.
+    In Little Galfand-Naimark, $C(\widehat{\mathcal{A}})$ is explicitly determined, but for big, it is not determined.
 \end{note}
 
 For $X$ a compact space, $C(X)$ is a $C^*$-algebra.
@@ -1800,10 +1811,12 @@ Take any Borel measure $\mu$ on $X$, we have
 \end{equation*}
 If $\mu$ has full support, then map of $C(X)$ is isometric.
 
+\textbf{Now to introduce positive linear functionals on $\mathcal{A}$.}
 Let $\mathcal{A}$ be a *-algebra, and $\pi:\mathcal{A}\to\mathcal{B}(\mathcal{H})$ a *-representation. Let's take any $\xi\in\mathcal{H}$, and $\xi\neq 0$, define
 \begin{equation*}
     \varphi_\xi(\mathcal{A})=\langle \pi(a)\xi, \xi\rangle 
 \end{equation*}
+
 then we look at 
 \begin{equation*}
     \varphi(a^*a)=\langle\pi(a^*a)\xi, \xi\rangle=\langle \pi(a)\xi, \pi(a)\xi\rangle\geq 0
@@ -1849,15 +1862,24 @@ Then we have
 \begin{equation*}
     \langle a, a\rangle_\varphi=\varphi(a^*a)\geq 0
 \end{equation*}
-\begin{exercise}
-\textcolor{red}{finish this}
-    We have $\overline{\langle a,b\rangle_\varphi}=\langle b, a\rangle_\varphi$
-\end{exercise}
+
+\begin{proposition}
+    For $\la a,b\ra_\varphi=\varphi(b^*a)$ defines a pre-inner product on $\mathcal{A}$. (A pre-inner product does not require $\la \xi, \xi\ra=0$ implies $\xi=0$.)
+\end{proposition}
+\begin{proof}
+    We have $\overline{\langle a,b\rangle_\varphi}=\langle b, a\rangle_\varphi$.
+\end{proof}
+\subsection{GNS construction}
+Now for a positive linear functional, we attempt to associate a cyclic representation with it: we will define a pair $(\pi, \mathcal{H})$ such that it satisfies:
+\begin{equation*}
+    \varphi(a)=\la \pi(a)\xi, \xi\ra
+\end{equation*}
+
 Let $\eta_\varphi=\{a\in\mathcal{A}: \langle a, a\rangle_\varphi=0\} $, then if $b\in\mathcal{A}, a\in\eta_\varphi$, then we have
 \begin{equation*}
     |\langle ba, ba\rangle|=|\langle b^*ba, a\rangle|\leq \langle a, a\rangle^{1/2}=0
 \end{equation*}
-So if $\eta_\varphi$ is an ideal of $\mathcal{A}$, so form $\mathcal{A}/\eta_\varphi$, then
+So we get that $\eta_\varphi$ is an ideal of $\mathcal{A}$, so form $\mathcal{A}/\eta_\varphi$, then
 \begin{equation*}
     \langle, \rangle_\varphi
 \end{equation*}
@@ -1867,9 +1889,9 @@ drops to an inner product on $\mathcal{A}/\eta_\varphi$, denote its complement b
 \end{equation*}
 then we have
 \begin{equation*}
-    \langle \pi_ca, b\rangle_\varphi=\langle ca, b\rangle=\varphi(b^*ca)=\varphi((c^*b)^*a)=\langle a, c^*b\rangle=\langle a, \pi(c^*)\rangle b
+    \langle \pi_ca, b\rangle_\varphi=\langle ca, b\rangle=\varphi(b^*ca)=\varphi((c^*b)^*a)=\langle a, c^*b\rangle=\langle a, \pi(c^*)b\rangle
 \end{equation*}
-Then the left regular representation ``is'' a *-representation, this drops to a *-representation on $\mathcal{A}/\eta_\varphi$.
+Then the left regular representation ``is'' a *-representation on $\mathcal{A}$, this drops to a *-representation on $\mathcal{A}/\eta_\varphi$.
 
 Next time: we show $\pi_c$ is not continuous, and we will use polynomials. Now if you assume $\mathcal{A}$ is Banach *-algebra, then this $\pi_c$ are always bounded.
 \textbf{GNS representation}, where $S$ is Siegel. 
@@ -1886,12 +1908,12 @@ Now we define a pre-innner product on $\mathcal{A}$ by
 \end{equation*}
 And one could check this is indeed a pre-inner product.
 \begin{enumerate}
-    \item $\overline{\langle a,b\rangle_\mu}=\langle b,a\rangle$
+    \item $\overline{\langle a,b\rangle_\mu}=\langle b,a\rangle_\mu$
     \item $\langle a+b, a+b\rangle_\mu\geq 0$
 \end{enumerate}
 If we let $\eta_\mu=\{a\in\mathcal{A}:\langle a,a\rangle=0\}$, then by Cauchy-Schwarz inequality, we would show that $\eta_\mu$ is a left ideal. Form $\mathcal{A}/\eta_\mu$, then $\langle, \rangle$ becomes an inner product on $\mathcal{A}/\eta_\mu$.
 
-One could complete $A/\eta_\mu$ to get a Hilbert space $L^2(\mathcal{A},\mu)$. Then we have
+One could complete $\mathcal{A}/\eta_\mu$ to get a Hilbert space $L^2(\mathcal{A},\mu)$. Then we have
 \begin{equation*}
     \langle f,g\rangle=\int f\overline{g}d\mu
 \end{equation*}
@@ -1905,10 +1927,25 @@ One could complete $A/\eta_\mu$ to get a Hilbert space $L^2(\mathcal{A},\mu)$. T
     \begin{equation*}
         \langle \pi_ca,b\rangle_\mu=\langle ca, b\rangle_\mu=\langle a, \pi_c^*b\rangle
     \end{equation*}
-    Hence $\pi$ is a 8-representation.
+    Hence $\pi$ is a *-representation.
 \end{definition}
 
-\textcolor{red}{Unfinished here}
+Now let $P$ be the algebra of polynomials with complex coefficients, viewed as functions on $\R$. Define $\mu$ on $P$ as follow:
+\begin{equation*}
+    \mu(p)=\int_{-\infty}^\infty p(t)e^{-t^2}dt
+\end{equation*}
+Then our $\mu$ is a positive linear functional. Then we identify this as $L^2(\R, e^{-t^2}dt)$.
+
+\begin{proposition}
+    Let $\mathcal{A},\mu$, assume $\mathcal{A}$ is complete, let 1 denote the unit of the algebra. And $\mu$ is continuous with $\|\mu\|=\mu(1)$.
+\end{proposition}
+\begin{remark}
+    By completeness, you immediately get continuity in some cases.
+\end{remark}
+\begin{proof}
+    Now we introduce the main lemma.
+\end{proof}
+\textcolor{red}{unfinished}
 
 \section{Lecture 16}
 We now discuss classical physics and quantum physics.
@@ -2003,6 +2040,7 @@ More importantly, given a Hilbert space $\mathcal{H}$, let $S$ be a subset of th
 
     Let $\eta\in K$, then $\langle a\xi, \eta\rangle=\langle \xi, a^*\eta\rangle =0$. This is true for all $\eta$, hence $a\xi\in K^\perp$.
 \end{proof}
+\qed
 
 Let $\mathcal{A}$ be *-normed unital algebra, and let $(\mathcal{H}, \pi)$ be a *-representation of $\mathcal{A}$ on $\mathcal{H}$. Choose $\xi\in\mathcal{H}$, and let 
 \begin{equation*}
@@ -2012,10 +2050,10 @@ Let $\mathcal{A}$ be *-normed unital algebra, and let $(\mathcal{H}, \pi)$ be a 
 This is a $\{\pi(a): a\in\mathcal{A}\}$-invariant subspace. If we look at $K_\xi^\perp$, this is also $\{\pi(a):a\in\mathcal{A}\}$-invariant. 
 
 \begin{definition}
-    If $(\mathcal{H}, \pi)$ a representation of $\mathcal{A}$, and $H$ contains no proper nonempty $\pi$-invariant closed subspaces, we say then $(\mathcal{H}, \pi)$ is irreducible. (This gives the name ``simple moduel.'')
+    If $(\mathcal{H}, \pi)$ a representation of $\mathcal{A}$, and $H$ contains no proper nonempty $\pi$-invariant closed subspaces, we say then $(\mathcal{H}, \pi)$ is irreducible. (This gives the name ``simple module.'')
 \end{definition}
 
-If $K_\xi^perp$ is not the zero subspace, then you can choose $\xi_1\in K_\xi^\perp, \xi_1\neq 0$.
+If $K_\xi^\perp$ is not the zero subspace, then you can choose $\xi_1\in K_\xi^\perp, \xi_1\neq 0$.
 
 Set $K_{\xi_1}$ to be the cyclic subspace generated by $\xi_1$, and $\pi$-invariant, if $K_{\xi_1}^\perp$ is $\pi$-invariant. And if it's not the zero subspace, then you could repeat this process.
 
@@ -2025,13 +2063,17 @@ If $\mathcal{H}$ is finite-dimensional, then can what we said above to get
 \end{equation*}
 And for each $K_j$, we have $\pi$ on these is irreducible. You could decompose any $\mathcal{H}$ into a direct sum of irreducible representations. 
 
-What happens when the space is infinite-dimensional? Group $G$ has a representation on $l^2(G)$. Given any $(\mathcal{H}, \pi)$ with $\mathcal{H}$ infinite-dimensional, you can apply the above process, and may not get any irreducible representations, but you could keep getting \textbf{ cyclic representations}.
+What happens when the space is infinite-dimensional? Group $G$ has a representation on $l^2(G)$. Given any $(\mathcal{H}, \pi)$ with $\mathcal{H}$ infinite-dimensional, you can apply the above process, and may not get any irreducible representations, but you could keep getting \textbf{cyclic representations}.
 
 For any Hilbert space, pick unit vector, look at orthogonal subspace, pick a unit vector in that, etc... What happens when you keep on going. Note that \textbf{ when you keep going, you use Zorn's lemma}.
 
-Via Zorn's lemma, every representation is a possibly infinite direct sum of cyclic representations. And we need to define infinite sum of representations.
+Via Zorn's lemma, you get the following.
+\begin{proposition}
+    Every representation is a possibly infinite direct sum of cyclic representations.
+\end{proposition} 
+We need to define infinite sum of representations.
 
-Let $\{\mathcal{H}_\lambda\}_{\lambda\in\Lambda}$ be a collection of Hilbert spaces. Set the direct sum of these Hilbert spaces $\biguplus\mathcal{H}$, and functions on these to be $\xi:\Lambda\to \cup \mathcal{H}_\lambda: \xi(\lambda)\in\mathcal{H}_\lambda$ for all $\lambda$ and $\sum_{\lambda\in\Lambda}\|\xi_\lambda\|^2<\infty$, hence we have $\xi_\lambda=0$ except for a finite number of $\lambda$'s.
+Let $\{\mathcal{H}_\lambda\}_{\lambda\in\Lambda}$ be a collection of Hilbert spaces. Set the direct sum of these Hilbert spaces $\bigoplus\mathcal{H}$, and functions on these to be $\xi:\Lambda\to \cup \mathcal{H}_\lambda: \xi(\lambda)\in\mathcal{H}_\lambda$ for all $\lambda$ and $\sum_{\lambda\in\Lambda}\|\xi_\lambda\|^2<\infty$, hence we have $\xi_\lambda=0$ except for a finite number of $\lambda$'s.
 
 And define $\langle \xi, \eta\rangle=\sum_{\lambda\in\Lambda}\langle \xi_\lambda, \eta_\lambda\rangle$, such that the sum $\sum\|\xi_n\|^2<\infty$, and $\langle \xi, \eta\rangle=\sum\xi_\lambda\overline{\eta}_\lambda$.
 
@@ -2089,7 +2131,7 @@ Next: spectral theorem for self-adjoint operators.
     \begin{remark}
         In linear situations like this, if $\pi(a-b)\xi=0$, is it true that $\rho(a-b)\eta=0$?
     \end{remark}
-    In other words, \textbf{ it suffices to show that } if $\pi(\xi)=0$,  we have $\rho(c)=0?$. 
+    In other words, \textbf{it suffices to show that } if $\pi(\xi)=0$,  we have $\rho(c)=0?$.
     \begin{equation*}
         \|\rho(c)\eta\|^2=\langle \rho(c)\eta, \rho(c)\eta\rangle=\langle \rho(c^*c)\eta, \eta\rangle=\mu_\eta(c^*c)=\mu_\xi(c^*c)=\langle \pi(c)\xi, \pi(c)\xi\rangle =0
     \end{equation*}
@@ -2107,11 +2149,13 @@ Next: spectral theorem for self-adjoint operators.
     \begin{equation*}
         U\pi(a)=\rho(a)U
     \end{equation*}
-    One could say there is a bijection between the positive linear functionals on $\mathcal{A}$, and the pointed cyclic representations on $\mathcal{A}$. 
 \end{proof}
 \begin{comment}
     You start with $\mu_\xi$, and do GNS, and get something unitarily equivalent to what you start with.
 \end{comment}
+\begin{corollary}
+    There is a bijection between the positive linear functionals on $\mathcal{A}$, and the pointed cyclic representations on $\mathcal{A}$. 
+\end{corollary}
 
 Let $\mathcal{A}$ be a commutative unital *-normed algebra and let $(\mathcal{H}, \mu)$ be a cyclic *-representation with cyclic vector $\xi$. Then let $\mathcal{B}=\overline{\pi(a)}$ be the norm closure is a $C^*$-algebra. So $\mathcal{B}=C(X)$.
 
@@ -2124,12 +2168,13 @@ via the unitary $U$ such that $U\xi=1$.
 Given $C(X)$ and any *-representation of it, $(H, \pi)$ and you decompose $(\mathcal{H}, \pi)$ into direct sum of cyclic representations, $\bigoplus(H_\lambda, \pi_\lambda, \xi_\mu)$ where each $\xi_\mu$ is cyclic.
 
 Each one $(H_\lambda, \pi_\lambda, \xi_\mu)$ is isomorphic to some $L^2(X,\mu_\lambda, \xi_\lambda)$, with $C(X)$ acts pointwise on each $L^2(X,\mu_\lambda, \xi_\lambda)$.
-
+\begin{example}
 Let $X=[0,1]$, and $L^2(X, m)$, where $m$ is the Lebesgue measure. And let 
 \begin{equation*}
     \nu=\delta_\frac{1}{4}+\delta_\frac{1}{2}+\delta_\frac{1}{5}
 \end{equation*}
 All the measures above and mutually exclusive to $m$, and $L^2(X, m+\nu)$.
+\end{example}
 
 This gives the Borel functional calculus. For any bounded Borel function on $X$ (Borel functions are those that are measurable with respect to all possible Borel measures), it acts on each $L^2(X,\mu_\lambda)$ by pointwise multiplication, hence acts on $\mathcal{H}$. If you have a given Hilbert space $\mathcal{H}$, $T\in\mathcal{B}(\mathcal{H})$, and $T^*=T$, and
 \begin{equation*}
@@ -2141,9 +2186,94 @@ Again we have $C(X)$ acting on $\mathcal{H}$ and the bounded Borel functions act
 
 If $E, F$ are disjoint, then
 \begin{equation*}
-    \chi_E\chi_F=\chi_{E\cap F}, \chi_{E\biguplus F}=\chi_E+\chi_F
+    \chi_E\chi_F=\chi_{E\cap F}, \chi_{E\bigoplus F}=\chi_E+\chi_F
 \end{equation*}
 \begin{remark}
     This is somewhat countably additive in a weak sense.
 \end{remark}
 
+\section{Lecture 19}
+Let $\mathcal{A}$ be a unital commutative $C^*$-subalgebra of $\mathcal{B}(\mathcal{H})$, and let $(\mathcal{H}, \pi, \xi)$ be a cyclic representation (note this is not unique at all, like choosing an orthonormal basis of $\mathcal{H}$). And $\mathcal{A}\cong C(X)$, and we've said
+\begin{equation*}
+    \mathcal{H}\cong\bigoplus_{\lambda\in\Lambda}L^2(X, \mu_\lambda)
+\end{equation*}
+If $f$ is a $\C$-valued bounded Borel function on $X$, where $X$ is a compact space, then $f$ determines an opeartor $T$ on each $L^2(X,\mu)$ by pointwise multiplication. with $\|T\|\leq\|f\|_\infty$. Then this gives a bounded operator on $\mathcal{H}$. Let $\mathcal{B}$ be the $C^*$-algebra of bounded Borel functions, then you get a representations of $\mathcal{B}$ on $\mathcal{H}$.
+
+For each Borel subset $E$ of $X$, $\chi_E$ goes to a projection operator on $\mathcal{H}$.
+\begin{definition}
+    Let $\Sigma$ be a $\sigma$-algebra of subsets of a set $X$ (don't quite need a topology), and let $\mathcal{H}$ be a Hilbert space by a projection-valued measure on $\Sigma$, we mean an assignment 
+    \begin{equation*}
+        E\xrightarrow{\mu}\mu(E)
+    \end{equation*}
+    where $\mu(E)$ is a projection operator on $\Sigma$ that satisfies
+    \begin{enumerate}
+        \item $\mu(\emptyset)=0, \mu(X)=I_\mathcal{H}$ \text{ the identity operator}
+        \item If $E, F\in\Sigma$, then $\mu(E\cap F)=\mu(E)\mu(F)$.
+        \item If $\{E_j\}$ is a countable collection of disjoint elements in $\Sigma$, then $\mu(\bigoplus_j E_)=\sum_{j=1}^\infty\mu(E_j)$, for either the strong or the weak operator topology.
+    \end{enumerate}
+\end{definition}
+\begin{note}
+    Every here looks like a mesaure, and we have to be careful about how the sum is well-defined.
+\end{note}
+
+Let $X$ be a compact set, and $B(X)$ denote the set of Borel sets, let $E_j\subset B(X)$ be disjoint. These viewed in $L^2(X,\mu)$, we have
+\begin{equation*}
+    \sum_{j=1}^\infty\chi_{E_j}=\lim_{n\to\infty}\sum_{j=1}^n\chi_{E_j}=\lim_{j=1}^n\chi_{\bigoplus_jE_j}=\chi_{\bigoplus_{j=1}^\infty E_j}
+\end{equation*}
+And note as $j\to\infty$, this is an increasing function, this is not converging to the uniform form. But these do converge, for the $L^1$ or $L^2$ norm by Dominated Converge theorem.
+
+If $\xi\in L^2(X,\mu)$, and we look at 
+\begin{equation*}
+    \chi_{\cup_1^\infty E_j}\xi\to \chi_{\cup_1^\infty}\xi \text{ for the }L^2-norm
+\end{equation*}
+If any $\eta\in L^2(X,\mu)$, 
+\begin{equation*}
+    \la \chi_{\cup_1^nE_j}\xi, \eta\ra=\int \chi_{\cup_1^\infty E_j}\xi\overline{\eta}\to \la \chi_{\cup_1^\infty E_j}\xi, \eta\ra
+\end{equation*}
+where the $L^2$ case follows from that $\xi\overline{\eta}\in L^2(X,\mu)$.
+
+\begin{definition}
+    The strong operator topology  on $\mathcal{B}(\mathcal{H})$ is the topology defined by the seminorms $T\to \|T\xi\|$ for all the ? $\xi\in\mathcal{H}$
+    
+    If $\{T_\lambda\}$ is a bounded net of operators on $\mathcal{B}(\mathcal{H})$, then it converges to $T$ in the strong operator norm if for all $\xi$, 
+    \begin{equation*}
+        \|T_\lambda\xi-T\xi\||\xrightarrow{\lambda} 0
+    \end{equation*}
+\end{definition}
+
+Then the weak operator topology on $\mathcal{B}(\mathcal{H})$ is defined by the seminorms, for all $\xi, \eta$
+\begin{equation*}
+    T\mapsto |\la T\xi, \eta\ra
+\end{equation*}
+If $\{T_\lambda\}$ is a bounded net, then we say it converges to $T$ if
+\begin{equation*}
+    |\la T_\lambda\xi, \eta\ra-\la T\xi, \eta\ra|\to 0
+\end{equation*}
+\begin{remark}
+    Strong operator topology implies the weak operator topology, not the reverse.
+\end{remark}
+\begin{remark}
+    If you look at the group of unitary operators, then the strong and weak operator topologies are equivalent.
+\end{remark}
+
+Let $\mathcal{A}$ be a $C^*$-subalgebra of $\mathcal{B}(\mathcal{H})$, and $\mathcal{H}=\bigoplus(X, \mu_\lambda)$, and for $E\in Borel(X)$, $\chi_E$ actives on each one of $(X,\mu_\lambda)$, and 
+\begin{equation*}
+    E\mapsto \chi_E
+\end{equation*}
+acting on $\mathcal{H}$ is a projection-valued measure, and is called the spectral measure for action of $\mathcal{A}$ on $\mathcal{H}$.
+
+For $T\in\mathcal{B}(\mathcal{H})$, $T^*=T$, we denote $C^*(T,I)=\mathcal{A}$, and $\widehat{\mathcal{A}}=\sigma(\mathcal{A})$, then $C(\widehat{A})=\mathcal{A}$. So far each $E\in Borel(\sigma(T))$, you get an operator.
+
+Let $P_r$ be the projection $\chi_{(-\infty, r)}$, and for $r>\|T\|$, we have $P_r=I_\mathcal{H}$. These are called the ``resolution of the identity'' for $T$.
+
+You could make sense of the operator $T$ as follows:
+\begin{equation*}
+    T=\int_{-\infty}^\infty tdP_t
+\end{equation*}
+
+Let $G$ be a locally compact group. And the product is jointly continuous $G\times G\to G, (x,y)\to xy$, and taking inverses is also continuous.
+
+\begin{example}
+    $\R, \R^n, \T, \T^n, GL(n,\R)$
+\end{example}
+We know need is a projection measure on $G$ that is invariant for left translations. 
