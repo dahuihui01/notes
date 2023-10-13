@@ -1634,7 +1634,7 @@ This implies that
     Let $\mathcal{A}$ be a $C^*$-algebra, and $\mathcal{B}$ subalgebra, if $b$ is invertible in $\mathcal{A}$, then $b$ is invertible in $\mathcal{B}$.
 \end{proposition}
 \begin{proof}
-    (We already know that this holds for $b^*=b$. For general $b\in\mathcal{B}$, (we no longer require $b^*=b$), then if $b$ has an inverse in $\mathcal{A}$, then so does $b^*$, then $b^*b$ has an inverse in $\mathcal{A}$, hence $b^*b$ has an inverse in $\mathcal{B}$. Hence $b$ has a left inverse $a(b^*b)=(b^*b)a=1$, and $bb^*$ is also invertible in $\mathcal{A}$, hence invertible in $\mathcal{B}$, hence $b$ has a right inverse.
+    We already know that this holds for $b^*=b$. For general $b\in\mathcal{B}$, (we no longer require $b^*=b$), then if $b$ has an inverse in $\mathcal{A}$, then so does $b^*$, then $b^*b$ has an inverse in $\mathcal{A}$, hence $b^*b$ has an inverse in $\mathcal{B}$. Hence $b$ has a left inverse $a(b^*b)=(b^*b)a=1$, and $bb^*$ is also invertible in $\mathcal{A}$, hence invertible in $\mathcal{B}$, hence $b$ has a right inverse.
 \end{proof}
 \qed
 
@@ -2101,7 +2101,7 @@ By Zorn's lemma, every Hilbert space is a direct sum of cyclic representations.
 Next: spectral theorem for self-adjoint operators.
 
 \section{Lecture 18}
-\begin{definition}
+\begin{definition}[Equivalent representations]
     Let $\mathcal{A}$ be a (group) a *-algebra, and let $(\mathcal{H}, \pi)$, and $(K, \rho)$ are two *-representations of $\mathcal{A}$, then these representations are equivalent, if there is a unitary operator $U: H\to K$, $(U^{-1}: K\to H)$, such that
     \begin{equation*}
         U\pi(a)=\rho(a)U
@@ -2150,6 +2150,8 @@ Next: spectral theorem for self-adjoint operators.
         U\pi(a)=\rho(a)U
     \end{equation*}
 \end{proof}
+\qed
+
 \begin{comment}
     You start with $\mu_\xi$, and do GNS, and get something unitarily equivalent to what you start with.
 \end{comment}
@@ -2277,3 +2279,227 @@ Let $G$ be a locally compact group. And the product is jointly continuous $G\tim
     $\R, \R^n, \T, \T^n, GL(n,\R)$
 \end{example}
 We know need is a projection measure on $G$ that is invariant for left translations. 
+
+
+\section{Lecture 20}
+We will discuss the Haar measure today.
+
+Let $G$ be a group, and $M$ a topological space, and action of $G$ on $M$ is:
+\begin{equation*}
+    \alpha: G\to Hom(G)
+\end{equation*}
+And if $f$ is a $\C$-valued function on $M$, then the set 
+\begin{equation*}
+    \alpha_x(f)m):=f(L_x^{-1}(m))
+\end{equation*}
+So $\alpha: G\to Aut(Functions on M)$. 
+If $M$ is locally compact, $f\in C_c(M)$. For example, $G=\R$.
+
+Now let $G$ be a compact group, then $G$ acts on itself by left translations: $\lambda$:
+\begin{equation*}
+    \lambda_x(y)=xy
+\end{equation*} 
+
+We can get an action on functions:
+\begin{equation*}
+    \lambda_x(f)(y)=f(x^{-1}y)
+\end{equation*}
+
+We then talk about a measure on a group, which is also a topological space in a sense, and would like to assign finite measure on comapct sets. The goal is to construct such a measure that is translation invariant with respect to the left trasnlations.
+
+\begin{definition}[Translation-invariant measures]
+    For $M$ locally compact, a measure $\mu$ on $M$ is $\alpha$-invariant, if 
+    \begin{equation*}
+        \mu(\alpha_x(E))=\mu(E), \text{ for all } x\in G
+    \end{equation*}
+    where $E$ is a Borel subset of $M$.
+\end{definition}
+\begin{remark}
+    On discrete groups, the counting measures are invariant under translations.
+\end{remark}
+
+In 1933, Haar proved that every locally compact, second countable group (i.e. a countable base for the topology) has a left-(translatioin)invariant (nonzero) Borel measure, which we call the Haar measure. This is unique up to positive scalar multiplicaton.
+\begin{note}
+    The Lebesgue measure in a Haar measure on the real numbers $\R$.
+\end{note}
+
+Weil: worked instead with positive linear functionals $\varphi$ on $C_c(G)$, and he proved that we always hav ea $\varphi$ that is left invariant, i.e.
+\begin{equation*}
+    \varphi(\lambda_xf)=\varphi(f), \forall x\in G
+\end{equation*}
+
+Sketch: choose $f_0\in C_c^+(G)$, so that $\varphi(f_0)=1$, and . 
+For a small nbhd $O$ of the identity element $e$, choose a function $g_O=g$ supported in $O$, a smooth bump function.
+
+Let $(f: g_O)=\inf\{\sum_{j=1}^nc_j, c_j>0: \text{ there exists } x_1, ..., x_j\in G \text{ with } f\leq \sum_jc_j(\lambda_{x_j}g) \}$, This expression here $f(:g_O)$ is left translation-invariant, now we consider
+\begin{equation*}
+    \frac{(f: g_O)}{(f_0: g_O)}
+\end{equation*}
+You show that this converges to a linear functional on $C_c(G)$, which necessarily gives rise to a linear functional that is left translation-invariant. 
+
+If for $f\in C_c(G)$, define $\tilde{f}(x)=f(x^{-1})$, then the function
+\begin{equation*}
+    f\mapsto \varphi(\tilde{f})
+\end{equation*}
+is a right invariant positive linear functional on $C_c(G)$.
+
+Sometimes $\varphi(f)=\int_Gf(x)dx$, given $x_0$, if we look at 
+\begin{equation*}
+    \int f(xx_0)dx=\int \rho_{x_0}(f)dx
+\end{equation*}
+This is also left-invariant, hence there exists $\delta(x_0)$ such that 
+\begin{equation*}
+    \int f(xx_0)dx=\Delta(x_0)\int f(x)dx
+\end{equation*}
+\begin{proposition}
+    $\Delta: G\to\R^+$, a group under multiplication, is and a group homomorphism, and later we will show this is continuous. And this $\Delta$ is called the ``modular funtion'' of $G$.
+\end{proposition}
+
+\begin{definition}
+    $G$ is said to be unimodular if $\delta\equiv 1$, i.e. the left Haar measure is right-invariant.
+\end{definition}
+\begin{example}
+    The discrete group, commutative groups, compact groups, and nilpotent Lie groups, semi-simple lie groups.
+\end{example}
+But many are lie groups are not unimodular.
+
+\begin{equation*}
+    \int f(x^{-1})\Delta(x^{-1})dx=\int f(x)dx
+\end{equation*}
+Let $H$ be a closed subgroup of $G$, let $G/H$ be the corresponding homogenous space, and $G$ acts on $G/H$, we now ask if there is an invariant measure that satisfies $\Delta_H=\Delta_G\vert_H$. 
+
+\begin{definition}
+    For a topological group $G$, and an action which we call a representation $\pi: G\to Aut(V)$ of $G$ on a Banach space $V$.
+\end{definition}
+\begin{example}
+    $\R$ acts on $L^2(\R)$ by translations $U_t$. One could ask if this is continuous, i.e. as $t\to 0$, do we get
+    \begin{equation*}
+        \|U_t\to U_0\|\to 0
+    \end{equation*}
+\end{example}
+You could have a little bump around 0 as your $L^2$ function, and when you translate it, the supports are disjoint and hence the $L^2$ norm gets preserved.
+
+But there eixsts a continuous one for the strong operator topology. (The rep via translation itself does not converge, but when you apply it to something, it is indeed convergent).
+\begin{example}
+    If $f\in C_c(X)$, and $\alpha$, if you have $\alpha_x(f)\to f$, and $x\to e$. 
+\end{example}
+
+
+\section{Lecture 21}
+\begin{comment}
+    If you have a $\sigma$-ring of subsets of a grou, and a measure on the $\sigma$-ring, if you have a translation invariant measure on the group, then you can give the group a topology, that is locally compact.
+\end{comment}
+
+Let $G$ be a locally compact group, and let $M$ be a locally compact space, and let $\alpha$ be an action of $G$ on $M$, and 
+\begin{equation*}
+    \alpha: G\to Hom(M)
+\end{equation*}
+This is with $\alpha$ jointly continuous, i.e. $G\times M$ equipped with the product topology, and the mapping $G\times M\to M$
+\begin{equation*}
+    (x, m)\mapsto \alpha_x(m)
+\end{equation*}
+is continuous.
+
+One classic example is $G$ acting by left translation on $G$. 
+\begin{theorem}
+    The action of $G$ on $C_\infty(M)$ via
+    \begin{equation*}
+        \alpha_x(f)(m)=f(\alpha_x^{-1}m)
+    \end{equation*}
+    is strongly continuous, for the strong operator topology.
+\end{theorem}
+
+\begin{proposition}
+    If $\alpha$ is an ction of a topology $G$, on a Banach space, by isometries, (i.e. each $\alpha_x$ is an isometry on the Banach space), and if there is a dense subspace $V_0\subset V$,(or the vectors whose span is a dense subspace) such that on $V_0$, this action is strongly continuous, i.e. for all $v\in V_0$, then function
+    \begin{equation*}
+        x\mapsto \alpha_x(v) \text{ is continuous }
+    \end{equation*}
+    Then $\alpha$ is strongly continuous on $V$.
+\end{proposition}
+\begin{proof}
+    You do the standard approximation argument by $\frac{\epsilon}{3}$-argument.
+\end{proof}
+
+Now back to the theorem, it suffices to prove this for $C_c(M)$, since it is a dense subset of $C_\infty(M)$ with $\|\cdot\|_\infty$ norm. And it suffices to prove continuity at the identity element at $e_G$ (by uniformity).
+\begin{equation*}
+    \|\alpha_x(v)-\alpha_y(v)\|=\|\alpha_{y^{-1}}(\alpha_x(v)-\alpha_y(v))\|=\|\alpha_{y^{-1}x}(v)-v\|
+\end{equation*}
+\begin{proof}
+    Let $f\in C_c(G)$, and want to show that the map
+    \begin{equation*}
+        x\mapsto \alpha_x(f) \text{ is strongly continuous }
+    \end{equation*}
+    suffices to show at $x=e_G$. Let $\epsilon>0$ be given, let $K=supp(f)$, and choose a comapct neighborhood $O$ of $e_G$. By joint continuity of $G\times M\xrightarrow{\alpha} M$, then we have
+    \begin{equation*}
+        O\times K\mapsto \alpha_O(K):=OK\in G \text{ is compact }
+    \end{equation*}
+    Now because $f$ is continuous, for each $m\in OK$, there is an open neighborhood $U_m$ of $m$ such that if $n\in U_m$, then 
+    \begin{equation*}
+        \|f(n)-f(m)\|<\epsilon/2
+    \end{equation*}
+    So there is an open neighborhood $W_m$ of the identity element, such that $O_m W_m\subset U_m$, you can even required $O_m\subset O$ (what we started with, ($O_m$'s are in $G$, and $W_m$'s are in $M$ )).The $W_m$'s form an open cover of $OK$ so there is a finite subcover $W_{m_1}, ..., W_{m_n}$ and let $O^*=\cap_{j=1}^n O_j$,
+
+    Now we claim that for $x\in O^*$, we have that
+    \begin{equation*}
+        \|\alpha_x(f)-f\|<\epsilon
+    \end{equation*}
+    For every $m$, if $\alpha_x(f)(m)-f(m)\neq 0$, then 
+    \begin{equation*}
+        f(\alpha_x^{-1}m)-f(n)\neq 0
+    \end{equation*}
+    So each $m\in K$, $m\in O^*K$, and have $m\in O^*K\subset OK$, so there exists $j$ such that $m\in W_{m_j}$, $x\in O^*\subset O_j$, and so 
+    \begin{equation*}
+        \alpha_x(m)\in U_{m_j}
+    \end{equation*}
+    This gives
+    \begin{equation*}
+        \|f(\alpha_x(m_j))-f(m_j)\|<\epsilon/2, \|f(m)-f(m_j)\|<\epsilon/2
+    \end{equation*}
+\end{proof}
+
+Let $\alpha$ be an action of $G$ on $M$, and suppose there is an $\alpha$-invariant Borel (or even Radon measure) measure on $M$. This gives an action of $G$ on $L^p(M, \nu)$, and 
+\begin{equation*}
+    \alpha_x(f)(m)=f(\alpha_x^{-1}m)
+\end{equation*}
+where $\|\alpha_x(f)\|_{L^p}=\|f\|_{L^p}$ by $\alpha$-invariant.
+\begin{proposition}
+    This action is strongly continuous.
+\end{proposition}
+\begin{proof}
+    Check this is true on $C_c(M)\subset L^p(M, \nu)$, where $C_c(M)$ is a dense subspace. 
+\end{proof}
+
+\section{Lecture 21}
+$G$ locally compact group, and $x$ locally compact space, and $\alpha$ a jointly continuous actionof $G$ on $X$, then the corresponding action of $G$ on $C_\infty(X)$ is strongly continuous.
+
+For any $f\in C_\alpha(X)$, and
+\begin{equation*}
+    x\mapsto \alpha_xf \text{ is continuous for }\|\cdot\|_\infty
+\end{equation*}
+Assume that $\mu$ is an $\alpha$-invariant measure on $X$, i.e. 
+\begin{equation*}
+    \mu(\alpha_xf)=\mu(f), \text{ for all } x,f
+\end{equation*}
+We then can form $L^p(X,\mu)$, with the $\|\cdot\|_{L^p}$ norm:
+\begin{equation*}
+    \|f\|_{L^p}=\left(\mu(|f|^p)\right)^\frac{1}{p}
+\end{equation*}
+And $L^p(X)$ contains $C_c(X)$, and what we want is the action $\alpha$ on the $L^p$ is again strongly continuous. (One could take $f$ such that $\|f\|_\infty$ is small, but the $L^p$ norm is large.)
+
+The action $\alpha$ of $G$ on $C_c(X)$ is continuous for the ``inductive limit topology.'' We shall it define it now.
+
+\begin{definition}[Inductive limit topology]
+    If $O\subset X$, and $\overline{O}$ is compact, then you can view $C_\infty(O)$, equipped with $\|\cdot\|_\infty$, as a subset of $C_c(X)$ (simply by extending by 0), then the inductive limit topology is the strongest topology on $C_c(X)$ making the inclusion continuous.
+\end{definition}
+
+\begin{definition}[Convergence in ILT]
+    If a net $\{f_\lambda\}$ converges to $f$ uniformly, and eventually, and there is a compact set $K$ such that eventually all $f_\lambda$ are supported in $K$, then this $\{f_\lambda\}$ converges to $f$ in the inductive limit topology.
+\end{definition}
+If $\mu$ is a Radon measure on $C_c(X)$, then the net $\{f_\lambda\}$ converges to $f$ for $\|\cdot\|_{L^p}$ of $L^p(X,\mu)$. We can find $f_\lambda$ converges uniformly to $f$ in the $\|\cdot\|_\infty$ sense.
+\begin{equation*}
+    \left(\|f-f_\lambda\|_{L^p}\right)^p=\int_X|f-f_\lambda|^pd\mu\leq\|f-f_\lambda\|_\infty^p\mu(K)
+\end{equation*}
+And $\mu(K)<\infty$, and $\|f-f_\lambda\|_\infty<\epsilon$. Everything is of finite measure, and uniform convergence gives you convergence in the $L^p$ norm.
+
+To show that $x\mapsto\alpha_x(F)$ is continuous for $\|\cdot\|_{L^p}$, it suffices to show that it is continuous at $e$, let $O$  be a compact neighborhood of $E$, and let $K=supp(f)$, then for $x\in O$, then $\alpha_x(f)$ is compactly supported in $\alpha_O(K)$, and $\|f-\alpha_x(f)\|_\infty\to 0$, hence is strongly continuous for the $\|\cdot\|_{L^p}$ norm.
+

@@ -682,3 +682,16 @@ Is it true that $\varphi(a)=\overline{\varphi(a^*)}$ for $\varphi$ a positive li
 If $\varphi(a)=\varphi(a^*)$, but if $\lambda\in\C$, we have $\varphi(\lambda a)=\lambda (\varphi(a))=\lambda\varphi(a^*)$, but $\varphi((\lambda a)^*)=\overline{\lambda}\varphi(a^*)$. Hence not equal.
 
 It then suffices to show that $|\varphi(a)|=|\varphi(a^*)$.
+
+\begin{definition}[Unitary equivalent representations]
+    There exists two representations $\pi_1, \pi_2$ on $\mathcal{H}$, if there exists a unitary operator $U: \mathcal{H}\to\mathcal{H}$ such that for all $\xi\in\mathcal{H}$,
+    \begin{equation*}
+        U\pi_1(a)\xi=\pi_2(a)U\xi
+    \end{equation*}
+    i.e. the following diagram commutes:
+    \begin{tikzcd}
+        \mathcal{H}\arrow{d}{U}\arrow{r}{\pi_1} & \mathcal{H}\arrow{d}{U}\\
+        \mathcal{H}\arrow{r}{\pi_2} &\mathcal{H}
+    \end{tikzcd}
+\end{definition}
+

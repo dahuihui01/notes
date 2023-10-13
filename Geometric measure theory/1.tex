@@ -1,0 +1,270 @@
+\chapter{Introduction}
+We will first introduce three questions in incidence geometry: the projection problem, the distance set problem, and the discrete Kakeya problem in $\R^2$. Let $P$ be a discrete subset of $\R^2$.
+
+\begin{problem}[ (Projection)]
+    Let $e\in S^1$, and $\pi_e$ be the projection onto the line $l_e$. We ask the upper bound on the number of $e$ such that $\pi_e(P)\leq\frac{n}{8}$, given that $P$ is a discrete set with $|P|=n$. 
+\end{problem}
+\begin{problem}[ (Distance set)]
+    What is the lower bound the distance set $\Delta(P)$
+    \begin{equation*}
+        \Delta(P)=\{|p-p'|: p,p'\in P\}
+    \end{equation*}
+\end{problem}
+\begin{problem}[ (Discrete Kakeya/Joints problem)]
+    Given a set of $m$ lines $\mathcal{L}$, such that each line $l\in\mathcal{L}$ is $m$-rich, i.e.
+    \begin{equation*}
+        |P\cap l|\geq m \text{ for each } l
+    \end{equation*}
+    Can we put a lower bound on the size of $P$.
+\end{problem}
+
+We remind ourselves of a sharp bound regarding how the lines and points intersect. Let $I(P,\lin)=\{(p,l)\in P\times \lin: p\in l\}$ 
+\begin{theorem}[Szemeredi-Trotter theorem]
+    For any $P\subset\R^2$, and a finite set of lines, then we have
+    \begin{equation*}
+        |I(P,\lin)|\lesssim \left(|P||\lin|\right)^\frac{2}{3}+|\lin|+|P|
+    \end{equation*}
+\end{theorem}
+We will prove a weaker result for some intuition, and gain some insight into the projection problem and the discrete Kakeya problem.
+\begin{proposition}[Weaker S-T]
+    \label{weakst}
+    In $\R^2$, we have that
+    \begin{equation}
+        |I(P,\lin)|\lesssim 4\min\{|P|^\frac{1}{2}|\lin|+|P|, |\lin|^\frac{1}{2}|P|+|\lin|\}
+    \end{equation}
+\end{proposition}
+Using Proposition~\ref{weakst}, we get the following lower bound on the discrete Kakeya problem in $\R^2$.
+\begin{corollary}
+    we get that for a set of $m$ lines such that each line intersects the point set $P$ at least $m$ times, we get that
+    \begin{equation*}
+        |P|\gtrsim m^2
+    \end{equation*}
+\end{corollary}
+\begin{note}
+    The distance set problem can be realized as intersections between points and circles, instead of points and lines.
+\end{note}
+We make a similar conjecture in $\R^n$, for $m^{n-1}$ lines such that each line intersects the point set $P$ at least $m$ times, then we should have
+\begin{equation*}
+    |P|\gtrsim m^n
+\end{equation*}
+This statement fails for $\R^3$. Yet we could enforce some assumption to push to a nicer result.
+\begin{theorem}[G-N, Joints Problem]
+    For a set of $m^2$ lines such that no more than $m$ lines lie in the same plane, and each line intersects the point set $P$ at at least $m$ points, then we have
+    \begin{equation*}
+        |P|\gtrsim m^3
+    \end{equation*}
+    (This is in fact a conjecture by Bourgain and a corollary to the Joints problem in $\R^3$).
+\end{theorem}
+We now prove Proposition~\ref{weakst}. \textcolor{red}{unfinished here}
+
+We now give some general bounds on the size of $\Delta(P)$ given that $|P|=n$.
+\begin{exercise}
+    For a given $n\in\mathbb{N}$, there exists a set $P$ such that $|\Delta(P)|\lesssim n$, for example, the set of $n$ points arranged on a straight line.
+\end{exercise}
+\begin{exercise}
+    We now get some general lower bound on $\Delta(P)$. We can show $|\Delta(P)|\gtrsim n^\frac{1}{2}$. Consider two distinct points $p_1, p_2$, if we show that either
+    \begin{equation*}
+        |\{|p_1-p|:q\in P\}|\gtrsim n^\frac{1}{2} \text{ or } |\{|p_2-q|: q\in P\}|\gtrsim n^\frac{1}{2}
+    \end{equation*}
+    WLOG, assume $p_1$ has that
+    \begin{equation}\label{circle}
+        |\{|p_1-q|: q\in P\}|\lesssim n^\frac{1}{2}
+    \end{equation}
+    Then we would like to show that
+    \begin{equation*}
+        |\{|p_2-q|: q\in P\}|\gtrsim n^\frac{1}{2}
+    \end{equation*}
+    If the equation~\ref{circle} is true, then there exists a distance $r$ such that 
+    \begin{equation*}
+        |Q|=|\{q\in P:|p_1-q|=r|\}|\gtrsim n^\frac{1}{2}
+    \end{equation*}
+    And for $p_1\neq p_2$, we have
+    \begin{equation*}
+        |\{|p_2-q|:q\in Q\}|\gtrsim n^\frac{1}{2}
+    \end{equation*}
+\end{exercise}
+
+\chapter{Dimensions}
+We now discuss some ways of measuring size of fractal sets.
+\begin{definition}
+    Given a bounded set $E$, we define its $\delta$-covering number $|E|_\delta$ as the smallest number of $\delta$-balls needed to cover $E$.
+\end{definition}
+We note that as $\delta\to 0$, $|E|_\delta\to\infty$, so does $\frac{1}{\delta}$, hence comparing the rate of increase between the two gives us the Minkowski dimension (box counting dimension).
+\begin{example}
+    Let $f: (X,d)\to (Y, d')$ is biLipschitz, if there eixts a constant $C$ such that 
+    \begin{equation*}
+        C^{-1}d'(f(x), f(y))\leq d(x,y)\leq Cd'(f(x), f(y))
+    \end{equation*}
+    Let $f:[0,1]^n\to\R^n$ be biLipschitz, where $E=f([0,1]^n)$, then we have
+    \begin{equation*}
+        C^{-1}E\leq |[0,1]^n|\leq CE
+    \end{equation*}
+    Hence $[0,1]\sim E$, and $|E|_\delta\sim\delta^{-n}$.
+\end{example}
+
+\begin{definition}[Upper and Lower Minkowski's dimension]
+    Let $E$ be a bounded set in $\R^n$, and $|E|_\delta$ be the $\delta$-covering number, then we define the upper and lower Minkowski dimension as follows:
+    \begin{equation*}
+        \overline{\dim_B}(E)=\limsup_{\delta\to 0}\frac{\log(|E|_\delta)}{\log(1/\delta)}, \underline{\dim_B}(E)=\liminf_{\delta\to 0}\frac{\log(|E|_\delta)}{\log(1/\delta)}
+    \end{equation*}
+
+\end{definition}
+\begin{example}\label{exampleQ}
+    The countable set $E=\mathbb{Q}
+    \cap[0,1]$, has Lebesgue measure 0, and has Minkowski dimension:
+    \begin{equation*}
+        \dim_B(E)=\lim_{\delta\to 0}\frac{\log(\delta^{-1})}{\log(\delta^{-1})}=1
+    \end{equation*}
+\end{example}
+\begin{example}
+    The set $E=\{\frac{1}{n}:n\in\mathbb{N}\}$ has Minkowski dimension: for every $\frac{1}{n}$, it could be covered by a $\delta=n^{-2}$-length disjoint interval, hence
+    \begin{equation*}
+        \dim_B(E)=\lim_{\delta\to 0}\frac{\log(n)}{\log(n^2)}=\frac{1}{2}
+    \end{equation*}
+\end{example}
+\begin{example}
+    The set $E=\{\frac{1}{2^n}: n\in\mathbb{N}\}$ is ``too sparse'' of a fractal so its box counting dimension is the same as the topological dimension.
+    \begin{equation*}
+        \dim_B(E)=\lim_{\delta\to 0}\frac{\log(n)}{\log(2^n)}=\lim_{n\to\infty}\frac{\log(n)}{n\log(2)}=0
+    \end{equation*}
+    One could generalize this to get any set $E=\{a^{-n}: n\in\mathbb{N}\}$ has Minkowski dimension 0.
+\end{example}
+\begin{example}
+    The Cantor set, splits into $2^n$ intervals of length $\frac{1}{3^n}$.
+    \begin{equation*}
+        \dim_B(E)=\lim_{\delta\to0}\frac{\log(2^n)}{\log(3^n)}=\frac{\log(2)}{\log(3)}
+    \end{equation*}
+\end{example}
+\begin{note}
+    Minkowski dimension does not always exist if the upper or lower Minkowski dimensions don't agree, and it does not work with unbounded sets $E$.
+\end{note}
+\begin{note}
+    The example~\ref{exampleQ} has Minkowski dimension 1, but it is a countable set, hence we would like to assign it measure 0.
+    \begin{equation*}
+        \dim\cup_iE_i=\sup_{i}\dim E_i
+    \end{equation*}
+\end{note}
+To address the above two concerns, we introduce the Hausdorff dimension. We do it in three steps: introduce an up-to-$\delta$-cover $\{U_j\}$, construct Hausdorff $\delta$-measure, and letting $\delta\to 0$.
+\subsection{Hausdorff measure}
+\begin{definition}[$s$-dim Hausdorff measure]
+    Fix $s\geq 0$, and $\delta\in(0,\infty]$, given a set $E\in\R^n$, an ``up-to-$\delta$''-cover of $E$ is a \textbf{countable} family of sets $\{U_j\}_{j\in\mathbb{N}}$ such that
+    \begin{equation*}
+        E\subset\cup_jU_j, diam(U_j)\leq\delta, \text{ for all } j
+    \end{equation*}
+    And an $s$-dimensional Hausdorff $\delta$-meausre of the set $E$ is
+    \begin{equation*}
+        H_\delta^s(E)=\inf\left\{\sum_jdiam(U_j)^s, \{U_j\}_j \text{ is an up-to-$\delta$-cover of } E \right\}
+    \end{equation*}
+    Finally, the $s$-dimensional Hausdorff measure of $E$ is
+    \begin{equation*}
+        H^s(E)=\lim_{\delta\to 0}H_\delta^s(E)
+    \end{equation*}
+\end{definition}
+\begin{remark}
+    The limit is well justified since as $\delta\to 0$, $H_\delta^s(E)$ is an increasing function.
+\end{remark}
+There are many nice properties regarding the Hausdorff measure, for example, $n$-dim Hausdorff measure agrees with the $n$-dim Lebesgue measure, and there is a unique number such that the Hausdorff measure stops being $\infty$, and equivalently drops to zero. Hence based on this observation, we introduce the Hausdorff dimension of a set $E$.
+\begin{definition}[Hausdorff dimension]
+    For a set $E\subset\R^n$, we have
+    \begin{equation*}
+        \dim_H(E)=\sup\{s: H^s(E)=\infty\}=\inf\{s: H^s(E)=0\}
+    \end{equation*}
+\end{definition}
+Before anything, we first check that the $s$-dimensional Hausdorff measure defined above is indeed a measure.
+\begin{proposition}
+    For $s\geq 0$, the $s$-dimensional measure is indeed a measure.
+\end{proposition}
+\begin{proof}
+    We have that $\mu(\emptyset)=0$, and $\mu(E)\geq 0$ for all $E$. Finally we check the measure is countably additive. For $\{E_j\}_{j\in\mathbb{N}}$ disjoint sets, we consider $E=\cup_jE_j$, as $\delta\to 0$, (or for $\delta$ sufficiently small, given $E_j$'s are disjoint), all the up-to-$\delta$-covers are disjoint, hence
+    \begin{equation*}
+        H_\delta^s(\cup_jE_j)=\sum_j H_\delta^s(E_j)
+    \end{equation*}
+    And letting $\delta\to 0$, we get
+    \begin{equation*}
+        H^s(\cup_jE_j)=\sum_jH^s(E_j)
+    \end{equation*}
+\end{proof}
+\qed
+
+\begin{proposition}
+    The following are basic facts about the Hausdorff measure:
+    \begin{enumerate}
+        \item for $n\in\mathbb{N}$, let $m$ be the $n$-dim Lebesgue measure, there exists a constant $C$ such that
+        \begin{equation*}
+            C^{-1}H^n(E)\leq m(E)\leq CH^n(E)
+        \end{equation*}
+        \item $H^s(E)$ is a nonincreasing function of $s$.
+        \item For $0\leq s_1<s_2<\infty$
+        \begin{equation*}
+            \text{either } H^{s_1}(E)=\infty \text{ or } H^{s_2}(E)=0
+        \end{equation*}
+        \item For $s>n$, and $E\subset\R^n$, we have that
+        \begin{equation*}
+            H^s(E)=0
+        \end{equation*}
+        \item For $E\subset\R^n$, and $s\geq 0$, we have that
+        \begin{equation*}
+            H^s(E)=0 \iff H_\infty^s(E)=0
+        \end{equation*}
+    \end{enumerate}
+\end{proposition}
+\begin{example}
+    For a set $E\subset\R^n$, we have that the $n$-dimensional Hausdorff measure should agree with the standard Lebesgue measure on $\R^n$. For if $E$ is unbounded, then $m(E)=\infty$, and 
+\end{example}
+
+
+\begin{exercise}
+    We have that for $f: A\to R^m, A\subset R^n$, for a fixed $s\geq 0$, and $f$ is Lipschitz with Lipschitz constant $L$, we have that 
+    \begin{equation*}
+        H^s(f(A))\lesssim_LH^s(A)
+    \end{equation*}
+    This can be shown that  
+\end{exercise}
+
+\begin{proposition}
+    The Hausdorff measure is monotone: for $E_1\subset E_2$, we have that
+    \begin{equation*}
+        H^s(E_1)\leq H^s(E_2)
+    \end{equation*}
+\end{proposition}
+\begin{proof}
+    For $E_1\subset E_2$, for each $\delta$,  an up-to-$\delta$-cover of $E_2$ is also an up-to-$\delta$ cover of $E_1$, and hence taking the infimimum, we get that $H^s(E_1)\leq H^s(E_2)$.
+\end{proof}
+\qed
+
+
+\begin{proposition}
+    The Hausdorff dimension satisfies that the dimension is a local property:
+    \begin{equation*}
+        \dim(\cup_jE_j)=\sup_j\dim(E_j)
+    \end{equation*}
+\end{proposition}
+\begin{proof}
+    We would like to show that $H^s(\cup_jE_j)=\infty$ if and only if $\sup_jH^s(E_j)=\infty$, and similarly, $H^s(\cup_jE_j)=0$ if and only if $\sup_jH^s(E_j)=0$.
+
+    This is a total of 4 directions. By monotonicity, two directions are shown:
+    \begin{equation*}
+        \sup_jH^s(E_j)=\infty \Rightarrow H^s(\cup_jE_j)=\infty
+    \end{equation*}
+
+    Moreover,
+    \begin{equation*}
+        H^s(\cup_jE_j)=0\Rightarrow \sup_jH^s(E_j)=0
+    \end{equation*}
+
+    Moreover, by $H^s$ being a measure, if we have $\sup_jH^s(E_j)=0$, then all $H^s(E_j)=0$ for all $j$, thus
+    \begin{equation*}
+        H^s(\cup_jE_j)\leq\sum_jH^s(E_j)=0
+    \end{equation*}
+    Now it remains to show that 
+
+\end{proof}
+
+
+Now we justify the usage of $H^s$, instead of just working $H_\delta^s$.
+\begin{exercise}
+    For $0\leq s\leq 1, n\geq 2$, we have
+    \begin{equation*}
+        H_2^s(B_1(0))=H_2^s(\overline{B_1(0)})=H_2^s(\partial(B_1(0)))
+    \end{equation*}
+\end{exercise}
