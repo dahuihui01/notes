@@ -2276,3 +2276,183 @@ Now we try to move to the boundary of $A$, and $\|u\|_{L^p}\to\infty, p=\frac{2(
 We first note that we must have wave packets, and if we suppose that the wave packets are spread out in more than one direction: this is because we can separate the initial energy into these two packets, and their energy is small, and separate, they are nice solutions, with controlled strichartz norms. And our operator is sublienar, hence the overall strichartz norm is nicely bounded. When they intersect, the norm is already small due to decay, hence the norm is again, well-controlled. This cannot happen. (Hence there can exist only one wave packet in one direction at any given time, and that packet could propogate over time, but when you dissect it, you should still obtain a wave packet. )
 
 And to prove the above, there are two approaches: one by Bourgain (95), which is the induction on energy; and the other is by contradiction, where we deal with the ``minimal enemy.''
+
+
+\section{Lecture 10/17}
+We were looking the two theorems last time.
+\begin{theorem}[Mass critical NLS]
+    \begin{enumerate}
+        \item The defocusing problem is globally well-posed for any large $L^2$.
+        \item The focusing problem is globally well-posed for any $L^2$ data with mass below the ground state.
+    \end{enumerate}
+\end{theorem}
+The Strichartz norm $\|u\|_{L_{x,t}^\frac{2(n-2)}{n}}$, the proof for the theorem relies on
+\begin{equation*}
+    \|u\|_{L_{x,t}^\frac{2(n+2)}{n}}\leq F(\|u_0\|_{L^2})
+\end{equation*}
+Suppose we look at some mass, the conserved quantity
+\begin{equation*}
+    M=\int|u|^2dx
+\end{equation*}
+We now ask the \textbf{question}: for what mass $M(u_0)$ do we have a uniform bound for the above Strichartz norm.
+
+From pertubation theory:
+Suppose for some $M>0$, we have
+\begin{equation*}\label{unifbound}
+    \|u_0\|\leq M\Rightarrow \|u\|_{L^\frac{2(n+1)}{n}}\leq C
+\end{equation*}
+We then conclude there exists some small $\epsilon>0$, and $\tilde{c}\gg c$ such that
+\begin{equation*}
+    \|u_0\|\leq M+\epsilon\Rightarrow \|u\|_{L^\frac{2(n+1)}{n}}\leq\tilde{C}
+\end{equation*}
+We have that the set of $M$ which satisfies~\ref{unifbound}. This is done by the idea of Bourgain, i.e. \textbf{induction on energy}.
+\begin{note}
+    Perturbation is a good start, but does not solve the problem.
+\end{note}
+
+We shall now do a proof by contradiction. Denote by $\overline{M}$:
+\begin{equation*}
+    \overline{M}=\sup\{M\in\R^+: \text{~ref{unifbound} holds}\}
+\end{equation*}
+Assume \begin{equation*}
+    \lim_{M\to\overline{M}}C(M)=\infty
+\end{equation*}
+then there exists a sequence of data $\{u_0^n\}$ such that
+\begin{equation*}
+    \|u_0^n\|\to\overline{M}, \|u^n\|_{L^\frac{2(n+2)}{n}}\to\infty
+\end{equation*}
+The following proof is separated into two steps:
+The \textbf{first} is to look for a minimal blow-up solution
+\begin{equation*}
+    u=\lim_{n\to\inf}u_n
+\end{equation*}
+Then we show that such minimal blow up does not exist.
+
+We begin the construction in step 1. The difficult question is that: how do we know that some sort of limiting solution $u$ exists? The answer is named ``concentration compactness argument.'' 
+
+We first look at some solutions to the NLS, and use the fact that $L^2$ norm of $u_0^n$ converges to exactly $\tilde{M}$. Step 1 is compactness for solutions to linear Schrodinger. We ask the question can we have in general:
+\begin{equation*}
+    u^n\to u \text{ on a subsequence }
+\end{equation*}
+And normalize $\|u_0^n\|_{L^2}=1$. And such that $u_0^n\to u$ in $L^2$ weakly. But this limit can be 0, hence it cannot be done.
+
+Now we assume $\|u^n\|_{L^p}\gtrsim 1$, and such subsequence still doesn't have to exist. Now we compile a list of obstructions to compactness:
+\begin{enumerate}
+    \item Spatial translations. Suppose you have a wave packet solution, and translate all the way to $\infty$, then in every weak limit, you get 0
+    \item Time translations.
+    \item Scaling symmetry. If we do \begin{equation*}
+        u(t,x)\to\lambda^\alpha(\lambda^2t, \lambda x)
+    \end{equation*} You can adjust the packet, making it thinner and longer or shorter and fatter, and still wouldn't converge.
+    \item Galilean invariance. You can change the frequency
+    \item Phase rotations. You can take $u\to ue^{i\theta}$. It doesn't obstruct compactness, but only gives you ways to extract subsequence.
+\end{enumerate}
+Let $g$ be the group of transformations, via compositions of elements of the above list. Each $G\in g$, we can have translation, scaling, change in velocity (i.e. translation in frequency $\xi_0$), $\theta_0$. Now we ask the better question: given our solutions $u^n$ to linear Schrodinger, can we find $G^n\in g$ such that
+\begin{equation*}
+    G^nu^n\to u\neq 0
+\end{equation*}
+\begin{note}
+    This still doesn't work due to secondary obstructions.
+\end{note}
+Secondary obstruction: Let $u^1$ have two packets that are close to each other, $u^2$ has the same two packets, but are further and further away from one another, and $u^3$ even futher away. We call these packets profiles. 
+
+Now our target has become: Profile decomposition. On a subsequence, we find some profiles $\phi_1, \phi_2, ...., \phi_k$ so that on a subsequence, we have
+\begin{equation*}
+    u^1=G^{11}\phi_1+G^{12}\phi_2+...+G^{1k}\phi_k+e^1
+\end{equation*}
+\begin{equation*}
+    u^j=G^{j1}\phi_1+G^{j2}\phi_2+...+G^{jk}\phi_k+e^j
+\end{equation*}
+where $e_j$ denotes error. Now we ask how many profiles do we have, and the answer is that we can have infinitely many profiles, but if there are infinitely many ones, then we should expect some orthogonality among them.
+\begin{equation*}
+    \sum\|\phi_k(0)\|_{L^2}^2\leq 1
+\end{equation*}
+\begin{note}
+    You don't want to deal with infinitely many of them, and we thus deal with this issue via controlling the error term. For all $\epsilon>0$, there exists $k_\epsilon$ such that
+    \begin{equation*}
+        \lim_{j\to\infty}\|e^j\|_{L^p}<\epsilon
+    \end{equation*}
+\end{note}
+
+Of all the parameters, the scale parameter is the most important one $\lambda_0$. Once we have $\lambda\to (\delta_x)=\lambda^{-1}$, and $\delta\xi\approx\lambda$. Key condition is that $G^{jk}$ separates: different profiles go into different directions: so either we have
+\begin{equation*}
+    \lim_{j\to\infty}\left|\frac{\lambda^{j,k_1}}{\lambda^{j, k_2}}\right|+\left|\frac{\lambda^{j,k_2}}{\lambda^{j, k_1}}\right|=\infty
+\end{equation*}
+or we have
+\begin{equation*}
+    \frac{\lambda^{j,k_1}}{\lambda^{j,k_2}}\to (1, |x^{j, k_1}-x^{j, k_2}|)+|t^{j, k_1}-t^{j, k_2}|+|\xi^{j, k_1}-\xi^{j, k_2}|
+\end{equation*}
+\begin{note}
+    The $L^2$ norm of $e_j$ does not go to zero.
+\end{note}
+And by almost orthogonality:
+\begin{equation*}
+    \|u^j\|_{L^2}^2\geq\|\phi_1\|_{L^2}^2+...\|\phi_k\|_{L^2}^2
+\end{equation*}
+where $\|u^j\|_{L^p}^p\approx\|\phi_1\|_{L^p}^p+...+\|\phi_k\|_{L^p}^p$. And some discussion for the energy critical problem, but without the Galilean invariance.
+
+Stage 1: Sobolev embeddings. THere was a result by Gerand ('98). $\dot{H}^s\subset L^p$, and Gallaghea, $W^{s,p}$
+
+Stage 2: Bahomi +Gerand ('99).
+Stage 3: Schrodinger via energy
+Stage 4: Schrodinger via mass.
+
+Let's look at $H^1(\R^n)$ embeds into $L^p$, for $p=2^*$. And we have
+\begin{equation*}
+    \|u\|_{L^p}\leq\|u\|_{\dot{H}^1}
+\end{equation*}
+For $u^n\in\dot{H}^1$, we look for a convergence subsequence. For the group of symmetries: we have translations and scaling.
+
+Each $g$, the group of symmetries, parametrized by $(x_0,\lambda_0)$, position and scale.
+\begin{equation*}
+    u(x)\to G_{x_0, \lambda_0, u}(x)=\lambda_0^\alpha\cdot u(\lambda(x-x_0))
+\end{equation*}
+Let $\|u^n\|_{\dot{H}^1}=1$, and look for
+\begin{equation*}
+    G^nu^n\to\phi_1
+\end{equation*}
+From all possible $G$'s, and choose the largest weak limit $\phi_1$.
+\begin{equation*}
+    u^n\to u^n-(G^n)^{-1}\phi_1=u^{n,1}
+\end{equation*}
+\begin{equation*}
+    G^{n,1}u^{n,1}\to \phi_2 \text{ weakly in} H^1
+\end{equation*}
+First we would like to make sure that $\phi_j\neq 0$, and would also want profile separation.
+
+How can we ensure that the $\phi_j$'s are not equal 0? We care about the $L^p$ norm, and if it is zero, it is fine, we just discard it. We would like dichotomy: either $\phi_1\neq 0$ or $\\u^n\|_{L^p}\to 0$ (the second case is where we have nothing to talk about).
+
+Let's start with $u\in\dot{H}^1$, and we do Littlewood-Paley decomposition.
+\begin{equation*}
+    u=\sum_ku_k, \hat{u_k}\text{ supported in}|\xi|\approx 2^k
+\end{equation*}
+For
+\begin{equation*}
+    \|u\|_{\dot{H}^1}^2\approx\sum_k\|u_k\|_{\dot{H}^1}^2
+\end{equation*}
+where $\|u_k\|_{L^p}\lesssim \|u_k\|_{\dot{H}^1}\approx 2^k\|u_k\|_{L^2}$. First idea is that we look for $k$ where $u_k$ is largest. And we look at each $u_k$ one by one, and we have
+\begin{equation*}
+    \dot{H}^1\subset L^p\subset B_{\infty,\infty}^{1-\frac{n}{2}}
+\end{equation*}
+where $B$ stands for Bessel's space, and 
+\begin{equation*}
+    \|u\|_B=\sup_k\|u_k\|_{L^\infty}2^{k(1-\frac{n}{2})}
+\end{equation*}
+The key information is the following inequality, i.e. the interpolation inequality: \begin{proposition}[Gagliando-Niomeberg inequality]
+    \begin{equation*}
+        \|u\|_{L^p}^\frac{n}{2}\leq\|u\|_{\dot{H}^1}\|u\|_B^{\frac{n}{2}-1}
+    \end{equation*}
+    or for some $0<\theta<1$, we have
+    \begin{equation*}
+        \|u\|_{L^p}^\frac{n}{2}\leq\|u\|_{\dot{H}^1}^\theta\|u\|_B^{1-\theta}
+    \end{equation*}
+\end{proposition}
+Suppose that we have the above inequality, and $\|u^n\|_{\dot{H}^1}=1$, and suppose that $\|u_n\|_{L^p}\geq\epsilon$, and GN implies that $\|u_n\|_B\geq\epsilon^a$. For the Bessel's norm being large, we have that there exists some $k$ such that $\|u_k\|_\infty$ is large. In other words, for each $n$, there exists $k_n$ such that $\|u_{k_n}^n\|_{L^\infty}\geq\epsilon^a 2^{k_n(1-n/2)}$. Then $u^n$ converges to $G_{2^k_n}u_n$, which we can assume for $k_n=1$.
+Now $k_n=1$, and $\|u_1^n\|_{L^\infty}\geq\epsilon^a$, and there exists $x^n$ such that
+\begin{equation*}
+    |u_1^n(x_n)|>\epsilon^a
+\end{equation*}
+and translate by $x_n$, we have
+\begin{equation*}
+    |u_1^n(0)|\geq\epsilon^a
+\end{equation*}
+which implies $\phi_1(0)\neq 0$. And it does not go to 0.

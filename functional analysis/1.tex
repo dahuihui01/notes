@@ -2503,3 +2503,132 @@ And $\mu(K)<\infty$, and $\|f-f_\lambda\|_\infty<\epsilon$. Everything is of fin
 
 To show that $x\mapsto\alpha_x(F)$ is continuous for $\|\cdot\|_{L^p}$, it suffices to show that it is continuous at $e$, let $O$  be a compact neighborhood of $E$, and let $K=supp(f)$, then for $x\in O$, then $\alpha_x(f)$ is compactly supported in $\alpha_O(K)$, and $\|f-\alpha_x(f)\|_\infty\to 0$, hence is strongly continuous for the $\|\cdot\|_{L^p}$ norm.
 
+Let $G$ be a locally compact and let $\alpha$ be an action by isometries on a Banach space $V$, we define the integrated form of $\alpha$, $f\in C_c(G)$, and $v\in V$:
+\begin{equation*}
+    \alpha_f(v)=\int_Gf(x)\alpha_x(v)dx, \alpha_x(v)\in V
+\end{equation*}
+where $dx$ is a choice of left-invariant Haar measure.
+
+Given $\varphi\in V^*$,
+\begin{equation*}
+    \int f(x)\la \alpha_x(v), \varphi\ra dx
+\end{equation*}
+the above form is called the ``weak integral.''
+and $range(f)$ is a normed-closed compact subset of $V$.
+
+Consider, $C_c(X,\R)$, and $V$ is over $\R$. and \begin{equation*}
+    (X,\R)\bigotimes V=\{\sum_{i=1}^n f_i\bigotimes  v_i, f_i\in C_c(X,\R), v\in V\}
+\end{equation*}
+and viewed as an element of $C_c(X,V)$, and $(x)=\sum_{i} f_i(x)v_i\in V$. Given a Radon measure $\mu$, we have
+\begin{equation*}
+    \int \sum_{j=1}^nf_j\bigotimes v_jd\mu=\sum\mu(f_j)v_j
+\end{equation*}
+The above is well-defined, and apply to $V^*$, if we denote $F=\sum_{j=1}^nf_j\bigotimes v_j$, then
+\begin{equation*}
+    \varphi(\int F(x)d\mu(x))=\int\varphi(F(x))d\mu(x)
+\end{equation*}
+One should think of these $F$ as simple functions $f=\sum_j\chi_{E_j}v_j$.
+
+Note that
+\begin{equation*}
+    \{\sum_{j=1}^nf_j\bigotimes v_j\} \text{ is dense for the inductive limit topology}
+\end{equation*}
+Given $F\in C_c(X,V)$, and some $\epsilon>0$, let $K=supp(F)$, and $C$ be a compact neighborhood of $K$. Then, for each $x\in C$, there is an open neighborhood $O_x$ with
+\begin{equation*}
+    \|f(y)-f(x)\|<\epsilon \text{ if } g\in O_x
+\end{equation*}
+And by $C$ being compact, there exists a finite subcover $O_{x_1}, ..., O_{x_n}$. Choose a partition of unity, subordinate to the $\{O_{x_j}\}_{j=1}^n$. This means $F_j\in C_c(X,\R)$, and $0\leq f_j\leq 1$, and $supp(f_j)\subset O_j$, such that $\sum\varphi_j=1$ on $K$. Then the set
+\begin{equation*}
+    F_\epsilon=\sum f_j\bigotimes F(x_j)
+\end{equation*}
+and $\|F-F_\epsilon\|_\infty<\epsilon$. 
+
+Let $\alpha$ be an action on $V$, if we write $\alpha_f(v)=\int_G f\alpha_x(v)dx$, and $\alpha_f\alpha_g=\alpha_{f\ast g}$, then
+\begin{equation*}
+    (f\ast g)(x)=\int f(y)g(y^{-1}x)dy
+\end{equation*}
+Fubini's theorem for Radon measures,  use $C_c(X)\bigotimes C_c(Y)$, dense in $C_c(X\times Y)$
+\begin{equation*}
+    \sum_{j=1}^n f_j\bigotimes g_j
+\end{equation*}
+for the inductive limit topology. This is the Stone-Weierstrass theorem. Now we ask the question, what is $(\pi_f)^*$.
+
+\section{Lecture 22}
+Let $G$ be locally compact, and if $(\mathcal{H}, \pi)$ is a unitary representation of $G$, with the integrated form:
+\begin{equation*}
+    f\mapsto\pi_f, f\in C_c(G)\subset L^1(G)
+\end{equation*}
+we have
+\begin{equation*}
+    (\pi_f)^*=\left( \int f(x)\pi_xdx\right)^*=\int\overline{f(x)}\pi_x^*dx=\int\overline{f(x)}\pi_{x^{-1}}dx=\int\overline{f(x^{-1})}\Delta(x)\pi_{x^{-1}}dx
+\end{equation*}
+
+\begin{proposition}
+    If $G$ is locally compact, but not discrete, then $L^1(G)$ does not have an identity. 
+\end{proposition}
+\begin{example}
+    $C_\infty(X)$.
+\end{example}
+\begin{note}
+    Many Banach algebras have an ``approximate'' identity elements.
+\end{note}
+\begin{example}
+    Let's look at $C_\infty(\R)$. You could take a function that is a smooth characteristic function, whose support is contained in $[-N, N]$, and pushing $N\to\infty$. If you take $N$ large enough, you eventually approximate the function itself.
+\end{example}
+
+\begin{definition}[Approximate identities]
+    For a normed algebra $\mathcal{A}$, let $a$ be a left approximate identity , we mean a net ${e_\lambda}$ such that for any $a\in\mathcal{A}$, we have that $e_\lambda a\to a$ in norm. A right approximate identity is one such that $ae_\lambda\to a$ in norm. A two-sided approximate is one such that it satisfies both. And a bounded approximate identity is one such that $\|e_\lambda\|\leq c$ for all $\lambda$ and such that $e_\lambda a\to a$ in norm. (There is therefore, left bounded approximate identity, and right, and two-sided). A norm 1 approximate identity is such that $\|e_\lambda\|=1$.
+\end{definition}
+If $\mathcal{A}$ has a * operation, then you can define a self-adjoint approximate identity, if
+\begin{equation*}
+    e_\lambda^*=e_\lambda \text{ for all } \lambda
+\end{equation*}
+If $\mathcal{A}$ is a $C^*$-algebra, a positive approximate identity is a net with $e_\lambda>0$ for all $\lambda$. 
+
+\begin{proposition}
+    For any locally compact group, $L^1(G)$ has a approixmate identity of norm 1.
+\end{proposition}
+\begin{note}
+    The picture should look like a tall bump function around the identity $e_G$.
+\end{note}
+\begin{proof}
+    Let $\Gamma$ be a collection of comapct neighborhoods of $e_G$, and for each $O$, choose $e_O\in C_c(G)$ with $supp(e_O)\subset O$, and $\int e_O(x)dx=1$.
+
+    $f\ast g(x)=\int f(y)g(y^{-1}x)dy$ with integrated form of the action of $G$ on $L^1(G)$ by translation $g(x)\to g(y^{-1}x)$. In fact, for any represntation of a Banach space $V$ of $G$ by $\pi_{e_\lambda}v\to v$ in norm. We would like the following to go to zero.
+    \begin{equation*}
+        \|\int e_O(x)\pi_xv-v\|=\|\int e_O(x)\pi_xv-\int e_O(x)dx v\|=\|\int e_O(x)(\pi_xv-v)\|
+    \end{equation*}
+    For any $\epsilon>0$, choose $O_\epsilon$ and that for $x\in O_\epsilon$, we have $\|\pi_xv-v\|<\epsilon$ (by SOT). For any neighborhood smaller than $O_\epsilon$, we still have this property, $O\subset O_\epsilon$.
+    So for the above equation, we get that
+    \begin{equation*}
+        \|\int e_O(x)\pi_x(v)-\int e_O(x)dxv\|\leq\int Oe_O(x)\|\pi_xv-v\|\leq\epsilon
+    \end{equation*}
+\end{proof}
+\qed
+
+\begin{proposition}
+    For any $c^*$-algebra $\mathcal{A}$ has a positive approximate identity of norm 1.
+\end{proposition}
+\begin{proof}
+    Let $\Gamma$ be the collection of finite subsets of $\mathcal{A}$, and for $\lambda\in\Gamma$, let the finite sum be as follows:
+    \begin{equation*}
+        b_\lambda=\sum\{b^*b: b\in\lambda\}
+    \end{equation*}
+    let
+    \begin{equation*}
+        e_\lambda=\frac{b_\lambda}{\frac{1}{n}+b_\lambda}<1, n=|\lambda|=\text{ the number of elements in }\lambda
+    \end{equation*}
+\end{proof}
+\qed
+
+For any Banach normed algebra $\mathcal{A}$, we can get an identity element by 
+\begin{equation*}
+    \tilde{A}=\{(a,z): a+z1_{\tilde{\mathcal{A}}}\}
+\end{equation*}
+If $\mathcal{A}$ has an approximate identity of norm 1, and if $\mu$ is continuous positive $\mu(a^*a)\geq 0$ linear functional, on $\mathcal{A}$, but no identity element, but does have a norm $\|\mu\|$. Now if you have an approximate identity, then $\mu$ extends to a positive linear functional on $\tilde{\mathcal{A}}$, where $\|\mu\|=1$. Then you could apply GNS to this $\mu$.
+\begin{note}
+    Any $C^*$-algebra $\mathcal{A}$ has a positive approximate identity of norm 1. For example $G$, $L^2(G)$, and $\pi$
+    \begin{equation*}
+        \overline{\{\pi_f:f\in\mathcal{A}\}}=D_r^*(f)
+    \end{equation*}
+\end{note}

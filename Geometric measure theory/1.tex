@@ -256,7 +256,7 @@ Before anything, we first check that the $s$-dimensional Hausdorff measure defin
     \begin{equation*}
         H^s(\cup_jE_j)\leq\sum_jH^s(E_j)=0
     \end{equation*}
-    Now it remains to show that 
+    Now it remains to show that \textcolor{red}{what}
 
 \end{proof}
 
@@ -265,6 +265,46 @@ Now we justify the usage of $H^s$, instead of just working $H_\delta^s$.
 \begin{exercise}
     For $0\leq s\leq 1, n\geq 2$, we have
     \begin{equation*}
-        H_2^s(B_1(0))=H_2^s(\overline{B_1(0)})=H_2^s(\partial(B_1(0)))
+        H_2^s(B_1)=H_2^s(\overline{B_1})=H_2^s(\partial(B_1))
     \end{equation*}
+    We see that
+    \begin{equation*}
+        H_2^s(B)=H_2^s(\overline{B})=2
+    \end{equation*}
+    Then $H_2^s(\partial B)=0$ if $\overline{B}$ was indeed measurable. But for $0\leq s\leq $, it is more reasonable to cover $\overline{\partial B}$ with bigger covers.
 \end{exercise}
+
+Hence we work with $H^s$ to get a Borel regular measure. Recall the following definitions.
+\begin{definition}
+    A measure $\mu$ is a Borel measure if all Borel sets are $\mu$-measurable. Moreover, $\mu$ is called Borel regular if for any Borel set $A$, there exists another Borel set $B$ such that $B\subset A$, and $\mu(A)=\mu(B)$.
+\end{definition}
+With our construction, we claim that the Hausdorff measure $H^s$ for any $s>0$ is a Borel regular measure.
+\begin{proposition}
+    $H_\delta^s$ is a Borel regular measure.
+\end{proposition}
+\begin{proof}
+    We first accept the fact that every Borel set is $H^s$-measurable. We show that $H^s$ is Borel-regular. For a Borel set $A$, we would like to approximate it by ``fattening up'' the covers. For each $n$, let $B_n:=\cup_jE_{n,j}$ be a cover of $A$, and such that $\sum_{j}(diam(E_{n,j}))^s\leq H_\frac{1}{n}^s(A)+\frac{1}{n}$. Then if we take $B=\cap_nB_n$, we have that $A\subset B$, and $H^s(A)=\cap_n H_\frac{1}{n}^s(A)\geq\sum_j(diam(E_{n,j}))^s-\frac{1}{n}\geq \cap_nH_\frac{1}{n}^s(B_n)-\frac{1}{n}$, which by our construction, is $H^s(B)$. Then by monotonicity of $H^s$, we have that
+    \begin{equation*}
+        H^s(A)=H^s(B)
+    \end{equation*}
+\end{proof}
+\begin{note}
+    The countably additivity of $H^s$ comes from the fact that all Borel sets are $H^s$-measurable, and any meausure if countably additive on its measurable sets.
+\end{note}
+
+
+This is page 12 on weak convergence of measures.
+\begin{definition}[Weak convergence of measures]
+    Let $\{\mu_j\}$ be a sequence of locally finite measures (they automatically assign finite measures to all compact sets), and we say $\{\mu_j\}$ converges to $\mu$ weakly if for all $\varphi\in C_c(X)$, we have
+    \begin{equation*}
+        \lim_{j\to\infty}\int\varphi d\mu_j=\int \varphi d\mu
+    \end{equation*}
+\end{definition}
+
+Our goal for tonight is to understand the proof of the Frostman Lemma.
+\begin{lemma}[Frostman Lemma]
+    Assume $E\subset\R^n$ is a compact set with $H^s(E)>0$, then there exists a compactly supported Borel measure $\mu$ with $supp(\mu)\subset E$ and $\mu(E)\gtrsim H_\infty^s(E)$, and such that for all $x\in\R^n, r>0$, we have
+    \begin{equation*}
+        \mu(B(x,r))\leq r^s
+    \end{equation*}
+\end{lemma}
