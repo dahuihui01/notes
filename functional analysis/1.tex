@@ -2632,3 +2632,87 @@ If $\mathcal{A}$ has an approximate identity of norm 1, and if $\mu$ is continuo
         \overline{\{\pi_f:f\in\mathcal{A}\}}=D_r^*(f)
     \end{equation*}
 \end{note}
+
+
+\section{Lecture 23}
+\begin{proposition}
+    Let $G$ be a locally compact group, the left-regular representation of $L^1(G)$ on $L^2(G)$ is faithful.
+\end{proposition}
+\begin{proof}
+    let $f\in L^1(G)$, and $f\neq 0$, with $L^1(G)$ has a norm-1 approximate identity of functions in $C_c(G)$. Then there exists $g\in C_c(G)$ such that $f\ast g\neq 0$, and
+    \begin{equation*}
+        f\ast g=\int_G f(x)\lambda_xgdx\in C_\infty(G)\cap L^1(G)\cap L^2(G)
+    \end{equation*}
+    so now $g$ is an element of $L^2(G)$,
+    \begin{equation*}
+        \lambda_f(g)=f\ast g\in L^2(G)
+    \end{equation*}
+    we have that
+    \begin{equation*}
+        \|f\ast g\|_{L^2}^2=\int|f\ast g|^2d\mu>0
+    \end{equation*}
+    So $\lambda_f\neq 0$. For $G$ commutative, the norm closure
+    \begin{equation*}
+        \overline{\{\lambda_f: f\in L^1(G)\}}=C_r^*(G)
+    \end{equation*}
+\end{proof}
+
+\begin{proposition}
+    Let $\mathcal{A}$ be a $C^*$-algebra, without an identity element. Let $\tilde{\mathcal{A}}$ be $\mathcal{A}$ with 1 adjoint. (Side note: $\|a+\alpha 1\|=\|a\|+|\alpha|$, and note such norm is not good for $\mathcal{A}=C_\infty(X)$.) For the left regular representation on $\mathcal{A}$, i.e. if $b\in\tilde{\mathcal{A}}$, set $\|b\|:=\sup\{\|ba\|: \|a\|\leq 1\}$. With this norm $\|b\|$, we have that $\tilde{\mathcal{A}}$ is a $C^*$-algebra. 
+\end{proposition}
+This is to check that $\|b^*b\|=\|b\|^2$. We already have $\|b^*b\|\leq\|b\|^2$. And $\|ba\|^2$, we have that
+\begin{equation*}
+    \|ba\|^2=\|(ba)^*(ba)\|\leq\|a^*\|\|b^*ba\|\leq\|b^*b\|\|a\|=\|a\|^2\|b^*b\|
+\end{equation*}
+And it is easy to see that if $\mathcal{A}$ is complete, then $\tilde{\mathcal{A}}$ is also complete.
+
+If $\mathcal{A}$ is a commutative $C^*$-algebra without identity, and $\tilde{\mathcal{A}}=C(X)$, and this is the nonzero homomorphisms of $\mathcal{A}$ onto $\C$, with $\{\infty\}$. So $\tilde{\mathcal{A}}=X\setminus\{\infty\}$, and $\mathcal{A}\cong C_\infty(X\setminus \{\infty\})$, where the space $X\setminus\{\infty\}$ is locally compact. 
+
+Let $G$ be a commutative, discrete group, where
+\begin{equation*}
+    C_r^*(G)\cong C_\infty(X)
+\end{equation*}
+where each point of $X$ gives a nonzero homeomorphism of $L^1(G)$ into $\C$. Then get for any $f\in L^1(G)$, there is a continuous *-homomorphism of $L^1(G)$, then there exists a $\varphi\in\widehat{L^1(G)}$ such that $\varphi(f)\neq 0$. We want to describe all $\varphi\in\widehat{L^1(G)}$, let $f,g\in L^1(G), g\neq 0$. We have that
+\begin{equation*}
+    \varphi(f)\varphi(g)=\varphi(f\ast g)=\varphi(\int f(x)\lambda_xgdx)
+\end{equation*}
+So
+\begin{equation*}
+    \varphi(f)=\int f(x)\varphi(\lambda_x g)/\varphi(g)dx
+\end{equation*}
+Define $\omega\varphi(x)=\varphi(\lambda_xg)/\varphi(g)$, is continuous. hence we have that
+\begin{equation*}
+    \varphi_f\varphi_g=\it f(x)\varphi(\lambda_xg)dx
+\end{equation*}
+We then have
+\begin{equation*}
+    \varphi(g)\omega_\varphi(x)=\varphi(\lambda_xg)
+\end{equation*}
+If we look at 
+\begin{equation*}
+    \omega_\varphi(xy)\varphi(g)=\varphi(\lambda_{xy}g)=\varphi(\lambda_x(\lambda_yg))=\varphi(\lambda_yg)\omega_\varphi(y)\omega_\varphi(x)
+\end{equation*}
+Because we have $\varphi(g)\neq 0$, we divide both sides, then we have
+\begin{equation*}
+    \omega_\varphi(xy)=\omega_\varphi(x)\omega_\varphi(y)
+\end{equation*}
+So $\omega_\varphi\in\widehat{G}$ into $T$.
+
+For $f\in L^1(G)$, define
+\begin{equation*}
+    \widehat{f}(\sigma)=\int f(x)\sigma(x)dx\in\widehat{G}\in C_\infty(\widehat{G})
+\end{equation*}
+where we equip $\widehat{G}$ with the weak-* topology, and $\sigma\in\widehat{G}$. And the above defines the Fourier transform.
+\begin{corollary}
+    The Fourier trasnform defined above is injective.
+\end{corollary}
+For any $f\in L^1(G)$, if $f\neq 0$, then $\widehat{f}\neq 0$. And we have
+\begin{equation*}
+    \widehat{f^*}=\overline{\widehat{f}}
+\end{equation*}
+Next we state a fact: 
+\begin{proposition}
+    The weak-* topology on $\widehat{G}$ agrees with the topology of uniform convergence on compact subsets of $G$. Moreover, under this uniform topology on compact subsets of $G$, we can see that $\widehat{G}$ is a topological group.
+\end{proposition}
+Next time: unbounded operators on Hilbert spaces! (And the spectral theorem for those).
+
