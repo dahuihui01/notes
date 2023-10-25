@@ -2716,3 +2716,337 @@ Next we state a fact:
 \end{proposition}
 Next time: unbounded operators on Hilbert spaces! (And the spectral theorem for those).
 
+\section{Lecture 24}
+If $V$ is a Banach space, and $A$ is a bounded linear operator on $V$, then have the operator:
+\begin{equation*}
+    T_t=e^{tA}=\sum_{n=0}^\infty\frac{(tA)^n}{n!}
+\end{equation*}
+Then $T_tT_s=T_{t+s}$, and $s,t\in\R$, where $T_0=I$. For $v\in V$. For $v\in V$, and
+\begin{equation*}
+    t\mapsto T_tv \text{ is norm continuous }
+\end{equation*}
+If $V=C_\infty(\R^n, L^p(\R^n))$, and
+\begin{equation*}
+    Af=\Delta f, \text{ only defined for smooth } f
+\end{equation*}
+And
+\begin{equation*}
+    \frac{dI}{dt}f=\Delta f 
+\end{equation*}
+
+Let $V$ be a Banach space, and let $\{T_t\}$ be a semigroup of bounded operators on $V$, and $T_sT_t=T_{s+t}$, and $T_0=I_V$, with each strongly continuous, so
+\begin{equation*}
+    t\mapsto T_tv \text{ is norm continuous for each }v
+\end{equation*}
+\begin{definition}
+    $v$ is differentiable if 
+    \begin{equation*}
+        Av=\lim_{h\to 0}\frac{T_{t+h}v-T_tv}{h}
+    \end{equation*}
+    has a limit as $h\to 0$.
+\end{definition}
+Let $\mathcal{D}=\{v\in V: v \text{ is differentiable }\}$ 
+\begin{definition}
+    If $v, w\in\mathcal{D}$, then $u+v\in\mathcal{D}$, and $\alpha v\in\mathcal{D}$ if $\alpha\in\C$. And $A$ is a linear operator from $\mathcal{D}$ to $V$.
+\end{definition}
+
+For each $\{T_tv:t\in [0,1]\}$ is compact, so bounded, so there exists $k_v$ such that $\|T_tv\|\leq k_v$ for all $t\in [0,1]$. So by uniform boundedness principle, there is a $k$ such that
+\begin{equation*}
+    \|T_t\|\leq k, \text{ for } t\in [0,1]
+\end{equation*}
+Then any $t\geq 0$, is of the norm $n+s$ with $s\in [0,1]$. So
+\begin{equation*}
+    T_t=T_nT_s=(T_1)^nT_s, \|T_t\|\leq k^{n+1}=kk^n=ke^{n\ln(k)}\leq ke^{t\beta}, \beta=\ln(k)
+\end{equation*}
+Let $\tilde{T}_t=k^{-1}e^{-t\beta}T_t$, then $\|\tilde{T}_t\|\leq 1$, this gives that $t\|\tilde{T}_t\|$ is a strongly continuous operator.
+
+\begin{equation*}
+    \frac{T_{t+h}-T_t}{h}=T_t\frac{T_h-T_0}{h}
+\end{equation*}
+And we also get
+\begin{equation*}
+    T_tAv=AT_t
+\end{equation*}
+\begin{proposition}
+    If $v\in\mathcal{D}(A)$, then so does $T_tv$ for all $t$, and we have
+    \begin{equation*}
+        T_tAv=AT_t
+    \end{equation*}
+\end{proposition}
+Given $f$ continuous on $[0,\infty)$, and $v\in V$. We can define 
+\begin{equation*}
+    \int_0^tf(s)T_s(v)ds 
+\end{equation*}
+is a norm continuous function on $\R^+$. This integral is defined by the Riemann integral (because is norm-continuous!).
+One should think of this integrated form of $T$ for $f\vert_{[0,t]}$.
+\begin{proposition}
+    We have
+    \begin{equation*}
+        \int_0^tT_svds\in\mathcal{D}(A)
+    \end{equation*}
+\end{proposition}
+And this is to show 
+\begin{equation*}
+    \int_0^tT_svds\in\mathcal{D}(A)
+\end{equation*}. We will prove this next time. And note that
+\begin{equation*}
+    \frac{1}{t}\int_0^tT_svdt\to v, \text{ as } t\to 0
+\end{equation*}
+And this converges to the approximation of norm 1.
+
+
+\section{Lecture 25}
+Let $V$ be a Banach space, and $\{T_t\}$ a strongly continuous semigroup.
+\begin{proposition}
+    For any $t>0$, we have that 
+    \begin{equation*}
+        \int_0^tT_svds\in{D}(A)
+    \end{equation*}
+    where $D(A)$ is the domain of $A$.
+\end{proposition}
+
+\begin{proof}
+    \begin{align*}
+        \frac{T_h-T_0(I)}{h}\left(\int_0^t T_svds\right)&=\frac{1}{h}\left( T_h\left(int_0^tT_svds\right)-\int_0^tT_svds\right)\\
+        &=\frac{1}{h}\left(\int_0^tT_{s+h}vds\right)-\frac{1}{h}\int_0^tT_svds\\
+        &=\frac{1}{h}\left(\int_h^{t+h}T_svds-\int_0^sT_svds\right)\\
+        &=\frac{1}{h}\left(\int_t^{t+h}T_svds-\int_0^tTsvds\right)=T_tAv-v
+    \end{align*}
+    In order words, 
+    \begin{equation*}
+        A\left(\int_0^tT_svds\right)=T_tAv-v
+    \end{equation*}
+\end{proof}
+\qed
+
+Hence, to reiterate, we have
+\begin{equation*}
+    \int_0^t T_svds\in D(A), \text{ so }\frac{1}{t}\int_0^tT_svds\in D(A)
+\end{equation*}
+And as
+\begin{equation*}
+    \lim_{t\to 0}\left(\frac{1}{t}\int_0^t\right)=v
+\end{equation*}
+Then
+\begin{proposition}
+    The domain of $A$, $D(A)$ is dense in $V$.
+\end{proposition}
+For each operator $S$ on a domain $D$, with $D\subset V$, the graph of $S$,
+\begin{equation*}
+    \Gamma(S)=\{(v,Sv): v\in D(S)\}\subset V\times V
+\end{equation*}
+And there is no unique norm that you put on here, but there exists some equivalent norms to put on here.
+\begin{example}
+    We could have the following norms on the graph of $S$, 
+    \begin{equation*}
+        \|(v,w)\|=\begin{cases}
+            \|v\|_V\|w\|_\infty\\
+            \|v\|+\|w\|\\
+            (\|v\|^2+\|w\|^2)^\frac{1}{2}
+        \end{cases}
+    \end{equation*}
+\end{example}
+\begin{definition}[Closed and closable graph]
+    You call $S$ is closed if $\Gamma(S)$ is a closed subset of $V\times V$.
+
+    We call that $S$ is closable, if we have the closure of $\Gamma(S)$ is the graph of an operator. 
+\end{definition}
+\begin{note}
+    The issue here is that if $(v, w_1), (v,w_2)$ both belong to $\overline{\Gamma(S)}$. Then, you need $w_1=w_2$. In other words, you need that if $(0,w)\in\overline{\Gamma(S)}$, then $w=0$. Note that this is also a sufficient condition. If closable, then closure of $S$ is the operator from $\overline{\Gamma(S)}$.
+\end{note}
+\begin{remark}
+    This does not mean that the closure is the whole space.
+\end{remark}
+From an unbounded operator, how to create a one-parameter semigroup, such that is closable.
+
+\begin{proposition}
+    This is the aim: for $A$ from $\{T_t\}$, $A$ is a closed operator.
+    \begin{equation*}
+        A\left(\int_0^tT_svdx\right)=T_tv-v
+    \end{equation*}
+\end{proposition}
+\begin{proposition}
+    For $v\in D(A)$, we have
+    \begin{equation*}
+        \int_0^tA(T_sv)ds=\int_0^tT_s(Av)=T_tv-v
+    \end{equation*}
+\end{proposition}
+\begin{proof}
+    Let $V^*$ be the dual vector space, and let $\varphi\in V^*$, and let 
+    \begin{equation*}
+        f(t)=\varphi\left(\int_0^tAT_svds\right)=\int_0^t\varphi(AT_sv)ds, g(t)=\varphi(T_tv-v)
+    \end{equation*}
+    We have $f(0)=g(0)=0$. Then we consider the derivatives:
+    \begin{equation*}
+        f'(t)=\varphi(AT_tv), g'(t)=\varphi(AT_tv)
+    \end{equation*}
+    Now by the unique solutions of ordinary differential equations, we get that
+    \begin{equation*}
+        f(t)=g(t), \forall t
+    \end{equation*}
+\end{proof}
+\qed
+
+Now we prove the proposition that $A$ on $T_t$ is a closed operator.
+\begin{proof}
+    Suppose we have a sequence of $\{v_n\}\subset D(A)$, with $v_n\to v\in V$, and $Av_n\to w\in V$. We thus have
+    \begin{equation*}
+        (v_n, Av_n)\to (v,w)
+    \end{equation*}
+    Then for any $t$, we have (given $T_t$ is bounded)
+    \begin{equation*}
+        \int_0^tAT_sv_nds=T_tv_n-v_n\to T_tv-v
+    \end{equation*}
+    Note that this also converges to 
+    \begin{equation*}
+        \int_0^t T_s(Av_n)ds\to \int_0^tT_swds
+    \end{equation*}
+    So we have that 
+    \begin{equation*}
+        \int_0^tT_swds=T_tv-v
+    \end{equation*}
+    \begin{equation*}
+        \frac{1}{t}\int_0^tT_swds=\frac{T_tv-v}{t}
+    \end{equation*}
+    Let $t\to 0$, then we have (the LHS is approximate of identity)
+    \begin{equation*}
+        w=Av
+    \end{equation*}
+    Hence we have that $v\in D(A)$, i.e. the pair
+    \begin{equation*}
+        (v_n, Av_n)\to (v,w)=(v,Av)\in\Gamma(A)
+    \end{equation*}
+    $A$ is closed.
+\end{proof}
+\qed
+
+\begin{note}
+    \textcolor{red}{what semigroup/}
+\end{note}
+
+Let $\mathcal{H}$ be a Hilbert space, and let $A\in\mathcal{B}(\mathcal{H})$, and let 
+\begin{equation*}
+    T_t=e^{tA}
+\end{equation*} 
+We ask the question: when is $T_t$ a group of \textbf{unitary} operators, such that $T_tT_t^*=T_tT_T^{-1}=I$  
+
+
+\section{Lecture 26}
+Let $A\in\mathcal{B}(\mathcal{H})$,  $T_t=e^{tA}$, unitary, and
+\begin{equation*}
+    T_tT_t^*=I
+\end{equation*}
+and 
+\begin{equation*}
+    \frac{d}{dt}\vert_{t=0}=A+A^*=0
+\end{equation*}
+And we have
+\begin{equation*}
+    e^{tA}e^{tA^*}=I
+\end{equation*}
+i.e. $A^*=-A$.
+
+Let $B=-iA$, and $B$ is self-adjoint, and 
+\begin{equation*}
+    A=iB, e^{itB}\text{ is self-adjoint}
+\end{equation*}
+We now take
+\begin{equation*}
+    U_t=e^{itA}
+\end{equation*}
+where $A$ is unbounded, we ask if it is self-adjoint?
+For an unbounded operator $A$ on $\mathcal{H}$, $D(A)$, dense.
+Ho do we define $A^*$?
+\begin{equation*}
+    \la A\xi, eta\ra=\la \xi, A^*\eta\ra, \xi\in D(A)
+\end{equation*}
+where
+\begin{equation*}
+    D(A^*)=\{h\in\mathcal{H}: \xi\to A\xi \text{ is continuous }\}
+\end{equation*}
+
+\begin{equation*}
+    \Gamma(A^*)=\{(\eta,\zeta):\la A\xi, \eta\ra=\xi, \zeta, \forall\xi\in D(A)\} 
+\end{equation*}
+In other words,
+\begin{equation*}
+    \la A\xi, \eta\ra-\la \xi, \zeta\ra=0
+\end{equation*}
+which implies
+\begin{equation*}
+    \la(A\xi-\xi), (\eta, \zeta)\ra=0
+\end{equation*}
+And we have
+\begin{equation*}
+    \la V(\xi, A\xi), (\eta, \zeta)\ra=0
+\end{equation*}
+\begin{equation*}
+    \Gamma(A^*)=(V(\Gamma(A)))^\perp=V(\Gamma(A)^\perp)
+\end{equation*}
+We have that $\Gamma(A^*)$ is closed, and hence $V(\overline{\Gamma(A)})$ is closed.
+
+Hence if $A$ is closed, then 
+\begin{equation*}
+    \Gamma(A^*)=(V\Gamma(A))^\perp=V((\Gamma(A))^\perp)
+\end{equation*}
+Then 
+\begin{equation*}
+    \mathcal{H}\bigoplus\mathcal{H}=\Gamma(A^*)\bigoplus V\Gamma(A)
+\end{equation*}
+\begin{proposition}
+    We have $D(A^*)$ is dense.
+\end{proposition}
+\begin{proof}
+    If $D(A^*)$ is not dense, then there exists $\xi\in\mathcal{H}$, such that
+    \begin{equation*}
+        \la \xi, D(A^*)\ra =0
+    \end{equation*} 
+    \begin{equation*}
+        0=\la(0,\xi), (A^*\eta,-\eta)\ra=\la (0,\xi), V((\eta, A^*\eta))\ra
+    \end{equation*}
+    for $\eta\in\Gamma(A^*)$. So $(0,\xi)$ is perpendicular to $V(\Gamma(A^*))$, so 
+    \begin{equation*}
+        (0,\xi)\in\Gamma(A), A0=\xi\Rightarrow \xi=0
+    \end{equation*}
+\end{proof}
+\qed
+
+\begin{equation*}
+    \mathcal{H}\bigoplus\mathcal{H}=\Gamma(A^*)\bigoplus V\Gamma(A)=\Gamma(A)\bigoplus V(\Gamma(A^*))
+\end{equation*}
+For an $\xi\in\mathcal{H}$, and 
+\begin{equation*}
+    (\xi, 0)=(\eta, A\eta)+(A^*S, -S)
+\end{equation*}
+and 
+\begin{equation*}
+    \zeta=\eta+A^*\zeta=\eta+A^*A\eta=(I+A^*A)\eta, 0=A\eta-\zeta
+\end{equation*}
+and then
+\begin{equation*}
+    (I+A^*A): D(A)\to\mathcal{H}
+\end{equation*}
+For any $\zeta\in D(A)$,  note that we have
+\begin{equation*}
+    \la (I+A^*A)\eta,\eta\ra=\la \eta, \eta\ra+\la A^*A\eta, \eta\ra=\la A\eta, A\eta\ra=0, \text{ if }\eta\neq 0
+\end{equation*}
+\begin{corollary}
+    $(I+A^*A)$ is injective and onto $\mathcal{H}$.
+\end{corollary}
+
+If $S,T$ are unbounded operators on $\mathcal{H}$, and $D(S), D(T)$, then
+\begin{equation*}
+    D(ST)=\{\xi:\xi\in D(T), \text{ and } T\xi\in D(S)\}
+\end{equation*}
+\begin{equation*}
+    D(S+T)=D(S)\cap D(T)
+\end{equation*}
+
+We have that
+\begin{equation*}
+    \|(I+A^*A)\xi\|\geq\|\xi\|
+\end{equation*}
+And again we have $(I+A^*A)^{-1}$ exists on $\mathcal{H}$ and mapping onto $D(A)$. So
+\begin{equation*}
+    \|(I+A^*A)^{-1}\|\leq 1
+\end{equation*}

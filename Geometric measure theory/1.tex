@@ -218,8 +218,10 @@ Before anything, we first check that the $s$-dimensional Hausdorff measure defin
     \begin{equation*}
         H^s(f(A))\lesssim_LH^s(A)
     \end{equation*}
-    This can be shown that  
 \end{exercise}
+\begin{proof}
+    For any up-to-$\delta$ cover $\{E_j\}$ of $A$, we have $\{f(E_j)\}_j$ is an (up-to-some constant)-$\delta$ cover of $f(A)$, hence 
+\end{proof}
 
 \begin{proposition}
     The Hausdorff measure is monotone: for $E_1\subset E_2$, we have that
@@ -320,3 +322,119 @@ Our goal for tonight is to understand the proof of the Frostman Lemma.
 \begin{proof}
     
 \end{proof}
+
+There are some things we need to establish before the we prove the Frostman lemma. For a set $E\in\R^n$, we use $\mathcal{M}(E)$ to denote the set of finite Borel measures whose support is contained in $E$, i.e. if $\mu\in\mathcal{M}(E)$, we have
+\begin{equation*}
+    supp(\mu)\subset E, \text{ and }0<\mu(E)<\infty
+\end{equation*}
+
+Next we state the ``Bolzano-Weierstrass'' theorem for measures.
+\begin{lemma}
+    Let $\{\mu_j\}$ be a sequence of locally finite Borel measures on $\R^n$, i.e., for all $K$ compact subset in $\R^n$, we have
+    \begin{equation*}
+        \sup_{j\in\mathbb{N}}\mu_j(K)<\infty
+    \end{equation*}
+    Then there exists a subsequence $\mu_{j_k}$ such that as $k\to\infty$, the subsequence converges to $\mu$.
+\end{lemma}
+
+
+\section{Hausdorff dimension of product sets}
+\begin{theorem}[Hausdorff dimension of product sets]
+    Let $A,B$ be Borel sets, and $s,t\geq 0$, then we have
+    \begin{equation*}
+        H_\infty^{s+t}(A\times B)\gtrsim_{d_1, d_2}H_\infty^s(A)H_\infty^t(B)
+    \end{equation*}
+\end{theorem}
+\begin{proof}
+    We use the theorem that positive Hausdorff meausre if and only if there exists a Frostman measure.
+    
+    Assume $H_\infty^s(A)>0, H_\infty^t(B)>0$, then there exists $\mu_1, \mu_2$ such that 
+    \begin{equation*}
+        \mu_1(A)\gtrsim H_\infty^s(A), \mu_2(B)\gtrsim H_\infty^t(B)
+    \end{equation*}
+    Then we consider any ball $B((x_1, x_2), r)$, we have that
+    \begin{equation*}
+        B((x_1, x_2), r)\subset B(x_1, r)\times B(x_2, r)
+    \end{equation*}
+    Hence we have
+    \begin{equation*}
+        \mu_1\times\mu_2(A\times B)\gtrsim r^{s+t}
+    \end{equation*}
+    Hence $\mu_1\times\mu_2$ is a Frostman measure on $A\times B$, hence 
+    \begin{equation*}
+        H_\infty^{s+t}(E)\geq r^{s+t}\gtrsim H_\infty^s(A)H_\infty^t(B)
+    \end{equation*}
+
+\end{proof}
+\begin{corollary}
+    For $A,B$ Borel sets, we have
+    \begin{equation*}
+        \dim_H(A\times B)\geq \dim_H(A)+\dim_H(B)
+    \end{equation*}
+\end{corollary}
+\begin{proof}
+    Once we have $ H_\infty^{s+t}(A\times B)\gtrsim_{d_1, d_2}H_\infty^s(A)H_\infty^t(B)$, it is easy to see, if $\dim_H(A)> s$, and $\dim_H(B)>t$, then we have that $H_\infty^s(A)\geq 0$, and $H_\infty^t(B)\geq 0$, thus $H_\infty^{s+t}(A\times B)\geq 0$, hence we have
+    \begin{equation*}
+        \dim_H(A\times B)\geq s+t
+    \end{equation*}
+\end{proof}
+\qed
+
+\begin{corollary}
+    We also have that
+    \begin{equation*}
+        \dim_H(A\times B)\leq\dim_HA+\overline{\dim_M}B
+    \end{equation*}
+\end{corollary}
+\begin{proof}
+    If we assume that $\dim_H(A)<s, \dim_H(B)\leq\overline{\dim_M}(B)<t$, then we have
+    \begin{equation*}
+        \dim_H(B)<t, i.e. H_\infty^t(B)=0
+    \end{equation*}
+    \begin{equation*}
+        \dim_\infty(A\times B)
+    \end{equation*}
+\end{proof}
+
+
+
+\section{Riesz Energies}
+We revisit the question regarding projections.
+Assume $E$ is compact,do we always have
+\begin{equation*}
+    \dim_H(\pi_e(E))=\min\{\dim_H(E), 1\}
+\end{equation*}
+for some $e\in S^1$ or for all $e\in S^1$.
+
+The important implication is we would like to transfer an $s$-dimensional Frostman measure on $E$ to an $s$-dimensional Frostman measure(the push-forward measure) on $\pi_e(E)$, i.e. we would like to have if $\mu(B(x,r))\lesssim r^s$ for $supp(\mu)\subset E$,
+\begin{equation*}
+    \mu_{\pi_e}(B(x,r))\lesssim r^s
+\end{equation*}
+where $supp(\mu_{\pi_e})\subset \pi_e(E)$.
+
+\begin{definition}[Riesz potential and energy of measures]
+    Let $0\leq s\leq d$, and let $\mu$ be a Borel measure on $\R^d$. The $s$-dimensional Riesz potential of the measure $\mu$ at a particular point is
+    \begin{equation*}
+        V_s(\mu)(x)=\mu\ast k_s(x)=\int\frac{1}{|x-y|^s}d\mu(y)
+    \end{equation*}
+    where $k_s$ is the $s$-dimensional Riesz kernel 
+    \begin{equation*}
+        k_s(x)=\frac{1}{|x|^s}
+    \end{equation*}
+    And the $s$-dimensional Riesz energy of the measure $\mu$ is given by integrating the potential:
+    \begin{equation*}
+        I_s(\mu)=\int V_s(\mu)d\mu(x)=\int\int\frac{1}{|x-y|^s}d\mu(x)d\mu(y)
+    \end{equation*}
+\end{definition}
+
+The reason for introducing the Riesz energies and potentials is because they carry the same information as a measure being $s$-Frostman.
+\begin{proposition}
+    Let $\mu\in M(\R^d)$ be $s$-Frostman, then for all $0\leq t<s$, we have $\|V_t(\mu)\|_\infty<\infty$, and
+    \begin{equation*}
+        I_t(\mu)<\infty
+    \end{equation*}
+    Conversely, if we have finite $s$-Riesz energy, $I_s(\mu)<\infty$, then there exists a subset $B\subset\R^d$, that we have
+    \begin{equation*}
+        \mu(B)>0, \mu\vert_B \text{ is $s$-Frostman}
+    \end{equation*}
+\end{proposition}

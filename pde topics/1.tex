@@ -2456,3 +2456,167 @@ and translate by $x_n$, we have
     |u_1^n(0)|\geq\epsilon^a
 \end{equation*}
 which implies $\phi_1(0)\neq 0$. And it does not go to 0.
+
+
+\section{Lecture 10/19}
+
+We will show the interpolation inequality:
+\begin{equation*}
+    \|u\|_{L^p}\leq\|u\|_{\dot{H}^1}^\theta\|u\|_{\dot{B}^{1-n/2}}^{1-\theta}
+\end{equation*}
+Easy case: let $p$ be an even integer.
+We would like to evaluate: 
+\begin{equation*}
+    \int |u|^p dx
+\end{equation*}
+and for the Littlewood-Paley decomposition of it,
+\begin{equation*}
+    u=\sum_k u_k
+\end{equation*}
+where each $u_k$ is on the scale of $2^k$, and 
+\begin{equation*}
+    \|u\|_B\approx 2^{k(1-n/2)}\|u_k\|_{L^\alpha}
+\end{equation*}
+For different frequencies, we generate
+\begin{equation*}
+    \int |u|^pdx=\int u_{k_1}...u_{k_p}dx
+\end{equation*}
+where the first two frequencies dominate. Hence the RHS now is
+\begin{align*}
+    \|u_{k_1}\|_{L^2}\|u_{k_2}\|_{L^2}...\|u_{k_p}\|_\infty&\leq 2^{-k_1}2^{-k_2}\|u_{k_1}\|_{\dot{H}^1}\|u_{k_2}\|_{\dot{H}^1}\cdot\prod\|u_{k_j}\|_\infty\\
+    &\leq 2^{-k_1}2^{-k_2}\|u_{k_1}\|_{\dot{H}^1}\|u_{k_2}\|_{\dot{H}^1}\|u\|_B^[p-2]\\
+    &\leq\sum_{k_1=k_2}\|u_{k_1}\|_{\dot{H}^1}\|u_{k_2}\|_{\dot{H}^1}2^0\|u\|_B^{p-1}
+\end{align*}
+where the first term is just $\|u\|_{\dot{H}^1}^2$.
+
+Now for noninteger $p$, we would like to do continuous Littlewood-Paley decomposition. The idea is $u=\sum_ku_k$.
+\begin{equation*}
+    u=\lim_{k\to\infty}P_{<k}u, k\in\R
+\end{equation*}
+\begin{equation*}
+    u=\int_{-\infty}^\infty \frac{d}{dk}P_{<k}udk\Rightarrow u=\int u_kdk
+\end{equation*}
+Now we are integrating with respect to the frequency.
+\begin{equation*}
+    |u|^p=\int\frac{d}{dk}|u_{<k}|^pdk=\int u_k|u_{<k}|^{p-1}dk
+\end{equation*}
+This gives us that
+\begin{equation*}
+    \int_{-\infty}^\infty u_k\int_{-\infty}^\infty u_j|u_{<j}|^{p-2}dkdj
+\end{equation*}
+Which we have
+\begin{equation*}
+    \leq \int_{j<k}2^{-k}\|u_k\|_{\dot{H}^1}2^{-j}\|u_j\|_{\dot{H}^1}2^{<j}\|u\|_B^{p-2}\leq \int_{j<k}2^{j-k}\|u_k\|\|u_j\|dkdj\|u\|_B^{p-2}
+\end{equation*}
+\begin{note}
+    The gives the restriction that $p\geq 2$, and we indeed have this for the Sobolev embedding to work.
+\end{note}
+The moment that $j,k$ separates, we get exponential decay, which essentially forces $j$ and $k$ to be equal (in some sense).
+
+Now we ask the question: why are the $L^p$ norms separating? $\phi$ is the weak limit of $u^n$ (note $G^n$ do not do anything so we ignore it):
+\begin{equation*}
+    u^n=\phi+u^n-\phi
+\end{equation*}
+and 
+\begin{equation*}
+    |u^n|^p=|\phi|^p+|u^n-\phi|^p+\text{ mixed terms }\leq\delta
+\end{equation*}
+we have 
+\begin{equation*}
+    \|\phi_{\geq k_0}\|\leq\delta^100
+\end{equation*}
+\begin{equation*}
+    u^n=u_{\geq k_1}^n+u_{\leq k_1}^n
+\end{equation*}
+and the second term $\|u_{\leq k_1}^n$ weakly converges to $\phi_{\leq k_1}$. For the mixed terms, we have
+\begin{equation*}
+    u_{\geq k_1}^n\cdot\phi_{\leq k_0}(\cdot)^{p-2}
+\end{equation*}
+
+\subsection{Profile decomposition for linear Schrodinger}
+Suppose that we have
+\begin{equation*}
+    \|u_0^n\|_{L^2}=1, \|u^n\|_{L^p}=\epsilon, p=\frac{2(n+2)}{n}
+\end{equation*}
+You want to show your solution contains something that looks like a wave packet. To identify wave packets: we reply and frequency $\xi_0, \partial\xi$  and time
+\begin{equation*}
+    (t_0, x_0), \delta x=(\delta\xi)^{-1}
+\end{equation*}
+and $\delta t=(\delta x)^2$ by parabolic scaling.
+\begin{equation*}
+    G(e^{it\Delta}\phi)\phi\in L^2
+\end{equation*}
+and 
+\begin{equation*}
+    \|u\|_B=\sup_{Q\in\mathcal{Q}}|Q|^\alpha\|u_Q\|_{L^{p_1}}
+\end{equation*}
+where $\mathcal{Q}$ is the dyadic cubes. For $p_1>p$, we get the following Berstein inequality
+\begin{equation*}
+    \|u_Q\|_{L^{p_1}}\leq|Q|^\alpha\|u_Q\|_{L^p}
+\end{equation*}
+\begin{proposition}[Key estimate-Keenrani]
+    \begin{equation*}
+        \|u\|_{L^p}\leq\|u_0\|_{L^2}^{\theta}\|u\|_B^{1-\theta}
+    \end{equation*}
+\end{proposition}
+Once we have the key estimate, we have $\|u\|_{L^p}=\epsilon$, and $\|u_0\|_{L^2}=1$, which makes
+\begin{equation*}
+    \|u\|_B^{1-\theta}\geq\epsilon^\alpha
+\end{equation*}
+by $\|u\|_B=\sup_Q|Q|^\alpha\|u_Q\|_{L^{p_1}}$, this implies there exists one $Q$ such that $u_Q$ concentrates.
+\begin{proof}
+    \begin{equation*}
+        \|u\|_{L^p}^p=\|u\cdot u\|_{L^{p/2}}^{p/2}
+    \end{equation*}
+    Now the RHS turns into a bilinear estimate, where $u$ is concentrated at $\xi_1$, the next $u$ is concentrated at $\xi_2$.
+
+    If $\xi_1$ and $\xi_2$ are far away from each other, then
+    \begin{equation*}
+        u\cdot u=\sum_{Q,Q'\in\mathcal{Q}}u_Q\cdot u_{Q'}
+    \end{equation*}
+    and $|Q|=|Q'|=d(Q,Q')^n$. Via computation, one could treat these sums as disjoint, and almost orthogonal in $L^2$ since their Fourier supports are disjoint.
+
+    If you add two things of the same frequency up, you get outside the parabola $\tau=\xi^2$, but then you create a larger parabola. $1/2(\xi_1+\xi_2)^2$,
+    \begin{equation*}
+        (\xi_1, \xi_1^2)+(\xi_2, \xi_2^2)=(\xi_1+\xi_2, \frac{1}{2}(\xi_1+\xi_2)^2)+(0, \frac{1}{2}(\xi_1-\xi_2)^2)
+    \end{equation*}
+    If they are almost $L^2$ orthogonal, we have that
+    \begin{equation*}
+        \|u^2\|_{L^2}^2\lesssim \sum_{Q,Q'}\|u_Qu_{Q'}\|_{L^2}^2
+    \end{equation*}
+    We have the trivial estimates:
+    \begin{equation*}
+        \|u^2\|_{L^1}\lesssim \sum_{Q,Q'}\|u_Qu_{Q'}\|_[L^1]
+    \end{equation*}
+    By interpolation, we get that
+    \begin{equation*}
+        \|u^2\|_{L^r}^r\leq\sum_{Q,Q'}\|u_Qu_{Q'}\|_{L^r}^r, 1\leq r\leq 2
+    \end{equation*}
+    For $n=1$, $p=6$, and is an even number, so we argue as before. For $n=2$, $p=4$.
+
+    And
+    \begin{equation*}
+        \|u_Qu_{Q'}\|_{L^{p/2}}
+    \end{equation*}
+    For $n=1$, we have
+    \begin{equation*}
+        \|u_Qu_{Q'}\|_{L^2}\leq|Q|^{-1/2}\|u_{0Q}\|_2\|u_{0Q'}\|_2
+    \end{equation*}
+    we compare this to
+    \begin{equation*}
+        \|u_Qu_{Q'}\|_{L^3}\leq\|u_{0Q}\|_{L^2}\|u_{0Q'}\|_{L^2} (Strichartz)
+    \end{equation*}
+    Now we use bilinear restriction theorem:
+    \begin{equation*}
+        \|u_Qu_{Q'}\|_{L^\frac{n+3}{n+1}}\leq |Q|^r\|u_{oQ}\|_{L^2}\|u_{0Q'}\|_{L^2}
+    \end{equation*}
+    And we further have
+    \begin{equation*}
+        \|u_Qu_{Q'}\|_{L^{p/2}-}\leq|Q|^r\|\widehat{u}_{0Q}\|_{L^{2-}}\|\widehat{u}_{0Q'}\|_{L^{2-}}
+    \end{equation*}
+    Hence 
+    \begin{equation*}
+        \|u_Q\|_{L^\infty}\leq|Q|^r\|\widehat{Q}_{0Q}\|_{L^1} (\check{L_1}\subset L^\infty)
+    \end{equation*}
+    and $\|u_Qu_{Q'}\|_{L^\infty}\leq |Q|^r\|\cdot\|_{L^1}\|\cdot\|_{L^1}$.
+\end{proof}

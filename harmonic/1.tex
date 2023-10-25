@@ -1592,7 +1592,7 @@ We could express $\phi(x)-\phi(0)$ as some constant $C$ times $x$, hence the lef
 \end{proof}
 
 \section{Lecture 16}
-\begin{proposition}
+\begin{proposition}[$Q_t$ converges to a tempered distribution]
     $Q_t$ converges to $\frac{1}{\pi}p.v.\frac{1}{x}$ for $t\to 0^+$.
 \end{proposition}
 \begin{proof}
@@ -1608,15 +1608,16 @@ By the weak continuity of FT, we have
 \begin{equation*}
     \left(\frac{1}{\pi}p.v.\frac{1}{x}\right)^{\widehat{\phantom{.}}}(\xi)=-isgn(\xi)
 \end{equation*}
+This is due to $\widehat{Q_t}(\xi)=-isgn(\xi)e^{-2\pi t|\xi|}$. 
 
-Now we formally define the Hilbert transform.
+With $Q_t$ converges to some tempered distribution, we can now study the behavior of $Q_t\ast f(x)$. This is precisely the Hilbert transform.
 \begin{definition}[Hilbert transform]
     The Hilbert transform $H$ is defined as follows: given $f\in\mathcal{S}$,
     \begin{equation*}
         Hf=\lim_{t\to0}Q_t\ast f
     \end{equation*}
     \begin{equation*}
-        Hf=\frac{1}{\pi}p.v.\frac{1}{x}\ast f
+        Hf=\frac{1}{\pi}p.v.\frac{1}{x}\ast f=\frac{1}{\pi}\lim_{\epsilon\to 0}\int_{|y|>\epsilon}\frac{f(x-y)}{y}dy
     \end{equation*}
     or equivalently
     \begin{equation*}
@@ -1628,7 +1629,7 @@ Now we formally define the Hilbert transform.
 \end{exercise}
 
 \begin{remark}
-    Recall that $v(x_it)=Q_t\ast f=P_t\ast Hf$. This establishes a direct usage of the Hilbert transform.
+    Recall that $v(x,t)=Q_t\ast f=P_t\ast Hf$. This establishes a direct usage of the Hilbert transform.
 \end{remark}
 
 \begin{definition}
@@ -1790,17 +1791,24 @@ where the last line, we used Holder's inequality, and using the fact that $H$ is
     \begin{equation*}
         H\chi_{[0,1]}(x)=\frac{1}{\pi}\log\left|\frac{x}{x-1} \right|
     \end{equation*}
-    
 \end{proof}
+\qed
 
 \begin{proposition}
     If $\phi\in\mathcal{S}$, then $H\phi\in L^1$ if and only if $\int\phi=0$.
 \end{proposition}
+\begin{note}
+    \textcolor{red}{Do this as an exercise!!}
+\end{note}
 
 \subsection{Truncated integrals and pointwise convergence}
 We define
 \begin{equation*}
     H_\epsilon f(x)=\frac{1}{\pi}\int_{|y|>\epsilon}\frac{f(x-y)}{y}dy
+\end{equation*}
+And recall that the Hilbert transform is defined to be 
+\begin{equation*}
+    Hf(x)=\lim_{\epsilon\to 0}H_\epsilon f(x)
 \end{equation*}
 This is well defined if $f\in L^p$, for $1\leq p<\infty$, and since the kernel in $L^q, q>1$.
 
@@ -1887,4 +1895,14 @@ Now for exercise, since $H^*$ is strong (2,2), and $g$ can be handled in the old
         |\{x\not\in\Omega^*: H^*b(x)>\lambda\}|\leq\frac{C}{\lambda}\|b\|_{L^1}
     \end{equation*}
 \end{note}
+
+\section{Multipliers}
+\begin{definition}[Fourier multipliers]
+    Given an operator $T_m$, and $m\in L^\infty$, we say $m$ is the multiplier of $T_m$ if
+    \begin{equation*}
+        (T_mf)^{\widehat{\phantom{.}}}(\xi)=m(\xi)\hat{f}(\xi)
+    \end{equation*}
+\end{definition}
+
+
 

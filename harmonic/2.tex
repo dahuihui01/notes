@@ -1,0 +1,134 @@
+\chapter{Singular Integrals}
+\begin{definition}[Zero Average Functions on $S^{n-1}$]
+    Let $\sigma$ denote the angular measure on $S^{n-1}$, then we say a function defined on $S^{n-1}$ has zero average if $y'\in S^{n-1}$
+    \begin{equation*}
+        \int_{S^{n-1}}\Omega(y')d\sigma(y')=0
+    \end{equation*}
+\end{definition}
+And with this definition, we define singular integrals as the following operator.
+\begin{proposition}
+    For $\Omega:S^{n-1}\to\C$, if it has zero average, then
+    \begin{equation*}
+        \int_{\epsilon\leq|x|<1}\frac{\Omega(y')}{|y|^n}dy=0
+    \end{equation*}
+\end{proposition}
+\begin{proof}
+    We will demonstrate this using polar coordinates.
+    \begin{equation*}
+        \int_{\epsilon\leq|x|<1}\frac{\Omega(y')}{|y|^n}dy=\int_\epsilon^1 \frac{1}{r^n}\left(\int_{S^{n-1}}\Omega(y') d\sigma(y')\right)r^{n-1}dr=\int_{S^{n-1}}\Omega(y')d\sigma(y')\log(1/\epsilon)=0
+    \end{equation*}
+\end{proof}
+\qed
+
+\begin{definition}[Singular integrals]
+    We call $T$ a singular integral is $T$ is an operator of the form: for $f\in\mathcal{S}$
+    \begin{equation*}
+        Tf(x)=\lim_{\epsilon\to 0}\int_{|y|>\epsilon}\frac{\Omega(y')}{|y|^n}f(x-y)dy
+    \end{equation*}
+    where $\Omega:S^{n-1}\to\C$, and $y'=\frac{y}{|y|}\in S^{n-1}$ and $\Omega\in L^1$, and with zero average, i.e.
+    \begin{equation*}
+            \int_{S^{n-1}}\Omega(y')d\sigma(y')=0
+    \end{equation*}
+\end{definition}
+We would of course, want to make sense of the integral in the definition, i.e. does it converge for $f\in\mathcal{S}$.
+\begin{proposition}
+    $p.v. \frac{\Omega(x')}{|x|^n}$ is a tempered distribution.
+\end{proposition}
+\begin{proof}
+    \begin{equation*}
+        p.v.\frac{\Omega(x')}{|x|^n}(\phi)=\lim_{\epsilon\to 0}\int_{|x|>\epsilon}\frac{\Omega(x')}{|x|^n}\phi(x)dx=\int_{|x|<1}\frac{\Omega(x')}{|x|^n}(\phi(x)-\phi(0))+\int_{|x|>1}\frac{\Omega(x')}{|x|^n}\phi(x)dx
+    \end{equation*}
+    By $\phi\in\mathcal{S}$, we have that both 
+    \begin{equation*}
+        \frac{\phi(x)-\phi(0)}{|x|^n}\in\mathcal{S}, \frac{\phi(x)}{|x|^n}\in\mathcal{S}
+    \end{equation*}
+    Hence both integrals converge.
+\end{proof}
+\qed
+
+\begin{corollary}[Necessary condition for singular integrals]
+    If $p.v.\frac{\Omega(x')}{|x|^n}$ is a tempered distribution, then $\Omega$ has zero average.
+\end{corollary}
+
+\section{Fourier transform of the kernel}
+\begin{definition}[Homogeneous functions]
+    If $f$ is such that for any $x\in\R^n$ and any $\lambda>0$, we have
+    \begin{equation*}
+        f(\lambda x)=\lambda^af(x)
+    \end{equation*}
+    Then we say $f$ is of Homogeneous of degree $a$.
+\end{definition}
+Similarly, if we scale a test function such that
+\begin{equation*}
+    \phi_\lambda(x)=\lambda^{-n}\phi(\lambda^{-1}x)
+\end{equation*}
+And we integrate against a homogeneous of degree $a$ function $f(x)$, we have
+\begin{equation*}
+    \int\phi_\lambda(x)f(x)=\int \phi(x)f(\lambda x)dx=\lambda^a\int\phi(x)f(x)dx
+\end{equation*}
+\begin{definition}[Homogeneous distribution]
+    A distribution $T$ is homogeneous of degree $a$, if for every test function $\phi$, we have
+    \begin{equation*}
+        T(\phi_\lambda)=\lambda^aT(\phi)
+    \end{equation*}
+\end{definition}
+\begin{exercise}
+$p.v.\frac{\Omega(x')}{|x|^n}$ is homogeneous of degree $-n$.
+\begin{equation*}
+    p.v.\frac{\Omega(x')}{|x|^n}(\phi_\lambda)=\lim_{\epsilon\to 0}\int_{|x|>\epsilon}\frac{\Omega(x')}{|x|^n}\phi_\lambda(x)dx=\lambda^{-n}p.v.\frac{\Omega(x')}{|x|^n}(\phi)
+\end{equation*}
+\end{exercise}
+
+\begin{proposition}
+    If $T$ is a tempered distribtuion, homogeneous of degree $a$, then its Fourier transform has degree $-n-a$.
+\end{proposition}
+\begin{proof}
+    Let $\phi\in\mathcal{S}$, we have
+    \begin{equation*}
+        \hat{T}(\phi_\lambda)=T(\hat{\phi_\lambda})=T(\hat{\phi(\lambda\xi)})=\lambda^{-n}T(\lambda^n\phi(\lambda\xi))=\lambda^{-n}T(\phi_{\lambda^{-1}})=\lambda^{-n-a}T(\hat{\phi})=\lambda^{-n-a}\hat{T}(\phi)
+    \end{equation*}
+\end{proof}
+\qed
+
+\begin{theorem}
+    The Fourier transform of our kernel $p.v.\frac{\Omega(x')}{|x|^n}$ is of homogeneous of degree 0, and
+    \begin{equation*}
+        \left(p.v.\frac{\Omega(x')}{|x|^n}\right)^{\widehat{\phantom{.}}}(\xi)=\int_{S^{n-1}}\Omega(u)\left[\log\left(\frac{1}{|u\cdot\xi'|}\right)-i\frac{\pi}{2}sgn(u\cdot\xi')\right]d\sigma(u)
+    \end{equation*}
+\end{theorem}
+
+
+
+\section{Singular integrals with variable kernels}
+Consider the following polynomial operator:
+\begin{equation*}
+    P(x,D)=\sum_{|a|=m}b_\alpha(x) D^\alpha
+\end{equation*}
+Note now $b_\alpha(x)$ is a variable function with $x$.
+
+When $f\in\mathcal{S}$, we have
+\begin{equation*}
+    p(x,D)f(x)=\int_{\R^n}P(x,2\pi i\xi)\hat{f}(\xi)e^{2\pi ix\xi}d\xi
+\end{equation*}
+And let $\Gamma=(-\Delta)^{1/2}$, then we would like to find $T$ such that
+\begin{equation*}
+    P(x,D)f=T(\Lambda^mf)
+\end{equation*}
+\begin{align*}
+    Tf(x)&=\int_{\R^n}\sigma(x,\xi)\hat{f}(\xi)e^{2\pi ix\cdot\xi}d\xi
+\end{align*}
+where
+\begin{equation*}
+    \sigma(x,\xi)=\frac{P(x,i\xi)}{|\xi|^m}
+\end{equation*}
+where it is homogeneous of degree 0, then 
+\begin{equation*}
+    Tf(x)=\int\sigma(x,\xi)e^{2\pi ix\cdot\xi}\int f(y)e^{-2\pi iy\cdot\xi}dyd\xi=\int_{\R^n}K(x,x-y)f(y)dy
+\end{equation*}
+where
+\begin{equation*}
+    K(x,z)=\int_{\R^n}\sigma(x,\xi)e^{2\pi iz\cdot\xi}d\xi
+\end{equation*}
+\begin{note}
+    It looks like the inverse Fourier transform of a homogeneous function of degree 0, so we could apply the previous theories. (We won't be doing this rigorously).
+\end{note}
