@@ -3050,3 +3050,50 @@ And again we have $(I+A^*A)^{-1}$ exists on $\mathcal{H}$ and mapping onto $D(A)
 \begin{equation*}
     \|(I+A^*A)^{-1}\|\leq 1
 \end{equation*}
+
+\section{Lecture 27}
+\begin{proposition}
+    For $A$ closed, we have $I+A^*A$ is injective on $D(A^*A)$, and $D(A^*A)$ is dense in $\mathcal{H}$.
+\end{proposition}
+\begin{proof}
+    We would like to show for a given $\xi\in\mathcal{H}$, we have that
+    \begin{equation*}
+        \la \xi, \eta\ra=\la(I+A^*A)\eta, \eta\ra=\la\eta, \eta\ra=\la A\eta, A\eta\ra
+    \end{equation*}
+    So that if the above is equal to 0, we get that $\eta=0$, which we get $\xi=0$, hence the density claim.
+
+    Let $\eta\in D(A^*A)$, and let $\xi=(I+A^*A)\xi$, if $\xi=0$, then we must have our $\eta=0$. So $(I+A^*A)=I_\mathcal{H}$. And we get that $(I+A^*A)$ is one-to-one from $D(A^*A)$ on $\mathcal{H}$, hence
+    \begin{equation*}
+        Range(S)=D(A^*A)
+    \end{equation*} 
+\end{proof}
+\qed
+
+For any $\xi$, we get
+\begin{equation*}
+    \la S^*\xi, \xi\ra-\la S^*(I+A^*A)S\xi, \xi\ra=\la (I+A^*A)S\xi, S\xi\ra=\la S\xi, S\xi\ra^\perp\la AS\xi, AS\xi\ra\geq 0
+\end{equation*}
+Being positive implies that $S^*=S$, and $S$ is positive and adjoint. $S$ is also one-to-one, and
+\begin{equation*}
+    Range(S)=D(A^*A)
+\end{equation*}
+This gives that $(I+A^*A)S=I_\mathcal{H}$, then
+\begin{equation*}
+    S=(I+A^*A)^{-1}
+\end{equation*}
+\begin{definition}
+    For a closed operator $A$, we call $(A,D(A))$ is self-adjoint, if 
+    \begin{equation*}
+        (A, D(A))=(A^*, D(A^*))
+    \end{equation*}
+\end{definition}
+We will show that $(I+A^*A, D(A^*A))$ is self-adjoint.
+
+\begin{definition}
+    For $(A,D(A))$ is symmetric if for all $\xi\in D(A)$, we have
+    \begin{equation*}
+        \la A\xi, \xi\ra=\la \xi, A\xi\ra
+    \end{equation*}
+\end{definition}
+We will show some operators are self-adjoint next time.
+

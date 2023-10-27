@@ -132,3 +132,114 @@ where
 \begin{note}
     It looks like the inverse Fourier transform of a homogeneous function of degree 0, so we could apply the previous theories. (We won't be doing this rigorously).
 \end{note}
+
+
+\section{Lecture 10/27}
+Today we will finish chapter 4. We will begin with a comment.
+\begin{theorem}
+    We have $T_m\in\mathcal{A}$ if and only if $m$ is nowhere-vanishing on $S^{n-1}$
+\end{theorem}
+
+We now continue our discussion of section 6, variable kernel.
+\begin{equation*}
+    K(x,z)=\int_{\R^n}\sigma(x,\xi)e^{2\pi iz\xi}d\xi
+\end{equation*}
+We have that $\sigma$ is homogeneous of  degree 0 in $\xi$, and 
+\begin{equation*}
+    \sigma(x,\cdot)\in C^\infty(S^{n-1})
+\end{equation*}
+
+By theorem 4.13, for every $x$, there exists $a(x)$ and $\Omega(x, \cdot)$ on $C^\infty(S^{n-1})$ with zero average such that
+\begin{equation*}
+    K(x,z)=a(x)\delta(z)+p.v.\frac{\Omega(x,z')}{|z|^n}
+\end{equation*}
+This motivates us to study the behavior:
+\begin{equation*}
+    Tf=\lim_{\epsilon\to 0}\int_{|y|>\epsilon}\frac{\Omega(x', y')}{|y|^n}f(x-y)dy
+\end{equation*}
+\begin{remark}
+    Chapter 5 deals with the case where $\Omega$ is smooth.
+\end{remark}
+
+\begin{note}
+    Convergence issues, leads us to study Hilbert transform (being bounded), and Hilbert transform naturally generalizes to higher dimensions of singular integrals, and now variable coefficients are natural in PDE's.
+\end{note}
+\begin{definition}[Psedodifferential operator]
+    \begin{equation*}
+        T_\sigma f(x)=\int\sigma(x,\xi)\hat{f}(\xi)e^{2\pi ix\cdot\xi}d\xi
+    \end{equation*}
+    is called a pseudo differential operator, where $\sigma$ is called a symbol. Special case: differential operator of variable coefficients.
+\end{definition}
+\begin{theorem}
+    Let $\Omega(x,y)$ be a function that is homogeneous of degree 0 in $y$ such that
+    \begin{enumerate}
+        \item $\Omega(x,-y)=-\Omega(x,y)$
+        \item $\Omega^*(u)=\sup_x|\Omega(x,u)|\in L^1(S^{n-1})$
+    \end{enumerate}
+    Then $T$ defined by 
+    \begin{equation*}
+         Tf=\lim_{\epsilon\to 0}\int_{|y|>\epsilon}\frac{\Omega(x', y')}{|y|^n}f(x-y)dy
+    \end{equation*}
+    is strong (p,p), $p<\infty$.
+\end{theorem}
+\begin{proof}
+    Let $f\in\mathcal{S}$, then we have
+    \begin{equation*}
+        Tf(x)=\frac{\pi}{2}\int_{S^{n-1}}\Omega(x,u)H_uf(x)d\sigma(u)
+    \end{equation*}
+    Hence we have
+    \begin{equation*}
+        |Tf(x)|\leq\frac{\pi}{2}\int_{S^{n-1}}|\Omega^*(u)|H_uf(x)d\sigma(u)
+    \end{equation*}
+    And the conclusion follows from Minkowski's inequality.
+    And we know that (from proposition 4.6), we have the operator
+    \begin{equation*}
+        T_\omega f(x)=\int_{S^{n-1}}T_uf(x)d\sigma(u)
+    \end{equation*}
+    is bounded on $L^p$. Hence we are done.
+\end{proof}
+\qed
+
+\begin{note}
+    If our second condition (2) is replaced with 
+    \begin{equation*}
+        \sup_x\left(\int_{S^{n-1}}|\Omega(x,u)|^pd\sigma(u)\right)^{\frac{1}{p}}=B_p<\infty
+    \end{equation*}
+    for $1<q<\infty$, then we have that $T$ is bounded on $L^p(\R^n)$, and $q'<p<\infty$.
+\end{note}
+\begin{proof}
+    \begin{equation*}
+        |Tf(x)|\leq\frac{\pi}{2}B_q\left(\int_{S^{n-1}}|H_uf(x)|^{q'}d\sigma(u)\right)^\frac{1}{q'}
+    \end{equation*}
+    Interchanging the order, we have that
+    \begin{equation*}
+        \int |Tf(x)|^{q'}dx\lesssim B_q^{q'}\int_{S^{n-1}}\int_{\R^n}|H_uf(x)|^{q'}dxd\sigma(u)\lesssim B_q^{q'}\|f\|_{L^{q'}}^{q'}
+    \end{equation*}
+    Since it holds for $q$, it also olds for $p'\in (1,q]$.
+\end{proof}
+\qed
+
+\chapter{Singular integrals (II)}
+
+\section{Calderon-Zygmund theorem}
+\begin{theorem}[Calderon-Zygmund]
+    Let $K\in\mathcal{S}'$ agreeing with a locally integral function on $\R^n\setminus\{0\}$ such that 
+    \begin{enumerate}
+        \item $|\hat{K}(\xi)\leq A$
+        \item \begin{equation*}
+            \int_{|x|>2|y|}|K(x-y)-K(x)|dx\leq B
+        \end{equation*}
+    \end{enumerate}
+    Then we have 
+    \begin{equation*}
+        Tf=K\ast f
+    \end{equation*}
+    is weak $(1,1)$ and sstrong $(p,p)$, for $1<p<\infty$ with implied constants depend only on $n, p, A, B$.
+\end{theorem}
+\begin{proposition}
+    (5.2) holds if we have
+    \begin{equation*}
+        |\nabla K(x)|\leq\frac{C}{|x|^{n+1}}
+    \end{equation*}
+    for all $x\neq 0$.
+\end{proposition}

@@ -427,8 +427,8 @@ where $supp(\mu_{\pi_e})\subset \pi_e(E)$.
     \end{equation*}
 \end{definition}
 
-The reason for introducing the Riesz energies and potentials is because they carry the same information as a measure being $s$-Frostman.
-\begin{proposition}
+The reason for introducing the Riesz energies and potentials is because they almost carry the same information as a measure being $s$-Frostman.
+\begin{proposition}[Finite energy if and only if $s$-Frostman]
     Let $\mu\in M(\R^d)$ be $s$-Frostman, then for all $0\leq t<s$, we have $\|V_t(\mu)\|_\infty<\infty$, and
     \begin{equation*}
         I_t(\mu)<\infty
@@ -438,3 +438,31 @@ The reason for introducing the Riesz energies and potentials is because they car
         \mu(B)>0, \mu\vert_B \text{ is $s$-Frostman}
     \end{equation*}
 \end{proposition}
+\begin{proof}
+    \textcolor{red}{computation, should do this}
+\end{proof}
+
+As an immediate corollary, we establish a relationship between finite energy of a measure with positive Hausdorff dimension.
+\begin{corollary}[Finite energy and positive Hausdorff measure]
+    Let $E\subset\R^d$, then $\dim_H(E)>s\geq0$, then there exists a measure $\mu$ such that $\mu\in M(E)$, and 
+    \begin{equation*}
+        I_s(\mu)<\infty
+    \end{equation*}
+    Conversely, if there exists a $\mu\in M(E)$ such that $I_s(E)<\infty$, then we have
+    \begin{equation*}
+        \dim_H(E)\geq s
+    \end{equation*}
+\end{corollary}
+
+\begin{note}
+    Justifying that the measure has finite energy for $H^1$ almost every $e$ is the strategy for proving Marstrand's projection theorem.
+\end{note}
+Now we prove the Marstrand's projection theorem.
+\begin{theorem}[Marstrand's projection theorem]
+    Let $E\subset\R^2$ be Borel, then
+    \begin{equation*}
+        \dim_H\pi_e(E)=\min\{\dim_H(E), 1\}
+    \end{equation*}
+    for $H^1$ almost every $e\in S^1$.
+\end{theorem}
+

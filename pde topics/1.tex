@@ -2620,3 +2620,186 @@ by $\|u\|_B=\sup_Q|Q|^\alpha\|u_Q\|_{L^{p_1}}$, this implies there exists one $Q
     \end{equation*}
     and $\|u_Qu_{Q'}\|_{L^\infty}\leq |Q|^r\|\cdot\|_{L^1}\|\cdot\|_{L^1}$.
 \end{proof}
+
+\section{Lecture 10/26}
+Enhanced version of strichartz estiamtes.
+We would like to shwo the following: let $Q$ be cubes in the Fourier space, and for $p=\frac{2(n+2)}{n}$,
+\begin{theorem}
+   \begin{equation*}
+     \|u\|_{L^p}\leq\|u_0\|_{L^2}^{1-\theta}\sup_Q|Q|^\alpha\|u_Q\|_{L^{p+}}
+   \end{equation*}
+\end{theorem}
+Last time, we showed that
+\begin{equation*}
+    \|u\|_{L^p}^p=\|u\cdot\|_{L^{p/2}}^{p/2}\leq\sum_{Q, Q'\in\mathcal{Q}}\|u_Q\cdot u_{Q'}\|_{L^{p/2}}^{p/2}
+\end{equation*}
+where
+\begin{equation*}
+    \mathcal{Q}=\cup_jQ_j\to 2^j\mathbb{Z}^n
+\end{equation*}
+And
+\begin{equation*}
+    |Q|=|Q'|\approx d(Q,Q')
+\end{equation*}
+And the main tool that we used was the bilinear theorem.
+\begin{theorem}[Bilinear restriction theorem]
+    \begin{equation*}
+        \|u_Q\cdot u_{Q'}\|_{L^\frac{n+3}{n+1}}\leq|Q|^\alpha\|u_Q(0)\|_{L^2}\|u_Q'(0)\|_{L^2}
+    \end{equation*}
+    where $\frac{n+3}{n+1}\leq\frac{p}{2}$, so this is a stronger estimate.
+\end{theorem}
+
+And we do the interpolation with the Berstein inequality:
+\begin{equation*}
+    \|u_Qu_{Q'}\|_{L^{p/2-}}\leq\|\hat{u}_Q(0)\|_{L^r}\|\hat{u}_{Q'}(0)\|_{L^r}, r=2-    
+\end{equation*}
+And note that we have
+\begin{equation*}
+    \|u\|_{L^p}^p\leq\sum_{Q,Q'}\|u_Qu_{Q'}\|_{L^{p/2}}^{p/2}\leq\sum_{Q,Q'}|Q|^\alpha\|u_Qu_{Q'}\|_{L^{p/2-}}^{1+}\|u_Qu_{Q'}\|_{L^{p/2}+}^{\beta}|Q|^{-\alpha}, \beta>0
+\end{equation*}
+Noet that now $L^{p/2+}, L^{p/2-}$ do not have the same scaling, hence we add some extra $|Q|^\alpha$ to keep the scaling the same.
+
+Now we have, by Berstein's inequality,
+\begin{equation*}
+    \leq\sum_{Q,Q'}|Q|^\alpha\|\hat{u}_{Q}(0)\|_{L^r}^{1+}\|\hat{u}_{Q'}(0)\|_{L^r}^{1+}\cdot\sup|Q|^{-\alpha}\|u_Q\|_{L^{p+}}^p\leq\sum_Q|Q|^\alpha\|\hat{u}_Q(0)\|_{L^r}^{2+}\cdot\sup()
+\end{equation*}
+\begin{note}
+    The sum is taken over dyadic cubes of all scale, i.e. a cube of size $2^n$, then $2^{n+1}$, etc.
+\end{note}
+Now it remains to show that
+\begin{equation*}
+    \sum_Q|Q|^\alpha\|\hat{u}_Q(0)\|_{L^r}^{2+}\leq\|\hat{u_0}\|_{L^2}^{2+}
+\end{equation*}
+Now in a single cube, we have
+\begin{equation*}
+    |Q|^\alpha\|\hat{u}_Q\|_{L^q}\leq\|u_Q\|_{L^2}
+\end{equation*}
+And 
+\begin{equation*}
+    u_Q=\sum_ku_{Q,k}, u_{Q,k}=u_Q\cdot 1_{\{|u_Q|\approx 2^k|Q|^\beta}
+\end{equation*}
+where $\beta=\alpha+\frac{1}{2}$. Now we would like to show
+\begin{equation*}
+    LHS(1)\leq\sum_k\sum_Q|Q|^\alpha\|\hat{u}_{Q,k}\|_{L^r}^{2+}\leq\sum_k2^{-c|k|}\|u_0\|_{L^2}^{2+}
+\end{equation*}
+Note that we have different gains from $k$ being positive and negative.
+
+Now $k\geq 0$,
+\begin{equation*}
+    \||Q|^\alpha u_{Q,k}\|_{l_Q^{2+}L^{r}}^2\leq 2^{-c|k|}\|u_0\|_{L^2}^2
+\end{equation*}
+where $r=2-$
+\begin{equation*}
+    \|u_{Q,k}\|_{L^r}^4=\int_Qu_{Q,k}^r\leq\int_Qu_{Q,k}^2\cdot|u_{Q,k}|^{r-2}\leq\|u_{Q,k}\|_{L^2}^2\cdot 2^{-c|k|}|Q|^{?}
+\end{equation*}
+And we also have
+\begin{equation*}
+    \||Q|^\alpha u_{Q,k}\|_{l_Q^{2+}L^r}^r\leq\|Q^\alpha u_{Q,k}\|_[l^rL^r]^r\leq\sum_{Q}\int_Q|u_{Q,k}|^22^{-ck}\leq\|u\|_{L^2}^2\cdot 2^{-ck}
+\end{equation*}
+Note there is not power of $|Q|$ on the RHS here, hence by scaling, we also have $?=0$.
+\begin{note}
+    Note in the final equation, our $u_{Q,k}$ are no longer overlapping. If we have
+    \begin{equation*}
+        u_{Q,k}(x)\neq 0, \xi\in Q, \sim |Q|^\alpha
+    \end{equation*}
+\end{note}
+
+For $k\leq 0$, we have
+\begin{equation*}
+    \|u_{Q,k}\|_{L^r}^{2+}\leq|Q_k|^?\|u_{Q,k}\|_{L^{2+}}^{2+}
+\end{equation*}
+And we have
+\begin{equation*}
+    \|Q^\alpha u_{Q_k}\|_{l_Q^{}L^r}^{2+}\leq\||Q^\alpha||Q_k|^?u_{Q,k}\|_{l^{2+}L^{2+}}^{2+}
+\end{equation*}
+Hence we have this 
+\begin{equation*}
+    =\sum_Q|Q|^\alpha|Q_k|^?|u_{Q,k}|^{2+}\leq\sum_Q|Q^\alpha||Q|^?\int u_{Q,k}^22^{ck}|Q|^?
+\end{equation*}
+Hence we've obtained a $2^{-c|k|}$ gain in both cases, proving the claim.
+\qed
+
+Now we go back to the profile decomposition for the energy critial problem.
+\begin{equation*}
+    \|u\|_{L^\frac{2(n+2)}{n-2}}\leq\|\nabla u(0)\|_{L^2}
+\end{equation*}
+and via scaling, the $p$ satisfies $n/2-1=(n+2)/p$. Now we ask what are the sharp counterexamples? Answer: wave packets! However, the exponent on LHS is not sharp, since the sharp strichartz does not have derivatives on the RHS.
+
+Sharp Strichartz estimates, to go down a derivative, we apply Berstein's inequality. Hence in order for strichartz
+
+Wave packets are supported in a cube, and consider fitting the cube in the annulus (dyadic annulua):
+\begin{enumerate}
+    \item If you have a small cube, then you a factor of the size of the cube (hence you gain if you use small cubes)
+    \item If you have a tube exactly of the size of the frequency, if $l(Q)=\xi=2^k$, then $\delta_x\approx 2^{-k}$, then $\delta_t=2^{-2k}$
+\end{enumerate}
+If we look at
+\begin{equation*}
+    iu_t=\Delta u
+\end{equation*}
+and the $\Delta$ is $2^{2k}$ (almost like a diract mass, and doesn't spread for a while). 
+\begin{note}
+    We cannot apply Galilean invariance, since you might land in a dyadic interval that is too high of frequency.
+\end{note}
+
+Now we look at the group of symmetries,
+\begin{equation*}
+    g=\{translation, saling, phase rotation\} 
+\end{equation*}
+if you have the profile decomposition for $u$,
+\begin{equation*}
+    u=\sum G_k^j\phi_j+e_k
+\end{equation*}
+where the error $e_k\to 0$ in $L^\frac{2(n+2)}{n-2}$.
+
+Recall that we have this critical mass:
+\begin{proposition}
+   For each $\epsilon>0$, there exists some $C_\epsilon$, such that
+    \begin{equation*}
+        M(u_0)\leq A-\epsilon
+    \end{equation*}
+    there exists a global solution $u$ such that
+    \begin{equation*}
+        \|u\|_{L^\frac{2(n+2)}{n}}\leq C_\epsilon
+    \end{equation*}
+    
+\end{proposition}
+Now the question is that: what happens at critical mass?
+
+\textbf{Answer}: by perturbation theory, we should have 
+\begin{equation*}
+    \lim_{\epsilon\to 0}C_\epsilon=\infty
+\end{equation*}
+Because if it doens't, then we can push $A$ up. Let $\epsilon=\frac{1}{k}$, we have
+\begin{equation*}
+    M(u_k)=A-\frac{1}{k}, \|u_k\|_{L^\frac{2(n+2)}{n}}\to \infty
+\end{equation*}
+
+On a subsequence, 
+\begin{equation*}
+    u_k(0)\to u(0) \text{ in } L^2
+\end{equation*}
+This should mean that, if you have a convergence subsequence,
+\begin{equation*}
+    \|u\|_{L^\frac{2(n+2)}{n}}=\infty
+\end{equation*}
+There are two problems:
+\begin{enumerate}
+    \item The convergence of the subsequence is hard, i.e. compactness.
+    \item The information that $\|u\|_{L^\frac{2(n+2)}{n}}$ is insufficient.
+\end{enumerate}
+
+But if all of this work, then we call for the solution $u$ the minimal enemy (it has exactly this critical mass, and yet it blows up in the norm).
+
+Note that $u_k$ is global solutions, and there should be local stability, and this $u$ exists at least locally. Yet, there is no way of knowing this is a global solution.
+\begin{equation*}
+    u_k\to u
+\end{equation*}
+in intervals of existence for $u$.
+
+Next time, we will start with the sequence and how to obtain compactness/convergence.
+\begin{note}
+    To get convergence, we need to apply some rotation/symmetry, such that
+    \begin{equation*}
+        G^ku_k(0)\to u(0)\text{ in } L^2
+    \end{equation*}
+\end{note}
