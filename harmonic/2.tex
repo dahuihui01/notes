@@ -226,7 +226,7 @@ This motivates us to study the behavior:
     Let $K\in\mathcal{S}'$ agreeing with a locally integral function on $\R^n\setminus\{0\}$ such that 
     \begin{enumerate}
         \item $|\hat{K}(\xi)\leq A$
-        \item \begin{equation*}
+        \item (Smoothness condition) We also have \begin{equation*}
             \int_{|x|>2|y|}|K(x-y)-K(x)|dx\leq B
         \end{equation*}
     \end{enumerate}
@@ -236,10 +236,104 @@ This motivates us to study the behavior:
     \end{equation*}
     is weak $(1,1)$ and sstrong $(p,p)$, for $1<p<\infty$ with implied constants depend only on $n, p, A, B$.
 \end{theorem}
-\begin{proposition}
+\begin{proposition}[Better smoothness condition]
     (5.2) holds if we have
     \begin{equation*}
         |\nabla K(x)|\leq\frac{C}{|x|^{n+1}}
     \end{equation*}
     for all $x\neq 0$.
 \end{proposition}
+Hence Theorem 5.1 still holds if we replace the second condition with this one.
+
+
+\section{Lecture Oct 30}
+We begin talking about the theorem introduced last time, and show that $Tf$ is weak (1,1).
+
+\begin{proof}
+    We will only do a proof sketch. (5.1) condition implies that
+    \begin{equation*}
+        \|Tf\|_{L^2}\leq A\|f\|_{L^2}
+    \end{equation*}
+    Now it suffices to show that $T$ is weak (1,1), by interpolation and duality.
+
+    Again, we will rely on Calderon-Zygmund decomposition to do this. Fix $\lambda>0$, form the CZ decomposition of $f$ at height $\lambda$, this gives that
+    \begin{equation*}
+        f=g+b, g\in L^2, \|g\|_{L^\infty}\lesssim \lambda
+    \end{equation*}
+    We will control $b$ exactly the way we did for the Hilbert transform in 1-dim. We use $L^2$ boundedness to control $Tg$. Let $b=\sum_jb_j$, and $supp(b_j)\subset Q_j$, we have
+    \begin{equation*}
+        \sum|Q_j|\lesssim \frac{\|f\|_{L^1}}{\lambda}
+    \end{equation*}
+    Let $Q_j^*=2\sqrt{n}Q_j$, on $\R^n\setminus(\cup_jQ_j^*)$,
+    \begin{equation*}
+        |Tb|\leq\sum_j|Tb_j|
+    \end{equation*}
+    And we have
+    \begin{equation*}
+        \int_{\R^n\setminus Q_j^*}|Tb_j(x)|dx=\int_{\R^n\setminus Q_j^*}\left|\int_{Q_j}K(x-y)b_j(y)dy\right|dx
+    \end{equation*}
+    Now we use the zero average, and the bound on $Q_j$
+    \begin{align*}
+        &=\int_{\R^n\setminus Q_j^*}\left|\int_{Q_j}(K(x-y)-K(x-c_j))b_j(y)dy\right|dx\\
+        &=\int_{Q_j}|b_j(y)|dy\int_{\R^n\setminus Q_j^*}|K(x-y)-K(x-c_j)|dx\\
+        &\leq B\int_{Q_j}|b_j(y)|dy\\
+        &=B\|b_j\|_{L^1}
+    \end{align*}
+    Now we add everything together, we get
+
+    \begin{equation*}
+        \int_{\R^n(\cup_j Q_j^*)}|Tb(x)|dx\leq B\|b\|_{L^1}\lesssim B\|f\|_{L^1}
+    \end{equation*}
+\end{proof}
+\qed
+
+
+Now we ask the question whether we can relax the Homander condition, i.e. we interpret $t$ as the distance, and for $p.v. \frac{\Omega(x')}{|x|^n}$, define
+\begin{equation*}
+    \omega_\infty(t)=\sup_{|u_1-u_2|\leq t}|\Omega(u_1)-\Omega(u_2)|
+\end{equation*}
+where $u_1, u_2\in S^{n-1}$. In fact, we can replace the Homander condition with a Dini type condition. Note that $\omega_\infty$ is monotone with respect to $t$.
+
+\begin{proposition}
+    If $\Omega$ satisfies 
+    \begin{equation*}
+        \int_0^1\frac{\omega_\infty(t)}{t}<\infty
+    \end{equation*}
+    then the Homander condition holds, and $\Omega\in C^\alpha, \alpha>0$, 
+\end{proposition}
+\begin{proof}
+    Note that we have
+    \begin{equation*}
+        \omega_\infty\xrightarrow{t\to 0}0
+    \end{equation*}
+    hence $\Omega$ is bounded.
+    \begin{align*}
+        |K(x-y)-K(x)|&=\left|\frac{\Omega(x-y)'}{x-y|^n}-\frac{\Omega(x')}{|x|^n}\right|\\
+        &=\leq \frac{|\Omega(x-y)'-\Omega(x')}{|x-y|^n}+|\Omega(x')|\left|\frac{1}{|x-y|^n}-\frac{1}{|x|^n}\right|\\
+    \end{align*}
+    From the Mean value theorem, jwe get that when $|x|>2|y|$, the second term is controlled,
+    \begin{equation*}
+        \lesssim |\Omega(x')|\frac{|y|}{|x|^{n+1}}
+    \end{equation*}
+    Its integration on $\{|x|>2|y|\}$ is bounded, by some constant. Hence we drop the second term. Note that we have
+    \begin{equation*}
+        |(x-y)'-x'|\leq 4\frac{|y|}{|x|}
+    \end{equation*}
+    We have that
+    \begin{align*}
+        &=\int_{|x|>2|y|}\frac{\Omega(x-y)'-\Omega(x')}{|x-y|^n}dx\\
+        &\lesssim \int_{|x|>2|y|}\frac{\omega_\infty\left(\frac{4|y|}{|x|}\right)}{|x|^n}dx\\
+        &\lesssim \int_{2|y|}^\infty S^{-1}\omega_\infty\left(\frac{4|y|}{s}\right)ds\\
+        &=\int_0^2\frac{\omega_\infty(t)}{t}dt<\infty
+    \end{align*}
+\end{proof}
+\qed
+
+\begin{corollary}
+    If $\Omega$ is a function on $S^{n-1}$ with zero avergae, and satisfy (5.5), and then
+    \begin{equation*}
+        Tf(x)=p.v.\int_{\R^n}\frac{\Omega(y')}{|y|^n}f(x-y)dy
+    \end{equation*}
+    is strong (p,p), and $1<p<\infty$, and also weak (1,1).
+\end{corollary}
+

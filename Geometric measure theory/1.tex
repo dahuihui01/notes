@@ -466,3 +466,161 @@ Now we prove the Marstrand's projection theorem.
     for $H^1$ almost every $e\in S^1$.
 \end{theorem}
 
+
+\section{Rectifiable sets}
+There is actually a second part of the statement of Marstrand's projection theorem. 
+\begin{theorem}
+    If $\dim_H(E)>1$, then for $H^1$ almost every $e$, we have
+    \begin{equation*}
+        H^1(\pi_e(E))>0
+    \end{equation*}
+\end{theorem}
+To prove this, we will use tools in section 6. However, we can ask the following question now:
+\begin{problem}
+    If $E\subset\R^2$ is compact, can we always have
+    \begin{equation*}
+        H^1(\pi_e(E))>0?
+    \end{equation*}
+\end{problem}
+\begin{note}
+We will answer this with a positive answer if $E$ is 1-rectifiable, and $0<H^1(E)<\infty$. And we will answer this with a negative answer, as our last theorem of the section, the Besicovitch theorem.
+\end{note}
+\begin{theorem}
+    Let $E\subset\R^2$ be a purely 1-unrectifiable set with $0<H^1(E)<\infty$, then for $H^1$ almost every $e\in S^1$, we have
+    \begin{equation*}
+        H^1(\pi_e(E))=0
+    \end{equation*}
+\end{theorem}
+
+
+We define the densities at a particular point.
+\begin{definition}[$s$-dimensional density]
+    Let $A\subset\R^d$, and $H^s(A)<\infty$, for $s\geq 0$.
+    The upper and lower $s$-dimensional densities of $A$ at $x$ is defined to be
+    \begin{equation*}
+        \Theta^{s,*}(A,x)=\limsup_{r\to 0}\frac{H^s(A\cap B(x,r))}{r^s}, \Theta_*^s(A,x)=\liminf_{r\to 0}\frac{H^s(A\cap B(x,r))}{r^s}
+    \end{equation*}
+\end{definition}
+
+\begin{note}
+    The following should be interpreted just as the Lebesgue point density theorem.
+\end{note}
+The following two propositions are just like Lebesgue density theorems, and I shall call them the analogs of Hausdorff  density theorems. This implies that depending on whether $x$ is in the set or not, the density at that point is either positive or 0.
+\begin{proposition}[Hausdorff density theorem]
+    For $H^s$ almost all $x\in A$.
+    \begin{equation*}
+        1\leq\Theta^{s,*}(A,x)\leq 2^s
+    \end{equation*}
+\end{proposition}
+And it is what we expected for $x\not\in A$.
+\begin{proposition}
+    For $H^s$ almost all $x\in\R^d\setminus A$, we have
+    \begin{equation*}
+        \Theta^{s,*}(A,x)=0
+    \end{equation*}
+\end{proposition}
+
+\subsection{Rectifiable sets}
+Let's define the two types of sets that answer oppositely to our positive projection theorem.
+\begin{definition}[rectifiable]
+    Let $0<n<d$ be integers, and let $E\subset\R^d$, and we say that $E$ is $n$-rectifiable if for $H^n$ almost all of $E$ can be covered by Lipschitz images of $\R^n4$. In other words, there exists a set of countable Lipschitz maps $\{f_j\}, f_j:\R^n\to\R^d$ such that
+    \begin{equation*}
+        H^n\left( E\setminus \bigcup_jf_j(\R^n)\right)=0
+    \end{equation*}
+\end{definition}
+\begin{definition}[n-unrectifiable]
+    $E$ is called purely $n$-unrectifiable if for all Lipschitz map $f:\R^n\to\R^d$, we have
+    \begin{equation*}
+        H^n(E\cap f(\R^n))=0
+    \end{equation*}
+    (This means that $E$ does not intersect nontrivially with any $f(\R^n)$). 
+
+    Alternatively, $E$ is $n$-unrectifiable if and only if for all $n$-rectifiable sets $R\subset\R^d$, we have
+    \begin{equation*}
+        H(E\cap R)=0
+    \end{equation*}
+\end{definition}
+The following asserts that any $E\subset\R^d$ with $H^n(E)<\infty$ can be decomposed into $n$-rectifiable sets, and purely $n$-unrectifiable sets.
+\begin{theorem}
+    Let $0<n<d$, and let $E\subset\R^d$, and $H^n(E)<\infty$, and then there exists $R\subset\R^d$, $n$-rectifiable, such that $E$ can be written into disjoint unions of rectifiable and unrectifiable portions:
+    \begin{equation*}
+        E=[E\cap R]\cup U
+    \end{equation*}
+    where $U=E\setminus R$ is purely $n$-unrectifiable, and $E\cap R$ is $n$-rectifiable.
+\end{theorem}
+
+
+
+\subsection{Projections of rectifiable sets}
+
+
+
+
+
+\subsection{Projection of unrectifiable sets}
+We now talk about projections of unrectifable sets. 
+\begin{theorem}[Besicovitch]
+    Assume $E\subset \R^2$ is Borel purely 1-unrectifiable 1-set. Then we have 
+    \begin{equation*}
+        H^1(\pi_e(E))=0
+    \end{equation*}
+    for $H^1$ almost every $e\in S^1$.
+\end{theorem}
+We first define the notion of high multiplicity and high density for directions $e\in S^1$.
+
+\begin{definition}[High Multiplicity]
+    We say a direction $e$ is a direction of high multiplicity at $x$, denoted $e\in H_x$, if
+    \begin{equation*}
+        |E\cap l_e(x)\cap B(x,r)|\geq 2, \text{ for all } r>0
+    \end{equation*}
+    Alternatively, for a fix $r>0$, we can denote the above as $H_x(r)$, then we have
+    \begin{equation*}
+        H_x=\bigcap_{r>0}H_x(r)
+    \end{equation*}
+\end{definition}
+The condition ``for all $r>0$'' implies that there are points in $E$ that are in $l_e(x)$ that are infinitely close to $x$.
+
+\begin{definition}[High density]
+    We say $e$ is a direction of high density at $x$, denoted that $e\in D_x$, if for all $r_0, M, \epsilon>0$, there exists a radius $0<r<r_0$, and an arc $J\subset S^1$, and $e\in J$, $0<\sigma(J)<\epsilon$, we have
+    \begin{equation*}
+        \frac{\mu(C(x,J)\cap B(x,r))}{r}\geq M\sigma(J)
+    \end{equation*}
+    where $\mu=\frac{1}{|H^s(E)|}H^1\vert_E$, and $C(x, J)$ is the cone $C(x,J)=\bigcup_{e\in S}l_e(x)$.
+
+    Alternatively, for fixed $r_0, M, \epsilon>0$, we have
+    \begin{equation*}
+        D_x=\bigcup_{r_0, \epsilon, M>0}D_x(r_0,\epsilon, M)
+    \end{equation*}
+\end{definition}
+\begin{note}
+    Both high multiplicities and high denstiies at $x$ mean that there are plenty of points in $E$ that are arbitrarily close to $x$, contained in an arbitrarily narrow cones around $l_e(x)$. This could give intuition that $E$ has very small projections.
+\end{note}
+
+\begin{note}
+    \textbf{Proof Sketch} We will show that for $H^1_E$ almost every $x\in E$, and for almost all  $H^1_S$ directions $e$, we have that $e$ is either high multiplicity or high density. Then we will show that points with almost all directons that are either of high density or high multiplicity will have small projections in almost all directions.
+\end{note}
+
+\begin{lemma}[High density or high multiplicity]
+    For $H^1$ almost every $x\in E$, and $H^1$ almost every $e\in S^1$ is either a direction of high multiplicity ($e\in H_x$) or high density at $x$ ($e\in D_x$).
+\end{lemma}
+\begin{proof}
+    We will specify what those points are and show that $H^1(\text{not these points})$ are of measure 0. In other words, for any fixed $r_0, \epsilon, M>0$, we show that for $\mu$ almost every $x\in E$, we have
+    \begin{equation*}
+        \sigma(S^1\setminus[H_x(r_0)\cup D_x(r_0, \epsilon, M)])=0
+    \end{equation*}
+    Since $\mu$ almost every $x\in E$, satisfies 
+    \begin{equation*}
+        \frac{\mu(B(x,r)\cap C(x,J))}{r}\geq c\sigma(J)
+    \end{equation*}
+    for arbitrary arc $J\subset S^1$, it suffices to show that for almost every $e\in S^1$, we have either
+    \begin{equation*}
+        \Theta^{1,*}(H_x(r_0), e)>0 \text{ or  } \Theta_x^1(D_x(r_0, \epsilon, M))>0
+    \end{equation*}
+    And note that for $\sigma$ almost  everywhere $e\in S^1\setminus [H_x(r_0)\cup D_x(r_0, \epsilon, M)]$, we have
+    \begin{equation*}
+        \Theta^{1}(H_x(r_0), e)=\Theta^1(D_x(r_0, \epsilon, M), e)=0
+    \end{equation*}
+    Then we have 
+\end{proof}
+
+t

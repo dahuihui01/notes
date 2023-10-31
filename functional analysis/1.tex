@@ -3097,3 +3097,179 @@ We will show that $(I+A^*A, D(A^*A))$ is self-adjoint.
 \end{definition}
 We will show some operators are self-adjoint next time.
 
+
+\section{Lecture 28}
+For $A$ closed on $D(A)\subset\mathcal{H}$, and
+\begin{equation*}
+    I+A^*A: D(A^*A)\to\mathcal{H}
+\end{equation*}
+
+And $S: \mathcal{H}\to D(A^*A)$, and
+\begin{equation*}
+    (I+A^*A)S=I_\mathcal{H}
+\end{equation*}
+And last time we saw that $I+A^*A$ is injective. Then we also have that $S$ is onto $D(A^*A)$, and then
+\begin{equation*}
+    S=(I+A^*A)^{-1}
+\end{equation*}
+from $\mathcal{H}$ to $D(A^*A)$.
+\begin{note}
+
+If $T: D(T)\to D'$ is bijective, thus $T^{-1}$ exists, then
+\begin{equation*}
+    \Gamma(T^{-1})=W\Gamma(T), W((\xi,\eta))=(\eta, \xi)
+\end{equation*}
+Hence $\Gamma(T^{-1})$ is closed if and only if $\Gamma(T)$ is closed. 
+\end{note}
+This implies that $S$ is closed.
+\begin{proposition}
+    $I+A^*A$ is closed.
+\end{proposition}
+\begin{proof}
+    Above.
+\end{proof}
+
+\begin{definition}
+    $(A,D(A))$, let $A$ be densely defined, is self-adjoint, if $D(A^*)=D(A)$ ($A^*$ is also densely defined), and on this domain,
+    \begin{equation*}
+        A=A^*
+    \end{equation*}
+\end{definition}
+
+\begin{proposition}
+    If $A, D(A)$ is closed, then $D(A^*)$ is dense.
+\end{proposition}
+\begin{proof}
+    If $D(A^*)$ is not dense, then there exists a nonzero $\xi$ such that $\xi\perp D(A^*)$, and we have
+    \begin{equation*}
+        (0,\xi)\perp (A^*\eta, -\eta)
+    \end{equation*}
+    for all $\eta\in D(A^*)$. 
+    \begin{equation*}
+        (0,\xi)\perp V(\eta, A^*\eta), \text{ for all } \eta
+    \end{equation*}
+    This gives that
+    \begin{equation*}
+        (0,\xi)\in\Gamma(A)
+    \end{equation*}
+    Hence $\xi=0$.
+\end{proof}
+\qed
+
+\begin{proposition}
+    If $A$ is closed, then $A=A^{**}$.
+\end{proposition}
+\begin{proof}
+    Note that we have
+    \begin{equation*}
+        \Gamma(A^*)=(V\Gamma(A))^\perp
+    \end{equation*}
+    $\Gamma(A^*A)=(V(\Gamma(A^*))^\perp)$, and note that $V^2=-I$, hence
+    \begin{equation*}
+        \Gamma(A^{**})=(V(\Gamma(A^*))^\perp)=V(\Gamma(A^*)^\perp)=V(V\Gamma(\overline{A}))
+    \end{equation*}
+    Thus,
+    \begin{equation*}
+        \Gamma(A^{**})=\Gamma(A)
+    \end{equation*}
+\end{proof}
+\qed
+
+
+\begin{proposition}
+    If $A$ is intertible and closed, and $A:D(A)\to D'$, then
+    \begin{equation*}
+        \Gamma((A^{-1})^*)=\Gamma((A^*)^{-1})
+    \end{equation*}
+\end{proposition}
+\begin{proof}
+    We have that
+    \begin{equation*}
+        WV\Gamma(A^{-1})^*=W \Gamma(A^{-1})^\perp=(W\Gamma(A^{-1}))^\perp=\Gamma(A)^\perp
+    \end{equation*}
+    And note that we also have
+    \begin{equation*}
+        VW\Gamma((A^*)^{-1})=V(A^*)=\Gamma(A^{**})^\perp=\Gamma(A)^\perp
+    \end{equation*}
+    Note that we have
+    \begin{equation*}
+        VW=-VW
+    \end{equation*}
+    \begin{equation*}
+        (WV)(\xi,\eta)=W(\eta,-\xi)=(-\xi, \eta)
+    \end{equation*}
+    \begin{equation*}
+        (VW(\xi, \eta))=V(\eta,\xi)=(\xi, -\eta)
+    \end{equation*}
+    \begin{note}
+        The negative sign does not matter when describing graphs.
+    \end{note}
+\end{proof}
+\qed
+
+\begin{theorem}
+    $I+A^*A$ is self-adjoint.
+\end{theorem}
+\begin{proof}
+    \begin{equation*}
+        I+A^*A=S^{-1}, (I+A^*A)^{-1}=S
+    \end{equation*}
+    so
+    \begin{equation*}
+        ((I+A^*A)^{-1})^*=S^*=S=(I+A^*A)^{-1}
+    \end{equation*}
+    Hence $(I+A^*A)^{-1}$ is self-adjoint, hence $I+A^*A$ is also self-adjoint. 
+\end{proof}
+\qed
+
+\begin{theorem}
+    If $A$ is self-adjoint, $S$, $AS=R$, then we have $SR=RS$. 
+\end{theorem}
+If $A$ is self-adjoint, $S$, $AS=R$, then we want
+$SR=RS$ Let $\xi\in D(A)$, then
+\begin{equation*}
+    \xi=(I+A^*A)S\xi=S\xi+A^*AS\xi
+\end{equation*}
+We know that $S\xi\in D(A^*A)\subset D(A)$, so
+\begin{equation*}
+    A^*AS\xi\in D(A)
+\end{equation*} 
+Then we apply $A$ to everything
+\begin{equation*}
+    A\xi=AS\xi+AA^*AS\xi=(I+AA^*)AS\xi
+\end{equation*}
+Notice the * is in the wrong place now.
+\begin{equation*}
+    (I+AA^*)^{-1}A\xi=AS\xi
+\end{equation*}
+we call
+\begin{equation*}
+    \tilde{S}=(I+AA^*)^{-1}
+\end{equation*}
+\begin{note}
+    It looks like $S$, but just the * is in the wrong place.
+\end{note}
+Note that 
+\begin{equation*}
+    \tilde{S}A\xi=AS\xi
+\end{equation*}
+If $A$ is self-adjoint, so $A^*=A$, \begin{definition}[Normal operators]
+    We say $A$ is normal if 
+    \begin{equation*}
+        A^*A=AA^*, D(A^*A)=D(AA^*)
+    \end{equation*}
+\end{definition}
+If you have $A$ as normal, then you could say $S=\tilde{S}$.
+
+So if $A$ self-adjoint, then for $\xi\in D(A)$, 
+\begin{equation*}
+    SA\xi=AS\xi
+\end{equation*}
+For any $\eta\in\mathcal{H}$, let $\xi=S\eta\in D(A^*A)\subset D(A)$, 
+\begin{equation*}
+    S(AS)\xi=(AS)(S\xi)
+\end{equation*}
+Hence for $A$ self-adjoint,
+\begin{equation*}
+    SR\xi=RS\xi, \text{ for all }\xi\in\mathcal{H}
+\end{equation*}
