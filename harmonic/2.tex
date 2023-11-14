@@ -337,3 +337,280 @@ where $u_1, u_2\in S^{n-1}$. In fact, we can replace the Homander condition with
     is strong (p,p), and $1<p<\infty$, and also weak (1,1).
 \end{corollary}
 
+
+
+
+\section{Lecture 11/1}
+\subsection{Trucated integrals and the principal value}
+We now ask the question when is $\widehat{K}\in C^\infty$.
+
+One last comment on 5.5: $(2)$ and $(2')$ are equivalent:
+\begin{equation*}
+    \int_{|x|<a}|x||k(x)|dx\leq B'a
+\end{equation*}
+for all $a>0$.
+
+\begin{proposition}
+    Let $K\in L_{loc}^1(\R^n\setminus\{0\})$, define 
+    \begin{equation*}
+        K_{\epsilon, R}=K(x)\chi_{\{\xi<|x|<R\}}
+    \end{equation*}
+    If 
+    \begin{enumerate}
+        \item $\left|\int_{a<|x|<b}kdx\right|\leq A, \forall 0<a<b<\infty$
+        \item $\int_{a<|x|<2a}|k|dx\leq B, \forall a>0$
+        \item $\int_{|x|>2|y|}|K(x-y)-k(x)|dx\leq C. \forall y\in\R$.
+    \end{enumerate}
+    Then we have
+    \begin{equation*}
+        \|\widehat{K}_{\epsilon, R}\|_\infty\leq \text{constant}
+    \end{equation*}
+    And the constant is uniform in $\xi$ and $R$.
+\end{proposition}
+
+\begin{proof}
+    Assume that $\epsilon<|\xi|^{-1}<R$, we have
+    \begin{align*}
+        \widehat{K_\epsilon, R}(\xi)&=\int_{\epsilon<|x|<R}K(x)e^{-2\pi ix\cdot\xi}dx\\
+        &=\int_{\epsilon<|x|<|\xi|^{-1}}e^{-2\pi ix\cdot\xi}dx\\
+        &+\int_{|\xi|^{-1}<|x|<R}K(x)e^{-2\pi ix\cdot\xi}dx
+    \end{align*}
+    Denote the above two integrals as I and II.
+    \begin{align*}
+        |I|&=\left|\int_{\epsilon<|x|<|\xi|^{-1}}K(x)dx\right|+\left|\int_{\epsilon<|x|<|\xi|^{-1}}K(x)(e^{-2\pi ix\cdot\xi}-1)dx\right|\\
+        &\leq \left|\int_{\epsilon<|x|<|\xi|^{-1}}K(x)dx\right|+\int_{\epsilon<x<|\xi|^{-1}}|K(x)|\cdot 2\pi |x||\xi|dx\\
+        &\leq A+2\pi|\xi|\cdot B'|\xi|^{-1}\\
+        &= A+2\pi B'
+    \end{align*}
+    And moreover, let $z=\frac{1}{2}\frac{\xi}{|\xi|^2}e^{2\pi iz\cdot\xi}=-1$, we get
+    \begin{align*}
+        II&=-\int_{|\xi|^{-1}<|x-z|<R}K(x-z)e^{-2\pi ix\cdot\xi}dx\\
+        &=\frac{1}{2}\int_{|\xi|^{-1}<|x|<R}K(x)e^{-2\pi ix\cdot\xi}dx-\frac{1}{2}\int_{|\xi|^{-1}<|x-z|<R}K(x-z)e^{-2\pi x\cdot\xi}dx
+    \end{align*}
+    Hence we have
+    \begin{align*}
+        |II|&\leq\int_{|\xi|^{-1}<|x|}|K(x)-K(x-z)|dx\\
+        &+\int_{\frac{1}{2}|\xi|^{-1}<|x|<\frac{3}{2}|\xi|^{-1}}|K(x)|dx\\
+        &+\int_{R-\frac{1}{2}|\xi|^{-1}<|x|<R+\frac{1}{2}|\xi|^{-1}}K(X)dx\\
+        &\lesssim C+B
+    \end{align*}
+\end{proof}
+\qed
+
+\begin{corollary}
+    If $K$ satisfies the hypotheses of Proposition 5.5, then we have
+    \begin{equation*}
+        \|K_{\epsilon, R}\ast f\|_{L^p}\lesssim \|f\|_{L^p}
+    \end{equation*}
+    and $|\{x\in\R^n: |K_{\epsilon, R}\ast f(x)|>\lambda\}|\lesssim\frac{\\f\|_{L^1}}{\lambda}$.
+\end{corollary}
+\begin{proof}
+    The $p=2$ case follows from Proposition 5.5, and the second and third conditions imply the Homander condition of $K_{\epsilon, R}$.
+\end{proof}
+\qed
+
+\begin{remark}
+    When $K=\frac{\Omega(x')}{|x|^n}$, (1) and (2) imply that
+    \begin{equation*}
+        |\omega\in L^1(S^{n-1})
+    \end{equation*}
+    and $\Omega$ has zero average. We want to define $T$ by
+    \begin{equation*}
+        Tf(x)=\lim_{\epsilon\to 0, R\to\infty} K_{\epsilon, R}\ast f(x), f\in\mathcal{S}
+    \end{equation*}
+    And this is good for $R\to\infty$, due to (2), and we will address $\epsilon\to 0$ next time.
+\end{remark}
+
+
+\textcolor{red}{there is a lecture  missing}
+
+\section{Lecture Nov 6}
+We let $\Delta=\{(x,x):x\in\R^n\}$ is the diagonal of $\R^n$.
+
+\begin{theorem}
+    Let $T$ be bounded on $L^2(\R^n)$, if $K$ is a function on $\R^n\times\R^n\setminus\Delta$, such that 
+    \begin{equation*}
+        Tf(x)=\int_{\R^n}K(x,y)f(y)dy, x\not\in supp(f)
+    \end{equation*}
+    for $f\in L^2$, compactly supported and 
+    \begin{equation*}
+        \int_{|x-y|>2|y-z|}|K(x,y)-K(x,z)|dx\leq C
+    \end{equation*}
+    \begin{equation*}
+        \int_{|x-y|>2|x-w|}|K(x,y)-K(x,y)|dy\leq C
+    \end{equation*}
+    Then $T$ is weak (1,1) and strong (p,p), $1<p<\infty$.
+\end{theorem}
+\begin{proof}
+    Entirely parallel to the proof of 5.1.
+\end{proof}
+
+\begin{definition}
+    We say a kernel $K:\R^n\times\R^n\setminus\Delta$ is a standard kernel if there exists $\delta>0$ such that 
+    \begin{equation*}
+        |K(x,y)|\leq \frac{C}{|x-y|^n}
+    \end{equation*}
+    \begin{equation*}
+        |K(x,y)-K(x,z)|\leq C\frac{|y-z|^\delta}{|x-y|^{n+\delta}}
+    \end{equation*}
+    \begin{equation*}
+        |K(x,y)-K(w,y)|\leq C\frac{|x-w|^\delta}{|x-y}^{n+\delta}
+    \end{equation*}
+    for $|x-y|>2|x-w|$.
+\end{definition}
+There are some important examples and motivation: Cauchy integral along a Lipschitz curve. Let $A: \R\to\R$ be Lipschitz, $\Gamma=(t, A(t))$, for $f\in\mathcal{S}(\R)$, define 
+\begin{equation*}
+    C_\Gamma f(z)=\frac{1}{2\pi i}\int_{-\infty}^\infty \frac{f(t)(1+iA'(t))}{t+iA(t)^{-z}}dx
+\end{equation*}
+boundary value problem motivated.
+
+\begin{definition}
+    $T$ is a generalized $C-Z$ operator if 
+    \begin{enumerate}
+        \item $T$ is bounded on $L^2(\R^n)$
+        \item there exists a standard kernel $K$ such that 
+            \begin{equation*}
+            Tf(x)=\int_{\R^n}K(x,y)f(y)dy, \forall f\in L^2, \text{compactly supported}, \forall x\not\in supp(f)
+            \end{equation*}
+    \end{enumerate}
+\end{definition}
+\begin{theorem}
+    The above $T$ is  weak (1,1), and strong $(p,p)$
+\end{theorem}
+\begin{proof}
+    By Theorem 5.10.
+\end{proof}
+
+\subsection{C-Z Singular integrals}
+For a $C-Z$ operator $T$, does 
+\begin{equation*}
+    Tf(x)=\lim_{\epsilon\to 0}\int_{|x-y|<\epsilon}K(x,y)f(y)dy
+\end{equation*}
+Does this always exist for $f\in\mathcal{S}$. The answer is that: not always. The following is a counterexample.
+\begin{example}
+    $p.v. |x|^{-n-it}\ast f$
+\end{example}
+And  define 
+\begin{equation*}
+    T_\epsilon f(x)=\int_{|x-y|>\epsilon}K(x,y)f(y)dy
+\end{equation*}
+
+\begin{proposition}
+    The limit 
+    \begin{equation*}
+        \lim_{\epsilon\to 0}T_\epsilon f(x) \text{ always exists}
+    \end{equation*}
+    for a.e. $x$, for all $f\in C_c^\infty$ if and only if 
+    \begin{equation*}
+        \lim_{\epsilon\to 0}\int_{\epsilon<|x-y|<1}K(x,y)dy \text{ exists }
+    \end{equation*}
+    for almost every $x$.
+\end{proposition}
+\begin{proof}
+    The proof is identical of that 5.7.
+\end{proof}
+
+\begin{proposition}
+    If two $C-Z$ operators are associated with the same standard kernel, then their differences is a pointwise multiplication by an $L^\infty$ function.
+\end{proposition}
+
+\begin{definition}
+    A $C-Z$ singular integral is a $C-Z$ operator $T$ such that
+    \begin{equation*}
+        Tf(x)=\lim_{\epsilon\to 0}T_\epsilon f(x)
+    \end{equation*}
+    for all $f\in\mathcal{S}$.
+\end{definition}
+
+
+
+\section{Lecture Nov 8}
+\begin{theorem}
+    If $T$ is a C-Z operator, then $T^*$ is strong $(p,p), 1<p<\infty$, and weak (1,1).
+\end{theorem}
+\begin{proof}
+    Pointwise convergence of $T_\epsilon f$ for $f\in L^p$ and also $L^1$ will then follow. Note that the key here is the generalization of Cotlar's inequality.
+
+    \begin{lemma}[5.15 Cotlar]
+        If $T$ is a $C-Z$ operator, then for any $0<v\leq 1$, and $f\in C_c^\infty$, we have 
+        \begin{equation*}
+            T^*f(x)\leq c_v (M(|Tf|^v)(x))^\frac{1}{v}+Mf(x)
+        \end{equation*}
+    \end{lemma}
+    We first show that the theorem follows from the lemma. If we take $v=1$, we get strong (p,p) for $p>1$. For weak (1,1), we choose arbitrarily $0<v<1$, 
+    \begin{equation*}
+        |\{x: |T^*f(x)|>\lambda\}|\leq |\{x: |Mf(x)|\geq \frac{\lambda}{2c_v}\}|+|\{x: M(|Tf|^v)(x)\geq(\frac{\lambda}{2c_v})^v\}|
+    \end{equation*}
+    First term is bounded by $c_v \frac{\|f\|_{L^1}}{\lambda}$. And by section 2.6, we get that
+    \begin{note}
+        Now we would like to replace $M$ with the dyadic maximal to get a good bound on $|E|$
+    \end{note}
+    \begin{equation*}
+        |\{x: M(|Tf|^v)(x)\geq(\frac{\lambda}{2c_v})^v\}|\leq 2^n|\{x: M_d(|Tf|^v)(x)>4^{-n}\left(\frac{\lambda}{2c_v}\right)^v\}|
+    \end{equation*}
+    And for $f\in C_c^\infty$, we get 
+    \begin{equation*}
+        E:=|\{x: M_d(|Tf|^v)>\tilde{\lambda}^v\}|
+    \end{equation*}
+    is finite, and 
+    \begin{equation*}
+        |E|\lesssim \frac{1}{\tilde{\lambda}^v}\int_E |Tf(y)|^v dy\lesssim_v\frac{1}{\tilde{\lambda}^v}|E|^{1-v}\|f\|_{L^1}^v
+    \end{equation*}
+    where the last inequality follows from the lemma below, and the fact that $T$ is indeed weak (1,1).
+    \begin{lemma}[Kolmogorov]
+        Given a weak (1,1) operator $S$, and $0<v<1$, and $E\subset\R^n$, and $|E|<\infty$, we get 
+        \begin{equation*}
+            \int_E |Sf(x)|^vdx\lesssim |E|^{1-v}\|f\|_{L^1}^v
+        \end{equation*}
+    \end{lemma}
+    We then get 
+    \begin{equation*}
+        |E|\lesssim \|f\|_{L^1}/\tilde{\lambda}
+    \end{equation*}
+\end{proof}
+\qed
+
+Now it remains to prove the two lemmas.
+\begin{proof}[second lemma]
+    \begin{align*}
+        \int_E |Sf|^vdx&=v\int_0^\infty\lambda^{v-1}|\{x\in E: |Sf(x)|>\lambda\}|d\lambda\\
+        &\lesssim v\int_0^\infty \lambda^{v-1}\min\{|E|, \frac{\|f\|_{L^1}}{\lambda}\}d\lambda\\
+        &\lesssim \|f\|_{L^1}^v|E|^{1-v}
+    \end{align*}
+\end{proof}
+\qed
+
+Now we prove the previous lemma. 
+\begin{proof}[first lemma]
+    WLOG, assume $x=0$. You take two disks, one contained in the other one with radius $Q=\epsilon/2$, and the larger one with $2Q=\epsilon$. We take $f=f_1+f_2$, where $f_1=f\chi_{2Q}$, and $f_2=f(1-\chi_{2Q})$. We will show that 
+    \begin{equation*}
+        |T_\epsilon f(0)|\lesssim \left(M(|Tf|^v)(0)\right)^\frac{1}{v}Mf(0)
+    \end{equation*}
+    We note that 
+    \begin{equation*}
+        Tf_2(0)=T_\epsilon f(0)
+    \end{equation*}
+    For $z\in Q$, 
+    \begin{align*}
+        |Tf_2(z)-Tf_2(0)|&=\left|\int_{|y|>\epsilon}K(z,y)-K(0,y)f(y)dy\right|\\
+        &\lesssim |z|^\delta\int_{|y|>\epsilon}\frac{f(y)}{|y|^{n+\delta}}dy\\
+        &\lesssim Mf(0)
+    \end{align*}
+    However, we have 
+    \begin{equation*}
+        Tf_2(z)=Tf(z)-Tf_1(z)
+    \end{equation*}
+    This gives that 
+    \begin{equation*}
+        |T_\epsilon f(0)|\leq CMf(0)+|Tf(z)|+|Tf_1(z)|, \forall z\in Q
+    \end{equation*}
+    WLOG, assume $|T_\epsilon f(0)|>0$, fix $\lambda\in (0, |T_\epsilon f(0)|)$, and let 
+    \begin{equation*}
+        Q_1=\{z\in Q: Tf(z)>\frac{\lambda}{3}\}, Q_2=\{z\in Q: Tf_1(z)>\frac{\lambda}{3}\}
+    \end{equation*}
+    We have either $CMf(0)>\frac{\lambda}{3}$, or $Q=Q_1\cup Q_2$.
+    The rest is an exercise.
+\end{proof}
+\qed
+
+

@@ -2717,10 +2717,12 @@ Next we state a fact:
 Next time: unbounded operators on Hilbert spaces! (And the spectral theorem for those).
 
 \section{Lecture 24}
-If $V$ is a Banach space, and $A$ is a bounded linear operator on $V$, then have the operator:
-\begin{equation*}
-    T_t=e^{tA}=\sum_{n=0}^\infty\frac{(tA)^n}{n!}
-\end{equation*}
+\begin{definition}[Power series of a bounded operator]
+    If $V$ is a Banach space, and $A$ is a bounded linear operator on $V$, then have the operator:
+    \begin{equation*}
+        T_t=e^{tA}=\sum_{n=0}^\infty\frac{(tA)^n}{n!}
+    \end{equation*}
+\end{definition}
 Then $T_tT_s=T_{t+s}$, and $s,t\in\R$, where $T_0=I$. For $v\in V$. For $v\in V$, and
 \begin{equation*}
     t\mapsto T_tv \text{ is norm continuous }
@@ -3273,3 +3275,341 @@ Hence for $A$ self-adjoint,
 \begin{equation*}
     SR\xi=RS\xi, \text{ for all }\xi\in\mathcal{H}
 \end{equation*}
+
+
+\section{Lecture Nov 3}
+We have 
+\begin{equation*}
+    l^1(\mathbb{N})\subset l^1(\mathbb{Z}), \mathcal{A}=L^1(\R^+)\subset L^1(\R)
+\end{equation*}
+We note that 
+\begin{equation*}
+    \widehat{\mathcal{A}}=\{\text{ continuous homomorphisms of } \R^+ \text{ into the unit disk }\}
+\end{equation*}
+This is 
+\begin{equation*}
+    \{\varphi_\lambda: \varphi_\lambda(t)=e^{-\lambda t}, Re(\lambda)\geq 0\}
+\end{equation*}
+This looks like the right half plane of $\R^2$.
+
+The Gelfand transform sends $f\in L^1(\R^+)$ is 
+\begin{equation*}
+    \widehat{f}(\lambda)=\int_0^\infty f(t)e^{-\lambda t}dt
+\end{equation*}
+\begin{note}
+    This is the Laplace transform.
+\end{note}
+\begin{note}
+    Notice this if we don't assume $f$ is integrable, but instead just $f$ is bounded, and the above integral is well-defined for $Re(\lambda)>0$. (Would not make sense if $Re(\lambda)=0)$.
+\end{note}
+Let $V$ be a Banach space, and let $\{T_t\}$ be a strongly continuous 1-parameter semigroup on $\R^+$ on $V$, continuous, i.e.
+\begin{equation*}
+    \|T_t\||\leq 1, \forall t
+\end{equation*}
+For $Re(\lambda)>0$, set 
+\begin{equation*}
+    R_\lambda\xi=\int_0^\infty e^{-\lambda s}T_s\lambda ds
+\end{equation*}
+This will convergge given $Re(\lambda)>0$. Let $B$ be the ``generator'' of $\{T_t\}$. Then we have
+\begin{equation*}
+    T_h(R_\lambda\xi)=\int_0^\infty e^{-\lambda s}T_{s+h}\xi ds=\int_h^\infty e^{\lambda(s-h)}T_s\xi ds 
+\end{equation*}
+This has 
+\begin{align*}
+    \frac{T_h-I}{h}&=\frac{1}{h}\int_h^\infty e^{\lambda(s-h)}T_s\xi dt-\int_0^\infty e^{-\lambda s}T_s\xi ds\\
+    &=\frac{1}{h}\int_0^\infty e^{\lambda(s-h)}T_s\xi ds-\frac{1}{h}\int_0^\infty e^{-\lambda s}T_s\xi ds-\frac{1}{h}\int_0^h e^{-\lambda(s-h)}T_s\xi ds\\
+    &=\frac{e^{\lambda h}-1}{h}\int_0^\infty e^{-\lambda s}T_s\xi ds-\frac{1}{h}\int_0^h e^{-\lambda(s-h)}T_s\xi\\
+    &=\lambda R_\lambda\xi-\xi
+\end{align*}
+Thus for all $\xi\in V$, and $R_\lambda\xi\in D(B)$, and 
+\begin{equation*}
+    B(R_\lambda\xi)=\lambda R_\lambda\xi-\xi
+\end{equation*}
+Then we have
+\begin{equation*}
+    \xi=(\lambda R_\lambda-BR_\lambda)\xi=(\lambda-B)R_\lambda\xi
+\end{equation*}
+All of the above leads to the following theorem.
+\begin{theorem}
+    For $R_\lambda\xi\in D(B)$ for all $\xi\in V$, $Re(\lambda)>0$, and 
+    \begin{equation*}
+        (\lambda-B)R_\lambda\xi=\xi
+    \end{equation*}
+    Thus $Range(\lambda-B)=V$. And 
+    \begin{equation*}
+        R_\lambda=\frac{1}{\lambda-B} ``='' \text{ the resolvent of } B
+    \end{equation*}
+\end{theorem}
+
+Let $\mathcal{H}$, and a semigroup of unitary operators, $\{U_t\}$, $A$, we have 
+\begin{equation*}
+    \la U_t\xi, U_t\eta\ra=\la \xi, \eta\ra
+\end{equation*}
+And 
+\begin{equation*}
+    \la A\xi, \eta\ra+\la \xi, A\eta\ra=0, \xi, \eta\in D(A)
+\end{equation*}
+So $-A\subset A^*$. Hence $A$ is skew-symmetric. We apply to $\{U_t\}_{t=0}$, for $\lambda>0$, $Range(A-\lambda)=\mathcal{H}$.
+
+And let $\tilde{T}_t=T_{-t}$, and $Range(A+\lambda)=\mathcal{H}$. Then range 
+\begin{equation*}
+    range(iA\pm i\lambda)=\mathcal{H}
+\end{equation*}
+
+\begin{proposition}
+    $C$ is a symmetric operator on $\mathcal{H}$, and that $Range(C\pm i)=\mathcal{H}$, then $C$ is a self-adjoint in the technical sense.
+\end{proposition}
+\begin{proof}
+    We have $D(C)\subset D(C^*)$, and on $D(C)$, we have $C^*\vert_{D(C)}=C$, then we want: if $\xi\in D(C^*)$, then $\xi\in D(C)$. Now let $\xi\in D(C^*)$ be given, then because there exists $\eta\in D(C)$, so 
+    \begin{equation*}
+        (C^*-i)\eta=(C^*-i)\xi
+    \end{equation*}
+    But $D(C)\subset D(C^*)$, 
+    \begin{equation*}
+        (C^*-i)\eta
+    \end{equation*}
+    This implies that $\xi-\eta\in Ker(C^*-i)=Ker(C+i)^*=(Range (C+i))^\perp$. And note that $Range(C+i)=\mathcal{H}$, hence this is 0.
+    \begin{equation*}
+        \xi=\eta, \xi\in D(C)
+    \end{equation*}
+    Hence we are done.
+\end{proof}
+\qed
+
+We will talk about compact operators next time. 
+
+\section{Lecture Nov 6}
+We will discuss compact operators now.
+\begin{definition}
+    Let $V, W$ be normed vector spaces, let $T: V\to W$ be linear, then $T$ is said to be compact if
+    \begin{equation*}
+        T(V_1) \text{ is totally bounded in } W
+    \end{equation*}
+    where $V_1=\overline{B}(0,1)$ in $V$. If $W$ is complete, then 
+    \begin{equation*}
+        \overline{T(V_1)} \text{ is compact }
+    \end{equation*}
+\end{definition}
+\begin{note}
+    This implies that $T$ is a bounded operator. 
+\end{note}
+
+A bit of notation: let $B_0(V,W)$ be the set of compact operators from $V,W$.
+\begin{proposition}
+    If $S,T\in B_0(V,W)$, then $S+T\in B_0(V,W)$. (Less nontrivially, so is $\alpha T$.)
+\end{proposition}
+\begin{proof}
+    Let $\epsilon>0$, then there exists $w_1, ..., w_m\in W$ so that $Ball( w_j, \epsilon/2)$ cover $S(V_1)$. There exists $w'_1, ..., w'_n\in W$ such that $Ball(w'_j, \epsilon/2)$ cover $T(V_1)$.
+
+    So for any $v\in V_1$, there is $w_j$ and such that $Sv\in Ball(w_j, \epsilon/2)$, and a $w'_R$ such that $Tv\in Ball(w'_R, \epsilon/2)$. This gives that 
+    \begin{equation*}
+        \|(S+T)v-(w_j+w'_R)\|\leq \|Sv-w_j\|+\|Tv-w'_R\|\leq\epsilon/2+\epsilon/2=\epsilon
+    \end{equation*}
+\end{proof}
+\qed
+
+\begin{proposition}
+    If $T\in B_0(V,W)$, and $S\in B(U,V)$ (just a bounded operator), then $TS: U\to W$ is in $B_0(U,W)$.
+\end{proposition}
+If $R: W\to Y$, and $R\in B(W,Y)$, then $RT: V\to Y$ is in $B_0(V,Y)$.
+\begin{note}
+    $R$ is uniformly coninuous, hence maps totally bounded sets to totally bounded sets.
+\end{note}
+\begin{note}
+    $B_0(V)$ for $B_0(V,V)$, then $B_0(V)$ is a 2 sided ideal in $B(V)$.
+\end{note}
+
+\begin{proposition}
+    $B_0(V,W)$ is norm-closed in $B(V,W)$.
+\end{proposition}
+\begin{proof}
+    Let $\{T_n\}$ be a sequence in $B_0(V,W)$, and $T_n\to T$ in norm in $B(V,W)$. We now want to show $T$ is compact. Let $\epsilon>0$ be given, choose $N$ such that
+    \begin{equation*}
+        \|T-T_N\|<\epsilon/2
+    \end{equation*}
+    Find $w_1, ..., w_n\in W$ so that $Ball(w_j, \epsilon/2)$ cover $T_N(V_1)$. Then for any $v\in V_1$, there exists $w_j$ such that $Tv\in Ball(w_j, \epsilon/2)$, and then 
+    \begin{equation*}
+        \|Tv-w_j\|\leq \|Tv-T_Nv\|+\|T_Nv-w_j\|<\epsilon/2+\epsilon/2=\epsilon
+    \end{equation*}
+    Hence $T\in B_0(V,W)$. Now we have shown that $B_0(V)$ is a closed two-sided ideal.
+\end{proof}
+\qed
+
+A trivial but important example is as follows.
+\begin{example}
+    Let $T:V\to W$, bounded, has finite rank, i.e. $Range(T)$ is finite dimensional.
+\end{example}
+\begin{example}
+    Let $V=l^p(X), 1\leq p<\infty$, and let $f\in C_0(X)=C_\infty(X)$. And let $T=M_p$ by pointwise multiplication by $f$ (if $X$ is finite, then it follows from the above example that $T$ is finite rank), such $T$ is compact.
+\end{example}
+The next example is slightly interesting.
+\begin{example}
+    Integral operators: $A=\{\alpha_{j,k}\}^n$ act on $\C^n$
+    \begin{equation*}
+        (Av)_j=\sum a_{jk}v_k=\sum (\alpha_{j,k})v(k)
+    \end{equation*} 
+\end{example}
+Let $X,Y$ be measure spaces, and $K$ measurable on $X\times Y$, and for a function $\xi$ measurable on $Y$, define 
+\begin{equation*}
+    (T_k\xi)(x)=\int K(x,y)\xi(y)dy
+\end{equation*}
+The above $K(x,y)$ is called the kernel. 
+\begin{example}
+    If $K\in L^\infty(X,Y)$, then for almost every $x$,
+    \begin{equation*}
+        y\mapsto K(x,y)\in L^\infty(Y)
+    \end{equation*}
+    If $\xi\in L^1(Y)$, then 
+    \begin{equation*}
+        |(T_K\xi)(x)|=\int |K(x,y)||\xi(y)|dy<\infty
+    \end{equation*}
+    Hence $T_k\xi\in L^\infty$. (Such operator is probably not compact).
+\end{example}
+
+If $K\in L^1(X,Y)$, then for almost every $x$, $K(x,\cdot)$ (viewed as a function of $y$), if $K(x,\cdot)\in L^1$, and $\xi\in L^\infty(Y)$, then 
+\begin{equation*}
+    T_K\xi(x)=\int K(x-y)\xi(y)dy
+\end{equation*}
+and 
+\begin{equation*}
+    \|T_K\xi\|_{L^1}\leq \|K\|_{L^1}\|\xi\|_{L^\infty}
+\end{equation*}
+\begin{proposition}
+    $T_K: L^\infty(Y)\to L^1(X)$ is compact.
+\end{proposition}
+\begin{proof}
+    If $K(x,y)=\chi_E(x)\chi_F(y)$, and $Range(T_k)=\R\chi_E$. This is of rank 1, hence compact. If 
+    \begin{equation*}
+        K=\sum_{j=1}^n \alpha_j\chi_{E_j}\chi_{F_j}
+    \end{equation*}
+For $K\in L^1(X,Y)$, approximate by simple functions above, in the $L^1$ norm. This implies that 
+\begin{equation*}
+    T_{K_n}\to T_K
+\end{equation*}
+in operator norm, and by the previous proposition, $T_K$ is compact.
+\end{proof}
+\qed
+
+Let $K\in L^2(X\times Y)$, so 
+\begin{equation*}
+    \int |K|^2 dxdy<\infty
+\end{equation*}
+For almost every $x$, $K(x,\cdot)\in L^2(Y)$. Hence if $\xi\in L^2(Y)$, 
+\begin{equation*}
+    (T_K\xi)(x)=\int K(x,y)\xi(y)dy
+\end{equation*}
+This integral makes sense for almost every $x$.
+\begin{equation*}
+    |T_k\xi(x)|=\left|\int K(x,y)\xi(y)\right|\leq \int |K(x,y)||\xi(y)| dy \leq \|K(x,y)\|_{L^2(Y)}\|\xi\|_{L^2}<\infty
+\end{equation*}
+Now
+\begin{equation*}
+    \|T_K\xi\|_{L^2(X\times Y)}^2\leq \|K(x,y)\|_{L^2(X\times Y)}^2\|\xi\|_{L^2}^2
+\end{equation*}
+This gives us 
+\begin{equation*}
+    \|T_K\|\leq \|K\|_{L^2}
+\end{equation*}
+Hence we again approximate with simple functions, and by the same proof that we gave for $L^1$.
+\begin{corollary}
+    $T_K$ with $K\in L^2(X\times Y)$ defined by 
+    \begin{equation*}
+        T_Kf(x)=\int K(x,y)f(y)dy
+    \end{equation*}
+    is compact.
+\end{corollary}
+
+\section{Lecture Nov 8}
+We talked about self-adjoint compact operators last time. Let $T\in B(\mathcal{H})$, and $T^*=T$. 
+\begin{proposition}
+    For $T$ bounded and self-adjoint, then we have  
+    \begin{equation*}
+        \|T\|=\sup\{|\la T\xi, \xi\ra|: \|\xi\|\leq 1\}
+    \end{equation*}
+\end{proposition}
+\begin{proof}
+    \begin{equation*}
+        \la\xi, \eta\ra=\frac{1}{4}\sum_{n=0}^3 i^n\la \xi+i^n\eta, \xi+i^n\xi\ra
+    \end{equation*}
+    Apply $T\xi$ to the first coordinate, and the fact that $T^*=T$, take the real part.
+\end{proof}
+We present another proof.
+\begin{proof}
+    $T\geq 0$, such that $T=S^2$, for some $S\geq 0$, then 
+    \begin{equation*}
+        \la T\xi, \xi\ra=\la S\xi, S\xi\ra=\|S\xi\|^2
+    \end{equation*}
+    The taking the sup over $\|\xi\|\leq 1$, we just get $\|S\xi\|^2=\|S\|^2=\|T\|$.
+\end{proof}
+
+\begin{proposition}
+    We prove $T$ self-adjoint has an approximate eigvenvector.
+\end{proposition}
+Fix $T, \sigma(T)$, we consider the projection to $[0,\infty)$, denote the projection operator as $P^+$, and projection to $(-\infty, 0]$ as $P^-$. Note that 
+\begin{equation*}
+    P^++P^-=I 
+\end{equation*}
+Hence for a Hilbert space $\mathcal{H}$, we can decompose it,
+\begin{equation*}
+    \mathcal{H}=P^+\mathcal{H}+P^-\mathcal{H}
+\end{equation*}
+Then there exists $\{\xi_n\}, \|\xi_n\|=1$, such that 
+\begin{equation*}
+    |\la T\xi_n, \xi_n\ra|\to \|T\|\neq 0
+\end{equation*}
+And $\|T\xi_n\|\to \|T\|$. So one can assume that 
+\begin{equation*}
+    \la T\xi_n, \xi_n\ra\to \|T\|
+\end{equation*}
+Let $\lambda=\|T\|$, and now look at 
+\begin{equation*}
+    \|(T-\lambda I)\xi_n\|^2=\la (T-\lambda)\xi_n, (T-\lambda)\xi_n\ra=\la T\xi_n, T\xi_n\ra-2\lambda\la T\xi_n, \xi_n\ra +\lambda^2\la \xi_n, \xi_n\ra
+\end{equation*}
+Now we take the limit, $n\to\infty$, we get
+\begin{equation*}
+    \|T\|^2-2\|T\|^2+\|T\|^2=0
+\end{equation*}
+\begin{definition}[approximate eigenvector]
+    For any $T\in B(\mathcal{H})$, if we have $\lambda$, and $\{\xi_n\}$, with $\|\xi_n\|=1$, and 
+    \begin{equation*}
+        \|(T-\lambda)\xi_n\|\to 0
+    \end{equation*}
+    We then say that $\{\xi_n\}$ is an approximate eigenvector for $\lambda\in\sigma(T)$.
+\end{definition}
+\begin{corollary}
+    We see from above, that for $T$ self-adjoint, either $\|T\|$ or $-\|T\|$, one can show for any $\lambda\in\sigma(T)$, $T$ has an approximate eigevnvector.
+\end{corollary}
+\begin{proof}
+    Above.
+\end{proof}
+\begin{proposition}
+    Compact operators have an eigenvector.
+\end{proposition}
+
+Let $T\in B_0(\mathcal{H})$, a compact operator, and $T^*=T$. Assume $\|T\|$ that has an approximate eigenvector $\{\xi_n\}$, with $\|\xi_n\|=1$. Then $\{\xi_n\}\subset\mathcal{H}$, $\{T\xi_n\}$ is totally bounded.
+
+And as a subsequence converges to some vector $\eta$, so assume that $T\xi_n\to \eta$, then 
+\begin{equation*}
+    \|(T-\lambda)\xi_n\|\to 0
+\end{equation*}
+ This implies that 
+ \begin{equation*}
+    (T-\lambda)\xi_n\to 0, T\xi_n-\lambda\xi_n\to 0
+ \end{equation*}
+ But we know $T\xi_n\to\eta$, 
+ \begin{equation*}
+    (T-\lambda)\eta
+ \end{equation*}
+ Let $T\lambda\xi_n-\lambda\lambda\xi_n=\lambda(T\xi_n-\lambda\xi_n)\to 0$, for $\lambda\neq 0$.
+
+For $T$ compact, let $\lambda$ not be any eigenvalue, then the eigenspace $\mathcal{H}_\lambda$ must be finite dimensional. For any $r>0$, let $H_r$ be the direct sum of all the eigen-subspaces for eigenvalues $\lambda$ with $|\lambda|\geq r$. Then  $T$ on $\mathcal{H}_r$ is commutative, with norm $\leq\frac{1}{r}$. This implies that $H_r$ is finite dimensional. This has bounded inverse. 
+
+Then $T\vert_{\mathcal{H}_r}S=I_\mathcal{H}$ (the identity opeartor is compact). $T$ acts on $H_r$ into itself, and $T^*=T$. Note that $T\vert_{H_r^\perp}$ is compact, if $\|T\vert_{H_R^\perp}\|\geq r$, then $H^+$ contains an eigenvector for an eigenvalue $\lambda$ with $\lambda\geq r$.
+
+This gives that $\|T\vert_{H_r^\perp}\|<r$. And we take a sequence $r_n\to 0$, note that all $H_{r_n}$ are finite dimensional, so get a sequence $\{\lambda_n\}$, and $|\lambda_n|\to 0$. And the eigenspaces are finite dimensional, so $\bigoplus\mathcal{H}_{\lambda_n}$ is all of $\mathcal{H}$ except for elements in the kernel of $T$, which may be infinite-dimensional, or can just be $\{0\}$.
+ 
+From this, we get there is an orthonormal basis for $\mathcal{H}$ consisting of eigenvalues.
+\begin{note}
+    Any compact operator can be diagonalized, with a countable number of eigenspaces.
+\end{note}
+

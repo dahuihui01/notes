@@ -2803,3 +2803,729 @@ Next time, we will start with the sequence and how to obtain compactness/converg
         G^ku_k(0)\to u(0)\text{ in } L^2
     \end{equation*}
 \end{note}
+
+
+\section{Lecture Oct 31}
+We will talk about minimal blow-up solutions, or in other words, the minimal enemies. (The strichartz norm is $\infty$, but they themselves do not necessarily blow up).
+
+\begin{enumerate}
+    \item Mass critical NLS
+    \item Minimal blow-up mass $A$.
+    \begin{equation*}
+        \|u_0\|\leq A\cdot\epsilon
+    \end{equation*}
+    This implies global solution with 
+    \begin{equation*}
+        \|u\|_S\leq F_\epsilon
+    \end{equation*}
+    \item Limiting sequence $\{u_n\}$ such that
+    \begin{equation*}
+        \|u_{n_0}\|_{L^2}\to A, \|u_n\|_{L^p}\to\infty
+    \end{equation*}
+\end{enumerate}
+Look for a limit 
+\begin{equation*}
+    u=\lim u_n
+\end{equation*}
+\begin{note}
+    This limit is modulo symmetries  (you could apply symmetric transformations)
+\end{note}
+
+Our profile decomposition for $u_n$: (we've only done it for the linear case) $u_{n_0}$. 
+\begin{equation*}
+    u_{n_0}\to u_n^{lim}
+\end{equation*}
+And we do profile decomposition for $u_{n_0}$, 
+\begin{equation*}
+    u_n^{lim}=\sum_{j=1}^J G_n^j\phi_j+r_n
+\end{equation*}
+Now we have two scenarios, if $J$ is fixed, and 
+\begin{equation*}
+    \|r_n\|_{L^p}\to 0
+\end{equation*}
+Or $J$ could be arbitrary large, then
+\begin{equation*}
+    \lim_{J\to\infty}\limsup_{n\to\infty}\|r_n\|_{L^p}=0
+\end{equation*}
+\begin{note}
+    We do not expect to have any sort of convergence.
+\end{note}
+
+Compactness modulo symmetries. 
+Note that compactness would have a single profile $\phi_1$, and we would like to let it have all the mass. Moreover,
+\begin{equation*}
+    M(\phi_1)=A, \|r_n(0)\|_{L^2}\to 0
+\end{equation*}
+
+\begin{remark}
+    We know that $\sum_{j=1}^J\|\phi_j\|_{L^2}^2\leq A$, since the group of symmetries allow the profiles to be decomposed in an almost orthogonal fashion.
+\end{remark}
+And note that this is not arbitrary, since $A$ is exactly the minimum blow-up mass.
+\begin{proposition}
+    The above holds.
+\end{proposition}
+\begin{proof}
+    We shall do this via contradiction. Assume either two or more profiles $\phi_1, \phi_2, ...$, or we assume there exists one profile $\phi$ but this profile does not have maximal mass.
+
+    Because of orthogonality, we have
+    \begin{equation*}
+        \sup_j\|\phi_j\|_{L^2}^2<A
+    \end{equation*}
+    And note that this $\phi_j(0)$ generates a global solution to NLS.
+
+    Now we ask the question, can we put these together for our original NLS to get a new solution? 
+    \begin{note}
+        We will contradict the fact that $\|u_n\|_{L^p}\to\infty$. 
+    \end{note}
+    We have that
+    \begin{equation*}
+        \|\phi_j^{lim}\|_S\leq C
+    \end{equation*}
+    We try an approximate solution, $u^{ap}$, 
+    \begin{equation*}
+        u^{ap}\approx G_n^j\phi_j+r+n
+    \end{equation*}
+    The first term would be a nonlinear wave, and $r_n$ a linear wave with a small Strichartz norm. 
+    \begin{problem}
+        Now if we add this up, do we get a good approximate solution?
+    \end{problem}
+    The answer is indeed yes. We have $\|\phi_j\|_{L^p}\leq C$, And
+    \begin{equation*}
+        \|\phi_j\phi_k\|_{L^{p/2}}\leq C
+    \end{equation*}
+    \begin{equation*}
+        \|G_n^j\phi_jG_n^k\phi_k\|_{L^{p/2}}\to 0
+    \end{equation*}
+    The reason the above would tend to 0 is because the profiles are separated. Let's first think about the group of translations. For example, you apply translation on $\phi_2$ which would result in $\phi_1, \phi_2$ being further away from each other, hence their products have small norm.    
+
+    \begin{equation*}
+        (i\partial_t+\Delta)u^{ap}-u^{ap}|u^{ap}|^p=\sum(i\partial_t+\Delta)G^j\phi_j-G^j\phi_j|G^\phi_j|^p+ \text{ mixed terms }+ (i\partial_t+\Delta)r-r|r|^p
+    \end{equation*}
+    We note that $\sum(i\partial_t+\Delta)G^j\phi_j-G^j\phi_j|G^\phi_j|^p$ and $(i\partial_t+\Delta)r$ both vanish, and hence it remains to bound the mixed terms, and $r|r|^p$ error term. For the mixed terms, we use separation, and $r|r|^p$, we use smallness
+
+    We have the following:
+    \begin{equation*}
+        u^{ap}(0)=\sum G^j\phi_j(0)+r(0)
+    \end{equation*}
+    We would like to have the following:
+    \begin{equation*}
+        u(0)=\sum G^j\phi_j^{lim}(0)+r(0)
+    \end{equation*}
+    \textbf{Difficulty:} We have a mismatch between linear and nonlinear flows of $\phi$, and  a mistmatch between the initial data $u(0), u^{ap}(0)$.
+
+    We separate the group of transformations, as being $T_t$, a time translation, and everything that is not a time translation $g_0$.
+    \begin{equation*}
+        G=G_0T_t=T_{\tilde{t}}G_0
+    \end{equation*}
+
+    \begin{equation*}
+        u_n=\sum_j G_{n_0}^jT_{t_{nj}}\phi_j+r_n
+    \end{equation*}
+    Either we have $t_{nj}\to t_j$, or $t_{nj}\to+\infty$, and $t_{nj}\to -\infty$. For the first case, We can replace $\phi_j$ by $T_{t_j}\phi_j$, and we end up with $t_j=0$. This is $0_\phi=0_u$, hence this case is done.
+
+    If $t_{nj}\to-\infty$, then $\phi_j^{nlim}$ represents the solution to the NLS such that
+    \begin{equation*}
+        \lim_{t\to-\infty}\phi_j^{nlim}(t)-\phi_j^{lim}(t)=0
+    \end{equation*}
+    This implies that $\phi_j(0)$ serves as scattering data for $\phi_j^{nlim}$. 
+
+    Similarly, if $t_{nj}\to+\infty$, we have
+    \begin{equation*}
+        \lim_{t\to\infty}\phi_j^{nlim}-\phi_j^{lim}(t)=0
+    \end{equation*}
+    Eventually, we have solutions $\phi_j^{nlin}$ and the approximate solution $u^{ap}$, 
+    \begin{equation*}
+        u_n^{ap}=\sum_jG_n^j\phi_j^{nlin}+r^{lin}
+    \end{equation*}
+    with the property such that $u_n^{ap}$ is an approximate solution, and 
+    \begin{equation*}
+        \|(i\partial_t+\Delta)u_n^{ap}-u_n^{ap}|u_n^{ap}|^p\|_{S^1}\leq\epsilon
+    \end{equation*}
+    And also 
+    \begin{equation*}
+        \|u_n^{ap}(0)-u(0)\|_{L^2}\lesssim\epsilon
+    \end{equation*}
+    And another piece of information:
+    \begin{equation*}
+        \|u_n^{ap}\|_{L^p}\lesssim C
+    \end{equation*}
+    where $C$ is some universal constant, independent of $n$. $\epsilon$ can be made arbitrarily small.
+
+    \begin{proposition}
+        Near the approximate solution $u^p$ which satisfies the above three properties, there exists an exact solution, with initial data $u_0$, and is global and satisfies $\|u_n\|\leq 2C$. (This is perturbation theory).
+    \end{proposition}
+    \begin{proof}
+        Let $v=u_n-u^{ap}$, we shall write down an equation for $v$:
+        \begin{equation*}
+            (i\partial_t+\Delta)v=(i\partial_t+\Delta)(u-u_n)=u|u|^p-u_n|u_n|^p+(\text{ source term }<\epsilon)
+        \end{equation*}
+        We have $\|v(0)\|_{L^2}\leq\epsilon$. Now we write $u=u^{ap}+v$.
+
+        The above difference gives
+        \begin{equation*}
+            v|u^{ap}|^p+O(v^2)
+        \end{equation*}
+        and the second term is small (perturbative). Note $v$ is about $\epsilon$, but $|u^{ap}|^p$ does not have to be small. We fix this incrementally. (If you have a time interval such that the overall $L^p$ norm is small, then you could dissect them into intervals such that on each of the interval, they are small).
+
+        Let $R=\bigcup_j I_j$, and for $\delta$ sufficiently small
+        \begin{equation*}
+            \|u^{ap}\|_{L^p(I_j\times\R^n)}\leq\delta
+        \end{equation*}
+        In each of the $I_j$, we have $v\cdot|u^{ap}|^p$ is small.
+        \begin{equation*}
+            t_0=0, t=t_1, \|v(t_1)\|\leq 2\|v(t_0)\|
+        \end{equation*}
+        Luckily, we only have to do this finitely many times, say $u_n^{ap}\|_{L^p}\leq C$, then you break them into $C/\delta$ intervals. 
+        \begin{equation*}
+            \|v\|_s\leq \epsilon 2^{C/\delta} 
+        \end{equation*}
+    \end{proof}
+    \qed
+    Note that our solution has Strichartz estimate $\|u_n\|\leq 2C$, and it does not tend to $\infty$, as it should, hence contradiction.
+\end{proof}
+\qed
+
+Thus, we obtain compactness. This implies:
+On a subsequence, we have $\phi$
+\begin{equation*}
+    \phi(0)=\lim_{n\to\infty}G^n u_n \text{ strongly in } L^2
+\end{equation*}
+This implies that 
+\begin{equation*}
+    \|\phi(0)\|_{L^2}^2=A
+\end{equation*}
+The next claim we will make is that
+\begin{equation*}
+    \|\phi^{nlin}\|_{L^p}=\infty
+\end{equation*}
+We know for $u_n$, $\|u_n\|_{L^p}\to\infty$, however, we can argue backwards. If $\|\phi^{nlin}\|_{L^p}=\infty$, then we can construct $u^n$ perturbatively, with
+\begin{equation*}
+    \|u_n\|_{L^p}\leq C
+\end{equation*}
+
+We look at $u(0)$, the initial data, and treat $u(t)$ as initial data at time $t$, and 
+\begin{equation*}
+    u(t_n+t)
+\end{equation*}
+would play the role of $u^n$. And we do profile decomposition on this sequence. Note that this sequence $u(t_n+t)$ will converge after some translation by $g$. On a subsequence, 
+\begin{equation*}
+    G_0(u(t_n))\to v \text{ in } L^2
+\end{equation*}
+This implies for each sequence $t_n$, there exists $G_0^n$ such that 
+\begin{equation*}
+    G_0^nu(t_n)\to\phi \text{ in } L^2 \text{ on a subsequence}
+\end{equation*}
+This implies that 
+\begin{equation*}
+    \{u(t): t\in I_u\} \text{ is compact modulo symmetries } g_0
+\end{equation*}
+This is the same as saying that there exists some group of transformations $G_0^n(t)$ such that 
+\begin{equation*}
+    G_0^n(t)u(t) \text{ is compact in } L^2
+\end{equation*}
+This implies if we look at $G_0^n(t)$, this takes a compact set in $L^2$, translates in the physical, Fourier space, and scales it. Now if we pull $G_0^n(t)$, center $x(t)$, we can pull frequency center $\xi(t)$, given by Galilean transform, and the scale $N(t)=\delta\xi(t)$, which is the frequency scale. Now, the scale in frequency and spatial are opposite, hence $N^{-1}(t)$ represents the spatial scale.
+
+From compactness, we get for all $\epsilon>0$, there exists some $R_\epsilon$ such that 
+\begin{equation*}
+    \|u(t)\|_{L^2(\R^n\setminus B(x(t),R_\epsilon N^{-1}(t)))}\leq\epsilon
+\end{equation*}
+\begin{equation*}
+    \|\hat{u}(t)\|_{L^2(\R^n\setminus B(x(t), R_\epsilon N(t)))}\leq\epsilon
+\end{equation*}
+This implies compactness and is gained also from compactness.
+
+This is an equivalent formulation of compactness.
+
+
+\section{Lecture Nov 2}
+Let $A$ be the critical mass, and $u$ be the minimal enemy, and 
+\begin{equation*}
+    M(u)=A
+\end{equation*}
+And
+\begin{equation*}
+    \|u\|_{L^\frac{2(n+2)}{n}}=\infty
+\end{equation*}
+and $\{u(t),t\in I\}$.
+For all $t$, there exists $x(t), \xi(t), N(t)$, with
+\begin{equation*}
+    \delta x=N(t)^{-1}, \delta\xi=N(t)
+\end{equation*}
+\begin{equation*}
+    \|u(t)\|_{L^2(B(x(t), R_\epsilon N^{-1}))}\leq\epsilon
+\end{equation*}
+and 
+\begin{equation*}
+    \|\hat{u}(t)\|_{L^2(B(\xi, R_cN)^c)}\leq\epsilon
+\end{equation*}
+
+Recall our NLS:
+\begin{equation*}
+    i\partial_t+\Delta u=\pm u|u|^p
+\end{equation*}
+Now we ask the question how fast can $x(t), \xi(t), N(t)$ change? Fix some $t_0=0$, we can set 
+\begin{equation*}
+    x(0)-0, \xi(0)=0, N(0)=1
+\end{equation*}
+$u_0$ localized around 0 in position, and frequency on the unit scale.
+\begin{equation*}
+    u_0=u_{01}+u_{02}
+\end{equation*}
+We apply $e^{it\Delta}$. There exists a solution $u$ in $[0,T]$ for $T\ll 1$.
+
+\begin{equation*}
+    u=e^{it\Delta}u_{01}+O(\epsilon)
+\end{equation*}
+For $t\in [0,T]$, and we can still take
+\begin{equation*}
+    x(t)=O(1), \xi(t)=O(1), N(t)=1+o(1)
+\end{equation*}
+And we have
+\begin{equation*}
+    \xi(t)=\xi(0)+O(N), N(t)=N(0)(1+o(1)), x(t)=x(0)+2t\xi(0)+O(N^{-1})
+\end{equation*}
+for $t\in [0,N^{-2}]$.
+\begin{equation*}
+    \left|\frac{d}{dt}N(t)\right|\leq N(t)\cdot N^2(t)=N^3(t)
+\end{equation*}
+and note 
+\begin{equation*}
+    \left|\frac{d}{dt}\xi(t)\right|\lesssim N(t)\cdot N^2(t)=N^3(t)
+\end{equation*}
+And finally for $x(t)$,
+\begin{equation*}
+    \left|\frac{d}{dt}x(t)-2\xi(t)\right|\leq N^{-1}(t)\cdot N^2(t)=N(t)
+\end{equation*}
+For $\widehat{u}(t)$, we choose $r$ such that
+\begin{equation*}
+    \sup_{B\in B_r}\|\widehat{u}(t)\|_{L^2(B_r)}^2=\frac{1}{2}\|\widehat{u}\|_{L^2}
+\end{equation*}
+We have
+\begin{equation*}
+    \|u\|_{S(I_j)}\approx 1, \|N(u)\|_{N(I_j)}\approx 1, \|u\|_{L^p(J)}^p\leq\int_JN(t)^2dt
+\end{equation*}
+And assume this converges to some $\tilde{u}(t)$,
+\begin{equation*}
+    G_0(t_n)(u(t+t_n))\to \tilde{u}(t)
+\end{equation*}
+We ask the question: can we choose $t_n$ such that in the limit as $t\to\infty$, we get another minimal enemy $\tilde{u}$ with more control over the behavior of $N(t)$.
+\begin{note}
+    We will use two simpler cases.
+\end{note}
+\begin{problem}
+    What should $N$ do such our problem blows up?
+\end{problem}
+Blow up if and only if $N(t)\to\infty$, and is when the frequency scale is large, and when the spatial scale is tiny, and that blows up.
+
+We look at $N(t)$ around $t_0$. We know that 
+\begin{equation*}
+    N(t)\approx N(t_0) \text{ if } |t-t_0|\ll N(t_0)^{-2}
+\end{equation*}
+We rescale it so $t_0=0$, and $N(t_0)=1$, and we would get 
+\begin{equation*}
+    N(t)\approx N(0), |t|\leq R
+\end{equation*}
+Fix $R$, we define the oscillation of $N$,
+\begin{equation*}
+    osc_R(N)=\frac{\int\{N(t), |t-t_0|\leq RN(t_0)^{-2}\}}{\sup \{N(t), |t-t_0|\leq RN(t_0)^{-2}\}}
+\end{equation*}
+Now we have two scenarios.
+
+\textbf{Scenario 1}
+\begin{equation*}
+    \lim_{R\to\infty}osc_R(N)>0 \Rightarrow N(t)\approx 1
+\end{equation*}
+We have reduced to the case where $osc_R(N)\to 0$ as $R\to\infty$. For each $t_0$, look at
+\begin{equation*}
+    \inf_{t_0}\alpha(t_0)=\frac{\inf\{N(t), t<t_0\}+\inf\{N(t), t>t_0\}}{N(t_0)}
+\end{equation*}
+If $\inf_{t_0}\alpha(t_0)=0$.
+
+\textbf{Scenario 2}
+We have $N(0)=1, N(t)\to 0$ at $\pm\infty$. Remaining scenario:
+\begin{equation*}
+    osc(R)\to\infty \text{ as } R\to\infty
+\end{equation*}
+And 
+\begin{equation*}
+    \alpha(t_0)\geq c>0, \forall t_0
+\end{equation*}
+The bad case is that
+\begin{equation*}
+    N(t)\geq cN(t^{-}), t>t^{-1}, N(t)\geq cN(t^+), t<t^+
+\end{equation*}
+This gives that
+\begin{equation*}
+    N(t^-)\approx N(t^{-1})
+\end{equation*}
+This tells us we can assume from here on that $t^-$ selects the left as $t^-\to t_{min}$, and we do not know yet where $t_{min}$ is finite or $-\infty$. And we look only at such $t^-$.
+
+Suppose $N(1)=1$, and for $t<t_0<1$, we have 
+\begin{equation*}
+    N(t)\geq cN(t_0)
+\end{equation*}
+and this gives $N$ is ``almost '' decreasing.
+
+We choose $R$ large enough such that $osc(R)>2 c^{-1}$. And there exists $t_1$ such that 
+\begin{equation*}
+    N(t_1)\geq 2N(t_0)
+\end{equation*}
+and $|t_1-t_0|\leq 2RN(t_0)^{-2}$.
+And 
+\begin{equation*}
+    N(t_{k+1})2N(t_k)\Rightarrow N(t_k)=2^k
+\end{equation*}
+and 
+\begin{equation*}
+    |t_{k+1}-t_k|\leq RN(t_k)^{-2}, t_k\rightarrow T_{min}
+\end{equation*}
+And 
+\begin{equation*}
+    |t_k-t_{min}|\leq R2^{-2k}\Rightarrow |N(t_k)|\lesssim |t_k-t_{min}|^{-1/2}
+\end{equation*}
+We arrive at 
+\begin{equation*}
+    N(t)\approx t^{-1/2}, t\in [0,1]
+\end{equation*}
+And $t=0$ is the blow up. But we would like to cover all of $T$, and hence we reseacle to $[0,N]$, and letting $N\to\infty$.
+
+\textbf{Scenario 3}
+For $t\in [0,\infty]$, and 
+\begin{equation*}
+    N(t)\approx t^{-1/2}
+\end{equation*}
+Scenario 1+2=Scenario 1': gives $N$ not necessarily constant, but decays just a little.
+\begin{equation*}
+    \int_0^\infty N^3(t)=\infty
+\end{equation*}
+And Scenario 2':
+\begin{equation*}
+    \int_0^\infty N^3(t)<\infty
+\end{equation*}
+
+\section{Lecture Nov 7}
+We will take the first three scenarios, and we will look at the self-similar case: $I=[0,\infty)$, and $N(t)=t^{-1/2}$.
+We saw that 
+\begin{equation*}
+    |N'(t)|\leq N^3(t), |\xi'(t)|\leq N^3(t)\approx t^{-3/2}
+\end{equation*}
+where $N^3(t)\approx t^{-3/2}$. This suffices that $\xi^\infty=\lim_{t\to\infty}\xi(t)$.
+\begin{equation*}
+    |\xi(t)-\xi^\infty|\leq\int_t^\infty|\xi'(t)|\leq\int t^{-3/2}=t^{-1/2}
+\end{equation*}
+By Gallilean invariance, we set the limit $\xi^\infty=0$. Let's see what if $N(t)=t^{-1/2}$, this gives that $\xi(t)=0$.
+
+Once we fix this frequency. We look at mass critical NLS. 
+\begin{enumerate}
+    \item Locally well-posed in $L^2$
+    \item Locally well-posed in $H^1$.
+\end{enumerate}
+\begin{note}
+    We care about $H^1$ because we have a conserved energy.
+    \begin{equation*}
+        E(u)=\int \frac{1}{2}|\nabla|^2\pm\frac{1}{p+1}|u|^{p+1}dx
+    \end{equation*}
+\end{note}
+in the defocusing case, $E$ is coercive. Then if the problem is locally wel-posed in $H^1$, we also get global well-posedness in $H^1$.
+Showing that in $H^1$ would suffice, because that would imply the solution cannot blow up, but it in fact does.
+
+In the focusing case. If we have 
+\begin{equation*}
+    M(u)<M(Q)\Rightarrow \|u\|_{H^1}^2\lesssim E(u)
+\end{equation*}
+The conclusion now is, it would suffice to show that $u\in L^\infty H^1$. Then we are done.
+
+As $t\to\infty$, we have $N(t)\to 0$, so maybe $u$ is localized at a very low frequency. However, one trick that we can do is that we can do some rescaling. We want the solution to be very small here.
+
+Given $N(t)=t^{-1/2}, \delta t=N^{-2}$. And on the graph of $N(t)$-y, and $t$-x, we decompose the intervals into dyadic intervals.
+\begin{comment}
+    We will do a scaling. And push the control at infinity. We would like to magic this from a qualitative to a quantitative way.
+\end{comment}
+For $k\gg 1$, $k$ being the dyadic frequency, look at $u$ such that $>N\cdot 2^k$, and $I_j=[2^j, 2^{j+2}]$. Now we claim that 
+\begin{proposition}
+    \begin{equation*}
+        \|u_{>N\cdot 2^k}\|_{L^2(I_j)}\leq 2^{-k(1+\frac{4}{d})}+\epsilon
+    \end{equation*}
+    uniformly in $j$. (note the exponent $p=\frac{4}{d}$).
+\end{proposition}
+We would like to show $u\in H^1$, which implies that 
+\begin{equation*}
+    \|u_{>2^k}\|_{L^2}\leq 2^{-k}
+\end{equation*}
+If we do a little better, 
+\begin{equation*}
+    \|u_{>2^k}\|_{L^2}\leq 2^{-k(1+)}
+\end{equation*}
+It remains to prove this proposition. Let $M_k=\sup_j\|u_{>2^kN}\|_{L^\infty L^2(I_j)}$, and this is the high frequency portion.
+\begin{equation*}
+    \mathcal{S}_k=\sup_j\|u_{>2^kN}\|_{S(I_j)}
+\end{equation*}
+Moreover,
+\begin{equation*}
+    N_k=\sup_j\|F(u)_{>2^kN}\|_{N(I_j)}=\sup_j\|F(u)_{>2^kN}\|_{S'}
+\end{equation*}
+Note that 
+\begin{equation*}
+    \mathcal{S}_k\leq M_k+N_k
+\end{equation*}
+We will try to measure $N_k$, how far is it from a Schrondinger solution. And eventually, we would like to control 
+\begin{equation*}
+    A_k=M_k+N_k+\mathcal{S}_k
+\end{equation*}
+\textbf{Easier part: $N_K$} $j$ is not important, we can scale it to be any dyadic interval, so we take $j=1$, and $N=1$.
+\begin{equation*}
+    F(u)>2^kN
+\end{equation*}
+and this gives 
+\begin{equation*}
+    F(u)_{>2^k}=(F(u)_{>2^k})_{>2^k}+(F(u)_{>2^k})_{>2^k}+O(|u|_{>2^k}, |u_{<2^k}|^{4/d})
+\end{equation*}
+We have 
+\begin{equation*}
+    \|(F(u)_{>2^k}){>2^k}\|_{L^{q'}}\leq \|F(u_{>2^k})\|_{L^{q'}}\leq \|u_{\geq 2^k}\|_{L^q}^{1+p}\leq A_k^{1+p}
+\end{equation*}
+\begin{equation*}
+    \|u_{>k}(u_{<k})^p\|_{L^{q'}}\leq \|u_{>2^k}\|_{L^q}\|u_{<k}\|_{L^q}^q\leq A_k\cdot A_{<k}
+\end{equation*}
+Then 
+\begin{equation*}
+    u_{<k}=u_{<\beta k}+u_{[\beta k, k)}
+\end{equation*}
+And the second term corresponds to 
+\begin{equation*}
+    \|u_{>2^k}\|_{L^q}\cdot\|u_{[\beta k, k)}\|_{L^q}^p\leq A_k\sum_{{\beta k\leq l\leq k}}A_l^q
+\end{equation*}
+For unbalanced frequencies, we use the better bilinear estimate.
+
+Hence except for the low frequency term, we have
+\begin{equation*}
+    N_k\leq ...+ A_k\cdot 2^\frac{(1-\beta)k}{2}\cdot A_{<k}
+\end{equation*}
+We have a lot of low frequencies, and we cannot discard the localization now.
+\begin{equation*}
+    \|P_{>2^k}F(u_{<2^k})\|_N\leq 2^{-sk}\||D|^sF(u_{<2^k})\|_{L^{p'}}\leq 2^{-sk}2^{sk_1}\|u_{k_1}\|_{L^q}\|u_{<k_1}\|_{L^q}^{4/d}
+\end{equation*}
+where $s$ is an integer, $s_1+..+s_j=s$.
+\begin{equation*}
+    \partial^{s_1}u_{<k}\cdot...\cdot\delta^{s_j}u_{<k}F^{(j)}(u_{<k})
+\end{equation*}
+But all other guys, except for $k_1$, could still have low frequency. Combining, we have 
+\begin{equation*}
+    M(k)\leq ...+\sum_{k_1}A(k_1)2^{-s(k-k_1)}
+\end{equation*}
+We can differentiate only $s$ times, hence $s<1+4/d$. If $s$ is an integer, and $s<1+4/d$, then we get the above bound for $M(k)$. Then we take a leap of faith, and claim that it works for $s$ noninteger as well.
+
+Now we have
+\begin{equation*}
+    N_k\leq A_k^{1+4/n}+A_k\cdot 2^\frac{(1-\beta)k}{2}A_{<k}+\sum_{k_1<k}2^{(k_1-k)s}A_{k_1}
+\end{equation*}
+
+All sources have $A_k$ in them, since they already have the bounded contribution. Now we go to the \textbf{harder part}, i.e. we estimate $M_k$, we do this via Duhamel formula.
+\begin{equation*}
+    u(1)=e^{-i(T-1)\Delta}u(T)-\int_1^t e^{-i(T-t)}F(u(t))dt
+\end{equation*}
+In this formula, we would like to let $t\to\infty$. Now we need to address what happens ot the first term.
+\begin{equation*}
+    u(1)=\int_1^\infty e^{i(T-t)}F(u(t))dt
+\end{equation*}
+And we have 
+\begin{equation*}
+    \|u(1)_{>k}\|_{L^2}\leq\sum_{k_1>k}N_{k_1}
+\end{equation*}
+This is comparable to $N_k$ if we have some $k^\epsilon$ decay. 
+\begin{equation*}
+    u(1)=\int_1^\infty e^{itD^2}F(u(t))dt, u(1)=\int_0^1 e^{itD^2}F(u(t))dt
+\end{equation*}
+And 
+\begin{equation*}
+    \|u(1)_{>k}\|_{L^2}^2=\int_0^1\int_1^\infty e^{isD^2}F(u(s))F(u(t))e^{-itD^2}dsdt
+\end{equation*}
+And $F(u(s))\cdot e^{-i(t-s)D^2}F(u(t))dsdt$. This is a bounded operator from $L^2\to L^2$, and $L^1\to L^\infty$, with $O(t^{-n/2})$.
+
+If we separate the first integral
+\begin{equation*}
+    u(1)=\int_1^T +\int_T^\infty=A+B
+\end{equation*}
+Hence this gives us 
+\begin{equation*}
+    \|u(t)\|_{L^2}\leq A^2+A_1B
+\end{equation*}
+Now $A^2$ is just like the $N_k$ previously, hence the outcome is that we get a similar estimate for $M_k$ as $N_k$.
+
+Hence roughly we get 
+\begin{equation*}
+    A_k=M_k+N_k+\mathcal{S}_k\leq A_k^{1+4/n}+\sum_{k_1<k}2^{(k_1-k)s}A_{k_1}
+\end{equation*}
+Now you have a sequence that satisfies this reoccurence relation, also you have $A_k\to 0$. Hence the conclusion is 
+\begin{equation*}
+    A_k\leq c 2^{-ks}
+\end{equation*}
+The decaying factor in the second term drives the decay. This you prove by induction. You would like start $k$ large enough, such that $A_k^{1+4/n}$ is already small.
+
+
+    \begin{note}
+        One could get fancy and use what's called the ``frequency pocket''.
+    \end{note}
+
+
+
+\section{Lecture Nov 9}
+We would like to show that $N(t)\leq 1$, and we've separated this into two cases:
+\begin{equation*}
+    \begin{cases}
+        \int N^3(t)dt<\infty\\
+        \int N^3(t)dt=\infty\\
+    \end{cases}
+\end{equation*}
+And 
+\begin{equation*}
+    \left|\frac{d}{dt}\xi(t)\right|\leq N^3(t)
+\end{equation*}
+And the first case above implies that 
+\begin{equation*}
+    \lim_{t\to\pm\infty}\xi(t)=\xi^{\pm\infty}
+\end{equation*}
+And in the second case above, is that $N(t)$ stays close to 1.
+
+The most important case $N(t)\approx 1$, and we refer to this one as the soliton case, where the solution is given by 
+\begin{equation*}
+    Q=\varphi(x-ct)e^{i\omega t}
+\end{equation*}
+Before we speak any of that, we introduce some historical perspective.
+
+Bourgain looked at the radial, defocusing case. This impiles that $x(t)=0$, and $\xi(t)=0$. If we depict a mechanic particle and its distance to the origin, we can graph the distance $d(x(t), 0)$, and graphing it with respect to time would look like a convex function.
+
+If we want to measure the distance between the origin, the following quantity should capture the notion of distance with the weight $|x|$,
+\begin{equation*}
+    \int |x||u(x)|^2dx
+\end{equation*}
+Morally speaking, we should expect this function to be convex. 
+\begin{equation*}
+    M(t)=\int a(x)|u(x)|^2dx
+\end{equation*}
+We are in $\R^n$, but for simplicity, we can make $a(x)$ spherically symmetric. We evaluate $M(t)$ at every time, and we expect it to be convex.
+
+\begin{equation*}
+    \frac{d}{dt}M(t)=\int a(x)
+\end{equation*}
+Recall mass density $m(u)=|u|^2, M=\int |u|^2$, and 
+\begin{equation*}
+    \partial_tm(u)=2Re(u_t\cdot\overline{u})=2Im(\Delta u\pm u|u|^p)\cdot\overline{u}=2\nabla(\nabla u\cdot\overline{u})
+\end{equation*}
+Note that 
+\begin{equation*}
+    \partial_tm(u)=\delta_jp_j(u), p_j(u)=2Im(u\partial_j\overline{u})
+\end{equation*}
+This gives 
+\begin{equation*}
+    \frac{d^2}{dt^2}M(t)=-\frac{d}{dt}\int a_jp_j(u)dx
+\end{equation*}
+And given $p_j=2Im(u\partial_j\overline{u}), \partial_tm=\partial_jp_j$. We use $\Delta=\partial_k\partial_k$,
+\begin{align*}
+    \partial_tp_j&=2Im(u_t\cdot\partial_j\overline{u}+u\partial_j\overline{u}_t)\\
+    &=2Re(\Delta u\pm u|u|^p)\partial_j\overline{u}-u\partial_j(\Delta\overline{u}\pm\overline{u}|u|^p)\\
+    &=2Re\partial_k(\partial_k u\partial_j\overline{u}-u\partial_k\partial_j\overline{u})\pm\frac{2}{p+2}\partial_j|u|^{p+2}\\
+    &=4 Re\partial_k(\partial_k\partial_j\overline{u})-2\Delta\partial_j|u|^2\pm\frac{2}{p+2}\partial_j|u|^{p+2}
+\end{align*}
+If we denote 
+\begin{equation*}
+    \partial_tp_j=\partial_kF_{jk}, \text{ where }F_{jk}=4Re(\partial_ju\partial_k\overline{u})-2I 
+\end{equation*}
+where $I=\Delta|u|^2\pm |u|^{p+2}$.
+Then 
+\begin{align*}
+    \partial_tp_j&=\partial_kF_{jk}\\
+    &=\int a_{kj}Re(\partial_j u\partial_k\overline{u})+a_{kk}(-\Delta|u|^2\pm |u|^{p+2})\\
+    &=\int a_{kj}Re(\partial_j u\partial_k\overline{u})+\Delta^2 a|u|^2+\Delta a|u|^{p+2}
+\end{align*}
+and $a(x)=|x|$, where 
+\begin{equation*}
+    \partial^2a=\frac{1}{|x|}(I-\frac{x}{|x|}\times\frac{x}{|x|})
+\end{equation*}
+where $\Delta a=\frac{1}{|x|}$, and $\Delta^2a=\frac{1}{|x|^3}$, and $n\geq 4$, and $\delta_0, n=3$. Rewriting what we have 
+\begin{equation*}
+    M_t=\int a_jp_j
+\end{equation*}
+and for $n\geq 4$,
+\begin{equation*}
+    M_{tt}\geq\int\frac{|u|^2}{|x|^3}+\frac{1}{|x|}|u|^{p+2}dx
+\end{equation*}
+And $n=3$ gives 
+\begin{equation*}
+    M_{tt}\geq|u(0)|^2+\int\frac{1}{|x|}|u|^{p+2}dx
+\end{equation*}
+This gives 
+\begin{equation*}
+    M_t(t_2)-M_t(t_1)\geq\int_{t_1}^{t_2}\frac{|u|^2}{|x|^3}+\frac{1}{|x|}u^{p+2}dx
+\end{equation*}
+And 
+\begin{equation*}
+    M_t\leq \|u\|_{L^2}\|\partial u\|_{L^2}
+\end{equation*}
+This is known as Morawetz inequality,
+\begin{equation*}
+    N(t)=1, |M_t|\lesssim 1
+\end{equation*}
+For $n=1,2$, we attempt to make $a$ more convex, $a=x^2$,
+\begin{equation*}
+    \frac{d}{dt}M_t=\int|\nabla u|^2+u^{p+2}dx
+\end{equation*}
+We can choose a ``japanese bracket'' for $x$ in a sense. In the focusing case, we would like to know that 
+\begin{equation*}
+    M_{tt}\geq 0
+\end{equation*}
+provided that $\|u\|_{L^2}<\|Q\|_{L^2}$. 
+
+We now talk about Interaction Mozawetz inequality.
+\begin{equation*}
+    M(t)=\int a(x-y)m(u)(x)m(u(y))dxdy
+\end{equation*}
+We expect $M_{tt}\geq 0$. The above $M_t$ is used for intuition, but we do not expect to use it for anything.
+\begin{equation*}
+    \frac{d}{dt}M(t)=\int a(x-y)\partial_j p_j(u(x))m(v(y))+m(u(x))\partial_ip_j(v(y))dxdy
+\end{equation*}
+And we further define
+\begin{equation*}
+    I(u,v)(t)=M_t(t)=-\int a_j(x-y)(p_j(u)m(v)-m(u)p_j(v))dxdy
+\end{equation*}
+And we interpret this quantity $I(u,v)$ as the ``interaction potential.''
+\begin{equation*}
+    \frac{d}{dt}I(u,v)(t)=\int a_{jk}(x-y)(F_{kj}(u)m(v)+F_{kj}(v)m(u)-2p_j(u)p_k(v))
+\end{equation*}
+Now 
+\begin{equation*}
+    \int a_{jk}(x-y)(Re(\partial_j u\partial_k\overline{u}))+Re(\partial_jv\partial_k\overline{v}|u|^2-8Im(u\partial_j\overline{u})(v\partial_k\overline{v}))+
+\end{equation*}
+And by Cauchy-Schwartz, we get that the quantity is $\geq 0$. And the remaining contribution is the $I$ part of $F_{jk}$, 
+\begin{equation*}
+    \int\Delta^2(a)m(u)m(v)+(|u|^2|v|^{p+2}\pm|v|^2|u|^{p+2})\Delta a(x-y)
+\end{equation*}
+where in the place of $\pm$, you have $+$ as the defocusing case, and $-$ as the focusing case.
+
+And $a=|x|$, where 
+\begin{equation*}
+    \int\frac{1}{|x-y|^3}m(u)(x)m(v)(y)dxdy
+\end{equation*}
+where we can interpret this in the Fourier analysis terms, 
+\begin{equation*}
+    \int |D|^{3-u}|u|^2|v|^2dx
+\end{equation*}
+If we have $u=v$, for $n\geq 4$, 
+\begin{equation*}
+    \frac{d}{dt}I\geq\||D|^\frac{3-n}{2}|u|^2\|_{L^2}^2
+\end{equation*}
+And $I=\int a_jm(u)p_j(v)$, and 
+\begin{equation*}
+    |I(t)|\leq\|u\|_[L^2]^2\|u\|_{L^2}\|\nabla u\|_{L^2}
+\end{equation*}
+\begin{note}
+    The above does not have Galilean invariance.
+\end{note}
+If you apply the Galilean transform, 
+\begin{equation*}
+    \|(\nabla _i\xi_0)u\|_{L^2}
+\end{equation*}
+This happens at fixed time. If $N(t)\approx 1$. And 
+\begin{equation*}
+    N(t)\approx 1, (\nabla +i\xi_0)u\in L^2
+\end{equation*}

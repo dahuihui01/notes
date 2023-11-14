@@ -448,7 +448,7 @@ As an immediate corollary, we establish a relationship between finite energy of 
     \begin{equation*}
         I_s(\mu)<\infty
     \end{equation*}
-    Conversely, if there exists a $\mu\in M(E)$ such that $I_s(E)<\infty$, then we have
+    Conversely, if there exists a $\mu\in M(E)$ such that $I_s(\mu)<\infty$, then we have
     \begin{equation*}
         \dim_H(E)\geq s
     \end{equation*}
@@ -541,23 +541,212 @@ Let's define the two types of sets that answer oppositely to our positive projec
     \end{equation*}
 \end{definition}
 The following asserts that any $E\subset\R^d$ with $H^n(E)<\infty$ can be decomposed into $n$-rectifiable sets, and purely $n$-unrectifiable sets.
-\begin{theorem}
+\begin{theorem}[Rectifiable decompositions]
     Let $0<n<d$, and let $E\subset\R^d$, and $H^n(E)<\infty$, and then there exists $R\subset\R^d$, $n$-rectifiable, such that $E$ can be written into disjoint unions of rectifiable and unrectifiable portions:
     \begin{equation*}
         E=[E\cap R]\cup U
     \end{equation*}
     where $U=E\setminus R$ is purely $n$-unrectifiable, and $E\cap R$ is $n$-rectifiable.
 \end{theorem}
-
-
+\begin{note}
+    This decomposition is unique up to null sets.
+\end{note}
+\begin{proof}
+    \textcolor{red}{finish this}
+\end{proof}
 
 \subsection{Projections of rectifiable sets}
+\begin{theorem}
+    For $E\subset\R^2$, if $E$ is 1-rectifiable with $0<H^1(E)<\infty$, and if $e_1, e_2\in S^1$ are distinct vectors such that 
+    \begin{equation*}
+        H^1(\pi_{e_1}(E))=H^1(\pi_{e_2}(E))=0
+    \end{equation*}
+    then $e_1=-e_2$.
+\end{theorem}
+\begin{proof}
+    We show that there exists a direction $e_0$ such that for all $e\in S^1\setminus e_0^\perp$, we have
+    \begin{equation*}
+        H^1(\pi_e(E))>0
+    \end{equation*}
+    Then this would imply that if two directions $e_1, e_2$ have zero length projections, then they both must live in $e_0^\perp$, hence $e_1=-e_2$.
 
+    For $E$ 1-rectifiable, there exists an open interval $J$ and some Lipschitz function $f$ such that 
+    \begin{equation*}
+        H^1(E\cap f(J))>0
+    \end{equation*}
+    For any Lipschitz function, we can approximate it well with a $C^1$ function $g$ such that 
+    \begin{equation*}
+        H^1(\{x: f(x)\neq g(x)\})=0
+    \end{equation*}
+    And via computation, we also have
+    \begin{equation*}
+        H^1(E\cap g(J))>0
+    \end{equation*}
+    Then let
+    \begin{equation*}
+        F_1=\{t\in J: g'(t)=0\}, F_2=\{t: \liminf_{r\to 0}\frac{H^1((E\cap B(t,r)))}{r}=0\}
+    \end{equation*}
+    We would like to show that $H^1(g(F_1))=H^2(E\cap g(F_2))=0$, and by $H^1(E\cap g(J))>0$, we know there must exist some point $t_0\in J$ such that 
+    \begin{equation*}
+        g'(t_0)\neq 0, \text{ and }\liminf_{r\to 0}\frac{H^1(E\cap B(t,r))}{r}>0
+    \end{equation*}
+    Let $e_0=\frac{g'(t_0)}{|g'(t_0)|}$, and for 
+    \begin{equation*}
+        e\in S^1\setminus e_0^\perp
+    \end{equation*}
+    We have $\pi_e$ as a biLipschitz function. And by the density at $t$, we have
+    \begin{equation*}
+        H^1(\pi_e(E))\geq H^1(\pi_e(E\cap B(t,r)))\gtrsim H^1(E\cap B(t,r))\gtrsim r>0
+    \end{equation*}
+\end{proof}
+\qed
 
 
 
 
 \subsection{Projection of unrectifiable sets}
+We first say a bit about the ``conical'' density of unrectifiable sets. We know from the density theorem, for $H^s$ almost every $x\in E$, we have the upper $s$ dimensional density at $x$:
+\begin{equation*}
+    \Theta^{s,*}(E,x)=\limsup_{r\to 0}\frac{H^s(E\cap B(x,r))}{r^s}\geq 1
+\end{equation*}
+This is because our $B(x,r)$ is quite large. Now we ask the question, can we replace $B(x,r)$ with smaller sets, such that when we intersect it with $E$, the upper $s$-dimensional density is still postive?
+\begin{definition}[Cone]
+    For $S\subset S^1$, for example, an arc $J$, we define the ``cone:''
+    \begin{equation*}
+        C(x,S)=\bigcup_{e\in S}l_e(x)
+    \end{equation*}
+    where $l_e(x)$ is the line parallel to $e$ and passes through $x$.
+\end{definition}
+\begin{problem}
+    Will the following still hold? 
+    \begin{equation*}
+        \Theta_J^{1,*}=\limsup_{r\to 0}\frac{H^s(E\cap B(x,r)\cap C(x,J))}{r^s}>0
+    \end{equation*}
+\end{problem}
+\begin{note}
+    We defined a new density at $x$ with the $J$ arc or cone cutoff.
+\end{note}
+The answer is generally no. We will demonstrate via an example
+\begin{example}
+    Let $E=span((1,0))$, i.e. the horizontal line in $\R^2$, and take $J=S^1\setminus (1,0)\cup (-1, 0)$. Then we see that 
+    \begin{equation*}
+        E\cap B(x,r)\cap C(x,J)=\{x\}
+    \end{equation*}
+    where the horizontal line intersects every nonhorizontal line exactly at one point $\{x\}$.
+\end{example}
+However, for unrectifiable sets, the above situations cannot happen. In other words, unrectifable sets are still in a sense that, for any arc we take, the $H^1$ measure of their intersections are pretty large.
+\begin{theorem}[Density of unrectifiable sets]
+    Let $E\subset\R^2$ be a purely 1-unrectifiable set, with $0<H^1(E)<\infty$, then for $H^1$ almost every $x\in E$, and for all arcs $J\subset S^1$, we have
+    \begin{equation*}
+        \Theta_J^{1,*}(E, x)\geq cH^1(J)
+    \end{equation*}
+    for some absolute constant $c$ independent of $J$.
+\end{theorem}
+To prove this theorem, we first exhibit the following lemma:
+\begin{lemma}
+    Let $E\subset\R^2$, and $J$ is any arc in $S^1$, if 
+    \begin{equation*}
+        E\cap C(x,J)=\{x\}
+    \end{equation*}
+    then $E$ is rectifiable.
+\end{lemma}
+\begin{example}
+    Just like the previous example, where $E$ is just the horizontal line in $\R^2$, which is 1-rectifiable.
+\end{example}
+\begin{proof}[of the lemma] 
+    It suffices to show that  \textcolor{red}{lemma}
+    You show that $E$ can be written as the image of a Lipschitz map from $\R\to \R^2$, and this Lipschitz map is the inverse an a projection. We use the assumption carefully to produce a direction $e\in S^1$ such that is not contained in $J$ or $-J$. 
+\end{proof}
+
+Now we are ready to prove the theorem. This is to say, the unrectifiable sets carry some sense of ``density'' with them, such that when they intersect any cone, the intersection is not small.
+\begin{proof}[of the theorem]
+    We first note that it suffices to show this for a fixed arc, since any arc has arbitrary length $>0$. And assume $J=B((0,1), \rho)\cap S^1$, the ``north cap.'' If we let the \textbf{low density set} be denoted as $B_{\delta, \tau}$, we have
+    \begin{equation*}
+        B_{\delta, \tau}=\{x\in E: \mu(B(x,r)\cap C(x,J))<\tau r, 0<r<\delta\}
+    \end{equation*}
+    Then clearly, we have
+    \begin{equation*}
+        \{x\in E: \Theta_{J}^{1,*}(E,x)<\tau\}\subset\bigcup_{\delta>0}B_{\delta, \tau}
+    \end{equation*}
+    Hence we see that it suffices to show these sets have measure 0, i.e.
+    \begin{equation*}
+        H^1(B_{\delta, \tau})=0
+    \end{equation*}
+    However, to show this, we take an indirect proof. Fix $\delta>0$, for sufficiently large $C\geq 1$, for $x_0\in B(x_0, r_0/4)$, 
+    \begin{equation*}
+        H^1(B_{\delta,\tau}\cap B(x_0, r_0/4))\lesssim\frac{r_0}{C}, 0<r_0\leq\delta
+    \end{equation*}
+    And we then have 
+    \begin{equation*}
+        \Theta^{1,*}(B_{\delta,\tau}, x_0)<1
+    \end{equation*}
+    for all $x_0\in B_{\delta, \tau}$, since we have the Hausdorff density theorem, which states points inside a set should have density $\geq 1$, we thus have
+    \begin{equation*}
+        H^1(B_{\delta,\tau})=0
+    \end{equation*}
+    Hence it suffices to show for any compact $K\subset B_{\delta,\tau}\cap B(x_0, r_0/4)$, we have
+    \begin{equation*}
+        H^1(K)\lesssim \frac{r_0}{C}
+    \end{equation*}
+    \begin{note}
+        Here is where we use the ``low-density'' property of $B_{\delta, \tau}$, where if we take $\tau=\frac{H^1(J)}{C}$, we have
+        \begin{equation*}
+            H^1(B(x,r)\cap C(x,J))<\tau r=\frac{H^1(J)r}{C}
+        \end{equation*} 
+    \end{note}
+    However, this condition is bit hard to use since it is the intersection of $B(x,r)$ with a cone, and we turn this information from cones to tubes using the following lemma.
+    
+    \begin{lemma}[From cones to tubes]
+        For $H^1$ almost every $x\in K$, there exists a vertical tube of width $0<w(T_x)\leq r_0$ around the line $l_{(0,1)}(x)$ such Theta
+        \begin{equation*}
+            H^1(K\cap T_x)\lesssim \frac{w(T_x)}{C}
+        \end{equation*}
+    \end{lemma}
+    \begin{note}
+        We will prove this lemma shortly after.
+    \end{note}
+    (By removing a null set), note that $K$ can be covered using a countable set of tubes $\{T_j\}$ such that $T_j/5$ are disjoint, and
+    \begin{equation*}
+        K\subset\bigcup_j T_j
+    \end{equation*}
+    And we thus have
+    \begin{equation*}
+        H^1(K)\leq \sum_j H^1(K\cap T_j)\lesssim\sum_j\frac{w(T_j)}{C}=\frac{5}{C}\sum_jw(T_j/5)\lesssim \frac{r_0}{C}
+    \end{equation*}
+\end{proof}
+\qed
+
+\begin{lemma}[From cones to tubes]
+        For $H^1$ almost every $x\in K$, there exists a vertical tube of width $0<w(T_x)\leq r_0$ around the line $l_{(0,1)}(x)$ such Theta
+        \begin{equation*}
+            H^1(K\cap T_x)\lesssim \frac{w(T_x)}{C}
+        \end{equation*}
+\end{lemma}
+\begin{proof}
+    We will now prove this lemma. The key idea is that we would like to cover $T_x\cap K$ with a ball $B(, h(x))$, and also two cones.
+    \begin{enumerate}
+        \item $T_x\cap K\subset B(x,h(x))$
+        \item We have $T_x\subset C(x,J)\cup C(x^*, J)$. And using how we will construct $B(x, h(x))$, we have $B(x^*, 2h(x))$.
+    \end{enumerate}
+    If we show both of the above claims, then we have that 
+    \begin{equation*}
+        H^1(K\cap T_x)\leq H^1(B(x,h(x))\cap C(x,J))+H^1(B(x^*, 2h(x))\cup C(x^*, J))
+    \end{equation*}
+    Thus by our conical estimate, we have that
+    \begin{equation*}
+        H^1(K\cap T_x)\lesssim \frac{h(x)H^1(J)}{C}
+    \end{equation*}
+    \textcolor{red}{we take a smaller region} 
+
+    We construct a ball $B(x,h(x))$ such that $T_x\cap K\subset B(x, h(x))$.
+\end{proof}
+
+
+
+
+
+
+
 We now talk about projections of unrectifable sets. 
 \begin{theorem}[Besicovitch]
     Assume $E\subset \R^2$ is Borel purely 1-unrectifiable 1-set. Then we have 
@@ -623,4 +812,325 @@ The condition ``for all $r>0$'' implies that there are points in $E$ that are in
     Then we have 
 \end{proof}
 
-t
+
+
+We will now show how this lemma immplies the Besicovitch projection theorem.
+
+\textcolor{red}{unfinished here}
+
+
+\chapter{Fourier transform of measures}
+Recall we let $M(E)$ denote the set of finite Borel measures $\mu$ with compact support satisfying 
+\begin{equation*}
+    supp(\mu)\subset E, \mu(E)>0
+\end{equation*}
+We define the Fourier trasnform of measures as follows:
+\begin{definition}[Fourier transform of measures]
+    Let $\mu\in M(\R^d)$, we have 
+    \begin{equation*}
+        \widehat{\mu}(\xi)=\int_{\R^d}e^{-ix\cdot\xi}d\mu(x)
+    \end{equation*}
+    Notice the exponent that we use here is slightly different from the usual $2\pi$, but most is just notation.
+\end{definition}
+We then state and prove some important properties that we will use later about Fourier transform of measures.
+\begin{note}
+    Orponen used $\mathcal{L}^d$ to denote the $d$-dimensional Lebesgue measure, here we will simply use $dx$, whenever we are integrating with respect to the Lebesgue measure in $\R^d$.
+\end{note}
+\begin{proposition}
+    Let $\mu\in M(\R^d)$, and let $f\in\mathcal{S}$. Then we have 
+    \begin{equation*}
+        \int fd\mu=\frac{1}{(2\pi)^d}\int\hat{f}\overline{\hat{\mu}}dx
+    \end{equation*}
+    Moreover, we have 
+    \begin{equation*}
+        \|f\|_{L^2}=\frac{1}{(2\pi)^d}\|f\|_{L^2}
+    \end{equation*}
+\end{proposition}
+\begin{proof}
+    The same proof that we did for duality and Plancherel.
+\end{proof}
+There are some useful identites that you get from this duality relation.
+\begin{corollary}
+    \begin{equation*}
+        \int|\hat{\mu}|^2d\sigma(\xi)=\int \hat{\sigma}\ast \mu d\mu
+    \end{equation*}
+\end{corollary}
+Later we will define the quantity on the left.
+
+Next we give a list of properties.
+\begin{lemma}
+    We have 
+    \begin{enumerate}
+        \item Fourier transform turns convolution into pointwise multiplication:
+        \begin{equation*}
+            \widehat{\mu\ast f}(\xi)=\hat{\mu}(\xi)\hat{f}(\xi)
+        \end{equation*}
+        \item If $\hat{\mu}\in L^2$, then $\mu\in L^2$, and $\mu\ll m^d$, where $m^d$ is the Lebesgue measure.
+        \item For an invertible linear transformation $T:\R^d\to\R^d$, we have 
+        \begin{equation*}
+            \widehat{f\circ T}(\xi)=\frac{1}{|\det(T)|}\hat{f}((T^{-1})^t\xi)
+        \end{equation*}
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    For 2, we note that it is absolutely continuous with respect to the Lebesgue measure, because by the previous proposition,
+    \begin{equation*}
+        f\mapsto \int fd\mu
+    \end{equation*}
+    is a positive linear functional defined on functions dense in $L^2$, hence by Riesz representation theorem, there exists a unique $g\in L^2$ such that 
+    \begin{equation*}
+        \varphi(f):=\int fd\mu=\int fgdx
+    \end{equation*}
+    And clearly we have $d\mu=gdx$.
+
+    For 4, note that we do a change of variable and use the fact that for an invertible linear transformation $A$, we have 
+    \begin{equation*}
+        Ax\cdot y=x\cdot A^ty
+    \end{equation*}
+\end{proof}
+\qed
+
+
+Next we connect the Riesz energy of a measure with the Fourier transform of this measure (specfically, its $L^2$ behavior.) Recall that the Riesz energy is defined as 
+\begin{equation*}
+    I_s(\mu)=\int |x-y|^{-s}d\mu(x)d\mu(y)=\int k_s\ast \mu d\mu(x)
+\end{equation*}
+where $k_s$ is the $s$-dimensional Riesz kernel $|x|^{-s}$, and we define convolution with respect to a measure as 
+\begin{equation*}
+    k_s\ast\mu(x)=\int |x-y|^{-s}d\mu(y)
+\end{equation*}
+\begin{proposition}
+    Let $\mu\in M(\R^d)$, let $0<s<d$, there exists some (ignorable constant ) $c$ such that 
+    \begin{equation*}
+        I_s(\mu)=c\int|\hat{\mu}(\xi)|^2|\xi|^{s-d}d\xi
+    \end{equation*}
+\end{proposition}
+\begin{proof}
+    This follows simply from computation (assuming there is no issue with convergence).
+    \begin{align*}
+        I_s(\mu)&=\int k_s\ast \mu d\mu\\
+        &=\int \widehat{k_s\ast\mu}\overline{\hat{\mu}}dx\\
+        &=\int \hat{k_s}\hat{\mu}\overline{\hat{\mu}}dx\\
+        &=c\int |\hat{\mu}|^2|\xi|^{s-d}d\xi
+    \end{align*}
+\end{proof}
+\qed
+
+We will use this identity a lot. Namely, a common technique we will use is that we will attempt to define a measure $\mu$ on a set (for example, the projection measure, or the pushforward distance measure on $\Delta(E)$), and it suffices to show $E$ has positive Lebesgue measure if $\hat{\mu}\in L^2$.
+\begin{note}
+    One can sometimes extract that $\mu\in L^2$ given finite energy.
+\end{note}
+
+\begin{corollary}
+    If $\mu\in M(E)$, and $\hat{\mu}\in L^2$, then 
+    \begin{equation*}
+        d\mu=fdx
+    \end{equation*}
+    for some $f\in L^2$, hence $|E|>0$.
+\end{corollary}
+We will look at one specific application of the above method.
+\begin{theorem}[Marstrand's Projection theorem, II]
+    Let $E\subset\R^2$ be compact. If $\dim_H(E)>1$, then for $H^1$ almost every $e\in S^1$, we have 
+    \begin{equation*}
+        |\pi_e(E)|>0
+    \end{equation*}
+\end{theorem}
+\begin{proof}
+    Since $\dim_H(E)>1$, there exists a measure $\mu\in M(E)$ such that $I_1(\mu)<\infty$. And our goal is to show the pushforward measure $\widehat{\pi_e\mu}\in L^2$. This is given by 
+    \begin{align*}
+        \int_{\R^2}|\widehat{\pi_e\mu}(\xi)|^2d\xi&=\int_{S^1}\int_{\R}|\widehat{\pi_e\mu}|^2d\xi d\sigma(\omega)\\
+        &=\int_{S^1}\int_{\R}|\hat{\mu}(\xi\omega)|^2d\xi d\sigma(\omega)\\
+        &=\int_{\R^2}\frac{|\mu(\xi)|^2}{|\xi|}d\xi\\
+        &\sim I_1(\mu)<\infty
+    \end{align*}
+    Note the last $\sim$ means it differs by a constant.
+\end{proof}
+\qed
+
+From the above, we see that one should expect some decay of $|\hat{\mu}(\xi)|$ from the finiteness of $I_s(\mu)$, however, this decay is in an average sense. We next define the spherical average.
+\begin{definition}[Spherical average]
+    Let $\sigma_r$ be the spherical measure on the ball $B(0,r)$. The spherical average of $\hat{\mu}$ is 
+    \begin{equation*}
+        \sigma(\mu)(r)=\frac{1}{r^{d-1}}\int_{S(0,r)} |\hat{\mu}|^2d\sigma_r
+    \end{equation*}
+    where $S(0,r)$ is the sphere in $\R^d$.
+\end{definition}
+\textcolor{red}{think about this} To agree with Wolff's notations, one can show
+\begin{proposition}
+    \begin{equation*}
+        \sigma(\mu)(r)=\int_{S^{d-1}}\hat{\mu}(Re^{i\theta})d\theta
+    \end{equation*}
+    Moreover, the energy $I_s(\mu)$ is given by 
+    \begin{equation*}
+        I_s(\mu)=\int_{\R^n}|\hat{\mu}(\xi)|^2|\xi|^{s-d}d\xi=\int \sigma(\mu)(r)r^{s-d}dr
+    \end{equation*}
+\end{proposition}
+How do we connect the spherical average with the positive Lebesgue measure of the distance set $|\Delta(E)|$.
+\begin{proposition}[Spherical average and $|\Delta(E)|$]
+    Let $\nu$ be the pushforward distance measure on $\Delta(E)$, then $\hat{\nu}\in L^2$ if and only if 
+    \begin{equation*}
+        \int r^{d-1}(\sigma(\mu)(r))^2 dr<\infty
+    \end{equation*}
+\end{proposition}
+Now we discuss the case in $d=2$. 
+\begin{corollary}
+    If $d=2$ and $s>1$, and for some $\mu\in\Delta(E)$, we have $I_s(\mu)<\infty$, and if $\sigma(\mu)(r)\lesssim r^{s-2}$, then a subset $E\subset\R^2$, with $\dim_H(E)>s$, we have $|\Delta(E)|>0$.
+\end{corollary}
+\begin{proof}
+    This is given by the finiteness of $I_s(\mu)<\infty$. We have 
+    \begin{align*}
+        \int r(\sigma(\mu)(r))^2dr&\lesssim \int r^{s-1}\sigma(\mu)(r)dr\\
+        &\sim I_s(\mu)<\infty
+    \end{align*}
+\end{proof}
+\qed
+
+\begin{remark}
+    The $s-2$ is the exponent that one needs to turn the critical integral to the finite energy. So if we can bound the spherical average with some exponent less that $s-2$, then we obtain some gain.
+\end{remark}
+
+Now if we gain new average on $\sigma(\mu)(r)$, we gain better lower bound.
+\begin{theorem}[Mattila]
+    For $s\geq 1$, we have 
+    \begin{equation*}
+        \sigma(\mu)(r)\lesssim r^{1-s}
+    \end{equation*}
+\end{theorem}
+This is the bound that was obtained by Mattila on spherical averages.
+\begin{corollary}
+    Let $E\subset\R^2$, and $\mu\in M(E)$ such that $I_s(\mu)<\infty$, for all $s>3/2$, we have 
+    \begin{equation*}
+        |\Delta(E)|>0
+    \end{equation*}
+\end{corollary}
+\begin{proof}
+    Again, we show that 
+    \begin{equation*}
+        \int r(\sigma(\mu)(r))^2dr<\infty
+    \end{equation*}
+    This is given by 
+    \begin{align*}
+        \int r(\sigma(\mu)(r))^2dr&\lesssim \int r\cdot r^{1-s}\sigma(\mu)(r)dr\\
+        &\lesssim r\cdot r^{s-2}\sigma(\mu)(r)dr\\
+        &\sim I_s(\mu)<\infty
+    \end{align*}
+    The second line follows from the fact that $s>3/2$.
+\end{proof}
+\qed
+
+\begin{theorem}[Wolff]
+    We have 
+    \begin{equation*}
+        \sigma(\mu)(r)\lesssim r^{-s/2+\epsilon}
+    \end{equation*}
+\end{theorem}
+Then exactly by the same process as above, if we want to have 
+\begin{equation*}
+    r^{-s/2}\lesssim r^{s-2}
+\end{equation*}
+We have $s>4/3$. 
+\begin{corollary}
+    For $E\subset\R^2$, if $\dim_H(E)>4/3$, then $|\Delta(E)|>0$.
+\end{corollary}
+
+Now we discuss Fourier dimension.
+\begin{definition}[Fourier dimension]
+    Let $E\subset\R^d$, the Fourier dimension of $E$ is 
+    \begin{equation*}
+        \dim_F(E)=\sup\{s\in [0,d]: \text{ there exists }\mu\in M(E): |\hat{\mu}(\xi)|\lesssim |\xi|^{-s/2}, \forall \xi\in\R^n\setminus\{0\}\}
+    \end{equation*}
+\end{definition}
+We make sense of the Fourier dimension with some examples, to show the Fourier dimension needless to agree with the Hausdorff dimension in any sense.
+\begin{example}
+    For $S^{d-1}$, we note that the spherical measure has the good decay, in other words, 
+    \begin{equation*}
+        |\hat{\sigma}(\xi)|\lesssim |\xi|^{(d-1)/2}
+    \end{equation*}
+    Hence $\dim_F(S^{d-1})=d-1$. We see that the Fourier dimension agrees with the Lebesgue and Hausdorff dimension.
+\end{example}
+\begin{example}
+    If we consider the set $E=[0,1]\times\{0\}$, then the Lebesgue or Hausdorff dimension is 1, however, $\dim_F(E)=0$.
+\end{example}
+We first relate the Fourier dimension with the Hausdorff dimension.
+\begin{proposition}
+    For $E\subset\R^d$, we have
+    \begin{equation*}
+        \dim_FE\leq \dim_HE
+    \end{equation*}
+\end{proposition}
+\begin{proof}
+    If suffices to show that if $\dim_FE>s$, then $\dim_H(E)\geq s$ for all $s>0$. One could choose $s+\epsilon$ such that there exists a $\mu$ such that 
+    \begin{equation*}
+        |\hat{\mu}(\xi)|\lesssim |\xi|^{-(s+\epsilon)/2}
+    \end{equation*}
+    To show $\dim_HE\geq s$, it suffices to show for this $\mu$, $I_s(\mu)<\infty$.
+    \begin{equation*}
+        I_s(\mu)=\int |\hat{\mu}(\xi)|^2|\xi|^{s-d}d\xi\lesssim \int |\xi|^{-d-\epsilon}d\xi<\infty
+    \end{equation*}
+\end{proof}
+\qed
+
+\begin{note}
+    This is no longer an $L^2$ problem. Now we cut it into good and bad parts. But its $L^1$ norm is small.
+\end{note}
+
+\chapter{Kakeya set}
+We will prove the following two results in the plane: Kakeya set in $\R^2$ has lower Minkowski dimension 2, and has Hausdorff dimension 2. 
+\begin{theorem}
+    Let $E$ be a Kakeya set in $\R^2$, then it has lower Minkowski dimension 2.
+\end{theorem}
+\begin{proof}
+    We will prove the key lemma.
+    \begin{lemma}
+        Let $S=\{e_1, ..., e_n\}\subset S^1$ be a set of $\delta$-separated directions, and let $T_j$ be the $\delta\times 1$ tube containing a line parallel to $e_j$ (in other words, they are $\delta$-separated tubes), if we write $T=\bigcup_{j=1}^NT_j$, then we have 
+        \begin{equation*}
+            |T|\gtrsim \frac{N\delta}{\log(1/\delta)}
+        \end{equation*}
+        where $|T|=\mathcal{L}^2(T)$. This states that the $\delta$-separated tubes cannot too much intersection in volume.
+    \end{lemma}
+    We first show how the lemma implies the lower Minkowski dimension. We simply pick the $S$ to be the maximal set, i.e. $N\sim\delta^{-1}$. Fix any cover of $E$ using balls $B(x_1, \delta/2), ..., B(x_M, \delta/2)$ (this aligns with the definition of covering using balls of diameter $\delta$), we know that 
+    \begin{equation*}
+        T=\bigcup_{j=1}^N\subset \bigcup_{j=1}^M B(x_j,10\delta)
+    \end{equation*}
+    And since $|T|\gtrsim\frac{1}{\log(1/\delta)}$, we have 
+    \begin{equation*}
+        \left|\bigcup_{j=1}^M B(x_j, 10\delta)\right|\gtrsim \delta^{-2}M\gtrsim |T|
+    \end{equation*}
+    This gives $M\gtrsim \frac{1}{\delta^{2}\log(1/\delta)}$. Hence by definition, we have 
+    \begin{equation*}
+        \liminf_{\delta\to 0}\frac{\log|E|_\delta}{\log(1/\delta)}\gtrsim \liminf_{\delta\to 0}\frac{\log(\delta^{-2})+\log(\log(1/\delta))}{\log(1/\delta)}=2
+    \end{equation*}
+\end{proof}
+\qed
+
+\textcolor{red}{prove the lemma}
+The lemma is proved by some pictures and geometric observations. If we let 
+\begin{equation*}
+    f=\sum_{j=1}^N\chi_{T_j}
+\end{equation*}
+Then it is reduced to a problem of bounding $\|f\|_{L^2}$. 
+\begin{equation*}
+    |T|\geq\frac{\|f\|_{L^1}^2}{\|f\|_{L^2}^2}
+\end{equation*}
+This is given by Cauchy Schwartz.
+\begin{equation*}
+    \|f\|_{L^1}^2\leq\|f\|_{L^2}^2|supp(f)|=\|f\|_{L^2}^2|T|
+\end{equation*}
+And bounding the $L^2$ norm of $f$ is naturally associated with intersections of two tubes.
+\begin{equation*}
+    \|f\|_{L^2}^2=\int \sum_i\sum_j\chi_{T_i}\chi_{T_j}dx=\sum_i\sum_j|T_i\cap T_j|
+\end{equation*}
+
+\begin{theorem}[Kakeya conjecture in $\R^2$]
+    Let $E$ be a Kakeya set in $\R^2$, then it has Hausdorff dimension 2.
+\end{theorem}
+\begin{proof}
+    We will use a pigenholing principle. 
+    \begin{lemma}
+        Let $\nu$ be a finite measure on $X$, and let $\{E_i\}_{i=1}^\infty$ be a set that cover $X$, then there exists an index $i_0$ such that 
+        \begin{equation*}
+            \nu(E_{i_0})\gtrsim\frac{\nu(X)}{i_0^2}
+        \end{equation*}
+    \end{lemma}
+    
+\end{proof}
