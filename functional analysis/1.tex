@@ -3385,13 +3385,13 @@ We will discuss compact operators now.
     \begin{equation*}
         T(V_1) \text{ is totally bounded in } W
     \end{equation*}
-    where $V_1=\overline{B}(0,1)$ in $V$. If $W$ is complete, then 
+    where $V_1=\overline{B}(0,1)$ in $V$, the closed unit ball. Recall that totally bounded means for every $\epsilon>0$, the set can be covered with finite number of balls of radius at most $\epsilon$. If $W$ is complete, then $T$ is compact if
     \begin{equation*}
         \overline{T(V_1)} \text{ is compact }
     \end{equation*}
 \end{definition}
 \begin{note}
-    This implies that $T$ is a bounded operator. 
+    This implies that $T$ is a bounded operator.
 \end{note}
 
 A bit of notation: let $B_0(V,W)$ be the set of compact operators from $V,W$.
@@ -3410,15 +3410,18 @@ A bit of notation: let $B_0(V,W)$ be the set of compact operators from $V,W$.
 
 \begin{proposition}
     If $T\in B_0(V,W)$, and $S\in B(U,V)$ (just a bounded operator), then $TS: U\to W$ is in $B_0(U,W)$.
+
+    If $R: W\to Y$, and $R\in B(W,Y)$, then $RT: V\to Y$ is in $B_0(V,Y)$. This implies that 
+    \begin{equation*}
+        \{T: T\in B_0(V,W) \} \text{ is a two-sided ideal in } B(V,w)
+    \end{equation*}
 \end{proposition}
-If $R: W\to Y$, and $R\in B(W,Y)$, then $RT: V\to Y$ is in $B_0(V,Y)$.
 \begin{note}
     $R$ is uniformly coninuous, hence maps totally bounded sets to totally bounded sets.
 \end{note}
 \begin{note}
     $B_0(V)$ for $B_0(V,V)$, then $B_0(V)$ is a 2 sided ideal in $B(V)$.
 \end{note}
-
 \begin{proposition}
     $B_0(V,W)$ is norm-closed in $B(V,W)$.
 \end{proposition}
@@ -3427,7 +3430,7 @@ If $R: W\to Y$, and $R\in B(W,Y)$, then $RT: V\to Y$ is in $B_0(V,Y)$.
     \begin{equation*}
         \|T-T_N\|<\epsilon/2
     \end{equation*}
-    Find $w_1, ..., w_n\in W$ so that $Ball(w_j, \epsilon/2)$ cover $T_N(V_1)$. Then for any $v\in V_1$, there exists $w_j$ such that $Tv\in Ball(w_j, \epsilon/2)$, and then 
+    Find $w_1, ..., w_n\in W$ so that $Ball(w_j, \epsilon/2)$ cover $T_N(V_1)$. Then for any $v\in V_1$, there exists $w_j$ such that $Tv\in Ball(w_j, \epsilon/2)$, and $\|v\|\leq 1$, hence
     \begin{equation*}
         \|Tv-w_j\|\leq \|Tv-T_Nv\|+\|T_Nv-w_j\|<\epsilon/2+\epsilon/2=\epsilon
     \end{equation*}
@@ -3435,7 +3438,7 @@ If $R: W\to Y$, and $R\in B(W,Y)$, then $RT: V\to Y$ is in $B_0(V,Y)$.
 \end{proof}
 \qed
 
-A trivial but important example is as follows.
+Next we talk about some important examples of compact operators.
 \begin{example}
     Let $T:V\to W$, bounded, has finite rank, i.e. $Range(T)$ is finite dimensional.
 \end{example}
@@ -3541,6 +3544,8 @@ We present another proof.
     \end{equation*}
     The taking the sup over $\|\xi\|\leq 1$, we just get $\|S\xi\|^2=\|S\|^2=\|T\|$.
 \end{proof}
+\qed
+
 
 \begin{proposition}
     We prove $T$ self-adjoint has an approximate eigvenvector.
@@ -3613,3 +3618,397 @@ From this, we get there is an orthonormal basis for $\mathcal{H}$ consisting of 
     Any compact operator can be diagonalized, with a countable number of eigenspaces.
 \end{note}
 
+\section{Lecture Nov 15}
+We say $T\in B(\mathcal{H})$ is compact if $T(Ball)$ is totally bounded. The finite rank operator form a dense ideal in $B_0(\mathcal{\mathcal{H}})$. 
+
+Fact: every self-adjoint compact operator can be approximated in norm by finite rank (self-adjoint) operators. Given $T$, we have 
+\begin{equation*}
+    T=\frac{T+T^*}{2}+i\frac{T-T^*}{2i}
+\end{equation*}
+So if we have $T$ is compact, then $T^*$ is also compact.
+
+\begin{definition}
+    By a partial isometry on $\mathcal{H}$, we mean an operator $W$ such that $W$ is an isometry on $(ker W)^\perp$, and onto some other closed subspace of $\mathcal{H}$. We have $W^*W$ is the projection on $(ker W)^\perp$, and $WW^*$ is the projection on the range of $W$.
+\end{definition}
+For $T\in B(\mathcal{H})$, define $|T|=(T^*T)^\frac{1}{2}$. 
+\begin{theorem}[Polar Decomposition]
+    For any given $T\in B(\mathcal{H})$, then there is a partial isometry $W$, such that
+    \begin{equation*}
+        T=W|T|, |T|=\sqrt{T^*T}
+    \end{equation*}
+\end{theorem}
+\begin{proof}
+    For $\xi\in\mathcal{H}$, 
+    \begin{equation*}
+        \|T\xi\|^2=\la T\xi, T\xi\ra=\la T^*T\xi, \xi\ra=\la |T|^2\xi, \xi\ra=\la |T|\xi, |T|\xi\ra=\||T|\xi\|^2
+    \end{equation*}
+    We have 
+    \begin{equation*}
+        ker(T)=(range T^*)^\perp
+    \end{equation*}
+    Hence 
+    \begin{equation*}
+        ker T=ker|T|=(range|T|)^\perp
+    \end{equation*}
+    Set for any $\xi$, 
+    \begin{equation*}
+        W(|T|\xi)=T\xi
+    \end{equation*}
+    And $W|T|\xi=T\xi, W|T|=T$. This extends to an isometry from the $\overline{range(|T|)}$, and onto the $\overline{range(T)}$.
+
+    Define $W$ such that on $ker(T)$, $W=0$. If $T\in B_0(\mathcal{H})$, $T^*T\in B(\mathcal{H})$ since it is an ideal. $|T|\in B_0(\mathcal{H})$ as well. If we take $T=W|T|$, $T^*=|T|W^*$. 
+\end{proof}
+
+From last calss,$\mathcal{A}$ is a $C^*$-algebra, and $\omega$ is a weight on $\mathcal{A}$. We have $m_\omega, n_\omega$, and $n_\omega$ is a left ideal in $\mathcal{A}$, and $m_\omega$ is a right ideal in $\mathcal{A}$. $m_a$ is a two-sided ideal of $\mathcal{A}$, and 
+\begin{equation*}
+    m_a=n_a^*n_a
+\end{equation*}
+\begin{definition}
+    A weight $\omega$ is tracial if for all $a\in\mathcal{A}$,
+    \begin{equation*}
+        \omega(a^*a)=\omega(aa^*)
+    \end{equation*}
+\end{definition}
+\begin{proposition}
+    If $a\in N_\omega$, then $a^*\in n_\omega$. So $n_\omega$ is a 2-sided * ideal in $\mathcal{A}$, then $m_\omega$ is a 2-sided * ideal in $\mathcal{A}$.
+
+    If $a,b\in n_\omega$, then 
+    \begin{equation*}
+        \omega(ab)=\omega(ba)
+    \end{equation*}
+\end{proposition}
+
+\begin{proposition}
+    If $b\in m_w^+$, and $a\in\mathcal{A}$, and let $c=\sqrt{b}\in n_\omega$, then 
+    \begin{equation*}
+        \omega(ab)=\omega( acc)=\omega(cac\leq\omega(\|a\|c^2))=\|a\|\omega(b)
+    \end{equation*}
+    Thus $b\in m_\omega^\perp$ determines a continuous linear functional on $\mathcal{A}$ of nomr $\omega(b)$, such that $a\mapsto \omega(ab)$.
+\end{proposition}
+
+Let $\mathcal{A}=B(\mathcal{H})$, and $\omega=\tau$ for $T\in B(\mathcal{H})$, and we define
+\begin{equation*}
+    \tau(T):=\sum\la T\xi_j, \xi_j\ra
+\end{equation*}
+for some orthonormal basis, and $\tau(T^*T)=\tau(TT^*)$. We have 
+\begin{equation*}
+    \tau(T^*T)=\sum\la T^*T\xi, \xi\ra=\sum\|T\xi_j\|^2
+\end{equation*}
+We claim the following:
+\begin{lemma}
+    If $\{b_j\}$ is any other o.n. basis, then 
+    \begin{equation*}
+        \sum\|T\xi_j\|^2=\sum\|T^*h_j\|^2
+    \end{equation*}
+\end{lemma}
+
+\section{Lecture Nov 17}
+For $B(\mathcal{H})$, and $\{\xi_j\}$ is an o.n.b, and for $T\geq 0$, 
+\begin{equation*}
+    \tau(T)=\sum\la T\xi_j,\xi_j\ra
+\end{equation*}
+and we would like to know if we have 
+\begin{equation*}
+    \tau(T^*T)=\tau(TT^*)
+\end{equation*}
+And let $\{\eta_k\}$ be another set of o.n.b, then for any $j$, we have 
+\begin{equation*}
+    T\xi_j=\sum\la T\xi_j, \eta_k\ra\eta_k
+\end{equation*}
+And Parsevel's identity states that 
+\begin{equation*}
+    \|T\xi_j\|^2=\sum_k|\la T\xi_j, \eta_k\ra|^2
+\end{equation*}
+And 
+\begin{align*}
+    \tau(T^*T)&=\sum\la T^*T\xi_j, \xi_j\ra\\
+    &=\sum\|T\xi_j\|^2=\sum_j\sum_k|\la T\xi_j, \eta_k\ra|^2\\
+    &= \sum_k\left(\sum_j|\la\xi_j, T^*\eta_k\ra|\right)^2\\
+    &=\sum\|T^*\eta_k\|^2\\
+    &=\tau(TT^*)
+\end{align*}
+\begin{corollary}
+    $\tau$ defined above is indeed a trace.
+\end{corollary}
+And if we define 
+\begin{equation*}
+    \eta_\tau=\{T: \tau(T^*T)<\infty\} 
+\end{equation*}
+And $T^*T=|T|^2$, hence equivalently, we have
+\begin{equation*}
+    \eta_\tau=\{T: \tau(|T|^2)<\infty\}
+\end{equation*}
+And thus defines a norm via this inner product by 
+\begin{equation*}
+    \|T\|_\tau=\left(\tau(T^*t)\right)^{1/2}
+\end{equation*}
+
+\begin{definition}
+    The opeartors $T$ such that $\tau(T^*T)<\infty$ is called Hilbert-Schmidt operators, denoted as $B_2(\mathcal{H})$, where 
+    \begin{equation*}
+        B_\infty(\mathcal{H})=B(\mathcal{H}) \text{ with  operator norm } \|\cdot\|_\infty
+    \end{equation*}
+\end{definition}
+
+If $S\in B(\mathcal{H})$, and $S\geq 0$, then for any $\epsilon>0$, there is an $\xi\in\mathcal{H}$ such that $\|\xi\|=1$, and $\|S\xi\|\geq\|S\|_\infty-\epsilon$. So if use $\xi$ so part of an o.n. basis, such that 
+\begin{equation*}
+    \tau(S)\geq\|S\|_\infty
+\end{equation*}
+So far any $T\in\mathcal{H}$, 
+\begin{equation*}
+    \tau(T^*T)\geq\|T^*T\|_\infty=\|T\|_\infty^2
+\end{equation*}
+-evaluatioIf $T\in B_2(\mathcal{H})$, then 
+\begin{equation*}
+    \|T\|_{L^2}\geq\|T\|_\infty
+\end{equation*}
+
+\begin{proposition}
+    If $T\in B_2(\mathcal{H})$, i.e. it is a Hilbert-Schmidt operator, then $T$ is compact.
+\end{proposition}
+\begin{proof}
+    Let $T\in B_2(\mathcal{H})$, and $\tau(T^*T)<\infty$. 
+    \begin{equation*}
+        \tau(T^*T)=\sum_j\|T\xi_j\|^2<\infty
+    \end{equation*}
+    Let $\epsilon>0$ be given, and there exists $N$ such that if $n\geq N$, then 
+    \begin{equation*}
+        \sum_{j=n}^\infty \|T_j\|^2<\epsilon
+    \end{equation*}
+    For any orthogonal projection $P$ of finite rank, 
+    \begin{equation*}
+        \|T-TP\|_\infty\leq\|T-TP\|_2
+    \end{equation*}
+    Note that $\xi_j$ is an o.n.b, If we let $P$ be the projection on $\xi_1, ..., \xi_{n-1}$, 
+    \begin{equation*}
+        \sum_{j=1}^\infty \|T(1-P)\xi_j\|=\sum_{j=n}^\infty\|T\xi_j\|<\epsilon
+    \end{equation*}
+\end{proof}
+\qed
+
+\begin{theorem}
+    The space of Hilbert-Schmidt operators, $B_2(\mathcal{H})$, is complete for the $\|\cdot\|_2$, so $B_2(\mathcal{H})$ is a Hilbert space.
+\end{theorem}
+\begin{proof}
+    Let $\{T_n\}\subset B_2(\mathcal{H})$ be a Cauchy sequence for $\|\cdot\|_2$. Thus $\{T_n\}$ is Cauchy for the operator norm, and in the operator norm, we have $B(\mathcal{H})$ is complete. So there is a $T\in B(\mathcal{H})$ such that $T_n\to T$ for $\|\cdot\|_\infty$. 
+
+    Now we want is that it converges for the $\|\cdot\|_2$ norm. Let $\epsilon>0$ be given, let $P$ be any finite rank projection. And let $N$ be such that if $m,n\geq N$, then $\|T_m-T_n\|_2<\epsilon$. For $m\geq N$,
+    \begin{equation*}
+        \|(T_m-T)P\|_2\leq\|(T_n-T)P\|_2+\|(T_m-T_n)P\|_2
+    \end{equation*}
+    So the second term is bounded by $\epsilon/2$.
+    Now we can choose $n$ such that $\|T-T_n\|_\infty<\epsilon/2$, and $n\geq N$, claim:
+    \begin{equation*}
+        \|SP\|_2^2=\sum\|S\xi_n\|^2\lesssim \|S\|_\infty
+    \end{equation*}
+    Hence by choosing $n$ this way, we get the first term is also bounded by $\epsilon/2$.
+
+    Now we prove the claim: if $S\in B(\mathcal{H})$, such that $\|SP\|2<\epsilon$ for all projections.
+    \begin{equation*}
+    \tau(S^*S)=\sum_{j=1}^\infty\|S\xi_j\|^2
+    \end{equation*}
+    And you take the partial sum 
+    \begin{equation*}
+    \sum_{j=1}^k\|S\xi_j\|^2=\|SP\|2<\epsilon
+    \end{equation*}
+
+    All the partial sums are bounded by $\epsilon$, hence 
+    \begin{equation*}
+    \|S\|_2^2<\epsilon
+    \end{equation*}
+\end{proof}
+\qed
+
+Next thing on Monday: every Hilbert Schmidt operator can be expressed by the kernels $K\in L^2(X\times X)$.
+
+
+\section{Lecture Nov 20}
+\begin{proposition}
+    Let $B_f(\mathcal{H})$ be the space of finite rank operators (range is finite dimension, and can be written as a sum of rank 1 operators), $B_f(\mathcal{H})\subset B_2(\mathcal{H})$, and $B_f(\mathcal{H})$ is dense in $B_2(\mathcal{H})$ for the $\|\cdot\|_2$ norm.
+\end{proposition}
+\begin{proof}
+    If $T\in B_2(\mathcal{H})$, then for an o.b. basis $\{\xi_j\}$, we have 
+    \begin{equation*}
+        \sum_{j=1}^\infty\|T\xi_j\|^2<\infty
+    \end{equation*}
+    So given $\epsilon>0$, we can find $N$ such that 
+    \begin{equation*}
+        \sum_{j=N}^\infty\|T\xi_j\|^2<\epsilon
+    \end{equation*}
+    Then let $P$ be the orthogonal projection on $\xi_1, ..., \xi_{N-1}$ ($P$ is finite rank), then 
+    \begin{equation*}
+        \|T-TP\|_2^2=\sum_{j=1}^\infty\|(T-TP)\xi_j\|^2
+    \end{equation*}
+    for the first $N-1$ temrs, we get 0 contribution, hence 
+    \begin{equation*}
+        \|T-TP\|_2^2=\sum_{j=N}^\infty\|(T-TP)\xi_j\|^2=\sum_{j=N}^\infty\|T\xi_j\|^2<\epsilon
+    \end{equation*}
+\end{proof}
+\qed
+
+
+Let $\mathcal{H}=L^2(X,\mu)$, and let $K\in L^2(X\times X, \mu\times\mu)$, and let 
+\begin{equation*}
+    (T_k\xi)(x)=\int_XK(x,y)\xi(y)dy
+\end{equation*}
+Let $\{\xi_j\}$ be an o.n.b. for $L^2(X,\mu)$, and we would like to show these $T_k$ are Hilbert-Schmidt operators. Then 
+\begin{equation*}
+    \|T_K\xi_j\|^2=\sum_{k=1}^\infty |\la T\xi_j, \xi_k\ra|^2=\sum_{k=1}^\infty|\la \int K(x,y)\xi_j(y)dy, \xi_k\ra|^2
+\end{equation*}
+Summing over $j$, we get 
+\begin{equation*}
+    \sum_{j}\sum_k|\int K(x,y)\xi_j(y)\xi_k(x)dydx|^2=\sum_{j,k}|\la K, \xi_j(y)\xi_k(x)\ra|^2=\|K\|_{L^2}<\infty
+\end{equation*}
+And by Parsevel's identity, since $\{\xi_j(y)\xi_k(x)\}$ form an o.n.b for $L^2(X\times X, \mu\times\mu)$, we get the last equality.
+
+\begin{note}
+    You can run the argument backwards, and cna show that every Hilbert-Schimidt opeartor on $L^2(X,\mu)$ is of the form $T_k$ for some $K\in L^2(X\times X)$.
+\end{note}
+Recall that $m_\omega$, where $\omega$ is tracial, (on $n_\omega$, we showed that there exists an inner product-induced norm), and now we discuss $m_\omega$. Let $\mathcal{A}$ be an algebra, and if $a\in\mathcal{A}$, and $b\in m_\omega$, $b\geq0$, then 
+\begin{equation*}
+    |\omega(ab)|\leq\|a\||\omega(b)\|
+\end{equation*}
+For a trace $\tau$on $B(\mathcal{H})$, we have polar decomposition for $T\in B(\mathcal{H})$. If $T\in m_\tau$, we have $T=V|T|$, where $V$ is a partial isometry, and $|T|=\sqrt{T^*T}$., and 
+\begin{equation*}
+    V^*T=V^*V|T|=|T|
+\end{equation*}
+Then for $A\in B(\mathcal{H})$, 
+\begin{equation*}
+    |\tau(AT)|=|\tau(aV|T|)|\leq \|AV\|_\infty\tau(|T|)\leq\|A\|\tau(|T|)
+\end{equation*}
+\begin{proposition}
+    For $A\in B(\mathcal{H})$, $T\in m_\tau$we have 
+    \begin{equation*}
+        |\tau(AT)|\leq\|A\|\tau(|T|)
+    \end{equation*}
+\end{proposition}
+If $T\in B(\mathcal{H})$, and $|T|\in m_\tau$, then $T=V|T|$, and $|T|=V^*T$, so $T\in m_\tau$. 
+\begin{proposition}
+    We have 
+    \begin{equation*}
+        m_\tau=\{T\in B(\mathcal{H}): \tau(|T|)<\infty\}
+    \end{equation*}
+    is a two-sided ideal in $B(\mathcal{H})$.
+\end{proposition}
+So on $m_\tau$, define 
+\begin{equation*}
+    \|T\|_1=\tau(|T|)
+\end{equation*}
+\begin{proposition}
+    If $S,T\in m_\tau$, then 
+    \begin{equation*}
+        \|S+T\|_1\leq\|S\|_1+\|T\|_1
+    \end{equation*}
+    The space $B_1(\mathcal{H})$ which is finite for the 1-norm, is called the trace-class operators.
+\end{proposition}
+\begin{proof}
+    This would like the 1-norm defined above is indeed a norm. For $S,T\in m_\tau$, we have 
+    \begin{equation*}
+        S+T=W|S+T|
+    \end{equation*} 
+    Hence $|S+T|=W^*(S+T)$, so 
+    \begin{equation*}
+        \tau(|S+T|)=\tau(W^*(S+T))=\tau(W^*S)+\tau(W^*T)
+    \end{equation*}
+    but note that each term on the right does not need to be nonnegative, even though the sum is nonnegative. Hence 
+    \begin{equation*}
+        \|S+T\|_1=\tau(|S+T|)\leq|\tau(W^*S)|+|\tau(W^*T)|\leq\|W^*\||\tau(S)|+\|W^*\||\tau(T)|=\|S\|_1+\|T\|_1
+    \end{equation*}
+\end{proof}
+\qed
+
+It is therefore natural to move from 1 to $p$.
+\begin{definition}
+    For $1\leq p<\infty$, we have 
+\begin{equation*}
+    B_p(\mathcal{H})=\{T\in B_0(\mathcal{H}): \tau(|T|^p)<\infty\}
+\end{equation*}
+and we define 
+\begin{equation*}
+    \|T\|_p=(\tau(|T|^p))^{1/p} \text{ is a norm }
+\end{equation*}
+The space $B_p(\mathcal{H})$ is also called the Shatter ideals. And we define the dual of $B_p$ as $B_q$ via the following relation $\frac{1}{p}+\frac{1}{q}=1$
+\end{definition}
+
+Given $\mathcal{H}$, and an o.n.b $\{\xi_j\}$, then you can write an operator as an infinite matrix, and look at the ones that are diagonal. Then $B_p(\mathcal{H}) \cap \text{ diagonal matrices }=l^p$.
+
+We first observe that
+\begin{equation*}
+    \|T\|_1\geq\|T\|_\infty
+\end{equation*}
+\begin{proposition}
+    $B_1(\mathcal{H})$ is complete for the $\|\cdot\|_1$ norm.
+\end{proposition}
+\begin{proof}
+    This is quite analogous to the proof $B_2(\mathcal{H})$ is complete for $\|\cdot\|_2$. Let $\{T_n\}\subset B_1(\mathcal{H})$ be a Cauchy sequence for $\|\cdot\|_1$, then it is Cauchy for $\|\cdot\|_\infty$ norm, and so there is $T\in B(\mathcal{H})$ such that 
+    \begin{equation*}
+        \|T-T_n\|_\infty\to 0
+    \end{equation*}
+    This implies that $T\in B_0(\mathcal{H})$, and $B_0(\mathcal{H})\cap \text{ diagonal }\cong c_0$. Let $\epsilon>0$ be given, then we can find $N$ such that for $m,n\geq N$, 
+    \begin{equation*}
+        \|T_m-T_n\|_1<\epsilon
+    \end{equation*}
+    For any projection $P$ of finite rank, for a fixed $m$, we look at the following finite rank operator,
+    \begin{equation*}
+        \|P(T-T_m)\|_1=\|PW^*|T-T_m|\|_1\leq\|PW^*(T-T_n)\|_1+\|PW^*(T_n-T_m)\|_1
+    \end{equation*}
+    (unfinished, the class ended here).
+\end{proof}
+
+
+\section{Lecture Nov 27}
+We introduced $B(\mathcal{H}), B_2(\mathcal{H}), B_1(\mathcal{H})$. For $T\in B_1(\mathcal{H})$, let $\|T\|_1=\tau(|T|)$, and we've shown this is a norm. As a theorem, we were in the middle of showing that $B(\mathcal{H})$ is complete for the $\|\cdot\|_1$ norm.
+
+If $S=0$, then 
+\begin{equation*}
+    \tau(S)=\sum_{j=1}^\infty\la S\xi_j,\xi_j\ra
+\end{equation*}
+If we let $P_k$ be the orthogonal projection onto $\xi_k$. 
+\begin{equation*}
+    \tau(PS)=\sum\la PS\xi_j, \xi_j\ra=\sum\la S\xi_j, P\xi_j\ra=\sum^k\la SP\xi_j, P\xi_j\ra=\sum^k\la PSP\xi_j, \xi_j\ra
+\end{equation*}
+Let $\{T_n\}\subset B(\mathcal{H})$ be a Cauchy sequence for $\| \|_1$, then $\{T_n\}$ is a Cauchy sequence for $\| \|_\infty$. So there is $T\in B(\mathcal{H})$ such that $T_n\to T$ in $\| \|_\infty$. Let $\epsilon>0$ be given, for any finite dimensional projection $P$, we choose $N$ so that for $m,n\geq N$, $\|T_m-T_n\|_1<\epsilon/2$. Choose $m\geq N$. Then we have 
+\begin{equation*}
+    \tau(P|T-T_m|P)=\tau(PV^*(T-T_m)P)\leq|\tau(PV^*(T-T_n)P)|+|\tau(PV^*(T_n-T_m)P)|
+\end{equation*}
+We can choose $n$ such that 
+\begin{equation*}
+    \tau(PV^*(T-T_n)P)<\epsilon/2
+\end{equation*}
+For $S,A\in B(\mathcal{H})$, then 
+\begin{equation*}
+    |\tau(AS)|\leq\|A\|_\infty\|S\|_1, |\tau(SA)|\leq\|S\|_\infty\|A\|_1
+\end{equation*}
+And notice that we have 
+\begin{equation*}
+    |\tau(PV^*(T_n-T_m)P)|\leq\|OV^*\|_\infty\|T_n-T_m\|_1\leq\epsilon/2
+\end{equation*}
+Then we have 
+\begin{equation*}
+    \tau(P_k|T-T_m|P_k)<\epsilon, \forall P
+\end{equation*}
+This gives that $\|T-T_m\|_1<\infty$ so $T-T_m\in B(\mathcal{H})$, $T_m\in B_1(\mathcal{H})$, so $T\in B_1(\mathcal{H})$.
+
+\begin{theorem}
+    The dual Banach space to $B_0(\mathcal{H})$ is, via the map $|\tau(AT)\|\leq \|A\|\|T\|_1$, $B_1(\mathcal{H})$. This implies that for all $T\in B_1(\mathcal{H})$, define 
+    \begin{equation*}
+        \varphi_T(A)=\tau(AT)
+    \end{equation*}
+    for all $A\in B_0(\mathcal{H})$, with $\| \|_\infty$.
+
+    In other words, every element is dual of $B_0(\mathcal{H})$ is of the form $\varphi_T$ for $T\in B_1(\mathcal{H})$.
+\end{theorem}
+\begin{remark}
+    The dual of $c_0$ is $l^1$.    
+\end{remark}
+\begin{proof}
+    Let $B_0(\mathcal{H})\supset B_2(\mathcal{H})$, and if $A\in B_2(\mathcal{H})$, we have 
+    \begin{equation*}
+        \varphi(A)\leq\|\varphi\|\|A\|_\infty\leq\|\varphi\|\|A\|_2
+    \end{equation*}
+\end{proof}
+So there is a $T\in B_2(\mathcal{H})$, such that 
+\begin{equation*}
+    \varphi(A)=\la A, T\ra_2=\tau(AT^*)
+\end{equation*}
+To show that $T\in B_1(\mathcal{H})$. Note that we have 

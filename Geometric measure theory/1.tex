@@ -1126,11 +1126,79 @@ And bounding the $L^2$ norm of $f$ is naturally associated with intersections of
 \end{theorem}
 \begin{proof}
     We will use a pigenholing principle. 
-    \begin{lemma}
+    \begin{lemma}[pigenhole lemma]
         Let $\nu$ be a finite measure on $X$, and let $\{E_i\}_{i=1}^\infty$ be a set that cover $X$, then there exists an index $i_0$ such that 
         \begin{equation*}
             \nu(E_{i_0})\gtrsim\frac{\nu(X)}{i_0^2}
         \end{equation*}
     \end{lemma}
-    
+    We will use this lemma, and essentially the $i_0$ in here to argue that there are many $U_j$'s with $diam(U_j)\sim 2^{-i_0}$.
+
+    Let $\{U_j\}$ be a cover of $E$ with diam at most 1. And let 
+    \begin{equation*}
+        I_i=\{j\in\mathbb{N}: 2^{-i}<diam(U_j)<2^{-i+1}\} \text{ picking out the indices with a specific diam}
+    \end{equation*}
+    Let 
+    \begin{equation*}
+        A_i=\bigcup_{j\in I_j}U_j
+    \end{equation*}
+    Hence now $A_i$ is the set of $\{U_j\}'s$ with diam $\sim 2^{-i}$. If we fix $e\in S^1$, then $\{A_i\cap I_e\}$ cover $I_e$, where $I_e$ is the unit line segment parallel to $e$, then there exists an index $i_e$ such that 
+    \begin{equation*}
+        H^1(A_{i_e}\cap I_e)\gtrsim\frac{H^1(I_e)}{i_e^2}=\frac{1}{i_e^2}
+    \end{equation*}
+    We shall now apply a second pigenholing argument. Let 
+    \begin{equation*}
+        S_i=\{e\in S^1: i_e=i\}
+    \end{equation*}
+    where for any $e\in S^1$, $i_e$ is the index that ``captures more weight,'' hence we would like to categorize all directions of $S^1$,
+    \begin{equation*}
+        S_2=\{e\in S^1: i_e=2\}, S_4=\{e\in S^1: i_e=4\}
+    \end{equation*}
+    Then clearly $\{S_i\}_{i=1}^\infty$ is a cover of $S^1$, hence again by the pigenhole lemma, there exists an index $i_0$, such that 
+    \begin{equation*}
+        H^1(S_{i_0})\gtrsim\frac{1}{i_0^2}
+    \end{equation*}
+    Now let $\delta=2^{-i_0}$, then we have 
+    \begin{equation*}
+        H^1(S_{i_0})\gtrsim\frac{1}{(\log(1/\delta))^2}
+    \end{equation*}
+    We now find a maximal set of $S_{i_0}$, $\{e_1, ..., e_N\}$, and 
+    \begin{equation*}
+        N\gtrsim\frac{H^1(S_{i_0})}{\delta}\gtrsim\delta^{-1}(\log(1/\delta))^{-2}
+    \end{equation*}
+    Then let $T_k$ be $\delta\times 1$ tube parallel to $e_k$ in $S_{i_0}$. Then for each $j\in I_{i_0}$, we have $diam(U_j)\sim 2^{-i_0}$, hence pick some $x_j\in U_j$,
+    \begin{equation*}
+        U_j\subset B(x_j, 10\delta), \delta=2^{-i_0}
+    \end{equation*}
+    If we consider 
+    \begin{equation*}
+        T_k'=T_k\cap \bigcup_{j\in I_{i_0}}B(x_j, 10\delta)
+    \end{equation*}
+    We have 
+    \begin{equation*}
+        |T_k'|\gtrsim |I_{i_0}|\delta^2
+    \end{equation*}
+    where $|I_{i_0}|$ is the size of the maximal $\delta$-separated set in $S_{i_0}$, hence $|I_{i_0}|\gtrsim \delta^{-1}(\log(1/\delta))^{-2}$, hence 
+    \begin{equation*}
+        |T_k'|\gtrsim\frac{\delta}{(\log(1/\delta))^{2}}
+    \end{equation*}
+    Then if we define
+    \begin{equation*}
+        f=\sum_{k=1}^N\chi_{T_k'}
+    \end{equation*}
+    Then by bounding the $L^2$ norm of the minkowski bound, we have $\|f\|_{L^2}^2\lesssim N\delta\log(1/\delta)$, thus 
+    \begin{equation*}
+        \left|\bigcup_{k=1}^NT_k'\right|\gtrsim \frac{\|f\|_{L^1}^2}{\|f\|_{L^2}^2}\gtrsim\frac{1}{\log^9(1/\delta)}
+    \end{equation*}
+    And given that $\bigcup T_k'$ is covered with $|I_{i_0}|$ balls of size $\delta^2$, we have 
+    \begin{equation*}
+        |I_{i_0}|\gtrsim\frac{\delta^{-2}}{\log^9(1/\delta)}
+    \end{equation*}
+    Then to lower bound the quantity $\sum diam(U_j)^s$, for any $s<2$, we simply consider the subportion with $diam(U_j)\sim 2^{-i_0}$, 
+    \begin{equation*}
+        \sum_{j=1}^\infty diam(U_j)^s\gtrsim |I_{i_0}|2^{-i_0s}\gtrsim \frac{2^{i_0(2-s)}}{i_0^9}\gtrsim 1
+    \end{equation*}
+    for any $s<2$, as $i_0\to\infty$.
 \end{proof}
+\qed
+

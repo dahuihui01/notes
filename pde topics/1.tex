@@ -3529,3 +3529,184 @@ This happens at fixed time. If $N(t)\approx 1$. And
 \begin{equation*}
     N(t)\approx 1, (\nabla +i\xi_0)u\in L^2
 \end{equation*}
+
+
+\section{Lecture Nov. 16}
+The dispersive PDE
+\begin{equation*}
+    \begin{cases*}
+        i\partial_t+A(D)u=N(u)\\
+        u(0)=u_0
+    \end{cases*}
+\end{equation*}
+We ask for local well-posedness, and global well-posedness and scattering.
+
+LWP. We look for a solution $u_0\in H^s$, and ask for the range of $s$. In GWP, we consider scattering, and the linear 
+\begin{equation*}
+    u(t)=e^{-itA(0)}u_0
+\end{equation*}
+We ask for group velocity, and disprsive:
+\begin{equation*}
+    \nabla^2a(\xi)
+\end{equation*}
+We ask the Hessian to be nondegenerate. And for nonlinear, there exists $u_0^\infty$ such that 
+\begin{equation*}
+    \lim_{t\to\infty}\|u(t)-e^{-itA(0)u_0^\infty}\|_{H^s}\to 0
+\end{equation*}
+And 
+\begin{equation*}
+    \lim_{t\to\infty}e^{itA(D)}u(t)=u_0^\infty \text{ in } H^s
+\end{equation*}
+
+The heuristic discussion is as follows:
+\begin{equation*}
+    (i\partial_t-A(D))u=u|u|^{p-1}
+\end{equation*}
+What are the worst nonlinear interactions? And we look at wave packet solutions, i.e. approximate solutions.
+\begin{equation*}
+    u(x,t)\approx A(t, x-x_0-vt)e^{i\phi(x,t)}
+\end{equation*}
+where $\phi(x,t)$ is linear in $t$.
+
+For the \textbf{linear} Schrondinger equation, where $\delta\xi=N$, and the dual scale $\delta x=N^{-1}$, and the time scale $\delta t=N^{-2}$. The relationships in scaling come from the parabolic relationships. The scaling relationships are true for NLS, but also true for dispersive equations provided that $N\ll 1$.
+
+We would like to \textbf{compare the strength} of linear and nonlinear interactions for a wave packet. The linear interactions $\delta t=N^{-2}$, and the solution stays concentrated for $t\leq N^{-2}$, and begins to disperse after that. If $u$ is around frequency $\xi_0$, then the solutions around group velocity $\nabla a(\xi)$.
+
+Nonlinear: where $D=\frac{1}{i}\partial$
+\begin{equation*}
+    i\partial_t-a(\xi_0)-\nabla a(\xi_0)(D-\xi_0)-O(\nabla^2a(\xi_0)D^2)=u|u|^{p-1}
+\end{equation*}
+Let's start with $a(\xi_0)$, it is a phase shift, and $\nabla a(\xi_0)(D-\xi_0)$ is a transport term. The phase shift would good into $e^{i\phi(x,t)}$ in the exponent, and and the transport term would go into the velocity. And $\xi_0$ corresponds to the phase shift.
+
+\begin{equation*}
+    \phi=t(a(\xi_0)-\xi_-\nabla a(\xi_0))
+\end{equation*}
+The higher order terms is what gives the linear effects, and the $u|u|^{p-1}$ gives the nonlinear effects. If we take the wave packet scale,
+
+\textbf{linear effect}: $O(N^2)$, where it acts on the $N^{-2}$ time scale. 
+\begin{equation*}
+    u|u|^{p-1}\approx A^p
+\end{equation*}
+And it acts on the scale $A\approx A^p\delta t$.
+\begin{equation*}
+    \delta t_{nonlinear}\approx A^{1-p}
+\end{equation*}
+if the linear is shorter, then the linear effect dominates; and vice versa.
+
+We have two scenarios:
+\textbf{Large $N$}:
+$N\gtrsim 1$. We can think of a large $N$, if we consider a frequency box around it, it would contain a high frequency box. And note that our $A$ depends on $s$. This means that this could affect our index $s$, and nonlinear< linear, if we have large $s$; and nonlinear effect>linear if we have small $s$.
+\begin{note}
+This is important for local well-posedness.
+\end{note}
+\textbf{Small $N$}
+In other words, $N\ll 1$, and $N=\delta\xi$, and take $\xi_0=O(1)$, and where $s$ is not so important.
+\begin{note}
+    If we want to look at global well-posedness, we can sort of take $s$ out of the picture.
+\end{note}
+We look at the size of $A$ if $\xi_0=O(1)$, and $N\ll 1$.
+\begin{equation*}
+    \|u\|_{L^2}=AN^{-n/2}\leq 1
+\end{equation*}
+This gives that
+\begin{equation*}
+    A\leq N^\frac{n}{2}
+\end{equation*}
+In other words, the amplitude will be a small number. This implies that our time scale $\delta t_{nonlinear}\geq N^{(1-p)\cdot\frac{n}{2}}$. And we would like to compare with 
+\begin{equation*}
+    \delta t_{linear}=N^{-2}
+\end{equation*}
+\begin{corollary}
+    Linear effect is stronger than the nonlinear effect if $p>1+\frac{4}{n}$.
+\end{corollary}
+\begin{proof}
+    \begin{equation*}
+        N^{-2}\leq N^{(1-p)\frac{n}{2}}
+    \end{equation*}
+\end{proof}
+And in this case, we expect linear scattering, if the linear effect dominates the nonlinear effect. Where $p<1+\frac{4}{n}$, we call this case is mass supercritical, and we get that there can't be linear scattering.
+
+\begin{equation*}
+    \delta t_{nonlinear}\approx A^{1-p}
+\end{equation*}
+And the smaller $n$, the problem will be harder since we will have weaker dispersion. And where $n=1$, $p<5$, we call this case polynomial nonlinearity, which is where we take $p=3$.
+
+We look at the model problem:
+\begin{equation*}
+    (i\partial_t-A(D))u=C(u,u,u)+ \text{ higher order }
+\end{equation*}
+but the cubic term $C(u,u,u)$ gives the most effect, and the higher order is the weaker effect.
+
+We want to start with frequency $\xi_0$
+\begin{equation*}
+    \xi_0+\xi_0+\xi_0=3\xi_0
+\end{equation*}
+However, we would like to get 
+\begin{equation*}
+    \xi_0-\xi_0+\xi_0=\xi_0
+\end{equation*}
+Hence we modify our $C(u,u,u)$ to $C(u,\overline{u}, u)$. We want to take the smooth, but not complex analytic, and we end up with the first case. Hence we would like to think of this as real analytic.
+
+We do some algebraic assumption:
+\begin{equation*}
+    u\to u^{i\theta}\Rightarrow C\to Ce^{i\theta}
+\end{equation*}
+And we can ask the same question for the full equation, and apply ``phase rotation symmetry.''
+
+And invariant with respect to translations, where 
+\begin{equation*}
+    u\to u(\cdot+h)\Rightarrow C(u)\Rightarrow C(u)(\cdot+h)
+\end{equation*}
+And 
+\begin{equation*}
+    C(u,\overline{v},w)\to \text{ symbol } C(\xi_1, \xi_2, \xi_3)
+\end{equation*}
+And $u$ is at frequency $\xi_1$, and $v$ at $\xi_2$, and $w$ at $\xi_3$, we then have 
+\begin{equation*}
+    C(u,v,w)=c(\xi_1,\xi_2,\xi_3)
+\end{equation*}
+And 
+\begin{equation*}
+    C(e^{ix\xi_1}, e^{ix\xi_2}, e^{ix\xi_3} )=c(\xi_1, \xi_2,\xi_3)e^{ix(\xi_1-\xi_2+\xi_3)}
+\end{equation*}
+And we have 
+\begin{equation*}
+    \widehat{c(u,v,w)}(\xi)=\int_{\xi_1-\xi_2+\xi_3=\xi}c(\xi_1,\xi_2,\xi_3)\widehat{u}(\xi_1)\overline{\hat{u}}(\xi_2) w(\xi_3)dA
+\end{equation*}
+where the requirement is two dimensional subspace. We further have 
+\begin{equation*}
+    c(u,v,w)(x)=\int u(x+x_1)\overline{v}(x+x_2)w(x+x_3)K(x_1, x_2, x_3)dx_1dx_2dx_3
+\end{equation*}
+Recall our amplitude is $A=N^{n/2}$, and $n=1$ implies $A=N^{1/2}$.  And we would get 
+\begin{equation*}
+    O(N)u|u|^2, O(N^2)
+\end{equation*}
+And is exactly the last $O(N^2)$ term in the nonlinear Schrodinger case.
+
+\begin{equation*}
+    u=Ae^{i\phi}
+\end{equation*}
+And the following is what we call the nonlinear amplitude equation: (this is an ODE)
+\begin{equation*}
+    i\partial_t A=c(\xi_0,\xi_0, \xi_0)A|A|^2
+\end{equation*}
+where $A=A(t,x)$, and $\delta x=N^{-1}$. At $t=0$, you have a bump function of size $N^{-1}$, and each point evolves according to their own ODE. The ODE dynamics: When $c$ is purely imaginary, $c=i\sigma$, and $\partial_tA=\sigma A^3$. This gives us that we have finite time blow up.
+
+When $\xi\in\R$, then $\partial_tA$  is proportional to $iA$, which is perpendicular to $A$. This implies that $|A|$ is conserved. If $\xi$ is not real nor purely imaginary, then it has a nontrivial imaginary part, and by what we discussed, it blows up in finite time. If $Im(\sigma)>0$, then you expect blow up forward in time. And $Im(\sigma)<0$, then you expect blow up backwards in time.
+\begin{problem}
+    What is this blow-up time?
+\end{problem}
+Answer: $\delta t=N^{-1}$.
+
+\begin{definition}
+    A cubic ODE is conservative, if $C(\xi,\xi,\xi)\in\R$, and if $\nabla_\xi c(\xi_1,\xi_2,\xi_3)\vert_{\xi_1=\xi_2=\xi_3}$.
+\end{definition}
+We have 
+\begin{equation*}
+    A(x,t)=A(x,0)e^{-itc(\xi_0,\xi_0,\xi_0)A(x,0)^2}
+\end{equation*}
+And note $A(x,0)$ depends on $x$, and at $t\sim N^{-1}$, frequencies in the nonlinear ansatz begin to move (they break the $N$ barrier). The moment rotates faster and faster as you go further in time, and start shooting waves in all diretions, which is why the solutions are dispersive.
+
+The conjecture:
+1-d dispersive: assume phase rotation, and conservative, and defocusing ( the waves are going outward instead of inward), then the conjecture states that the small data implies the global solution.
+
