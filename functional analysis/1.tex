@@ -4006,9 +4006,38 @@ This gives that $\|T-T_m\|_1<\infty$ so $T-T_m\in B(\mathcal{H})$, $T_m\in B_1(\
     \begin{equation*}
         \varphi(A)\leq\|\varphi\|\|A\|_\infty\leq\|\varphi\|\|A\|_2
     \end{equation*}
-\end{proof}
 So there is a $T\in B_2(\mathcal{H})$, such that 
 \begin{equation*}
     \varphi(A)=\la A, T\ra_2=\tau(AT^*)
 \end{equation*}
 To show that $T\in B_1(\mathcal{H})$. Note that we have 
+\begin{equation*}
+    |\varphi(P|T|)|=|\varphi(PV^*T)|=|\varphi(PV^*)|\leq \|\varphi\|\|PV^*\|=\|\varphi\|
+\end{equation*}
+Then we have 
+\begin{equation*}
+    |\tau(P|T|)|=|\tau(PV^*T)|=|\varphi(PV^*)|\leq\|\varphi\|\|PV^*\|_\infty\leq\|\varphi\|
+\end{equation*}
+for all $P$. Hence $T\in B_1(\mathcal{H})$, and $\|T\|_1\leq\|\varphi\|$.
+\end{proof}
+\qed
+
+\begin{theorem}
+    The dual of $B_1(\mathcal{H})$ is $B(\mathcal{H})$ (note that the dual of $l^1$ is $l^\infty$).
+\end{theorem}
+\begin{corollary}
+    The unit ball of $B(\mathcal{H})$ is compact for the weak-* topology. By definition, a von Neumann algebra is a unital *-algebra of $B(\mathcal{H})$ that is closed for the weak-* topology. Then we look at the set
+    \begin{equation*}
+        \{\varphi\in B_1(\mathcal{H}):\varphi(N)=0\}=N^\perp
+    \end{equation*}
+    And 
+    \begin{equation*}
+        \left( B_1(\mathcal{H})/N^\perp\right)^*=N
+    \end{equation*}
+\end{corollary}
+Hence every von Neumann algebra has a pre-dual, hence the closed unit ball in a von Neumann algebra is compact in the weak-* topology.
+
+\begin{proposition}
+    The above is the ultra-weak opeartor topology on $B(\mathcal{H})$. If we view that $B_f(\mathcal{H})\subset B_1(\mathcal{H}$), and use elements of $B_f(\mathcal{H})$ to get linear functionals on $\mathcal{B}(\mathcal{H})$, that is the weak operator topology.
+\end{proposition}
+
