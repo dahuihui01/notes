@@ -613,4 +613,86 @@ Now we prove the previous lemma.
 \end{proof}
 \qed
 
+\newpage
+\section{Last Lecture}
+If we define the norm $\|\|_{H^s}$ as follows:
+\begin{equation*}
+    \|f\|_{H^s}^2=\int(1+|\xi|^2)^s|\hat{f}(\xi)|^2d\xi
+\end{equation*}
+\begin{proposition}
+    If $f\in H^s$, and $s>n/2$, then $\hat{f}\in L^1$.
+\end{proposition}
+\begin{proof}
+    \begin{equation*}
+        \int |\hat{f}(\xi)|d\xi\leq \left(\int |\hat{f}(\xi)|^2(1+|\xi|^2)^sd\xi\right)^{1/2}\left(\int (1+|\xi|^2)^{-s}\right)^{1/2}<\infty
+    \end{equation*}
+\end{proof}
 
+This is theorem 8.10 in the book.
+\begin{theorem}[Homander multiplier theorem]
+    Let function $m$ and $s>n/2$ such that 
+    \begin{equation*}
+        \sup_j\|e^j\psi\|_{H^s}<\infty
+    \end{equation*}
+    with $\psi\geq 0$, radial, and $c^\infty$, supported on $\{\frac{1}{2}\leq|\xi|\leq 2\}$, and $\sum_j|\psi(2^{-j}\xi)|^2=1$, for all $\xi\neq 0$. Then the operator $T$ such that 
+    \begin{equation*}
+        \widehat{Tf}=m\hat{f}
+    \end{equation*}
+    is bounded on $L^p(\R^n)$, with $1<p<\infty$.
+\end{theorem}
+\begin{corollary}
+    If $k>n/2$, $m\in C^k$ away from the origina, and 
+    \begin{equation*}
+        \sup_{R>0}R^{|\beta|}\left(\frac{1}{R^n}\int_{R<|\xi|<2R}|\partial^\beta m(\xi)|^2d\xi\right)^{1/2}, \forall |\xi|\leq k
+    \end{equation*}
+    then $m$ is a multiplier on $L^p$, with $1<p<\infty$. In particular, this is so when
+    \begin{equation*}
+        |D^\beta m(\xi)|<|\xi|^{-|\beta|}, \forall |\beta|\leq k
+    \end{equation*}
+\end{corollary}
+Now we prove the theorem.
+\begin{lemma}
+    If $m\in H^s$, and $s>n/2$, and $\lambda>0$. Let 
+    \begin{equation*}
+        \widehat{T_\lambda f}(\xi)=m(\lambda\xi)\hat{f}(\xi)
+    \end{equation*}
+    Then 
+    \begin{equation*}
+        \int|T_\lambda f(x)|^2 u(x)dx\lesssim \int |f(x)|^2Mu(x)dx
+    \end{equation*}
+\end{lemma}
+\begin{proof}
+    Let $K=\check{m}$, 
+    \begin{equation*}
+        R(x)=(1+|x|^2)^{s/2}K(x)\in L^2
+    \end{equation*}
+    Kernel of $T_\lambda$ is $\lambda^{-n}K(\lambda^{-1}x)$, we have 
+    \begin{equation*}
+        \int |T_\lambda f|^2u=\int\left( \int \frac{\lambda^{-n}R^(\lambda^{-1}(x-y))}{(1+\|\lambda^{-1}(x-y)|^2)^{s/2}}f(y)dy\right)^2u(x)dx
+    \end{equation*}
+    And by Cauchy-Schwarz, we have 
+    this is bounded by 
+    \begin{equation*}
+        \lesssim \|R\|_{L^2}^2\int |f(y)|^2Mu(y)dy
+    \end{equation*}
+    since $\lambda^{-n}/(1+\lambda^{-1}|x-y|^2)^s$ is radial and decreasing, and has uniform $L^1$ norm.
+\end{proof}
+\qed
+
+\begin{proof}[of the theorem]
+    Let $\tilde{\psi}_j=\tilde{\psi}(2^{-j})$. And first $p>2$, and prove the theorem, and $p<2$ is by duality.
+\end{proof}
+
+We talk a bit about disk multiplier.
+\begin{equation*}
+    \widehat{S_1f}=\chi_{B_1}\hat{f}
+\end{equation*}
+is unbounded on $L^p$ unless $p=2$. Bochner -Riesz gives us
+\begin{equation*}
+    \widehat{S_1^\delta f}=(1-|\xi|^2)_+^\delta\hat{f}, \delta>0
+\end{equation*}
+There is a conjecture as follows.
+$S_1^\delta$ is strong $(p,p)$, for all 
+\begin{equation*}
+    \frac{2n}{n+1+2\delta}<p<\frac{2n}{n-1-2\delta}, \forall\delta>0
+\end{equation*}

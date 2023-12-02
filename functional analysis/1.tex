@@ -4041,3 +4041,62 @@ Hence every von Neumann algebra has a pre-dual, hence the closed unit ball in a 
     The above is the ultra-weak opeartor topology on $B(\mathcal{H})$. If we view that $B_f(\mathcal{H})\subset B_1(\mathcal{H}$), and use elements of $B_f(\mathcal{H})$ to get linear functionals on $\mathcal{B}(\mathcal{H})$, that is the weak operator topology.
 \end{proposition}
 
+\section{Last Lecture}
+One can show that 
+\begin{equation*}
+    \tau(\la\eta, \eta\ra_0)=\la\eta,\xi\ra_{\mathcal{H}}
+\end{equation*}
+\begin{definition}
+    Let $V,W$ be vector spaces, $T$ is said to be Fredholm if $\dim(ker(T))<\infty$, and $\dim(coker(T))<\infty$, where $coker=W/range(T)$.
+\end{definition}
+\begin{definition}
+    The index of $T$ is the dimension of $Ker(T)-coKer(T)$.
+\end{definition}
+\begin{proposition}
+    If for $i=1,2$, $T_i: V_i\to W_i$, and 
+    \begin{equation*}
+        T_1\bigoplus T_2: V_1\bigoplus V_2\to W_1\bigoplus W_2
+    \end{equation*}
+    then we have $T_1\bigoplus T_2$ is Fredholm and $index(T_1\bigoplus T_2)=index(T_1)+index(T_2)$.
+\end{proposition}
+Notation: $Fred(V,W)=$ set of $F$ such that Fredholm from $V$ to $W$.
+\begin{proposition}
+    If $T\in F(V,W)$, and if $S\in F(W,Z)$, then $ST\in Fred(V,Z)$, and $index(ST)=index(S)+index(T)$.
+\end{proposition}
+\begin{proof}
+    Exercise.
+\end{proof}
+\begin{proposition}
+    If $T\in End(V,W)$, and if $index(T)=0$, then either (1) $T$ is invertible, or (2) $kernel(T)\neq\{0\}$, and $range(T)\neq V$.
+\end{proposition}
+In (1), the equation $Tx=w$ has a solution, and it is unique. In (2), the equation $Tx=w$ won't have a solution for some $w$. If it has a solution to some $w$, then the solution is not unique (you can add something in the kernel). There exists $w_1, ..., w_j$, such that $Tx_j=w_j$ has a solution, for $j=1, ..., n$.
+
+If $V,W$ are Banach spaces, let $Fred(V,W)$ be the bounded Fredholm operators. 
+\begin{theorem}
+    If $T\in Fred(V,W)$, and if $K\in B_0(V,W)$, then $T+K\in Fred(V,W)$. And we have $index(T+K)=index(T)$.
+\end{theorem}
+\begin{corollary}
+    Let $K\in B_0(V)$, then $\lambda\neq 0$, then if we look at $\lambda I-K$ is Fredholm, and $index(\lambda I-K)=0$.
+
+    So either $(\lambda I-K)$ is invertible, so $ker(\lambda I-K)\neq \{0\}$, i.e. $\lambda$ is an eigenvalue for $K$, and $\lambda\in\sigma(K)$.
+\end{corollary}
+
+\begin{theorem}
+    For $K\in B_0(V)$, and $\lambda$ an eigenvalue, is $(\lambda I-K)$ is not invertible, there is an $N<\infty$ such that $ker(\lambda I-K)^{N+n}=ker(\lambda I-K)^N$.   
+\end{theorem}
+
+\begin{definition}
+    Psedodifferential operators: On $\R^n$, given by a symbol on $\mathcal{S}(\R^{2n})$, define $T_a$ on $\mathcal{S}(\R^n)$, and for $f\in\mathcal{S}(\R^n)$, 
+    \begin{equation*}
+        \widehat{T_af(x)}=a(x,t)\hat{f}(t)
+    \end{equation*}
+\end{definition}
+On $l^2(\mathbb{N})$, let $T$ be the left shift operator, $Te_n=e_{n+1}$, the kernel is 0, but the cokernel is $\{e_1\}$. This is Fredholm of index $-1$.
+
+\begin{remark}
+    $B_(\mathcal{H})/B_0(\mathcal{H})$, and this is called the cackelim algebra, is a $C^*$-algebra. $T\in F(\mathcal{H})$ if and only if the image of $T$ is invertible. Index exactly consists of $GL(calkim)$. 
+\end{remark}
+\begin{remark}
+    The following isomorphisms: $B(\mathcal{H})\sim l^\infty$, and $B_0(\mathcal{H})\sim c_0$, and $B(\mathcal{H})/B_0(\mathcal{H})\sim  l^\infty/c_0$.
+\end{remark}
+

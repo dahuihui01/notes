@@ -3710,3 +3710,114 @@ And note $A(x,0)$ depends on $x$, and at $t\sim N^{-1}$, frequencies in the nonl
 The conjecture:
 1-d dispersive: assume phase rotation, and conservative, and defocusing ( the waves are going outward instead of inward), then the conjecture states that the small data implies the global solution.
 
+
+\section{Lecture Nov 30}
+We ask the question how to aplit the set $[\xi]=(\xi_1, \xi_2, \xi_3, \xi_4)$. And let $\Omega_0=\{\delta\xi^{hi}\lesssim 1\}$.
+
+We want to figure out how to do divisions in each of these settings. 
+\begin{equation*}
+    \eta_1=\xi_1-\xi_2=\xi_3-\xi_4
+\end{equation*}
+And 
+\begin{equation*}
+    \eta_2=\xi_1+\xi_2-\xi_3-\xi_4
+\end{equation*}
+Finally,
+\begin{equation*}
+    \eta_3=\xi_1-\xi_2-\xi_3+\xi_4
+\end{equation*}
+And $\xi=\xi_{avg}$, And $c_m^4=c_m^4(\xi, \eta_1, \xi_2, \xi_3)$, and $c_m^4$ vanishes of some order at $\eta_1=\eta_2=\eta_3=0$. Note $\xi_2^2=(\xi_1+\xi_2-\xi_3-\xi_4)^2=\eta_1()+(\xi_2-\xi_3)(\xi_1-\xi_4)$.
+
+Note that $u=\sum_{k\in\mathbb{Z}}u_k$, we define $u_k\to m_k(u)=|u_k|^2$, can think about this as a bilinear form. You can think of $p_k(\xi_1)p_k(\xi_2)$, we want to take the localized mass and correct it.
+\begin{equation*}
+    \partial_tM_k(u)=\partial_x(P_k(u)+R_{m,k}^n)+R_{m,k+C_{m,k}}
+\end{equation*} 
+where $B_m^4, R_m^4$ have at least one entry at frequency $k$. Notice for the energy estimate, we have 
+\begin{equation*}
+    M_k(u)\leq\xi^2c_k^2
+\end{equation*}
+Integrate in time in $(DF)_m$ in $[0,T]$. 
+\begin{equation*}
+    \int M_k*dxdt(0,T)=\int R_{m,k}^6+C_{m,k}^{4, tn}dxdt
+\end{equation*}
+Since we do not have $M_k$ in the LHS, we need to make sure that 
+\begin{equation*}
+    \|B_{m,k}^4\|_{L^1}\leq \xi^2c_k^2
+\end{equation*}
+for fixed time.
+\textbf{Bootstrap assumptions}
+\begin{equation*}
+    \|u_k\|_{L^\infty L^2}\leq\epsilon c_k
+\end{equation*}
+And 
+\begin{equation*}
+    \|u_k\|_{L^6}\leq\epsilon^{2/3}c_k^{2/3}
+\end{equation*}
+\begin{equation*}
+    \|\partial(u_k\overline{u_j})\leq\epsilon^2c_kc_j\langle j-k\rangle^{1/2}
+\end{equation*}
+and we can add translations of $u_j$ in the above expression as well.
+
+The $B_{m,k}^4$ bound, and use only bootstrap for energy.
+\begin{equation*}
+    B_{m,k}^k(u)=\sum_{k_1, ..., k_n}B_{m,k}^4(u_{k_1}, \overline{u_{k_2}} u_{k_3} \overline{u_{k_4}})
+\end{equation*}
+how to transform multilinear form into products, $B_{mk}^4(u_{k_1}, ..., u_{k_4})=\int K(\eta_1, ..., \eta_n)u_{k+1(x+y_1)}...\overline{u_{k_n}}(x+y_k)$, and this $K$ is a Schwartz function in all variables.
+
+Now that we've interpreted as a product, we need $u_{k_1}, ... u_{k_4}$ as being in $L^2, L^2, L^\infty, L^\infty$. 
+\begin{equation*}
+    \|B_{m,k}^4(n)\|_{L^1}\leq C^4\epsilon^n \sum_{[k]}\frac{1}{\delta\xi^{med}\delta\xi^m}c_{k_1}c_{k_2}c_{k_3}c_{k_4}
+\end{equation*}
+and there is more $\epsilon$, hence taking it small we can eliminate bounding $C$.
+\begin{equation*}
+    \sum_{k\in[k]}\frac{1}{\delta\xi^{hi}\delta\xi^{med}}c_{k_1}c_{k_2}c_{k_3}c_{k_4}\leq c_k^2
+\end{equation*}
+Galilean invariance allows us to set $k=0$, and $\delta\xi^{med}=n_1, \delta\xi^{hi}=n_2$, and $k_1=k=0$, $|k_2|\lesssim n_1$ with $|k_3-k_4|\lesssim n_1$, and $|k_3||k_4|\approx n_2$.
+\begin{equation*}
+    \sum_{n_1, n_2}\sum_{k_2, k_3, k_4}\frac{1}{n_1n_2}c_{k_2}c_{k_3}c_{k_4}\leq c_0
+\end{equation*}
+You are computing an average by taking $\frac{1}{n_1n_2}$, this is the maximal function.
+\begin{equation*}
+    \delta\xi^{hi}=n_2\sum c_{k_2}\leq n_1c_0\leq\sum_{n_1, n_2}\sum_{k_4}\frac{n_1}{n_2}c_{k_4}^2\leq\sum_{n_2}\sum c_{k_4}^2=1
+\end{equation*}
+Now we discuss $R^6$. If $k_0=k_1=k_2$, we will use the $L^6$ bound. Then our strategy becomes $k_0=k_1=k_2=...$, and use $L^6\to \epsilon^4C^6$. For $\delta k^{hi}=\max|k_j-k_e|$,  and 
+\begin{equation*}
+    R_6(u_{k_1}, ..., \overline{u_{k_6}})
+\end{equation*}
+where the 1-2, 3-4 are in $L^2$, and 5,6 are in $L^\infty$. We look at $C^4(u, \overline{u}, u, \overline{u})$, and 
+\begin{equation*}
+    \frac{1}{(\delta\xi^m)^2}(\xi_1-\xi_2)(\xi_3-\xi_4)
+\end{equation*}
+Then we consider $\xi_1-\xi_2$, where $\xi_1$ is like a derivative on $u$, where $\xi_2$ is a derivative on $\overline{v}$.
+
+Hence we get 
+\begin{equation*}
+    \xi_1-\xi_2\to\partial u\cdot\overline{v}+u\partial\overline{v}=\partial(u\overline{v})
+\end{equation*}
+And we will use this to show that 
+\begin{equation*}
+    L(\partial(L(u_{k_1})L(U_{k_3}\overline{u}_{k_n})))
+\end{equation*}
+where each term can be shown to be in $L^2$.
+
+Suppose you have two nonlinear Schrodinger solutions $u,v$, and we want to look at how they intersect.
+\begin{equation*}
+    I(u,v)=\int_{x<y}M(u)(x)P(v)(y)-P(u(x))M(v)(y)
+\end{equation*}
+This interaction measures how $u,v$ cross.
+\begin{equation*}
+    \frac{d}{dt}I(u,v)=\int_{x<y}\partial_xM(u)P(v)+M(u)\partial_yE(v)-\partial_xE(u)M(v)-P(u)\partial_xE(v)
+\end{equation*}
+when we integrate by parts, we get 
+\begin{equation*}
+    \int M(u)E(v)+M(v)E(u)-2P(u)P(v)dx
+\end{equation*}
+this has four frequencies in it. $u$ has frequency $\xi_1, \xi_2$, and $v$ has frequency $\xi_3, \xi_4$. Rather than doing IBP, we do this at a symbol level.
+\begin{equation*}
+    (\xi_1+\xi_2)^2+(\xi_3+\xi_4)^2-(\xi_1+\xi_2)(\xi_3+\xi_4)
+\end{equation*}
+where $(\xi_1+\xi_2-\xi_3-\xi_4)^2$, where $\Delta^4\xi=0$. If we add and subtract $(\xi_1-\xi_4)(\xi_2-\xi_3)$, then we have 
+\begin{equation*}
+    \int \partial_x(u\overline{v})\partial_x(\overline{u}v)=\int|\partial_x(u\overline{v})|^2dx
+\end{equation*}
+This is by Planchan-Vega. Next time: multilinear forms.
