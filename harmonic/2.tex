@@ -613,6 +613,46 @@ Now we prove the previous lemma.
 \end{proof}
 \qed
 
+
+
+
+
+\section{Chapter 6}
+We know that $Hf\in L^1$ if and only if $\int f=0$. Hence we classify these functions.
+\begin{definition}[atom]
+    An atom is a function $a$ such that $a$ is supported on a cube $Q$, and 
+    \begin{equation*}
+        \int_Q a=0, \|a\|_\infty\leq\frac{1}{|Q|}
+    \end{equation*}
+\end{definition}
+\begin{remark}
+    We also have $\|a\|_{L^1}\leq 1$.
+    \begin{equation*}
+        \int|a|\leq \int_Q \|a\|_\infty\leq 1
+    \end{equation*}
+\end{remark}
+\begin{proposition}
+    Let $T$ be an operator that is bounded on $L^2$, then we have 
+    \begin{equation*}
+        \|Ta\|_{L^1}<\infty
+    \end{equation*}
+\end{proposition}
+\begin{proof}
+    Cauchy-Schwarz.
+\end{proof}
+\begin{definition}[atomic $H^1$]
+    We have the atomic $H^1$ as $H_a^1$:  
+    \begin{equation*}
+        H_a^1=\{\sum_{j}\lambda_ja_j: \sum|\lambda_j|<\infty\}
+    \end{equation*}
+\end{definition}
+\begin{remark}
+    The atomic $H^1$ space is embedded in $L^1$.
+\end{remark}
+
+
+
+
 \newpage
 \section{Last Lecture}
 If we define the norm $\|\|_{H^s}$ as follows:

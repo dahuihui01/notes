@@ -3821,3 +3821,89 @@ where $(\xi_1+\xi_2-\xi_3-\xi_4)^2$, where $\Delta^4\xi=0$. If we add and subtra
     \int \partial_x(u\overline{v})\partial_x(\overline{u}v)=\int|\partial_x(u\overline{v})|^2dx
 \end{equation*}
 This is by Planchan-Vega. Next time: multilinear forms.
+
+
+
+\section{Last lecture}
+\begin{theorem}[I-T]
+    LWP holds for $s>1$.
+\end{theorem}
+Quasilinear Schrodinger 1-$d$. We ask the questions:
+\begin{enumerate}
+    \item For what $s$ is (QNLS) LWP?
+    \item For what $s$ is (QNLS) globally well-posed for small data?
+    \item cubic equation
+\end{enumerate}
+For global result, we need extra assumption.
+\begin{enumerate}
+    \item Phase rotation symmetry. $u\mapsto ue^{i\theta}$ is still a solution.
+    \item conservative: 
+    \begin{equation*}
+        i\partial_tu+\partial_x^2u=c^3(u,\overline{u}, u)+c^{\geq 5}(u, \overline{u}, u)
+    \end{equation*}
+    and $\nabla_\xi C^3, c^3(\xi, \xi, \xi)\in\R$. 
+    \item Defocusing. 
+    \begin{equation*}
+        c(\xi, \xi, \xi)\geq(1+\xi^2)
+    \end{equation*}
+\end{enumerate}
+We have a total of three assumptions above.
+\begin{theorem}[Global well-posedness]
+    Assume 1-3, then for $\|u_0\|_{H^s}\leq\epsilon$, and for $s>1$, there exists a unique global solution $u$ satisfying
+    \begin{enumerate}
+        \item uniform energy bounds
+        \item $L^6$ Strichartz
+        \item Bilinear $L^2$ estimates
+    \end{enumerate}
+\end{theorem} 
+Frequency decomposition of $u$. $\delta\xi=$ dyadic scale, because of how the waves are moving.
+
+\begin{equation*}
+    u_0=\sum_{k\geq 0}u_{0k}
+\end{equation*}
+at frequency $2^k$, and $\|u_{ok}\|_{H^s}\leq\epsilon c_k$. And $\sum c_k^2\approx 1$. And $c_k/c_j\leq 2^{\delta|k-j|}$. 
+And note
+\begin{equation*}
+    \|u_k\|_{L^\infty L^2}\lesssim\epsilon c_k 2^{-sk}
+\end{equation*}
+Then the $L^6$ Strichartz $\|u_k\|_{L^6}\lesssim (\epsilon c_k)^{2/3}2^{-(s-1/6)k}$.
+For the bilinear $L^2$ estimate, 
+\begin{equation*}
+    \|\partial(u_k\overline{u}_j)\|_{L^2}\lesssim\epsilon^2 c_kc_j
+\end{equation*}
+$k=j$ means $k=j+o(1)$. And to the above argument, we include a bootstrapping scheme, so we replace the right side of the inequality with $C$.
+
+If we write $iu_{kt}+g(u_{<k})\partial_x^2 u_k$. 
+\begin{equation*}
+    iu_t+g(u)\partial_x^2u=N(u, \partial u)
+\end{equation*}
+And 
+\begin{equation*}
+    iv_{kt}+g(u_{<k})v_k=f_1
+\end{equation*}
+where it is linear paradiff flow.
+\begin{equation*}
+    iu_{kt}+g(u_{<k})\partial_x^2u_k=C(u_k, \overline{u}_k, u_k)+R^{trasv}
+\end{equation*}
+where $R^{trasv}$ is the perturbative term.
+The $C$ term on the right hand side, we treat as if it is sublinear parallel, and the LHS is the paradiff part.
+
+Density flux relations. Suppose we have 
+\begin{equation*}
+    \partial_t|u_k|^2=\partial_x\left( g(u_{<k})P_k(u)\right)+C_m^n(u, \overline{u}, u, \overline{u})+R
+\end{equation*}
+where $M_k(u)$, and $P$ is the momentum., and $g=1+$ quasilinear. And we get 
+And we have 
+\begin{equation*}
+    \partial_t P_k(u)=\partial_x\left( g(u_{<k})E_k(u)\right)+C_m^n(u, \overline{u}, u, \overline{u})+R
+\end{equation*}
+We get division with $g=1$ on the $C_p$ term. We look at the translated twist:
+\begin{equation*}
+    g(u_{<k}), u_{<k}^n
+\end{equation*}
+This leads to the loss in the RHS here.
+\begin{note}
+    There is a loss of derivatives in the Strichartz estimate. 
+\end{note}
+The Strichartz estimate comes from when $k=j$ with no translations. Then we get the $L^6$Strichartz estimate.
+
