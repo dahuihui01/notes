@@ -1,0 +1,79 @@
+\usepackage{thmtools,thm-restate}
+
+% Fixing mdframed skip below
+% See https://tex.stackexchange.com/a/292090/143086
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{xpatch}
+\makeatletter
+\xpatchcmd{\endmdframed}
+	{\aftergroup\endmdf@trivlist\color@endgroup}
+	{\endmdf@trivlist\color@endgroup\@doendpe}
+	{}{}
+\makeatother
+
+\definecolor{huilightpink}{HTML}{fcf2f9}
+\definecolor{huidarkpink}{HTML}{f06ebe}
+\declaretheoremstyle[
+	mdframed={
+		backgroundcolor=huilightpink,
+		linecolor=huidarkpink,
+		rightline=false,
+		topline=false,
+		bottomline=false,
+		linewidth=2pt,
+		innertopmargin=5pt,
+		innerbottommargin=8pt,
+		innerleftmargin=8pt,
+		leftmargin=-2pt,
+		skipbelow=2pt,
+		nobreak
+	},
+	headfont=\normalfont\bfseries\color{huidarkpink}
+]{huipinkbox}
+\declaretheorem[style=huipinkbox,name=Theorem,within=chapter]{thm}
+\declaretheorem[style=huipinkbox,name=Theorem,sibling=thm]{theorem}
+
+
+
+\definecolor{huilightpurple}{HTML}{F9E9FF}
+\definecolor{huidarkpurple}{HTML}{DF9AF9}
+\declaretheoremstyle[
+	mdframed={
+		backgroundcolor=huilightpurple,
+		linecolor=huidarkpurple,
+		rightline=false,
+		topline=false,
+		bottomline=false,
+		linewidth=2pt,
+		innertopmargin=5pt,
+		innerbottommargin=8pt,
+		innerleftmargin=8pt,
+		leftmargin=-2pt,
+		skipbelow=2pt,
+		nobreak
+	},
+	headfont=\normalfont\bfseries\color{huidarkpurple}
+]{huipurplebox}
+\declaretheorem[style=huipurplebox,name=Proposition,within=chapter]{prop}
+
+
+\definecolor{huilightblue}{HTML}{e3eefc}
+\definecolor{huidarkblue}{HTML}{447fc9}
+\declaretheoremstyle[
+	mdframed={
+		backgroundcolor=huilightblue,
+		linecolor=huidarkblue,
+		rightline=false,
+		topline=false,
+		bottomline=false,
+		linewidth=2pt,
+		innertopmargin=5pt,
+		innerbottommargin=8pt,
+		innerleftmargin=8pt,
+		leftmargin=-2pt,
+		skipbelow=2pt,
+		nobreak
+	},
+	headfont=\normalfont\bfseries\color{huidarkblue}
+]{huiblueblox}
+\declaretheorem[style=huiblueblox,name=Proposition,within=chapter]{cor}
