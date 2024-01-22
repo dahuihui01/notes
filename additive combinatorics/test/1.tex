@@ -94,3 +94,12 @@ Let's do an example.
         Var(|B|)=\sum_a P(a\in B)-P(a\in B)^2
     \end{equation*}
 \end{example}
+\begin{proof}
+    We have $|B|=\sum_a1_B(a)$, and $a_1, a_2\in B$ are pairwise independent events. Then we have 
+    \begin{equation*}
+        Var(|B|)=\sum_a Var(1_B(a))
+    \end{equation*}
+    And $Var(1_B(a)))=\E(1_B(a)^2)-\E(1_B(a))^2$, hence $Var(|B|)=\sum_a P(a\in B)-P(a\in B)^2$.
+\end{proof}
+We note that $Var(|B|)\leq\E(|B|)$.
+
