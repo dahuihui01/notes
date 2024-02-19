@@ -72,6 +72,12 @@ From this, we know that $X=E(X)+O(Var(X)^{1/2})$ with high probability. And $Var
 \begin{warn}
     The second moment method gives two-sided bounds on how $X$ distributes, i.e., the two tails decay at $1/\lambda^2$.
 \end{warn}
+\begin{example}
+    One can derive the genrealized Chebyshev's inequality as follows, using a generalized notion of variance.
+    \begin{equation*}
+        P(|X-\E(X)|^p>\lambda^p \E(|X-\E(X)|^p))\leq\frac{1}{\lambda^p}
+    \end{equation*}
+\end{example}
 Recall the linearity of expected value is as follows:
 \begin{equation*}
     \E\left(\sum_n X_n\right)=\sum_n \E(X_n)
@@ -102,4 +108,6 @@ Let's do an example.
     And $Var(1_B(a)))=\E(1_B(a)^2)-\E(1_B(a))^2$, hence $Var(|B|)=\sum_a P(a\in B)-P(a\in B)^2$.
 \end{proof}
 We note that $Var(|B|)\leq\E(|B|)$.
+
+
 
