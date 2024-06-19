@@ -247,7 +247,58 @@
 	headfont=\normalfont\bfseries\color{nirdarkred}
 ]{nirredbox}
 
+% \makeatletter
+% \declaretheorem[
+% 	style=nirredbox,
+% 	name=Warning,
+% 	sibling=thm,
+% 	% without \leavevmode, the first item in a list gets misformatted
+% 	postheadhook={\leavevmode\marginnote{\nirwarnsymbol}[-3pt]%
+% 	\ifthmt@thisistheone% restatable makes alignment weird
+% 		\hspace{-2.2pt}%
+% 	\fi}
+% ]{warn}
+% \makeatother
+
+\newcommand{\nirideasymbol}{%
+	\begin{tikzpicture}[baseline=(x.base)]
+		\draw[rounded corners=.01em] (-.05em,-1.07em)rectangle(.05em,.78em);
+		\draw[fill=white,rounded corners=1.3] (0,.75em)--(.75em,0)--(0,-.75em)--(-.75em,0)--cycle;
+		\draw[line width=0.2mm, line cap=round](-.4em,-1.07em)--(.4em,-1.07em);
+		\node(x) at (0,0em) {};
+		\node at (0,0em) {{\textbf{!}}};
+	\end{tikzpicture}%
+}
+\renewcommand{\nirwarnsymbol}{%
+	\begin{tikzpicture}[baseline=(x.base)]
+		\draw[rounded corners=.01em] (-.05em,-1.07em)rectangle(.05em,.78em);
+		\draw[fill=white,rounded corners=1.3] (0,.75em)--(.75em,0)--(0,-.75em)--(-.75em,0)--cycle;
+		\draw[line width=0.2mm, line cap=round](-.4em,-1.07em)--(.4em,-1.07em);
+		\node(x) at (0,0em) {};
+		% Thank you https://tex.stackexchange.com/a/262510
+		\draw[
+			line cap=but,
+			line join=round,
+			x=.5em,
+			line width=0.5mm,
+			y=1*(height("Z")-\pgflinewidth)*(1-sin(10)),
+			rotate=-10,
+			rounded corners=1.5pt,
+		](-0.57, 0.57) -- (0.57, 0.57) -- (-0.57, -0.57) -- (0.57, -0.57);
+	\end{tikzpicture}%
+}
 \makeatletter
+\declaretheorem[
+	style=nirredbox,
+	name=Idea,
+	sibling=thm,
+	% without \leavevmode, the first item in a list gets misformatted
+	postheadhook={\leavevmode\marginnote{\nirideasymbol}[-3pt]%
+	\ifthmt@thisistheone% restatable makes alignment weird
+		\hspace{-2.2pt}%
+	\fi}
+]{idea}
+
 \declaretheorem[
 	style=nirredbox,
 	name=Warning,
