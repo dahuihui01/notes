@@ -174,3 +174,87 @@ Then $\varphi\circ i=\varphi\circ e$, where $e$ is the trivial map and $i$ is th
     This fact should be memorized, i.e., if any coset $gH$ is contained in an other coset $g'H$, then they are the same.
 \end{warn}
 
+\begin{example}
+    Let $H$ be a normal subgroup of $G$, and $K$ be a subgroup of $G$, then $HK=\{hk: h\in H, k\in K\}$ is a normal subgroup.
+    
+    To show that it is a subgroup, we note that 
+    \begin{equation*}
+        HK=\pi^{-1}(\pi(K))
+    \end{equation*}
+    where $\pi: G\to G/H$. In other words, $\pi^{-1}(gH)=gH$.
+    \begin{lem}
+        For $H$ normal in $G$, the usual projeciton $\pi: G\to G/H$, we have $\pi^{-1}(gH)=gH$.
+    \end{lem}
+\end{example}
+\begin{example}
+    Cosets are disjoint. Let $g\in g_1H\cap g_2H$, then $g_1h_1=g_2h_2$, then $g_1=g_2h_2h_1^{-1}$, hence $g_1H\subset g_2H$.
+\end{example}
+\begin{example}[8.13]
+    Let $|G|$ be odd, show that every element is a square.
+    
+    Method 1: it'd be nice if we can show that $f(g)=g^2$ is an injective homomrophism from $G\to G$, but this is not the case. It need not to be a homomorphism. In fact, it is a homomorphism only when $G$ is abelian. Now consider $\la g\ra$, it is an abelian group, so we can restrict $f$ to all the $\la g\ra$, then we can show that it is injective, hence surjective. 
+
+    Method 2: observe that $g^{|G|}=1, g^{|G|+1}=g$, then $(g^{|G|+1})^2=g$.
+\end{example}
+\begin{example}[8.25]
+    An interesting homomorphism from $G/H\to Aut(G)$, when $H$ is abelian and normal.
+
+    We know that if $H$ is normal, then $f: g\mapsto \gamma_g$ satisfies $\gamma_g(H)\subset H$, and hence an homomorphism would be $g\mapsto\gamma_g\vert_H$. Now if $H$ is abelian, we see that $H\subset\ker(f)$, i.e. there is the homomorphism from $G/H\to Aut(H)$ is well-defined.
+    \begin{lem}
+        Let $f: G\to G'$, then the following are equivalent:
+        \begin{enumerate}
+            \item $\overline{f}: G/H\to G'$ is well-defined, i.e., $gH\mapsto f(g)$.
+            \item $H\subset\ker(f)$.
+        \end{enumerate}
+    \end{lem}
+\end{example}
+
+\begin{defn}[action on a set]
+    An action $\rho$ of $G$ on a set $A$ is a function $\rho: G\times A\to A$ such that 
+    \begin{equation*}
+        \rho(e,a)=a, \forall a, \rho(gh,a)=\rho(g, \rho(h,a)), \forall g,h, a
+    \end{equation*}
+    We call an action is transitive if for all $a,b\in A$, there exists $g$ such that
+    \begin{equation*}
+        b=\rho(g,a)
+    \end{equation*}
+\end{defn}
+We know that left multiplications are faithful and also transitive.
+\begin{thm}[Cayley's theorem]
+    Every group acts faithfully on some set. 
+
+    Proof: Every group acts faithfully on itself by left multiplication.
+\end{thm}
+\begin{defn}[orbit, stabilizer]
+    The orbit of an element $a\in A$ under the action of $G$ is the set
+    \begin{equation*}
+        O(a)=\{\rho(g,a): g\in G\}
+    \end{equation*}
+    The stabilizer subgroup of $G$ of $a\in A$ is
+    \begin{equation*}
+        Stab(a)=\{g\in G: \rho(g,a)=a\}
+    \end{equation*}
+\end{defn}
+\begin{prop}
+    Orbits partition the set $A$.
+\end{prop}
+\begin{proof}
+    We can show this directly: if $\rho(g_1,a)=\rho(g_2, b)$, then $\rho(g',a)\in O(b)$ for ant $g'$.
+
+    Alternatively, we can show that if $c=\rho(g,a)\in O(a)$, then $O(c)\subset O(a)$; then we can show if $c\in O(a)$, then $a\in O(c)$, so $O(a)\subset O(c)$, hence $O(a)=O(c)$, hence any overlap implies equality.
+\end{proof}
+From this we see that orbits partition $A$, and the induced action on each orbit is transitive. Hence it suffices to consider transitive actions if we want to understand any group actions on a set.
+
+\begin{prop}
+    If $G$ acts transitively on a set $A$, then $|A|$ divides $|G|$.
+\end{prop}
+\begin{proof}
+    One can define a bijection between $\varphi: G/H\to A$, where $H=Stab(a)$ for any $a\in A$, by $\varphi: gH\mapsto g\cdot a$. Then by Lagrange's, we know $|G|=|A|\cdot|H|$.
+\end{proof}
+\begin{example}[9.11]
+    Let $G$ be a finite group, and $p$ be the smallest prime such that it divides $|G|$. Let $H$ be a subgroup of $G$ of index $p$, then $H$ is normal.
+
+    The proof relies on showing $\ker(\sigma)=H$, where $\sigma: G\to S_p$ corresponds to an action of $G$ on $G/H$. 
+\end{example}
+
+
