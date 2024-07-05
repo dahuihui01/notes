@@ -1,2 +1,20 @@
-\chapter{Taylor 1}
+\chapter{Taylor 1: Complex Calculus}
+We will start with the basics.
+\begin{defn}[convergence]
+    $\{z_n\}\subset\C$ converges to $z$ if and only if $|z_n-z|\to 0$ as $n\to\infty$. ($z_n=x_n+iy_n$ this is iff $x_n\to x, y_n\to y$).
+\end{defn}
+We note that every complex Cauchy sequence converges because every real Cauchy sequence converges.
+
+\begin{defn}[absolutely convergent]
+    We say a series is absolutely convergent $\sum_{k=0}^\infty$ if 
+    \begin{equation*}
+        \sum_{k=0}^\infty |a_k|<\infty
+    \end{equation*}
+\end{defn}
+\begin{prop}
+    If $\sum_{k=0}^{\infty} a_kz^k$ converges at $z_1\neq 0$, then either this series converges absolutely for all $z\in\C$, or there exists $R$ such that it is absolutely convergent for all $|z|<R$, and divergent for $|z|>R$ (R is called the radius of convergence).
+\end{prop}
+\begin{proof}
+    We know $\sum a_kz_1^k$ converges hence $|a_kz_1^k|\leq C$ for all $k$. Then for $|z|\leq r|z_1|$ for some $r<1$, we have $\sum|a_kz^k|\leq C\sum r^k<\infty$. This shows that the series converges absolutely for $|z|<R$ for some $R$.
+\end{proof}
 
