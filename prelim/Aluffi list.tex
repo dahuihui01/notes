@@ -1,0 +1,91 @@
+\chapter{Definition and Theorem List}
+\subsection{groups}
+\begin{prop}
+    Cancellation holds in groups, i.e., if $g_1a=g_2a$, then $g_1=g_2$.
+\end{prop}
+
+\begin{defn}[order]
+    An order of an element $g$ is the smallest positive integer $n$ such that $g^n=e$, denoted $|g|$, and $|g|=\infty$ if it does not have finite order.
+\end{defn}
+
+\begin{prop}
+    If $g^k=e$ for some $k$, then $|g|$ divides $k$.
+\end{prop}
+\begin{prop}
+    Let $g\in G$ have finite order, then $g^m$ also has finite order, and 
+    \begin{equation*}
+        |g^m|=\frac{|g|}{\gcd(m,|g|)}
+    \end{equation*}
+\end{prop}
+The next one concerns with the order of commuting elements.
+\begin{prop}
+    If $gh=hg$, then $|gh|$ divides $lcm(|g|, |h|)$.
+\end{prop}
+\begin{defn}[symmetric group]
+    The symmetric group $S_n$ is the group Aut$\{1, \dots, n\}$, i.e., the group of permutations of $\{1,\dots, n\}$.
+\end{defn}
+\begin{defn}[Dihedral group]
+    The dihedral group $D_{2n}$ is the group of rotations and reflections of a $n$-polygon. There are $n$ rotations and $n$ reflections, hence $2n$ elements.
+\end{defn}
+\begin{warn}
+    Symmetries in $D_{2n}$ corresponds to permutations in $S_n$, and you can view $D_{2n}$ acting faithfully on the set $\{1, \dots, n\}$.
+\end{warn}
+\begin{defn}[modulo]
+    An equivalence relation defined on $\Z$ with modulo:
+    \begin{equation*}
+        a\equiv b \mod n \iff n\mid (b-a)
+    \end{equation*}
+\end{defn}
+\begin{prop}
+    If $a\equiv a'\mod n$ and $b\equiv b'\mod n$, then $a+b=a'+b'\mod n$. In other words, the cosets addition is well-defined.
+\end{prop}
+\begin{prop}
+    The order of $m\in\Z/n\Z$ is 1 if $n\mid m$, and 
+    \begin{equation*}
+        |m|=\frac{n}{\gcd(m,n)}
+    \end{equation*}
+\end{prop}
+Then we have the next quite important statement.
+\begin{thm}
+    $m\in\Z/n\Z$ generates $\Z/n\Z$ if and only if $\gcd(m,n)$.
+\end{thm}
+\begin{warn}
+    This means that every element in $\Z/p\Z$ generates it.  
+\end{warn}
+\begin{defn}[multiplicative group]
+    Let $(\Z/n\Z)*:=\{m\in\Z/n\Z: \gcd(m,n)=1\}$, this is a group with the multiplication operation $(a\mod n)\cdot (b\mod n)=ab\mod n$.
+\end{defn}
+\begin{prop}
+    Let $\varphi:G\to H$ be a group homomorphism, then $\varphi(e_G)=e_H$, and $\varphi(g^{-1})=\varphi(g)^{-1}$.
+\end{prop}
+\begin{prop}
+    The trivial group is both initial and final in Grp. (recall initial is there exists only one homomorphism from $\{e\}$ to any group, and final is there exists only one homomorphism from any group to $\{e\}$).
+\end{prop}
+Now we see how homomorphisms work with order.
+
+\begin{prop}
+    Let $\varphi: G\to H$ be a group homomorphism, and let $g\in G$ be an element of finite order, then $|\varphi(g)|$ divides $|g|$.
+\end{prop}
+\begin{defn}[cyclic]
+    A group is cyclic if it is isomorphic to $\Z$ or to $\Z/n\Z$.
+\end{defn}
+\begin{prop}
+    Let $\varphi:G\to H$ be an isomorphism, then for all $g\in G$, $|\varphi(g)|=|g|$. And $G$ is commutative if and only if $H$ is commutative.
+\end{prop}
+\begin{thm}
+    Two \textit{commutative} finite groups are isomorphic if and only if they have the same number of elements of any given order.
+\end{thm}
+\begin{example}
+    $S_3$ and $\Z/6\Z$ are not isomorphic, since one is abelian, one isn't.
+\end{example}
+\begin{defn}[group of homomorphisms]
+    Let $H$ be commutative, then $\hom(G,H)$ is a commutative group for all group $G$.
+\end{defn}
+
+
+\subsection{Subgroups}
+\begin{prop}
+    If $\{H_\alpha\}_{\alpha\in A}$ is any family of subgroups a group $G$, then $H=\bigcap_{\alpha}H_\alpha$ is a subgroup of $G$.
+\end{prop}
+
+

@@ -36,7 +36,7 @@
 
 
 
-
+\begin{comment}
 \definecolor{huilightyellow}{HTML}{fff5d6}
 \definecolor{huidarkyellow}{HTML}{fcad03}
 \declaretheoremstyle[
@@ -57,6 +57,9 @@
 	headfont=\normalfont\bfseries\color{huidarkyellow}
 ]{huiyellowbox}
 \declaretheorem[style=huiyellowbox,name=Proposition,within=chapter]{prop}
+\end{comment}
+
+
 
 \definecolor{huilightpurple}{HTML}{faf2ff}
 \definecolor{huidarkpurple}{HTML}{912ed9}
@@ -77,15 +80,38 @@
 	},
 	headfont=\normalfont\bfseries\color{huidarkpurple}
 ]{huipurplebox}
+\declaretheorem[style=huipurplebox,name=Proposition,within=chapter]{prop}
+
+
+
+% \definecolor{huilightpurple}{HTML}{faf2ff}
+% \definecolor{huidarkpurple}{HTML}{912ed9}
+% \declaretheoremstyle[
+% 	mdframed={
+% 		backgroundcolor=huilightpurple,
+% 		linecolor=huidarkpurple,
+% 		rightline=false,
+% 		topline=false,
+% 		bottomline=false,
+% 		linewidth=2pt,
+% 		innertopmargin=5pt,
+% 		innerbottommargin=8pt,
+% 		innerleftmargin=8pt,
+% 		leftmargin=-2pt,
+% 		skipbelow=2pt,
+% 		nobreak
+% 	},
+% 	headfont=\normalfont\bfseries\color{huidarkpurple}
+% ]{huipurplebox}
 \declaretheorem[style=huipurplebox,name=Lemma,within=chapter]{lem}
 
 
-\definecolor{huilightpurple}{HTML}{faf2ff}
-\definecolor{huidarkpurple}{HTML}{912ed9}
+\definecolor{lightpink}{HTML}{fff7fd}
+\definecolor{darkpink}{HTML}{c96fb6}
 \declaretheoremstyle[
 	mdframed={
-		backgroundcolor=huilightpurple,
-		linecolor=huidarkpurple,
+		backgroundcolor=lightpink,
+		linecolor=darkpink,
 		rightline=false,
 		topline=false,
 		bottomline=false,
@@ -97,9 +123,10 @@
 		skipbelow=2pt,
 		nobreak
 	},
-	headfont=\normalfont\bfseries\color{huidarkpurple}
-]{huipurplebox}
-\declaretheorem[style=huipurplebox,name=Definition,within=chapter]{defn}
+	headfont=\normalfont\bfseries\color{darkpink}
+]{pinkbox}
+\declaretheorem[style=pinkbox,name=Definition,within=chapter]{defn}
+
 
 \definecolor{huilightblue}{HTML}{edf9ff}
 \definecolor{huidarkblue}{HTML}{4b79db}
@@ -122,24 +149,89 @@
 ]{huiblueblox}
 \declaretheorem[style=huiblueblox,name=Example,within=chapter]{example}
 
-\declaretheoremstyle[
-	mdframed={
-		backgroundcolor=huilightblue,
-		linecolor=huidarkblue,
-		rightline=false,
-		topline=false,
-		bottomline=false,
-		linewidth=2pt,
-		innertopmargin=5pt,
-		innerbottommargin=8pt,
-		innerleftmargin=8pt,
-		leftmargin=-2pt,
-		skipbelow=2pt,
-		nobreak
-	},
-	headfont=\normalfont\bfseries\color{huidarkblue}
-]{huiblueblox}
+
+
+% \definecolor{huilightblue}{HTML}{edf9ff}
+% \definecolor{huidarkblue}{HTML}{4b79db}
+% \declaretheoremstyle[
+% 	mdframed={
+% 		backgroundcolor=huilightblue,
+% 		linecolor=huidarkblue,
+% 		rightline=false,
+% 		topline=false,
+% 		bottomline=false,
+% 		linewidth=2pt,
+% 		innertopmargin=5pt,
+% 		innerbottommargin=8pt,
+% 		innerleftmargin=8pt,
+% 		leftmargin=-2pt,
+% 		skipbelow=2pt,
+% 		nobreak
+% 	},
+% 	headfont=\normalfont\bfseries\color{huidarkblue}
+% ]{huiblueblox}
+% \declaretheorem[style=huiblueblox,name=Example,within=chapter]{example}
+
+% \declaretheoremstyle[
+% 	mdframed={
+% 		backgroundcolor=huilightblue,
+% 		linecolor=huidarkblue,
+% 		rightline=false,
+% 		topline=false,
+% 		bottomline=false,
+% 		linewidth=2pt,
+% 		innertopmargin=5pt,
+% 		innerbottommargin=8pt,
+% 		innerleftmargin=8pt,
+% 		leftmargin=-2pt,
+% 		skipbelow=2pt,
+% 		nobreak
+% 	},
+% 	headfont=\normalfont\bfseries\color{huidarkblue}
+% ]{huiblueblox}
 \declaretheorem[style=huiblueblox,name=Problem,within=chapter]{prob}
+
+
+
+% \declaretheoremstyle[
+% 	mdframed={
+% 		backgroundcolor=huilightblue,
+% 		linecolor=huidarkblue,
+% 		rightline=false,
+% 		topline=false,
+% 		bottomline=false,
+% 		linewidth=2pt,
+% 		innertopmargin=5pt,
+% 		innerbottommargin=8pt,
+% 		innerleftmargin=8pt,
+% 		leftmargin=-2pt,
+% 		skipbelow=2pt,
+% 		nobreak
+% 	},
+% 	headfont=\normalfont\bfseries\color{huidarkblue}
+% ]{huiblueblox}
+\declaretheorem[style=huiblueblox,name=Exercise,within=chapter]{exer}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \newcommand{\nirwarnsymbol}{%
 	\begin{tikzpicture}[baseline=(x.base)]
