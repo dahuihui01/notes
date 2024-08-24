@@ -18,3 +18,57 @@ We note that every complex Cauchy sequence converges because every real Cauchy s
     We know $\sum a_kz_1^k$ converges hence $|a_kz_1^k|\leq C$ for all $k$. Then for $|z|\leq r|z_1|$ for some $r<1$, we have $\sum|a_kz^k|\leq C\sum r^k<\infty$. This shows that the series converges absolutely for $|z|<R$ for some $R$.
 \end{proof}
 
+
+
+
+\begin{example}
+    $f(z)=z^2$ is maps the upper half plane $\mathbb{H}$ surjectively onto $\C\setminus \R^{-}$, where $\R=(-\infty, 0])$.
+\end{example}
+
+
+\begin{thm}[Cauchy's integral theorem]
+    Let $f\in C^1(\overline{\Omega})$ be holomorphic on $\Omega$, then 
+    \begin{equation*}
+        \int_{\partial\Omega}f(z)dz=0
+    \end{equation*}
+\end{thm}
+\begin{proof}
+    This follows from Green's theorem.
+    \begin{equation*}
+        \int_{\partial\Omega}fdz=\int_{\partial\Omega} fdx+ifdy=\int\int i\frac{\partial f}{\partial x}-\frac{\partial f}{\partial y}dxdy=0
+    \end{equation*}
+    the RHS is 0 by Cauchy-Riemann equations for $f$ being holomorhpic.
+\end{proof}
+\begin{thm}[Cauchy's integral formula]
+    Let $f\in C^1(\overline{\Omega})$, then for $z\in\Omega$, then 
+    \begin{equation*}
+        f(z)=\frac{1}{2\pi i}\int_{\partial\Omega}\frac{f(\zeta)}{(\zeta-z)}d\zeta
+    \end{equation*}
+\end{thm}
+\begin{proof}
+    This follows from shrinking $\int_{\partial\Omega}$ to $\int_{\partial D_r}$ with $D_r$ centered at $z$, then parametrizing.
+\end{proof}
+\begin{prop}[Mean value property]
+    Let $z_0\in\Omega$, then
+    \begin{equation*}
+        f(z_0)=\frac{1}{2\pi}\int_0^{2\pi}f(z_0+re^{i\theta})d\theta
+    \end{equation*}
+    whenever the closure of $D_r\subset\Omega$.
+\end{prop}
+Note that one can keep differentiate the Cauchy integral formula, we get 
+\begin{equation*}
+    f'(z)=\frac{1}{2\pi i}\int_{\partial\Omega}\frac{f(\zeta)}{(\zeta-z)^2}d\zeta
+\end{equation*}
+Moreover, we have
+\begin{equation*}
+    f^{(n)}(z)=\frac{n!}{2\pi i}\int_{\partial\Omega}\frac{f(\zeta)}{(\zeta-z)^{n+1}}d\zeta
+\end{equation*}
+Now we reach a strong conclusion where every holomorphic $f$ can be written as a power series about any point $z\in\Omega$.
+\begin{prop}
+    If $f\in C^1(\overline{\Omega})$ is holomorhpic, then $z\in D_r(z_0)\subset\Omega$, then $f(z)$ has a convergent power series 
+    \begin{equation*}
+        f(z)=\sum_{n=0}^\infty a_n(z-z_0)^n=\sum_{n=0}^\infty \frac{f^{(n)}(z_0)}{n!}(z-z_0)^n
+    \end{equation*}
+\end{prop}
+
+
