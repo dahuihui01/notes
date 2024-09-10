@@ -259,9 +259,29 @@ Next we introduce morphisms between chain complexes.
         \arrow["{\partial_{i}^N}", from=2-3, to=2-4]
         \arrow[from=2-4, to=2-5]
     \end{tikzcd}\]
-    
+    Moreover, we define composition of morphisms:
+    \begin{equation*}
+        \{f.\}\circ \{g.\}:=\{(f\circ g).\}
+    \end{equation*}
+    where $\{g.\}:\{M.;\partial.^M\}\to\{N.;\partial.^N\}$, and $\{f.\}:\{N.;\partial.^N\}\to \{L.;\partial.^L\}$, which is simply vertical stacking.
 \end{defn}
-
-
-
+\begin{prob}
+    \textbf{HW(Q9):} Prove that chain complexes of $R$-modules form a category $\text{ch}_R$.
+\end{prob}
+There are interesting functors $F:\text{ch}_R\to Mod_R$, and we begin with the following one:
+\begin{defn}[$H_n$, $n$th-homology]
+    Given $n\in\mathbb{Z}$, there is a functor 
+    \begin{equation*}
+        H_n: \text{ch}_R\to Mod_R
+    \end{equation*}
+    defined as follows:
+    \begin{equation*}
+        H_n(\{M.;\partial.^M\}):=\ker\partial_n^M\big/ Im \partial_{n+1}^M
+    \end{equation*}
+    and for $f:\{M.;\partial.^M\}\to\{N.;\partial.^N\}$, we define: $H_n(f): H_n(\{M.;\partial.^M\})\to H_n(\{N.;\partial.^N\})$,
+    \begin{equation*}
+        H_n(f)[x]:=[f_n(x)]
+    \end{equation*}
+    where $[x]\in H_n(\{M.;\partial.^M\})$.
+\end{defn}
 
