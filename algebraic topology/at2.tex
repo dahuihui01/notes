@@ -1,0 +1,128 @@
+\section{Lecture 4 9/9}
+Today we prove the snake lemma. We will refer to this following diagram throughout the proof.
+\[\begin{tikzcd}
+	{A_{n+1}} & {B_{n+1}} & {C_{n+1}} \\
+	{A_n} & {B_n} & {C_n} \\
+	{A_{n-1}} & {B_{n-1}} & {C_{n-1}} \\
+	{A_{n-2}} & {B_{n-2}} & {C_{n-2}}
+	\arrow["{f_{n+1}}", from=1-1, to=1-2]
+	\arrow["{\delta^A}"', from=1-1, to=2-1]
+	\arrow["{g_{n+1}}", from=1-2, to=1-3]
+	\arrow["{\delta^B}"', from=1-2, to=2-2]
+	\arrow["{\delta^C}"', from=1-3, to=2-3]
+	\arrow["{f_n}", from=2-1, to=2-2]
+	\arrow["{\delta^A}"', from=2-1, to=3-1]
+	\arrow["{g_n}", from=2-2, to=2-3]
+	\arrow["{\delta^B}"', from=2-2, to=3-2]
+	\arrow["{\delta^C}"', from=2-3, to=3-3]
+	\arrow["{f_{n-1}}", from=3-1, to=3-2]
+	\arrow["{\delta^A}"', from=3-1, to=4-1]
+	\arrow["{g_{n-1}}", from=3-2, to=3-3]
+	\arrow["{\delta^B}"', from=3-2, to=4-2]
+	\arrow["{\delta^C}"', from=3-3, to=4-3]
+	\arrow["{f_{n-2}}", from=4-1, to=4-2]
+	\arrow["{g_{n-2}}", from=4-2, to=4-3]
+\end{tikzcd}\]
+\begin{proof}
+    First we define the map $\delta_n: H_n(C)\to H_{n-1}(A)$. Let $[x]\in H_n(C)$, then $x\in\delta^C$, where $\delta^C:C_n\to C_{n-1}$. We define 
+    \begin{equation*}
+        \delta[x]=[y], y\in A_{n-1}
+    \end{equation*}
+    as follows: for $x\in C_n$, $g_n: B_n\to C_n$ is surjective, hence there exists $b\in B_n$ such that $g_n(b)=x$. Then consider $d=\delta^B(b)$, since the diagram commutes, we have 
+    \begin{equation*}
+        d\in\ker g_{n-1}\Rightarrow d\in\im f_{n-1}
+    \end{equation*}
+    Let $y\in A_{n-1}$ be this unique $y$ such that $f_{n-1}(y)=d$, where uniqueness is by $f_{n-1}$ is injective. This is indicated in the below diagram:
+    \[\begin{tikzcd}
+        {A_{n+1}} & {B_{n+1}} & {C_{n+1}} \\
+        {A_n} & {\textcolor{red}{b}\in B_n} & {\textcolor{red}{x}\in C_n} \\
+        {\textcolor{red}{y}\in A_{n-1}} & {\textcolor{red}{d}\in B_{n-1}} & {C_{n-1}} \\
+        {A_{n-2}} & {B_{n-2}} & {C_{n-2}}
+        \arrow["{f_{n+1}}", from=1-1, to=1-2]
+        \arrow["{\delta^A}"', from=1-1, to=2-1]
+        \arrow["{g_{n+1}}", from=1-2, to=1-3]
+        \arrow["{\delta^B}"', from=1-2, to=2-2]
+        \arrow["{\delta^C}"', from=1-3, to=2-3]
+        \arrow["{f_n}", from=2-1, to=2-2]
+        \arrow["{\delta^A}"', from=2-1, to=3-1]
+        \arrow["{g_n}", from=2-2, to=2-3]
+        \arrow["{\delta^B}"', from=2-2, to=3-2]
+        \arrow["{\delta^C}"', from=2-3, to=3-3]
+        \arrow["{f_{n-1}}", from=3-1, to=3-2]
+        \arrow["{\delta^A}"', from=3-1, to=4-1]
+        \arrow["{g_{n-1}}", from=3-2, to=3-3]
+        \arrow["{\delta^B}"', from=3-2, to=4-2]
+        \arrow["{\delta^C}"', from=3-3, to=4-3]
+        \arrow["{f_{n-2}}", from=4-1, to=4-2]
+        \arrow["{g_{n-2}}", from=4-2, to=4-3]
+    \end{tikzcd}\]
+
+    We first need to check that $[y]$ does not depend on the choice of $b$. Let $g_n(b_1)=g_n(b_2)=x$, then 
+    \begin{equation*}
+        g(b_1-b_2)=0\Rightarrow b_1-b_2=f_n(a), a\in A_n
+    \end{equation*}
+    let $y_1, y_2$ be those determined by $b_1, b_2$, then 
+    \begin{equation*}
+        f_{n-1}(y_1-y_2)=\delta^B(b_1-b_2)=\delta^B(f_n(a)), a\in A_n
+    \end{equation*}
+    Because the following diagram commutes,
+    \[\begin{tikzcd}
+        {\textcolor{red}{a}\in A_n} & {B_n} \\
+        {A_{n-1}} & {B_{n-1}}
+        \arrow["{f_n}", from=1-1, to=1-2]
+        \arrow["{\delta^A}"', from=1-1, to=2-1]
+        \arrow["{\delta^B}", from=1-2, to=2-2]
+        \arrow["{f_{n-1}}"', from=2-1, to=2-2]
+    \end{tikzcd}\]
+    we then have 
+    \begin{equation*}
+        y_1-y_2=\delta^A(a)
+    \end{equation*}
+    i.e., $[y_1]=[y_2]$, as they only differ by $\im\delta$.
+
+    \begin{prob}
+        \textbf{HW(Q13):} Check that if $x\in\im\delta^C$, then $\delta_n[x]=0$.
+    \end{prob}
+    \textcolor{red}{the proof is not finished}
+\end{proof}
+
+Next we review the tensor products of $R$-modules. We first review $R$-bilinear maps 
+\begin{defn}[bilinear maps]
+    Let $M,N, P$ be $R$-modules, an $R$-bilinear map $f:M\times N\to P$ is a map such that 
+    \begin{enumerate}
+        \item $f$ is linear in both coordinates, we have $f(m_1+m_2,n)=f(m_1,n)+f(m_2,n)$, and similarly, $f(m,n_1+n_2)=f(m,n_1)+f(m,n_2)$.
+        \item For all $r\in R$, we have $f(rm,n)=f(m,rn)=rf(m,n)$.
+    \end{enumerate}
+\end{defn}
+Next we define tensor products.
+\begin{defn}[tensor product]
+    A tensor product of $M\times N$ is an $R$-module denoted by $M\otimes_R N$ such that 
+    \begin{enumerate}
+        \item $M\otimes_R N$ comes endowed with an $R$-bilinear map 
+        \begin{equation*}
+            M\times N\xrightarrow{\varphi}M\otimes_RN
+        \end{equation*}
+        \item given any other $R$-bilinear map $f: M\times N\to P$, there exists a unique $R$-module map $\psi$ such that the following diagram commutes:
+        \[\begin{tikzcd}
+            {M\times N} & {M\otimes_RN} \\
+            P
+            \arrow["\varphi", from=1-1, to=1-2]
+            \arrow["f"', from=1-1, to=2-1]
+            \arrow["\psi", from=1-2, to=2-1]
+        \end{tikzcd}\]
+    \end{enumerate}
+\end{defn}
+It is not clear that $M\otimes_RN$ exists or not. In fact, they exist!
+\begin{thm}[$M\otimes_RN$ exists]
+    Define $M\otimes_RN=R\langle M\times N\rangle/K$, where $R\langle M\times N\rangle$ is the free $R$-module on the set $M\times N$. We define $K$ as the submodule generated by the following four relations:
+    \begin{enumerate}
+        \item $\la(m_1+m_2,n)\ra-\la(m_1,n)\ra-\la(m_2,n)\ra$
+        \item $\la(m,n_1+n_2)\ra-\la(m,n_1)\ra-\la(m,n_2)\ra$
+        \item $r\la(m,n)\ra-\la(rm,n)\ra$
+        \item $r\la(m,n)\ra-\la(m,rn)\ra$
+    \end{enumerate}
+    Moreover, the map $\varphi:M\times N\to M\otimes_RN$ given by 
+    \begin{equation*}
+        (m,n)\mapsto \la(m,n)\ra:=m\otimes_Rn
+    \end{equation*}
+\end{thm}

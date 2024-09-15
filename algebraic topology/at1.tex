@@ -252,12 +252,15 @@ Next we introduce morphisms between chain complexes.
         \dots & {N_{i+1}} & {N_i} & {N_{i-1}} & \dots
         \arrow[from=1-1, to=1-2]
         \arrow["{\partial_{i+1}^M}", from=1-2, to=1-3]
+        \arrow["{f_{i+1}}"', from=1-2, to=2-2]
         \arrow["{\partial_i^M}", from=1-3, to=1-4]
-        \arrow[from=1-4, to=1-5]
+        \arrow["{f_i}"', from=1-3, to=2-3]
+        \arrow["{\partial_{i-1}^M}", from=1-4, to=1-5]
+        \arrow["{f_{i-1}}"', from=1-4, to=2-4]
         \arrow[from=2-1, to=2-2]
         \arrow["{\partial_{i+1}^N}", from=2-2, to=2-3]
-        \arrow["{\partial_{i}^N}", from=2-3, to=2-4]
-        \arrow[from=2-4, to=2-5]
+        \arrow["{\partial_i^N}", from=2-3, to=2-4]
+        \arrow["{\partial_{i-1}^N}", from=2-4, to=2-5]
     \end{tikzcd}\]
     Moreover, we define composition of morphisms:
     \begin{equation*}
@@ -284,4 +287,168 @@ There are interesting functors $F:\text{ch}_R\to Mod_R$, and we begin with the f
     \end{equation*}
     where $[x]\in H_n(\{M.;\partial.^M\})$.
 \end{defn}
+\begin{proof}
+    We need to show $H_n$ is well-defined on objects and morphisms. We need to check that $Im\partial_{n+1}\subset\ker\partial_n$. This is a consequence of $\partial^2=0$.
 
+    On morphisms: for $x\in\ker\partial_n^M$, we have $f_n(x)\in\ker\partial_n^N$. This is we have 
+    \begin{equation*}
+        \partial_n^N(f_n(x)=f_{n+1})(\partial_n^M(x))=0
+    \end{equation*}
+    Moreover, we need to check that this desn't depend on the choice of representatives, i.e., we can check that 
+    \begin{equation*}
+        Im\partial_{n+1}^M\mapsto 0
+    \end{equation*}
+    Let $x=\partial_{n+1}^M(y)$, we have 
+    \begin{equation*}
+        f_n(x)=f_n(\partial_{n+1}^M(y))=\partial_{n+1}^N(f_{n+1}(y))=0
+    \end{equation*}
+    \[\begin{tikzcd}
+        {M_{n+1}} & {M_n} \\
+        {N_{n+1}} & {N_n}
+        \arrow["{\partial_{n+1}^M}", from=1-1, to=1-2]
+        \arrow["{f_{n+1}}"', from=1-1, to=2-1]
+        \arrow["{f_n}", from=1-2, to=2-2]
+        \arrow["{\partial_{n+1}^N}"', from=2-1, to=2-2]
+    \end{tikzcd}\]
+\end{proof}
+Next we talk about homotopy between morphisms between chain complexes.
+\begin{defn}[homotopy]
+    Given two morphisms, $f.,g.:M.\to N.$, a chain homotopy $h.$ between them is a collection of $R$-modules maps, for all $n\in\mathbb{Z}$,
+    \begin{equation*}
+        h_n:M_n\to N_{n+1}
+    \end{equation*}
+    such that 
+    \begin{equation*}
+        \partial_{n+1}\circ h_n+h_{n-1}\circ\partial_n=f_n-g_n
+    \end{equation*}
+    denoted as $\partial h+h\partial=f-g$.
+    \[\begin{tikzcd}
+        {M_{n+1}} & {M_n} & {M_{n-1}} \\
+        {N_{n+1}} & {N_n} & {N_{n-1}}
+        \arrow[from=1-1, to=1-2]
+        \arrow["{f_{n+1}}"', from=1-1, to=2-1]
+        \arrow["{\textcolor{blue}{\partial_n^M}}", from=1-2, to=1-3]
+        \arrow["{\textcolor{red}{h_n}}", from=1-2, to=2-1]
+        \arrow["{f_n/g_n}", from=1-2, to=2-2]
+        \arrow["{\textcolor{red}{h_{n-1}}}", from=1-3, to=2-2]
+        \arrow["{f_{n-1}}", from=1-3, to=2-3]
+        \arrow["{\textcolor{blue}{\partial_{n+1}^N}}"', from=2-1, to=2-2]
+        \arrow[from=2-2, to=2-3]
+    \end{tikzcd}\]
+\end{defn} 
+
+\begin{prob}
+    \textbf{HW(Q10):} Show that homotopy is an equivalence relation between morphisms. Hint: replace $h_n$ with $-h_n: M_n\to N_{n+1}$. 
+\end{prob}
+\begin{proof}
+    Reflexive is shown by defining $h_n$ to be the zero map. For symmetry, we choose $-h_n$. Transitive is a ladder.
+\end{proof}
+\begin{prop}
+    Let $h.$ be a chain homotopy between $f.$ and $g.$, then we have an equality
+    \begin{equation*}
+        H_n(f.)=H_n(g.)
+    \end{equation*}
+    where $H_n(f.), H_n(g.): H_n(M.)\to H_n(N.)$.
+\end{prop}
+\begin{proof}
+    Given $[x]\in H_n(M.)$, we have 
+    \begin{align*}
+        H_n(f)[x]&=[f_n(x)]\\
+        &=[g_n(x)+\partial h.(x)+h.\partial(x)]\\
+        &=[g_n(x)+\partial h.(x)]\\
+        &=[g_n(x)]\\
+        &=H_n(g)[x]
+    \end{align*}
+\end{proof}
+Next we define a new category.
+\begin{defn}[$Hch_R$]
+    Define the category $\text{Hch}_R$ as follows:
+    \begin{enumerate}
+        \item $Ob(\text{Hch}_R)=Ob(\text{ch}_R)$
+        \item $mor_{\text{Hch}_R}(M.,N.)=mor_{\text{ch}_R}(M.,N.)/\sim$, where $\sim$ is the homotopy equivalence.
+    \end{enumerate}
+\end{defn}
+\begin{prob}
+    \textbf{HW(Q11):} Show that $Hch_R$ is a category, admitting a functor 
+    \begin{equation*}
+        F: ch_R\to Hch_R
+    \end{equation*}
+    such that the following diagram commutes:
+    \[\begin{tikzcd}
+        {\text{ch}_R} && {\text{Hch}_R} \\
+        & {\text{mod}_R}
+        \arrow["F", from=1-1, to=1-3]
+        \arrow["{H_n}"', from=1-1, to=2-2]
+        \arrow["{H_n}", from=1-3, to=2-2]
+    \end{tikzcd}\]
+\end{prob}
+Next we introduce long and short exact sequences.
+\begin{defn}[exactness]
+    Firstly, given a pair of $R$-module maps, 
+    \begin{equation*}
+        X_1\xrightarrow{f}X_2\xrightarrow{g}X_3
+    \end{equation*}
+    we say that the above is exact at $X_2$ if $\ker(g)=\im(f)$. Hence given a sequence of $R$-module maps, 
+    \begin{equation*}
+        \dots\to X_{i+1}\to X_i\to X_{i-1}\to\dots
+    \end{equation*}
+    this is called a long exact sequence if it is exact at all $X_i$. Finally, given a pair of $R$-module maps,
+    \begin{equation*}
+        0\to X_i\xrightarrow{f}X_2\xrightarrow{g}X_3\to 0
+    \end{equation*}
+    This is a short exact sequence, and $f$ is injective, $g$ is surjective. 
+\end{defn}
+\begin{prob}
+    \textbf{HW(Q12):} Prove the following:
+    \begin{enumerate}
+        \item Given  LES, 
+        \begin{equation*}
+            \dots\to X_{i+1}\xrightarrow{f_{i+1}}X_i\xrightarrow{f_i}X_{i-1}
+        \end{equation*}
+        show the following is a short exact sequence:
+        \begin{equation*}
+            0\to\ker(f_i)\xrightarrow{i}X_i\xrightarrow{f_i}\ker(f_{i-1})\to 0
+        \end{equation*}
+        \item Prove the 5-lemma. Given the below sequence, exact at positions $X_i, Y_i$, where $i=2,3,4$, and assume the diagram commutes and if $t_1,t_2,t_4,t_5$ are isomorphisms, show that $t_3$ is also an isomorphism.
+        \[\begin{tikzcd}
+            {X_1} & {X_2} & {X_3} & {X_4} & {X_5} \\
+            {Y_1} & {Y_2} & {Y_3} & {Y_4} & {Y_5}
+            \arrow["{f_1}", from=1-1, to=1-2]
+            \arrow["{t_1}"', from=1-1, to=2-1]
+            \arrow["{f_2}", from=1-2, to=1-3]
+            \arrow["{t_2}"', from=1-2, to=2-2]
+            \arrow["{f_3}", from=1-3, to=1-4]
+            \arrow["{\textcolor{red}{t_3}}"', from=1-3, to=2-3]
+            \arrow["{f_4}", from=1-4, to=1-5]
+            \arrow["{t_4}"', from=1-4, to=2-4]
+            \arrow["{t_5}"', from=1-5, to=2-5]
+            \arrow["{g_1}", from=2-1, to=2-2]
+            \arrow["{g_2}", from=2-2, to=2-3]
+            \arrow["{g_3}", from=2-3, to=2-4]
+            \arrow["{g_4}", from=2-4, to=2-5]
+        \end{tikzcd}\]
+    \end{enumerate}
+\end{prob}
+Next we state the most important theorem in chain complexes:
+\begin{thm}[The snake lemma]
+    Let $A.\xrightarrow{f.}B.\xrightarrow{g.}C.$ be a SES of chain complexes, i.e., 
+    \begin{equation*}
+        A_n\xrightarrow{f_n}B_n\xrightarrow{g_n}C_n
+    \end{equation*}
+    is a short exact sequence of all $n$. Then there exists a LES of homology groups. 
+    \[\begin{tikzcd}
+        && {H_{n+1}(C)} \\
+        {H_n(A)} & {H_n(B)} & {H_n(C)} \\
+        {H_{n-1}(A)} & {H_{n-1}(B)} & {H_{n-1}(C)} \\
+        {H_{n-2}(A)}
+        \arrow["{\delta_{n-1}}", curve={height=12pt}, from=1-3, to=2-1]
+        \arrow["{H_n(f)}", from=2-1, to=2-2]
+        \arrow["{H_n(g)}", from=2-2, to=2-3]
+        \arrow["{\delta_n}", curve={height=6pt}, from=2-3, to=3-1]
+        \arrow["{H_{n-1}(f)}", from=3-1, to=3-2]
+        \arrow["{H_{n-1}(g)}", from=3-2, to=3-3]
+        \arrow["{\delta_{n-1}}", curve={height=6pt}, from=3-3, to=4-1]
+    \end{tikzcd}\]
+\end{thm}
+
+\input{at2.tex}
