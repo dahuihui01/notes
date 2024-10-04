@@ -288,3 +288,59 @@ let $[x]\in H_n(M_\bullet)$, where $\beta[\varphi]([x])=\varphi(x)$ (where $\var
 \end{proof}
 
 
+\section{Lecture 6 9/16}
+Today we continue our discussion of homological algebra. Let $M$ be an $R$-module. 
+\begin{defn}[resolution]
+    A resolution of $M$ is a positively graded chain complex $\{P_\bullet, \partial_\bullet\}$ such that 
+    \begin{enumerate}
+        \item $H_n(P_\bullet)=0$ for all $n>0$
+        \item $H_0(P_\bullet)=\frac{P_0}{\im\partial_1}\cong M$, where $\partial_1:P_1\to P_0$.
+    \end{enumerate}
+    We say $\{P_\bullet,\partial_\bullet\}$ is a free resolution if $P_i$ is a free $R$-module for each $i$.
+\end{defn}
+For resolutions, we prove the following two things: first, free resolutions always exist; second, every $R$-module map can be extended to a map between their resolutions (with extra assumptions) and these extensions are unique up to homotopies.
+\begin{prop}
+    For any $M$, a free resolution for $M$ exists.
+\end{prop}
+\begin{proof}
+    We proceed this inductively. Defien $P_0$ to be $R\la M\ra$, where it is the free $R$-module defined on the set $M$. Note that 
+    \begin{equation*}
+        R\la M\ra\twoheadrightarrow M \text{ is surjective}: \la m\ra\mapsto m
+    \end{equation*}
+    Let $K$ be the kernel of this map, we have an isomorphism:
+    \begin{equation*}
+        \epsilon: P_0/K\cong M
+    \end{equation*}
+    Define $P_1$ as $R\la K\ra$, note that $P_1\twoheadrightarrow K$, then we define 
+    \begin{equation*}
+        \partial_1: P_1\to P_0
+    \end{equation*}
+    to be the composite 
+    \begin{equation*}
+        P_1\twoheadrightarrow K\subset P_0
+    \end{equation*}
+    Now we consider $P_2$: let $K_1\subset P_1$ be the kernel of $\delta_1$, define $P_2=R\la K_1\ra$, then define $\partial_2; P_2\to P_1$ to be the composite"
+    \begin{equation*}
+        P_2\twoheadrightarrow K_1\subset P_1
+    \end{equation*}
+    note that $\ker\delta_1/\im\delta_2=K_1/K_1=0$. Then we define $K_2=\ker\delta_2$, define $P_3=R\la K_2\ra, \dots$
+\end{proof}
+Just like the above proposition, the next theorem uses induction. 
+\begin{thm}[extension theorem]
+    Let $\{P_\bullet^M, \delta_\bullet^M, \epsilon_M\}$ be a free resolution on $M$, and let $\{P_\bullet^N, \delta_\bullet^N, \epsilon^N\}$ be an arbitrary resolution of $N$. Then given a map of $R$-modules $f: M\to N$, we may extend it to a map of chain complexes:
+    \begin{equation*}
+        f.: \{P_\bullet^M, \delta_\bullet^M\}\to \{P_\bullet^N, \delta_\bullet^N\}
+    \end{equation*}
+    such that the following diagram commutes:
+    \[\begin{tikzcd}
+        {H_0(P_\bullet^M)} & {H_0(P_\bullet^N)} \\
+        M & N
+        \arrow["{H_0(f_\bullet)}", from=1-1, to=1-2]
+        \arrow["{\epsilon_M}", from=1-1, to=2-1]
+        \arrow["{\epsilon_N}", from=1-2, to=2-2]
+        \arrow["f"', from=2-1, to=2-2]
+    \end{tikzcd}\]
+    Moreover, given any two extension $f_\bullet^1, f_\bullet^2$ of $f$, we have a chain homotopy $h_\bullet$ between $f_\bullet^1, f_\bullet^2$.
+\end{thm}
+Remark: if $f_\bullet$ makes the diagram commute, and $g_\bullet$ is homotopic to $f_\bullet$, then $g_\bullet$ also makes the diagram commutes: homotopy classes work the same on homologies (they are the same on the nose).
+

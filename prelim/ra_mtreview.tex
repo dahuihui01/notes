@@ -1,0 +1,207 @@
+\documentclass[openany]{book}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsfonts,amsthm}
+\usepackage{xcolor}
+\renewcommand{\familydefault}{ppl}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\colim}{\text{colim}}
+\newcommand{\T}{\mathcal{T}}
+\DeclareMathOperator{\im}{im}
+% command+/
+
+\usepackage{quiver}
+\usepackage{tikz-cd}
+
+
+\input{hui copy.tex}
+
+\title{Real Analysis 605 MT Review}
+\date{\today}
+\author{Hui Sun}
+
+
+\begin{document}
+
+\maketitle
+
+\newpage
+\tableofcontents
+
+\chapter{Definitions}
+\setcounter{chapter}{1}
+
+\begin{defn}[sequence of sets]
+    Let $\{E_k\}\subset\R^n$ be a sequence of sets is said to increase to $\bigcup_kE_k$ if $E_k\subset E_{k+1}$ for all $k$, and decrease to $\bigcap_kE_k$ if $E_k\supset E_{k+1}$ for all $k$.
+\end{defn}
+\begin{defn}[limsup,liminf of sets]
+    Let $\{E_k\}_{k=1}^\infty$ be a sequence of sets, we define 
+    \begin{equation*}
+        \limsup E_k=\bigcap_{j=1}^\infty\left(\bigcup_{k=j}^\infty E_k\right), \quad \liminf E_k=\bigcup_{j=1}^\infty\left(\bigcap_{k=j}^\infty E_k\right)
+    \end{equation*}
+\end{defn}
+\begin{defn}[metric]
+    Let $d$ be a metric on $\R^n$, let $x,y\in\R^n$, then 
+    \begin{enumerate}
+        \item $d(x,y)=d(y,x)$
+        \item $d(x,y)\geq 0$, and $d(x,y)=0$ if and only if $x=y$.
+        \item $d(x,y)\leq d(x,z)+d(y,z)$.
+    \end{enumerate}
+\end{defn}
+\begin{defn}[limsup, liminf of sequences]
+    Let $\{a_k\}$ be a sequence of points in $\R$, then 
+    \begin{equation*}
+        \limsup_{k\to\infty}a_k:=\lim_{j\to\infty}\{\sup_{k\geq j}a_k\}
+    \end{equation*}
+    and 
+    \begin{equation*}
+        \liminf_{k\to\infty}a_k:=\lim_{j\to\infty}\{\inf_{k\geq j}a_k\}
+    \end{equation*}
+\end{defn}
+\begin{defn}[distance between sets]
+    Let $E_1,E_2\subset\R^n$, then the distance between $E_1$ and $E_2$ is defined as 
+    \begin{equation*}
+        d(E_1,E_2)=\inf\{|x-y|: x\in E_1,y\in E_2\}
+    \end{equation*}
+\end{defn}
+\begin{defn}[open set]
+    Let $E\subset\R^n$, then $E$ is called open if for each $x\in E$, there exists $\delta$ such that $B_\delta(x)\subset E$.
+
+    A subset $E_1$ of $E$ is said to be relatively open with respect to $E$ if it can be written as $E_1=E\cap G$ for some open set $G$. 
+\end{defn}
+\begin{defn}[$A_\delta$, $A_\sigma$ sets]
+    A set $A$ is said to be of type $A_\delta$ if it can be written as a countable intersection of sets and to be of type $A_\sigma$ if it can be written as a countable union of sets. Then $G_\delta$ implies a countable intersection of open sets, and $F_\sigma$ implies the countable union of closed sets.
+\end{defn}
+\begin{defn}[perfect set]
+    $C$ is called a perfect set if it is a closed set such that every point in $C$ is a limit point.
+\end{defn}
+\begin{defn}[compact set]
+    A set $E$ is compact if and only if every open cover of $E$ has a finite subcover. 
+\end{defn}
+\begin{defn}[monotone function]
+    A fuction $f$ defined on $I\subset\R$ is monotone increasing if $f(x)\leq f(y)$ whenever $x<y$. Similarly defined for monotonically decreasing.
+\end{defn}
+\begin{defn}[continuous]
+    Let $f$ be defined on a neighorhood of $x_0$, then $f$ is said to be continuous at $x_0$ if $f(x_0)$ is finite and $\lim_{x\to x_0}f(x)=f(x_0)$.
+\end{defn}
+\begin{defn}[continuous relative to a set]
+    Let $f$ be defined in only a set $E$ containing $x_0$, $f$ is said to be continuous at $x_0$ relative to $E$ if $f(x_0)$ is finite and either $x_0$ is an isolated point of $E$ or $x_0$ is a limit point of $E$ and for $x\in E$.
+    \begin{equation*}
+        \lim_{x\to x_0}f(x)=f(x_0)
+    \end{equation*}
+    If $E_1\subset E$, a function is continuous in $E_1$ relative to $E$ if it is continuous relative to $E$ at every point in $E_1$.
+\end{defn}
+\begin{defn}[uniform convergence]
+    A sequence $\{f_k\}$ defined on $E$ is said to uniformly convergence on $E$ to a finite $f$ if given $\varepsilon>0$, there exists $K$ such that for all $k\geq K$, $x\in E$,
+    \begin{equation*}
+        |f_k(x)-f(x)|<\epsilon
+    \end{equation*}
+\end{defn}
+\begin{defn}[Riemann integral]
+    Let $f$ be bounded on an interval $I$, partition $I$ into a finite collection $\Gamma$ of nonoverlapping intervals, denote $|\Gamma|=\max_kdiam(I_k)$, select points $\xi_k\in I_k$, let 
+    \begin{equation*}
+        R_\Gamma=\sum_{k=1}^Nf(\xi_k)|I_k|
+    \end{equation*}
+    and 
+    \begin{equation*}
+        U_\Gamma=\sum_{k=1}^N(\sup_{x\in I_k}f(x))|I_k|, \quad L_\Gamma=\sum_{k=1}^N(\inf_{x\in I_k}f(x))|I_k|
+    \end{equation*}
+    The Riemann integral exists if $\lim_{|\Gamma|\to 0}R_\Gamma$ exists and the limit $A$ is the Riemann integral. That is, given $\varepsilon>0$, there exists $\delta>0$ such that if $|\Gamma|<\delta$, we have $|A-R_\Gamma|<\varepsilon$ for any $\Gamma$ and any chosen $\{\xi_k\}$.
+
+    This is equivalent to the statement:
+    \begin{equation*}
+        \inf_\Gamma U_\Gamma=\sup_\Gamma L_\Gamma=A
+    \end{equation*}
+\end{defn}
+
+We begin chapter 2.
+\begin{defn}[variation]
+    Let $f$ be defined on $[a,b]$, the variation of $f$ over $[a,b]$ is 
+    \begin{equation*}
+        V(f)=\sup_\Gamma\sum_{i=1}^m|f(x_i)-f(x_{i-1})|
+    \end{equation*}
+    where $\Gamma$ is any partition $\{x_0,x_1,\dots, x_m\}$ of $[a,b]$.
+\end{defn}
+\begin{defn}[Lipschitz]
+    Let $f$ be defined on $[a,b]$, then $f$ is said to be Lipschitz if there exists an absolute constant $C$ such that 
+    \begin{equation*}
+        |f(x)-f(y)|\leq C|x-y|
+    \end{equation*}
+    for all $x,y\in [a,b]$.
+\end{defn}
+\begin{defn}[splitting]
+    For any $x\in\R$, we can write 
+    \begin{equation*}
+        x^+=\begin{cases}
+            x, x>0\\
+            0, x\leq 0
+        \end{cases}
+    \end{equation*}
+    \begin{equation*}
+        x^-=\begin{cases}
+            0, x>0\\
+            -x, x\leq 0
+        \end{cases}
+    \end{equation*}
+    then $|x|=x^{+}+x^{-}, x=x^{+}-x^{-}$.
+\end{defn}
+\begin{defn}[$P_\Gamma, N_\Gamma$]
+    For any $f$ and any partition $\Gamma$, define 
+    \begin{equation*}
+        P_\Gamma=\sum_{i=1}^m[f(x_i)-f(x_{i-1})]^+
+    \end{equation*}
+    and 
+    \begin{equation*}
+        N_\Gamma=\sum_{i=1}^m[f(x_i)-f(x_{i-1})]^-
+    \end{equation*}
+    similarly, we define 
+    \begin{equation*}
+        P=\sup_\Gamma P_\Gamma, N=\sup_\Gamma N_\Gamma
+    \end{equation*}
+\end{defn}
+\begin{defn}[rectifiable curve]
+    Let $C$ be a curve, i.e. 
+    \begin{equation*}
+        C:\begin{cases}
+            x=\varphi(t)\\
+            y=\psi(t)
+        \end{cases}
+    \end{equation*}
+    Let $\Gamma$ be any partition, define 
+    \begin{equation*}
+        L=\sup_\Gamma\sum_{i=1}^m\left((\phi(t_i)-\phi(t_{i-1}))^2+(\psi(t_i)-\psi(t_{i-1}))^2\right)^{1/2}
+    \end{equation*}
+    then $C$ is rectifiable if $L<+\infty$.
+\end{defn}
+\begin{defn}[Riemann-Stieltjes integral]
+    Let $f,\phi$ be finite on an interval $[a,b]$, let $\Gamma=\{a=x_0=\dots<x_m=b\}$ be any partition, define 
+    \begin{equation*}
+        R_\Gamma=\sum_{i=1}^mf(\xi_i)\left[\phi(x_i)-\phi(x_{i-1})\right]
+    \end{equation*}
+    If $\lim_{|\Gamma|\to0}R_\Gamma$ exists, then we call this the Riemann-Stieltjes integral. That is, given any $\varepsilon>0$, there is $\delta>0$ such that when $|\Gamma|<\delta$ we have $|I-R_\Gamma|<\varepsilon$. We denote it as 
+    \begin{equation*}
+        I=\int_a^bf(x)d\phi(x)=\int_a^b fd\phi
+    \end{equation*}
+\end{defn}
+\begin{defn}[upper, lower R-S sum]
+    Let $f$ be bounded and $\phi$ be monotonically increasing. Let 
+    \begin{equation*}
+        m_i=\inf_{[x_{i-1},x_i]}f(x), M_i=\sup_{[x_{i-1}, x_i]}f(x)
+    \end{equation*}
+    then we define the lower and upper Riemann-Stieltjes sums $L_\Gamma, U_\Gamma$ as follows:
+    \begin{equation*}
+        L_\Gamma=\sum_{i=1}^mm_i[\phi(x_i)-\phi(x_{i-1})], U_\Gamma=\sum_{i=1}^mM_i[\phi(x_i)-\phi(x_{i-1})]
+    \end{equation*}
+
+\end{defn}
+
+
+
+
+
+
+\end{document}
