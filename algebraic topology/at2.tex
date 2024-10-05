@@ -228,6 +228,83 @@ We continue with our discussion of tor functors. We claim that
     \begin{equation*}
         \tor_R^0(M,N)=\frac{P_0^M\otimes_RN}{\im(\partial_1\otimes\text{id}_R)}
     \end{equation*}
+    We complete the proof using the following lemma.
+    \begin{lem}
+    We claim that the functor $-\otimes_RN$ is right exact, meaning that give a sequence of $R$-modules,
+    \begin{equation*}
+        A_1\xrightarrow{f}A_0\xrightarrow{g}M\to 0
+    \end{equation*}
+    that is exact at $A_0$ and $M$, the following sequence:
+    \begin{equation*}
+        A_1\otimes_RN\xrightarrow{f\otimes\text{id}}A_0\otimes_RN\xrightarrow{g\otimes id}M\otimes_RN\to 0
+    \end{equation*}
+    is also exact at $A_0\otimes_RN$ and $M\otimes_RN$.
+    \end{lem}
+
+    If we assume the lemma for now, then applying it to 
+    \begin{equation*}
+        P_1\xrightarrow{\partial_1^M}P_0\xrightarrow{\epsilon}M\to 0
+    \end{equation*}
+    then we are done!
+
+    We prove the lemma now: exactness of $M\otimes_RN$ implies that $g\otimes\text{id}$ is sujrective. givn that $g;A_0\to M$ is sujective, every generator of $M\otimes n$ in $M\otimes_RN$ s of the form $g\otimes\id(a\otimes n)$ for some $a\in A_0$. This implies that $g\otimes\id$ is surjecctive. 
+
+    Next, we need to show that $\ker(g\otimes\id)=\im(f\otimes\id)$. It is clear that $\supset$ holds, hence it suffices to show $\subset$. Let $K=\ker g\otimes\id$, we need to show that 
+    \begin{equation*}
+        \frac{A_0\otimes_RN}{K}\to\frac{A_0\otimes_RN}{\im(f\circ\id)}
+    \end{equation*}
+    is surjective. It is enough to construct a map:
+    \begin{equation*}
+        M\otimes_RN\to\frac{A_0\otimes_RN}{\im(f\circ\id)}
+    \end{equation*}
+    by the first isomorphism thoerem in algebra and the fact that $g\otimes\id$ is surjective. To get such a map, we need to construct a bilinear map 
+    \begin{equation*}
+        M\times N\to\frac{A_0\otimes_RN}{\im(f\circ\id)}
+    \end{equation*}
+    defined as
+    \begin{equation*}
+        (m,n)\mapsto (a, n)
+    \end{equation*}
+    and let $a=g^{-1}(m)$ be a choice of the preimage. We remark that there could be many choices of $a$, but the difference $a_1-a_2$ comes from $f$, since $A_0$ is exact. This implies that this map is well-defined. This implies that the above map is surjective. There for 
+    \begin{equation*}
+        M\times N\to\frac{A_0\otimes_RN}{\im(f\circ\id)}\xrightarrow{g\otimes\id}M\otimes_RN
+    \end{equation*}
+    this composition is surjective. (Two surjective maps and maps to identity=isomorphism).
 \end{proof}
+
+
+\begin{warn}
+    We saw that tensor product preserves surjectivity, but it does not necessarily preserve injectivity. Namely, if we replace the statement of the claim with SES 
+    \begin{equation*}
+        0\to A_1\xrightarrow{f}A_0\xrightarrow{g}M\to 0
+    \end{equation*}
+    and consider 
+    \begin{equation*}
+        0\to A_1\otimes N\to\dots
+    \end{equation*}
+    $f$ need not to be injective.
+\end{warn}
+Next we see the sufficient condition for $\tor_R^i$ to vanish for all $i\geq 2$.
+\begin{cor}
+    If $R$ is a PID, then $\tor_R^i(M,N)=0$ for all $i\geq 2$.
+\end{cor}
+\begin{proof}
+    Consider the free resolution of $M$:
+    \begin{equation*}
+        0\to K\to R\la M\ra\to 0\to\dots
+    \end{equation*}
+    such that $R\la M\ra/K\cong M$.
+    Recall that all submodules of a free module are free, so we can just take $K=P_1$, then we have 
+    \begin{equation*}
+        0\to K\otimes_RN\to R\la M\ra\otimes_RN\to 0\to 0\to\dots
+    \end{equation*}
+    so the only homologies are $\tor_R^0, \tor_R^1$.
+\end{proof}
+\begin{prob}[HW(2.4)]
+    Calculate $\tor_\Z^1$ and $\tor_\Z^1(\Z/n\Z,\Z/m\Z)$ for $m,n>0$. (Note: $m,n$ could be equal or not).
+\end{prob}
+
+
+
 
 
