@@ -183,7 +183,7 @@ Next we deinfe Tor functors (pretty hard things).
     \end{equation*}
     given an object $M$ in $Mod_R$, let $\{P_\bullet^M, \partial_\bullet^M, \epsilon_M\}$ be a free resolution of $M$, define $\text{Tor}^i(M,N)$ to be 
     \begin{equation*}
-        \text{Tor}^i(M,N)=H_i(P_\bullet^M\otimes_RN, \partial_\bullet^M\otimes\text{id}_M)
+        \text{Tor}^i(M,N)=H_i(P_\bullet^M\otimes_RN, \partial_\bullet^M\otimes\text{id}_N)
     \end{equation*}
     where 
     \begin{equation*}
@@ -192,7 +192,7 @@ Next we deinfe Tor functors (pretty hard things).
 \end{defn}
 We make the remark that there is a choice involved in picking the free resolution, but this is unique since homotopies are the same on homologies.
 \begin{prob}[HW(2.2)]
-    Show that $\tor_R^i(M,N)$ is a well-defined functor for all $i$, and any other choice of free resolution of all objects yields an isomorphic functor. Hint: use the above corollary.
+    For all $i$, show that  $\tor_R^i(M,N)$ is a well-defined functor, and any other choice of free resolution of all objects yields an isomorphic functor. Hint: use the above corollary.
 \end{prob}
 \begin{prob}[HW(2.3)]
     Show that 
@@ -205,6 +205,29 @@ We claim that $\epsilon_M:P_0^M\to M$ induces the following isomorphism
 \begin{equation*}
     \tor_R^0(M,N)\cong M\otimes_RN
 \end{equation*}
-and $\tor_R^i(M,N)$'s are called the highest derived functors of $( )\otimes_RN$.
+and $\tor_R^i(M,N)$'s are called the highest derived functors of $-\otimes_RN$.
+
+\section{Lecture 7 9/18}
+We continue with our discussion of tor functors. We claim that 
+\begin{prop}
+    The natural isomorphism gives the following 
+    \begin{equation*}
+        \tor_R^0(-,N)\cong-\otimes_RN
+    \end{equation*}
+    i.e., for any $M$,
+    \begin{equation*}
+        \tor_R^0(M,N)\cong M\otimes_RN
+    \end{equation*}
+\end{prop}
+\begin{proof}
+    By definition, $\tor_R^0(M,N)$ is the $0$-th hoology of 
+    \begin{equation*}
+        \dots\to P_1^M\otimes_RN\xrightarrow{\partial_1\otimes\text{id}_N}P_0^M\otimes_RN\to0\to0\to\dots
+    \end{equation*}
+    this implies that 
+    \begin{equation*}
+        \tor_R^0(M,N)=\frac{P_0^M\otimes_RN}{\im(\partial_1\otimes\text{id}_R)}
+    \end{equation*}
+\end{proof}
 
 
