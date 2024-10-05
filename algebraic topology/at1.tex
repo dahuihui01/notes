@@ -453,4 +453,297 @@ Next we state the most important theorem in chain complexes:
     \end{tikzcd}\]
 \end{thm}
 
+\section{Lecture 4 9/9}
+Today we prove the snake lemma. We will refer to this following diagram throughout the proof.
+\[\begin{tikzcd}
+	{A_{n+1}} & {B_{n+1}} & {C_{n+1}} \\
+	{A_n} & {B_n} & {C_n} \\
+	{A_{n-1}} & {B_{n-1}} & {C_{n-1}} \\
+	{A_{n-2}} & {B_{n-2}} & {C_{n-2}}
+	\arrow["{f_{n+1}}", from=1-1, to=1-2]
+	\arrow["{\delta^A}"', from=1-1, to=2-1]
+	\arrow["{g_{n+1}}", from=1-2, to=1-3]
+	\arrow["{\delta^B}"', from=1-2, to=2-2]
+	\arrow["{\delta^C}"', from=1-3, to=2-3]
+	\arrow["{f_n}", from=2-1, to=2-2]
+	\arrow["{\delta^A}"', from=2-1, to=3-1]
+	\arrow["{g_n}", from=2-2, to=2-3]
+	\arrow["{\delta^B}"', from=2-2, to=3-2]
+	\arrow["{\delta^C}"', from=2-3, to=3-3]
+	\arrow["{f_{n-1}}", from=3-1, to=3-2]
+	\arrow["{\delta^A}"', from=3-1, to=4-1]
+	\arrow["{g_{n-1}}", from=3-2, to=3-3]
+	\arrow["{\delta^B}"', from=3-2, to=4-2]
+	\arrow["{\delta^C}"', from=3-3, to=4-3]
+	\arrow["{f_{n-2}}", from=4-1, to=4-2]
+	\arrow["{g_{n-2}}", from=4-2, to=4-3]
+\end{tikzcd}\]
+\begin{proof}
+    First we define the map $\delta_n: H_n(C)\to H_{n-1}(A)$. Let $[x]\in H_n(C)$, then $x\in\delta^C$, where $\delta^C:C_n\to C_{n-1}$. We define 
+    \begin{equation*}
+        \delta[x]=[y], y\in A_{n-1}
+    \end{equation*}
+    as follows: for $x\in C_n$, $g_n: B_n\to C_n$ is surjective, hence there exists $b\in B_n$ such that $g_n(b)=x$. Then consider $d=\delta^B(b)$, since the diagram commutes, we have 
+    \begin{equation*}
+        d\in\ker g_{n-1}\Rightarrow d\in\im f_{n-1}
+    \end{equation*}
+    Let $y\in A_{n-1}$ be this unique $y$ such that $f_{n-1}(y)=d$, where uniqueness is by $f_{n-1}$ is injective. This is indicated in the below diagram:
+    \[\begin{tikzcd}
+        {A_{n+1}} & {B_{n+1}} & {C_{n+1}} \\
+        {A_n} & {\textcolor{red}{b}\in B_n} & {\textcolor{red}{x}\in C_n} \\
+        {\textcolor{red}{y}\in A_{n-1}} & {\textcolor{red}{d}\in B_{n-1}} & {C_{n-1}} \\
+        {A_{n-2}} & {B_{n-2}} & {C_{n-2}}
+        \arrow["{f_{n+1}}", from=1-1, to=1-2]
+        \arrow["{\delta^A}"', from=1-1, to=2-1]
+        \arrow["{g_{n+1}}", from=1-2, to=1-3]
+        \arrow["{\delta^B}"', from=1-2, to=2-2]
+        \arrow["{\delta^C}"', from=1-3, to=2-3]
+        \arrow["{f_n}", from=2-1, to=2-2]
+        \arrow["{\delta^A}"', from=2-1, to=3-1]
+        \arrow["{g_n}", from=2-2, to=2-3]
+        \arrow["{\delta^B}"', from=2-2, to=3-2]
+        \arrow["{\delta^C}"', from=2-3, to=3-3]
+        \arrow["{f_{n-1}}", from=3-1, to=3-2]
+        \arrow["{\delta^A}"', from=3-1, to=4-1]
+        \arrow["{g_{n-1}}", from=3-2, to=3-3]
+        \arrow["{\delta^B}"', from=3-2, to=4-2]
+        \arrow["{\delta^C}"', from=3-3, to=4-3]
+        \arrow["{f_{n-2}}", from=4-1, to=4-2]
+        \arrow["{g_{n-2}}", from=4-2, to=4-3]
+    \end{tikzcd}\]
+
+    We first need to check that $[y]$ does not depend on the choice of $b$. Let $g_n(b_1)=g_n(b_2)=x$, then 
+    \begin{equation*}
+        g(b_1-b_2)=0\Rightarrow b_1-b_2=f_n(a), a\in A_n
+    \end{equation*}
+    let $y_1, y_2$ be those determined by $b_1, b_2$, then 
+    \begin{equation*}
+        f_{n-1}(y_1-y_2)=\delta^B(b_1-b_2)=\delta^B(f_n(a)), a\in A_n
+    \end{equation*}
+    Because the following diagram commutes,
+    \[\begin{tikzcd}
+        {\textcolor{red}{a}\in A_n} & {B_n} \\
+        {A_{n-1}} & {B_{n-1}}
+        \arrow["{f_n}", from=1-1, to=1-2]
+        \arrow["{\delta^A}"', from=1-1, to=2-1]
+        \arrow["{\delta^B}", from=1-2, to=2-2]
+        \arrow["{f_{n-1}}"', from=2-1, to=2-2]
+    \end{tikzcd}\]
+    we then have 
+    \begin{equation*}
+        y_1-y_2=\delta^A(a)
+    \end{equation*}
+    i.e., $[y_1]=[y_2]$, as they only differ by $\im\delta$.
+
+    \begin{prob}
+        \textbf{HW(Q13):} Check that if $x\in\im\delta^C$, then $\delta_n[x]=0$.
+    \end{prob}
+    \textcolor{red}{the proof is not finished, too lazy to tex it up}
+\end{proof}
+
+Next we review the tensor products of $R$-modules. We first review $R$-bilinear maps 
+\begin{defn}[bilinear maps]
+    Let $M,N, P$ be $R$-modules, an $R$-bilinear map $f:M\times N\to P$ is a map such that 
+    \begin{enumerate}
+        \item $f$ is linear in both coordinates, we have $f(m_1+m_2,n)=f(m_1,n)+f(m_2,n)$, and similarly, $f(m,n_1+n_2)=f(m,n_1)+f(m,n_2)$.
+        \item For all $r\in R$, we have $f(rm,n)=f(m,rn)=rf(m,n)$.
+    \end{enumerate}
+\end{defn}
+Next we define tensor products.
+\begin{defn}[tensor product]
+    A tensor product of $M\times N$ is an $R$-module denoted by $M\otimes_R N$ such that 
+    \begin{enumerate}
+        \item $M\otimes_R N$ comes endowed with an $R$-bilinear map 
+        \begin{equation*}
+            M\times N\xrightarrow{\varphi}M\otimes_RN
+        \end{equation*}
+        \item given any other $R$-bilinear map $f: M\times N\to P$, there exists a unique $R$-module map $\psi$ such that the following diagram commutes:
+        \[\begin{tikzcd}
+            {M\times N} & {M\otimes_RN} \\
+            P
+            \arrow["\varphi", from=1-1, to=1-2]
+            \arrow["f"', from=1-1, to=2-1]
+            \arrow["\psi", from=1-2, to=2-1]
+        \end{tikzcd}\]
+    \end{enumerate}
+\end{defn}
+It is not clear that $M\otimes_RN$ exists or not. In fact, they exist!
+\begin{thm}[$M\otimes_RN$ exists]
+    Define $M\otimes_RN=R\langle M\times N\rangle/K$, where $R\langle M\times N\rangle$ is the free $R$-module on the set $M\times N$. We define $K$ as the submodule generated by the following four relations:
+    \begin{enumerate}
+        \item $\la(m_1+m_2,n)\ra-\la(m_1,n)\ra-\la(m_2,n)\ra$
+        \item $\la(m,n_1+n_2)\ra-\la(m,n_1)\ra-\la(m,n_2)\ra$
+        \item $r\la(m,n)\ra-\la(rm,n)\ra$
+        \item $r\la(m,n)\ra-\la(m,rn)\ra$
+    \end{enumerate}
+    Moreover, the map $\varphi:M\times N\to M\otimes_RN$ given by 
+    \begin{equation*}
+        (m,n)\mapsto \la(m,n)\ra:=m\otimes_Rn
+    \end{equation*}
+\end{thm}
+\begin{prob}
+    \textbf{HW(Q14):} show that $M\otimes_RN$ is a tensor product.
+\end{prob}
+
+\section{Lecture 5 9/11}
+We continue with the tensors of $R$-modules. Let $f:A\to B$ an an $R$-module map, let $N$ be some fixed $R$-module, then $f$ induces maps:  $f\otimes id: A\otimes_R N\to B\otimes_R N$, 
+\begin{equation*}
+    f\otimes id: a\otimes n\mapsto f(a)\otimes n
+\end{equation*}
+and $id\otimes f: N\otimes f: N\otimes_R A\to N\otimes_R B:$
+\begin{equation*}
+    id\otimes f: n\otimes a\mapsto n\otimes f(a)
+\end{equation*}
+\begin{prob}
+    \textbf{HW(Q15(a)): } Show that the following maps induce functors:
+    \begin{enumerate}
+        \item $-\otimes_R N: Mod_R\to Mod_R$, where 
+        \begin{equation*}
+            A\mapsto A\otimes_R N, f\mapsto f\otimes id
+        \end{equation*}
+        \item $N\otimes_R -: Mod_R\to Mod_R$, where \begin{equation*}
+            A\mapsto N\otimes_R A, f\mapsto id\otimes f
+        \end{equation*}
+    \end{enumerate}
+\end{prob}
+
+
+\begin{prob}
+    \textbf{HW(Q15(b)):} Show that one has the following natural isomorphisms:
+    \begin{enumerate}
+        \item $0\otimes_R M\cong 0$, and $0\otimes_R -\cong F_0$ (recall the definition of $F_0$ as a functor).
+        \item $R\otimes_R M\cong M$, and $R\otimes_R-\cong id$.
+        \item $M\otimes_R N\cong N\otimes_R M$, and $M\otimes_R-\cong -\otimes_R M$.
+        \item $M\otimes_R(N\otimes_R K)\cong (M\otimes_R N)\otimes_R K$.
+        \item $(M\oplus N)\otimes_RK\cong (M\otimes_R K)\oplus(N\otimes_R K)$.
+    \end{enumerate}
+\end{prob}
+For convenience, we introduce the following definition:
+\begin{defn}[positively graded chain complex]
+    A positively graded chain complex $\{M.;\partial.^M\}$ is a chain complex so that $M_i=0$ for all $i<0$. The category of positively graded chain complexed is denoted as $ch_R^+$.
+\end{defn}
+
+We have our first important theorem for $ch_R^+$.
+\begin{thm}
+    There exists a functor $\otimes_R$ and a natural transformation $X$ such that the following diagram of functors commutes up to some $X$:
+    \[\begin{tikzcd}
+        {ch_R^+\times ch+R^+} & {ch_R^+} \\
+        {Mod_R\times Mod_R} & {Mod_R}
+        \arrow["{\otimes_R}", from=1-1, to=1-2]
+        \arrow["{H_i\times H_j}"', from=1-1, to=2-1]
+        \arrow["{H_{i+j}}", from=1-2, to=2-2]
+        \arrow["{\textcolor{blue}{X}}", Rightarrow, from=2-1, to=1-2]
+        \arrow["{\otimes_R}"', from=2-1, to=2-2]
+    \end{tikzcd}\]
+    where $X: \otimes_R\circ(H_i\times H_j)\Rightarrow H_{i+j}\circ\otimes_R$ is a natural transformation.
+\end{thm}
+We note that the existence of $X$ means this diagram doesn't commute ``on the nose,'' but these two composition functors are the same up to some natural transformation. Before we given the proof, we recall that $Ob(C\times D)=Ob(C)\times Ob(D), mor((X,Y), (X',Y'))=mor(X,Y)\times mor(X',Y')$.
+\begin{proof}
+    We define $\otimes_R$ of positively graded chain complexes as follows: let $\{M.;\partial.^M\}, \{N.;\partial.^N\}$ be two PGCC. Define $\{M\otimes_RN.;\partial.^M\}$:
+    \begin{equation*}
+        (M\otimes_RN)=\bigoplus_{i+j=n}(M_i\otimes_RN_j)
+    \end{equation*} 
+    note that the RHS is always a finite sum. Moreover, $\partial^\otimes$ is defined as follows:
+    \begin{equation*}
+        \partial^\otimes: (M\otimes_RN)_n\to (M\otimes_RN)_{n-1} \text{ is defined on the component $M_i\otimes_R N_j$ (from the RHS) }
+    \end{equation*}
+    and 
+    \begin{equation*}
+        \partial^\otimes(m_i\otimes n_j):=\partial^M(m_i)\otimes n_j+(-1)^im_i\otimes\partial^N(n_j)
+    \end{equation*}
+    It is easy to check that $\partial^\otimes\circ\partial^\otimes=0$.
+
+    Now we've show $ch_R^+\otimes_Rch_R^+$ is well-defined, it remains to define $X$, the natural transformation. We define 
+    \begin{equation*}
+        X: H_i(M.)\otimes_R H_j(N.)\to H_{i+j}(M.\otimes_R N.)
+    \end{equation*}
+    again, it suffices to define $X$ on elementary tensors.
+    \begin{equation*}
+        X: [\alpha]\otimes[\beta]\mapsto [\alpha\otimes\beta]
+    \end{equation*}
+    we need to check that 
+    \begin{enumerate}
+        \item $\partial^\otimes(\alpha\otimes\beta)=0$ if $\partial^M(\alpha)=0$ and $\partial^N(\beta)=0$.
+        \item If $\alpha=\partial(r)i$, then notice that $\partial^\otimes(r\otimes\beta)=\alpha\otimes\beta$, similarly for $\beta$. This would show that $X$ is well-defined. 
+    \end{enumerate}
+    It is straightforward to check that $X$ commutes with morphisms in $ch_R^+\times ch_R^+$.
+\end{proof}
+
+Next we define cochain complexes and cohomologies. 
+\begin{defn}[cochain]
+    A cochain of $R$-modules $(M^\bullet, \partial_M^\bullet)$ is a sequence of $R$-module maps:
+    \[\begin{tikzcd}
+        \dots & {M^i} & {M^{i+1}} & {M^{i+2}} & \dots
+        \arrow[from=1-1, to=1-2]
+        \arrow["{\partial^i}", from=1-2, to=1-3]
+        \arrow["{\partial^{i+1}}", from=1-3, to=1-4]
+        \arrow[from=1-4, to=1-5]
+    \end{tikzcd}\]
+    such that $\partial\circ\partial=0$.
+\end{defn}
+Cochain complexes form a category, with morphisms $\{f^\bullet\}$ form a ladder: 
+\[\begin{tikzcd}
+	\dots & {M^i} & {M^{i+1}} & {M^{i+2}} & \dots \\
+	\dots & {N^i} & {N^{i+1}} & {N^{i+2}} & \dots
+	\arrow[from=1-1, to=1-2]
+	\arrow["{\partial^i}", from=1-2, to=1-3]
+	\arrow["{f^i}", from=1-2, to=2-2]
+	\arrow["{\partial^{i+1}}", from=1-3, to=1-4]
+	\arrow["{f^{i+1}}", from=1-3, to=2-3]
+	\arrow[from=1-4, to=1-5]
+	\arrow["{f^{i+2}}", from=1-4, to=2-4]
+	\arrow[from=2-1, to=2-2]
+	\arrow["{\partial^i}", from=2-2, to=2-3]
+	\arrow["{\partial^{i+1}}", from=2-3, to=2-4]
+\end{tikzcd}\]
+The $n$-th cohomology of a cochain complex $\{M^\bullet; \partial_M^\bullet\}$ is defined as:
+\begin{equation*}
+    H^n(M^\bullet;\partial_M^\bullet):=\frac{\ker\partial^i: M^i\to M^{i+1}}{\im\partial^{i-1}: M^{i-1}\to M^i}
+\end{equation*}
+We remark that there is nothing unexpected here from what we learned about chain complexes. Namely, if we reindex $\{M^\bullet;\partial_M^\bullet\}$, this defines a chain complex with $M_i'=M^{-i}$. This implies that the snake lemme holds! (with $\partial^i:H^i(C)\to H^{i+1}(A)).$
+\begin{thm}
+    There is a functor $D$ and a natural transformation  $\beta$ such that the following diagram of functors commute up to the natrual transformation $\beta$:
+    \[\begin{tikzcd}
+        {ch_R^{op}} & {coch_R} \\
+        {Mod_R^{op}} & {Mod_R}
+        \arrow["D", from=1-1, to=1-2]
+        \arrow["{H_n^{op}}"', from=1-1, to=2-1]
+        \arrow["{H^n}", from=1-2, to=2-2]
+        \arrow["{\textcolor{blue}{\beta}}", from=2-1, to=1-2]
+        \arrow["{\overline{D}}"', from=2-1, to=2-2]
+    \end{tikzcd}\]
+    where $\overline{D}(M)=Hom_R(M,R)$, and 
+    \begin{equation*}
+        D(\{M_\bullet;\partial_\bullet^M\}) \text{ is defined as } \{DM^\bullet; \partial^\bullet\}
+    \end{equation*}
+    where 
+    \begin{equation*}
+        DM^n:=Hom_R(M_n,R), \partial^n: DM^n\to DM^{n+1} \text{ is the map induced by } \partial_{n+1}: M_{n+1}\to M_n
+    \end{equation*}
+\end{thm}
+We observe that $\partial^{n+1}\partial^n=0$ since $\partial_{n+2}\partial_{n+1}=0$.
+\begin{prob}
+    \textbf{HW(Q16):} Show that $D$ is a functor.
+\end{prob}
+Next we define the natural transformation $\beta$. We have $\beta: H^n(DM)\to Hom_R(H_n(M_\bullet),R)$, such that 
+\begin{equation*}
+    \beta: [\varphi]\mapsto \beta[\varphi]
+\end{equation*}
+let $[x]\in H_n(M_\bullet)$, where $\beta[\varphi]([x])=\varphi(x)$ (where $\varphi\in Hom_R(M_n,\R), x\in M_n$).
+\begin{proof}
+    We first need to show that $\beta$ is well-defined. If $x=\partial_{n+1}(y)$, then consider 
+    \begin{equation*}
+        \beta[\varphi][x]=\varphi(x)=\varphi(\partial_{n+1}(y))=\partial^n(\varphi)(y)=0, x\in\ker\varphi
+    \end{equation*}
+    Conversely, if $\varphi=\delta^{n-1}(\psi)$, we have 
+    \begin{equation*}
+        \beta[\varphi][x]=\varphi(x)=\delta^{n-1}\psi(x)=\psi(\partial_n(x))=0
+    \end{equation*}
+    It remains to check that $\beta$ commutes with morphisms in $ch_R^{op}$ (which we will do next time).
+\end{proof}
+
+
+
+
 \input{at2.tex}
+
