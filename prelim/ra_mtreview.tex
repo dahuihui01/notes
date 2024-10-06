@@ -118,7 +118,6 @@
     \end{equation*}
 \end{defn}
 
-We begin chapter 2.
 \begin{defn}[variation]
     Let $f$ be defined on $[a,b]$, the variation of $f$ over $[a,b]$ is 
     \begin{equation*}
@@ -234,6 +233,384 @@ We begin chapter 2.
         \lim_{k\to\infty}|\{x\in E: |f(x)-f_k(x)|>\varepsilon\}=0
     \end{equation*}
 \end{defn}
+
+\chapter{Theorems}
+\begin{prop}
+    $\limsup_{k\to\infty}a_k=L$ if and only if there exists a subsequence $\{a_{k_j}\}$ that converges to $L$.
+\end{prop}
+\begin{prop}
+    For closed and open sets, we have the following:
+    \begin{enumerate}
+        \item The arbitrary unions of open sets is open, and finite intersections of open sets is open.
+        \item The arbitrary intersections of closed sets is closed, and finite unions of closed sets is closed.
+    \end{enumerate}
+\end{prop}
+\begin{prop}
+    A set $E_1\subset E$ is relatively closed with respect to $E$ if and only if
+    \begin{equation*}
+        E_1=E\cap \overline{E_1}
+    \end{equation*}
+\end{prop}
+\begin{prop}
+    Every open set in $\R^1$ can be written as a countable union of disjoint open intervals.
+
+    Moreover, every open set in $\R^n$ can be written as a countable union of nonoverlapping closed cubes. 
+\end{prop}
+\begin{thm}[Heine-Borel]
+    A set $E\subset\R^n$ is compact if and only if it is closed and bounded. (A set $E$ is compact iff every sequence of points of $E$ has a subsequence that converges to a point of $E$, i.e., compact implies sequentially compact).
+\end{thm}
+\begin{prop}
+    $M=\limsup_{x\to x_0}$ if and only if there exists $\{x_k\}$ in $E-\{x_0\}$ such that $x_k\to x_0$ and $f(x_k)\to M$ and if $M'>M$, there exists $\delta>0$ such that $f(x)<M'$ for $x\in B(x_0,\delta)\cap E$.
+\end{prop}
+\begin{thm}
+    If $E$ is compact and $f$ is continuous in $E$ relative to $E$, then the following hold:
+    \begin{enumerate}
+        \item $f$ is bounded on $E$, $\sup_{x\in E}|f(x)|<\infty$.
+        \item $f$ attains supremum and infimum on $E$.
+        \item $F$ is uniformly continuous on $E$ relative to $E$.
+    \end{enumerate}
+\end{thm}
+\begin{thm}
+    Let $\{f_k\}$ be a sequence of functions that are continuous in $E$ and converge uniformly to $f$, then $f$ is continuous on $E$. 
+\end{thm}
+\begin{prop}
+    Let $y=Tx$ be a transformation of $\R^n$ that is continuous in $E$. If $E$ is compact, then the image $TE$ is also compact.
+\end{prop}
+\begin{prop}
+    A bounded $f$ is Riemann integral on $I$ if and only if given any $\varepsilon>0$, there is a partition $\Gamma$ of $I$, such that 
+    \begin{equation*}
+        0\leq U_\Gamma-L_\Gamma<\varepsilon
+    \end{equation*}
+\end{prop}
+\begin{prop}
+    Let $f,g$ be of bounded variation on $[a,b]$, then for any real constant $c$, we have 
+    \begin{equation*}
+        f+g, fg, cf
+    \end{equation*}
+    are of bounded variation. If $g$ is nonvaishing, then $f/g$ is also of bounded variation.
+\end{prop}
+\begin{prop}
+    If $[a',b']$ is a subinterval of $[a,b]$, then 
+    \begin{equation*}
+        V[a',b']\leq V[a,b]
+    \end{equation*}
+    Moreover, if $a<c<b$, then 
+    \begin{equation*}
+        V[a,b]=V[a,c]+V[c,b]
+    \end{equation*}
+\end{prop}
+\begin{prop}
+    Let $P,N$ be positive and negative variation defined above, if any of $P,N,V$ is finite, then all three are finite. We have 
+    \begin{equation*}
+        P+N=V, \quad P-N=f(b)-f(a)
+    \end{equation*}
+    and 
+    \begin{equation*}
+        P=\frac{1}{2}[V+f(b)-f(a)], \quad N=\frac{1}{2}[V-f(b)+f(a)]
+    \end{equation*}
+\end{prop}
+\begin{thm}[Jordan's theorem]
+    A function $f$ is of bounded variation on $[a,b]$ if and only if it can be written as the difference of two bounded increasing functions on $[a,b]$.
+\end{thm}
+\begin{thm}
+    Every function of bounded variation has at most a countable number of discontinuities, and they are all jump or removable discontinuities.
+\end{thm}
+\begin{prop}
+    If $f$ is continuous on $[a,b]$, then 
+    \begin{equation*}
+        V=\lim_{|\Gamma|\to 0}S_\Gamma
+    \end{equation*}
+    If $f$ has a conitnuous derivative $f'$ on $[a,b]$, then 
+    \begin{equation*}
+        V=\int_a^b|f'|, P=\int_a^b\{f'\}^+, N=\int_a^b\{f'\}^-
+    \end{equation*}
+\end{prop}
+\begin{prop}
+    Let $C:=\begin{cases}
+        \varphi(t)\\
+        \psi(t)
+    \end{cases}$ be a curve, then it is rectifiable if and only if both $\varphi,\psi$ are of bounded variations.
+\end{prop}
+\begin{prop}
+    If $\int_a^b$ exists, 
+    \begin{enumerate}
+        \item  For any constant $c$, we have 
+        \begin{equation*}
+            \int_a^bcfd\phi=\int_a^bfd(c\phi)=c\int_a^bfd\phi
+        \end{equation*}
+        \item If $\int_a^bgd\phi$ also exists, then 
+         \begin{equation*}
+            \int_a^b(f+g)=\int fd\phi+\int gd\phi
+        \end{equation*}
+        \item If $\int_a^bfd\phi$ exists and $a<c<b$, then two intermediate integrals also exist 
+        \begin{equation*}
+            \int_a^bfd\phi=\int_a^cfd\phi+\int_c^bfd\phi
+        \end{equation*}
+        \item $\int_a^b\phi df$ also exists, 
+        \begin{equation*}
+            \int_a^bfd\phi=[f(b)\phi(b)-f(a)\phi(a)]-\int_a^b\phi df
+        \end{equation*}
+    \end{enumerate}
+\end{prop}
+\begin{prop}
+    Let $f$ be bounded and $\phi$ be increasing on $[a,b]$, 
+    \begin{enumerate}
+        \item If $\Gamma'$ is a refinement of $\Gamma$, then 
+        \begin{equation*}
+            L_{\Gamma'}\geq L_\Gamma, U_{\Gamma'}\leq U_{\Gamma}
+        \end{equation*}
+        \item If $\Gamma_1,\Gamma_2$ are two partitions, then 
+        \begin{equation*}
+            L_{\Gamma_1}\leq U_{\Gamma_2}
+        \end{equation*}
+    \end{enumerate}
+\end{prop}
+\begin{prop}
+    If $f$ is continuous on $[a,b]$ and $\phi$ is of bounded variation on $[a,b]$, then $\int_a^bfd\phi$ exists, and 
+    \begin{equation*}
+        \left|\int_a^bf\phi\right|\leq\sup_{[a,b]f}V[\phi,[a,b]]
+    \end{equation*}
+\end{prop}
+\begin{thm}[Mean-Value Theorem]
+    If $f$ is continuous on $[a,b]$ and $\phi$ is bounded and increasing on $[a,b]$, there exists $\xi\in [a,b]$ such that 
+    \begin{equation*}
+        \int_a^bd\phi=f(\xi)[\phi(b)-\phi(a)]
+    \end{equation*}
+\end{thm}
+\begin{prop}
+    For an interval $I$, the exterior measure $|I|_e$ is the volume of $I$.
+\end{prop}
+\begin{prop}
+    If $E_1\subset E_2$, then $|E_1|_e\leq|E_2|_e$, and if $E=\bigcup_kE_k$ is a countable union of sets, then 
+    \begin{equation*}
+        |E|_e\leq\sum_{k}|E_k|_e
+    \end{equation*}
+\end{prop}
+\begin{thm}
+    If $E\subset\R^n$, then given $\varepsilon>0$, there exists an open set $G$ such that $E\subset G$ and $|G|_e\leq |E|_e+\varepsilon$. Hence 
+    \begin{equation*}
+        |E|_e=\inf|G|_e
+    \end{equation*}
+    where $\inf$ is taken over all open sets $G$ containing $E$.
+\end{thm}
+\begin{prop}
+    Every open set is measurable, and every set of outer measure zero is measurable. Any interval $I$ is measurable. Let $\{E_k\}$ be measurable sets, then $E=\bigcup_kE_k$ is also measurable, and 
+    \begin{equation*}
+        |E|\leq\sum_k|E_k|
+    \end{equation*}
+    Similary, $\bigcap_kE_k$ is also measurable. If $E_1,E_2$ are measurable, then $E_1-E_2$ is measurable.
+\end{prop}
+\begin{prop}
+    If $\{I_k\}_{k=1}^N$ is a finite collection of nonoverlapping intervals, then $\bigcup_kI_k$ is also measurable, and 
+    \begin{equation*}
+        \left|\bigcup_kI_k\right|=\sum_k|I_k|
+    \end{equation*}
+    If $d(E_1,E_2)>0$, then 
+    \begin{equation*}
+        |E_1\cup E_2|_e=|E_1|_e+|E_2|_e
+    \end{equation*}
+\end{prop}
+\begin{prop}
+    The collection of measurable sets of $\R^n$ is $\sigma$-algebra.
+\end{prop}
+\begin{prop}
+    A set $E\subset\R^n$ is measurable if and only if given $\varepsilon>0$, there exists a closed set $F\subset E$, such that 
+    \begin{equation*}
+        |E-F|_e<\varepsilon
+    \end{equation*}
+\end{prop}
+\begin{thm}
+    If $\{E_k\}$ is a countable collection of disjoint measurable sets, then 
+    \begin{equation*}
+        \left|\bigcup_kE_k\right|=\sum_k|E_k|
+    \end{equation*}
+\end{thm}
+\begin{prop}
+    If $E_1,E_2$ measurable, and $E_2\subset E_1$, $|E_2|<\infty$, then 
+    \begin{equation*}
+        |E_1-E_2|=|E_1|-|E_2|
+    \end{equation*}
+\end{prop}
+\begin{thm}
+    Let $\{E_k\}_{k=1}^\infty$ be a sequence of measurable sets, then 
+    \begin{enumerate}
+        \item If $E_k\nearrow E$, then $\lim_{k\to\infty}|E_k|=|E|$.
+        \item If $E_k\searrow E$, and $|E_k|<\infty$, then $\lim_{k\to\infty}|E_k|=|E|$.
+    \end{enumerate}
+\end{thm}
+\begin{thm}[Caratheodory]
+    A set $E$ is measurable if and only if for every set $A$, we have 
+    \begin{equation*}
+        |A|_e=|A\cap E|_e+|A-E|_e
+    \end{equation*}
+\end{thm}
+\begin{thm}
+    If $y=Tx$ is a Lipschitz transformation of $\R^n$, then $T$ maps measurable sets into measurable sets. Recall a Lipschitz transformation is such that there exists a constant $c$ such that 
+    \begin{equation*}
+        |Tx-Ty|\leq c|x-y|
+    \end{equation*}
+    where 
+    \begin{equation*}
+        c=\sup_{x\neq y}\frac{|Tx-Ty|}{|x-y|}
+    \end{equation*}
+\end{thm}
+\begin{thm}
+    Let $T$ be a linear transformation of $\R^n$, and let $E$ be a measurable set, then 
+    \begin{equation*}
+        |TE|=\frac{1}{|\det(T)|}|E|
+    \end{equation*}
+\end{thm}
+\begin{prop}
+    Any set in $\R^n$ with positive outer measurable contains a nonmeasurable set.
+\end{prop}
+\begin{prop}   
+    $f$ is measurable if and only if any of the  following statements holds for any finite $a$:
+    \begin{enumerate}
+        \item $\{f\geq a\}$ is measurable.
+        \item $\{f<a\}$ is measurable.
+        \item $\{f\leq a\}$ is measurable.
+    \end{enumerate}
+\end{prop}
+\begin{prop}
+    If $f$ is measurable, then $\{f>-\infty\},\{f<\infty\}, \{f=\infty\},\{a\leq f\leq b\}, \{f=a\}$ is measurable.
+
+    Moreover, if $\{f=\infty\}$ or $\{f=-\infty\}$ is measurable, then $f$ is measurable if for every finite $a$, $\{a<f<\infty\}$ is measurable.
+\end{prop}
+\begin{thm}
+    If $f$ is measurable, then for every open $G$, $f^{-1}(G)$ is measurable. Conversely, if $f^{-1}(G)$ is measurable for every open $G\subset\R^n$ and either $\{f=\infty\}$ or $\{f=-\infty\}$ is measurable.
+\end{thm}
+\begin{thm}
+    Let $\phi$ be continuous on $\R^1$ and let $f$ be finite a.e. in $E$, in particular, $\phi(f)$ is defined a.e. in $E$, then $\phi(f)$ is measurable if $f$ is.
+\end{thm}
+\begin{prop}
+    If $f,g$ are measurable, then $\{f>g\}$ is measurable. If $f$ is mesaurable, and $\lambda$ is any real number, then $f+\lambda$ and $\lambda f$ are measurable. If $f,g$ are measurable, then $f+g, fg$ is measurable. If $g\neq 0$ a.e., then $f/g$ also measurable. 
+
+    If $\{f_k\}$ is a sequence of measurable functions, then $\sup_kf_k(x), \inf_kf_k(x)$ are measurable.
+\end{prop}
+\begin{prop}
+    If $\{f_k\}$ is a sequence of measurable functions, then $\limsup_{k\to\infty}f_k, \liminf_{k\to\infty}f_k$ are measurable. In particular, if $f=\lim_{k\to\infty}f_k(x)$, then $f$ is measurable.
+\end{prop}
+\begin{prop}
+    We have 
+    \begin{enumerate}
+        \item Every function $f$ can be written as the limit of a sequence $\{f_k\}$ of simple functions.
+        \item If $f\geq 0$, the sequence can be chosen to increase to $f$.
+        \item If $f$ in either 1 or 2 is measurable, then $f_k$ can be chosen to be measurable.
+    \end{enumerate}
+\end{prop}
+\begin{prop}
+    A function $f$ is usc relative to $E$ if and only if $\{x\in E: f(x)\geq a\}$ is relatively closed for all finite $a$.
+
+    A function $F$ is lsc relative to $E$ if and only if $\{x\in E: f(x)\leq a\}$ is relatively closed for all finite $a$.
+\end{prop}
+\begin{prop}
+    A finite function $f$ is continuous relative to $E$ if and only if all sets of the form $\{x\in E: f(x)\geq a\}$ and $\{x\in E:f(x)\leq a\}$ are relatively closed. (or equivalently $\{f>a\}$ and $\{f<a\}$ are relatively open).
+\end{prop}
+\begin{prop}
+    Let $E$ be measurable, then $f$ is usc relative to $E$, then $f$ is measurable.
+\end{prop}
+\begin{thm}[Egorov's theorem]
+    Suppose that $\{f_k\}$ is a sequence of measurable functions that converges a.e. to a finite limit $f$. The given $\varepsilon>0$, there is a closed subset $F\subset E$ such that $|E-F|<\varepsilon$ and $\{f_k\}$ converges uniformly to $f$.
+\end{thm}
+\begin{thm}[Lusin's Theorem]
+    Let $f$ be defined and finite on a measurable set $E$, then $f$ is measurable if and only if given $\varepsilon>0$, there is a closed set $F$ such that $|E-F|<\varepsilon$, and $f$ is continuous on $F$.
+\end{thm}
+\begin{thm}
+    Let $f, \{f_k\}$ be measurable and finite a.e. in $E$, then if $f_k\to f$ a.e. on $E$, and $|E|<\infty$, then $f_k$ converges to $f$ in measure.
+\end{thm}
+\begin{thm}
+    If $f_k$ converges to $f$ in measure, then there exists a subsequence $\{f_{k_j}\}$ such that $\{f_{k_j}\}$ converges to $f$ a.e. in $E$.
+\end{thm}
+\begin{thm}
+    $\{f_k\}$ converges to $f$ in measure if and only if 
+    \begin{equation*}
+        \lim_{k,l\to\infty}|\{x\in E: |f_k(x)-f_l(x)|>\varepsilon\}|=0
+    \end{equation*}
+\end{thm}
+\begin{prop}
+    Let $f$ be a nonnegative function defined on a measurable set $E$, then $\int_Ef$ exists if and only if $f$ is measurable.
+\end{prop}
+\begin{prop}
+    If $f$ is nonnegative measurable on $E$, then $\Gamma(f,E)$ has measure zero.
+\end{prop}
+\begin{prop}
+    If $f$ is nonnegative, and taking constant values on disjoint sets $E_1,E_2,\dots$, if $E=\bigcup_jE_j$, then 
+    \begin{equation*}
+        \int_Ef=\sum_ja_j|E_j|
+    \end{equation*}
+\end{prop}
+\begin{prop}
+    If $f,g$ are measurable, and $0\leq g\leq f$ on $E$, then $\int_Eg\leq\int_Ef$, in particular, $\int_E\inf f\leq\int_Eg$. If $f$ is nonnegative and measurable on $E$, and $\int_Ef$ is finite, then $f<\infty$ a.e. in $E$. Let $E_1,E_2$ be measurable and $E_1\subset E_2$. If $f$ is nonegative and measurable on $E_2$, then 
+    \begin{equation*}
+        \int_{E_1}f\leq\int_{E_2}f
+    \end{equation*}
+\end{prop}
+\begin{thm}[MCT for nonnegative functions]
+    If $\{f_k\}$ is a sequence of nonnegative functions such that $f_k\nearrow f$ on $E$, then 
+    \begin{equation*}
+        \lim_{k\to\infty}\int_Ef_k=\int_Ef
+    \end{equation*}
+\end{thm}
+\begin{prop}
+    Suppose that $f$ is nonnegative and measurable on $E$ such that $E$ is the countable union of disjoint measurable sets, $E=\bigcup_jE_j$, then 
+    \begin{equation*}
+        \int_Ef=\sum_j\int_{E_j}f
+    \end{equation*}
+\end{prop}
+\begin{prop}
+    let $f$ be nonnegative on $E$, if $|E|=0$, then $\int_Ef=0$.
+
+    If $f,g$ are nonnegative and measurable on $E$, if $g\leq f$ a.e. in $E$, then 
+    \begin{equation*}
+        \int_Eg\leq\int_Ef
+    \end{equation*}
+    if $f=g$ a.e., then $\int_Ef=\int_Eg$.
+\end{prop}
+\begin{thm}[Chebyshev]
+    Let $f$ be nonnegative, if $\alpha>0$, then 
+    \begin{equation*}
+        |\{x\in E: f(x)>\alpha\}|\leq\frac{1}{\alpha}\int_Ef
+    \end{equation*}
+\end{thm}
+\begin{prop}
+    If $f$ is nonnegative, then let $c$ be any nonnegative constant, then 
+    \begin{equation*}
+        \int_Ecf=c\int_Ef
+    \end{equation*}
+\end{prop}
+\begin{prop}
+    We have the following:
+    \begin{enumerate}
+        \item If $0\leq f\leq\phi$, and $\int_Ef$ is finite, then 
+        \begin{equation*}
+            \int_E\phi-f=\int_E\phi-\int_Ef
+        \end{equation*}
+        \item if $f_k$'s are nonnegative, then 
+        \begin{equation*}
+            \int_E\left(\sum_{k=1}^\infty f_k\right)=\sum_{k=1}^\infty\int_Ef_k
+        \end{equation*}
+    \end{enumerate}
+\end{prop}
+
+\begin{thm}[Fatou's Lemma]
+    If $\{f_k\}$ is a sequence of nonnegative functions on $E$, then 
+    \begin{equation*}
+        \int_E(\liminf_{k\to\infty}f_k)\leq\liminf_{k\to\infty}\int_Ef_k
+    \end{equation*}
+\end{thm}
+\begin{prop}
+    Let $f_k$ be nonnegative, and let $f_k\to f$ a.e. in $E$. If $\int_Ef_k\leq M$ for all $k$, then 
+    \begin{equation*}
+        \int_E f\leq M
+    \end{equation*}
+\end{prop}
+\begin{thm}[Lebesgue Dominated Convergence Theorem for nonnegative functions]
+    Let $\{f_k\}$ be nonnegative, and $f_k\to f$ a.e.. If there exists $\phi$ such that $f_k\leq\phi$ for all $k$, and if $\int_E\phi$ is finite, then 
+    \begin{equation*}
+        \lim_{k\to\infty}\int_Ef_k=\int_Ef
+    \end{equation*}
+\end{thm}
+
 
 
 
