@@ -303,6 +303,195 @@ Next we see the sufficient condition for $\tor_R^i$ to vanish for all $i\geq 2$.
 \begin{prob}[HW(2.4)]
     Calculate $\tor_\Z^1$ and $\tor_\Z^1(\Z/n\Z,\Z/m\Z)$ for $m,n>0$. (Note: $m,n$ could be equal or not).
 \end{prob}
+\begin{defn}[ext functor]
+    Fix an $R$-module $N$, consider the functor 
+    \begin{equation*}
+        \text{Hom}_R(-;N):Mod_R^{op}\to Mod_R
+    \end{equation*}
+    Define the functors $\ext_R^i(-,N): Mod_R^{op}\to Mod_R$ as follows:
+    \begin{equation*}
+        \ext_R^i(M,N)=H^i(\text{Hom}_R(P_\bullet^M,N))
+    \end{equation*}
+    where $P_\bullet^M$ is a free resoltuion of $M$. 
+\end{defn}
+We note that if $R$ is a PID, then $\ext_R^i(M,N)=0$ for all $i\geq 2$. 
+\begin{prop}
+    We have 
+    \begin{equation*}
+        \ext_R^0(M,N)\cong\text{Hom}(M,N)
+    \end{equation*}
+\end{prop}
+\begin{proof}
+    This requires the following lemma:
+    \begin{lem}
+        If 
+        \begin{equation*}
+            A_1\xrightarrow{f}A_0\xrightarrow{g}M\to 0
+        \end{equation*}
+        is right exact, then 
+        \begin{equation*}
+            0\to\text{Hom}_R(M,N)\to \text{Hom}_R(A_0,N)\to 0
+        \end{equation*}
+        is exact at $\text{Hom}_R(M,N)$ and $\text{Hom}_R(A_0,N)$.
+    \end{lem}
+\end{proof}
+\begin{prob}[HW(2.5)]
+    Prove the above lemma.
+\end{prob}
+\begin{prob}[HW(2.6)]
+    Prove the following statements about the $\ext$ functor.
+    \begin{enumerate}
+        \item \begin{equation*}
+            \ext_R^i\left(\bigoplus_{\alpha}M_\alpha,N\right)\cong\prod_{\alpha}\ext_R^i(M_\alpha,N)
+        \end{equation*}
+        \item \begin{equation*}
+            \ext_R^i(M,\prod_{\alpha}N_\alpha)\cong\prod_\alpha\ext_R^i(M,N_\alpha)
+        \end{equation*}
+        \item Calculate \begin{equation*}
+            \ext_\Z^1(\Z/n\Z,\Z/m\Z)
+        \end{equation*}
+    \end{enumerate}
+\end{prob}
+Next we state and prove Algebraic Kunneth theorem.
+\begin{thm}[AKT]
+    Let $R$ be a PID, and let $\{M_\bullet,\partial_\bullet^M\}, \{N_\bullet, \partial_\bullet^N\}$ be PGCC of $R$-modules such that $M_i$ is free for all $i$. Then there exists a SES:
+    \begin{equation*}
+        0\to\bigoplus_{i+j=n}H_i(M)\otimes_R H_j(N)\xrightarrow{X} H_n((M\otimes_RN)_\bullet)\to\bigoplus_{i+j=n-1}\tor_R^1(H_i(M_\bullet), H_j(N_\bullet))\to 0
+    \end{equation*}
+    where $X$ denotes the algebraic crossproduct.
+\end{thm}
+\begin{proof}
+    \textcolor{red}{too long, will type up later} 
+\end{proof}
+
+\section{Lecture 8 9/23}
+\begin{cor}
+    Let $R$ be a field, then the algebraic crossproduct induces an isomorphism:
+    \begin{equation*}
+        0\to\bigoplus_{i+j=n}H_i(M)\otimes_\F H_j(N)\cong H_n(M\otimes_\F N)
+    \end{equation*}
+    where the isomorphism is given by the algebraic crossproduct $X$.
+\end{cor}
+\begin{cor}[Universal Coefficient Theorem]
+    Let $\{M_\bullet,\partial_\bullet^M\}$ be a chain complex of free $\Z$-modules, and let $R$ be any commutative ring, then there is a SES:
+    \begin{equation*}
+        0\to H_n(M_\bullet)\otimes_\Z R\xrightarrow{f} H_n(M\otimes_\Z R)\to \tor_\Z^1(H_{n-1}(M),R)\to 0
+    \end{equation*}
+    where $f$ is injective but not necessarily surjective (the failure to be surjective is measured by $\tor_R^1$).
+\end{cor}
+\begin{proof}
+    Use AKT with 
+    \begin{equation*}
+        N_i=\begin{cases}
+            R, i=0\\
+            0, i>0
+        \end{cases}, \quad 
+        H_i(N)=\begin{cases}
+            R, i=0\\
+            0, i\neq 0
+        \end{cases}
+    \end{equation*}
+    Hence $(M\otimes_\Z N)_\bullet =M_\bullet\otimes_\Z R$.
+\end{proof}
+\begin{prob}[HW(2.7)]
+    Prove the UCT in cohomology: let $\{M_\bullet, \partial_\bullet^M\}$ be a chain complex of free $\Z$-modules, let $R$ be any commutative ring, then there exists SES 
+    \begin{equation*}
+        0\to \ext_\Z^1(H_{n-1}(M),R)\to H^n(\text{Hom}_\Z(M_\bullet,R))\xrightarrow{\beta}\text{Hom}_\Z(H_n(M),R)\to 0
+    \end{equation*}
+    Hint: use the same proof for AKT, instead of $\otimes$ with $N$, you take the Hom into $R$.
+\end{prob}
+
+
+\newpage
+\chapter{Singular Cohomology}
+We begin with some basic definitions.
+\begin{defn}[$n$-simplex]
+    The standard $n$-simplex $\Delta_n\subset\R^{n+1}$ is defined as 
+    \begin{equation*}
+        \Delta_n=\left\{x\in\R^{n+1}: x=\sum_{i=0}^nt_ie_i, t_i\geq 0, \sum_{t_i}=1\right\}
+    \end{equation*}
+    where $e_i, 0\leq i\leq n$ are the standard basis vectors of $\R^{n+1}$.
+\end{defn}
+\begin{defn}[face]
+    Let $0\leq i\leq n$, then the $i$th face $F_i$ of $\Delta_n$ is the $(n-1)$-simplex 
+    \begin{equation*}
+        F_i=\{x\in\Delta_n:t_i=0\}
+    \end{equation*}
+\end{defn}
+\begin{defn}[singular chain complex]
+    Given a topological space $X$, the singular chain complex of $X$, with $\Z$ coefficients, denoted as $S_\bullet(X,Z)$ is defined as 
+    \begin{equation*}
+        S_i(X,Z)=\begin{cases}
+            0, i<0\\
+            \Z\la\Delta_i(X)\ra, i\geq 0
+        \end{cases}
+    \end{equation*}
+    where $\Delta_i(X)$ is the set of continuous maps from $\Delta_i\to X$. We define $\partial_n:S_n(X,\Z)\to S_{n-1}(X,\Z)$ as follows:
+    \begin{equation*}
+        \partial_n\la f\ra=\sum_{i=0}^n(-1)^i\la f\circ F_i\ra
+    \end{equation*}
+    where $\la f\ra$ is a generator of $\Delta_i(X)$, and $f:\Delta_X\to X$, where 
+    \begin{equation*}
+        f\circ F_i=\Delta_{n-1}\to\Delta_n\xrightarrow{f}X
+    \end{equation*}
+    Note to complete this definition, one needs to check that $\partial^2=0$, which we did in class. \textcolor{red}{might include this later}
+\end{defn}
+
+\section{Lecture 9 9/25}
+Recall that last time, we defined the singular chain complexes $S_\bullet(X,\Z)$ with $\Z$-coefficients:
+\begin{equation*}
+    S_i(X,\Z)=\begin{cases}
+        0, i<0\\
+        \Z\la\Delta_i(X)\ra, i\geq 0
+    \end{cases}
+\end{equation*}
+where $\Delta_i(X)$ is the set of continuous maps from $\Delta_i$ to $X$. Now we discuss some variations of this concept.
+\begin{defn}[relative singular chain complex with $\Z$-coefficients]
+    Let $A\subset X$ be a subspace, define $S_\bullet(X,A\Z)$ by 
+    \begin{equation*}
+        S_i(X,A,\Z)=\begin{cases}
+            0, i<0\\
+            \frac{\Z\la\Delta_i(X)\ra}{\Z\la\Delta_i(A)\ra}, i\geq 0
+        \end{cases}
+    \end{equation*}
+    note that the quotient is still free.
+\end{defn}
+We note that $S_\bullet(X,A,\Z)$ is a chain complex with the following $\partial$ maps such that the following diagram commutes:
+\[\begin{tikzcd}
+	{S_i(A,\Z)} & {S_{i-1}(A,\Z)} \\
+	{S_i(X,\Z)} & {S_{i-1}(X,\Z)} \\
+	{S_i(X,A,\Z)} & {S_{i-1}(X,A,\Z)}
+	\arrow["{\partial_i}", from=1-1, to=1-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-2, to=2-2]
+	\arrow["{\partial_i}", from=2-1, to=2-2]
+	\arrow[two heads, from=2-1, to=3-1]
+	\arrow[two heads, from=2-2, to=3-2]
+	\arrow["{\partial_i}", from=3-1, to=3-2]
+\end{tikzcd}\]
+\begin{defn}[$S_\bullet(X,A,R)$]
+    We define $S_\bullet(X,A,R)$, where $R$ is any commutative ring, and 
+    \begin{equation*}
+        S_\bullet(X,A,R)=S_\bullet(X,A,\Z)\otimes_\Z R
+    \end{equation*}
+    it is a chain complex of $R$-modules with $\partial_i$ induced from $S_\bullet(X,A,\Z)$.
+\end{defn}
+The last variation is as follows:
+\begin{defn}[singular cochain complex]
+    We define the singular cochain complex of $R$-modules $S^\bullet(X,A,R)$ as follows:
+    \begin{equation*}
+        S^i(X,A,R):=\text{Hom}_\Z(S_i(X,A,\Z),R)=\text{Hom}_R(S_i(X,A,R),R)
+    \end{equation*}
+    where $\partial^i$ is induced from $\partial_i$ in $S_\bullet(X,A,R)$.
+\end{defn}
+
+
+
+
+
+
+
+
 
 
 
