@@ -478,22 +478,135 @@ We note that $S_\bullet(X,A,\Z)$ is a chain complex with the following $\partial
 \end{defn}
 The last variation is as follows:
 \begin{defn}[singular cochain complex]
-    We define the singular cochain complex of $R$-modules $S^\bullet(X,A,R)$ as follows:
+    Define the singular cochain complex of $R$-modules $S^\bullet(X,A,R)$ as follows:
     \begin{equation*}
         S^i(X,A,R):=\text{Hom}_\Z(S_i(X,A,\Z),R)=\text{Hom}_R(S_i(X,A,R),R)
     \end{equation*}
     where $\partial^i$ is induced from $\partial_i$ in $S_\bullet(X,A,R)$.
 \end{defn}
+We make the following remark: if $A=\emptyset$, then $S_\bullet(X,A,\Z)=S_\bullet(X,\Z)$. Previously, we did UCT for chain complexes of free $\Z$-modules, here we state the universal coefficient theorem for singular chain complexes:
+\begin{thm}[Universal Coefficient Theorems]
+    \begin{enumerate}
+        We have some SES's:
+        \item There exists a short exact sequence 
+        \begin{align*}
+            0\to\bigoplus_{i+j=n}H_i(X,A,\Z)\otimes H_j(Y,B,\Z)&\to H_n(S_\bullet(X,A,\Z)\otimes S_\bullet(Y,B,\Z))\to\\
+            &\bigoplus_{i+j=n-1}\tor_\Z^1(H_i(X,A,\Z),H_j(Y,B,\Z))\to 0
+        \end{align*}
+        where $H_i(X,A,Z)=H_i(S_\bullet(X,A,\Z))$
+        \item There exists a SES:
+        \begin{align*}
+            0\to H_i(X,A,\Z)\otimes_\Z R\xrightarrow{f} H_i(X,A,R)\to\tor_\Z^1(H_{i-1}(X,A,\Z),R)\to 0
+        \end{align*}
+        again $f$ is injective, and the failure to be surjective is measured by $\tor_\Z^1$.
+        \item There exists a SES:
+        \begin{equation*}
+            0\to\ext_\Z^1(H_{n-1}(X,A,\Z),R)\to H^n(X,A,R)\xrightarrow{\beta}\text{Hom}_\Z(H_n(X,A,\Z), R)\to 0
+        \end{equation*}
+    \end{enumerate}
+    note all the above assumes $R$ is a PID.
+    
+\end{thm}
+We next introduce the category $\ptop$.
+\begin{defn}[$\ptop$]
+    The category $\ptop$ has objects pairs $(X,A)$ where $A\subset X$ is a subspace of a toplogical space $X$. where 
+    \begin{equation*}
+        mor_\ptop((X,A),(Y,B))=\text{ set of continuous maps from $X\to Y$ that sends $A$ to $B$}
+    \end{equation*}
+    i.e., the image of $f$ in $A$ is contained in $B$.
+\end{defn}
+\begin{thm}
+    $S_\bullet(X,A,R)$ is a functor from $\ptop\to ch_R^+$, and $S^\bullet(X,A,R)$ is the contravariant functor from $\ptop$ to $coch_R^+$.
+\end{thm}
+\begin{proof}
+    To show that it is a functor, we know it's defined on objects, we now define it on morphisms. Given $f:(X,A)\to (Y,B)$, we define 
+    \begin{equation*}
+        f_*:S_i(X,A,R)\to S_i(Y,B,R)
+    \end{equation*}
+    as follows:
+    \begin{equation*}
+        (f_*)_i\left[\la g:\Delta_i\to X\ra\right]:=\left[\la f\circ g: \Delta_i\to Y\ra \right]
+    \end{equation*}
+\end{proof}
+We need to check that it commutes in a ladder as follows:
+\[\begin{tikzcd}
+	{F_j} \\
+	{\Delta_i} & X & Y
+	\arrow[from=1-1, to=2-1]
+	\arrow["g", from=2-1, to=2-2]
+	\arrow["f", from=2-2, to=2-3]
+\end{tikzcd}\]
+we have
+\begin{align*}
+    \partial_i\circ (f_*)_i[\la g:\Delta_i\to X\ra]&=\partial_i[\la f\circ g:\Delta_i\to Y]\\
+    &=\sum_{j=0}^i(-1)^j(f_*)_{i-1}[\la g:F_j\to X\ra]\\
+    &=(f_*)_{i-1}\sum_{j=0}^{i}(-1)^j[\la g:F_i\to X\ra]\\
+    &=(f_*)_{i-1}\circ\partial_i
+\end{align*}
+Moreover, it is easy to see that 
+\begin{equation*}
+    (f\circ g)_*=f_*\circ g_*
+\end{equation*}
+\begin{defn}[singular homolgoy]
+    The $n$th singular homology with coefficients in $R$ is the composite functor:
+    \begin{equation*}
+        \ptop\xrightarrow{S_\bullet(X,A,R)}ch_R^+\xrightarrow{H_n}Mod_R
+    \end{equation*}
+    and similarly for cohomologies.
+\end{defn}
+\begin{example}
+    We consider the following simple example $X=\pt$, and $A=\emptyset$, $S_\bullet(\pt,R)$ since the set $\Delta_i(\pt)$ is a singleton $i\geq 0$. So $S_\bullet(\pt,R)$ looks like
+    \begin{equation*}
+        \dots\to R\to R\xrightarrow{\partial_2}R\xrightarrow{\partial_1}R\to 0\to\dots
+    \end{equation*}
+    where
+    \begin{equation*}
+        H_i(\pt,R)=\begin{cases}
+            0, i\neq 0\\
+            R, i=0
+        \end{cases}
+    \end{equation*}
+\end{example}
+\begin{defn}[path-connected]
+    A space $X$ is path-connected if given any $a,b\in X$, there exists a continuous path $\gamma:[0,1]\to X$ such that 
+    \begin{equation*}
+        \gamma(0)=\alpha, \quad \gamma(1)=b
+    \end{equation*}
+\end{defn}
+\begin{prop}
+    If $X$ is path-connected, then 
+    \begin{equation*}
+        H_0(X,R)\cong R
+    \end{equation*}
+    (implying that $H_0$ a homology group, could be tiny!)
+\end{prop}
+\begin{proof}
+    Recall that by definition, we have 
+    \begin{equation*}
+        H_0(X,R)=\frac{R\la\Delta_0(X)\ra}{\im(\partial_1)}
+    \end{equation*}
+    where $\partial_1:R\la\Delta_1(X)\ra\to R\la\Delta_0(X)\ra$. We consider the homomorphism: 
+    \begin{equation*}
+        \varepsilon: R\la\Delta_0(X)\ra\to R
+    \end{equation*}
+    such that $\varepsilon\la x\ra=1$, for generator $x\in X=\Delta_0(X)$. Notice that 
+    \begin{equation*}
+        \partial_1\la\gamma\ra=\la\gamma(1)\ra-\la\gamma(0)\ra
+    \end{equation*}
+    Hence 
+    \begin{equation*}
+        \varepsilon\partial_1\la\gamma\ra=\varepsilon\la \gamma(1)\ra-\varepsilon\la \gamma(0)\ra=1-1=0
+    \end{equation*}
+    Hence $\varepsilon$ extends to a surjective map. 
+    \begin{prob}[HW(2.8)]
+        Show that $\varepsilon$ is also injective.
+    \end{prob}
+\end{proof}
 
+Next we stated Eilenberg-Steenrod Axioms.
+\textcolor{red}{will fill in later}
 
-
-
-
-
-
-
-
-
-
+\section{Lecture 10 9/30}
+\textcolor{red}{we restated ES axioms} at the beginning of class.
 
 
