@@ -30,17 +30,17 @@ For resolutions, we prove the following two things: first, free resolutions alwa
     \begin{equation*}
         P_1\twoheadrightarrow K\subset P_0
     \end{equation*}
-    Now we consider $P_2$: let $K_1\subset P_1$ be the kernel of $\delta_1$, define $P_2=R\la K_1\ra$, then define $\partial_2; P_2\to P_1$ to be the composite"
+    Now we consider $P_2$: let $K_1\subset P_1$ be the kernel of $\partial_1$, define $P_2=R\la K_1\ra$, then define $\partial_2; P_2\to P_1$ to be the composite"
     \begin{equation*}
         P_2\twoheadrightarrow K_1\subset P_1
     \end{equation*}
-    note that $\ker\delta_1/\im\delta_2=K_1/K_1=0$. Then we define $K_2=\ker\delta_2$, define $P_3=R\la K_2\ra, \dots$
+    note that $\ker\partial_1/\im\partial_2=K_1/K_1=0$. Then we define $K_2=\ker\partial_2$, define $P_3=R\la K_2\ra, \dots$
 \end{proof}
 Just like the above proposition, the next theorem uses induction. 
 \begin{thm}[extension theorem]
-    Let $\{P_\bullet^M, \delta_\bullet^M, \epsilon_M\}$ be a free resolution on $M$, and let $\{P_\bullet^N, \delta_\bullet^N, \epsilon^N\}$ be an arbitrary resolution of $N$. Then given a map of $R$-modules $f: M\to N$, we may extend it to a map of chain complexes:
+    Let $\{P_\bullet^M, \partial_\bullet^M, \epsilon_M\}$ be a free resolution on $M$, and let $\{P_\bullet^N, \partial_\bullet^N, \epsilon^N\}$ be an arbitrary resolution of $N$. Then given a map of $R$-modules $f: M\to N$, we may extend it to a map of chain complexes:
     \begin{equation*}
-        f.: \{P_\bullet^M, \delta_\bullet^M\}\to \{P_\bullet^N, \delta_\bullet^N\}
+        f.: \{P_\bullet^M, \partial_\bullet^M\}\to \{P_\bullet^N, \partial_\bullet^N\}
     \end{equation*}
     such that the following diagram commutes:
     \[\begin{tikzcd}
