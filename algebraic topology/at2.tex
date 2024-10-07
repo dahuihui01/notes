@@ -608,5 +608,216 @@ Next we stated Eilenberg-Steenrod Axioms.
 
 \section{Lecture 10 9/30}
 \textcolor{red}{we restated ES axioms} at the beginning of class.
+\begin{defn}[contractible]
+    A space $X$ is said to be contractible if the identity map $i:X\to X$ is homotopic to the map that sends all $X$ to some $x_0\in X$, where $x_0$ is any point. This means, there exists $h:X\times [0,1]\to X$ such that 
+    \begin{equation*}
+        h(x,0)=x, h(x,1)=x_0
+    \end{equation*}
+\end{defn}
+\begin{prob}
+    Use ES axioms to show that if $X$ is contractible, then 
+    \begin{equation*}
+        H_n(X)=\begin{cases}
+            0, n\neq 0\\
+            R, n=0
+        \end{cases}
+    \end{equation*}
+\end{prob}
+\textcolor{red}{then we proved this fact without using ES axiom, will fill in later}
 
+
+\begin{cor}
+    Let $B$ be an open ball in $\R^n$, then 
+    \begin{equation*}
+        H_n(B)=\begin{cases}
+            R, n=0\\
+            0, n>0
+        \end{cases}
+    \end{equation*}
+    sinc the ball is contractible.
+\end{cor}
+Then we consider some spheres and hemispheres. 
+\begin{defn}[$n$-sphere, hemisphere]
+    Let $S^n\subset\R^{n+1}$ be the $n$-sphere 
+    \begin{equation*}
+        S^n=\{(x_0,\dots, x_n)\in\R^{n+1}:\sum_{i=0}^nx_i^2=1\}
+    \end{equation*}
+    define the hemispheres:
+    \begin{equation*}
+        D_+^n=\{(x_0,\dots,x_n)\in S^n: x_0\geq 0\}, \quad D_-^n=\{(x_0,\dots,x_n)\in S^n: x_0\leq 0\}
+    \end{equation*}
+    notice that 
+    \begin{equation*}
+        D_+^n\cap D_-^n=S^{n-1}
+    \end{equation*}
+\end{defn}
+We make the following observations.
+\begin{prop}
+    We have the following isomorphism.
+    \begin{enumerate}
+        \item \begin{equation*}
+            H_i(S^n,D_-^n)\cong H_i(S^n,\{s\}):=\tilde{H}_i(S^n)
+        \end{equation*}
+        where we can choose $\{s\}\in D_-^n$ to be the south pole.
+        \item \begin{equation*}
+            H_i(S^n,D_-^n)\cong H_i(D_+^n,S^{n-1})
+        \end{equation*}
+    \end{enumerate}
+\end{prop}
+\begin{prob}[HW(2.9)]
+    Give a proof of 1 in the above proposition using the 5-lemma.
+\end{prob}
+\textcolor{red}{we proved these using ES axioms A2A3, insert later}
+
+\begin{thm}
+    There are the following isomorphisms:
+    \begin{enumerate}
+        \item \begin{equation*}
+            H_i(D_+^{n+1}, S^n)=\begin{cases}
+                R, i=n+1\\
+                0, \text{else}
+            \end{cases}
+        \end{equation*}
+        for $n\geq 0$.
+        \item \begin{equation*}
+            H_i(S^n)=\begin{cases}
+                R, i=0,n\\
+                0, \text{else}
+            \end{cases}
+        \end{equation*}
+        where $n>0$.
+    \end{enumerate}
+\end{thm}
+\begin{proof}
+    We will conduct a simultaneous induction. We will do the base case now: for $n=0$, we prove 1. Consider the LES:
+    \begin{equation*}
+        \dots\to H_{i+1}(D^1,S^0)\to H_i(S^0)\to H_i(D^1)\to H_i(D^1,S^0)\to\dots
+    \end{equation*}
+    For $i>0$, we have
+    \begin{equation*}
+        H_i(S^0)=H_i(D^1)=0
+    \end{equation*}
+    this implies that for all $i>1$,
+    \begin{equation*}
+        H_i(D^1,S^0)=0
+    \end{equation*}
+    For $i=0,1$, consider 
+    \begin{equation*}
+        0\to H_1(D^1,S^0)\to H_0(S^0)\to H_0(S^1)\to H_0(D^1,S^0)\to 0
+    \end{equation*}
+    this implies that 
+    \begin{equation*}
+        H_0(D^1,S^0)=0, \quad H_1(D^1,S^0)=R
+    \end{equation*}
+
+    Now we begin the induction step, assume 1,2 holds untill $n$, we consider $n+1$. Consider the LES:
+    \begin{equation*}
+        \dots\to H_i(D_-^{n+1})\to H_i(S^{n+1})\to H_i(S^{n+1},D_-^{n+1})\to H_{i-1}(D_-^{n+1})\to\dots
+    \end{equation*}
+    where 
+    \begin{equation*}
+        H_i(S^{n+1},D_-^{n+1})\cong H_i(D_+^{n+1}, S^n)
+    \end{equation*}
+    since $H_i(D_-^{n+1})=0$ for all $i>0$, we have 
+    \begin{equation*}
+        H_i(S^{n+1})\cong H_i(D_+^{n+1}, S^n)\cong\begin{cases}
+            R, i=n+1\\
+            0, 1\leq i<n+1
+        \end{cases}
+    \end{equation*}
+    We only need to understand $H_1(S^{n+1})$ to fully prove $(b)$. Notice that 
+    \begin{equation*}
+        H_1(D^{n+1})\to H_1(S^{n+1})\to H_1(S^{n+1}, D^{n+1})\to H_0(D^{n+1})\cong H_0(S^{n+1})
+    \end{equation*}
+    and it is cclear that $H_1(S^{n+1})\cong H_1(D^{n+1}, S^n)=0$.
+    \begin{prob}[HW(2.10)]
+        Prove $(a)$ for $n+1$ using $(b)$ and the following LES:
+        \begin{equation*}
+            \dots\to H_{i+1}(D_+^{n+2}, S^{n+1})\to H_i(S^{n+1})\to H_i(D_+^{n+2})\to \dots
+        \end{equation*}
+    \end{prob}
+\end{proof}
+\section{Lecture 11 10/02}
+We begin by showing $S^n$ is not a retraction of $D^{n+1}$ for $n>0$. 
+\begin{cor}
+    There is no map $\gamma: D^{n+1}\to S^n$ such that 
+\begin{equation*}
+    \gamma\circ i=\id
+\end{equation*}
+where $i:S^n\to D_{n+1}$ is the inclusion map.
+\end{cor}
+\textcolor{red}{fill in theorem later}
+\begin{thm}[Brouwer Fixed point theorem]
+    Let $f$ be any continuous map $f:D^{n+1}\to D^{n+1}$, for $n>0$. Then there exists $x\in D^{n+1}$ such that 
+    \begin{equation*}
+        f(x)=x
+    \end{equation*}
+\end{thm}
+\begin{proof}
+    Assume $f$ existed without a fixed point, then we use this $f$ to construct a retraction $g:D^{n+1}\to S^n$. We define $g$ to be the point on $S^n$ the line segment $(x,f(x))$ intersects it at. 
+    \textcolor{red}{incomplete}
+\end{proof}
+\begin{prob}
+    Show the following:
+    \begin{enumerate}
+        \item Show that $\R^n$ and $\R^m$ are not homeomorphic, if $m\neq n$.
+        \item Show that $\mathbb{S}^n$ is not a retraction of $S^m$ if $n<m$.
+        \end{enumerate}
+\end{prob}
+\begin{defn}[augmented CC]
+    A augmented chain complex of $R$-modules is a postively graded chain complex of $R$-modules endowed with an $R$-module map:
+    \begin{equation*}
+        \varepsilon:C_0\to R
+    \end{equation*}
+    such that 
+    \begin{equation*}
+        \varepsilon\circ\partial_1=0
+    \end{equation*}
+    i.e., $\varepsilon$f factors through $H_0(C_\bullet)$.
+    \[\begin{tikzcd}
+        {C_1} & {C_0} & R \\
+        & {H_0(C_\bullet)}
+        \arrow["{\partial_1}", from=1-1, to=1-2]
+        \arrow["\varepsilon", from=1-2, to=1-3]
+        \arrow[from=1-2, to=2-2]
+        \arrow[dashed, from=2-2, to=1-3]
+    \end{tikzcd}\]
+    An augmented chain complex is called 
+    \begin{enumerate}
+        \item acyclic. If $H_i(C_\bullet)=0$ for all $i>0$, and 
+        \begin{equation*}
+            H_0(C_\bullet)\cong R
+        \end{equation*}
+        via the map $\varepsilon$.
+        \item free. If $C_i$ is a free-module for all $i$.
+    \end{enumerate}
+    A morphism of two augmented chain complex $\{C_\bullet,\partial_\bullet^C,\varepsilon^C\}, \{D_\bullet,\partial_\bullet^D,\varepsilon^D\}$ is a morphism $\{f_\bullet\}$ of chain complexes between $\{C_\bullet, \partial_\bullet^C\}$ and $\{D_\bullet,\partial_\bullet^D\}$ such that the following diagram commutes:
+    \[\begin{tikzcd}
+        {C_0} & {D_0} \\
+        & R
+        \arrow["{f_0}", from=1-1, to=1-2]
+        \arrow["{\varepsilon^C}"', from=1-1, to=2-2]
+        \arrow["{\varepsilon^D}", from=1-2, to=2-2]
+    \end{tikzcd}\]
+\end{defn}
+\begin{defn}[$\ach_R$]
+    Let $\ach_R$ be the category of augmented chain complexes of $R$-modules.
+\end{defn}
+\begin{prob}[HW(2.12)]
+    Show that if $\{C_\bullet,\partial_\bullet^C, \varepsilon^C\}$ and $\{D_\bullet,\partial_\bullet^D, \varepsilon^D\}$ are objects in $\ach_R$, then 
+    \begin{equation*}
+        \{(C\otimes D)_\bullet, \partial_\bullet^{C\otimes D}, \varepsilon^C\otimes\varepsilon^C\}
+    \end{equation*}
+    is also an object in $\ach_R$.
+\end{prob}
+\begin{proof}
+    It suffices to check that 
+    \begin{equation*}
+        \varepsilon^C\otimes\varepsilon^D: C_0\otimes D_0\to R
+    \end{equation*}
+    such that 
+    \begin{equation*}
+        \varepsilon^C\otimes\varepsilon^D\circ\partial_1^{C\otimes D}=0
+    \end{equation*}
+\end{proof}
 
