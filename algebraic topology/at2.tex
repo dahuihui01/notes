@@ -547,7 +547,7 @@ Moreover, it is easy to see that
 \begin{equation*}
     (f\circ g)_*=f_*\circ g_*
 \end{equation*}
-\begin{defn}[singular homolgoy]
+\begin{defn}[singular homology]
     The $n$th singular homology with coefficients in $R$ is the composite functor:
     \begin{equation*}
         \ptop\xrightarrow{S_\bullet(X,A,R)}ch_R^+\xrightarrow{H_n}Mod_R
@@ -820,4 +820,88 @@ where $i:S^n\to D_{n+1}$ is the inclusion map.
         \varepsilon^C\otimes\varepsilon^D\circ\partial_1^{C\otimes D}=0
     \end{equation*}
 \end{proof}
+
+
+
+
+% \begin{prob}[2.1]
+%     Prove the following corollary to the Extension Theorem:
+%     any two free resolutions of an $R$-module $M$ are homotopically equivalent: given two free resolutions $P_\bullet^M, Q_\bullet^M$, there exists extension of $\text{id}: M\to M$ and such that 
+%     \begin{equation*}
+%         f_\bullet: P_\bullet^M\to Q_\bullet^M, g_\bullet: Q_\bullet^M\to P_\bullet^M
+%     \end{equation*}
+%     such that 
+%     \begin{equation*}
+%         g_\bullet\circ f_\bullet= \text{id}, f_\bullet\circ g_\bullet= \text{id}
+%     \end{equation*}
+%     up to homotopies.
+% \end{prob}
+% \begin{proof}
+%     We attach the extension theorem here for convenience:
+%     \begin{thm}[extension theorem]
+%         Let $\{P_\bullet^M, \partial_\bullet^M, \epsilon_M\}$ be a free resolution on $M$, and let $\{P_\bullet^N, \partial_\bullet^N, \epsilon^N\}$ be an arbitrary resolution of $N$. Then given a map of $R$-modules $f: M\to N$, we may extend it to a map of chain complexes:
+%         \begin{equation*}
+%             f.: \{P_\bullet^M, \partial_\bullet^M\}\to \{P_\bullet^N, \partial_\bullet^N\}
+%         \end{equation*}
+%         such that the following diagram commutes:
+%         \[\begin{tikzcd}
+%             {H_0(P_\bullet^M)} & {H_0(P_\bullet^N)} \\
+%             M & N
+%             \arrow["{H_0(f_\bullet)}", from=1-1, to=1-2]
+%             \arrow["{\epsilon_M}", from=1-1, to=2-1]
+%             \arrow["{\epsilon_N}", from=1-2, to=2-2]
+%             \arrow["f"', from=2-1, to=2-2]
+%         \end{tikzcd}\]
+%         Moreover, given any two extension $f_\bullet^1, f_\bullet^2$ of $f$, we have a chain homotopy $h_\bullet$ between $f_\bullet^1, f_\bullet^2$.
+%     \end{thm}
+%     According to the theorme, $P_\bullet, Q_\bullet$ are both free resoltuions of $M$, we know that the following diagram commutes, and the identity map $\id$ extends to a map of chain complexes
+%     \begin{equation*}
+%         \id_\bullet: \{P_\bullet, \partial_\bullet^M\}\to \{Q_\bullet^M, \partial_\bullet^M\}.
+%     \end{equation*}
+%     that makes the following diagram commute:
+%     \[\begin{tikzcd}
+%         {P_\bullet^M} & {Q_\bullet^M} \\
+%         M & M
+%         \arrow["{f_\bullet,\text{id}_\bullet}"', from=1-1, to=1-2]
+%         \arrow[from=1-1, to=2-1]
+%         \arrow["{g_\bullet,\text{id}_\bullet}"', curve={height=18pt}, from=1-2, to=1-1]
+%         \arrow[from=1-2, to=2-2]
+%         \arrow["{\text{id}}", from=2-1, to=2-2]
+%     \end{tikzcd}\]
+%     More specifically, we have 
+%     \[\begin{tikzcd}
+%         \dots & \dots \\
+%         {P_1^M} & {Q_1^M} \\
+%         {P_0^M} & {Q_0^M} \\
+%         M & M
+%         \arrow[from=1-1, to=2-1]
+%         \arrow[from=1-2, to=2-2]
+%         \arrow["{f_1,\text{id}_1}", from=2-1, to=2-2]
+%         \arrow["{\partial_1^M}"', from=2-1, to=3-1]
+%         \arrow["{g_1,\text{id}_1}"', curve={height=18pt}, from=2-2, to=2-1]
+%         \arrow["{\partial_2^M}", from=2-2, to=3-2]
+%         \arrow["{f_0, \text{id}_0}", from=3-1, to=3-2]
+%         \arrow["{\varepsilon_M}"', from=3-1, to=4-1]
+%         \arrow["{g_0, \text{id}_0}"', curve={height=18pt}, from=3-2, to=3-1]
+%         \arrow["{\varepsilon_N}", from=3-2, to=4-2]
+%         \arrow["{\text{id}}", from=4-1, to=4-2]
+%     \end{tikzcd}\]
+%     Hence we know 
+%     \begin{equation*}
+%         g_\bullet\circ f_\bullet:\{P_\bullet,\partial^M\}\to \{P_\bullet,\partial^M\}
+%     \end{equation*}
+%     is homotopic to $\id: \{P_\bullet,\partial^M\}\to \{P_\bullet,\partial^M\}$.
+%     And similarly, 
+%     \begin{equation*}
+%         f_\bullet\circ g_\bullet: \{Q_\bullet^M,\partial^M\}\to \{Q_\bullet^M,\partial^M\}
+%     \end{equation*}
+%     is also homotopic to the identity map 
+%     \begin{equation*}
+%         \id: \{Q_\bullet^M,\partial^M\}\to \{Q_\bullet^M,\partial^M\}
+%     \end{equation*}
+%     This is exactly what we wanted, i.e., 
+%     \begin{equation*}
+%         g_\bullet\circ f_\bullet=\id_\bullet, f_\bullet\circ g_\bullet= \text{id}
+%     \end{equation*}
+%     up to homotopies.
 
