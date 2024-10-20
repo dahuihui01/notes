@@ -447,7 +447,7 @@ Recall that last time, we defined the singular chain complexes $S_\bullet(X,\Z)$
 \end{equation*}
 where $\Delta_i(X)$ is the set of continuous maps from $\Delta_i$ to $X$. Now we discuss some variations of this concept.
 \begin{defn}[relative singular chain complex with $\Z$-coefficients]
-    Let $A\subset X$ be a subspace, define $S_\bullet(X,A\Z)$ by 
+    Let $A\subset X$ be a subspace, define $S_\bullet(X,A,\Z)$ by 
     \begin{equation*}
         S_i(X,A,\Z)=\begin{cases}
             0, i<0\\
@@ -820,88 +820,128 @@ where $i:S^n\to D_{n+1}$ is the inclusion map.
         \varepsilon^C\otimes\varepsilon^D\circ\partial_1^{C\otimes D}=0
     \end{equation*}
 \end{proof}
+\begin{example}
+    Given a topological space $X$, $S_\bullet(X,R)$ is an object in $\ach_R$, with 
+    \begin{equation*}
+        \varepsilon:S_0(X,R)\to R
+    \end{equation*}
+    where $\la x\ra\mapsto 1, x\in X$.
+\end{example}
+\begin{defn}[acyclic functor]
+    Let $g:C\to\ach_R$ be a functor. Let $M$ be a collection of objects in $C$. We say that $g$ is acycli with respect to $M$ if $g(\alpha)$ is a cyclic for all $\alpha\in M$.
+\end{defn}
+We note that $S_\bullet(-,R):Top\to\ach_R$ is acyclic with respect to all contractible spaces. Next we introduce free functors.
+\begin{defn}
+    Let $g:C\to\ach_R$ be a functor, and let $M=\bigsqcup_{k\in\mathbb{N}}M_k$ with 
+    \begin{equation*}
+        M_k=\{(\alpha,k), i_{\alpha,k}\}
+    \end{equation*}
+    where $M_k$ is a collection of objects $(\alpha,k)$ in $C$ endowed with a collection of elements 
+    \begin{equation*}
+        \{i_{(\alpha,k)}\}\in g((\alpha,k))_k
+    \end{equation*}
+    where $g((\alpha,k))_k$ means the degree $k$ of a china complex, which is an $R$-module. We say that $g$ is free with respect to $M$ if given any object $\beta$ in $C$, we have 
+    \begin{equation*}
+        g(\beta)_k=\bigoplus_{f\in mor((\alpha,k),\beta)}R\la f_*(i_{\alpha,k})\ra
+    \end{equation*}
+    where $f_*=g(f)_k$.
+\end{defn}
+Next we did an example. \textcolor{red}{fill in later}
+
+Next we prove the Acyclic Model Theorem.
+\begin{thm}[AMT]
+    Let $g,g'$ be functors from $C$ to $\ach_R$, let $M$ be a collection of module in $C$ such that $g$ is free and $g'$ is acyclic. Then the following statements are true:
+    \begin{enumerate}
+        \item There exists a natural transformation $T:g\Rightarrow g'$.
+        \item If $T,T'$ are two such transformations, then there exists a natural homotopy $D$ between them, i.e., given any object $X$ of $C$, there exists a chain homotopy $D_X:g(X)_k\to g'(X)_k$ such that 
+        \begin{equation*}
+            \partial D_X+D_X\partial=TX-T'X
+        \end{equation*}
+        and the following diagram commutes: for all $f:X\to Y$:
+        \[\begin{tikzcd}
+            {g(X)_k} & {g'(X)_{k+1}} \\
+            {g(Y)_k} & {g'(Y)_{k+1}}
+            \arrow["{D_X}", from=1-1, to=1-2]
+            \arrow["{g(f)}"', from=1-1, to=2-1]
+            \arrow["{g'(f)}", from=1-2, to=2-2]
+            \arrow["{D_Y}", from=2-1, to=2-2]
+        \end{tikzcd}\]
+    \end{enumerate}
+\end{thm}
+
+
+
+\section{Lecture 10/07}
+We first prove the AMT stated last lecture.
+\textcolor{red}{insert the proof here.}
+
+Next we talk about some applications of AMT.
+\begin{thm}
+    Given topological spaces $X,Y$, the chain complexes 
+    \begin{equation*}
+        S_\bullet(X,R)\otimes_R S_\bullet(Y,R) \text{ and } S_\bullet(X\times Y,R)
+    \end{equation*}
+    are naturally chain homotopic, i.e., the functors from Top$\times$ Top to $\ach_R$ are naturally chain homotopically equivalent.
+\end{thm}
+\begin{proof}
+    This states that there exists a natural transformation 
+    \begin{equation*}
+        EZ: S_\bullet(X,R)\otimes_R S_\bullet(Y,R)\to S_\bullet(X\times Y,R)
+    \end{equation*}
+    and 
+    \begin{equation*}
+        EZ^{1}:S_\bullet(X\times Y,R)\to S_\bullet(X,R)\otimes_R S_\bullet(Y,R)
+    \end{equation*}
+    such that 
+    \begin{equation*}
+        EZ^{-1}\circ EZ\cong \id_{S_\bullet(X,Y)}
+    \end{equation*}
+    via a natural homotopy $D$, and similarly for the reverse.
+
+    Consider the functors 
+    \begin{equation*}
+        g,g':Top\times Top\to\ach_R
+    \end{equation*}
+    where 
+    \begin{equation*}
+        g=S_\bullet(X)\otimes S_\bullet(Y), g'=S_\bullet(X\times Y)
+    \end{equation*}
+    Consider the models,
+    \begin{equation*}
+        M=\bigsqcup_{k\in\mathbb{N}}M_k
+    \end{equation*}
+    such that 
+    \begin{equation*}
+        M_k=\{(\Delta_p,\Delta_q): p+q=k, i_{(p,q)}\in g(\Delta_p,\Delta_q)=\la\id_{\Delta_p}\ra\otimes\la\id_{\Delta_q}\ra\}
+    \end{equation*}
+    \begin{prob}[HW(3.1)]
+        Show that $g$ s free with respect to $M$.
+    \end{prob}
+    We note that $\Delta_p\times\Delta_q$ is contractible, hence $S_\bullet(\Delta_p\times\Delta_q)$ is acyclic. So $g'$ is acyclic with respect to $M$. This implies that there exists a natural transformation $EZ:g\Rightarrow g'$ by AMT.
+    
+    Now we consider $g=S_\bullet(X\times Y), g'=S_\bullet(X)\otimes S_\bullet(Y)$, and $M=\bigsqcup_kM_k$, where 
+    \begin{equation*}
+        M_k=\{(\Delta_k,\delta_k):i_{(k,k)}\in S_k(\Delta_k\times\Delta_k)=\la\Delta\ra:\Delta_k\to\Delta_k\times\Delta_k\}
+    \end{equation*}
+    i.e., $\la\Delta\ra$ is the diagonal map. Now we show that $g$ is free wrt $M$. 
+    \begin{align*}
+        g(X,Y)_k&=S_k(X\times Y)\\
+        &=\bigoplus_{f\in maps(\Delta_k,X\times Y)}R\la f\ra\\
+        &=\tilde{f}\in maps(\Delta_k,X)\times maps(\Delta_k,Y)
+    \end{align*}
+    with $f$ given by the composite 
+    \begin{equation*}
+        \Delta_k\xrightarrow{\Delta}\Delta_k\times\Delta_k\xrightarrow{(f_1,f_2)=\tilde{f}}X\times Y
+    \end{equation*}
+    By Algebraic Kunneth Theorem and UCT
+    \begin{equation*}
+        S_\bullet(\Delta_k)\otimes S_\bullet(\Delta_k) \text{ is acyclic}
+    \end{equation*}
+    we get $EZ^{-1}:g'\Rightarrow g$ by AMT.
+\end{proof}
 
 
 
 
-% \begin{prob}[2.1]
-%     Prove the following corollary to the Extension Theorem:
-%     any two free resolutions of an $R$-module $M$ are homotopically equivalent: given two free resolutions $P_\bullet^M, Q_\bullet^M$, there exists extension of $\text{id}: M\to M$ and such that 
-%     \begin{equation*}
-%         f_\bullet: P_\bullet^M\to Q_\bullet^M, g_\bullet: Q_\bullet^M\to P_\bullet^M
-%     \end{equation*}
-%     such that 
-%     \begin{equation*}
-%         g_\bullet\circ f_\bullet= \text{id}, f_\bullet\circ g_\bullet= \text{id}
-%     \end{equation*}
-%     up to homotopies.
-% \end{prob}
-% \begin{proof}
-%     We attach the extension theorem here for convenience:
-%     \begin{thm}[extension theorem]
-%         Let $\{P_\bullet^M, \partial_\bullet^M, \epsilon_M\}$ be a free resolution on $M$, and let $\{P_\bullet^N, \partial_\bullet^N, \epsilon^N\}$ be an arbitrary resolution of $N$. Then given a map of $R$-modules $f: M\to N$, we may extend it to a map of chain complexes:
-%         \begin{equation*}
-%             f.: \{P_\bullet^M, \partial_\bullet^M\}\to \{P_\bullet^N, \partial_\bullet^N\}
-%         \end{equation*}
-%         such that the following diagram commutes:
-%         \[\begin{tikzcd}
-%             {H_0(P_\bullet^M)} & {H_0(P_\bullet^N)} \\
-%             M & N
-%             \arrow["{H_0(f_\bullet)}", from=1-1, to=1-2]
-%             \arrow["{\epsilon_M}", from=1-1, to=2-1]
-%             \arrow["{\epsilon_N}", from=1-2, to=2-2]
-%             \arrow["f"', from=2-1, to=2-2]
-%         \end{tikzcd}\]
-%         Moreover, given any two extension $f_\bullet^1, f_\bullet^2$ of $f$, we have a chain homotopy $h_\bullet$ between $f_\bullet^1, f_\bullet^2$.
-%     \end{thm}
-%     According to the theorme, $P_\bullet, Q_\bullet$ are both free resoltuions of $M$, we know that the following diagram commutes, and the identity map $\id$ extends to a map of chain complexes
-%     \begin{equation*}
-%         \id_\bullet: \{P_\bullet, \partial_\bullet^M\}\to \{Q_\bullet^M, \partial_\bullet^M\}.
-%     \end{equation*}
-%     that makes the following diagram commute:
-%     \[\begin{tikzcd}
-%         {P_\bullet^M} & {Q_\bullet^M} \\
-%         M & M
-%         \arrow["{f_\bullet,\text{id}_\bullet}"', from=1-1, to=1-2]
-%         \arrow[from=1-1, to=2-1]
-%         \arrow["{g_\bullet,\text{id}_\bullet}"', curve={height=18pt}, from=1-2, to=1-1]
-%         \arrow[from=1-2, to=2-2]
-%         \arrow["{\text{id}}", from=2-1, to=2-2]
-%     \end{tikzcd}\]
-%     More specifically, we have 
-%     \[\begin{tikzcd}
-%         \dots & \dots \\
-%         {P_1^M} & {Q_1^M} \\
-%         {P_0^M} & {Q_0^M} \\
-%         M & M
-%         \arrow[from=1-1, to=2-1]
-%         \arrow[from=1-2, to=2-2]
-%         \arrow["{f_1,\text{id}_1}", from=2-1, to=2-2]
-%         \arrow["{\partial_1^M}"', from=2-1, to=3-1]
-%         \arrow["{g_1,\text{id}_1}"', curve={height=18pt}, from=2-2, to=2-1]
-%         \arrow["{\partial_2^M}", from=2-2, to=3-2]
-%         \arrow["{f_0, \text{id}_0}", from=3-1, to=3-2]
-%         \arrow["{\varepsilon_M}"', from=3-1, to=4-1]
-%         \arrow["{g_0, \text{id}_0}"', curve={height=18pt}, from=3-2, to=3-1]
-%         \arrow["{\varepsilon_N}", from=3-2, to=4-2]
-%         \arrow["{\text{id}}", from=4-1, to=4-2]
-%     \end{tikzcd}\]
-%     Hence we know 
-%     \begin{equation*}
-%         g_\bullet\circ f_\bullet:\{P_\bullet,\partial^M\}\to \{P_\bullet,\partial^M\}
-%     \end{equation*}
-%     is homotopic to $\id: \{P_\bullet,\partial^M\}\to \{P_\bullet,\partial^M\}$.
-%     And similarly, 
-%     \begin{equation*}
-%         f_\bullet\circ g_\bullet: \{Q_\bullet^M,\partial^M\}\to \{Q_\bullet^M,\partial^M\}
-%     \end{equation*}
-%     is also homotopic to the identity map 
-%     \begin{equation*}
-%         \id: \{Q_\bullet^M,\partial^M\}\to \{Q_\bullet^M,\partial^M\}
-%     \end{equation*}
-%     This is exactly what we wanted, i.e., 
-%     \begin{equation*}
-%         g_\bullet\circ f_\bullet=\id_\bullet, f_\bullet\circ g_\bullet= \text{id}
-%     \end{equation*}
-%     up to homotopies.
+
 
