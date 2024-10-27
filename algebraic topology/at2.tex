@@ -890,7 +890,7 @@ Next we talk about some applications of AMT.
     \end{equation*}
     and 
     \begin{equation*}
-        EZ^{1}:S_\bullet(X\times Y,R)\to S_\bullet(X,R)\otimes_R S_\bullet(Y,R)
+        EZ^{-1}:S_\bullet(X\times Y,R)\to S_\bullet(X,R)\otimes_R S_\bullet(Y,R)
     \end{equation*}
     such that 
     \begin{equation*}
@@ -915,7 +915,7 @@ Next we talk about some applications of AMT.
         M_k=\{(\Delta_p,\Delta_q): p+q=k, i_{(p,q)}\in g(\Delta_p,\Delta_q)=\la\id_{\Delta_p}\ra\otimes\la\id_{\Delta_q}\ra\}
     \end{equation*}
     \begin{prob}[HW(3.1)]
-        Show that $g$ s free with respect to $M$.
+        Show that $g$ is free with respect to $M$.
     \end{prob}
     We note that $\Delta_p\times\Delta_q$ is contractible, hence $S_\bullet(\Delta_p\times\Delta_q)$ is acyclic. So $g'$ is acyclic with respect to $M$. This implies that there exists a natural transformation $EZ:g\Rightarrow g'$ by AMT.
     
@@ -938,7 +938,17 @@ Next we talk about some applications of AMT.
         S_\bullet(\Delta_k)\otimes S_\bullet(\Delta_k) \text{ is acyclic}
     \end{equation*}
     we get $EZ^{-1}:g'\Rightarrow g$ by AMT.
+
+    \begin{prob}[HW(3.2)]
+        Finish the proof by showing $S_\bullet(X)\otimes S_\bullet(Y)$ is free and acyclic with respect to $M$, and similarly $S_\bullet(X\times Y)$ is also free and acyclic. In other words, check free is also acyclic and acyclic is also free. Then conclude by AMT that 
+        \begin{equation*}
+            S_\bullet(X,R)\otimes_R S_\bullet(Y,R) \text{ and } S_\bullet(X\times Y,R)
+        \end{equation*}
+        are naturally chain homotopic
+    \end{prob}
 \end{proof}
+
+
 
 
 
