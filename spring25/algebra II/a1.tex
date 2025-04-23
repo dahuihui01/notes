@@ -41,9 +41,11 @@
 
 
 
-\chapter{1}
-We first talk bout semidirect products. Let $G$ be any group, and $N,H$ be subgroups of $G$.
+\chapter{Group Theory}
+\textcolor{red}{Fall2019-Q2, S2013-Q2, S2016-Q1, F2018-Q2, F2001-Q1, S2001-Q1}
 
+\section{Sylow Theorems}
+We first talk bout semidirect products. Let $G$ be any group, and $N,H$ be subgroups of $G$.
 \begin{defn}
 For $\varphi:H\to\text{Aut}(N)$, define $N\rtimes H$ by 
 \begin{itemize}
@@ -75,9 +77,9 @@ For $\varphi:H\to\text{Aut}(N)$, define $N\rtimes H$ by
     \end{equation*}
 \end{example}
 
-\textcolor{red}{what is happening}
+% \textcolor{red}{what is happening}
 
-Nxt we present some divisibility results.
+Next we present some divisibility results.
 \begin{prop}[Lagrange, Orbit-Stabilizer]
     We have the following divisibility results:
     \begin{itemize} 
@@ -107,7 +109,7 @@ The class formula is when $G$ acts on itself by conjugation:
 \end{prop}
 
 
-\begin{prob}[F19-Q2]
+\begin{prob}[F2019-Q2]
     2. Let \( p, q \) be two prime numbers such that \( p \mid q - 1 \). Prove that  
     \begin{itemize}
     \item[(a)]there exists an integer \( r \neq 1 \mod q \) such that \( r^p \equiv 1 \mod q \);
@@ -132,7 +134,7 @@ The class formula is when $G$ acts on itself by conjugation:
 
 
 \begin{lem}
-    Let $p,q$ be two primes such that $p<q$, and $N$, $H$ has order $p,q$ respectively, suppose that $N$ is normal in $G$, and $N\cap H=\{e\}$, then 
+    Let $p,q$ be two primes such that $q\nmid (p-1)$, and $N$, $H$ has order $p,q$ respectively, suppose that $N$ is normal in $G$, and $N\cap H=\{e\}$, then 
     \begin{equation*}
         G\cong N\times H
     \end{equation*}
@@ -189,7 +191,7 @@ The class formula is when $G$ acts on itself by conjugation:
     hence cyclic as desired.
 \end{proof}
 
-\begin{prob}[S2015-Q2]
+\begin{prob}[S2013-Q2]
 Let \( p \) and \( q \) be primes with \( p < q \). Let \( G \) be a group of order \( pq \). Prove the following statements:
 
 \begin{itemize}
@@ -239,14 +241,6 @@ Let \( p \) and \( q \) be primes with \( p < q \). Let \( G \) be a group of or
 
 
 
-\begin{prob}[Richard Borcherds]
-    All groups of order less than $60$ are solvable, i.e., there exists a sequence of subgroups of $G$, $G_0, \dots, G_k$ such that $G_i$ is normal in $G_{i+1}$ and $G_{i+1}/G_i$ is abelian, and 
-    \begin{equation*}
-        1=G_0\subset\dots\subset G_k=G
-    \end{equation*}
-\end{prob}
-\textcolor{red}{...}
-
 
 \begin{prob}[F2011-Q1]
     \phantom{}
@@ -256,7 +250,8 @@ Let \( p \) and \( q \) be primes with \( p < q \). Let \( G \) be a group of or
             \item[(b)] Let \( p \) and \( q \) be prime numbers. Show that any group of order \( p^2q \) is solvable.
         \end{itemize}   
 \end{prob}
-\begin{proof}
+\begin{proof} 
+    The proof is very similar like above.
     \begin{itemize}
         \item[(a)] The prime factorization of $5049$ is as follows:
         \begin{equation*}
@@ -270,14 +265,634 @@ Let \( p \) and \( q \) be primes with \( p < q \). Let \( G \) be a group of or
                 \{e\}\subset P\subset G
             \end{equation*}
             It is clear that $|G/P|=q$, thus abelian, and $|P|=p^2$ also abelian as well (by the lemma below). This shows that $G$ is solvable.
+            \item[(2)] $p<q$. Then $n_p=1$ or $q$, and $n_q=1$ or $p^2$. Suppose that $n_q=1$, let $Q$ denote the normal subgroup of order $q$, then 
+            \begin{equation*}
+                \{e\}\subset Q\subset G
+            \end{equation*}
+            It is clear that $Q$ and $G/Q$ are both abelian. Suppose that $n_q=p^2$ instead, then there are only $p^2q-p^2(q-1)=p^2$ elements of order $\neq q$. Since any $p$-Sylow subgroup has $p^2$ elements with order $\neq q$, we must have $n_p=1$. 
+            Hence we are in case (1) again. This shows that $G$ is solvable in either case $n_q=1, p^2$.
         \end{itemize}
     \end{itemize}
 \end{proof}
 
 
 \begin{lem}[$p^2$ abelian]
-    Fix prime $p$, any group of order $p^2$ is abelian.
+    Fix prime $p$, any group of order $p^2$ is abelian. 
 \end{lem}
 \begin{proof}
-    
+    For any nontrivial $p$ group, by the class formula, the center $Z(G)$ is nontrivial, thus the center has order either $p$ or $p^2$. If it has order $p^2$, then the group is abelian. If it has order $p$, then 
+    \begin{equation*}
+        \left|G/Z(G)\right|=p
+    \end{equation*}
+    is also cyclic, therefore $G$ is abelian (strictly speaking is a contradiction that $|Z(G)|=p$). In either case, we see that $G$ is abelian.
 \end{proof}
+
+\begin{prob}
+    Any $p$-group is solvable, for any prime $p$. 
+\end{prob}
+\begin{proof}
+    Suppose $|G|=p^r$ for some $r\geq 0$, we will use induction on $r$. If $r=0$, then the trivial group is trivally solvable. 
+    \begin{itemize}
+        \item Base case: if $r=1$, $|G|=p$, then $G$ is cyclic, hence solvable. 
+        \item Induction step: suppose that $G$ is solvable for all $|G|=p^k$, where $0\leq k\leq r-1$. Now we want to show that $G$ of order $p^r$ is solvable. We know $G$ has a nontrivial center, suppose that $|Z(G)|=p^k$, where $1\leq k\leq r$, then 
+        \begin{equation*}
+            |G/Z(G)|=p^{r-k}, 0\leq r-k\leq r-1 
+        \end{equation*}
+        We know any group $G$ is solvable if and only if there exists a sequence of subgroups $G_0,\dots,G_k$
+        \begin{equation*}
+            \{e\}=G_0\subset\dots\subset G_k=G
+        \end{equation*}
+        such that $G_{i-1}$ is normal in $G_i$ and $G_i/G_{i-1}$ is solvable. Therefore we see when $|G|=p^{r}$, 
+        \begin{equation*}
+            \{e\}\subset Z(G)\subset G
+        \end{equation*}
+        has $Z(G)$ solvable, and $G/Z(G)$ also solvable by the induction hypothesis, so we close the induction. 
+    \end{itemize}
+    
+
+    % We know that any $p$-group $G$ has nontrivial center $Z(G)$. Suppose that $|G|=p^r$ for some $r$. If $|Z(G)|=p^r$, then $G$ is solvable. If $|Z(G)|=p^{r-1}$, then 
+    %  Then we also have $G$ is solvable. Suppose that $|Z(G)|=p^{r-2}$, then $|Z(G)|$ is 
+\end{proof}
+
+\begin{prob}[S2016-Q1]
+    Classify all groups of order $66$, up to isomorphism.
+\end{prob}
+\begin{proof}
+    By $66=2\cdot 3\cdot 11$, we know $n_{11}=1$. We claim that there is a normal subgroup isomorphic to $\Z/33\Z$. 
+    \begin{enumerate}
+        \item First we show that there is a subgroup of order $33$. Let $P_{11}$ denote the normal subgroup of order $11$ and let $P_{3}$ denote a $3$-Sylow subgroup of $G$. Then we claim that the following
+        \begin{equation*}
+            H=\{gh: g\in P_{11}, h\in P_{3}\}
+        \end{equation*}
+        forms a subgroup and is isomorphic to $\Z/33\Z$. By the Lemma 1.1, we see that 
+        \begin{equation*}
+            H\cong\frac{\Z}{11\Z}\times\frac{\Z}{3\Z}=\frac{\Z}{33\Z}
+        \end{equation*}
+        \item Now we show that it is normal. This follows from the following general lemma:
+        \begin{lem}
+            Let $p$ be the smallest prime factor of $|G|$, and let $H$ be a subgroup with index $p$, then $H$ is normal.
+        \end{lem}
+        \begin{proof}
+            We will only prove in the case that $H$ is a subgroup of index $2$, i.e., $G=H\sqcup (G\setminus H)$. We see for all $g\in G$, 
+            \begin{equation*}
+                gH=Hg
+            \end{equation*}
+            since if $g\in H$, then the equality holds; if $g\not\in H$, then $gH=G\setminus H$, so is $Hg$.  
+        \end{proof}
+        Now since there is a subgroup of order $2$, we can write $G$ as a semidirect product 
+        \begin{equation*}
+            G=\frac{\Z}{33\Z}\rtimes_\theta \frac{\Z}{2\Z}
+        \end{equation*}
+        The number of nonisomorphic groups will depend on the choice of $\theta$. There are four different choices for $\theta: H\to\text{Aut}\left(\frac{\Z}{11\Z}\times\frac{\Z}{3\Z}\right)=\frac{\Z}{10\Z}\times\frac{\Z}{2\Z}$
+        \begin{equation*}
+            \begin{cases}
+                \theta_1: 1\mapsto (0,0)\\
+                \theta_2: 1\mapsto (0,1)\\
+                \theta_3: 1\mapsto (5, 0)\\
+                \theta_4: 1\mapsto (5,1)
+            \end{cases}
+        \end{equation*}
+    \end{enumerate} 
+    \textcolor{red}{what is happening}
+\end{proof}
+
+
+
+\begin{prob}[S2007-Q2]
+    Prove that no group of order $224$ is simple.
+\end{prob}
+\begin{proof}
+    The prime factorization is 
+    \begin{equation*}
+        224=2^5\cdot 7
+    \end{equation*}
+    If $n_2=1$ or $n_7=1$, then we are done; assume that $n_2=7$ instead, then we recall $G$ has a nontrivial transitive action on the set of $2$-Sylow subgroups, i.e., there is a homomorphism $\varphi:G\to S_7$. We know $\ker(\varphi)$ is a normal subgroup of $G$. Since the action is nontrivial transitive, we know $\ker(\varphi)\neq G$. If $\ker(\varphi)=\{e\}$, then $\varphi$ produces an embedding of $G$ into $S_7$. However, $|G|=224\nmid |S_7|$. This shows that $\ker(\varphi)$ is a nontrivial proper normal subgroup of $G$, concluding that $G$ is not simple.
+\end{proof}
+
+\begin{prob}[F2008-Q1]
+    Show that no group of order $36$ is simple.
+\end{prob}
+\begin{proof}
+    \begin{equation*}
+        36=2^2\cdot 3^3
+    \end{equation*}
+    We know $n_2\mid 9, n_2\equiv 1\mod 2$, and $n_3\mid 4, n_3\equiv 1\mod 3$. We know $n_3=1$ or $4$, suppose that $n_3=4$, then there is a nontrivial action of $G$ on the set of $3$-Sylow subgroups, i.e., 
+    \begin{equation*}
+        \varphi: G\to S_4
+    \end{equation*}
+    Suppose that $G$ is simple, we know $\ker(\varphi)\neq G$ since the action is nontrivial, by assumption $\ker(\varphi)=\{e\}$, which implies that $\varphi$ is an embedding, but $|G|=32\nmid |S_4|$, which is a contradiction. This implies that $G$ is not simple.
+\end{proof}
+
+\begin{prob}[S2014-Q2]
+    All groups of order less than $60$ are solvable, i.e., there exists a sequence of subgroups of $G$, $G_0, \dots, G_k$ such that $G_i$ is normal in $G_{i+1}$ and $G_{i+1}/G_i$ is abelian, and 
+    \begin{equation*}
+        1=G_0\subset\dots\subset G_k=G
+    \end{equation*}
+\end{prob}
+\begin{proof}
+    Groups of order $p, pq, p^2, p^2q$ are solvable.
+    \begin{align*}
+        \big\{ 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 17, 19, 20, 21, 22, 23, 25, 26, 28, 29, 30, \\ 31, 33, 34, 35, 37, 38, 39, 41, 43, 44, 45, 46, 47, 49, 50, 51, 52, 53, 55, 57, 58, 59 \big\}
+    \end{align*}
+    And any $p$-group is also solvable. 
+    \begin{equation*}
+        \{8, 16, 27, 32\}
+    \end{equation*}
+    The remaining groups are 
+    \begin{equation*}
+        \left\{24, 36, 40, 42, 48, 54, 56 \right\}
+    \end{equation*}
+    \begin{itemize}
+        \item[24:] If $n_2=1$ or $n_3=1$, then we are done. We see $n_2=1$ or $3$, consider the action $\varphi:G\to S_3$. We see $\ker(\varphi)$ is a proper normal subgroup of $G$, this implies that 
+        \begin{equation*}
+            \{e\}\subset \ker(\varphi)\subset G
+        \end{equation*}
+        where $|\ker(\varphi)|$ is a known solvable group, hence we are done.
+        \item[36:] Exactly same as above, we assume $n_3\neq 1$, therefore $n_3=4$, the action $\varphi: G\to S_4$ is not injective, hence $\ker(\varphi)$ is again a proper normal subgroup of $G$ that is solvable.
+        \item[40:] We see $n_5=1$, therefore 
+        \begin{equation*}
+            \{e\}\subset \Z/5\Z\subset G
+        \end{equation*}
+        \item[42:] We see $n_7=1$.
+        \item[48:] We see $n_2=1$ or $3$, the the action $\varphi: G\to S_3$ is not injective, hence $\ker(\varphi)$ is a proper normal subgroup of $G$ that is solvable.
+        \item[54:] We see $n_3=1$. 
+        \item[56:] We know $n_7=1$ or $8$ and $n_2=1$ or $7$. The group action argument does not work. We assume $n_7=8$, then there can be at most $56-8(7-1)=8$ elements of order $\neq 7$. This shows that $n_2=1$. Hence 
+        \begin{equation*}
+            \{e\}\subset P_2\subset G
+        \end{equation*}
+    \end{itemize}
+\end{proof}
+
+\begin{prob}[S2012-Q1]
+    Let \( G \) be a group of order \( p^3 q^2 \), where \( p \) and \( q \) are prime integers. Show that for \( p \) sufficiently large and \( q \) fixed, \( G \) contains a normal subgroup other than \(\{1\}\) and \( G \).
+\end{prob}
+\begin{proof}
+    We want to show that there exists a normal group of size $p^3$, i.e., $n_p=1$. We know $n_p\mid q^2, n_p\equiv 1\mod p$. Let $p$ be large enough such that $p>(q^2-1)$, then ths forces $n_p=1$, as desired.
+\end{proof}
+
+
+% Semidirect product: $N$ is normal, then there is an action of $H$ on $\text{Aut}(N)$, if $|H|=p$, then this map has kernel either be trivial or the entire group, in the case that it is trivial, this map is an embedding.
+
+% Same argument for the simple group question.
+
+
+\begin{prob}[F2014-Q4]
+    \phantom{text}
+    \begin{itemize}
+        \item[(a)] Let \( G \) be a group of order \( p^2q^2 \), where \( p \) and \( q \) are distinct odd primes, with \( p > q \). Show that \( G \) has a normal subgroup of order \( p^2 \).
+        
+        \item[(b)] Can a solvable group contain a non-solvable subgroup? Explain.
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(a)] We know $n_p=1$ or $q$ or $q^2$, and $n_p\equiv 1\mod p$. Since $p>q$, we know $n_p\neq q$. It suffices to show that $n_p\neq q^2$: suppose that $n_p=q^2$, then 
+        \begin{equation*}
+            p\mid (q^2-1)=(q+1)(q-1)
+        \end{equation*}
+        Since $p$ is prime, $p\mid (q+1)$ or $p\mid(q-1)$. The latter impossible since $q<p$. $p\mid (q+1)$ is also impossible because this implies that $q=p+1$, which implies that $q$ is even, a contradiction.
+        \item[(b)] It is not possible. Suppose $G$ is a solvable group, let $H$ be a subgroup of $G$, then we know there exists sequence 
+        \begin{equation*}
+            \{e\}=G_0\subset\dots\subset G_k=G
+        \end{equation*}
+        such that $G_i$ is normal in $G_{i+1}$ and $\frac{G_{i+1}}{G_i}$ is abelian. We define $H_i=G_i\cap H$, then we see $H$ is solvable with sequence $H_0\subset\dots H_k$.
+    \end{itemize}
+
+\end{proof}
+
+
+\begin{prob}[F2018-Q2]
+    Let \( G \) be a group of order \( 24 \). Assume that no Sylow subgroup of \( G \) is normal in \( G \). Show that \( G \) is isomorphic to the symmetric group \( S_4 \).
+\end{prob}
+
+
+\begin{prob}[F2001-Q1]
+    Let \( G \) be a finite group and let \( N \) be a normal subgroup of \( G \) such that \( N \) and \( G/N \) have relatively prime orders.
+        
+        \begin{enumerate}
+            \item Assume that there exists a subgroup \( H \) of \( G \) having the same order as \( G/N \). Show that \( G = HN \). (Here \( HN \) denotes the set \(\{xy \mid x \in H, y \in N\}\).)
+            
+            \item Show that \( \phi(N) = N \), for all automorphisms \( \phi \) of \( G \).
+        \end{enumerate}
+\end{prob}
+
+\begin{prob}[S2001-Q1]
+    Let \( G \) be a finite group and \( p \) the smallest prime number dividing the order \( |G| \) of \( G \). Let \( H \) be a subgroup of \( G \) of index \( p \) in \( G \). Show that \( H \) is necessarily a normal subgroup of \( G \).
+\end{prob}
+
+
+
+
+\begin{center}\textcolor{pink}{(End of Page 5)}
+\end{center}
+
+\section{Class Formula, Classification of $p$-groups}
+\begin{defn}[nilpotent group]
+    Let $G$ be a group. Define inductively an increasing sequence 
+$\{e\}=Z_0 \subseteq Z_1 \subseteq Z_2 \subseteq \cdots$ of subgroups of $G$ 
+as follows: for $i \geq 1$, $Z_i$ is the subgroup of $G$ corresponding 
+to the center of $G/Z_{i-1}$. One can show that $Z_i$ is normal in $G$. A group is \emph{nilpotent} if $Z_m = G$ for some $m$.
+\end{defn}
+\begin{example}
+    \phantom{text}
+    \begin{itemize}
+        \item $p$-groups are nilpotent.
+        \item Nilpotent groups are solvable.
+    \end{itemize}
+\end{example}
+\begin{prop}
+    We have the following classification of groups of order $p, p^2, p^3$, for prime $p$.
+    \begin{itemize}
+        \item $|G|=p$ implies $G\cong\Z/p\Z$.
+        \item $|G|=p^2$ implies 
+        \begin{equation*}
+            G\cong\frac{\Z}{p^2\Z} \quad\text{ or }\quad G\cong\frac{\Z}{p\Z}\oplus\frac{\Z}{p\Z}
+        \end{equation*}
+        \item $|G|=p^3$ implies that 
+        \begin{equation*}
+            G\cong\frac{\Z}{p^3\Z} \quad \text{ or } \quad G/Z(G)\cong\frac{\Z}{p\Z}\oplus\frac{\Z}{p\Z} \quad\text{ or }\quad [G,G]=Z(G)
+        \end{equation*}
+    \end{itemize}
+\end{prop}
+\begin{proof}
+    \textcolor{red}{finish proof}
+\end{proof}
+
+\begin{prob}[S2010-Q1]
+    Let \( G \) be a non-abelian group of order \( p^3 \), where \( p \) is prime. Determine the number of distinct conjugacy classes in \( G \).
+\end{prob}
+
+\begin{prob}[F2013-Q1]
+    Let $p>2$ be a prime. Classify groups of order $p^3$ up to isomorphism.
+\end{prob}
+
+\begin{prob}
+    Assume $p\neq 2$, the two nonabelian groups of order \( p^3 \) (for \( p \neq 2 \)), up to isomorphism, are:
+
+    \[
+    \text{Heis}(\mathbb{Z}/(p)) = 
+    \left\{ 
+    \left( \begin{array}{ccc}
+    1 & a & b \\
+    0 & 1 & c \\
+    0 & 0 & 1
+    \end{array} \right) \middle| a, b, c \in \mathbb{Z}/(p)
+    \right\}
+    \]
+    
+    and
+    
+    \[
+    G_p = 
+    \left\{ 
+    \left( \begin{array}{cc}
+    a & b \\
+    0 & 1
+    \end{array} \right) \middle| a, b \in \mathbb{Z}/(p^2), a \equiv 1 \bmod p
+    \right\}
+    \]
+    
+    \[
+    = 
+    \left\{ 
+    \left( \begin{array}{cc}
+    1 + pm & b \\
+    0 & 1
+    \end{array} \right) \middle| m, b \in \mathbb{Z}/(p^2)
+    \right\}
+    \]
+\end{prob}
+
+\begin{prob}[F2014-Q5]
+    \phantom{text}
+    \begin{enumerate}
+        \item[(a)] Prove that every group of order \( p^2 \) (with \( p \) prime) is abelian. Then classify such groups up to isomorphism.
+    
+        \item[(b)] Give an example of a non-abelian group of order \( p^3 \) for \( p = 3 \). \\
+        \emph{Suggestion: Represent the group as a group of matrices.}
+    \end{enumerate}    
+\end{prob}
+
+\begin{prob}[F2019-Q4, S2015-Q3]
+    Find all irreducible representations of a finite $p$-group over a field of characteristic $p$.
+\end{prob}
+
+
+\section{Random Problems}
+
+\begin{prob}[F2010-Q1]
+    Let \( G \) be a group. Let \( H \) be a subset of \( G \) that is closed under group multiplication. Assume that \( g^2 \in H \) for all \( g \in G \). Show that:
+    \begin{itemize}
+        \item \( H \) is a normal subgroup of \( G \)
+        \item \( G/H \) is abelian
+    \end{itemize}
+\end{prob}
+
+\begin{prob}[S2014-Q1]
+    Find the number of colorings of the faces of a cube using 3 colors, where two colorings are considered equal if they can be transformed into each other by a rotation of the cube.
+    
+    [\textit{Hint}: Use Burnside's formula:
+    
+    \[
+    |X/G| = \frac{1}{|G|} \sum_{g \in G} |X^g|,
+    \]
+    
+    where a group $G$ acts on a set $X$, $X/G$ is the set of orbits, and for every $g \in G$, $X^g$ is the fixed subset of $g$ in $X$.]
+\end{prob}
+
+\begin{prob}[S2019-Q4]
+    Let \( f \) be a polynomial with \( n \) variables and define
+\[
+\operatorname{Sym}(f) = \{ \sigma \in S_n \mid f(x_{\sigma(1)}, x_{\sigma(2)}, \ldots, x_{\sigma(n)}) = f(x_1, x_2, \ldots, x_n) \}.
+\]
+
+\begin{enumerate}
+    \item Prove that \(\operatorname{Sym}(f)\) is a subgroup of \( S_n \).
+    
+    \item Prove that the dihedral group \( D_4 \) (the group of symmetries of the square) is isomorphic to \(\operatorname{Sym}(x_1 x_2 + x_3 x_4)\).
+\end{enumerate}
+\end{prob}
+
+\begin{prob}[S2011-Q1, F2004-Q1]
+    \phantom{text}
+    \begin{itemize}
+    \item[(a)] Let \( H \) be a proper nontrivial subgroup of a finite group \( G \) (i.e., \( H \neq \{1\} \) and \( H \neq G \)).  
+    Prove that \( G \) is not the union of all conjugates of \( H \) in \( G \).
+    
+    \item[(b)] Give an example of an infinite group \( G \) for which the assertion in part (a) fails.
+    \end{itemize}
+\end{prob}
+
+\begin{prob}[S2009-Q1]
+    Let \( H \) and \( K \) be two solvable subgroups of a group \( G \) such that \( G = HK \).
+    
+    \begin{enumerate}
+        \item Show that if either \( H \) or \( K \) is normal in \( G \), then \( G \) is solvable.
+        
+        \item Give an example where \( G \) may not be solvable without the assumption in (a).
+    \end{enumerate}
+\end{prob}
+
+\begin{prob}[F2003-Q1]
+    In a group \( G \), let \( 1 \) denote the identity element and let \([x, y] = xyx^{-1}y^{-1}\) denote the commutator of elements \(x, y \in G\).
+    
+    \begin{enumerate}
+        \item Express \([z, xy]x\) in terms of \(x\), \([z, x]\), and \([z, y]\).
+        
+        \item Prove that if the identity \([[x, y], z] = 1\) holds in \(G\), then the following identities hold in \(G\):
+        \[
+        [x, yz] = [x, y][x, z] \quad \text{and} \quad [xy, z] = [x, z][y, z].
+        \]
+    \end{enumerate}
+\end{prob}
+
+\begin{prob}[S2005-Q1]
+    Let $k$ be a field. Let $G = \mathrm{GL}_n(k)$ be the general linear group, where $n > 0$. Let $D$ be the subgroup of diagonal matrices, and let $N = N_G(D)$ be the normalizer of $D$ in $G$. Determine the quotient group $N/D$.
+\end{prob}
+
+\begin{prob}[F2009-Q1]
+    Let \( G \) be a finite group, and let \( \mathrm{Aut}(G) \) be its automorphism group. Consider the group action \( \phi \colon \mathrm{Aut}(G) \times G \to G \) defined by \( \phi(\sigma, g) = \sigma(g) \). Assume \( G \) has exactly two orbits under this action.
+    
+    \begin{enumerate}
+        \item Determine all such groups \( G \) up to isomorphism.
+        
+        \item For each case from (a), determine when \( \mathrm{Aut}(G) \) is solvable.
+    \end{enumerate}
+\end{prob}
+
+\begin{prob}[F2016-Q1]
+    Determine $\text{Aut}(S_3)$.
+\end{prob}
+
+
+\chapter{Representation Theory}
+
+
+\begin{thm}[Maschke's theorem]
+
+\end{thm}
+
+\begin{lem}[Schur's Lemma]
+    
+\end{lem}
+
+\begin{prop}[properties of characters]
+    
+\end{prop}
+\begin{prop}
+    The character tables for $S_3, S_4, A_5, S_5$ are as follows:
+\end{prop}
+
+\section{Characters}
+
+\begin{prob}[S2008-Q4]
+    Let \( V \cong \mathbb{C}^n \) be an \( n \)-dimensional complex vector space with standard basis \( e_1, \ldots, e_n \). Consider the permutation action \( S_n \times V \to V \) defined by:
+    \[
+    \sigma \cdot e_i = e_{\sigma(i)} \quad \text{for } \sigma \in S_n
+    \]
+    Decompose \( V \) into irreducible \( \mathbb{C}[S_n] \)-modules.
+\end{prob}
+
+\begin{prob}[S2014-Q5]
+    Find the table of characters for $S_4$.
+\end{prob}
+
+\begin{prob}[F2016-Q6]
+    Find a table of characters for the alternating group $A_5$.
+\end{prob}
+
+
+\begin{prob}[F2015-Q3]
+    Let \( G = S_4 \) (the symmetric group on four letters).
+
+\begin{enumerate}
+    \item[(a)] Prove that \( G \) has two non-equivalent irreducible complex representations of dimension 3; call them \( \rho_1 \) and \( \rho_2 \).
+    
+    \item[(b)] Decompose the tensor product representation \( \rho_1 \otimes \rho_2 \) into a direct sum of irreducible representations of \( G \).
+\end{enumerate}
+\end{prob}
+
+
+\begin{prob}[F2011-Q4]
+    Let \(\rho \colon S_3 \to \mathrm{GL}(2, \mathbb{C})\) be a two-dimensional irreducible representation of the symmetric group \(S_3\). 
+
+\begin{enumerate}
+    \item Decompose the tensor square \(\rho^{\otimes 2}\) into irreducible representations of \(S_3\).
+    \item Decompose the tensor cube \(\rho^{\otimes 3}\) into irreducible representations of \(S_3\).
+\end{enumerate}
+\end{prob}
+
+\begin{prob}[F2014-Q3]
+    Let \( G = S_3 \) be the symmetric group on three elements.
+
+\begin{enumerate}
+    \item[(a)] Prove that \( G \) has an irreducible complex representation of dimension 2 (call it \( \rho \)), but none of higher dimension.
+    
+    \item[(b)] Decompose the triple tensor product \( \rho \otimes \rho \otimes \rho \) into a direct sum of irreducible representations of \( G \).
+\end{enumerate}
+\end{prob}
+
+\begin{prob}[S2006-Q6]
+    Let \( S_4 \) be the symmetric group on four elements.
+    
+    \begin{enumerate}
+        \item Give an example of a non-trivial 8-dimensional complex representation of \( S_4 \).
+        
+        \item Show that every 8-dimensional complex representation of \( S_4 \) contains a 2-dimensional invariant subspace.
+    \end{enumerate}
+\end{prob}
+
+\begin{prob}[F2007-Q5]
+    Prove that every 5-dimensional complex representation of the alternating group \( A_4 \) (the alternating group of degree 4) contains a 1-dimensional invariant subspace.
+\end{prob}
+
+\begin{prob}[S2004-Q6]
+    Consider complex representations of a finite group \( G \). Let \( \sigma_1, \ldots, \sigma_s \) be representatives of the conjugacy classes of \( G \), and let \( \chi_1, \ldots, \chi_s \) be the irreducible characters of \( G \).
+    
+    \begin{enumerate}
+        \item Define an inner product on the \(\mathbb{C}\)-vector space of class functions on \( G \) such that \( \{\chi_1, \ldots, \chi_s\} \) forms an orthonormal basis.
+        
+        \item Let \( A = (a_{ij}) \) be the character table matrix of \( G \), where \( a_{ij} = \chi_i(\sigma_j) \) for \( 1 \leq i, j \leq s \). Prove that \( A \) is invertible.
+    \end{enumerate}
+\end{prob}
+
+\begin{prob}[S2018-Q4, S2007-Q5]
+    Is $S_4$ isomorphic to a subgroup of $\text{GL}_2(\mathbb{C})$?
+\end{prob}
+
+\begin{prob}[S2010-Q6]
+    Let \( G \) be a group of order 24. Using representation theory, prove that \( G \neq [G, G] \), where \([G, G]\) denotes the commutator subgroup of \( G \).
+\end{prob}
+
+\begin{prob}[F2017-Q6]
+    Let \( G \) be a finite group with center \( Z(G) \). Show that if \( G \) admits a faithful irreducible representation \( \rho \colon G \to \mathrm{GL}_n(k) \) for some positive integer \( n \in \mathbb{Z}^+ \) and some field \( k \), then the center \( Z(G) \) is cyclic.
+\end{prob}
+
+
+\begin{prob}[S2005-Q6]
+    Let \( V \) be a finite-dimensional vector space over a field \( k \), and let \( G \) be a finite group with an irreducible representation \( \varphi \colon G \to \mathrm{GL}(V) \). Suppose \( H \) is a finite abelian subgroup of \( \mathrm{GL}(V) \) contained in the centralizer of \( \varphi(G) \). Prove that \( H \) must be cyclic.
+\end{prob}
+
+
+\begin{prob}[F2010-Q6]
+    Let \( G \) be a non-abelian group of order \( p^3 \), where \( p \) is prime.
+    
+    \begin{enumerate}
+        \item Determine the number of isomorphism classes of irreducible complex representations of \( G \), and find their dimensions.
+        
+        \item Which of these irreducible complex representations are faithful? Justify your answer.
+    \end{enumerate}
+\end{prob}
+
+
+\begin{prob}[S2011-Q5]
+    Let \( K \) be a field, and let \( \Phi \colon G \to \mathrm{GL}_n(K) \) be an \( n \)-dimensional matrix representation of a group \( G \). Define a \( G \)-action on the matrix ring \( M_n(K) \) by:
+\[
+(g, A) \mapsto \Phi(g) \cdot A \quad \text{(matrix multiplication)}
+\]
+for \( g \in G \) and \( A \in M_n(K) \). This action induces a group homomorphism \( \Psi \colon G \to \mathrm{GL}(M_n(K)) \). Express the character \( \chi_\Psi \) of \( \Psi \) in terms of \( \chi_\Phi \) (the character of \( \Phi \)).
+\end{prob}
+
+\begin{prob}[S2015-Q5]
+    Prove that a tensor product of irreducible representations over an algebraically closed field is irreducible.
+\end{prob}
+
+\begin{prob}[S2001-Q3]
+    Calculate the complete character table for $\Z/3\Z\times S_3$, where $S_3$ is the symmetric group in 3 letters.
+\end{prob}
+
+\section{Induced representations}
+
+
+\begin{prob}[S2009-Q6]
+    Let \( G = S_4 \) and consider the subgroup \( H = \langle (1\,2), (3\,4) \rangle \).
+    
+    \begin{enumerate}
+        \item[(a)] Determine the number of irreducible complex characters of \( H \).
+        
+        \item[(b)] Choose a non-trivial irreducible character \( \psi \) of \( H \) over \( \mathbb{C} \) satisfying \( \psi((1\,2)(3\,4)) = -1 \). Compute the values of the induced character \( \operatorname{ind}_H^G(\psi) \) on all conjugacy classes of \( G \), and express it as a sum of irreducible characters of \( G \).
+    \end{enumerate}
+\end{prob}
+
+\section{Frobenius Reciprocity}
+
+\begin{prob}[S2017-Q6]
+    Let $G$ be a finite group and H an abelian subgroup. Show that every
+    irreducible representation of $G$ over $\mathbb{C}$ has dimension 
+    $\leq[G : H]$.
+\end{prob}
+
+\begin{prob}[S2008-Q6]
+    Give an example of non-isomorphic finite groups with same character
+table. Construct the character table in detail.
+\end{prob}
+
+\begin{prob}[S2012-Q4]
+    Let \( Q \) be the quaternion group with presentation:
+\[
+Q = \langle t, s_i, s_j, s_k \mid t^2 = 1,\ s_i^2 = s_j^2 = s_k^2 = s_i s_j s_k = t \rangle.
+\]
+
+\begin{enumerate}
+    \item[(a)] Find four non-isomorphic 1-dimensional real representations of \( Q \).
+    
+    \item[(b)] Prove that the natural embedding \( \rho \colon Q \to \mathbb{H} \) given by:
+    \[
+    \rho(t) = -1, \quad \rho(s_i) = i, \quad \rho(s_j) = j, \quad \rho(s_k) = k
+    \]
+    defines an irreducible 4-dimensional real representation of \( Q \), where \( \mathbb{H} \) is the algebra of real quaternions.
+    
+    \item[(c)] Classify all irreducible complex representations of \( Q \) up to isomorphism.
+\end{enumerate}
+\end{prob}
+
+\begin{prob}[F2004-Q6]
+    Let \( D_8 \) be the dihedral group of order 8, with presentation:
+    \[
+    D_8 = \langle r, s \mid r^4 = 1 = s^2,\ rs = sr^{-1} \rangle.
+    \]
+    
+    \begin{enumerate}
+        \item Determine all conjugacy classes of \( D_8 \).
+        
+        \item Find the commutator subgroup \( D_8' \) of \( D_8 \) and determine the number of distinct degree-1 (linear) characters of \( D_8 \).
+        
+        \item Construct the complete complex character table of \( D_8 \).
+    \end{enumerate}
+\end{prob}
+
+\begin{prob}[F2000-Q7]
+    Let \( D_{10} \) be the dihedral group of order 10, with presentation:
+    \[
+    D_{10} = \langle r, s \mid r^5 = 1 = s^2,\ rs = sr^{-1} \rangle.
+    \]
+    
+    \begin{enumerate}
+        \item Determine all conjugacy classes of \( D_{10} \).
+        
+        \item Compute the commutator subgroup \( D_{10}' \) of \( D_{10} \).
+        
+        \item Prove that \( D_{10}/D_{10}' \cong \mathbb{Z}/2\mathbb{Z} \) and deduce that \( D_{10} \) has exactly two distinct degree-1 characters.
+        
+        \item Construct the complete complex character table of \( D_{10} \).
+    \end{enumerate}
+\end{prob}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
