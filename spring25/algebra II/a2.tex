@@ -66,6 +66,9 @@ semisimple, Noetherian, and Artinian modules.)
     Let \( A \) be a finite-dimensional semisimple algebra over \( \mathbb{C} \), and let \( V \) be a finitely-generated \( A \)-module. Prove that \( V \) has only finitely many \( A \)-submodules if and only if \( V \) decomposes into a direct sum of pairwise irreducible non-isomorphic (i.e., simple)  \( A \)-modules.
 \end{prob}
 
+\begin{warn}
+    For one-dimensional irreducible representation, $\rho: G\to \text{GL}_n(\CC)$, they are equivalent to $\rho: G^{ab}\to\text{GL}_n(\CC)$.
+\end{warn}
 
 
 
@@ -100,6 +103,23 @@ Prove that the minimal and characteristic polynomials of \( \alpha \) coincide i
 
 is a basis for \( V \).
 \end{prob}
+\begin{proof}
+    We will show there is not vector $v\in V$ such that $\{v, \alpha(v), \ldots, \alpha^{n-1}(v)\}$ is linearly independent if and only if the minimal and characteristic polynomials aren't the same. 
+    \begin{align*}
+        \text{no $v$ s.t. $\{v,\dots, \alpha^{n-1}(v)\}$ is linearly independent}&\iff \text{ for all } v\in V, \{v,\ldots, \alpha^{n-1}v\} \text{is linearly dependent}\\
+        &\iff \alpha^{n-1}v=c_0v+\dots+c_{n-2}\alpha^{n-2}v \text{ for all } v
+    \end{align*}
+    We then claim that $\alpha^{n-1}v=c_0v+\dots+c_{n-2}\alpha^{n-2}v \text{ for all } v$ if and only if the minimal polynomial $p_m$ has degree less than the characteristic polynomial $p_n$. Note that $p_n$ has degree $n$, and we can write 
+    \begin{equation*}
+        p_n(t)=a_nt^n+\dots+a_1t+a_0
+    \end{equation*}
+    and $p_n(\alpha)v=0$ for all $v\in V$, therefore $\alpha^{n-1}v=c_0v+\dots+c_{n-2}\alpha^{n-2}v \text{ for all } v$ if and only if 
+    \begin{equation*}
+        p_n(\alpha)v=a_n\alpha^{n-1}v+\dots+a_1\alpha v+a_0=p_{n-1}(\alpha)v=0
+    \end{equation*}
+    where $p_{n-1}$ is a polynomial of degree at most $n-1$ and is such that $p_{n-1}(\alpha)=0$. Thus no $v$ such that $\{v,\dots,\alpha^{n-v}v\}$ is linearly independent if and only if minimal and characteristic polynomial have different degrees.
+\end{proof}
+
 
 \begin{prob}[F2018-Q3]
     \phantom{text}
@@ -123,6 +143,16 @@ is a basis for \( V \).
         \item[(b)] Does the statement in (a) remain true if one replaces \( \mathbb{C} \) by an arbitrary algebraically closed field \( F \)? Why or why not?
     \end{itemize}
 \end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(a)] $A$ is diagonalizable if and only if the minimal polynomial splits into distinct linear factors. The characteristic polynomial is $p(t)=t(t+1)(t-1)$ and the minimal polynomial $p_m\mid p$ thus $A$ is diagonalizable.
+        \item[(b)] This is not true. Take $k$ to be a field of characteristic $2$, then 
+        \begin{equation*}
+            p(t)=t(t^2-1)=t(t-1)^2
+        \end{equation*}
+        Thus the minimal polynomial could be $(t-1)^2$, i.e., $A$ is not necessarily diagonalizable.
+    \end{itemize}
+\end{proof}
 
 
 
@@ -141,6 +171,35 @@ is a basis for \( V \).
         \item For any \( 5 \times 5 \) complex matrix \( M \) with \( M^3 = 0 \) and \( M^2 \neq 0 \), is \( M \) necessarily similar to your matrix \( B \) from part (d)? Justify your answer.
     \end{enumerate}
 \end{prob}
+\begin{enumerate}
+    \item Suppose $\lambda$ is an eigenvalue, then there exists $v\neq 0$, such that 
+    \begin{equation*}
+        A^mv=\lambda^mv=0\Rightarrow \lambda=0
+    \end{equation*}
+    \item The characteristic polynomial is $p(t)=t^n$.
+    \item Cayley-Hamilton theorem.
+    \item Can have 
+    \begin{equation*}
+        B=\begin{pmatrix}
+            0&1&0&0&0\\
+            0&0&1&0&0\\
+            0&0&0&0&0\\
+            0&0&0&0&0\\
+            0&0&0&0&0
+        \end{pmatrix}
+    \end{equation*}
+    The important is that the top left $3\times 3$ matrix $A$ satisfies $A^3=0, A^3\neq 0$. This is constructed by building $B$ using the Jordan form.
+    \item No, the lower $2\times 2$ matrix could be 
+    \begin{equation*}
+        \begin{pmatrix}
+            0&0\\
+            0&0
+        \end{pmatrix}\quad \text{ or }\quad \begin{pmatrix}
+            0&1\\
+            0&0
+        \end{pmatrix}
+    \end{equation*}
+\end{enumerate}
 
 
 \begin{prob}[F2018-Q4]

@@ -481,7 +481,15 @@ Let \( p \) and \( q \) be primes with \( p < q \). Let \( G \) be a group of or
     Let \( G \) be a group of order \( 24 \). Assume that no Sylow subgroup of \( G \) is normal in \( G \). Show that \( G \) is isomorphic to the symmetric group \( S_4 \).
 \end{prob}
 \begin{proof}
-    
+    By Sylow, we have $n_3=4, n_2=3$. Denote Syw$_3(G)=\{P_1,P_2,P_3,P_4\}$ and consider the transitive action by of $G$ by conjugation on this set, which embeds in $S_4$, i.e., $\varphi: G\to S_4$. By a size argument, it suffices to show that $\varphi$ is injective. We see that 
+    \begin{equation*}
+        \ker(\varphi)=\{g\in G: gP_ig^{-1}=P_i \text{ for each }i\}=\bigcap_{i=1}^4N_G(P_i)
+    \end{equation*}
+    By the orbit-stabilizer theorem, $|N_G(P_i)|=6$ for all $i$. However, for any $i\neq j$, $3$ does not divide $|N_G(P_i)\cap N_G(P_j)|$: if not, the intersection would include a $3$-Sylow subgroup but $P_i$ is the only $3$-Sylow subgroup in $N_G(P_i)$, thus this is impossible. It remains to see that $|\ker(\varphi)|\neq 2$. Suppose that it is, then $\im(\varphi)$ is an index $2$ subgroup of $S_4$, hence 
+    \begin{equation*}
+        \frac{G}{\ker\varphi}\cong A_4
+    \end{equation*}
+    and $K=\Z/2\Z\times\Z/2\Z$ is normal in $A_4$, hence so is $\varphi^{-1}(K)$ (it has size $8$) in $G$. This is a contradiction because this implies there is a normal $2$-Sylow subgroup.
 \end{proof}
 
 
@@ -1019,6 +1027,7 @@ to the center of $G/Z_{i-1}$. One can show that $Z_i$ is normal in $G$. A group 
     Is $S_4$ isomorphic to a subgroup of $\text{GL}_2(\mathbb{C})$?
 \end{prob}
 
+
 \begin{prob}[S2010-Q6]
     Let \( G \) be a group of order 24. Using representation theory, prove that \( G \neq [G, G] \), where \([G, G]\) denotes the commutator subgroup of \( G \).
 \end{prob}
@@ -1146,6 +1155,17 @@ for \( g \in G \) and \( A \in M_n(K) \). This action induces a group homomorphi
     irreducible representation of $G$ over $\mathbb{C}$ has dimension 
     $\leq[G : H]$.
 \end{prob}
+\begin{proof}
+    We know that if $A$ is commutative, then all the irreducible representations $\rho$ of $A$ are one-dimensional. Now we induce $\rho$ to a representation on $G$:
+    \begin{equation*}
+        \bar{\rho}:G\to\text{GL}(\mathbb{C})
+    \end{equation*}
+    We have 
+    \begin{equation*}
+        \text{Ind}_A^G=\bigoplus_{i=1}^n g_iV
+    \end{equation*}
+    where $g_i$ is the representative for each coset $G/A$, and $n=[G:A]$. Therefore all representations of $G$ has dimension $[G:A]$. Since not all induced representataions are irreducible, any irreducible representation of $G$ has dimension $\leq[G:A]$, as desired.
+\end{proof}
 
 \begin{prob}[S2008-Q6]
     Give an example of non-isomorphic finite groups with same character
