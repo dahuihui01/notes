@@ -1057,6 +1057,24 @@ to the center of $G/Z_{i-1}$. One can show that $Z_i$ is normal in $G$. A group 
 \begin{prob}[S2005-Q6]
     Let \( V \) be a finite-dimensional vector space over a field \( k \), and let \( G \) be a finite group with an irreducible representation \( \varphi \colon G \to \mathrm{GL}(V) \). Suppose \( H \) is a finite abelian subgroup of \( \mathrm{GL}(V) \) contained in the centralizer of \( \varphi(G) \). Prove that \( H \) must be cyclic.
 \end{prob}
+\begin{proof}
+    Just like above, we embed $H$ into $k^\times$. Let any $h\in H$, we note that $h$ is a $G$-map, i.e., for any $g\in G$, 
+    \begin{equation*}
+        h(\varphi(g)v)=\varphi(g)hv
+    \end{equation*}
+    this is because $h$ is contained in the centralizer of $\varphi(G)$, i.e., commutes with all $\varphi(g)$. By Schur's Lemma, we have 
+    \begin{equation*}
+        h=\lambda I, \text{ where }\lambda\in k^\times
+    \end{equation*}
+    One can define a homomorphism $\psi: H\to k^\times$ such that 
+    \begin{equation*}
+        \psi(\lambda I)=\lambda
+    \end{equation*}
+    This map embeds $H$ into $k^\times$, and we are done by again observing any finite subgroup of $k^\times$ is cyclic, 
+\end{proof}
+
+
+
 
 
 
@@ -1069,6 +1087,27 @@ to the center of $G/Z_{i-1}$. One can show that $Z_i$ is normal in $G$. A group 
         \item Which of these irreducible complex representations are faithful? Justify your answer.
     \end{enumerate}
 \end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item In S2010-Q1, we showed there are $p^2-1+p$ conjugacy classes in a non-abelian group $G$ of order $p^3$. There are $p^2$ one-dimensional irreducible representations because one dimensional representations of $G$ are equivalent to one-dimensional representations of $G/[G,G]$ which has size $p^2$, thus abelian and all irreducible representations are one-dimensional. 
+        \begin{lem}[Fact]
+            Let $V$ be an irreducible representation, then $\dim V$ divides $|G|$. (This is true when $k$ is algebraically closed and characteristic $0$).
+        \end{lem}
+        Thus it is clear that there are $p-1$ representations of dimension $p$. (Sanity check: $|G|=p^3=p^2+(p-1)p^2$).
+        \item We claim that all the one-dimensional representations are not faithful and all the $p$-dimensional representations are. Recall $\rho$ is irreducible if and only if $\ker(\rho)=\{g: \rho(g)v=v \text{ for all }v\}=\{e\}$.
+        \begin{lem}[Fact]
+            Let $\rho:G\to\CC^\times$ be a one-dimensional irreducible representation, then
+            \begin{equation*}
+                [G,G]\subset\ker(\rho)
+            \end{equation*}
+        \end{lem}
+        Thus if $\rho$ is one-dimensional, then $\rho$ is not faithful. Now for the higher dimensional case:
+        \begin{lem}[Fact]
+            If $\rho: G\to\text{GL}_p(\CC)$ is an irreducible representation, then $\bar{\rho}: \frac{G}{\ker\rho}\to\text{GL}_p(\CC)$ is also irreducible.
+        \end{lem}
+        If $\ker\rho$ is nontrivial, then it must divide the size of $|G|$, hence $\frac{G}{\ker\rho}$ is abelian, i.e., all irreducible representations are one-dimensional. This is a contradiction since $\rho$ is $p$-dimensional, thus $\ker(\rho)=\{e\}$, as desired.
+    \end{enumerate}
+\end{proof}
 
 
 \begin{prob}[S2011-Q5]

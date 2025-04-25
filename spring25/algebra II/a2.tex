@@ -23,7 +23,23 @@ Page 19-20
         \item Prove that if \( \rho \) is faithful (i.e., injective), then \( C \) must be cyclic.
     \end{enumerate}
 \end{prob}
-
+\begin{proof}
+    \begin{enumerate}
+        \item $\mathbb{C}$ is algebraically closed therefore Schur's lemma applies (see F2017-Q6)
+        \item We know that 
+        \begin{equation*}
+            \rho(z)=\begin{pmatrix}
+                \lambda&0&\dots&0\\
+                0&\lambda&\dots&0\\
+                \dots\\
+                0&\dots&0&\lambda
+            \end{pmatrix}
+        \end{equation*}
+        We also know that $C$ is finite and $\rho(z^r)=I$, which implies $|r|=1$. This gives $|\chi(s)|=n$ for all $s\in C$. 
+        \item Y
+        \item If $\rho$ is faithful, then $C$ embeds into $k^\times$, and any finite subgroup of $k^\times$ is cyclic.
+    \end{enumerate}
+\end{proof}
 
 \begin{prob}[S2017-Q5]
     Prove directly from the definition of (left) semisimple ring that every such
