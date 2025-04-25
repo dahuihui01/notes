@@ -494,6 +494,24 @@ Let \( p \) and \( q \) be primes with \( p < q \). Let \( G \) be a group of or
             \item Show that \( \phi(N) = N \), for all automorphisms \( \phi \) of \( G \).
         \end{enumerate}
 \end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item Since $N,H$ have relatively prime orders, $N\cap H=\{e\}$, thus we can write 
+        \begin{equation*}
+            G=N\rtimes_\theta H
+        \end{equation*}
+        where $\theta(h)n=hnh^{-1}$. One can show that the map $\varphi: N\rtimes_\theta H\to G$ as
+        \begin{equation*}
+            \varphi:(n,h)\mapsto nh
+        \end{equation*}
+        It is clear that $\varphi$ is a homomorphism and injective, thus by a size argument we have $\varphi$ is an isomorphism. This shows $G=NH$ and similarly $G=HN$.
+        \item Any automorphism $\phi$ of $G$ permutes the $p$-Sylow subgroups. Suppose that $|G|=p_1^{i_1}\dots p_k^{i_k}$, then after rearranging,
+        \begin{equation*}
+            |N|=p_1^{i_1}\dots p_j^{i_j}
+        \end{equation*}
+        because $N$ and $G/N$ have relatively prime orders. Hence $N$ contains all the Sylow $p_i$-subgroups, hence $\phi(N)=N$ for all automorphisms $\phi$ of $G$.
+    \end{enumerate}
+\end{proof}
 
 
 \begin{prob}[S2001-Q1]
@@ -883,13 +901,13 @@ to the center of $G/Z_{i-1}$. One can show that $Z_i$ is normal in $G$. A group 
 \chapter{Representation Theory}
 
 
-\begin{thm}[Maschke's theorem]
+% \begin{thm}[Maschke's theorem]
 
-\end{thm}
+% \end{thm}
 
-\begin{lem}[Schur's Lemma]
+% \begin{lem}[Schur's Lemma]
     
-\end{lem}
+% \end{lem}
 
 \begin{prop}[properties of characters]
     
@@ -897,6 +915,32 @@ to the center of $G/Z_{i-1}$. One can show that $Z_i$ is normal in $G$. A group 
 \begin{prop}
     The character tables for $S_3, S_4, A_5, S_5$ are as follows:
 \end{prop}
+
+\begin{thm}[Compilation of theorems]
+    Schur's lemma: 
+    \begin{enumerate}
+        \item If $\varphi: V\to W$ is a $G$-invariant map, i.e., 
+        \begin{equation*}
+            \varphi(\rho(g))=\rho(g)\varphi(v)
+        \end{equation*} 
+        where $V,W$ are irreducible representations, then $\varphi=0$ or an isomorphism. This is true for any field $k$ that $V,W$ are over.
+        \item If $\varphi: V\to V$ and everything as above, then 
+        \begin{equation*}
+            \varphi(v)=\lambda v
+        \end{equation*}
+        for some $\lambda\in k^\times$. This is only true when $k$ is algebraically clsoed.
+        \item $\text{Hom}_G(V,W)\begin{cases}
+            k \text{ if } V\cong W\\
+            0 \text{ if  not}
+        \end{cases}$, where $V,W$ are irreducible. This is true for $k$ algebraically closed.
+        \item Mascheke's theorem: any finite dimensional representation $V$ of a finite group $G$ can be decomposed into a direct sum of irreducible representations.
+        \begin{equation*}
+            V=V_1^{r_1}\oplus\dots\oplus V_k^{r_k}
+        \end{equation*}
+        where $V_i$'s are irreducible. This is true when the characteristic $k$ does not divide $|G|$, notably this always holds for characteristic $0$ fields.
+        \item Do not mix them up.
+    \end{enumerate}
+\end{thm}
 
 \section{Characters}
 
@@ -978,15 +1022,42 @@ to the center of $G/Z_{i-1}$. One can show that $Z_i$ is normal in $G$. A group 
 \begin{prob}[S2010-Q6]
     Let \( G \) be a group of order 24. Using representation theory, prove that \( G \neq [G, G] \), where \([G, G]\) denotes the commutator subgroup of \( G \).
 \end{prob}
+\begin{proof}
+    Suppose $G=[G,G]$, then we claim the only $1$-dimensional representation $\rho:G\to\mathbb{C}^\times$ is the trivial one. This is because if $\rho$ is one-dim, then
+    \begin{equation*}
+        [G,G]\subset\ker(\rho)
+    \end{equation*}
+    i.e., $\rho$ is trivial. However, there is no way to write 
+    \begin{equation*}
+        |G|=24=1+d_1^2+\dots+d_k^2
+    \end{equation*}
+    where $d_i\geq 2$. Thus $G\neq [G,G]$.
+\end{proof}
 
 \begin{prob}[F2017-Q6]
     Let \( G \) be a finite group with center \( Z(G) \). Show that if \( G \) admits a faithful irreducible representation \( \rho \colon G \to \mathrm{GL}_n(k) \) for some positive integer \( n \in \mathbb{Z}^+ \) and some field \( k \), then the center \( Z(G) \) is cyclic.
 \end{prob}
+\begin{proof}
+    (We will only do the case where $k$ is algebraically closed). For any $z\in Z(G)$, $\rho(z): V\to V$ is a $G$-map, i.e., 
+    \begin{equation*}
+        \rho(z)(\rho(g)v)=\rho(g)(\rho(z)v)
+    \end{equation*}
+    We know by Schur's lemma that $\rho(z)$ is a scalar multiplication: 
+    \begin{equation*}
+        \rho(z)\in k^\times
+    \end{equation*}
+    Because $\rho$ is faithful, $Z$ embeds into $k^\times$ via $\rho$. 
+    \begin{lem}[Fact]
+        Any finite subgroup of $k^\times$ for field $k$ is cyclic.
+    \end{lem}
+    Hence $Z$ is cyclic.
+\end{proof}
 
 
 \begin{prob}[S2005-Q6]
     Let \( V \) be a finite-dimensional vector space over a field \( k \), and let \( G \) be a finite group with an irreducible representation \( \varphi \colon G \to \mathrm{GL}(V) \). Suppose \( H \) is a finite abelian subgroup of \( \mathrm{GL}(V) \) contained in the centralizer of \( \varphi(G) \). Prove that \( H \) must be cyclic.
 \end{prob}
+
 
 
 \begin{prob}[F2010-Q6]
