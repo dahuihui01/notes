@@ -1,0 +1,88 @@
+\documentclass[openany]{book}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsfonts,amsthm, amssymb}
+\usepackage{yhmath}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{comment}
+\usepackage{tikz-cd}
+\usepackage{quiver}
+\renewcommand{\familydefault}{ppl}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\colim}{\text{colim}}
+\DeclareMathOperator{\im}{im}
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+\newcommand{\tor}{\text{Tor}}
+\newcommand{\id}{\text{id}}
+\newcommand{\ext}{\text{Ext}}
+\newcommand{\ptop}{\text{PTop}}
+\newcommand{\pt}{\text{pt}}
+\newcommand{\ach}{\text{Ach}}
+\newcommand{\Q}{\mathbb{Q}}
+
+
+\input{hui.tex}
+
+\title{Algebra Qualifying Exam Solutions}
+
+\date{\today}
+\author{Hui Sun}
+
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+\newpage
+
+
+
+\chapter{Fall 2016}
+
+
+\begin{prob}
+    Determine \(\text{Aut}(S_{3})\).
+\end{prob}
+
+\begin{prob}
+    A group \(G\) is a semidirect product of subgroups \(N,H\subset G\) if \(N\) is normal and every element of \(G\) has a uni \(h\in H\). Find all semidirect products (up to isomorphism) of \(N=\mathbb{Z}/11\mathbb{Z}\), \(H=\mathbb{Z}/5\mathbb{Z}\).
+\end{prob}
+
+\begin{prob}
+    Let \(F\) be a finite field of order \(2^{n}\). Here \(n>0\). Determine all values of \(n\) such that the polynomial \(x^{2}-x+1\) is irreducible in \(F[x]\).
+\end{prob}
+
+\begin{prob}
+    \begin{itemize}
+        \item[(1)] Determine the Galois group of \(x^{4}-4x^{2}-2\) over \(\mathbb{Q}\).
+        \item[(2)] Let \(G\) be a group of order 8 such that \(G\) is the Galois group of a polynomial of degree 4 over \(\mathbb{Q}\). Show that \(G\) is isomorphic to the Galois group in part (1).
+    \end{itemize}
+\end{prob}
+
+\begin{prob}
+    Let A be a linear transformation of a finite dimensional vector space over a field of characteristic \(\neq 2\).
+    \begin{itemize}
+        \item[(1)] Define the wedge product linear transformation \(\wedge^{2}A=A\wedge A\).
+        \item[(2)] Prove that
+        \[tr(\wedge^{2}A)=\frac{1}{2}(tr(A)^{2}-tr(A^{2})).\]
+    \end{itemize}
+\end{prob}
+\begin{prob}
+    Find a table of characters for the alternating group \(A_{5}\).
+\end{prob}
+
+
+
+
+\end{document}
