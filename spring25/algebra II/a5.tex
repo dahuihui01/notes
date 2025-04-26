@@ -2,11 +2,47 @@
 Page 46
 Page 52-61
 
+\begin{defn}[Galois extension]
+    A field extension $k\subset L$ is Galois if for all $x\in L$, the minimal polynomial $f(x)\in k[x]$ splits into a linear factor without repeated roots.
+\end{defn}
+
+\begin{thm}
+    Suppose $k\subset L$ is Galois, 
+    \begin{equation*}
+        \left\{ k\subset M\subset L\right\} \xLeftrightarrow{\text{ one-to-one}} \left\{\text{Subgroups of Gal}(L/k) \right\}
+    \end{equation*}
+    Moreover, the order of the Galois group is the degree of the field extension.
+    \begin{equation*}
+        \left|\text{Gal}(L/k)\right|=[L:k]
+    \end{equation*}
+\end{thm}
+
+% \begin{example}
+%     Let $f(x)=x^4-4x^2-2\in\Q[x]$, compute the Galois group of $f$.
+% \end{example}
+
+
+\begin{prop}
+    Let $G$ be a Galois group of a polynomial $f$ of degree $4$, and $|G|=8$, then 
+    \begin{equation*}
+        G\cong D_8
+    \end{equation*}
+\end{prop}
+\begin{proof}
+    We know that $G$ permutes the four roots of $f$, i.e., $G$ embeds into $S_4$. Since $|G|=8$, we know $G$ is a Sylow-$2$ subgroup of $S_4$, and all Sylow-$2$ subgroups are conjugates (isomorphic to one another), i.e., 
+    \begin{equation*}
+        G\cong D_8
+    \end{equation*}
+    as desired.
+\end{proof}
+
+
 
 
 \begin{prob}[S2009-Q3]
     Consider the field \(K = \mathbb{Q}(\sqrt{a})\) where \(a \in \mathbb{Z}, a < 0\). Show that \(K\) cannot be embedded in a cyclic extension whose degree over \(\mathbb{Q}\) is divisible by 4.
 \end{prob}
+
 
 \begin{prob}[F2000-Q4]
     Let \(G\) be a finite group. Show that there exists a Galois field extension \(K/k\) whose Galois group is isomorphic to \(G\).
@@ -32,10 +68,28 @@ Page 52-61
     \end{itemize}
 \end{prob}
 
+% \begin{proof}
+%     \begin{itemize}
+%         \item[(a)] The minimal polynomial of $\sqrt{3}+\sqrt{5}$ is exactly $x^4-6x^2+4$, and it is irreducible over $\Q$, hence $K$ 
+%     \end{itemize}
+% \end{proof}
+
 
 \begin{prob}[F2013-Q5]
     Compute the Galois group of \(f(x) = x^4 + 1\) over \(\mathbb{Q}\).
 \end{prob}
+\begin{proof}
+    The splitting field for $f$ is $\Q(\xi_8)$ where $\xi_8=e^\frac{2\pi i}{8}$, and the Galois group 
+    \begin{equation*}
+        \text{Gal}(\Q(\xi_8)/\Q)\cong\left(\Z/8\Z\right)^\times
+    \end{equation*}
+    and
+    \begin{equation*}
+        \left(\Z/8\Z\right)^\times\cong\frac{\Z}{2\Z}\times\frac{\Z}{2\Z}
+    \end{equation*}
+    and we are done.
+\end{proof}
+
 
 
 \begin{prob}[F2016-Q4]
