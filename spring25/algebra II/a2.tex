@@ -224,6 +224,9 @@ Let \( k \) be a field of characteristic different from 2 and let \( G = \{e, g\
 \begin{prob}[S2003-Q3]
     Prove that if a linear operator on a complex vector space is diagonal in some basis, then its restriction to any invariant subspace \( L \) is also diagonal in some basis of \( L \).
 \end{prob}
+\begin{proof}
+    
+\end{proof}
 
 
 \begin{center}
@@ -247,19 +250,56 @@ Let \( k \) be a field of characteristic different from 2 and let \( G = \{e, g\
         \item[(c)] Assume \(k\) is a finite field. Can the statement in (b) still be true?
     \end{itemize}
 \end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(a)] Let $y\in \bigcap_{x \in \text{GL}_2(k)}$, then for all $x\in\text{GL}_2(k)$, we have $xyx^{-1}\in B$. This shows that 
+        \begin{align*}
+            xyx^{-1}\in B\text{ for all }x&\iff xyx^{-1}\begin{bmatrix}
+                0\\
+                1
+            \end{bmatrix}\in\left\la\begin{bmatrix}
+                0\\
+                1
+            \end{bmatrix}\right\ra\\
+            &\iff x^{-1}\begin{bmatrix}
+                0\\
+                1
+            \end{bmatrix}
+            \text{ is a subspace for } y \text{ for all }x\\
+            &\iff \text{ the whole vector space is the eigenspace of }y\\
+            &\iff \text{ $y$ is a scalar}\\
+            &\iff y\in Z  
+        \end{align*}
+        \item[(b)] If $k$ is algebraically closed, then any matrix can be written as a triangular matrix up to some basis change.
+        \item[(c)] (If $k$ is $R$, the statement of (b) is also wrong). It's the same idea for finite groups, one can take $g\in\overline{\mathbb{F}_p}\setminus\mathbb{F}_p$, then the characteristic polynomial for the map of multiplication by $g:\overline{\mathbb{F}_p}\to \overline{\mathbb{F}_p}$ where $\overline{\mathbb{F}_p}=\mathbb{F}_{p^2}$ is a vector space over $\mathbb{F}$ the minimial polynomial is $(t-g)^2$ which is irreducible over $\mathbb{F}_p$.
+    \end{itemize}
+\end{proof}
 
 \begin{prob}[S2009-Q4]
     Let \(E\) be a finite-dimensional vector space over an algebraically closed field \(k\). Let \(A, B\) be \(k\)-endomorphisms of \(E\). Assume \(AB = BA\). Show that \(A\) and \(B\) have a common eigenvector.
 \end{prob}
+\begin{proof}
+    Since $k$ is algebraically closed, we know there exists at least one eigenvector of $A$, i.e., there exists $\lambda$ such that $Av=\lambda v$ for some $v\neq 0$. We denote this eigenspace by $E_\lambda$, and we note that $E_\lambda$ is invariant under $B$: let $v\in E_\lambda$
+    \begin{equation*}
+        A(Bv)=\lambda(Bv)
+    \end{equation*}
+    thus $Bv\in E_\lambda$ as well. Then it suffices to find an eigenvector of $B$ living inside $E_\lambda$, this is done by noting $B\vert_{E_\lambda}$ has an eigenvector in $E_\lambda$, as desired.
+\end{proof}
 
 
 \begin{prob}[F2005-Q6]
     Let \(E\) be a finite-dimensional vector space over a field \(k\). Assume \(S, T \in \text{End}_k(E)\). Assume \(ST = TS\) and both of them are diagonalizable. Show that there exists a basis of \(E\) consisting of eigenvectors for both \(S\) and \(T\).
 \end{prob}
+\begin{proof}
+    It is the same proof as above except now we do this for all $E_{\lambda_1},\dots, E_{\lambda_k}$.
+\end{proof}
 
 \begin{prob}[S2015-Q2]
     Let \(A,B\) be two commuting operators on a finite dimensional space \(V\) over \(\mathbb{C}\) such that \(A^{n}=B^{m}\) is the identity operator on \(V\) for some positive integers \(n,m\). Prove that \(V\) is a direct sum of 1-dimensional invariant subspaces with respect to \(A\) and \(B\) simultaneously.
 \end{prob}
+\begin{proof}
+    
+\end{proof}
 
 
 
