@@ -51,17 +51,69 @@
 \chapter{Fall 2016}
 
 
+
 \begin{prob}
     Determine \(\text{Aut}(S_{3})\).
 \end{prob}
+\begin{proof}
+    $\sigma\in\text{Aut}(S_3)$ is determined by where $(12)$ and $(123)$ are sent to. There are $6$ options in total and all of them are homomorphisms (conjugation). It is easy to check that this group is not commutative, i.e., 
+    \begin{equation*}
+        \text{Aut}(S_3)\cong S_3
+    \end{equation*}
+\end{proof}
 
 \begin{prob}
-    A group \(G\) is a semidirect product of subgroups \(N,H\subset G\) if \(N\) is normal and every element of \(G\) has a uni \(h\in H\). Find all semidirect products (up to isomorphism) of \(N=\mathbb{Z}/11\mathbb{Z}\), \(H=\mathbb{Z}/5\mathbb{Z}\).
+    A group \(G\) is a semidirect product of subgroups \(N,H\subset G\) if \(N\) is normal and every element of \(G\) has a unique presentation \(nh\), \(n\in N\), \(h\in H\). Find all semidirect products (up to isomorphism) of \(N=\mathbb{Z}/11\mathbb{Z}\), \(H=\mathbb{Z}/5\mathbb{Z}\).
 \end{prob}
+\begin{proof}
+    Let $G=N\rtimes_\theta H$, where 
+    \begin{equation*}
+        \theta: \Z/5\Z\to \text{Aut}(\Z/11\Z)\cong\Z/10\Z
+    \end{equation*}
+    such that
+    \begin{equation*}
+        5\theta(1)\equiv 0\mod 10
+    \end{equation*}
+    Thus $\theta(1)$ could be $0, 2,4,6,8$. When $\theta(1)=0$, this gives the abelian group 
+    \begin{equation*}
+        G\cong\frac{\Z}{5\Z}\times\frac{\Z}{11\Z}
+    \end{equation*}
+    We claim that all nontrivial $\theta$ give rise to the same semidirect product, namely, the following diagram commutes
+    \[\begin{tikzcd}
+        {\Z/5\Z} & {\Z/10\Z} \\
+        {\Z/5\Z} & {\Z/10\Z}
+        \arrow["{\theta'}", from=1-1, to=1-2]
+        \arrow["m"', from=1-1, to=2-1]
+        \arrow["{\text{id}}", from=1-2, to=2-2]
+        \arrow["\theta", from=2-1, to=2-2]
+    \end{tikzcd}\]
+    for $\theta: 1\mapsto 2$ and any $\theta': 1\mapsto 4, 6, 8$, by taking $m$ to be the multiplication map by $2,3,4$ respectively. Hence we see 
+    \begin{equation*}
+        \theta(h)(g)=g^{2^{2h}}
+    \end{equation*}
+    by observing 
+    \[\begin{tikzcd}
+        {\Z/5\Z} & {\Z/10\Z} & {\left(\Z/11\Z\right)^\times} & {\text{Aut}(\Z/11\Z)}
+        \arrow["2", from=1-1, to=1-2]
+        \arrow["{2^2}", from=1-2, to=1-3]
+        \arrow["{2^2\cdot(-)}"', from=1-3, to=1-4]
+    \end{tikzcd}\]
+    In other words,
+    \begin{equation*}
+        G=\left\la g,h: g^11=h^5=1, hgh^{-1}=g^{2^{2h}}\right\ra
+    \end{equation*}
+\end{proof}
 
 \begin{prob}
     Let \(F\) be a finite field of order \(2^{n}\). Here \(n>0\). Determine all values of \(n\) such that the polynomial \(x^{2}-x+1\) is irreducible in \(F[x]\).
 \end{prob}
+\begin{proof}
+    We know that $x^2-x+1$ is irreducible over $\F_2$, namely, it has no roots in $\F_2$. Since there is only one field of order $4$, we must have 
+    \begin{equation*}
+        \F_4\cong\frac{\F_2}{(x^2-x+1)}
+    \end{equation*}
+    Clearly $x^2-x+1$ is not irreducible over $\F_4$. For any $\F_{2^n}$, we know $(x^2-x+1)$ is irreducible if and only if $\F_4$ does not embed into $\F{2^n}$, i.e., $2\nmid n$. This shows that when $n$ is odd, the polynomial $x^2-x+1$ is irreducible over $\F_{2^n}$.
+\end{proof}
 
 \begin{prob}
     \begin{itemize}
@@ -69,6 +121,31 @@
         \item[(2)] Let \(G\) be a group of order 8 such that \(G\) is the Galois group of a polynomial of degree 4 over \(\mathbb{Q}\). Show that \(G\) is isomorphic to the Galois group in part (1).
     \end{itemize}
 \end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(1)] The roots of this polynomial is $\pm\sqrt{2\pm\sqrt{6}}$, and notice that 
+        \begin{equation*}
+            \sqrt{2}i=\sqrt{2+\sqrt{6}}\sqrt{2-\sqrt{6}}
+        \end{equation*}
+        This gives the splitting field (Galois extension) of this polynomila as 
+        \begin{equation*}
+            \Q\left(\sqrt{2+\sqrt{6}}, \sqrt{2}i\right)
+        \end{equation*}
+        We see that 
+        \begin{equation*}
+            \Q\left(\sqrt{2+\sqrt{6}}\right)\cap\Q(\sqrt{2}i)=\emptyset
+        \end{equation*}
+        because the first is contained in $\R$ and the second is not. We must have 
+        \begin{equation*}
+            \left[ \Q\left(\sqrt{2+\sqrt{6}}, \sqrt{2}i\right)/\Q\right]=8
+        \end{equation*}
+        By part b, we see $\text{Gal}\cong D_8$.
+        \item[(2)] Any Galois group of a polynomial with $4$ roots in the splitting field embeds into $S_4$, and we notice that $|G|=2^3, |S_4|=2^3\cdot 3$, i.e., $G$ is a Sylow $2$-subgroup of $S_4$, and all Sylow $2$-subgroups are conjugate/isomorphic of one another, hence 
+        \begin{equation*}
+            \text{Gal}\cong D_8
+        \end{equation*}
+    \end{itemize}
+\end{proof}
 
 \begin{prob}
     Let A be a linear transformation of a finite dimensional vector space over a field of characteristic \(\neq 2\).
@@ -78,9 +155,65 @@
         \[tr(\wedge^{2}A)=\frac{1}{2}(tr(A)^{2}-tr(A^{2})).\]
     \end{itemize}
 \end{prob}
+\begin{proof}
+    (Recall we have analogous results for $A\otimes A$).
+    \begin{itemize}
+        \item[(1)] The wedge product $A\wedge A$ is defined on the wedge product of vector spaces $V\wedge V$, so we first define the vector space: let $\{v_1,\dots, v_n\}$ be the basis of $V$, then $\{v_i\wedge v_j\}$ where $i<j$ forms a basis of $V\wedge V$, satisfying:
+        \begin{enumerate}
+            \item $v_i\wedge v_j=-v_j\wedge v_i$
+            \item $(a_iv_i+a_jv_j)\wedge (b_kv_k+b_lv_l)=(a_ib_k)v_i\wedge v_k+(a_ib_l)v_i\wedge v_l+(a_jb_k)v_j\wedge v_k+(a_jb_l)v_j\wedge v_l$
+        \end{enumerate}
+        And $A\wedge A$ where $A:V\to V$ is defined as 
+        \begin{equation*}
+            A\wedge A(v_i\wedge v_j)=Av_i\wedge Av_j
+        \end{equation*}
+        \item[(2)] Consider the matrix representation of $A=(A_{ij})$, on the basis $\{v_i\wedge v_j: i<j\}$, 
+        \begin{align*}
+            A\wedge A(v_i\wedge v_j)&=\sum_{k,l=1}^nA_{ki}A_{lj}(v_k\wedge v_l)\\
+            &=\sum_{k<l}A_{ki}A_{lj}(v_k\wedge v_l)+\sum_{l<k}A_{ki}A_{lj}(v_k\wedge v_l)\\
+            &=\sum_{k<l}A_{ki}A_{lj}(v_k\wedge v_l)-\sum_{l<k}A_{ki}A_{lj}(v_l\wedge v_k)
+        \end{align*}
+        Thus the diagonal term with respect to $v_i\wedge v_j$ is 
+        \begin{equation*}
+            A_{ii}A_{jj}-A_{ji}A_{ij}
+        \end{equation*}
+        Thus 
+        \begin{equation*}
+            \text{Tr}(A\wedge A)=\sum_{i<j}A_{ii}A_{jj}-A_{ji}A_{ij}
+        \end{equation*}
+        Now 
+        \begin{equation*}
+            \text{Tr}(A)^2=\sum_{i=1}^nA_{ii}^2+2\sum_{i<j}A_{ii}A_{jj}
+        \end{equation*}
+        and 
+        \begin{align*}
+            \text{Tr}(A^2)&=\sum_{k,l=1}^nA_{lk}A_{kl}\\
+            &=\sum_{i=1}^nA_{ii}^2+2\sum_{k<l}A_{lk}A_{kl}
+        \end{align*}
+        Thus we see that 
+        \[tr(\wedge^{2}A)=\frac{1}{2}(tr(A)^{2}-tr(A^{2}))\]
+    \end{itemize}
+
+\end{proof}
+
 \begin{prob}
     Find a table of characters for the alternating group \(A_{5}\).
 \end{prob}
+\begin{proof}
+    \[
+\begin{array}{c|ccccc}
+ & \text{1} & \text{20} & \text{15} & \text{12} & \text{12} \\ 
+ & \text{Id} & (1\,2\,3) & (1\,2)(3\,4) & (1\,2\,3\,4\,5) & (1\,2\,3\,5\,4) \\ 
+\hline
+\chi_1 & 1 & 1 & 1 & 1 & 1 \\ 
+\chi_2 & 3 & 0 & -1 & \phi & 1-\phi \\ 
+\chi_3 & 3 & 0 & -1 & 1-\phi & \phi \\ 
+\chi_4 & 4 & 1 & 0 & -1 & -1 \\ 
+\chi_5 & 5 & -1 & 1 & 0 & 0 \\ 
+\end{array}
+\]
+where $\phi=\frac{1+\sqrt{5}}{2}$.
+\end{proof}
 
 
 
