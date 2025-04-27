@@ -14,7 +14,7 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\E}{\mathbb{E}}
 \newcommand{\Z}{\mathbb{Z}}
-\newcommand{\CC}{\mathbb{C}}
+\newcommand{\C}{\mathbb{C}}
 \newcommand{\F}{\mathbb{F}}
 \newcommand{\la}{\langle}
 \newcommand{\ra}{\rangle}
@@ -45,6 +45,169 @@
 
 \tableofcontents
 \newpage
+
+
+\chapter{Spring 2017}
+
+\textcolor{red}{4}
+
+\begin{prob}
+    Let \(A\) be a commutative ring, and define the \textit{nilradical} \(\sqrt{0}\) to be the set of nilpotent elements in \(A\). Show that \(\sqrt{0}\) is equal to the intersection of all prime ideals in \(A\). Show that if \(A\) is reduced, then \(A\) can be embedded into a product of fields.
+\end{prob}
+\begin{proof}
+    Let $\{P_i:i\in I\}$ be the collection of prime ideals in $A$. We first show that 
+    \begin{equation*}
+        \sqrt{0}=\bigcap_{i}P_i
+    \end{equation*}
+    Let $a\in\sqrt{0}$, then for some $n\geq 0$, $a^n=0$, this implies that for all $i\in I$,
+    \begin{equation*}
+        a^n\in P_i\Rightarrow a\in P_i \text{ or } a^{n-1}\in P_i
+    \end{equation*}
+    since $P_i$ is prime. We claim that $a\in P_i$. If not, then $a^{n-1}\in P_i$ which implie $a^{n-2}\in P_i$ $\dots$ which eventually implies $a\in P_i$, which is a contradiction. Hence $\sqrt{0}\subset \bigcap_iP_i$. Now for the reverse inclusion, we use the following lemma:
+    \begin{lem}
+        Let $S$ be a multiplicative set in $A$ such that $0\not\in S$, then there exists a prime ideal $P\subset A$ such that 
+        \begin{equation*}
+            S\cap P=\emptyset
+        \end{equation*}
+    \end{lem}
+    Let $a\in\bigcap_iP_i$, then the set 
+    \begin{equation*}
+        S=\{a, a^2, \dots\}
+    \end{equation*}
+    is a multiplicative set, suppose that $a$ is not nilpotent, i.e., $a\not\in S$, then there exists a prime ideal that does not interserct $S$, which is a contradiction since $a\in P_i$ for all $i$. Thus 
+    \begin{equation*}
+        \sqrt{0}=\bigcap_iP_i
+    \end{equation*}
+
+    Now we show that if $A$ is reduced, then $A$ can be embedded into a product of fields. If $A$ is reduced, then $\sqrt{0}=0$, i.e., if $a\neq0$, then $a$ cannot be in all the prime ideals. Suppose $a\neq 0$, then there exists some $P_i$ such that $a\not\in P_i$. Then we can consider the map 
+    \begin{equation*}
+        A\to \frac{A}{P_i}\to\text{Frac}\left( \frac{A}{P_i}\right)
+    \end{equation*}
+    where 
+    \begin{equation*}
+        a\mapsto a+P_i\mapsto \frac{a+P_i}{1}
+    \end{equation*}
+    Thus we claim that $A$ embeds in 
+    \begin{equation*}
+        A\xrightarrow{\iota}\text{Frac}\left( \frac{A}{P_1}\right)\times \text{Frac}\left( \frac{A}{P_2}\right)\times\dots=\prod_{i\in I}\text{Frac}\left( \frac{A}{P_i}\right)
+    \end{equation*}
+    where $\text{Frac}$ denotes the field of fractions. If $a=0$, then $\iota(a)=(0,\dots, 0)$, if $a\neq 0$, then $a\not\in P_j$ for some $j$, and 
+    \begin{equation*}
+        \iota(a)=\left(0,\dots, 0, \frac{a+P_j}{1},0,\dots, 0\right)
+    \end{equation*}
+    where only the $j$-th entry is nonzero.
+\end{proof}
+
+
+\begin{prob}
+    Write down the minimal polynomial for \(\sqrt{2}+\sqrt{3}\) over \(\mathbb{Q}\) and prove that it is reducible over \(\mathbb{F}_{p}\) for every prime number \(p\).
+\end{prob}
+\begin{proof}
+    The minimal polynomial $p_m$ is 
+    \begin{equation*}
+        p_m(t)=(t^2-5)^2-24=t^4-10t^2+1
+    \end{equation*}
+    The roots are $\pm\sqrt{2}\pm\sqrt{3}$, thus this polynomial generates a field extension of $\Q$, 
+    \begin{equation*}
+        \Q(\sqrt{2},\sqrt{3})=\frac{\Q[t]}{(p_m(t))}
+    \end{equation*}
+    We claim that it suffices to show that $\sqrt{2}$ or $\sqrt{3}$ or $\sqrt{6}$ are in $\F_p$ for any prime $p$. Take $\sqrt{2}\in\F_p$ for example, we know $p_m(t)$ is not irreducible over $\Q(\sqrt{2})$, because then it would mean the degree of field extension $[\Q(\sqrt{2},\sqrt{3}): \Q]$ is 8, which is a contradiction.
+    \[\begin{tikzcd}
+        {\mathbb{Q}(\sqrt{2},\sqrt{3})} \\
+        {\mathbb{Q}(\sqrt{2})} \\
+        {\mathbb{Q}}
+        \arrow[from=2-1, to=1-1]
+        \arrow[from=3-1, to=2-1]
+    \end{tikzcd}\]
+    Thus $p_m(t)$ is reducible over $\Q(\sqrt{2})$. Now we show the following.
+    \begin{lem}
+        For any prime $p$, $\sqrt{2}$ or $\sqrt{3}$ or $\sqrt{6}$ are in $\F_p$ for any prime $p$.
+    \end{lem}
+    There exists a homomorphism (Legendre symbol) $\varphi:\F_p^\times\to \{\pm 1\}$, such that 
+    \begin{equation*}
+        \varphi(g)=\begin{cases}
+            1, \text{ if $g$ is a square}\\
+            -1, \text{ otherwise}
+        \end{cases}
+    \end{equation*}
+    Suppose that $2,3$ are not squares, i.e., $sqrt{2},\sqrt{3}\not\in\F_p^\times$, then 
+    \begin{equation*}
+        \varphi(2\cdot 3)=1
+    \end{equation*}
+    which implies $\sqrt{6}\in\F_p^\times$, concluding the proof.
+\end{proof}
+
+\begin{prob}
+    Let \(K/k\) be a finite separable field extension, and let \(L/k\) be any field extension. Show that \(K\otimes_{k}L\) is a product of fields.
+\end{prob}
+\begin{proof}
+    We know $K/k$ implies there exists $\alpha\in K$ such that 
+    \begin{equation*}
+        K=k(\alpha)
+    \end{equation*}
+    moreover, for any $t\in K$, the minimal polynomial of $t$ factors into distinct linear factors. Let $p_\alpha$ be the minimal polynomial of $\alpha$, 
+    \begin{align*}
+        K\otimes_kL&=\frac{k[t]}{(p_\alpha(t))}\otimes_kL\\
+        &=\frac{L[t]}{(p_\alpha(t))}\\
+        &=\frac{L[t]}{(p_\alpha^1(t))\dots(p_\alpha^k(t))}
+    \end{align*}
+    where $p_\alpha^i(t)$ are distinct irreducible factors over in $L[t]$. By Chinese Remainder Theorem, we must have 
+    \begin{equation*}
+        K\otimes_kL=\frac{L[t]}{(p_\alpha^1(t))}\dots\frac{L[t]}{(p_\alpha^k(t))}
+    \end{equation*}
+    i.e., a product of fields.
+\end{proof}
+
+
+\begin{prob}
+    Let \(M\) be an invertible \(n\times n\) matrix with entries in an algebraically closed field \(k\) of characteristic not 2. Show that \(M\) has a square root, i.e. there exists \(N\in\text{Mat}_{n\times n}(k)\) such that \(N^{2}=M\).
+\end{prob}
+\begin{proof}
+    It suffices to show that every Jordan block 
+    \[
+        J_n(\lambda) = 
+        \begin{bmatrix}
+        \lambda & 1       & 0       & \cdots & 0 \\
+        0       & \lambda & 1       & \cdots & 0 \\
+        0       & 0       & \lambda & \ddots & \vdots \\
+        \vdots  & \vdots  & \ddots  & \ddots & 1 \\
+        0       & 0       & \cdots  & 0      & \lambda
+        \end{bmatrix}
+        \]
+        is a square. 
+\end{proof}
+
+
+
+\begin{prob}
+    Prove directly from the definition of (left) semisimple ring that every such ring is (left) Noetherian and Artinian. (You may freely use facts about semisimple, Noetherian, and Artinian modules.)
+\end{prob}
+\begin{proof}
+    If $R$ is Artinian, then $R$ can be decomposed into a finite sum of simple rings, let $R_1,\dots, R_n$ be simple rings, we can write 
+    \begin{equation*}
+        R=\bigoplus_{i=1}^nR_i
+    \end{equation*}
+    where $R_i$ contains only the trivial ideal and $R_i$ as ideals. Now it is quite clear that every ascending and descending chain of ideals stabilizes because there are only finitely many distinct ideals. 
+\end{proof}
+
+\begin{prob}
+    Let \(G\) be a finite group and \(H\) an abelian subgroup. Show that every irreducible representation of \(G\) over \(\mathbb{C}\) has dimension \(\leq[G:H]\).
+\end{prob}
+\begin{proof}
+    Any irreduicble representation $\rho:H\to\mathbb{C}^\times$ is one-dimensional, and we consider induced representation of $\rho$, $\text{Ind}_H^G\rho$, we note that $\text{Ind}_H^G\rho$ is not necessarily irreducible, hence for any irreducible representation $\tilde{\rho}:G\to\text{GL}_n(\C)$, we have 
+    \begin{equation*}
+        \dim\tilde{\rho}\leq\dim(\text{Ind}_H^G\rho)
+    \end{equation*}
+    and 
+    \begin{equation*}
+        \text{Ind}_H^G\rho=\bigoplus_{i=1}^ng_iH
+    \end{equation*}
+    where $g_i$ are the representatives of the coset and the sum consists of exactly one copy for each coset. Hence we see 
+    \begin{equation*}
+        \dim\tilde{\rho}\leq\dim(\text{Ind}_H^G\rho)=[G:H]
+    \end{equation*}
+\end{proof}
+
 
 
 
@@ -214,6 +377,9 @@
 \]
 where $\phi=\frac{1+\sqrt{5}}{2}$.
 \end{proof}
+
+
+
 
 
 
