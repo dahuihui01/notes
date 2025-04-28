@@ -307,7 +307,7 @@
     \end{tikzcd}\]
     In other words,
     \begin{equation*}
-        G=\left\la g,h: g^{11}=h^5=1, hgh^{-1}=g^{2^{2}}\right\ra
+        G=\left\la g,h: g^{11}=h^5=1, hgh^{-1}=g^{4}\right\ra
     \end{equation*}
 \end{proof}
 
@@ -425,6 +425,8 @@ where $\phi=\frac{1+\sqrt{5}}{2}$.
 
 \chapter{Spring 2016}
 
+\textcolor{red}{3,5,6}
+
 \begin{prob}
     Classify all groups of order 66, up to isomorphism.
 \end{prob}
@@ -433,7 +435,34 @@ where $\phi=\frac{1+\sqrt{5}}{2}$.
     \begin{lem}
         Let $H$ be a subgroup of $G$ such that $[G:H]=p$ is the smallest prime dividing $|G|$, then $H$ is normal.
     \end{lem}
-    Using the lemma, we know this subgroup $N$ of order $33$ must be normal.
+    Using the lemma, we know this subgroup $N$ of order $33$ must be normal and isomorphic to $\Z/33\Z$. Take any Sylow $2$-subgroup of $G$, we know 
+    \begin{equation*}
+        G=\frac{\Z}{33\Z}\rtimes_\theta \frac{\Z}{2\Z}
+    \end{equation*}
+    where $\theta: P_2\to\text{Aut}(N)=(\Z/33\Z)^\times$ satisfies 
+    \begin{equation*}
+        2\theta(1)\equiv 1\mod 33
+    \end{equation*}
+    We see there are four numbers in $(\Z/33\Z)^\times$ that satisfy this:
+    \begin{equation*}
+        \theta(1)\mapsto \{1, 10, 23, 32\}
+    \end{equation*}
+    When $\theta(1)=1$, 
+    \begin{equation*}
+        G_1\cong\frac{\Z}{33\Z}\times\frac{\Z}{2\Z}
+    \end{equation*}
+    When $\theta(1)=10$, then 
+    \begin{equation*}
+        G_2=\la g,h: g^{33}=h^2=1, hgh^{-1}=g^{10}\ra
+    \end{equation*}
+    When $\theta(1)=23$, we have 
+    \begin{equation*}
+        G_3=\la g,h: g^{33}=h^2=1, hgh^{-1}=g^{23}\ra
+    \end{equation*}
+    When $\theta(1)=32$, we have 
+    \begin{equation*}
+        G_4=\la g,h: g^{33}=h^2=1, hgh^{-1}=g^{32}\ra
+    \end{equation*}
 \end{proof}
 
 
@@ -444,6 +473,25 @@ where $\phi=\frac{1+\sqrt{5}}{2}$.
         \item[(2)] Give an example such that \(R\) may not be a field if \(\text{char}(F)=2\).
     \end{itemize}
 \end{prob}
+\begin{proof}
+    I will only do (1), because I can't do (2). It suffices to show that $R$ is closed under multiplication and taking inverses. Let $a,b\in R$, we know 
+    \begin{equation*}
+        (a+b)^2\in R\Rightarrow a^2+b^2+2ab\in R\Rightarrow ab\in R
+    \end{equation*}
+    Since $F\subset K$ is algebraic, for any $a\in R$, there exists a minimal polynomial $p_a(t)$ such that 
+    \begin{equation*}
+        p_a(a)=c_0+c_1a+\dots+c_na^n=0
+    \end{equation*}
+    Multiplying both sides by $a^{-n}$ and equating we get 
+    \begin{equation*}
+        c_0a^{-n}+\dots+c_n=c_0+c_1a+\dots+c_na^n
+    \end{equation*} 
+    i.e., 
+    \begin{equation*}
+        c_0a^{-n}=c_0+c_1a+\dots+c_na^n-c_n-\dots-c_1a^{-(n-1)}
+    \end{equation*}
+    multiplying both sides by $a^{n-1}$, we see that $a^{-1}\in R$, as desired.
+\end{proof}
 
 \begin{prob}
     Determine the Galois group of \(x^{6}-10x^{3}+1\) over \(\mathbb{Q}\).
