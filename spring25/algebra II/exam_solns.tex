@@ -425,7 +425,7 @@ where $\phi=\frac{1+\sqrt{5}}{2}$.
 
 \chapter{Spring 2016}
 
-\textcolor{red}{3,5,6}
+\textcolor{red}{I can't do 6}
 
 \begin{prob}
     Classify all groups of order 66, up to isomorphism.
@@ -496,6 +496,24 @@ where $\phi=\frac{1+\sqrt{5}}{2}$.
 \begin{prob}
     Determine the Galois group of \(x^{6}-10x^{3}+1\) over \(\mathbb{Q}\).
 \end{prob}
+\begin{proof}
+    Solving for the roots we see the splitting field for this polynomial is 
+    \begin{equation*}
+        \Q(\sqrt{5+2\sqrt{6}},\sqrt{3}i)
+    \end{equation*}
+    which has degree $12$, i.e., the order of the Galois group. Let 
+    \begin{equation*}
+        \begin{cases}
+            \alpha_1=\sqrt{5+2\sqrt{6}}\\
+            \beta_1=\sqrt{5-2\sqrt{6}}\\
+            \alpha_2=e^\frac{2\pi i}{3}\sqrt{5+2\sqrt{6}}\\
+            \beta_2=e^\frac{2\pi i}{3}\sqrt{5-2\sqrt{6}}\\
+            \alpha_3=e^\frac{4\pi i}{3}\sqrt{5+2\sqrt{6}}\\
+            \beta_3=e^\frac{4\pi i}{3}\sqrt{5-2\sqrt{6}}
+        \end{cases}
+    \end{equation*}
+    We see that there are two choices for $\alpha_1\mapsto \alpha_i,\beta_j$ for any $i,j$. This gives a group of order $12$ and by drawing a hexagon (or by guessing), one can conclude that this is $D_{12}$.
+\end{proof}
 
 \begin{prob}
     Let \(V\) and \(W\) be two finite dimensional vector spaces over a field \(K\). Show that for any \(q>0\),
@@ -559,7 +577,7 @@ where $\phi=\frac{1+\sqrt{5}}{2}$.
     Prove that a finite dimensional algebra over a field is a division algebra if and only if it does not have zero divisors.
 \end{prob}
 \begin{proof}
-    Recall a finite dimensional algebra is a ring with a field action, and it is a division algebra if every nonzero element $a\in A$ has an $a^{-1}\in A$.
+    Recall a finite dimensional algebra is a ring with a field action, and it is a division algebra if every nonzero element $a\in A$ has an $a^{-1}\in A$. We know $A$ does not have a zero divisor if and only if for any $a\in A$, the multiplication map by $a$ is injective. Since $A$ is a finite dimensional vector space as well, an injective map is necessarily surjective, i.e., multiplication by $a$ is surjective, this happens if and only if $a$ is a unit, i.e., $A$ is a division algebra.
 \end{proof}
 
 
