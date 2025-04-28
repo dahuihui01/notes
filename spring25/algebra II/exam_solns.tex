@@ -307,7 +307,7 @@
     \end{tikzcd}\]
     In other words,
     \begin{equation*}
-        G=\left\la g,h: g^11=h^5=1, hgh^{-1}=g^{2^{2h}}\right\ra
+        G=\left\la g,h: g^{11}=h^5=1, hgh^{-1}=g^{2^{2}}\right\ra
     \end{equation*}
 \end{proof}
 
@@ -422,6 +422,102 @@
 where $\phi=\frac{1+\sqrt{5}}{2}$.
 \end{proof}
 
+
+\chapter{Spring 2016}
+
+\begin{prob}
+    Classify all groups of order 66, up to isomorphism.
+\end{prob}
+\begin{proof}
+    There are a total of $4$ groups. We have $n_{11}=1$, take any Sylow-$3$ subgroup, we can construct a subgroup of order $33$ by taking the semidirect product.
+    \begin{lem}
+        Let $H$ be a subgroup of $G$ such that $[G:H]=p$ is the smallest prime dividing $|G|$, then $H$ is normal.
+    \end{lem}
+    Using the lemma, we know this subgroup $N$ of order $33$ must be normal.
+\end{proof}
+
+
+\begin{prob}
+    Let \(F\subset K\) be an algebraic extension of fields. Let \(F\subset R\subset K\) where \(R\) is a \(F\)-subspace of \(K\) with the property such that \(\forall a\in R\), \(a^{k}\in R\) for all \(k\geq 2\).
+    \begin{itemize}
+        \item[(1)] Assume that \(\text{char}(F)\neq 2\). Show that \(R\) is a subfield of \(K\).
+        \item[(2)] Give an example such that \(R\) may not be a field if \(\text{char}(F)=2\).
+    \end{itemize}
+\end{prob}
+
+\begin{prob}
+    Determine the Galois group of \(x^{6}-10x^{3}+1\) over \(\mathbb{Q}\).
+\end{prob}
+
+\begin{prob}
+    Let \(V\) and \(W\) be two finite dimensional vector spaces over a field \(K\). Show that for any \(q>0\),
+    \[\bigwedge^{q}(V\oplus W)\cong\sum_{i=0}^{q}(\bigwedge^{i}(V)\otimes_{K}\bigwedge^{q-i}(W)).\]
+\end{prob}
+\begin{proof}
+    Any two finite dimensional vector spaces of the same dimension are isomorphic. Hence, it suffices to show that the dimensions are equal. We will convince ourselves it holds for $q=2$. Let $\{v_1,\dots, v_n\}$ be the basis of $V$, and $\{w_1,\dots,w_k\}$ be the basis of $W$, then we begin with the LHS:
+    \begin{equation*}
+        \bigwedge^{2}(V\oplus W)
+    \end{equation*}
+    We note that $V\oplus W$ has basis 
+    \begin{equation*}
+        \left\{(v_i,w_j):1\leq i\leq n, 1\leq j\leq k\right\}
+    \end{equation*}
+    So we reenumerate the $n+k$ basis as 
+    \begin{equation*}
+        \{e_1,\dots, e_{n+k}\}
+    \end{equation*}
+    Then $\bigwedge^{q}(V\oplus W)$ has basis
+    \begin{equation*}
+        \left\{ e_i\wedge e_j: i<j\right\}
+    \end{equation*}
+    There are exactly $1+\dots+(n+k-1)$ basis vectors i.e.,
+    \begin{equation*}
+        \dim\left(\bigwedge^{2}(V\oplus W)\right)=\frac{(n+k-1)(n+k)}{2}
+    \end{equation*}
+    As for the RHS: 
+    \begin{equation*}
+        \dim\left( \sum_{i=0}^{2}(\bigwedge^{i}(V)\otimes_{K}\bigwedge^{2-i}(W))\right)
+        \frac{(k-1)k}{2}+nk+\frac{(n-1)n}{2}
+    \end{equation*}
+    And we observe that two two quantities are equal. Now we do the general case, just like above, 
+    \begin{equation*}
+        \dim\left(\bigwedge^{q}(V\oplus W)\right)=\binom{n+k}{q}
+    \end{equation*}
+    And the RHS:
+    \begin{equation*}
+        \dim\left(\bigwedge^{q-1}(V\oplus W)\wedge (V\oplus W)\right)=\sum_{i=0}^q\binom{n}{i}\binom{k}{q-i}
+    \end{equation*}
+    and it is clear that these two quantities are equal.
+    
+    
+    % Inductive step: suppose that this is true up to $\bigwedge^{q-1}$. Now 
+    % \begin{align*}
+    %     \bigwedge^{q}(V\oplus W)&= \bigwedge^{q-1}(V\oplus W)\wedge (V\oplus W)
+    % \end{align*}
+    % Let's denote the dimension of $ \bigwedge^{q-1}(V\oplus W)$ as $m$, and recall there are $\{e_1,\dots,e_{n+k}\}$ basis vectors for $V\oplus W$, hence we are reenumerate the basis vectors:
+    % \begin{equation*}
+    %     \{f_1,\dots, f_{n+k+m}
+    % \end{equation*}
+
+
+    % \begin{align*}
+    %     \bigwedge^{q}(V\oplus W) \cong  \sum_{i=0}^{q}(\bigwedge^{i}(V)\otimes_{K}\bigwedge^{q-i}(W))
+    % \end{align*}
+
+
+\end{proof}
+
+\begin{prob}
+    Prove that a finite dimensional algebra over a field is a division algebra if and only if it does not have zero divisors.
+\end{prob}
+\begin{proof}
+    Recall a finite dimensional algebra is a ring with a field action, and it is a division algebra if every nonzero element $a\in A$ has an $a^{-1}\in A$.
+\end{proof}
+
+
+\begin{prob}
+    Let \(A\) be a semi-simple finite dimensional algebra over \(\mathbb{C}\), and let \(V\) be a direct sum of two isomorphic simple \(A\)-modules. Find the automorphism group of the \(A\)-module \(V\).
+\end{prob}
 
 
 
