@@ -653,23 +653,67 @@ where $\phi=\frac{1+\sqrt{5}}{2}$.
 \chapter{Spring 2007}
 
 
-\textcolor{red}{1, 2, 3, 4, 5}
 
 \begin{prob}
     Prove that the integer orthogonal group \(O_n(\mathbb{Z})\) is a finite group. (By definition, an \(n \times n\) square matrix \(X\) over \(\mathbb{Z}\) is orthogonal if \(XX^t = I_n\).)
 \end{prob}
 \begin{proof}
-    
+    Let $A\in O_n(\Z)$, since $\det(A)=\pm 1$ and all entries are integers, we can only have one nonzero entry $\pm 1$ in every row, this matrix is necessarily invertible and has $\det=\pm 1$. There a total of 
+    \begin{equation*}
+        2^n\cdot n!
+    \end{equation*}
+    of choices of place $\pm1$ such that each row has one nonzero entry. This shows that $O_n$ is a finite group.
 \end{proof}
 
 \begin{prob}
     Prove that no group of order 224 is simple.
 \end{prob}
+\begin{proof}
+    We have $224=2^5\cdot 7$, thus $n_7=1,8$ and $n_2=1,7$. If $n_2=n_7=1$, then we are done. Suppose $n_2=7$, then $G$ acts on the Sylow $2$ subgroups, i.e., there exists a map 
+    \begin{equation*}
+        \varphi: G\to S_7
+    \end{equation*}
+    If $\ker(\varphi)\neq \{e\}$, then $\ker(\varphi)$ is a nontrivial normal subgroup ($\ker(\varphi)\neq G$ becuase this action is transitive and nontrivial), and we are done.  Thus it suffces to rule out $\ker(\varphi)=\{e\}$, in this case $\varphi$ is an embedding, i.e., $|G|$ must divide $|S_7$ but this is false thus a contradiction. 
+\end{proof}
 
 
 \begin{prob}
     Write down the irreducible polynomial for \(\sqrt{2} + \sqrt{3}\) over \(\mathbb{Q}\) and prove that it is reducible modulo \(p\) for every prime \(p\).
 \end{prob}
+\begin{proof}
+    Note this question is exactly the same S2017-Q2. The minimal polynomial $p_m$ is 
+    \begin{equation*}
+        p_m(t)=(t^2-5)^2-24=t^4-10t^2+1
+    \end{equation*}
+    The roots are $\pm\sqrt{2}\pm\sqrt{3}$, thus this polynomial generates a field extension of $\Q$, 
+    \begin{equation*}
+        \Q(\sqrt{2},\sqrt{3})=\frac{\Q[t]}{(p_m(t))}
+    \end{equation*}
+    We claim that it suffices to show that $\sqrt{2}$ or $\sqrt{3}$ or $\sqrt{6}$ are in $\F_p$ for any prime $p$. Take $\sqrt{2}\in\F_p$ for example, we know $p_m(t)$ is not irreducible over $\Q(\sqrt{2})$, because then it would mean the degree of field extension $[\Q(\sqrt{2},\sqrt{3}): \Q]$ is 8, which is a contradiction.
+    \[\begin{tikzcd}
+        {\mathbb{Q}(\sqrt{2},\sqrt{3})} \\
+        {\mathbb{Q}(\sqrt{2})} \\
+        {\mathbb{Q}}
+        \arrow[from=2-1, to=1-1]
+        \arrow[from=3-1, to=2-1]
+    \end{tikzcd}\]
+    Thus $p_m(t)$ is reducible over $\Q(\sqrt{2})$. Now we show the following.
+    \begin{lem}
+        For any prime $p$, $\sqrt{2}$ or $\sqrt{3}$ or $\sqrt{6}$ are in $\F_p$ for any prime $p$.
+    \end{lem}
+    There exists a homomorphism (Legendre symbol) $\varphi:\F_p^\times\to \{\pm 1\}$, such that 
+    \begin{equation*}
+        \varphi(g)=\begin{cases}
+            1, \text{ if $g$ is a square}\\
+            -1, \text{ otherwise}
+        \end{cases}
+    \end{equation*}
+    Suppose that $2,3$ are not squares, i.e., $sqrt{2},\sqrt{3}\not\in\F_p^\times$, then 
+    \begin{equation*}
+        \varphi(2\cdot 3)=1
+    \end{equation*}
+    which implies $\sqrt{6}\in\F_p^\times$, concluding the proof.
+\end{proof}
 
 
 \begin{prob}
@@ -680,8 +724,26 @@ where $\phi=\frac{1+\sqrt{5}}{2}$.
     \end{itemize}
 \end{prob}
 \begin{proof}
+    I will denote the invertible elements as $I$, zero divisors as $ZD$ and nilpotent elements are $N$.
     \begin{itemize}
-        \item[(a)] 
+        \item[(a)] For $\Z/p^n\Z$,
+        \begin{equation*}
+            I(\Z/p^{n}\Z)=(\Z/p^n\Z)^\times
+        \end{equation*}
+        we know the invertible elements are exactly the ones coprime to $p^n$: for any $a$, there exists integers $b,k$ such that 
+        \begin{equation*}
+            ab+nk=1
+        \end{equation*}
+        if and only if $\gcd(p^n,a)=1$.
+        \begin{equation*}
+            ZD(\Z/p^n\Z)(=\Z/p^n\Z)\setminus I
+        \end{equation*}
+        The ring is commutative and finite, if $g$ is not a unit, then it implies multiplication by $g$ is also not injective, i.e., $g$ is a zero divisor.
+        \begin{equation*}
+            N(\Z/p^n\Z)=\left\{g\in\Z/p^n\Z: g\equiv 0\mod p\right\}
+        \end{equation*}
+        This is because if $g^k=0\mod p^n$ for some $k$, then $g^k=0\mod p\Rightarrow p\mid g^k$. Since $p$ is prime, we must have $p\mod g$, i.e., $N\subset \{g: g\equiv 0\mod p\}$, and it is clear the reverse inclusion holds.
+
         
         \item[(b)] The invertible elements 
         \begin{equation*}
@@ -691,10 +753,11 @@ where $\phi=\frac{1+\sqrt{5}}{2}$.
         \begin{equation*}
             ZD=M_n(k)\setminus I
         \end{equation*}
-        And finally
+        by a dimension argument. And finally
         \begin{equation*}
             N=\left\{A\in M_n(k): a_{ii}=0 \text{ for all } 1\leq i\leq n\right\}
         \end{equation*}
+        One can easily show both inclusions by explicit matrix computations.
     \end{itemize}
 \end{proof}
 
@@ -711,6 +774,24 @@ where $\phi=\frac{1+\sqrt{5}}{2}$.
         \end{equation*}
         then $\rho(g)=I_n$. In other words, if there is an entry in the character table that is the same as its left most entry (dimension), then it is (the trace of )the identity matrix. 
     \end{lem}
+    By the character table of $S_4$
+    \[
+\begin{array}{c|ccccc}
+S_4 & (1) & (12) & (123) & (1234) & (12)(34) \vspace{2pt} \\
+\hline
+\chi_{\text{triv}} & 1 & 1 & 1 & 1 & 1 \\
+
+\chi_{sgn}  & 1 & -1 & 1 & -1 & 1 \\
+\chi_\perp & 3 & 1 & 0 & -1 & -1 \\
+\text{sgn}\otimes\chi^\perp & 3 & -1 & 0 & 1 & -1 \\
+\chi^{(5)} & 2 & 0 & -1 & 0 & 2 \\
+\end{array}
+\]
+    We see that the two-dimensional representation $\chi^{(5)}$ is not injective, since $\chi^{(5)}(12)(34)=2$. It suffices to show that if the direct sum of two one-dimensional representations is also not injective: 
+    \begin{equation*}
+        \chi_{\text{triv}}\oplus\chi_{\text{sgn}}(12)(34)=1+1
+    \end{equation*}
+    i.e., it is not injective. This shows that $S_4$ cannot be embedded into $\text{GL}_2(\C)$.
 \end{proof}
 
 
