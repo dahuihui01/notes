@@ -29,6 +29,7 @@
 \newcommand{\pt}{\text{pt}}
 \newcommand{\ach}{\text{Ach}}
 \newcommand{\Q}{\mathbb{Q}}
+\newcommand{\gal}{\text{Gal}}
 
 
 \input{hui.tex}
@@ -589,7 +590,7 @@ where $\phi=\frac{1+\sqrt{5}}{2}$.
 
 \chapter{Fall 2011}
 
-\textcolor{red}{2,3,4,5}
+\textcolor{red}{2,4,5}
 
 \begin{prob}
     \begin{itemize}
@@ -631,6 +632,31 @@ where $\phi=\frac{1+\sqrt{5}}{2}$.
 \begin{prob}
     Let \(G\) be a cyclic group of order 100. Let \(K=\mathbb{Q}\), the field of rational numbers, or \(K=F_p\), the finite field with \(p\) elements, \(p\) being a prime number. For each such \(K\), construct a Galois extension \(L/K\) whose Galois group \(\text{Gal}(L/K)\) is isomorphic to \(G\). Explain your construction in detail.
 \end{prob}
+\begin{proof}
+    First we do $K=\F_p$. Let $E$ be the splitting field of $(x^{p^{100}}-x)$, then by definition $E$ is Galois, we see $\F_p\subset E$ (so it is an extension) because if $a\in\F_p$,
+    \begin{equation*}
+        a^p=a\Rightarrow (a^{p^{100}}-a)=0
+    \end{equation*}
+    Thus $\F_p\subset E$. Now $E$ is a degree $100$ extension of $\F_p$, i.e., $\left|\gal(E/\F_p)\right|=100$. Now by the following lemma, we are done.
+    \begin{lem}
+        Let $\F_p\subset E=\F_{p^n}$ be a Galois extension, then the Galois group is cyclic, i.e., is $\Z/n\Z$.
+    \end{lem}
+    This is because the Frobenius map 
+    \begin{equation*}
+        F: a\mapsto a^{p}
+    \end{equation*}
+    has order $n$, therefore is a generator of $\gal(E/\F_p)$. 
+
+    Now let $K=\Q$. We claim that $\Q(\zeta_{101})$ is a Galois extension with 
+    \begin{equation*}
+        \gal(\Q(\zeta_{101})/\Q)=\frac{\Z}{100\Z}=G
+    \end{equation*}
+    It is easy to see that $\Q(\zeta_{101})/\Q$ is Galois, and 
+    \begin{equation*}
+        \gal(\Q(\xi_n)/\Q)=\left(\frac{\Z}{n\Z}\right)^\times
+    \end{equation*}
+    Since $101$ is prime, we know the Galois group $\left(\frac{\Z}{n\Z}\right)^\times=\frac{\Z}{100\Z}$, as desired. (We will do the more general case where cyclic $G$ such that $|G|\neq p-1$ and when $G$ is abelian in the notes).
+\end{proof}
 
 
 
