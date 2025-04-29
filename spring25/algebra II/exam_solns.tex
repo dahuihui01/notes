@@ -652,6 +652,9 @@ where $\phi=\frac{1+\sqrt{5}}{2}$.
 
 \chapter{Spring 2007}
 
+
+\textcolor{red}{1, 2, 3, 4, 5}
+
 \begin{prob}
     Prove that the integer orthogonal group \(O_n(\mathbb{Z})\) is a finite group. (By definition, an \(n \times n\) square matrix \(X\) over \(\mathbb{Z}\) is orthogonal if \(XX^t = I_n\).)
 \end{prob}
@@ -672,13 +675,13 @@ where $\phi=\frac{1+\sqrt{5}}{2}$.
 \begin{prob}
     Find the invertible elements, the zero divisors and the nilpotent elements in the following rings:
     \begin{itemize}
-        \item[(a)] \(\mathbb{Z}/p^n\mathbb{Z}\), where \(n\) is a natural number, \(p\) is a prime one.
+        \item[(a)] \(\mathbb{Z}/p^n\mathbb{Z}\), where \(n\) is a natural number, \(p\) is a prime.
         \item[(b)] the upper triangular matrices over a field.
     \end{itemize}
 \end{prob}
 \begin{proof}
     \begin{itemize}
-        \item[(a)]
+        \item[(a)] 
         
         \item[(b)] The invertible elements 
         \begin{equation*}
@@ -699,6 +702,16 @@ where $\phi=\frac{1+\sqrt{5}}{2}$.
 \begin{prob}
     Prove that the group \(\text{GL}(2,\mathbb{C})\) does not contain a subgroup isomorphic to \(S_4\).
 \end{prob}
+\begin{proof}
+    We know that $S_4$ embeds into $\text{GL}_2(\C)$ if and only if there exists a homomorphism $\varphi:G\to\text{GL}_2(\C)$ such that $\varphi$ is injective. By definition, $\varphi$ is a representation, and we know there are one irreducible representations of dimension $2$ and two irreducible representations of dimension $1$. We know the character table of $S_4$, recall the following lemma:
+    \begin{lem}
+        Let $\rho\to\text{GL}_n(\C)$ be a representation, if for some $g$,
+        \begin{equation*}
+            \chi(\rho(g))=n
+        \end{equation*}
+        then $\rho(g)=I_n$. In other words, if there is an entry in the character table that is the same as its left most entry (dimension), then it is (the trace of )the identity matrix. 
+    \end{lem}
+\end{proof}
 
 
 
