@@ -589,7 +589,7 @@ where $\phi=\frac{1+\sqrt{5}}{2}$.
 \chapter{Fall 2014}
 
 
-\textcolor{red}{1,2,3,4,5}
+\textcolor{red}{1,2, 4,5}
 
 \begin{prob}
     \begin{itemize}
@@ -612,6 +612,32 @@ where $\phi=\frac{1+\sqrt{5}}{2}$.
         \item[(b)] Decompose \(\rho \otimes \rho \otimes \rho\) (as a representation of \(G\)) into a direct sum of irreducible representations.
     \end{itemize}
 \end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(a)] $S_3$ has three conjugacy classes, i.e., $3$ irreducible representations, the only way to write $|S_3|=6$ as a sum of $3$ squares is $1+1+4$, which implies that there exists a irred rep of dimension $2$, and not any higher.
+        \item[(b)] We know that 
+        \begin{equation*}
+            \chi\left[(\rho\otimes\rho\otimes\rho)(g)\right]=\left(\chi(\rho(g))\right)^3
+        \end{equation*}
+        Thus with some trial and error, if we want to write 
+        \begin{equation*}
+            \rho\otimes\rho\otimes\rho=\sum \chi_{\text{triv}}\dots\oplus\chi_{\text{sgn}}\dots \oplus\rho\dots\rho
+        \end{equation*}
+        Then we need to send 
+        \begin{equation*}
+            \rho\otimes\rho\otimes\rho(g)=\begin{cases}
+                8, g=e\\
+                0, g=(12)\\
+                -1, g=(123)
+            \end{cases}
+        \end{equation*}
+        Thus we see that 
+        \begin{equation*}
+            \rho\otimes\rho\otimes\rho=\chi_{\text{triv}}\oplus\chi_{\text{sgn}}\oplus\rho\oplus\rho\oplus\rho
+        \end{equation*}
+    \end{itemize}
+\end{proof}
+
 
 
 \begin{prob}
@@ -622,12 +648,14 @@ where $\phi=\frac{1+\sqrt{5}}{2}$.
 \end{prob}
 
 
+
 \begin{prob}
     \begin{itemize}
         \item[(a)] Prove that every group of order \(p^2\) (\(p\) a prime) is abelian. Then classify such groups up to isomorphism.
         \item[(b)] Give an example of a non-abelian group of order \(p^3\) for \(p = 3\). \textbf{Suggestion}: Represent the group as a group of matrices.
     \end{itemize}
 \end{prob}
+
 
 
 
