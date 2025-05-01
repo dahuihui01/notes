@@ -144,7 +144,7 @@
 \begin{proof}
     \begin{itemize}
         \item[(a)] Let $|K|=q^n$, we claim that the minimal polynomial is $f(t)=t^n$. This is because $\Phi$ is a generator of $G$, and $G$ has order $n$. (One can prove this fact by assuming there exists some $k<n$ such that $x^{p^k}=x$ for all $x\in K$, then $q^n$ divides $q^k$, which is a contradiction).
-        \item[(b)] Let $\zeta_n$ be the $n$th root of unity, where $n$ is as in (a). The Galois action is transitive, which implies that $\{\sigma x:x\in G\}$ gives all the roots of the minimal polynomial 
+        \item[(b)] 
     \end{itemize}
 \end{proof}
 
@@ -152,6 +152,15 @@
 \begin{prob}
     Let \(G\) be a finite group with center \(Z\subset G\). Show that if \(G\) admits a faithful irreducible representation \(G\to\text{GL}_{n}(k)\) for some positive integer \(n\) and some field \(k\), then \(Z\) is cyclic.
 \end{prob}
+\begin{proof}
+    We first assume that $k$ is algebraically closed. We know that $\rho(z)$ is a $G$-invariant map: take any $g\in G$,
+    \begin{equation*}
+        \rho(z)(\rho(g)(v))=\rho(g)\rho(z)(v)
+    \end{equation*}
+    therefore $\rho(z)=\lambda I_n$ for some $\lambda\in k^\times$, this shows that $\rho$ embdes $z$ into a group of $k^\times$, i.e., a cyclic group.
+
+    Now for the case where $k$ is not algebraically closed. Then any $\rho\otimes k^a$ is also faithful, and although $\rho\otimes k^a$ might not be irreducible, if $\rho\otimes k^a=\rho_1+\rho_2$, where $\rho_i$ are irreducible, then it follows that both $\rho_1$ and $\rho_2$ are faithful representations of $G$ over $k^a$.  
+\end{proof}
 
 
 
