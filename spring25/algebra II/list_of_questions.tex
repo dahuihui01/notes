@@ -1,0 +1,80 @@
+\documentclass[openany]{book}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsfonts,amsthm, amssymb}
+\usepackage{yhmath}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{comment}
+\usepackage{tikz-cd}
+\usepackage{quiver}
+\renewcommand{\familydefault}{ppl}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\colim}{\text{colim}}
+\DeclareMathOperator{\im}{im}
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+\newcommand{\tor}{\text{Tor}}
+\newcommand{\id}{\text{id}}
+\newcommand{\ext}{\text{Ext}}
+\newcommand{\ptop}{\text{PTop}}
+\newcommand{\pt}{\text{pt}}
+\newcommand{\ach}{\text{Ach}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\gal}{\text{Gal}}
+
+
+\input{hui.tex}
+
+\title{Questions}
+
+
+
+
+\date{\today}
+\author{Hui Sun}
+
+
+\begin{document}
+
+\maketitle
+
+
+
+\begin{prob}
+    To see whether a polynomial is irreducible over $\Q$, is it sufficient to test whether $f\mod p$ is irreducible over any prime $p$?
+
+    For example, $x^5-5x^3+1$.
+\end{prob}
+
+
+\begin{prob}
+    In the above example, how do we know that the Galois group contains an element of order $5$? (It is clear why it contains a transposition because there exists complex roots).
+\end{prob}
+\begin{proof}
+    This is because the Galois group $G$ acts transitively on the set of roots, by the Orbit stabilizer theorem, we know 
+    \begin{equation*}
+        |G|=|\text{Orbit}(\alpha)|\cdot|\text{Stab}(\alpha)|=5\cdot|\text{Stab}(\alpha)|
+    \end{equation*}
+    i.e., $5$ divides $|G|$. By Cauchy's theorem, there exists an element of order $5$ in $G$, i.e., a $5$-cycle.
+\end{proof}
+
+\begin{prob}
+    The Galois action on the set of roots implies for any root $r$ of the polynomial (where $G$ is the splitting field of), we must have 
+    \begin{equation*}
+        \text{Orbit}(r)=\{\text{ set of all roots}\}
+    \end{equation*}
+\end{prob}
+
+
+
+
+\end{document}
