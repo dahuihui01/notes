@@ -57,18 +57,49 @@
 
 \chapter{Fall 2017}
 
+
+
+\textcolor{red}{3,5,6}
+
 \begin{prob}
     Show that there is no simple group of order 30.
 \end{prob}
 \begin{proof}
-    
+    We know that $n_5=1$ or $6$, if $n_5=1$, then we are done. If $n_5=6$, then there are $30-4\cdot 6=6$ elements of order $\neq 6$, and we know there exists at least one Sylow $2$-subgroup and one Sylow $3$-subgroup, combined with the identity element, we see either $n_2=1$ or $n_3=1$. 
 \end{proof}
 
 
 \begin{prob}
     Let \(\Lambda\) be a free abelian group of finite rank \(n\), and let \(\Lambda^{\prime}\subset\Lambda\) be a subgroup of the same rank. Let \(x_{1},\ldots,x_{n}\) be a \(\mathbb{Z}\)-basis for \(\Lambda\), and let \(x^{\prime}_{1},\ldots,x^{\prime}_{n}\) be a \(\mathbb{Z}\)-basis for \(\Lambda^{\prime}\). For each \(i\), write \(x^{\prime}_{i}=\sum_{j=1}^{n}a_{ij}x_{j}\), and let \(A:=(a_{ij})\in \text{Mat}_{n\times n}(\mathbb{Z})\). Show that the index \([\Lambda:\Lambda^{\prime}]\) equals \(|\det A|\).
-
 \end{prob}
+\begin{proof}
+    We notice that $\Lambda=\Z\oplus\dots\oplus\Z$, and $\Lambda'$ is a subgroup of same rank thus 
+    \begin{equation*}
+        \Lambda'=d_1\Z\oplus\dots\oplus d_n\Z
+    \end{equation*}
+    where $d_i$ are integers. We note that 
+    \begin{equation*}
+        [\Lambda:\Lambda']=\left|\prod_{i=1}^nd_i\right|
+    \end{equation*}
+    It suffices to take the basis of $\Lambda$ as $x_i=(0,\dots,0,1,0,\dots,0)$, where only the $i$th entry is nonzero and equal to $1$, and the basis for $\Lambda'$ as $x_j'=(0,\dots, 0,d_j,0,\dots, 0)$, where only the $j$th entry is nonzero and equal to $d_j$. This is because for any change of basis matrix $P$, we have 
+    \begin{equation*}
+        \det(PAP^{-1})=\det(A)
+    \end{equation*} 
+    i.e., we can freely change the basis of $A$. With respect to the basis chosen above, we have 
+    \begin{equation*}
+        A=\begin{pmatrix}
+            d_1&0&\dots&0\\
+            0&d_2&\dots&0\\
+            \dots&\dots&\dots&\dots\\
+            0&\dots&\dots&d_n
+        \end{pmatrix}
+    \end{equation*}
+    This shows that 
+    \begin{equation*}
+        \left|\det A\right|=\left|\prod_{i=1}^nd_i\right|=[\Lambda:\Lambda']
+    \end{equation*}
+    as desired.
+\end{proof}
 
 
 \begin{prob}
@@ -83,6 +114,25 @@
 \begin{prob}
     Compute the Galois group of \(x^{5}-10x+5\) over \(\mathbb{Q}\).
 \end{prob}
+\begin{proof}
+    One can graph this function and see there are only $3$ real roots, we first note 
+    \begin{equation*}
+        \begin{cases}
+            f(-2)<0\\
+            f(-1)>0\\
+            f(1)<0\\
+            f(2)>0
+        \end{cases}
+    \end{equation*}
+    By IVT, there are at least $3$ real roots. By Rolle's theorem, between any roots, there must exists a point $f'(c)=0$, therefore we argue there can be at most 3 real roots because there are only two points $p$ such that $f'(p)=0$. This shows that there are $2$ complex roots, and let $r_1$ be a complex root. By Eisenstein, this polynomial is irreducible, therefore a real root $r_2$ has minimal polynomial degree $5$ i.e., the Galois extension has degree 
+    \begin{equation*}
+        \Q\subset\Q(r_1)\subset\Q(r_1,r_2)
+    \end{equation*}
+    has degree $125$. Since it contains an element of order $2$ (permuting the two complex roots) and and order $5$, the Galois group must be $S_5$.
+\end{proof}
+
+
+
 
 \begin{prob}
     Let \(K/k\) be an extension of finite fields with \(\#k=q\), let \(\Phi\colon x\mapsto x^{q}\) denote the \(q\)th power Frobenius map on \(K\), and let \(G:=\text{Gal}(K/k)\).
@@ -91,6 +141,12 @@
         \item[(b)] Use (a) to prove the \textit{normal basis theorem} in the case of the extension \(K/k\): there exists \(x\in K\) such that the set \(\{\sigma x\mid\sigma\in G\}\) is a \(k\)-basis for \(K\).
     \end{itemize}
 \end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(a)] Let $|K|=q^n$, we claim that the minimal polynomial is $f(t)=t^n$. This is because $\Phi$ is a generator of $G$, and $G$ has order $n$. (One can prove this fact by assuming there exists some $k<n$ such that $x^{p^k}=x$ for all $x\in K$, then $q^n$ divides $q^k$, which is a contradiction).
+        \item[(b)] Let $\zeta_n$ be the $n$th root of unity, where $n$ is as in (a). The Galois action is transitive, which implies that $\{\sigma x:x\in G\}$ gives all the roots of the minimal polynomial 
+    \end{itemize}
+\end{proof}
 
 
 \begin{prob}
