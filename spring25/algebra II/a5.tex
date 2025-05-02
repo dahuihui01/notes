@@ -270,16 +270,32 @@ Quick reminder whether a polynomial has a rational root:
 \end{prob}
 \begin{proof}
     \begin{itemize}
-        \item[(a)]
-        
+        \item[(a)] There are four roots of this polynomial 
+        \begin{equation*}
+            \{\alpha, -\alpha, \beta, -\beta\}
+        \end{equation*}
+        where 
+        \begin{equation*}
+            \alpha=\sqrt{2+\sqrt{6}}, \beta=\sqrt{2-\sqrt{6}}
+        \end{equation*}
+        Thus the Galois group embeds into $S_4$. Notice that 
+        \begin{equation*}
+            \alpha\beta=\sqrt{2}i
+        \end{equation*}
+        Thus we see the Galois extension has degree $8$:
+        \[\begin{tikzcd}
+            {\mathbb{Q}(\sqrt{2+\sqrt{6}},\sqrt{2}i)} \\
+            {\mathbb{Q}(\sqrt{2+\sqrt{6}})} \\
+            {\mathbb{Q}}
+            \arrow["2", no head, from=1-1, to=2-1]
+            \arrow["4", no head, from=2-1, to=3-1]
+        \end{tikzcd}\]
+        Notice that the Galois grop $G$ is an order $8$ subgruop of $S_4$, which implies that $G$ is a Sylow $2$ subgroup, and all Sylow $2$ subgruops are isomorphic: 
+        \begin{equation*}
+            G\cong D_8
+        \end{equation*}
 
-
-
-
-
-
-
-        \item[(b)] 
+        \item[(b)] The argument is given in (a).
     \end{itemize}
 \end{proof}
 
@@ -291,6 +307,22 @@ Quick reminder whether a polynomial has a rational root:
         \item[(b)] Determine all intermediate fields that are Galois over \(\mathbb{Q}\).
     \end{itemize}
 \end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(a)] This computation is exactly same as above, as we have the four roots 
+        \begin{equation*}
+            \left\{\pm\sqrt{3+\sqrt{10}}, \pm\sqrt{3-\sqrt{10}}\right\}
+        \end{equation*}
+        and we see that $\alpha\beta=i$, thus the Galois group $\gal(K/\Q)$ has order $8$, and embeds into $S_4$, thus 
+        \begin{equation*}
+            \gal(K/\Q)\cong D_8
+        \end{equation*}
+        \item[(b)] \textcolor{red}{not finished}
+    \end{itemize}
+\end{proof}
+
+
+
 
 
 \begin{prob}[S2010-Q3]
@@ -300,6 +332,17 @@ Quick reminder whether a polynomial has a rational root:
         \item[(b)] \(x^4 - 14x^2 + 9\) over \(\mathbb{Q}\).
     \end{itemize}
 \end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(a)] The polynomial completely factors over $\C(t)$, so the Galois group is $\{e\}$.
+        \item[(b)] The roots are 
+        \begin{equation*}
+            \left\{\pm\sqrt{7\pm 2\sqrt{10}}\right\}
+        \end{equation*}
+        and $\alpha\beta\in\Q$ again, hence the Galois group is $\Z/2\Z\times\Z/2\Z$.
+    \end{itemize}
+\end{proof}
+
 
 \begin{prob}[S2013-Q6]
     Let \(K\) be the splitting field of \(x^6 - 5\) over \(\mathbb{Q}\).
@@ -309,6 +352,20 @@ Quick reminder whether a polynomial has a rational root:
         \item[(c)] Describe an intermediate field \(F\) such that \(F\) is not \(\mathbb{Q}\) or \(K\) and \(F/\mathbb{Q}\) is Galois.
     \end{itemize}
 \end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(a)] By Eisenstein.
+        \item[(b)] We know $K=\Q(\sqrt[6]{5}, \zeta_6)$, where $\zeta_6$ is the $6$th root of unity. The roots are 
+        \begin{equation*}
+            \left\{\sqrt[6]{5}, \sqrt[6]{5}\zeta_6, \dots, \sqrt[6]{5}\zeta_6^5\right\}
+        \end{equation*}
+        
+    \end{itemize}
+\end{proof}
+
+
+
+
 
 \begin{prob}[S2016-Q3]
     Determine the Galois group of \(x^{6}-10x^{3}+1\) over \(\mathbb{Q}\).
