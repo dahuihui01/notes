@@ -1109,7 +1109,7 @@ where $\phi=\frac{1+\sqrt{5}}{2}$.
 \chapter{Spring 2010}
 
 
-\textcolor{red}{3,4,5}
+\textcolor{red}{3, 5}
 
 \begin{prob}
     Let \(G\) be a non-abelian group of order \(p^3\), here \(p\) is prime. Determine the number of distinct conjugacy classes in \(G\).
@@ -1151,8 +1151,24 @@ where $\phi=\frac{1+\sqrt{5}}{2}$.
     \begin{equation*}
         a^3+a-1=0
     \end{equation*}
-    since $\C$ is algebraically closed, we know that there are $3$ roots in $\C$, i.e., $x^3+t^2x-t^3$ completely factors over $\C(t)$.
-    \item[(b)] 
+    since $\C$ is algebraically closed, we know that there are $3$ roots in $\C$, i.e., $x^3+t^2x-t^3$ completely factors over $\C(t)$. This implies that the Galois group is the trivial group.
+    \item[(b)] Solving for the roots, they are 
+    \begin{equation*}
+        \left\{\pm\sqrt{7+2\sqrt{10}}, \pm\sqrt{7-2\sqrt{10}}\right\}:=\left\{\pm\alpha, \pm\beta\right\}
+    \end{equation*}
+    We note that $\alpha\beta=3$, hence there are only four elements of the Galois group:
+    \begin{equation*}
+        \begin{cases}
+            \alpha\mapsto \alpha, \beta\mapsto \beta\\
+            \alpha\mapsto-\alpha, \beta\mapsto-\beta\\
+            \alpha\mapsto\beta,\beta\mapsto\alpha\\
+            \alpha\mapsto-\beta,\beta\mapsto-\alpha
+        \end{cases}
+    \end{equation*}
+    In other words, the each element is completely determined by where $\alpha$ is sent to. Thus we see the group is 
+    \begin{equation*}
+        \Z/2\Z\times\Z/2\Z
+    \end{equation*}
 \end{itemize}
 
 
@@ -1170,8 +1186,29 @@ where $\phi=\frac{1+\sqrt{5}}{2}$.
         \begin{equation*}
             \{v_i\otimes v_j: 1\leq i,j\leq n\}
         \end{equation*}
-
-        \item[(b)]  
+        and 
+        \begin{equation*}
+            T\otimes T(v_i\otimes v_j)=Tv_i\otimes Tv_j
+        \end{equation*}
+        Let $T=(a_{ij})$, then we know 
+        \begin{equation*}
+            (\tr(T))^2=\left(\sum_{i=1}^na_{ii}\right)^2
+        \end{equation*}
+        And we have 
+        \begin{align*}
+            T\otimes T(v_i\otimes v_j)&=\sum_{k=1}^n\sum_{l=1}^na_{ki}a_{lj}v_k\otimes v_l
+        \end{align*}
+        Therefore computing the trace we see 
+        \begin{equation*}
+            \tr(T\otimes T)=\sum_{i=1}^n\sum_{j=1}^na_{ii}a_{jj}=\tr(T)^2
+        \end{equation*}
+        as desired!
+        \item[(b)]  It suffices to figure out this formula by looking at diagonalizable matrices, where $\det(T)=\prod_{i=1}^n\lambda_i$, then it is easy to see that 
+        \begin{equation*}
+            \det(T\otimes T)=\left(\det(T)\right)^{2n}
+        \end{equation*}
+        where $n$ is the dimension.
+        and three times replace it with 
     \end{itemize}
 \end{proof}
 
