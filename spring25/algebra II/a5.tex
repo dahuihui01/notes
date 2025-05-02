@@ -423,9 +423,18 @@ Quick reminder whether a polynomial has a rational root:
 \end{proof}
 
 \begin{prob}[F2010-Q3]
-    Let \(K = \mathbb{Q}(\sqrt[5]{2}, \sqrt{-1})\) and \(F = \mathbb{Q}(\sqrt{-2})\). Show that \(K\) is Galois over \(F\) and determine the Galois group \(\text{Gal}(K/F)\).
+    Let \(K = \mathbb{Q}(\sqrt[8]{2}, \sqrt{-1})\) and \(F = \mathbb{Q}(\sqrt{-2})\). Show that \(K\) is Galois over \(F\) and determine the Galois group \(\text{Gal}(K/F)\).
 \end{prob}
 \begin{proof}
+    Since $\sqrt{2}=\zeta_8^4$, we see $F$ is a subfield such that 
+    \begin{equation*}
+        \Q\subset F\subset K
+    \end{equation*}
+    Since $K$ is Galois over $\Q$ (splitting field of $x^8-2$), we know $K/F$ is also Galois. Now The Galois group $\gal(K/F)$ corresponds to the subgroup of $\gal(K/\Q)$ which is $D_{10}$ of index $5$, i.e., a subgroup of order $2$, hence 
+    \begin{equation*}
+        \gal(K/F)=\frac{\Z}{2\Z}
+    \end{equation*} 
+
 
     % We know that $K$ is Galois because it is the splitting field of the following separable polynomial:
     % \begin{equation*}
@@ -445,6 +454,20 @@ Quick reminder whether a polynomial has a rational root:
         \item[(b)] Let \(K\) be the splitting field of the polynomial \(x^8 - 2\). Determine whether the Galois group \(\text{Gal}(K/\mathbb{Q})\) is dihedral (i.e., isomorphic to \(D_{2n}\) for some \(n\)).
     \end{itemize}
 \end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(a)] Because of the relation $srs=r^{-1}$, we can express all the terms in $D_{2n}$ as 
+        \begin{equation*}
+            r^ks^m
+        \end{equation*}
+        where $0\leq k\leq n-1, m=0,1$. Hence there are $2n$ elements.
+        \item[(b)] The Galois group is indeed diahedral, note that 
+        \begin{equation*}
+            K=\Q(\zeta_8,\sqrt[8]{2})
+        \end{equation*}
+        Thus $\gal(K/\Q)$ has order 16 and the only transitive subgroup of $S_8$ of order $16$ is $D_{16}$.
+    \end{itemize}
+\end{proof}
 
 
 \begin{prob}[S2019-Q1]
