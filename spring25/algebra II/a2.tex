@@ -9,11 +9,31 @@
 
 % (2020, 2017, 2016, 2011, 2010, 2008, 2006)
 
+\begin{defn}[Division ring]
+    Any nonzero element in a unit.
+\end{defn}
+\begin{prop}
+    Let $A$ be a semisimple finite-dimensional algebra over $F$, then $A$ can be decomposed into a direct sum of matrix algebras over a division ring:
+    \begin{equation*}
+        A=M_{n_1}(D_1)\oplus\dots\oplus M_{n_k}(D_k)
+    \end{equation*}
+    where $D_i$'s are division rings, $M_{n_i}$ is the algebra of $n_i\times n_i$ matrices with entries in $D_i$. This decomposition is unique up to permutation.
+
+    For example, let $G$ be a finite, group, then the group algebra $\C(G)$ can be decomposed to 
+    \begin{equation*}
+        \C(G)=M_{n_1}(\C)\oplus\dots\oplus M_{n_k}(\C)
+    \end{equation*}
+    where $|G|=\sum_id_i^2$, and $k$ is the number of conjugacy classes of $G$. Hence it suffices to compute the irreducible representations of $G$.
+\end{prop}
+
 \begin{prob}[F2019-Q5]
     Determine the number of two-sided ideals in the group algebra \(\mathbb{C}[S_3]\), where \(S_3\) is the symmetric group of permutations of \(\{1, 2, 3\}\).
 \end{prob}
 \begin{proof}
-    
+    Using the Proposition above, we know that 
+    \begin{equation*}
+        \C(S_3)=M_1(\C)+M_1(\C)+M_2(\C)=\C\oplus\C\oplus M_2(\c)
+    \end{equation*}
 \end{proof}
 
 
@@ -31,6 +51,9 @@
         \item Prove that if \( \rho \) is faithful (i.e., injective), then \( C \) must be cyclic.
     \end{enumerate}
 \end{prob}
+
+
+
 \begin{proof}
     \begin{enumerate}
         \item $\mathbb{C}$ is algebraically closed therefore Schur's lemma applies (see F2017-Q6)
@@ -44,7 +67,14 @@
             \end{pmatrix}
         \end{equation*}
         We also know that $C$ is finite and $\rho(z^r)=I$, which implies $|r|=1$. This gives $|\chi(s)|=n$ for all $s\in C$. 
-        \item Y
+        \item We know that $\rho$ is irreducible, hence the corresponding character $\chi$ satisfies 
+        \begin{equation*}
+            \frac{1}{|G|}\sum_{g\in G}|\chi(g)|^2=\frac{|C|}{|G|}n^2+\frac{1}{|G|}\sum_{g\not\in C}|\chi(g)|^2=1
+        \end{equation*}
+        This implies that 
+        \begin{equation*}
+            \frac{|C|}{|G|}n^2\leq 1\Rightarrow n^2\leq[G:C]
+        \end{equation*}
         \item If $\rho$ is faithful, then $C$ embeds into $k^\times$, and any finite subgroup of $k^\times$ is cyclic.
     \end{enumerate}
 \end{proof}
@@ -54,14 +84,67 @@
 ring is (left) Noetherian and Artinian. (You may freely use facts about
 semisimple, Noetherian, and Artinian modules.)
 \end{prob}
+\begin{proof}
+    Any semisimple ring $R$ can be decomposed into a finite direct sum of simple ideals $I_i$:
+    \begin{equation*}
+        R=\bigoplus_{i=1}^nI_i
+    \end{equation*}
+    This directly implies that the ascending and descending chain condition: there aren't infinitely sequence of ideals of strict inclusions.
+\end{proof}
+
+
+
+
 
 \begin{prob}[S2005-Q4]
     Let \( R \) be a ring and \( L \) a minimal left ideal of \( R \) (i.e., \( L \) contains no non-zero proper left ideals of \( R \)). Assuming \( L^2 \neq 0 \), prove that \( L = Re \) for some non-zero idempotent element \( e \in R \).
 \end{prob}
+\begin{proof}
+    We recall that a ring element $e\in R$ is an idempotent if and only if 
+    \begin{equation*}
+        e^2=e
+    \end{equation*}
+    It suffices to show that there exists a nonzero idempotent element $e\in L$ since $Re$ is an ideal contained in $L$, thus $Re=L$. Take any $x\neq 0$ in $L$, such that there exists $g\in L$ such that $gx\neq 0$ (this is guaranteed by $L^2\neq 0$). The ideal $Lx$ is contained in $L$, since $L$ is simple, we must have 
+    \begin{equation*}
+        L=Lx
+    \end{equation*}
+    Hence $x\in L$ can be written as 
+    \begin{equation*}
+        x=ex
+    \end{equation*}
+    for some $e\in L$, multiplying both sides by $e$ and moving terms, we get 
+    \begin{equation*}
+        (e^2-e)x=0
+    \end{equation*}
+    It suffices to show that 
+    \begin{equation*}
+        \left\{g\in L: gx=0\right\}=\{0\}
+    \end{equation*}
+    This is because $\{g\in L: gx=0\}$ is again an ideal contained in $L$, since we assumed that there exists some $g\in L$ such that $gx\neq 0$, 
+    \begin{equation*}
+        \{g\in L:gx=0\}=\{0\}
+    \end{equation*}
+    and we are done!
+\end{proof}
+
 
 \begin{prob}[S2016-Q6, F2006-Q6, F2008-Q6]
     Let \( A \) be a finite-dimensional semisimple algebra over \( \mathbb{C} \), and let \( V \) be an \( A \)-module that decomposes as \( V \cong S \oplus S \), where \( S \) is a simple \( A \)-module. Determine the automorphism group \( \operatorname{Aut}_A(V) \) of \( V \) as an \( A \)-module.
 \end{prob}
+\begin{proof}
+   By Schur's lemma, since $S$ is a simple $A$-module, we know 
+   \begin{equation*}
+        \text{End}_A(S)\cong\C
+   \end{equation*}
+   Thus 
+   \begin{equation*}
+        \text{End}(V)\cong M_2(\C)
+   \end{equation*}
+   hence 
+   \begin{equation*}
+        \text{Aut}_A(V)\cong \text{GL}_2(\C)
+   \end{equation*}
+\end{proof}
 
 
 
@@ -69,14 +152,82 @@ semisimple, Noetherian, and Artinian modules.)
     Classify all non-commutative semi-simple rings with $512$ elements.
 (You can use the fact that finite division rings are fields.)
 \end{prob}
+\begin{proof}
+    By Artin-Wedderburn, we know that this finite semisimple ring can be decomposed into a finite direct sum of matrix rings:
+    \begin{equation*}
+        R\cong M_{n_1}(F_1)\oplus\dots\oplus M_{n_k}(F_k)
+    \end{equation*}
+    where $F_i$ are finite fields. Further more we can assume $n_1\geq n_2\geq\dots\geq n_k$.The total number of elements is 
+    \begin{equation*}
+        F_1^{n_1^2}\dots F_k^{n_k^2}=512=2^9
+    \end{equation*}
+    Thus we see all the components are powers of $2$. Since $R$ is noncommutative, we may assume that $n_1\geq 2$. If $n_1=3$, then $F_1=2$, we have 
+    \begin{equation*}
+        R\cong M_{3}(\F_2)
+    \end{equation*}
+    If $n_1=2$, we can have $n_2=2$, then 
+    \begin{equation*}
+        R\cong M_2(\F_2)\oplus M_2(\F_2)\oplus \F_2
+    \end{equation*}
+    or $n_3=\dots=n_k=1$, then we have (different ways of adding to $5$):
+    \begin{equation*}
+        R\cong M_2(\F_2)\oplus\begin{cases}
+            \F_2\oplus\F_2\oplus\F_2\oplus\F_2\oplus F_2\\
+            \F_{4}\oplus \F_2\oplus\F_2\oplus F_2\\
+            \F_8\oplus\F_2\oplus\F_2\\
+            \F_{16}\oplus\F_2\\
+            \F_8\oplus\F_4\\
+            \F_{16}\oplus F_2\\
+            \F_{32}
+        \end{cases}
+    \end{equation*}
+
+
+
+    % There are three semi-simple rings of of order $512$ that are not commutative. They are 
+    % \begin{equation*}
+    %     \F_2\oplus\F_2\oplus\F_2\oplus\F_2\oplus\F_2\oplus M(\F_4)
+    % \end{equation*},
+    % \begin{equation*}
+    %     \F_2\oplus M(\F_4)\oplus M(\F_4)
+    % \end{equation*}
+    % and 
+    
+    % \begin{equation*}
+    %     M(\F_9)
+    % \end{equation*}
+\end{proof}
 
 \begin{prob}[F2011-Q5]
     Let \( A \) be a finite-dimensional semisimple algebra over \( \mathbb{C} \), and let \( V \) be a finitely-generated \( A \)-module. Prove that \( V \) has only finitely many \( A \)-submodules if and only if \( V \) decomposes into a direct sum of pairwise irreducible non-isomorphic (i.e., simple)  \( A \)-modules.
 \end{prob}
+\begin{proof}
+    Suppose that $V$ is a direct sum of distinct irreducible $A$-modules, then 
+    \begin{equation*}
+        V=S_1\oplus\dots\oplus S_n
+    \end{equation*}
+    where $S_i$'s are nonisomorphic and simple. Hence the only submodules of $S_i$ is $\{0\}$ and $S_i$, i.e., there are only finitely many submodules of $V$.
 
-\begin{warn}
-    For one-dimensional irreducible representation, $\rho: G\to \text{GL}_n(\C)$, they are equivalent to $\rho: G^{ab}\to\text{GL}_n(\C)$.
-\end{warn}
+    Conversely, we suppose that there are finitely many $A$-submodules of $V$, because $V$ is semisimple, we know 
+    \begin{equation*}
+        V=\bigoplus_{i=1}^n S_i^{n_i}
+    \end{equation*} 
+    where $S_i$'s are semisimple. It suffices to show that $n_i=1$ for all $i$. Suppose that 
+    \begin{equation*}
+        V=S_i\oplus S_i
+    \end{equation*}
+    By Schur's lemma, we have 
+    \begin{equation*}
+        \text{Hom}(S_i,S_i)\cong\C
+    \end{equation*}
+    there are infinitely many distinct $\phi:S_i\to S_i$, and we note that 
+    \begin{equation*}
+        \left\{(s,\phi(s)):\phi\in\text{Hom}(S_i,S_i)\right\}
+    \end{equation*} 
+    is a submodule of $V$, thus there are infinitely many submodules, which is a contradiction.
+\end{proof}
+
+
 
 
 
