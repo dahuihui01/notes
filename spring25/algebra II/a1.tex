@@ -1321,7 +1321,18 @@ to the center of $G/Z_{i-1}$. One can show that $Z_i$ is normal in $G$. A group 
 for \( g \in G \) and \( A \in M_n(K) \). This action induces a group homomorphism \( \Psi \colon G \to \mathrm{GL}(M_n(K)) \). Express the character \( \chi_\Psi \) of \( \Psi \) in terms of \( \chi_\Phi \) (the character of \( \Phi \)).
 \end{prob}
 \begin{proof}
-    
+    We compute the trace of the multiplication map by $\Phi(g)$, we consider a basis of $M_n(K)$ 
+    \begin{equation*}
+        \left\{M_{ij}: 1\leq i,j\leq n\right\}
+    \end{equation*}
+    where $M_{ij}$ is the matrix with only nonzero entry $1$ at the $ij$th position. Then we see 
+    \begin{equation*}
+        \Phi(g)M_{ij}=(\Phi(g))_{ii}
+    \end{equation*}
+    Thus 
+    \begin{equation*}
+        \chi_\Psi=n\sum_{i=1}^n(\Phi(g))_{ii}=n\tr(\Phi(g))
+    \end{equation*}
 \end{proof}
 
 \begin{prob}[S2015-Q5]
