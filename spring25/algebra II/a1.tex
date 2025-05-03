@@ -1181,8 +1181,9 @@ to the center of $G/Z_{i-1}$. One can show that $Z_i$ is normal in $G$. A group 
             \chi^{(4)} & 3 & 0 & -1 & 0 \\
             \end{array}
     \end{equation*}
-    where $\omega=e^\frac{2\pi i}{3}$. Since $5$ cannot be written as a 
+    where $\omega=e^\frac{2\pi i}{3}$. Since $5$ cannot be written as a multiple of $3$, it must contain a $1$-dimensional invariant subspace (also $2,3,4$).
 \end{proof}
+
 
 
 
@@ -1191,16 +1192,32 @@ to the center of $G/Z_{i-1}$. One can show that $Z_i$ is normal in $G$. A group 
 \begin{prob}[S2004-Q6]
     Consider complex representations of a finite group \( G \). Let \( \sigma_1, \ldots, \sigma_s \) be representatives of the conjugacy classes of \( G \), and let \( \chi_1, \ldots, \chi_s \) be the irreducible characters of \( G \).
     
-    \begin{enumerate}
-        \item Define an inner product on the \(\mathbb{C}\)-vector space of class functions on \( G \) such that \( \{\chi_1, \ldots, \chi_s\} \) forms an orthonormal basis.
+    \begin{itemize}
+        \item[(a)] Define an inner product on the \(\mathbb{C}\)-vector space of class functions on \( G \) such that \( \{\chi_1, \ldots, \chi_s\} \) forms an orthonormal basis.
         
-        \item Let \( A = (a_{ij}) \) be the character table matrix of \( G \), where \( a_{ij} = \chi_i(\sigma_j) \) for \( 1 \leq i, j \leq s \). Prove that \( A \) is invertible.
-    \end{enumerate}
+        \item[(b)] Let \( A = (a_{ij}) \) be the character table matrix of \( G \), where \( a_{ij} = \chi_i(\sigma_j) \) for \( 1 \leq i, j \leq s \). Prove that \( A \) is invertible.
+    \end{itemize}
 \end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(a)] 
+        
+        \item[(b)]  
+    \end{itemize}
+\end{proof}
+
+
+
+
+
+
 
 \begin{prob}[S2018-Q4, S2007-Q5]
     Is $S_4$ isomorphic to a subgroup of $\text{GL}_2(\mathbb{C})$?
 \end{prob}
+\begin{proof}
+    There is no injective homomorphism $\varphi: S_4\to\text{GL}_2(\C)$. Note any such $\varphi$ is called a $2$-dim representation, it is either irreducible or not, we know that the $2$-dimensional irreducible representation is not injective, and a direct sum of $1$-dimensional representations is also not injective.
+\end{proof}
 
 
 \begin{prob}[S2010-Q6]
@@ -1305,6 +1322,9 @@ for \( g \in G \) and \( A \in M_n(K) \). This action induces a group homomorphi
 \begin{prob}[S2015-Q5]
     Prove that a tensor product of irreducible representations over an algebraically closed field is irreducible.
 \end{prob}
+\begin{proof}
+    Let $\rho_1$ be irreducible of $G_1$, $\rho_2$ of $G_2$, then over an algebraically closed field, we know $\rho_1\otimes\rho_2$ is an irreducible representation 
+\end{proof}
 
 \begin{prob}[S2001-Q3]
     Calculate the complete character table for $\Z/3\Z\times S_3$, where $S_3$ is the symmetric group in 3 letters.
