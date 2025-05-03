@@ -283,15 +283,25 @@ is a basis for \( V \).
 \begin{prob}[F2018-Q3]
     \phantom{text}
     \begin{itemize}
-        \item[(a)] Fix a positive integer \( n \) and classify all finite modules over the ring \( \mathbb{Z}/n \).
-        \item[(b)] Prove, either using (a) or from first principles, for a fixed prime \( p \) that all finite modules over \( \mathbb{Z}/p \) are free.
+        \item[(a)] Fix a positive integer \( n \) and classify all finite modules over the ring \( \mathbb{Z}/n\Z \).
+        \item[(b)] Prove, either using (a) or from first principles, for a fixed prime \( p \) that all finite modules over \( \mathbb{Z}/p\Z \) are free.
     \end{itemize}
 \end{prob}
+\begin{proof}
+    
+\end{proof}
 
 
 \begin{prob}[F2017-Q2]
     Let \(\Lambda\) be a free abelian group of finite rank \(n\), and let \(\Lambda' \subset \Lambda\) be a subgroup of the same rank. Let \(x_1, \ldots, x_n\) be a \(\mathbb{Z}\)-basis for \(\Lambda\), and let \(x_1', \ldots, x_n'\) be a \(\mathbb{Z}\)-basis for \(\Lambda'\). For each \(i\), write \(x_i' = \sum_{j=1}^n a_{ij}x_j\), and let \(A := (a_{ij}) \in \operatorname{Mat}_{n \times n}(\mathbb{Z})\). Show that the index \([\Lambda : \Lambda']\) equals \(|\det A|\).
 \end{prob}
+\begin{proof}
+    Up to some basis change, we can write 
+    \begin{equation*}
+        \Gamma'=d_1\Z\oplus\dots\oplus d_k\Z
+    \end{equation*}
+    given $\Gamma=\Z\oplus\dots\oplus\Z$. Then Since we are taking the determinant, it is invariant under change of basis. One can compute the matrix using the standard basis for $\Gamma$ and $\Gamma'$, and it is clear that $[\Gamma:\Gamma']=\prod_{i=1}^kd_i=|\det(A)|$.
+\end{proof}
 
 
 \begin{prob}[S2001-Q5]
@@ -388,9 +398,9 @@ Let \( k \) be a field of characteristic different from 2 and let \( G = \{e, g\
 \end{proof}
 
 
-\begin{center}
-    \textcolor{pink}{End of Page 22}
-\end{center}
+% \begin{center}
+%     \textcolor{pink}{End of Page 22}
+% \end{center}
 
 
 \begin{prob}[S2017-Q4]
@@ -478,16 +488,112 @@ Page 24-25
         \[tr(\wedge^{2}A)=\frac{1}{2}(tr(A)^{2}-tr(A^{2})).\]
     \end{itemize}
 \end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(a)] We recall the wedge product of vector space $V\wedge V$ is given by the basis 
+        \begin{equation*}
+            \{v_i\wedge v_j: i<j\}
+        \end{equation*}
+        where $\{v_1,\dots, v_n\}$ is a basis for $V$. And we define 
+        \begin{equation*}
+            A\wedge A(v_i\wedge v_j)=Av_i\wedge A_j
+        \end{equation*}
+        \item[(b)] Consider the matrix representation of $A=(A_{ij})$, on the basis $\{v_i\wedge v_j: i<j\}$, 
+        \begin{align*}
+            A\wedge A(v_i\wedge v_j)&=\sum_{k,l=1}^nA_{ki}A_{lj}(v_k\wedge v_l)\\
+            &=\sum_{k<l}A_{ki}A_{lj}(v_k\wedge v_l)+\sum_{l<k}A_{ki}A_{lj}(v_k\wedge v_l)\\
+            &=\sum_{k<l}A_{ki}A_{lj}(v_k\wedge v_l)-\sum_{l<k}A_{ki}A_{lj}(v_l\wedge v_k)
+        \end{align*}
+        Thus the diagonal term with respect to $v_i\wedge v_j$ is 
+        \begin{equation*}
+            A_{ii}A_{jj}-A_{ji}A_{ij}
+        \end{equation*}
+        Thus 
+        \begin{equation*}
+            \text{Tr}(A\wedge A)=\sum_{i<j}A_{ii}A_{jj}-A_{ji}A_{ij}
+        \end{equation*}
+        Now 
+        \begin{equation*}
+            \text{Tr}(A)^2=\sum_{i=1}^nA_{ii}^2+2\sum_{i<j}A_{ii}A_{jj}
+        \end{equation*}
+        and 
+        \begin{align*}
+            \text{Tr}(A^2)&=\sum_{k,l=1}^nA_{lk}A_{kl}\\
+            &=\sum_{i=1}^nA_{ii}^2+2\sum_{k<l}A_{lk}A_{kl}
+        \end{align*}
+        Thus we see that 
+        \[tr(\wedge^{2}A)=\frac{1}{2}(tr(A)^{2}-tr(A^{2}))\]
+    \end{itemize}
+\end{proof}
 
 
 \begin{prob}[S2006-Q5]
     Let \(V\) be a finite-dimensional vector space over a field \(k\). Let \(T \in \text{End}_k(V)\). Show that \(\text{tr}(T \otimes T) = (\text{tr}(T))^2\). Here \(\text{tr}(T)\) is the trace of \(T\).
 \end{prob}
+\begin{proof}
+    We will show that $\tr(T\otimes T)=(\tr T)^2$, and the $T\otimes T\otimes$ is done similarly. We will use matrix representation to do an explicit computation. Let $\{v_1,\dots, v_n\}$ be a basis of$V$, then $V\otimes V$ has basis 
+        \begin{equation*}
+            \{v_i\otimes v_j: 1\leq i,j\leq n\}
+        \end{equation*}
+        and 
+        \begin{equation*}
+            T\otimes T(v_i\otimes v_j)=Tv_i\otimes Tv_j
+        \end{equation*}
+        Let $T=(a_{ij})$, then we know 
+        \begin{equation*}
+            (\tr(T))^2=\left(\sum_{i=1}^na_{ii}\right)^2
+        \end{equation*}
+        And we have 
+        \begin{align*}
+            T\otimes T(v_i\otimes v_j)&=\sum_{k=1}^n\sum_{l=1}^na_{ki}a_{lj}v_k\otimes v_l
+        \end{align*}
+        Therefore computing the trace we see 
+        \begin{equation*}
+            \tr(T\otimes T)=\sum_{i=1}^n\sum_{j=1}^na_{ii}a_{jj}=\tr(T)^2
+        \end{equation*}
+        as desired!
+\end{proof}
 
 \begin{prob}[S2016-Q4]
     Let \(V\) and \(W\) be two finite dimensional vector spaces over a field \(K\). Show that for any \(q>0\),
     \[\bigwedge^{q}(V\oplus W)\cong\sum_{i=0}^{q}(\bigwedge^{i}(V)\otimes_{K}\bigwedge^{q-i}(W)).\]
 \end{prob}
+\begin{proof}
+    Any two finite dimensional vector spaces of the same dimension are isomorphic. Hence, it suffices to show that the dimensions are equal. We will convince ourselves it holds for $q=2$. Let $\{v_1,\dots, v_n\}$ be the basis of $V$, and $\{w_1,\dots,w_k\}$ be the basis of $W$, then we begin with the LHS:
+    \begin{equation*}
+        \bigwedge^{2}(V\oplus W)
+    \end{equation*}
+    We note that $V\oplus W$ has basis 
+    \begin{equation*}
+        \left\{(v_i,w_j):1\leq i\leq n, 1\leq j\leq k\right\}
+    \end{equation*}
+    So we reenumerate the $n+k$ basis as 
+    \begin{equation*}
+        \{e_1,\dots, e_{n+k}\}
+    \end{equation*}
+    Then $\bigwedge^{q}(V\oplus W)$ has basis
+    \begin{equation*}
+        \left\{ e_i\wedge e_j: i<j\right\}
+    \end{equation*}
+    There are exactly $1+\dots+(n+k-1)$ basis vectors i.e.,
+    \begin{equation*}
+        \dim\left(\bigwedge^{2}(V\oplus W)\right)=\frac{(n+k-1)(n+k)}{2}
+    \end{equation*}
+    As for the RHS: 
+    \begin{equation*}
+        \dim\left( \sum_{i=0}^{2}(\bigwedge^{i}(V)\otimes_{K}\bigwedge^{2-i}(W))\right)
+        \frac{(k-1)k}{2}+nk+\frac{(n-1)n}{2}
+    \end{equation*}
+    And we observe that two two quantities are equal. Now we do the general case, just like above, 
+    \begin{equation*}
+        \dim\left(\bigwedge^{q}(V\oplus W)\right)=\binom{n+k}{q}
+    \end{equation*}
+    And the RHS:
+    \begin{equation*}
+        \dim\left(\bigwedge^{q-1}(V\oplus W)\wedge (V\oplus W)\right)=\sum_{i=0}^q\binom{n}{i}\binom{k}{q-i}
+    \end{equation*}
+    and it is clear that these two quantities are equal.
+\end{proof}
 
 
 
