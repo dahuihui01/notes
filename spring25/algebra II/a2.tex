@@ -288,7 +288,7 @@ is a basis for \( V \).
     \end{itemize}
 \end{prob}
 \begin{proof}
-    
+    \textcolor{red}{not finished}
 \end{proof}
 
 
@@ -406,6 +406,60 @@ Let \( k \) be a field of characteristic different from 2 and let \( G = \{e, g\
 \begin{prob}[S2017-Q4]
     Let \(M\) be an invertible \(n\times n\) matrix with entries in an algebraically closed field \(k\) of characteristic not 2. Show that \(M\) has a square root, i.e. there exists \(N\in\text{Mat}_{n\times n}(k)\) such that \(N^{2}=M\).
 \end{prob}
+\begin{proof}
+    It suffices to show that every Jordan block 
+    \[
+        J_n(\lambda) = 
+        \begin{bmatrix}
+        \lambda & 1       & 0       & \cdots & 0 \\
+        0       & \lambda & 1       & \cdots & 0 \\
+        0       & 0       & \lambda & \ddots & \vdots \\
+        \vdots  & \vdots  & \ddots  & \ddots & 1 \\
+        0       & 0       & \cdots  & 0      & \lambda
+        \end{bmatrix}
+        \]
+        where $\lambda\neq 0$ is a square. We will proceed using inductino. When $n=2$, the square root of 
+        \begin{equation*}
+            \begin{bmatrix}
+                \lambda&1\\
+                0&\lambda
+            \end{bmatrix}=\begin{bmatrix}
+                \lambda^\frac{1}{2}&\frac{1}{2}\lambda^{-\frac{1}{2}}\\
+                0&\lambda^\frac{1}{2}
+            \end{bmatrix}^2
+        \end{equation*} 
+        Now assume that $J_{k}$ is a square up to $k=n-1$, we want to show $J_n$ also has a square root. We claim $J_n$ has the following square 
+        \begin{equation*}
+            J_n=\begin{bmatrix}
+                B^2&x\\
+                0&\lambda
+
+            \end{bmatrix}=\begin{bmatrix}
+                B&x\\
+                0&\lambda^{1/2}
+            \end{bmatrix}^2
+        \end{equation*}
+        where $B$ is a $(n-1)\times (n-1)$ matrix and $x=(x_1,\dots,x_{n-1}), 0=(0,\dots,0)$. It suffices to find such an $x$ exists. Let $b_1,\dots,b_{n-1}$ denote the row vectors of $B$, we must satisfy 
+        \begin{equation*}
+            \begin{cases}
+                b_1\cdot x+x_1\lambda^\frac{1}{2}=0\\
+                \dots\\
+                b_{n-2}\cdot x+x_{n-2}\lambda^\frac{1}{2}=0\\
+                b_{n-1}\cdot x+x_{n-1}\lambda^\frac{1}{2}=1\\
+            \end{cases}
+        \end{equation*}
+        Namely, we need to find $x$ that satisfies 
+        \begin{equation*}
+            (B+\lambda^\frac{1}{2}I)x=\begin{bmatrix}
+                0\\
+                \dots\\
+                0\\
+                1
+            \end{bmatrix}
+        \end{equation*}
+        Since $(B+\lambda^{1/2}I)$ is invertible, there exists a unique solution, hence such $x$ exsits, $J_n$ has a square root! 
+\end{proof}
+
 
 
 \begin{prob}[S2008-Q1]
