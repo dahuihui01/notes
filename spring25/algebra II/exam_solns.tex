@@ -1176,7 +1176,7 @@ where $\phi=\frac{1+\sqrt{5}}{2}$.
         \end{equation*}
         Thus it sufficees to compute the eigenvalues of $A$ (in the algebraic closure). 
     \end{itemize}
-    
+
 \end{proof}
 
 
@@ -1368,6 +1368,117 @@ where $\phi=\frac{1+\sqrt{5}}{2}$.
 
 
 
+
+\chapter{Fall 2007}
+
+
+
+\begin{prob}
+    Let \(G\) be a cyclic group of order 12. Construct a Galois extension \(K\) over \(\mathbb{Q}\) so that the Galois group is isomorphic to \(G\).
+\end{prob}
+\begin{proof}
+    Since $12=13-1$, we know how to construct Galois group 
+    \begin{equation*}
+        \left(\Z/13\Z\right)^\times=\Z/12\Z
+    \end{equation*}
+    The Galois extension is $\Q(\zeta_{13})$, where $\zeta_{13}$ is the $13$th root of unity.
+\end{proof}
+
+
+
+\begin{prob}
+    Prove that no group of order 148 is simple.
+\end{prob}
+\begin{proof}
+    We see that 
+    \begin{equation*}
+        148=2^2\cdot 37
+    \end{equation*}
+    Thus $n_{37}=1$.
+\end{proof}
+
+
+
+\begin{prob}
+    Let \(A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}\) be a real matrix such that \(a,b,c,d > 0\).
+    \begin{itemize}
+        \item[(1)] Prove that \(A\) has two distinct real eigenvalues, \(\lambda > \mu\).
+        \item[(2)] Prove that \(\lambda\) has an eigenvector in the first quadrant and \(\mu\) has an eigenvector in the second quadrant.
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(1)] The eigenvalues are as follows
+        \begin{equation*}
+            \frac{(a+d)\pm\sqrt{(a-d)^2+bc}}{2}
+        \end{equation*}
+        Thus there are two distinct eigenvalues that are both real.
+        \item[(2)] It suffices to plug in $\lambda,\mu$:
+        \begin{equation*}
+            \begin{cases}
+                ax_1+by_1-\lambda x_1=0\\
+                cx_1+by_1-\lambda x_2=0
+            \end{cases} 
+        \end{equation*}
+        We see that 
+        \begin{equation*}
+            y_1=\frac{\lambda-a}{b}x_1
+        \end{equation*}
+        We see that $\lambda>a$, hence $x_1, y_1$ have the same sign, i.e., it has an eigenvector in the first quadrant. Similarly, plugging in $\mu$ we see that $\mu$ has an eigenvalue in the second quadrant.
+    \end{itemize}
+\end{proof}
+
+
+\begin{prob}
+    A differentiation of a ring \(R\) is a mapping \(D : R \to R\) such that, for all \(x,y \in R\),
+    \begin{itemize}
+        \item[(1)] \(D(x+y) = D(x) + D(y)\); and
+        \item[(2)] \(D(xy) = D(x)y + xD(y)\).
+    \end{itemize}
+    If \(K\) is a field and \(R\) is a \(K\)-algebra, then its differentiation are supposed to be over \(K\), that is,
+    \begin{itemize}
+        \item[(3)] \(D(x) = 0\) for any \(x \in K\).
+    \end{itemize}
+    Let \(D\) be a differentiation of the \(K\)-algebra \(M_n(K)\) of \(n \times n\)-matrices. Prove that there exists a matrix \(A \in M_n(K)\) such that \(D(X) = AX - XA\) for all \(X \in M_n(K)\).
+\end{prob}
+\begin{proof}
+    It suffices to consider basis elements of $M_{ij}$, 
+    \begin{equation*}
+        A=\sum_{i,j}D(M_{ij})E_{ji}
+    \end{equation*}
+    and one can check \(D(X) = AX - XA\) holds.
+\end{proof}
+
+
+
+
+
+\begin{prob}
+    Prove the existence of a 1-dimensional invariant subspace for any 5-dimensional representation of the group \(A_4\) (the alternating group of degree 4).
+\end{prob}
+\begin{proof}
+    The $4$ conjugacy classes in $A_4$ are 
+    \begin{equation*}
+        e, (12)(34), (123), (132)
+    \end{equation*} 
+    We now find the one-dimensional representation by observing 
+    \begin{equation*}
+        \frac{A_4}{(\Z/2\Z\times\Z/2\Z)}\cong\Z/3\Z
+    \end{equation*}
+    And we know the character table for $\Z/3\Z$, thus combining and using orthogonality relations, we get 
+    \begin{equation*}
+        \begin{array}{c|cccc}
+            \text{Class size} & 1 & 4 & 3 & 4 \\
+            \text{Representative} & () & (123) & (12)(34) & (132) \\
+            \hline
+            \chi_1 & 1 & 1 & 1 & 1 \\
+            \chi_2 & 1 & \zeta_3 & 1 & \zeta_3^2 \\
+            \chi_3 & 1 & \zeta_3^2 & 1 & \zeta_3 \\
+            \chi_4 & 3 & 0 & -1 & 0 \\
+            \end{array}
+    \end{equation*}
+
+\end{proof}
 
 
 

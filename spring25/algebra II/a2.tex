@@ -249,9 +249,14 @@ semisimple, Noetherian, and Artinian modules.)
 
 
 \chapter{Linear Algebra I}
+
 Topics: finitely generated modules/PID, triangularization, diagonalization, Jordan canonical form.
 
-Page 21-23
+% Page 21-23
+
+\begin{prop}
+    A linear operator $T:V\to V$ is diagonalizable if and only if the minimal polynomial splits into distinct linear factors (has no repeated roots).
+\end{prop}
 
 
 \begin{prob}[F2018-Q1]
@@ -388,13 +393,20 @@ Let \( k \) be a field of characteristic different from 2 and let \( G = \{e, g\
     \item[(c)] Assume now that the characteristic of \( k \) is 2. Give an example of an \( A \)-module that cannot be decomposed into a direct sum of two simple \( A \)-modules.
 \end{enumerate}
 \end{prob}
+\begin{proof}
+    \textcolor{red}{not finished}
+\end{proof}
 
 
 \begin{prob}[S2003-Q3]
     Prove that if a linear operator on a complex vector space is diagonal in some basis, then its restriction to any invariant subspace \( L \) is also diagonal in some basis of \( L \).
 \end{prob}
 \begin{proof}
-    
+    The linear operator $T$ is diagonalizable if and only if the minimal polynomial has no repeated factors, i.e., 
+    \begin{equation*}
+        f_m(x)=(x-\lambda_1)\dots(x-\lambda_k)
+    \end{equation*}
+    And $T\vert_L$ has minimal polynomial dividng $f_m$, hence it also has no repeated factors, thus $T\vert_L$ is also diagonalizable.
 \end{proof}
 
 
@@ -521,7 +533,11 @@ Let \( k \) be a field of characteristic different from 2 and let \( G = \{e, g\
     Let \(A,B\) be two commuting operators on a finite dimensional space \(V\) over \(\mathbb{C}\) such that \(A^{n}=B^{m}\) is the identity operator on \(V\) for some positive integers \(n,m\). Prove that \(V\) is a direct sum of 1-dimensional invariant subspaces with respect to \(A\) and \(B\) simultaneously.
 \end{prob}
 \begin{proof}
-    
+    Because 
+    \begin{equation*}
+        A^n=B^m=I
+    \end{equation*}
+    We know that the minimal polynomial of $A,B$ both have no repeated roots, because $(t^n-1), (t^m-1)$ factor completely over $\C$. This shows that $A,B$ are commuting diagonalizable matrices, thus they can be simultaneously diagonalized.
 \end{proof}
 
 
@@ -532,7 +548,7 @@ Let \( k \) be a field of characteristic different from 2 and let \( G = \{e, g\
 \chapter{Linear Algebra II}
 Topics: exterior power, tensor algebras, trances, determinants
 
-Page 24-25
+% Page 24-25
 
 \begin{prob}[F2016-Q5]
     Let A be a linear transformation of a finite dimensional vector space over a field of characteristic \(\neq 2\).
@@ -547,6 +563,10 @@ Page 24-25
         \item[(a)] We recall the wedge product of vector space $V\wedge V$ is given by the basis 
         \begin{equation*}
             \{v_i\wedge v_j: i<j\}
+        \end{equation*}
+        satisfying 
+        \begin{equation*}
+            v_i\wedge v_j=-v_j\wedge v_i
         \end{equation*}
         where $\{v_1,\dots, v_n\}$ is a basis for $V$. And we define 
         \begin{equation*}
@@ -658,6 +678,36 @@ Page 24-25
         \item[(b)] Let \(k\) be a positive integer. Prove that when \(v\in\bigwedge^k(V)\) and \(0\neq x\in V\), \(v\wedge x=0\) holds if and only if \(v=x\wedge y\) for some \(y\in\bigwedge^{k-1}(V)\).
     \end{itemize}
 \end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(a)] This is by a dimension argument:
+        \begin{equation*}
+            \dim\left(\bigwedge^2(\bigwedge^2(V))\right)=\binom{\binom{n}{2}}{2}=\frac{n(n-1)(n-2)(n+1)}{2}
+        \end{equation*}
+        whereas 
+        \begin{equation*}
+            \dim\left(\bigwedge^4(V)\right)=\binom{n}{4}=\frac{n(n-1)(n-2)(n-3)}{4}
+        \end{equation*}
+        Thus not equal if $n>2$.
+        \item[(b)] If there exists such $y$ where $v=x\wedge y$, then 
+        \begin{equation*}
+            v\wedge x=(x\wedge y)\wedge x=(-y\wedge x)\wedge x=0
+        \end{equation*}
+        Conversely, if $v=0$, then it is immediate that $v=x\wedge x$. It suffices to assume that $v\neq 0$, thus if we write 
+        \begin{equation*}
+            v=v_1\wedge\dots\wedge v_k
+        \end{equation*}
+        where $v_i$'s are distinct. Then 
+        \begin{equation*}
+            v\wedge x=0
+        \end{equation*}
+        If $v_i=\pm x$ for any $i$, we are done. If not, then we derive a contradiction: $v_1\neq x$, thus 
+        \begin{equation*}
+            v_1\wedge\left(v_2\wedge\dots\wedge v_k\wedge x\right)=0
+        \end{equation*}
+        i.e., $v_2\wedge\dots\wedge v_k\wedge x=0$, now $v_2\neq x$, and we keep going, eventually $v_k\wedge x=0$ which implies $x=\pm v_k$. 
+    \end{itemize}
+\end{proof}
 
 
 \begin{prob}[S2010-Q4]
@@ -667,6 +717,15 @@ Page 24-25
         \item[(b)] Find a similar formula for the determinant \(\det(T \otimes T \otimes T)\).
     \end{itemize}
 \end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(a)] The trace computation is exactly the same as the one above. 
+        \item[(b)] We can compute via some combinatorics:
+        \begin{equation*}
+            \det(T\otimes T)=(\det T)^{2n}, \det(T\otimes T\otimes T)=(\det T)^{3n^2}
+        \end{equation*}
+    \end{itemize}
+\end{proof}
 
 
 
@@ -678,7 +737,7 @@ Page 24-25
 \chapter{Linear Algebra III}
 Topics: random linear algebra problems
 
-Page 26-28
+% Page 26-28
 
 \begin{prop}
     Let $V$ be a $m$ dimensional vector space, and $W$ be $n$ dimensional. Show that $A:V\to V$ and $B: W\to W$ has 
@@ -686,11 +745,17 @@ Page 26-28
         \text{Tr}(A\otimes B)=\text{Tr}(A)\text{Tr}(B)
     \end{equation*}
 \end{prop}
+\begin{proof}
+    Use matrix representations.
+\end{proof}
 
 
 \begin{prob}[S2013-Q5]
     Let \(A\) and \(B\) be \(n \times n\) matrices with complex coefficients. Assume that \((A - I)^n = 0\) and \(A^k B = BA^k\) for some natural number \(k\). Prove that \(AB = BA\) (\textit{Hint}: Prove that \(A\) can be expressed as a function of \(A^k\)).
 \end{prob}
+\begin{proof}
+    
+\end{proof}
 
 \begin{prob}[F2011-Q2]
     Consider the special orthogonal group \(G=SO(3,\mathbb{R})\), namely,
@@ -701,6 +766,16 @@ Page 26-28
         \item[(b)] For which real numbers \(\alpha\) with \(-1\leq\alpha\leq 3\) does there exist an element \(A\) in \(G\) whose minimal polynomial is \(x^3-\alpha x^2+\alpha x-1\)? Explain your answer.
     \end{itemize}
 \end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(a)] The determinant forces the eigenvalues (over $\C$) to have norm $1$. The form is done by explicit computations.
+        \item[(b)] It has the minimal polynomial equal to the characteristic polynomial if the polynomial splits into three distinct roots, we know $x=1$ has a root, 
+        \begin{equation*}
+            (x-1)(x^2+(1-\alpha)x+1)
+        \end{equation*}
+        Hence as long as $\alpha\neq -1,3$, the minimal polynomial and the characteristic polynomial coincide.
+    \end{itemize}
+\end{proof}
 
 
 \begin{prob}[F2007-Q3]
@@ -710,6 +785,10 @@ Page 26-28
         \item[(2)] Prove that \(\lambda\) has an eigenvector in the first quadrant and \(\mu\) has an eigenvector in the second quadrant.
     \end{itemize}
 \end{prob}
+
+
+
+
 
 
 \begin{prob}[S2007-Q1]
