@@ -314,6 +314,393 @@ This corresponds to Aluffi Chapter II.
 \chapter{Group Theory II}
 This corresponds to Aluffi Chapter IV.
 
+\begin{prop}[class formula]
+    Let $S$ be a finite set, and $G$ act on $S$, then 
+    \begin{equation*}
+        |S|=|Z|+\sum_{a\in A}[G: \text{Stab}(a)]=|Z|+\sum_{a\in A}|O_a|
+    \end{equation*} 
+    where $Z=\left\{a\in S: g\cdot a=a\text{ for all } g\right\}$, i.e., the fixed elements, and $A\subset S$ contains exactly one element from each nontrivial orbit of the action. 
+    
+    In other words, $|S|$ is the sum of the number of trivial orbits and each nontrivial orbit.
+\end{prop}
+
+\begin{prop}
+    Let $G$ be a $p$-group that acts on a finite set $S$, then let $Z$ be fixed elements of this acion, then 
+    \begin{equation*}
+        |S|\equiv |Z|\mod p
+    \end{equation*}
+\end{prop}
+
+
+\begin{prop}
+    Let $G$ be finite, and if $G/Z(G)$ is cyclic, then $G$ is abelian.
+\end{prop}
+
+\begin{defn}[centralizer, conjugacy class]
+    The centralizer $Z_G(g)$ where $g\in G$ is its stabilizer under conjugation:
+    \begin{equation*}
+        Z_G(g)=\left\{h\in G: hgh^{-1}=g\right\}
+    \end{equation*}
+    The conjugacy class of $g\in G$ is the orbit $[g]$ of the conjugation action.
+\end{defn}
+
+
+\begin{prop}[Class formula]
+    Let $G$ be finite, then 
+    \begin{equation*}
+        |G|=|Z(G)|+\sum_{a\in A}[a]
+    \end{equation*}
+    where $A$ contains one representative for each nontrivial conjugacy class.
+\end{prop}
+
+
+\begin{cor}
+    Let $G$ be a nontrivial $p$-group, then $G$ has a nontrivial center.
+\end{cor}
+
+\begin{prop}
+    The only possibility for the class formula of a nonabelian group of order $6$ is 
+    \begin{equation*}
+        6=1+2+3
+    \end{equation*}
+    The center must be trivial if $G$ is nonabelian.
+\end{prop}
+
+
+\begin{defn}[normalizer]
+    Let $A\subset G$ be a subset. The normalizer $N_G(A)$ of $A$ is 
+    \begin{equation*}
+        \text{Stab}_G(A)=\left\{g: gAg^{-1}=A\right\}
+    \end{equation*}
+    The centralizer of $A$ is the subgroup $Z_G(A)\subset N_G(A)$ fixing each $a\in A$:
+    \begin{equation*}
+        Z_G(A)=\left\{ g: gag^{-1}=a \text{ for all } a\in A\right\}
+    \end{equation*}
+
+    If $H$ is subgroup of $G$, every conjugate $gHg^{-1}$ is also a subgroup of $G$, and all conjugate groups have the same order.
+\end{defn}
+
+\begin{prop}
+    $H$ is a normal subgroup of $G$ if and only if $N_G(H)=G$. More generally, the normalizer $N_G(H)$ for any subgroup $H$ is the largest subgroup of $G$ in which $H$ is normal.
+\end{prop}
+
+\begin{prop}
+    Let $H\subset G$ be a subgroup, then the number of subgroups conjugate to $H$ is equal to $[G:N_G(H)]$.
+\end{prop}
+\begin{cor}
+    If $[G:H]$ is finite, then the number of subgroups conjugate to $H$ is finite, and 
+    \begin{equation*}
+        [G:H]=[G:N_G(H)]\cdot[N_G(H): H]
+    \end{equation*}
+    In other words, the number of subgroups conjugate to $H$ divides the index $[G:H]$.
+\end{cor}
+
+
+\begin{thm}[Cauchy's Theorem]
+    Let $G$ be a finite group, and let $p$ be a prime divisor of $|G|$, then $G$ contains an element of order $p$.
+
+    Moreover, let $N$ be the number of cyclic subgroups of order $p$, then 
+    \begin{equation*}
+        N\equiv 1\mod p
+    \end{equation*}
+\end{thm}
+
+
+\begin{defn}[simple]
+    A group is simple if it is nontrivial and its only normal subgroups are $\{e\}$ and $G$ (has no nontrivial proper subgroup).
+\end{defn}
+
+\begin{defn}[$p$-Sylow subgroups]
+    Let $p$ be prime, a $p$-Sylow subgroup of a finite group $G$ is a subgroup of order $p^r$, where $|G|=p^rm$, $\gcd(p,m)=1$. 
+\end{defn}
+
+\begin{thm}[Sylow I]
+    Every finite group contains a $p$-Sylow subgroup for all prime $p$. If $p^k$ divides $|G|$, then $G$ has a subgroup of order $p^k$.
+\end{thm}
+
+\begin{thm}[Sylow II]
+    Let $G$ be finite, and $P$ is a $p$-Sylow subgroup, let $H\subset G$ be a $p$-group, then $H$ is contained in a conjugate of $P$. If $P_1,P_2$ are both $p$-Sylow subgroups, then they are conjugates to each other.
+\end{thm}
+
+\begin{thm}[Sylow III]
+    Let $|G|=p^rm$, and $\gcd(p,m)=1$, then the number of $p$-Sylow subgroups is 
+    \begin{equation*}
+        n_p\mid m 
+    \end{equation*}
+    and 
+    \begin{equation*}
+        n_p\equiv 1\mod p
+    \end{equation*}
+\end{thm}
+
+\begin{prop}
+    Let $G$ be a group of order $mp^r$, where $p$ is prime and $1<m<p$, then $G$ is not simple.
+\end{prop}
+
+
+\begin{prop}
+    Let $p<q$ be primes, let $G$ has order $pq$, if $p\nmid (q-1)$, then $G$ is cyclic.
+\end{prop}
+
+\begin{prop}
+    Let $q$ be an odd prime, and $G$ be a noncommutative group of order $2q$, then 
+    \begin{equation*}
+        G\cong D_{2q}
+    \end{equation*}
+\end{prop}
+
+
+\begin{defn}[commutator subgroup]
+    Let $G$ be a group, the commutator subgroup of $G$ is the subgroup \textbf{generated} by all elements 
+    \begin{equation*}
+        ghg^{-1}h^{-1}
+    \end{equation*}
+\end{defn}
+
+
+\begin{prop}
+    Let $[G,G]$ be the commutator subgroup of $G$, then $[G,G]$ is normal in $G$, and the quotient, also called the abelianization of $G$, 
+    \begin{equation*}
+        G^{\text{ab}}=\frac{G}{[G,G]}
+    \end{equation*}
+    is commutative.
+
+    If $\varphi: G\to H$, where $H$ is commutative, then 
+    \begin{equation*}
+        [G,G]\subset\ker(\varphi)
+    \end{equation*}
+\end{prop}
+\begin{defn}
+    A group $G$ is solvable, if ther exists a sequence such that 
+    \begin{equation*}
+        \{e\}=G_0\subset\dots\subset G_k=G
+    \end{equation*}
+    where $G_i$ is normal in $G_{i+1}$, and $G_{i+1}/G_i$ is abelian, or equivalently, cyclic.
+\end{defn}
+
+
+\begin{prop}
+    All $p$-groups are solvable!
+\end{prop}
+
+\begin{prop}
+    Let $N$ be normal in $G$, then $G$ is solvable if and only if $N, G/N$ are solvable.
+\end{prop}
+
+\begin{prop}
+    Disjoint cycles commute. For every $\sigma\in S_n$, $\sigma$ can be written as disjoint nontrivial cycles, unique up to rearranging.
+\end{prop}
+
+\begin{prop}
+    Two elements in $S_n$ are conjugate in $S_n$ if and only if they have the same type. Hence the number of conjugacy classes is the number of partitions of $n$ as a sum.
+\end{prop}
+
+\begin{prop}
+    Normal subgroups are unions of conjugacy classes. 
+
+    One can use this fact to show that there is no normal subgroup of order 30 in $S_5$. 
+\end{prop}
+
+\begin{defn}[Even permutation]
+    Let $\sigma\in S_n$, then $\sigma$ is even if 
+    \begin{equation*}
+        \prod_{i<j}(x_{\sigma(i)}-\sigma(j))=\prod_{i<j}(x_i-x_j)
+    \end{equation*}
+\end{defn}
+
+\begin{defn}
+    The alternating group $A_n$ consists of even permutations of $\sigma\in S_n$, and 
+    \begin{equation*}
+        [S_n:A_n]=2
+    \end{equation*}
+\end{defn}
+
+
+\begin{prop}
+    Let $\sigma\in A_n$, where $n\geq 2$, then the conjugacy class of $\sigma$ in $S_n$ splits into two conjugacy classes in $A_n$ precisely if the type of $\sigma$ consists of distinct odd numbers. 
+
+    For example, the $5$-cycle of $S_5$ splits into $2$ conjugacy classes in $A_5$.
+\end{prop}
+
+\begin{prop}
+    The group $A_5$ is a simple noncommutative group of order $60$ 
+\end{prop}
+\begin{proof}
+    Any nontrivial normal subgroup consists of nontrivial conjugacy classes and $\{e\}$, the conjugacy classes of $A_5$ has the following size:
+    \begin{equation*}
+        1, 15, 20, 12, 12
+    \end{equation*}
+    Thus any subgroup of $G$, i.e., order that divides $60$ cannot be written as a sum of the numbers above.
+\end{proof}
+
+\begin{prop}
+    The alternating group is generated by $3$-cycles.
+\end{prop}
+
+\begin{prop}
+    Let $n\geq 5$, if a normal subgroup of $A_n$ contains a $3$-cycle, then it contaisn all $3$-cycles.
+\end{prop}
+\begin{proof}
+    It suffices to note that the $3$ cycles form a conjugacy class that doesn't split from $S_n$ to $A_n$.
+\end{proof}
+\begin{thm}
+    The alternating group is simple for $n\geq 5$.
+
+    As a corollary, $S_n$ is not solvable for $n\geq 5$.
+\end{thm}
+
+
+\begin{prop}
+    Let $N,H$ be normal subgroups of $G$, then 
+    \begin{equation*}
+        [N,H]\subset N\cap H
+    \end{equation*}
+    where $[N,H]$ is the commutator of $N,H$.
+\end{prop}
+
+\begin{prop}
+    Let $N,H$ be normal subgroups, and $N\cap H=\{e\}$, then $N,H$ commute with each other.
+\end{prop}
+
+\begin{thm}
+    Let $N,H$ be normal subgroups of $G$, such that $N\cap H=\{e\}$, then 
+    \begin{equation*}
+        NH\cong N\times H
+    \end{equation*}
+\end{thm}
+
+
+\begin{defn}[Short exact sequence]
+    A short exact sequence of groups is a sequence:
+    \[\begin{tikzcd}
+        1 & N & G & H & 1
+        \arrow[from=1-1, to=1-2]
+        \arrow["\varphi", from=1-2, to=1-3]
+        \arrow["\psi", from=1-3, to=1-4]
+        \arrow[from=1-4, to=1-5]
+    \end{tikzcd}\]
+    where $\psi$ surjective and $\varphi$ is injective, and $N$ is normal in $\varphi$ which induces an isomorphism $G/N\cong H$.
+
+    A SES splits if $H$ is identified with a subgroup of $G$ such that 
+    \begin{equation*}
+        N\cap H=\{e\}
+    \end{equation*}
+\end{defn}
+
+
+\begin{defn}[semidirect product]
+    Let $N$ be a normal subgroup, and let $\theta: H\to\text{Aut}(N)$, then define an operator $\cdot_\theta$ as 
+    \begin{equation*}
+        (n_1,h_1)\cdot_\theta(n_2,h_2)=(n_1\theta(h_1)(n_2), h_1h_2)
+    \end{equation*}
+    The semidirect product of $N\rtimes_\theta$ is the group $N\times H$ with operator $\cdot_\theta$.
+\end{defn}
+
+\begin{thm}
+    Let $N,H$ be groups, and $\theta: H\to\text{Aut}(N)$, let $G=N\rtimes_\theta H$, then 
+    \begin{enumerate}
+        \item $G$ contains isomorphic copies of $N,H$.
+        \item The natural projection $G\to H$ is surjective, with kernel $N$, thus $N$ is normal in $G$ and the sequence 
+        \[\begin{tikzcd}
+            1 & N & {N\rtimes_\theta H} & H & 1
+            \arrow[from=1-1, to=1-2]
+            \arrow[from=1-2, to=1-3]
+            \arrow[from=1-3, to=1-4]
+            \arrow[from=1-4, to=1-5]
+        \end{tikzcd}\]
+        is split exact.
+        \item $N\cap H=\{e\}$.
+        \item $G=NH$.
+        \item The homomorphism is conjugation: 
+        \begin{equation*}
+            \theta(h)(n)=hnh^{-1}
+        \end{equation*}
+    \end{enumerate}
+\end{thm}
+
+\begin{prop}
+    Let $N,H$ be subgroups, and $N$ is normal, suppose that $N\cap H=\{e\}$, and $G=NH$, then let $\theta: H\to\text{Aut}(N)$ be 
+    \begin{equation*}
+        \theta(h)n=nhn^{-1}
+    \end{equation*}
+    Then 
+    \begin{equation*}
+        G\cong N\rtimes_\theta H
+    \end{equation*}
+\end{prop}
+
+
+\begin{prop}
+    Let $G$ be abelian, let $H,K$ be subgroups such that $|H|, |N|$ are relatively prime, then 
+    \begin{equation*}
+        H+K\cong H\oplus K
+    \end{equation*}
+\end{prop}
+\begin{proof}
+    Lagrange.
+\end{proof}
+\begin{prop}
+    Every finite abelian group is a direct sum of its nontrivial Sylow subgroups.
+\end{prop}
+
+
+\begin{prop}
+    Let $p$ be prime, and $r\geq 1$, let $G$ be a noncyclic abelian group of order $p^{r+1}$, then let $g\in G$ be an element of order $p^r$, then there exists an element $h\in G$ such that $h\not\in\la g\ra$, such that $|h|=p$.
+
+    If $G$ is finite and abelian, then $G$ is a direct sum of cyclic groups, which may be assumed to be cyclic $p$-groups.
+\end{prop}
+
+
+
+\begin{thm}
+    Let $G$ be finite nontrivial abelian group, then there exists prime integers $p_1,\dots, p_r$, and positive integers $n_{i(j)}$ such that 
+    \begin{equation*}
+        G=\bigoplus_{i,j}\frac{\Z}{p_i^{n_{i(j)}}\Z}
+    \end{equation*}
+    There exists positive integers $1<d_1\mid \dots\mid d_s$ such that $|G|=d_1\dots d_s$, and 
+    \begin{equation*}
+        G\cong\frac{\Z}{d_1\Z}\oplus\dots\oplus\frac{\Z}{d_s\Z}
+    \end{equation*}
+\end{thm}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
