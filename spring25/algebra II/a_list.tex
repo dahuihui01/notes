@@ -1,0 +1,204 @@
+\documentclass[openany]{book}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsfonts,amsthm, amssymb}
+\usepackage{yhmath}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{comment}
+\usepackage{tikz-cd}
+\usepackage{quiver}
+\renewcommand{\familydefault}{ppl}
+\newcommand{\tr}{\text{tr}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\colim}{\text{colim}}
+\DeclareMathOperator{\im}{im}
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+\newcommand{\tor}{\text{Tor}}
+\newcommand{\id}{\text{id}}
+\newcommand{\ext}{\text{Ext}}
+\newcommand{\ptop}{\text{PTop}}
+\newcommand{\pt}{\text{pt}}
+\newcommand{\ach}{\text{Ach}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\gal}{\text{Gal}}
+
+
+\input{hui.tex}
+
+\title{Algebra Definition Theorem List}
+
+\date{\today}
+\author{Hui Sun}
+
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+\newpage
+
+\chapter{Group Theory I}
+This corresponds to Aluffi Chapter II.
+
+\begin{prop}
+    Let $G$ be a group, for all $a,g,h\in G$, if 
+    \begin{equation*}
+        ga=ha
+    \end{equation*}
+    then $g=h$.
+\end{prop}
+
+\begin{prop}
+    Let $g\in G$ have order $n$, then 
+    \begin{equation*}
+        n\mid |G|
+    \end{equation*}
+\end{prop}
+
+\begin{cor}
+    If $g$ is an element of finite order, and let $N\in\mathbb{Z}$, then 
+    \begin{equation*}
+        g^N=e \iff N \text{ is a multiple of }|g|
+    \end{equation*}
+\end{cor}
+
+\begin{prop}
+    Let $g\in G$ be of finite order, then $g^m$ also has finite order, for all $m\geq 0$, and 
+    \begin{equation*}
+        \left|g^m\right|=\frac{\text{lcm}(m,|g|)}{m}=\frac{|g|}{\gcd(m,|g|)}
+    \end{equation*}
+\end{prop}
+
+\begin{prop}
+    If $gh=hg$, then $|gh|$ divides $\text{lcm}(|g|,|h|)$.
+\end{prop}
+
+
+\begin{defn}[Dihedral Group]
+    Let $D_{2n}$ denote the group of symmetries of a $n$-sided polynomial, consisting of $n$ rotations and $n$ reflections about lines trhough the origin and a vertex or a midpoint of a side.
+\end{defn}
+
+\begin{prop}
+    Let $m\in\Z/n\Z$, then 
+    \begin{equation*}
+        |m|=\frac{n}{\gcd(n,m)}
+    \end{equation*} 
+\end{prop}
+
+\begin{cor}
+    The element $m\in\Z/n\Z$ generates $\Z/n\Z$ if and only if $\gcd(m,n)=1$.
+\end{cor}
+
+
+\begin{defn}[Multiplicative $(\Z/n\Z)^\times$]
+    The multiplicative group of $\Z/n\Z$ is 
+    \begin{equation*}
+        \left(\Z/n\Z\right)^\times=\left\{m\in\Z/n\Z: \gcd(m,n)=1\right\}
+    \end{equation*}
+\end{defn}
+
+\begin{prop}
+    Let $\varphi:G\to H$ be a homomorphism, and let $g\in G$ be an element of finite order, then $|\varphi(g)|$ divides $|g|$.
+
+    For example, there is no nontrivial homomorphism from $\Z/n\Z$ to $\Z$.
+\end{prop}
+
+\begin{prop}
+    There is an isomorphism between $D_6$ and $S_3$.
+\end{prop}
+
+\begin{prop}
+    Let $\varphi: G\to H$ be an isomorphism, for all $g\in G$, $|\varphi(g)|=|g|$, and $G$ is commutative if and only if $H$ is commutative.
+\end{prop}
+
+\begin{prop}
+    If $H$ is commutative, then $\text{Hom}(G,H) $ is a group.
+\end{prop}
+
+\begin{defn}
+    Let $A=\{1,\dots, n\}$, then the free abeliean group on $A$ is 
+    \begin{equation*}
+        \Z\oplus\dots\oplus\Z=\Z^{\oplus n}
+    \end{equation*}
+\end{defn}
+\begin{prop}
+    For every set $A$, the free abelian group $A$ is 
+    \begin{equation*}
+        \Z^{\oplus A}
+    \end{equation*}
+    In other words, any element in the free abelian group of $A$ can be written as 
+    \begin{equation*}
+        \sum_{a\in A}m_aj(a)
+    \end{equation*}
+    where $m_a\neq 0$ for only finitely many terms, and 
+    \begin{equation*}
+        j_a(m)=\begin{cases}
+            1, m=a\\
+            0, m\neq a
+        \end{cases}
+    \end{equation*}
+\end{prop}
+
+\begin{prop}
+    Let $\{H_\alpha\}$ be any family of subgroups of $G$, then 
+    \begin{equation*}
+        \bigcap_\alpha H_\alpha
+    \end{equation*}
+    is a subgroup of $G$.
+\end{prop}
+
+\begin{prop}
+    If $\varphi: G_1\to G_2$ is a group homomorphism, then if $H_2\subset G_2$ is a subgroup, then 
+    \begin{equation*}
+        \varphi^{-1}(H_2)
+    \end{equation*}
+    is a subgroup of $G_1$.
+\end{prop}
+
+
+
+
+
+
+
+
+
+\chapter{Group Theory II}
+This corresponds to Aluffi Chapter IV.
+
+\chapter{Ring Theory}
+This corresponds to Aluffi Chapter III.
+
+
+\chapter{Irreducibility and Factorization}
+This corresponds to Aluffi Chapter V.
+
+\chapter{Linear Algebra I}
+This corresponds to Aluffi Chapter VI.
+
+\chapter{Linear Algebra II}
+This corresponds to Aluffi Chapter VIII.
+
+\chapter{Field Theory}
+This corresponds to Aluffi Chapter VII.
+
+\chapter{Representation Theory of Finite Groups}
+
+\chapter{Semisimple Algebra}
+
+
+\newpage
+
+
+\end{document}
