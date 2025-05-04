@@ -780,7 +780,6 @@ where $\phi=\frac{1+\sqrt{5}}{2}$.
 
 \chapter{Spring 2016}
 
-\textcolor{red}{I can't do 6}
 
 \begin{prob}
     Classify all groups of order 66, up to isomorphism.
@@ -939,6 +938,20 @@ where $\phi=\frac{1+\sqrt{5}}{2}$.
 \begin{prob}
     Let \(A\) be a semi-simple finite dimensional algebra over \(\mathbb{C}\), and let \(V\) be a direct sum of two isomorphic simple \(A\)-modules. Find the automorphism group of the \(A\)-module \(V\).
 \end{prob}
+\begin{proof}
+    Schur's lemma says that if $S$ is a simple $A$-module, then 
+    \begin{equation*}
+        \text{End}(S,S)\cong\C
+    \end{equation*}
+    Thus 
+    \begin{equation*}
+        \text{End}(V,V)=\text{Mat}_2(\C)
+    \end{equation*}
+    Thus the automorphisms are 
+    \begin{equation*}
+        \text{Aut}(V,V)=\text{GL}_2(\C)
+    \end{equation*}
+\end{proof}
 
 
 
@@ -1141,7 +1154,6 @@ where $\phi=\frac{1+\sqrt{5}}{2}$.
 
 \chapter{Fall 2011}
 
-\textcolor{red}{2,5}
 
 \begin{prob}
     \begin{itemize}
@@ -1174,7 +1186,8 @@ where $\phi=\frac{1+\sqrt{5}}{2}$.
         \begin{equation*}
             \alpha=\text{tr}(A)
         \end{equation*}
-        Thus it sufficees to compute the eigenvalues of $A$ (in the algebraic closure). 
+        Thus it sufficees to compute the eigenvalues of $A$ (in the algebraic closure). One can show that it takes the above form using the size of these eigenvalues.
+        \item[(b)] It is when there are distinct three eigenvalues, i.e., $\alpha\neq -1, 3$.
     \end{itemize}
 
 \end{proof}
@@ -1236,13 +1249,25 @@ where $\phi=\frac{1+\sqrt{5}}{2}$.
 \begin{prob}
     Let \(A\) be a finite-dimensional semisimple algebra over \(\mathbb{C}\), and \(V\) an \(A\)-module of finite type (i.e., finitely-generated as an \(A\)-module). Prove that \(V\) has only finitely many \(A\)-submodules if and only if \(V\) is a direct sum of pairwise non-isomorphic irreducible (i.e., simple) \(A\)-modules.
 \end{prob}
+\begin{proof}
+    If $V$ is a finite direct sum of non-isomorphic $A$-modules, then there are only finitely many $A$-submodules (for each simple module, the only submodule is $\{e\}$ and itself).
+
+    Conversely, suppose that there are isomorphic copies of $A$ module in the sum of $V$, by Schur's lemma, we know 
+    \begin{equation*}
+        \text{End}(S,S)=\C
+    \end{equation*}
+    Thus if $V=S\oplus S$, then for fixed $\phi$,
+    \begin{equation*}
+        \{(x,\phi(x))\in (S,S)\}
+    \end{equation*}
+    is a submodule. Since there are infiniteyly many $\phi$, there are infinitely many submodules.
+\end{proof}
 
 
 
 \chapter{Spring 2010}
 
 
-\textcolor{red}{5}
 
 \begin{prob}
     Let \(G\) be a non-abelian group of order \(p^3\), here \(p\) is prime. Determine the number of distinct conjugacy classes in \(G\).
@@ -1352,7 +1377,36 @@ where $\phi=\frac{1+\sqrt{5}}{2}$.
 \begin{prob}
     Classify all non-commutative semi-simple rings with 512 elements. (You can use the fact that finite division rings are fields.)
 \end{prob}
-
+\begin{proof}
+    By Artin-Wedderburn, we know that this finite semisimple ring can be decomposed into a finite direct sum of matrix rings:
+    \begin{equation*}
+        R\cong M_{n_1}(F_1)\oplus\dots\oplus M_{n_k}(F_k)
+    \end{equation*}
+    where $F_i$ are finite fields. Further more we can assume $n_1\geq n_2\geq\dots\geq n_k$.The total number of elements is 
+    \begin{equation*}
+        F_1^{n_1^2}\dots F_k^{n_k^2}=512=2^9
+    \end{equation*}
+    Thus we see all the components are powers of $2$. Since $R$ is noncommutative, we may assume that $n_1\geq 2$. If $n_1=3$, then $F_1=2$, we have 
+    \begin{equation*}
+        R\cong M_{3}(\F_2)
+    \end{equation*}
+    If $n_1=2$, we can have $n_2=2$, then 
+    \begin{equation*}
+        R\cong M_2(\F_2)\oplus M_2(\F_2)\oplus \F_2
+    \end{equation*}
+    or $n_3=\dots=n_k=1$, then we have (different ways of adding to $5$):
+    \begin{equation*}
+        R\cong M_2(\F_2)\oplus\begin{cases}
+            \F_2\oplus\F_2\oplus\F_2\oplus\F_2\oplus F_2\\
+            \F_{4}\oplus \F_2\oplus\F_2\oplus F_2\\
+            \F_8\oplus\F_2\oplus\F_2\\
+            \F_{16}\oplus\F_2\\
+            \F_8\oplus\F_4\\
+            \F_{16}\oplus F_2\\
+            \F_{32}
+        \end{cases}
+    \end{equation*}
+\end{proof}
 
 
 \begin{prob}
