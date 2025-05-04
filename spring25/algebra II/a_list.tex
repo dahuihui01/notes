@@ -717,10 +717,131 @@ This corresponds to Aluffi Chapter III.
 
 
 
+\begin{defn}[zero-divisor]
+    An element $a\in R$ is a (left) zero-divisor if there exists $b\neq 0$ such that 
+    \begin{equation*}
+        ab=0
+    \end{equation*}
+\end{defn}
+
+\begin{prop}
+    In a ring $R$, $a\in R$ is not a left zero-divisor if and only if the left multiplication by $a$ is injective.
+\end{prop}
+
+\begin{defn}[integral domain]
+    An ID is a nonzero commutative ring such that for all $a,b\in R$, 
+    \begin{equation*}
+        ab=0
+    \end{equation*}
+    implies $a=0$ or $b=0$. In other words, IDs are commutative rings without zero divisors.
+\end{defn}
+
+\begin{prop}
+    In a ring $R$:
+    \begin{enumerate}
+        \item $u$ is left unit iff the left multiplication by $u$ is surjective. 
+        \item If $u$ is a left unit, then the right multiplication by $u$ is injective, i.e., $u$ is not a right zero-divisor.
+    \end{enumerate}
+\end{prop}
+
+\begin{defn}[division ring]
+    A division ring is a ring in which every nonzero element is a unit.
+
+    A field is a nonzero commutative ring in which every nonzero element is a unit.
+\end{defn}
+
+
+\begin{prop}
+    Assume $R$ is a finite commutative ring, then $R$ is an integral domain if and only if $R$ is a field.
+\end{prop}
+
+\begin{prop}
+    $\text{End}_{\text{Ab}}(\Z)\cong\Z$
+\end{prop}
 
 
 
+\begin{thm}
+    Let $I$ be a two-sided ideal of a ring $R$. Then for every ring homomorphism $\varphi: R\to S$ such that $I\subset\ker\varphi$ there exists a unique ring homomorphism $\tilde{\varphi}: R/I\to S$ so that the diagram commutes:
+    \[\begin{tikzcd}
+        R & S \\
+        {R/I}
+        \arrow["\varphi", from=1-1, to=1-2]
+        \arrow["\pi"', from=1-1, to=2-1]
+        \arrow["{\tilde{\varphi}}"', from=2-1, to=1-2]
+    \end{tikzcd}\]
+\end{thm}
 
+\begin{thm}
+    Let $\varphi:R\to S$ be a surjective ring homomorphism, then 
+    \begin{equation*}
+        S\cong\frac{R}{\ker(\varphi)}
+    \end{equation*}
+\end{thm}
+
+
+\begin{prop}
+    Let $I$ be an ideal of a ring $R$, and let $J$ be an ideal of $R$ containing $I$, then $J/I$ is an ideal of $R/I$, and 
+    \begin{equation*}
+        \frac{R/I}{J/I}=\frac{R}{J}
+    \end{equation*}
+\end{prop}
+
+
+\begin{defn}[Noetherian]
+    A commutative ring $R$ is Noetherian if every ideal of $R$ is finitely generated. An ideal $I$ is finitely generated if $I=(a_1,\dots,a_n)$, i.e., every element in $I$ can be written as 
+    \begin{equation*}
+        r_1a_1+\dots+r_na_n
+    \end{equation*}
+    for some $r_1,\dots, r_n\in R$.
+\end{defn}
+
+\begin{defn}
+    $I$ is a prime ideal if $R/I$ is an integral domain, and is a maximal ideal if $R/I$ is a field.
+\end{defn}
+
+\begin{prop}
+    Let $I$ be an ideal of commutative $R$, if $R/I$ is finite, then $I$ is prime if and only if maximal.
+\end{prop}
+
+\begin{prop}
+    Let $R$ be a PID, a nonzero ideal $I$ is prime if and only if it is maximal.
+\end{prop}
+
+\begin{defn}[module]
+    A $R$-module $M$ is an abelian group with a ring action, satisfying:
+    \begin{enumerate}
+        \item $r(m+n)=rm+rn$
+        \item $(r+s)m=rm+sm$
+        \item $(rs)m=r(sm)$
+        \item $1m=m$.
+    \end{enumerate}
+\end{defn}
+
+\begin{defn}
+    An $R$-algebra is a ring with a ring $R$ action.
+\end{defn}
+
+\begin{thm}
+    Suppose $\varphi: M\to M'$ be a surjective $R$-module homomorphism, then 
+    \begin{equation*}
+        M'\cong\frac{M}{\ker\varphi}
+    \end{equation*}
+\end{thm}
+
+\begin{prop}
+    Let $N$ be a submodule of an $R$-module $M$, and let $P$ be a submodule of $M$ containing $N$. Then $P/N$ is a submodule of $M/N$, and 
+    \begin{equation*}
+        \frac{M/N}{P/N}\cong\frac{M}{P}
+    \end{equation*}
+\end{prop}
+
+\begin{prop}
+    Let $N,P$ be submodules, then $N+P$ is a submodule of $M$, and $N\cap P$ is a submodule of $P$, and 
+    \begin{equation*}
+        \frac{N+P}{N}\cong\frac{P}{N\cap P}
+    \end{equation*}
+\end{prop}
 
 
 
