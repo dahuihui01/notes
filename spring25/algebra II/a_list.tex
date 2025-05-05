@@ -844,6 +844,14 @@ This corresponds to Aluffi Chapter III.
 \end{prop}
 
 
+\begin{prop}
+    Let $R$ be a PID, and $F$ be a finitely generated free module over $R$, and let $M\subset F$ be a submodule, then $M$ is free.
+\end{prop}
+
+
+\begin{defn}
+    Let $R$ be an integral domain, the rank of $M$ is the maximal number of linearly independent elements of $M$.
+\end{defn}
 
 
 
@@ -882,6 +890,277 @@ This corresponds to Aluffi Chapter III.
 
 \chapter{Irreducibility and Factorization}
 This corresponds to Aluffi Chapter V.
+
+
+
+\begin{prop}
+    Let $R$ be commutative, and $M$ be an $R$-module, then the following are equivalent:
+    \begin{enumerate}
+        \item $M$ is Noetherian: every submodule of $M$ is finitely generated.
+        \item Every ascending chain of submodules of $M$ stabilizes.
+        \item Every nonempty family of submodules has a maximal element with respect to inclusion.
+    \end{enumerate}
+\end{prop}
+
+
+\begin{prop}
+    Let $R$ be a Noetherian ring, and let $J$ be an ideal of the polynoial ring $R[x_1,\dots, x_n]$, then the ring 
+    \begin{equation*}
+        \frac{R[x_1,\dots,x_n]}{J}
+    \end{equation*}
+    is Noetherian.
+\end{prop}
+
+
+\begin{prop}[Hilbert's basis theorem]
+    If $R$ is Noetherian, then $R[x]$ is also Noetherian.
+\end{prop}
+\begin{defn}[prime, irreducible elements]
+    Let $R$ be an integral domain, an element $a\in R$ is prime if the ideal $(a)$ is prime, i.e., $a$ is not a unit and $a\mid bc$ implies $a\mid b$ or $a\mid c$. ($a\mid b$ if $b\in(a)$.)
+
+    An element $a\in R$ is irreducible if $a$ is not a unit and 
+    \begin{equation*}
+        a=bc
+    \end{equation*}
+    implies $b$ is a unit or $c$ is a unit. Equivalently, $a$ is Irreducible if $(a)\subset (b)$ implies $(b)=(a)$ or $(b)=1$.
+\end{defn}
+
+\begin{prop}
+    Let $R$ be an integral domain, and let $a\in R$ be a nonzero prime element, then $a$ is irreducible.
+\end{prop}
+
+% \begin{defn}
+%     Let $R$ be an ID. An element $r\in R$ has a factorization into irreducibles if there exist irreducible elements $q_1,\dots, q_n$ such that $r=q_1\dots q_n$. 
+% \end{defn}
+
+
+
+\begin{prop}
+    Let $R$ be an integral domain, and let $r$ be a nonzero, nonunit element of $R$. Assume that every ascedning chain of principal ideals, 
+    \begin{equation*}
+        (r)\subset (r_1)\subset\dots
+    \end{equation*}
+    stabilizes. Then $r$ has a factorization into irreducibles.
+\end{prop}
+
+\begin{cor}
+    Let $R$ be a Noetherian ring, then factorizations exist in $R$.
+
+    A non-Noetherian ring but factorization still exists:
+    \begin{equation*}
+        \Z[x_1,\dots,x_n]
+    \end{equation*}
+\end{cor}
+
+
+
+
+\begin{prop}
+    Let $R$ ba UFD, and $a,b,c\in R$ be nonzero, then 
+    \begin{equation*}
+        (a)\subset(b)
+    \end{equation*}
+    iff the multiset of irreducible factors of $b$ is contained in that of $a$. Moreover, the irreducible factors of $bc$ are the collection of irreducible factors of $b$ and $c$.
+\end{prop}
+
+
+
+\begin{prop}
+    Let $R$ be a UFD, let $a,b$ be nonzero elements, then $a,b$ have a greatest common divisor, i.e., the smallest ideal $(d)$ such that $(a,b)\subset (d)$.
+\end{prop}
+
+\begin{prop}
+    In UFD, $a$ is irreducible implies $a$ is prime.
+\end{prop}
+
+\begin{thm}
+    An integral domain $R$ is a UFD if and only if 
+    \begin{enumerate}
+        \item The acc holds for principal ideals in $R$.
+        \item Every irreducible element of $R$ is prime.
+    \end{enumerate}
+\end{thm}
+
+
+\begin{prop}
+    If $R$ is a PID, then it is a UFD. (Hence irreducibles are primes).
+
+    ($\Z[x]$ is not a PID).
+\end{prop}
+
+\begin{defn}[Euclidean domain]
+    A Euclidean valuation on an integral domain $R$ is an valuation: for all $a\in R$, and all nonzero $b\in R$, there exists $q,r$ such that 
+    \begin{equation*}
+        a=qb+r
+    \end{equation*}
+    with either $r=0$ or $v(r)<v(b)$. An integral domain is a ED if it admits a Euclidean valuation.
+\end{defn}
+
+\begin{prop}
+    ED is also PID.
+\end{prop}
+
+
+\begin{defn}[Field of fractions]
+    Let $R$ be an integral domain, then the field of fractions is 
+    \begin{equation*}
+        K(R)=\left\{\frac{a}{r}: a,r\in R, r\neq 0\right\}
+    \end{equation*}
+\end{defn}
+
+\begin{defn}
+    The field of rational functions with coefficients in $R$ is the field of fractions of the ring $R[x]$, denoted as $R(x)$.
+\end{defn}
+
+
+
+
+
+
+
+
+
+
+
+\begin{thm}
+    Let $R$ be a UFD, then $R[x]$ is also a UFD.
+\end{thm}
+
+\begin{prop}
+    Let $R$ be a UFD, and $K$ be its field of fractions, let $f\in R[x]$ be a nonconstant, irreducible polynomial, then $f$ is irreducible as an element in $K[x]$.
+\end{prop}
+
+
+
+\begin{defn}
+    Let $R$ be a commutative ring, let $f\in R[x]$, then $f$ is primitive if for all principal prime ideals $p$, 
+    \begin{equation*}
+        f\not\in pR[x]
+    \end{equation*}
+    where $p[x]$ is an ideal of $R[x]$ of polynomials with coefficients from $p$.
+\end{defn}
+
+\begin{prop}
+    Let $R$ be a UFD, $f$ is primitive if and only if $\gcd(a_0,\dots, a_d)=1$.
+\end{prop}
+
+\begin{defn}
+    Let $R$ be a UFD.
+    The content of a nonzero polynomial $f\in R[x]$ denoted by 
+    \begin{equation*}
+        \text{cont}(f)=\gcd(a_0,\dots,a_n)
+    \end{equation*}
+    The principal ideal generated by $(\text{cont}f)$ is uniquely determined by $f$.
+\end{defn}
+
+\begin{prop}[Gauss's lemma]
+    Let $R$ be a UFD. Let $f,g\in R[x]$, then 
+    \begin{equation*}
+        (\text{cont}(fg))=(\text{cont}(f))(\text{cont}(g))
+    \end{equation*}
+\end{prop}
+
+
+
+\begin{prop}
+    Let $R$ be a UFD, and $K$ be its field of fractions. Let $f\in R[x]$ be nonconstant, then $f$ is irreducible in $R[x]$ if and only if it is irreducible in $K[x]$ and $\gcd(a_0,\dots, a_n)=1$ 
+\end{prop}
+
+\begin{prop}
+    Let $k$ be field, $f\in k[x]$ of degree $2$ or $3$ is irreducible iff it has a root in $k$.
+\end{prop}
+
+\begin{prop}
+    Let $R$ be a UFD, $K$ its field of fractions.  Let 
+    \begin{equation*}
+        f(x)=a_0+\dots+a_nx^n\in R[x]
+    \end{equation*}
+    let $c=\frac{p}{q}\in K$ be a root of $f$, then $p\mid a_0$ and $q\mid a_n$.  (Note $p/q$ is written in the minimal form).
+\end{prop}
+
+
+\begin{prop}
+    Let $k$ be a field, $f(t)\in k[t]$, be irreducible, then 
+    \begin{equation*}
+        F=\frac{k[t]}{(f(t))}
+    \end{equation*}
+    is a field.
+\end{prop}
+
+
+\begin{defn}
+    A field is algebraically closed if all the irreducible polynomials in $k[x]$ have degree $1$.
+\end{defn}
+
+
+\begin{prop}
+    Every polynomial $f\in R[x]$ of degree $\geq 3$ is reducible.
+\end{prop}
+
+\begin{prop}
+    Let $f\in\Z[x]$ be a polynomial such $\gcd(a_0,\dots, a_n)=1$ then let $p$ be a prime integer. Assume $f\mod p$ has the same degree as $f$ and is irreducible over $\Z/p\Z$, then $f$ is irreducible over $\Z$.
+\end{prop}
+
+\begin{prop}[Generalized Eisenstein]
+    Let $R$ be a commutative ring, let $p$ be a prime ideal in $R$, let $f\in R[x]$, assume that 
+    \begin{enumerate}
+        \item $a_n\not\in p$.
+        \item $a_i\in p$.
+        \item $a_0\not\in p^2$.
+    \end{enumerate}
+    then $f$ is not the product of polynomials with degree strictly less than $\text{deg}(f)$.
+\end{prop}
+
+
+\begin{thm}[CRT]
+    Let $I_1,\dots, I_k$ be ideals of $R$ such that $I_i+I_j=(1)$ for all $i\neq j$. Then 
+    \begin{equation*}
+        \frac{R}{I_1\cap\dots\cap I_k}\cong\frac{R}{I_1}\times\dots\times\frac{R}{I_k}
+    \end{equation*}
+
+    (It uses if $I_i+I_j=(1)$, then $I_1\dots I_k=I_1\cap\dots\cap I_k$).
+\end{thm}
+
+\begin{cor}
+    Let $R$ be a PID, and let $a_1,\dots, a_k$ be elemnts such that $\gcd(a_i,g_j)=1$, let $a=a_1\dots a_k$, then 
+    \begin{equation*}
+        \frac{R}{(a)}\cong\frac{R}{(a_1)}\times\dots\times\frac{R}{(a_k)}
+    \end{equation*}
+\end{cor}
+
+
+\begin{prop}
+    A positive integer prime $p\in\Z$ splits in $\Z[i]$ iff it is the sum of two squares in $\Z$.
+\end{prop}
+\begin{proof}
+    Use norm.
+\end{proof}
+
+
+\begin{thm}[Fermat]
+    A positive odd prime $p\in\Z$ is a sum of two squares iff $p\equiv 1\mod 4$.
+\end{thm}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \chapter{Linear Algebra I}
 This corresponds to Aluffi Chapter VI.
