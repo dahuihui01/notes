@@ -59,8 +59,176 @@
     I cannot do Nakayama lemma questions.
 \end{warn}
 
+\begin{warn}
+    I cannot do some of other questions either.
+\end{warn}
+
 
 % \textcolor{blue}{Spring 2018, Spring 2015, Spring 2014}
+
+
+\chapter{Fall 2024}
+
+\begin{prob}
+    Let \( p \) be prime and \( G \) a nonabelian group of order \( 2p \). Compute the number of conjugacy classes of elements of \( G \).
+\end{prob}
+
+
+\begin{prob}
+    Recall that a commutative ring \( R \) is \textit{Artinian} if every descending chain of ideals \( I_0 \supseteq I_1 \supseteq I_2 \supseteq \cdots \) is eventually constant. Show that if \( R \) is an Artinian integral domain, then \( R \) is a field.
+\end{prob}
+
+
+
+\begin{prob}
+    Let \( K \) be a field and \( f(x) \in K[x] \) an irreducible polynomial. Suppose given a finite extension \( L \) of \( K \) of degree prime to the degree of \( f(x) \). Show that \( f(x) \) is irreducible over \( L \).
+\end{prob}
+
+
+
+\begin{prob}
+    Determine \( m, n \in \mathbb{Z} \setminus \{0\} \) such that fields \( \mathbb{Q}(\sqrt{m}), \mathbb{Q}(\sqrt{n}) \) are isomorphic.
+\end{prob}
+
+
+
+
+\begin{prob}
+    Prove that any two dimensional faithful complex representation of a non-commutative group is irreducible.
+\end{prob}
+
+
+
+
+\begin{prob}
+    Let \( A, B \) be linear operators on a finite dimensional vector space \( V \) over a field of characteristic 0 such that \( A^3 = B^2 \) are the identity and \( AB = BA^2 \). Prove that if \( U \) is an invariant under \( A, B \) subspace of \( V \) then there exists an invariant under \( A, B \) subspace \( W \) of \( V \) such that \( V = U \oplus W \).
+\end{prob}
+
+
+
+\chapter{Fall 2023}
+
+
+\textcolor{red}{3,6}
+
+
+\begin{prob}
+    For any positive integer \( n \), denote by \( A_n \) the group of even permutations on a set of cardinality \( n \).
+
+    \begin{enumerate}
+        \item[(i)] Let \( G \) be a simple group with a proper subgroup \( H \) of index \( n \). Suppose that the order of \( G \) is at least 3. Prove that there exists an injective homomorphism from \( G \) to \( A_n \).
+        
+        \item[(ii)] Prove that \( A_6 \) has no subgroup of order 120. [Hint: You may use the fact that \( A_n \) is simple for \( n \geq 5 \).]
+    \end{enumerate}
+\end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(i)] We note that $G$ has an action on the cosets $g_iH$, since $[G:H]=n$, this is a transitive action that permutes $n$ elements, thus there is a map 
+        \begin{equation*}
+            \rho: G\to S_n
+        \end{equation*}
+        since $G$ is simple, we know $\ker(\rho)=\{e\}$, i.e., 
+        \begin{equation*}
+            G\cong\im(\rho)
+        \end{equation*}
+        It suffices to show that $\im(\rho)$ is contained in $A_n$, suppose not, then $\im(\rho)\cap A_n$ is a subgroup of index $2$ in $\im(\rho)$, hence is normal in $\im(\rho)$, this is a contradiction again to the fact that $G$ is simple. This shows that $\im(\rho)\subset A$, and $\rho$ is faithful, thus $G$ embeds into $A_n$.
+        \item[(ii)] Using (i), suppose there is a subgroup $H$ of order $120$ of $A_6$, since $A_6$ is simple, then $[A_6: H]=3$, we know there exists an injective homomorphism from $A_6$ to $A_3$, which is a contradiction.
+    \end{itemize}
+\end{proof}
+
+
+\begin{prob}
+    Answer the following questions and justify your answers.
+
+    \begin{enumerate}
+        \item[(i)] Is \( X^2 + Y^2 + 1 \) irreducible in the polynomial ring \( \mathbb{C}[X, Y] \)?
+        
+        \item[(ii)] Is \( X^2 + 3X + 2 \) irreducible in the formal power series ring \( \mathbb{Z}[[X]] \)?
+    \end{enumerate}
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item[(i)] It is irreducible. We see 
+        \begin{equation*}
+            X^2+Y^2+1=X^2+(Y-i)(Y+i)
+        \end{equation*}
+        since $(Y-i)$ is irreducible in $\C[Y]$, i.e., prime in $\C[Y]$, we apply generalized Eisenstein, 
+        \begin{equation*}
+            X^2+Y^2+1 \text{ is irreducible in }( \C[Y])[X]
+        \end{equation*} 
+        and we are done by observing $\C[Y][X]=\C[X,Y]$.
+        \item[(ii)] It is also irreducible. We can proceed directly with the definition, since 
+        \begin{equation*}
+            X^2+3X+2=(X+2)(X+1)
+        \end{equation*}
+        and $(X+1)$ is a unit in $\Z[[X]]$, hence it is irreducible. (Alternatively, $f$ is a unit if the constant term $f(0)$ is a unit, thus suppose 
+        \begin{equation*}
+            f=gh
+        \end{equation*}
+        then $g(0)h(0)=f(0)$. If $f(0)$ is irreducible, it implies either $g(0)$ or $h(0)$ is a unit, which implies either $g$ or $h$ is a unit, hence $f$ irreducible.)
+    \end{enumerate}
+\end{proof}
+
+
+\begin{prob}
+    Denote by \( \text{SL}_2(\mathbb{C}) \) the special linear group over the complex number field, i.e., the group of all \( 2 \times 2 \) complex matrices with determinant 1. Prove the following statements.
+
+    \begin{enumerate}
+        \item[(i)] \( \text{SL}_2(\mathbb{C}) \) is generated by elements of the forms
+        \[
+        \begin{pmatrix}
+        1 & a \\
+        0 & 1 
+        \end{pmatrix}
+        \]
+        where \( a \in \mathbb{C} \), and
+        \[
+        \begin{pmatrix}
+        1 & 0 \\
+        b & 1 
+        \end{pmatrix}
+        \]
+        where \( b \in \mathbb{C} \).
+        
+        \item[(ii)] \( \text{SL}_2(\mathbb{C}) \) is equal to its own commutator subgroup.
+    \end{enumerate}
+\end{prob}
+
+
+\begin{prob}
+    Prove that the quotient ring \( \mathbb{Z}[\sqrt{2}]/(3) \) is a field.
+\end{prob}
+\begin{proof}
+    Since $\Z[\sqrt{2}]/(3)$ is finite, it is a field iff it is an integral domain. Hence it suffices to see that $(3)$ is a prime ideal in $\Z[\sqrt{3}]$.
+\end{proof}
+
+
+
+\begin{prob}
+    Compute the Galois group of the splitting field of the polynomial \( X^4 - 3 \) over \( \mathbb{Q} \).
+\end{prob}
+\begin{proof}
+    The Galois extension generated by this polynomial is 
+    \begin{equation*}
+        \Q(\sqrt[4]{3}, i)
+    \end{equation*}
+    Thus the Galois group has order $8$, i.e., a $2$-Sylow subgroup of $S_4$, hence it must be isomorphic to $D_8$.
+\end{proof}
+
+
+
+
+\begin{prob}
+    Compute the character table for the dihedral group \( D_5 \).
+\end{prob}
+
+
+
+
+
+
+
+
 
 
 \chapter{Fall 2019}
@@ -153,6 +321,17 @@
 \begin{prob}
     How many two-sided ideals has the group algebra \(\mathbb{C}[\mathrm{S}_{3}]\), where \(\mathrm{S}_{3}\) is the group of permutations of \(\{1,2,3\}\)?
 \end{prob}
+\begin{proof}
+    By Artin-Wedderburn, $\C[S_3]$ can be decomposed into the following 
+    \begin{equation*}
+        \C[S_3]\cong M_{n_1}(\C)\oplus \dots\oplus M_{n_k}(\C)
+    \end{equation*}
+    We note that $n_1^2+\dots+n_k^2=6$, and each $M_{n_i}$ corresponds to an irreducible representation of dimension $n_i$, hence we see 
+    \begin{equation*}
+        \C[S_3]=\C\oplus\C\oplus M_2(\C)
+    \end{equation*}
+    Thus it has $3$ two sided ideals.
+\end{proof}
 
 
 

@@ -614,7 +614,104 @@
 Section 5.2 ends here.
 
 
+\newpage
 
+
+\begin{thm}[3.23]
+    
+\end{thm}
+
+\begin{thm}[3.26]
+    
+\end{thm}
+
+
+\begin{thm}[3.23]
+    $T:\R^n\to\R^n$ is continuous, if $T$ is lipschitz, then it maps measurable sets to measurable sets.
+\end{thm}
+\begin{proof}
+    Any measurable set $E$ can be written as a union of $F\cup Z$, where $F$ is a countable union of closed sets and $Z$ has measure $0$. It suffices to check it maps each to measurable sets.
+\end{proof}
+
+
+\begin{thm}[3.35]
+    Let $T:\R^n\to\R^n$ by linear, then 
+    \begin{equation*}
+        |T(E)|=|\det(T)|\cdot|E|
+    \end{equation*}
+\end{thm}
+
+
+\begin{thm}
+    If $\phi$ is continuous, $f$ is finite a..e. , then $\phi\circ f$ is measruable if and only if $f$ is measurable.
+\end{thm}
+\begin{proof}
+    Uses the fact it suffices to show for $G$ open, $f^{-1}(G)$ measurable implies $f$ is measurable (if $\{f=\infty\}$ or $-\infty$ is measurable).
+\end{proof}
+
+\begin{thm}[example]
+    If $f$ is meas, then $|f|^2$ also meas.
+\end{thm}
+
+
+\begin{thm}[Egorov, 4.17]
+    Suppose that $\{f_k\}$ is a sequence of mea functios that converges almost everywhere to $f$ on $E$, and $|E|<\infty$, then there exists $F\subset E$ s.t., $|E-F|<\varepsilon$ such that $f_k\to f$ uniformly.
+\end{thm}
+
+
+
+\begin{thm}[4.22]
+    If $f_k\to f$ in measure, then there exists a convergent subsequence. 
+\end{thm}
+
+
+\begin{thm}[Lemma 5.3]
+    If $f$ is nonnegative, meas, then $\Gamma(f,E)$ has measure zero.
+\end{thm}
+
+
+\begin{thm}[5.6 MCT]
+    Let $\{f_k\}$ be nonnegative and meas, and $f_k\to f$ where $f_k\leq f_{k+1}$, then 
+    \begin{equation*}
+        \int f=\lim_{k\to\infty}\int f_k
+    \end{equation*}
+\end{thm}
+
+
+\begin{thm}[Cor 5.12, Chebyshev]
+    Let $f$ be nonnegative and meas, if $\alpha>0$, then 
+    \begin{equation*}
+        |\{x\in E: f(x)>\alpha\}|\leq\frac{1}{\alpha}\int f
+    \end{equation*}
+\end{thm}
+
+\begin{thm}[5.17 Fatou's lemma]
+    \begin{equation*}
+        \int\liminf_{k\to\infty}f_k\leq\liminf_{k\to\infty}\int f_k
+    \end{equation*}
+\end{thm}
+
+
+
+\begin{thm}[5.33 Uniform convergen thm]
+    $f_k\to f$ uniformly, and $|E|<\infty$, we have 
+    \begin{equation*}
+        \int f_k\to \int f
+    \end{equation*}
+\end{thm}
+\begin{thm}[5.36, Lebesgue dominated convergence]
+    $f_k\to f$, and if there exists $g$ such that $|f_k|\leq\phi$ and $\int\phi<\infty$ then 
+    \begin{equation*}
+        \int_Ef_k=\int f
+    \end{equation*}
+\end{thm}
+
+
+
+
+\begin{thm}[5.37]
+    If $f_k\to f$, and $|f_k|\leq M$ for all $k$, where $|E|<\infty$, then $\int f_k\to \int f$.
+\end{thm}
 
 
 
