@@ -220,7 +220,26 @@ Page 42-43
 
 
 \chapter{Irreducibility of Polynomials}
-Page 44-45
+% Page 44-45
+
+
+
+\begin{prop}[(Artin-Schreier)]
+    $x^p-x-1\in\Q[x]$ is irreducible. 
+\end{prop}
+\begin{proof}
+    It suffices to check irreducibility mod $p$. 
+
+    $x^p-x-a$ is either irreducible or factors completely into linear factors. 
+\end{proof}
+
+
+
+\begin{prop}
+    For $x\in\F_p$, $x^p=x$.
+\end{prop}
+A fact that I keep forgetting. (Lagrange!)
+
 
 
 \begin{prop}
@@ -279,24 +298,65 @@ Page 44-45
 \end{cor}
 
 
+\begin{prop}
+    The polynomial 
+    \begin{equation*}
+        f(x)=(x-1)(x-2)(x-3)(x-4)+1
+    \end{equation*}
+    is irreducible.
+\end{prop}
+
+
+
+
 
 \begin{prob}[S2018-Q3]
     Let \(R\) be the ring \(\mathbb{Z}[\zeta_p]\), where \(p\) is a prime number and \(\zeta_p\) denotes a primitive \(p\)th root of unity in \(\mathbb{C}\). Prove that if an integer \(n \in \mathbb{Z}\) is divisible by \(1 - \zeta_p\) in \(R\), then \(p\) divides \(n\).
 \end{prob}
+\begin{proof}
+    We know the polynomial 
+    \begin{equation*}
+        x^p-1=(x-1)(x^{p-1}-\dots-x+1)
+    \end{equation*}
+    And $\zeta_p$ is a roots of $(x^{p-1}-\dots-x+1)$, hence we are write $\zeta_p^{p-1}$ as 
+    \begin{equation*}
+        \zeta_p^{p-1}=-\zeta_p^{p-2}-\dots-1
+    \end{equation*}
+    Hence 
+    \begin{equation*}
+        n=(1-\zeta_p)(a_0+\dots+a_{p-2}\zeta_p^{p-2})
+    \end{equation*}
+    We see that $p$ divides the constant term, hence $p\mid n$.
+\end{proof}
+
+
 
 
 \begin{prob}[F2008-Q2]
     Show that the polynomial \(x^5 - 5x^4 - 6x - 2\) is irreducible in \(\mathbb{Q}[x]\).
 \end{prob}
+\begin{proof}
+    It suffices to see that it is irreducible $\mod 5$.
+\end{proof}
 
 \begin{prob}[F2003-Q3]
     Obtain a factorization into irreducible factors in \(\mathbb{Z}[x]\) of the polynomial \(x^{10} - 1\).
 \end{prob}
+\begin{proof}
+    There are four irreducible factors, one linear, two cyclotomic.
+\end{proof}
 
 
 \begin{prob}[S2004-Q3]
     Let \(k\) be a field with characteristic 0. Let \(m \geq 2\) be an integer. Show that \(f(x,y) = x^m + y^m + 1\) is irreducible in \(k[x,y]\).
 \end{prob}
+\begin{proof}
+    Take an irreducible factor of $y^m+1$, and $y^m+1$ is separable, hence there exists one irreducible factor whose square doesn't divide $y^m+1$. By generalized Eisenstein, we know 
+    \begin{equation*}
+        f(x,y)\in k[y][x]
+    \end{equation*}
+    is irreducible, and done by $k[y][x]=k[x,y]$.
+\end{proof}
 
 \begin{prob}[S2017-Q2, S2007-Q3]
     Write down the minimal polynomial for \(\sqrt{2}+\sqrt{3}\) over \(\mathbb{Q}\) and prove that it is reducible over \(\mathbb{F}_{p}\) for every prime number \(p\).
@@ -419,15 +479,117 @@ If $p$ is prime, then $\F_p$ is a field of $p$ elements, isomorphic to $\Z/p\Z$.
 \end{proof}
 
 
+\begin{prob}[F2015-Q5]
+    Let \(L\) be a finite field. Let \(a\) and \(b\) be elements of \(L^\times\) (the multiplicative group of \(L\)) and \(c \in L\). Show that there exist \(x\) and \(y\) in \(L\) such that \(ax^2 + by^2 = c\).
+\end{prob}
+
+
+
+\begin{prob}[F2013-Q6]
+    Let \(p\) be a prime and let \(F\) be a field of characteristic \(p\).
+    \begin{itemize}
+        \item[(a)] Prove that the map \(\varphi : F \to F, \varphi(a) = a^p\) is a field homomorphism.
+        \item[(b)] \(F\) is said to be \textit{perfect} if the above homomorphism \(\varphi\) is an automorphism. Prove that every finite field is perfect.
+        \item[(c)] If \(x\) is an indeterminate and \(F\) is any field of characteristic \(p\), prove that the field \(F(x)\) is not perfect.
+    \end{itemize}
+\end{prob}
+
+
+
+\begin{prob}[F2017-Q5]
+    Let \(K/k\) be an extension of finite fields with \(\#k=q\), let \(\Phi\colon x\mapsto x^{q}\) denote the \(q\)th power Frobenius map on \(K\), and let \(G:=\text{Gal}(K/k)\).
+    \begin{itemize}
+        \item[(a)] Compute the minimal polynomial of \(\Phi\) as a \(k\)-linear endomorphism of \(K\).
+        \item[(b)] Use (a) to prove the \textit{normal basis theorem} in the case of the extension \(K/k\): there exists \(x\in K\) such that the set \(\{\sigma x\mid\sigma\in G\}\) is a \(k\)-basis for \(K\).
+    \end{itemize}
+\end{prob}
+
+
+\begin{prob}[F2010-Q5]
+    Let \(\mathbb{F}_q\) be a finite field with \(q = p^n\) elements. Here \(p\) is a prime number. Let \(\varphi : \mathbb{F}_q \rightarrow \mathbb{F}_q\) be given by \(\varphi(x) = x^p\).
+    \begin{itemize}
+        \item[(a)] Show that \(\varphi\) is a linear transformation on \(\mathbb{F}_q\) (as vector space over \(\mathbb{F}_p\)), then determine its minimal polynomial.
+        \item[(b)] Supposed that \(\varphi\) is diagonalizable over \(\mathbb{F}_p\). Show that \(n\) divides \(p - 1\).
+    \end{itemize}
+\end{prob}
 
 
 
 
 
 
+\begin{prob}[S2011-Q2]
+    Let \(p\) be a prime, \(F\) a finite field with \(p\) elements and \(K\) a finite extension of \(F\). Denote by \(F^\times\) and \(K^\times\) the multiplicative groups of nonzero elements of fields \(F\) and \(K\), respectively. Prove that the norm homomorphism \(N:K^\times\to F^\times\) is surjective.
+\end{prob}
 
 
 
+\begin{prob}[F2008-Q3]
+    Let \(k\) be a finite field and \(K\) be a finite extension of \(k\). Let \(\mathfrak{Tr} = \text{Tr}_k^K\) be the trace function from \(K\) to \(k\). Determine the image of \(\mathfrak{Tr}\) and prove your answer.
+\end{prob}
 
+
+
+\begin{prob}[S2014-Q3]
+    Let \(L/K\) be a Galois extension of degree \(p\) with \(\text{char}K=p\). Show that \(L=K(\theta)\), where \(\theta\) is a root of \(x^{p}-x-a,a\in K\), and, conversely, any such extension is Galois of degree 1 or \(p\).
+\end{prob}
+
+
+\begin{prob}[S2015-Q1]
+    Let \(K\) be a field of characteristic \(p>0\). Prove that a polynomial \(f(x)=x^{p}-x-a\in K[x]\) either irreducible, or is a product of linear factors. Find this factorization if \(f\) has a root \(x_{0}\in K\).
+\end{prob}
+
+
+\begin{prob}[S2002-Q5]
+    Let \(\zeta = e^{\frac{2\pi i}{5}}\) and \(K = \mathbb{Q}(\zeta)\) the field generated by \(\zeta\) over the field of rational numbers. Prove that \(K\) contains \(\sqrt{5}\).
+\end{prob}
+
+
+
+\begin{prob}[S2008-Q2]
+    Let \(\xi\) be a primitive 9-th root of unity. Find the minimal polynomial of \(\xi + \xi^{-1}\) over \(\mathbb{Q}\).
+\end{prob}
+
+
+\begin{prob}[F2007-Q1]
+    Let \(G\) be a cyclic group of order 12. Construct a Galois extension \(K\) over \(\mathbb{Q}\) so that the Galois group is isomorphic to \(G\).
+\end{prob}
+
+
+\begin{prob}[F2011-Q3]
+    Let \(G\) be a cyclic group of order 100. Let \(K=\mathbb{Q}\), the field of rational numbers, or \(K=F_p\), the finite field with \(p\) elements, \(p\) being a prime number. For each such \(K\), construct a Galois extension \(L/K\) whose Galois group \(\text{Gal}(L/K)\) is isomorphic to \(G\). Explain your construction in detail.
+\end{prob}
+
+
+
+\section{Inseparable Field Extensions}
+
+\begin{prob}[S2003-Q2]
+    Let \(K\) be a field. A polynomial \(f(x) \in K[x]\) is called separable if, in any field extension, it has distinct roots. Prove that:
+    \begin{itemize}
+        \item[(a)] if \(K\) has characteristic 0, then each irreducible polynomial in \(K[x]\) is separable; and
+        \item[(b)] if \(K\) has characteristic \(p \neq 0\), then an irreducible polynomial \(f(x) \in K[x]\) is separable if and only if has no form \(g(x^p)\) where \(g(x) \in K[x]\).
+    \end{itemize}
+    Give an example of an inseparable irreducible polynomial.
+\end{prob}
+
+
+
+\begin{prob}[S2001-Q4]
+    Let \(p\) be a prime number, \(\mathbb{F}_p\) the prime field of \(p\) elements, \(X\) and \(Y\) algebraically independent variables over \(\mathbb{F}_p\), \(K=\mathbb{F}_p(X,Y)\), and \(F=\mathbb{F}_p(X^p-X,Y^p-X)\).
+    \begin{itemize}
+        \item[(a)] Show that \([K:F]=p^2\) and the separability and inseparability degrees of \(K/F\) are both equal to \(p\).
+        \item[(b)] Show that there exists a field \(E\), such that \(F \subseteq E \subseteq K\), which is a purely inseparable extension of \(F\) of degree \(p\).
+    \end{itemize}
+\end{prob}
+
+
+\begin{prob}[F2003-Q2]
+    Let \(k\) be a field of characteristic \(p\) and let \(t, u\) be algebraically independent over \(k\). Prove the following:
+    \begin{itemize}
+        \item[(a)] \(k(t, u)\) has degree \(p^2\) over \(k(t^p, u^p)\).
+        \item[(b)] There exist infinitely many fields between \(k(t, u)\) and \(k(t^p, u^p)\).
+    \end{itemize}
+\end{prob}
 
 
