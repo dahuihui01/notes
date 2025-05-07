@@ -128,7 +128,9 @@ Page 42-43
     \end{equation*}
 \end{example}
 
-
+\begin{prop}
+    Recall that a finite separable extension implies algebraic.
+\end{prop}
 
 
 
@@ -137,6 +139,23 @@ Page 42-43
 \begin{prob}[S2017-Q3]
     Let \(K/k\) be a finite separable field extension, and let \(L/k\) be any field extension. Show that \(K\otimes_{k}L\) is a product of fields.
 \end{prob}
+\begin{proof}
+    Finite separable implies simple. There exists $\alpha\in K$ such that 
+    \begin{equation*}
+        K=k(\alpha)
+    \end{equation*}
+    Let $p_\alpha$ be the minimal polynomial of $\alpha$, then
+    \begin{align*}
+        K\otimes_k L&=\frac{k[x]}{(p_\alpha(x))}\otimes_kL\\
+        &=\frac{L[x]}{(p_\alpha(x))}
+    \end{align*}
+    We note $p_\alpha(x)$ factors into irreducible linear factors over $K$. Hence 
+    \begin{align*}
+        K\otimes_kL&=\frac{L[x]}{(p_\alpha^1(x))\dots(p_\alpha^k(x))}\\
+        &=\frac{L[x]}{(p_\alpha^1(x))}\times\dots\times \frac{L[x]}{(p_\alpha^k(x))}
+    \end{align*}
+\end{proof}
+
 
 
 \begin{prob}[F2019-Q3]
