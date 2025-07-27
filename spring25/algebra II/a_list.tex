@@ -127,28 +127,29 @@ This corresponds to Aluffi Chapter II.
 \end{prop}
 
 \begin{defn}
-    Let $A=\{1,\dots, n\}$, then the free abeliean group on $A$ is 
+    Let $A=\{1,\dots, n\}$, then the free abelian group on $A$ is 
     \begin{equation*}
         \Z\oplus\dots\oplus\Z=\Z^{\oplus n}
     \end{equation*}
 \end{defn}
-\begin{prop}
-    For every set $A$, the free abelian group $A$ is 
-    \begin{equation*}
-        \Z^{\oplus A}
-    \end{equation*}
-    In other words, any element in the free abelian group of $A$ can be written as 
-    \begin{equation*}
-        \sum_{a\in A}m_aj(a)
-    \end{equation*}
-    where $m_a\neq 0$ for only finitely many terms, and 
-    \begin{equation*}
-        j_a(m)=\begin{cases}
-            1, m=a\\
-            0, m\neq a
-        \end{cases}
-    \end{equation*}
-\end{prop}
+
+% \begin{prop}
+%     For every set $A$, the free abelian group $A$ is 
+%     \begin{equation*}
+%         \Z^{\oplus A}
+%     \end{equation*}
+%     In other words, any element in the free abelian group of $A$ can be written as 
+%     \begin{equation*}
+%         \sum_{a\in A}m_aj(a)
+%     \end{equation*}
+%     where $m_a\neq 0$ for only finitely many terms, and 
+%     \begin{equation*}
+%         j_a(m)=\begin{cases}
+%             1, m=a\\
+%             0, m\neq a
+%         \end{cases}
+%     \end{equation*}
+% \end{prop}
 
 \begin{prop}
     Let $\{H_\alpha\}$ be any family of subgroups of $G$, then 
@@ -179,7 +180,7 @@ This corresponds to Aluffi Chapter II.
 \begin{thm}
     Let $\varphi:G_1\to G_2$ be a surjective homomorphism, then 
     \begin{equation*}
-        G_2=\frac{G_1}{\ker\varphi}
+        G_2\cong\frac{G_1}{\ker\varphi}
     \end{equation*}
 \end{thm}
 
@@ -191,12 +192,12 @@ This corresponds to Aluffi Chapter II.
 
     For example, 
     \begin{equation*}
-        \frac{S_3}{\Z/3\Z}=\frac{\Z}{2\Z}
+        \frac{Z/6\Z}{\Z/3\Z}=\Z/2\Z
     \end{equation*}
 \end{prop}
 
 \begin{prop}
-    Let $H$ be a normal subgroup of $G$, then every subgroup containing $H$ can be identified with a subgroup $K/H$ of $G/H$.
+    Let $H$ be a normal subgroup of $G$, then every subgroup $K$ containing $H$, $K/H$ can be identified with a subgroup of $G/H$.
 \end{prop}
 
 
@@ -218,9 +219,9 @@ This corresponds to Aluffi Chapter II.
 
 
 \begin{prop}
-    Let $H$ be a subgroup of $G$, then for all $g\in G$, the function 
+    Let $H$ be a subgroup of $G$, then for all $g\in G$, the function $H\to gH$ such that
     \begin{equation*}
-        H\to gH, h\mapsto gh
+       h\mapsto gh
     \end{equation*}
     is a bijection.
 \end{prop}
@@ -348,7 +349,7 @@ This corresponds to Aluffi Chapter IV.
 \begin{prop}[Class formula]
     Let $G$ be finite, then 
     \begin{equation*}
-        |G|=|Z(G)|+\sum_{a\in A}[a]
+        |G|=|Z(G)|+\sum_{[a]\in A}|[a]|
     \end{equation*}
     where $A$ contains one representative for each nontrivial conjugacy class.
 \end{prop}
@@ -380,11 +381,11 @@ This corresponds to Aluffi Chapter IV.
     If $H$ is subgroup of $G$, every conjugate $gHg^{-1}$ is also a subgroup of $G$, and all conjugate groups have the same order.
 \end{defn}
 
-\begin{prop}
+\begin{prop}[*]
     $H$ is a normal subgroup of $G$ if and only if $N_G(H)=G$. More generally, the normalizer $N_G(H)$ for any subgroup $H$ is the largest subgroup of $G$ in which $H$ is normal.
 \end{prop}
 
-\begin{prop}
+\begin{prop}[*]
     Let $H\subset G$ be a subgroup, then the number of subgroups conjugate to $H$ is equal to $[G:N_G(H)]$.
 \end{prop}
 \begin{cor}
@@ -438,17 +439,20 @@ This corresponds to Aluffi Chapter IV.
 \end{prop}
 
 
-\begin{prop}
+\begin{prop}[*]
     Let $p<q$ be primes, let $G$ has order $pq$, if $p\nmid (q-1)$, then $G$ is cyclic.
 \end{prop}
+\begin{proof}
+    If $G$ is abelian, use elements of orders $p,q$. If $G$ not necessarily abelian, then use the conjugation action.
+\end{proof}
 
-\begin{prop}
+\begin{prop}[*]
     Let $q$ be an odd prime, and $G$ be a noncommutative group of order $2q$, then 
     \begin{equation*}
         G\cong D_{2q}
     \end{equation*}
 \end{prop}
-
+(claim 2.17 should know this proof).
 
 \begin{defn}[commutator subgroup]
     Let $G$ be a group, the commutator subgroup of $G$ is the subgroup \textbf{generated} by all elements 
@@ -504,7 +508,7 @@ This corresponds to Aluffi Chapter IV.
 \begin{defn}[Even permutation]
     Let $\sigma\in S_n$, then $\sigma$ is even if 
     \begin{equation*}
-        \prod_{i<j}(x_{\sigma(i)}-\sigma(j))=\prod_{i<j}(x_i-x_j)
+        \prod_{i<j}(x_{\sigma(i)}-x_{\sigma(j)})=\prod_{i<j}(x_i-x_j)
     \end{equation*}
 \end{defn}
 
@@ -544,7 +548,7 @@ This corresponds to Aluffi Chapter IV.
     It suffices to note that the $3$ cycles form a conjugacy class that doesn't split from $S_n$ to $A_n$.
 \end{proof}
 \begin{thm}
-    The alternating group is simple for $n\geq 5$.
+    The alternating group $A_n$ is simple for $n\geq 5$.
 
     As a corollary, $S_n$ is not solvable for $n\geq 5$.
 \end{thm}
@@ -558,7 +562,7 @@ This corresponds to Aluffi Chapter IV.
     where $[N,H]$ is the commutator of $N,H$.
 \end{prop}
 
-\begin{prop}
+\begin{prop}[*]
     Let $N,H$ be normal subgroups, and $N\cap H=\{e\}$, then $N,H$ commute with each other.
 \end{prop}
 
@@ -618,15 +622,16 @@ This corresponds to Aluffi Chapter IV.
     \end{enumerate}
 \end{thm}
 
-\begin{prop}
-    Let $N,H$ be subgroups, and $N$ is normal, suppose that $N\cap H=\{e\}$, and $G=NH$, then let $\theta: H\to\text{Aut}(N)$ be 
+\begin{prop}[*]
+    Let $N,H$ be subgroups, and $N$ is normal, suppose that $N\cap H=\{e\}$, and $G=NH$, then let $\theta: H\to\text{Aut}(N)$ be $\theta\mapsto\theta_h$, and 
     \begin{equation*}
-        \theta(h)n=nhn^{-1}
+        \theta_h(n)=nhn^{-1}
     \end{equation*}
     Then 
     \begin{equation*}
         G\cong N\rtimes_\theta H
     \end{equation*}
+    (Recall that the operation defined on $N\otimes_\theta H$ is $(n_1,h_1)\cdot(n_2,h_2)=(n_1\theta_{h_1}(n_2), h_1h_2)$). 
 \end{prop}
 
 
@@ -637,7 +642,7 @@ This corresponds to Aluffi Chapter IV.
     \end{equation*}
 \end{prop}
 \begin{proof}
-    Lagrange.
+    Lagrange: $N\cap H=\{e\}$.
 \end{proof}
 \begin{prop}
     Every finite abelian group is a direct sum of its nontrivial Sylow subgroups.
@@ -668,6 +673,9 @@ This corresponds to Aluffi Chapter IV.
 \begin{thm}
     Let $F$ be a field, and $G$ be a finite subgroup of the multiplicative group $(F^\times, \cdot)$, then $G$ is cyclic.
 \end{thm}
+\begin{proof}
+    Hard proof. Don't torture yourself.
+\end{proof}
 
 
 
@@ -743,6 +751,7 @@ This corresponds to Aluffi Chapter III.
         \item If $u$ is a left unit, then the right multiplication by $u$ is injective, i.e., $u$ is not a right zero-divisor.
     \end{enumerate}
 \end{prop}
+Notice that in a commutative ring, this means $u$ is a unit iff multiplication by $u$ is bijective.
 
 \begin{defn}[division ring]
     A division ring is a ring in which every nonzero element is a unit.
@@ -804,9 +813,12 @@ This corresponds to Aluffi Chapter III.
     Let $I$ be an ideal of commutative $R$, if $R/I$ is finite, then $I$ is prime if and only if maximal.
 \end{prop}
 
-\begin{prop}
+\begin{prop}[*]
     Let $R$ be a PID, a nonzero ideal $I$ is prime if and only if it is maximal.
 \end{prop}
+\begin{proof}
+    Is simple proof, you just do it.
+\end{proof}
 
 \begin{defn}[module]
     A $R$-module $M$ is an abelian group with a ring action, satisfying:
@@ -897,18 +909,18 @@ This corresponds to Aluffi Chapter V.
     Let $R$ be commutative, and $M$ be an $R$-module, then the following are equivalent:
     \begin{enumerate}
         \item $M$ is Noetherian: every submodule of $M$ is finitely generated.
-        \item Every ascending chain of submodules of $M$ stabilizes.
+        \item Every ascending chain of submodules of $M$ stabilizes: no infinite strict inclusions of submodules.
         \item Every nonempty family of submodules has a maximal element with respect to inclusion.
     \end{enumerate}
 \end{prop}
 
 
-\begin{prop}
-    Let $R$ be a Noetherian ring, and let $J$ be an ideal of the polynoial ring $R[x_1,\dots, x_n]$, then the ring 
+\begin{prop}[*]
+    Let $R$ be a Noetherian ring, then $R[x_1,\dots, x_n]$ is Noetherian. Let $J$ be an ideal of the polynoial ring $R[x_1,\dots, x_n]$, then the ring 
     \begin{equation*}
         \frac{R[x_1,\dots,x_n]}{J}
     \end{equation*}
-    is Noetherian.
+    is Noetherian, so is $R[x_1,\dots, x_n]$.
 \end{prop}
 
 
@@ -922,7 +934,7 @@ This corresponds to Aluffi Chapter V.
     \begin{equation*}
         a=bc
     \end{equation*}
-    implies $b$ is a unit or $c$ is a unit. Equivalently, $a$ is Irreducible if $(a)\subset (b)$ implies $(b)=(a)$ or $(b)=1$.
+    implies $b$ is a unit or $c$ is a unit. Equivalently, $a$ is irreducible if $(a)\subset (b)$ implies $(b)=(a)$ or $(b)=(1)=R$, i.e., $(a)$ is maximal in principal ideals.
 \end{defn}
 
 \begin{prop}
@@ -969,11 +981,11 @@ This corresponds to Aluffi Chapter V.
     Let $R$ be a UFD, let $a,b$ be nonzero elements, then $a,b$ have a greatest common divisor, i.e., the smallest ideal $(d)$ such that $(a,b)\subset (d)$.
 \end{prop}
 
-\begin{prop}
+\begin{prop}[*]
     In UFD, $a$ is irreducible implies $a$ is prime.
 \end{prop}
 
-\begin{thm}
+\begin{thm}[*]
     An integral domain $R$ is a UFD if and only if 
     \begin{enumerate}
         \item The acc holds for principal ideals in $R$.
@@ -1001,15 +1013,16 @@ This corresponds to Aluffi Chapter V.
 \end{prop}
 
 
-\begin{defn}[Field of fractions]
+\begin{defn}[*Field of fractions]
     Let $R$ be an integral domain, then the field of fractions is 
     \begin{equation*}
         K(R)=\left\{\frac{a}{r}: a,r\in R, r\neq 0\right\}
     \end{equation*}
 \end{defn}
 
+
 \begin{defn}
-    The field of rational functions with coefficients in $R$ is the field of fractions of the ring $R[x]$, denoted as $R(x)$.
+    (Assuming $R$ is an integral domain). The field of rational functions with coefficients in $R$ is the field of fractions of the ring $R[x]$, denoted as $R(x)$.
 \end{defn}
 
 
@@ -1037,10 +1050,10 @@ This corresponds to Aluffi Chapter V.
     \begin{equation*}
         f\not\in pR[x]
     \end{equation*}
-    where $p[x]$ is an ideal of $R[x]$ of polynomials with coefficients from $p$.
+    where $pR[x]$ is an ideal of $R[x]$ of polynomials with coefficients from $p$.
 \end{defn}
 
-\begin{prop}
+\begin{prop}[*]
     Let $R$ be a UFD, $f$ is primitive if and only if $\gcd(a_0,\dots, a_d)=1$.
 \end{prop}
 

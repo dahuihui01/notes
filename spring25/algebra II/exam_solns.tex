@@ -69,9 +69,20 @@
 
 \chapter{Spring 2025}
 
+
+\textcolor{red}{1,2,3,4,5,6}
+
+
 \begin{prob}[Q1]
     Let $p$ be an odd prime. Compute the number of $p$-Sylow subgroups of $S_p$. 
 \end{prob}
+\begin{warn}
+    This is not a Sylow question. 
+\end{warn}
+\begin{proof}
+    Prove the following fact: let $N,H$ have prime order $p$, both subgroups of $G$, then $N=H$ or $N\cap H=\{e\}$.
+\end{proof}
+
 
 
 \begin{prob}[Q2]
@@ -81,10 +92,22 @@
     \end{equation*}
     where $\mathfrak{m}$ is an maximal ideal. Show that $a\in J(R)$ iff for all $b\in R$, $1-ab$ is a unit.
 \end{prob}
+\begin{proof}
+    \begin{lem}
+        $a\in R$ is a unit iff and only if $a$ is not contained in any maximal ideal. (If $a$ is not in any maximal ideal, then $(a)=R$.)
+    \end{lem}
+\end{proof}
 
 \begin{prob}[Q3]
     Let $f(x)\in\Q[x]$ be an irreducible degree $5$ polynomial of exactly $3$ real roots, then show that the Galois group of $f$ over $\Q$ is isomorphic to $S_5$.
 \end{prob}
+\begin{proof}
+    Step 1: show that the Galois group contains a transposition.
+    
+    Step 2: show there exists an order $5$ element.
+
+    Step 3: show that these two elements generate $S_5$.
+\end{proof}
 
 
 
