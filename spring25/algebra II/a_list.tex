@@ -48,6 +48,64 @@
 \tableofcontents
 \newpage
 
+
+
+\chapter{Category Theory}
+\begin{defn}[initial, final]
+    Let $\mathcal{C}$ be a category, then object $I$ is initial if for every object $A$, there exists a unique morphism $I\to A$. We say $F$ is final if for every $A$, there exists a unique morphism $A\to F$.
+\end{defn}
+
+
+% \begin{defn}[products and coproducts]
+%     Let \( A, B \) be sets, and consider the product \( A \times B \), with the two natural projections:
+
+% \[ A \times B \xrightarrow{\pi_A} A \]
+
+% Then for every set \( Z \) and morphisms
+
+% % \[
+% % \begin{tikzcd}
+% %  & f_A \arrow[dashrightarrow]{d} & A \\
+% % Z & & \\
+% %  & f_B \arrow[dashrightarrow]{d} & B
+% % \end{tikzcd}
+% % \]
+
+
+% there exists a unique morphism \(\sigma : Z \to A \times B\) such that the diagram
+
+% \[
+% \begin{tikzcd}
+%  & f_A \arrow[dashrightarrow]{dd} & A \\
+% Z \arrow{r}{\sigma} & A \times B \arrow{ur}{\pi_A} \arrow{dr}[swap]{\pi_B} & \\
+%  & f_B \arrow[dashrightarrow]{uu} & B
+% \end{tikzcd}
+% \]
+
+% commutes.
+
+% In this situation, \(\sigma\) is usually denoted \( f_A \times f_B \).
+% \end{defn}
+
+
+% \begin{defn}[coproduct]
+%     Let \( A, B \) be objects of a category \( \mathcal{C} \). A coproduct \( A \amalg B \) of \( A \) and \( B \) will be an object of \( \mathcal{C} \), endowed with two morphisms \( i_A : A \to A \amalg B \), \( i_B : B \to A \amalg B \) and satisfying the following universal property: for all objects \( Z \) and morphisms
+
+% \[
+% \begin{tikzcd}
+% A \arrow{r}{i_A} \arrow[swap]{dr}{f_A} & A \amalg B \arrow[dashed]{d}{\exists! \sigma} & B \arrow{l}[swap]{i_B} \arrow{dl}{f_B} \\
+%  & Z & 
+% \end{tikzcd}
+% \]
+
+% there exists a unique morphism \( \sigma : A \amalg B \to Z \) such that the diagram commutes.
+
+% \end{defn}
+
+
+
+
+
 \chapter{Group Theory I}
 This corresponds to Aluffi Chapter II.
 
@@ -189,7 +247,6 @@ This corresponds to Aluffi Chapter II.
     \begin{equation*}
         \frac{G_1\times G_2}{H_1\times H_1}\cong\frac{G_1}{H_1}\times\frac{G_2}{H_2}
     \end{equation*}
-
     For example, 
     \begin{equation*}
         \frac{Z/6\Z}{\Z/3\Z}=\Z/2\Z
@@ -723,6 +780,13 @@ This corresponds to Aluffi Chapter IV.
 \chapter{Ring Theory}
 This corresponds to Aluffi Chapter III.
 
+\begin{defn}[free action]
+    An action by $G$ is free if there exists $x\in X$ such that $gx=x$ then $g=e$.
+\end{defn}
+
+\begin{defn}[faithful action]
+    An action by $G$ is faithful if $gx=x$ for all $x\in X$ implies that $g=e$.
+\end{defn}
 
 
 \begin{defn}[zero-divisor]
@@ -741,8 +805,9 @@ This corresponds to Aluffi Chapter III.
     \begin{equation*}
         ab=0
     \end{equation*}
-    implies $a=0$ or $b=0$. In other words, IDs are commutative rings without zero divisors.
+    implies $a=0$ or $b=0$. In other words, IDs are commutative rings without zero divisors. Equivalently, if $a,b\neq 0$, then $ab\neq 0$.
 \end{defn}
+
 
 \begin{prop}
     In a ring $R$:
@@ -759,14 +824,46 @@ Notice that in a commutative ring, this means $u$ is a unit iff multiplication b
     A field is a nonzero commutative ring in which every nonzero element is a unit.
 \end{defn}
 
+\begin{prop}
+    The group of units in $\Z/n\Z$ is exactly the group $(\Z/n\Z)^*$.
+\end{prop}
+\begin{proof}
+    $m$ is a unit iff multiplication by $m$ is surjective, iff $m$ generates $\Z/n\Z$, iff $m\in(\Z/n\Z)^*$.
+\end{proof}
+
+\begin{defn}[Power Series Ring]
+    The power series ring 
+    \begin{equation*}
+        \sum_{i=0}^\infty a_ix^i
+    \end{equation*}
+    is denoted by $R[[x]]$.
+\end{defn}
+
+\begin{defn}[Monoid Ring]
+    Given a monoid $M$ and a ring $R$, the elements 
+    \begin{equation*}
+        \sum_{m\in M}a_m\cdot m
+    \end{equation*}
+    where $a_m\in R$ and $a_m\neq 0$ for finitely many  terms, forms a ring denoted as $R[M]$.
+\end{defn}
+
+
+
+
 
 \begin{prop}
     Assume $R$ is a finite commutative ring, then $R$ is an integral domain if and only if $R$ is a field.
 \end{prop}
 
+
+
+
 \begin{prop}
-    $\text{End}_{\text{Ab}}(\Z)\cong\Z$
+    $\text{End}_{\text{Ab}}(\Z)\cong\Z$, where $\text{End}_{\text{Ab}}(G)=\text{Hom}_{\text{Ab}}(G,G)$ where $G$ is abelian. 
 \end{prop}
+\begin{proof}
+    $\varphi\mapsto\varphi(1)$.
+\end{proof}
 
 
 

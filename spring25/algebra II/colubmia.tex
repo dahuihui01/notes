@@ -1,0 +1,80 @@
+\documentclass[openany]{book}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsfonts,amsthm, amssymb}
+\usepackage{yhmath}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{comment}
+\usepackage{tikz-cd}
+\usepackage{quiver}
+\renewcommand{\familydefault}{ppl}
+\newcommand{\tr}{\text{tr}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\colim}{\text{colim}}
+\DeclareMathOperator{\im}{im}
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+\newcommand{\tor}{\text{Tor}}
+\newcommand{\id}{\text{id}}
+\newcommand{\ext}{\text{Ext}}
+\newcommand{\ptop}{\text{PTop}}
+\newcommand{\pt}{\text{pt}}
+\newcommand{\ach}{\text{Ach}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\gal}{\text{Gal}}
+
+
+\input{hui.tex}
+
+\title{Columbia HW Problems}
+
+\date{\today}
+\author{Hui Sun}
+
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+\newpage
+
+\chapter{HW2}
+
+\begin{prob}[1]
+    Determine whether the following statements are true or false. Justify your answers.
+
+\begin{enumerate}
+    \item[(a)] Any subring of a field is an integral domain.
+    
+    \item[(b)] The ring \(\mathbb{Z}/49\mathbb{Z}\) is an integral domain.
+    
+    \item[(c)] The direct product \(F_1 \times F_2\) of two fields is a field.
+    
+    \item[(d)] An element \(ab\) of a ring \(R\) is invertible if and only if both \(a\) and \(b\) are invertible.
+    
+    \item[(e)] The ring \(\mathbb{Z} \times \mathbb{Z}\) has exactly four idempotents. 
+    \begin{itemize}
+        \item[\textit{Hint}:] First find all idempotents in the ring \(\mathbb{Z}\). An idempotent is an element \(e\) such that \(e^2 = e\).
+    \end{itemize}
+\end{enumerate}
+\end{prob}
+\begin{proof}
+    (a) True (b) False (c) False, consider $(1,0)\cdot (0,1)$ (d) False Consider $5+5=1$ in $\Z/6\Z$ (e) True.
+\end{proof}
+
+
+
+
+
+
+\end{document}

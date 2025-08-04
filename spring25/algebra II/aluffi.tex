@@ -52,9 +52,641 @@
 
 \chapter{Groups I}
 
+\begin{prob}[1.8]
+    Let \( G \) be a finite abelian group with exactly one element \( f \) of order 2. Prove that \(\prod_{g \in G} g = f\).
+\end{prob}
+\begin{proof}
+    It suffices to see that $\prod_gg^2=e$, which is true by every element has an inverse.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\begin{prob}[1.13]
+    Give an example showing that \( |gh| \) is not necessarily equal to \( \text{lcm}(|g|, |h|) \), even if \( g \) and \( h \) commute.
+\end{prob}
+\begin{proof}
+    Let $g=h=1\in\Z/2\Z$.
+\end{proof}
+
+\begin{prob}[1.14]
+    If \( g \) and \( h \) commute and \( \text{gcd}(|g|, |h|) = 1 \), then \( |gh| = |g||h| \). (Hint: Let \( N = |gh| \); then \( g^N = (h^{-1})^N \). What can you say about this element?)
+\end{prob}
+\begin{proof}
+    We know that $g^N = (h^{-1})^N=e$.
+\end{proof}
+
+\begin{prob}[6.7]
+    If $\mathrm{Aut}(G)$ is cyclic, then $G$ is abelian.
+\end{prob}
+\begin{proof}
+    This implies $\text{Inn}(G)$ is cyclic, which is iff $\text{Inn}(G)$ is trivial, iff $G$ is abelian.
+\end{proof}
+
+
+
+
+
+
+\begin{prob}[6.9]
+    Prove that every finitely generated subgroup of $\mathbb{Q}$ is cyclic. Prove that $\mathbb{Q}$ is not finitely generated.
+\end{prob}
+\begin{proof}
+    Suppose we just have $H=\left\la\frac{p_1}{q_1}, \frac{p_2}{q_2}\right\ra$, find $\text{lcm}(q_1,q_2)=q$, then 
+    \begin{equation*}
+        H=\left\la\frac{a_1}{q},\frac{a_2}{q}\right\ra
+    \end{equation*}
+    find $\gcd(a_1,a_2)=p$, we claim that 
+    \begin{equation*}
+        H=\left\la\frac{p}{q}\right\ra
+    \end{equation*}
+    If $\Q$ were to be finitely generated, then it is cyclic, $\Q=\la\frac{p}{q}\ra$, then try $(p+1)/q$.
+\end{proof}
+
+\begin{prob}[8.1]
+    If a group \( H \) may be realized as a subgroup of two groups \( G_1 \) and \( G_2 \) and if  
+    \[
+    \frac{G_1}{H} \cong \frac{G_2}{H},
+    \]
+    does it follow that \( G_1 \cong G_2 \)? Give a counterexample.
+\end{prob}
+\begin{proof}
+    Let $G_1=S_3, G_2=\Z/6\Z$, and $H=\Z/3\Z$.
+\end{proof}
+
+\begin{prob}[8.2]
+    Suppose \( G \) is a group and \( H \subseteq G \) is a subgroup of index 2, that is, such that there are precisely two cosets of \( H \) in \( G \). Prove that \( H \) is normal in \( G \).
+\end{prob}
+\begin{proof}
+    For any $g\not\in H$, we have 
+    \begin{equation*}
+        G=H\sqcup gH=H\sqcup Hg
+    \end{equation*}
+    Thus $gH=Hg$.
+\end{proof}
+
+
+\begin{prob}[8.13]
+    Let \( G \) be a finite group, and assume \(|G|\) is odd. Prove that every element of \( G \) is a square.
+\end{prob}
+\begin{proof}
+    Consider the set function $\varphi:g\mapsto g^2$, this function is injective hence surjective.
+\end{proof}
+
+
+\begin{prob}[8.18]
+    Let \( G \) be an abelian group of order \( 2n \), where \( n \) is odd. Prove that \( G \) has exactly one element of order 2. (It has at least one, for example by Exercise [8.17]. Use Lagrange's theorem to establish that it cannot have more than one.) Does the same conclusion hold if \( G \) is not necessarily commutative?
+\end{prob}
+\begin{proof}
+    There exists one element $g$ of order $2$, then take its quotient $G/\la g\ra$. 
+\end{proof}
+
+\begin{prob}[9.11]
+    Let $G$ be a finite group, and $H$ be subgroup of index $p$, where $p$ is the smallest prime dividing $|G|$, then $H$ is normal in $G$.
+\end{prob}
+\begin{proof}
+    (I will abuse the notatoin $\left|\frac{G}{H}\right|=[G:H]$).
+    Let $G$ act on the cosets $G/H$ by left multiplication, this action $\sigma: G\to\text{Aut}(G/H)$ is not trivial, hence 
+    \begin{equation*}
+        \left|\frac{G}{\ker(\sigma)}\right|\text{ divides } p!
+    \end{equation*}
+    Moreover, we notice that $\ker(\sigma)\subset H$, hence $p$ divides $\left|\frac{G}{\ker(\sigma)}\right|$. Now we recall that $p$ is the smallest prime dividing $|G|$, we must have $\left|\frac{G}{\ker(\sigma)}\right|=p$, hence $H=\ker(\sigma)$.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{prop}[1.12]
+    There exists elements $g,h\in G$, such that $|g|,|h|<\infty$, but $|gh|=\infty$.
+    \[
+    g = \begin{pmatrix}
+    0 & -1 \\
+    1 & 0
+    \end{pmatrix}, \quad h = \begin{pmatrix}
+    0 & 1 \\
+    -1 & -1
+    \end{pmatrix}.
+    \]
+\end{prop}
+
+
+
+\begin{prop}[1.15]
+    Let \( G \) be a commutative group, and let \( g \in G \) be an element of maximal finite order, that is, such that if \( h \in G \) has finite order, then \( |h| \leq |g| \). Then, if \( h \) has finite order in \( G \), then \( |h| \) divides \( |g| \).
+\end{prop}
+
+
+\begin{prop}
+    When $n$ is odd, the center of $D_{2n}$ is trivial, when $n$ is even, the center consists of $\{e, r^\frac{n}{2}\}$.
+    \begin{equation*}
+        r^\frac{n}{2}s=sr^{-\frac{n}{2}}=sr^\frac{n}{2}
+    \end{equation*}
+\end{prop}
+
+
+\begin{prop}[4.8]
+    The map $g\mapsto \left(r_g: a\mapsto gag^{-1}\right)$ defines a homomorphism from $G\to \text{Aut}(G)$.
+\end{prop}
+
+
+\begin{prop}[4.9]
+    Let $m,n$ be positive integers such that $\gcd(m,n)=1$, then 
+    \begin{equation*}
+        \frac{\Z}{mn\Z}\cong\frac{\Z}{m\Z}\times\frac{\Z}{n\Z}
+    \end{equation*}
+\end{prop}
+
+
+\begin{prop}[4.14]
+    The order of the group of automorphisms of $\Z/n\Z$ is the the number of generators of $\Z/\Z$, i.e., 
+    \begin{equation*}
+        \left|\text{Aut}(\Z/n\Z)\right|=\left|(\Z/n\Z)^\times\right|
+    \end{equation*}
+\end{prop}
+
+\begin{prop}[4.15]
+    Let $p$ be a prime, then 
+    \begin{equation*}
+        \text{Aut}(\Z/p\Z)\cong\frac{\Z}{(p-1)\Z}
+    \end{equation*}
+\end{prop}
+
+\begin{prop}[6.3]
+    Every matrix in $\mathrm{SU}(2)$ may be written in the form
+    \[
+    \begin{pmatrix}
+    a + bi & c + di \\
+    -c + di & a - bi
+    \end{pmatrix}=\begin{pmatrix}
+        \gamma&\omega\\
+        -\bar{\omega}&\bar{\gamma}
+    \end{pmatrix},
+    \]
+    where $a, b, c, d \in \mathbb{R}$ and $a^2 + b^2 + c^2 + d^2 = 1$.
+\end{prop}
+
+
+\begin{prop}[6.10]
+    The set of \( 2 \times 2 \) matrices with integer entries and determinant 1 is denoted \(\text{SL}_2(\mathbb{Z})\):
+
+\[
+\text{SL}_2(\mathbb{Z}) = \left\{ 
+\begin{pmatrix}
+a & b \\
+c & d
+\end{pmatrix} 
+\quad \text{such that } a, b, c, d \in \mathbb{Z}, \, ad - bc = 1 \right\}.
+\]
+
+Note that \(\text{SL}_2(\mathbb{Z})\) is generated by the matrices
+
+\[
+s = 
+\begin{pmatrix}
+0 & -1 \\
+1 & 0
+\end{pmatrix} \quad \text{and } \, t = 
+\begin{pmatrix}
+1 & 1 \\
+0 & 1
+\end{pmatrix}.
+\]
+
+\end{prop}
+
+\begin{prop}[7.7]
+    Let $G$ be a group and $n$ a positive integer, let $H\subset G$ be the subgroup generated by all elements of order $n$ in $G$, then $H$ is normal.
+\end{prop}
+
+\begin{prop}[7.14]
+    $\text{Inn}(G)$ is a normal subgroup of $\text{Aut}(G)$.
+\end{prop}
+
+\begin{prop}[8.4]
+    The dihedral group $D_{2n}$ can also be represented as 
+    \begin{equation*}
+        \la a,b: a^2=b^2=(ab)^n=e\ra
+    \end{equation*}
+    ($a,b$ are two reflections, take $a=s, b=rs$).
+\end{prop}
+
+\begin{prop}[8.8]
+    $\text{SL}_n(\R)$ is a normal subgroup of $\text{GL}_n(\R)$, and 
+    \begin{equation*}
+        \frac{\text{GL}_n(\R)}{\text{SL}_n(\R)}=(\R^\times,\cdot)
+    \end{equation*}
+    as groups.
+\end{prop}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 \chapter{Rings and Modules}
+
+\begin{prob}[1.12]
+    
+Just as complex numbers may be viewed as combinations \( a + bi \), where \( a, b \in \mathbb{R} \) and \( i \) satisfies the relation \( i^2 = -1 \) (and commutes with \(\mathbb{R}\)), we may construct a ring \(\mathbb{H}\) by considering linear combinations \( a + bi + cj + dk \) where \( a, b, c, d \in \mathbb{R} \) and \( i, j, k \) commute with \(\mathbb{R}\) and satisfy the following relations:
+
+\[
+i^2 = j^2 = k^2 = -1, \quad ij = -ji = k, \quad jk = -kj = i, \quad ki = -ik = j.
+\]
+
+Addition in \(\mathbb{H}\) is defined componentwise, while multiplication is defined by imposing distributivity and applying the relations. For example,
+
+\[
+(1+i+j) \cdot (2+k) = 1 \cdot 2 + i \cdot 2 + j \cdot 2 + 1 \cdot k + i \cdot k + j \cdot k = 2 + 2i + 2j + k - j + i = 2 + 3i + j + k.
+\]
+\begin{enumerate}
+    \item Verify that this prescription does indeed define a ring.
+    \item Compute \((a + bi + cj + dk)(a - bi - cj - dk)\), where \( a, b, c, d \in \mathbb{R}\).
+    \item Prove that \(\mathbb{H}\) is a division ring.
+    \item List all subgroups of \( Q_8 := \{\pm 1, \pm i, \pm j, \pm k\} \), and prove that they are all normal.
+    \item Prove that \( Q_8 \) and \( D_8 \) are not isomorphic.
+    \item Prove that \( Q_8 \) admits the presentation \(\langle x, y \mid x^2 y^{-2}, y^4, xy x^{-1} y \rangle\).
+\end{enumerate}
+
+Elements of \(\mathbb{H}\) are called \textit{quaternions}. Note that \( Q_8 \) forms a subgroup of the group of units of \(\mathbb{H}\); it is a noncommutative group of order 8, called the \textit{quaternionic group}.
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item :)
+        \item $a^2+b^2+c^2+d^2$.
+        \item follows from 2.
+        \item $\{\pm 1\}, \{\pm 1,\pm i\},  \{\pm 1,\pm j\},  \{\pm 1,\pm k\}$
+        \item Number of order $4$ elements: $2$ in $D_8$ and $6$ in $Q_8$.
+        \item Take $x=i, y=j$, then 
+        \begin{equation*}
+            Q_8=\{1, i, i^2, i^3, j, ij, i^2j, i^3j\}
+        \end{equation*}
+    \end{enumerate}
+\end{proof}
+
+
+\begin{prob}[1.15]
+    Prove that \( R[x] \) is an integral domain if and only if \( R \) is an integral domain.
+\end{prob}
+\begin{proof}
+    For sufficiency: observe that if $f,g\neq 0\in R[x]$, then $fg\neq 0$.
+\end{proof}
+
+
+\begin{prob}[1.16]
+    Let \( R \) be a ring, and consider the ring of power series \( R[[x]] \) (cf. \{1.3\}).
+
+\begin{enumerate}
+    \item Prove that a power series \( a_0 + a_1 x + a_2 x^2 + \cdots \) is a unit in \( R[[x]] \) if and only if \( a_0 \) is a unit in \( R \). What is the inverse of \( 1 - x \) in \( R[[x]] \)?
+    \item Prove that \( R[[x]] \) is an integral domain if and only if \( R \) is.
+\end{enumerate}
+\end{prob}
+\begin{proof}
+    1. For sufficiency: you do it term by term; the inverse of $(1-x)$ is $1+x+x^2+\dots=\sum_{i=0}^\infty x^i$.
+\end{proof}
+
+
+
+
+\begin{prob}[2.11]
+    Prove (by hand) that division ring $R$ of $p^2$ elements where $p$ is prime, is commutative.
+\end{prob}
+\begin{proof}
+    Assume not commutative, then the center of $R$ must contain $p$ elements. Let $r\in R$ such that $r$ is not in the center, then the centralizer of $r$ must be the entire ring $R$, and this holds for all such $r$.
+\end{proof}
+
+\begin{prob}[2.16]
+    Prove that there is (up to isomorphism) only one structure of ring with identity on the abelian group $(\mathbb{Z}, +)$. (Hint: Let $R$ be a ring whose underlying group is $\mathbb{Z}$. By Proposition [2.7] there is an injective ring homomorphism $\lambda : R \to \operatorname{End}_{Ab}(R)$, and the latter is isomorphic to $\mathbb{Z}$. Prove that $\lambda$ is surjective.)
+\end{prob}
+\begin{proof}
+    There exists an injective map 
+    \begin{equation*}
+        \lambda: R\to\Z
+    \end{equation*}
+    note that this map is also surjective.
+\end{proof}
+
+\begin{prob}[2.17]
+    Let $R$ be a ring, and let $E = \operatorname{End}_{Ab}(R)$ be the ring of endomorphisms of the underlying abelian group $(R, +)$. Prove that the center of $E$ is isomorphic to a subring of the center of $R$. (Prove that if $\alpha \in E$ commutes with all right-multiplications by elements of $R$, then $\alpha$ is left-multiplication by an element of $R$; then use Proposition [2.7])
+\end{prob}
+\begin{proof}
+    If $\alpha$ commutes with all the right multiplications $r_x$, then 
+    \begin{equation*}
+        \alpha r_x(s)=\alpha(sx)=\alpha(s)x
+    \end{equation*}
+    letting $s=1$, we see
+    \begin{equation*}
+        \alpha(x)=\alpha(1)x
+    \end{equation*}
+    Thus $\alpha$ is a left multiplication. Let $\varphi: \alpha\mapsto\alpha(1)$, this is injective, surjective onto its image.
+\end{proof}
+
+\begin{prob}[3.4]
+    Let \( R \) be a ring such that every subgroup of \( (R, +) \) is in fact an ideal of \( R \). Prove that \( R \cong \mathbb{Z}/n\mathbb{Z} \), where \( n \) is the characteristic of \( R \).
+\end{prob}
+\begin{proof}
+    It suffices to exhibit a surjective map from $\Z$ to $R$, consider the subgroup $\varphi(\Z)$, where $\varphi: 1\mapsto 1$. We know that $\varphi(\Z)$ is an ideal, i.e., for every $r\in R$, 
+    \begin{equation*}
+        r\cdot 1\in\varphi(\Z)
+    \end{equation*}
+    since $1\in\varphi(\Z)$, thus this map is surjective.
+\end{proof}
+
+
+\begin{prob}[4.5]
+    Let \( I, J \) be ideals in a commutative ring \( R \), such that \( I + J = (1) \). Prove that \( IJ = I \cap J \).
+\end{prob}
+\begin{proof}
+    We know $IJ\subset I\cap J$, now let $r\in I\cap J$, then
+    \begin{equation*}
+        r\cdot 1=r(i+j)=ri+rj\in IJ
+    \end{equation*} 
+\end{proof}
+
+\begin{prob}[4.6]
+    Let \( I, J \) be ideals in a commutative ring \( R \). Assume that \( R/(IJ) \) is reduced (that is, it has no nonzero nilpotent elements). Prove that \( IJ = I \cap J \).
+\end{prob}
+\begin{proof}
+    Consider nonzero $r\in I\cap J$, then $r^2\in IJ$, hence in $R/IJ$, $r=0+IJ$, i.e., $r\in IJ$.
+\end{proof}
+
+
+\begin{prob}[4.11]
+    Let \( R \) be a commutative ring, \( a \in R \), and \( f_1(x), \ldots, f_r(x) \in R[x] \).
+    \begin{itemize}
+        \item Prove the equality of ideals
+        \[ (f_1(x), \ldots, f_r(x), x - a) = (f_1(a), \ldots, f_r(a), x - a). \]
+        \item Note the useful substitution trick
+        \[ \frac{R[x]}{(f_1(x), \ldots, f_r(x), x - a)} \cong \frac{R}{(f_1(a), \ldots, f_r(a))}. \]
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    Use long division: $f_1(x)=q(x)(x-a)+f_1(a)$.
+\end{proof}
+
+\begin{prob}[4.17]
+    Let \( K \) be a compact topological space, and let \( R \) be the ring of continuous real-valued functions on \( K \), with addition and multiplication defined pointwise.
+    \begin{itemize}
+        \item[(i)] For \( p \in K \), let \( M_p = \{f \in R \mid f(p) = 0\} \). Prove that \( M_p \) is a maximal ideal in \( R \).
+        \item[(ii)] Prove that if \( f_1, \ldots, f_r \in R \) have no common zeros, then \( (f_1, \ldots, f_r) = (1) \). (Hint: Consider \( f_1^2 + \cdots + f_r^2 \).)
+        \item[(iii)] Prove that every maximal ideal \( M \) in \( R \) is of the form \( M_p \) for some \( p \in K \). (Hint: You will use the compactness of \( K \) and (ii).)
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(i)] Note that $\frac{R}{M_p}\cong\R$, given by evaluation at $p$.
+        \item[(ii)] Note that $g(p)=f_1^2+\dots+f_r^2(p)>0$ for all $p\in K$, thus one can construct an inverse. Namely, 
+        \begin{equation*}
+            1=h(f_1^2+\dots+f_r^2)
+        \end{equation*}
+        where $h=\frac{1}{g}$.
+        \item[(iii)] Let $M$ be a maximal ideal, suppose $M$ is not contained in $M_p$ for any $p$. This implies that there exists $f\in M$ such that $f(p)\neq 0$ for every $p\in K$. Then we consider the set 
+        \begin{equation*}
+            \left\{f^{-1}(\R\setminus\{0\}):f\in M\right\}
+        \end{equation*}
+        This is an open cover of $K$, hence there exists $f_1,\dots, f_r$ such that 
+        \begin{equation*}
+            \{f_i(\R\setminus\{0\}): 1\leq i\leq r\}
+        \end{equation*}
+        is also a cover of $K$. We know that $f_1,\dots, f_r$ have no common roots, thus 
+        \begin{equation*}
+            (f_1,\dots, f_r)=R
+        \end{equation*}
+        which is a contradiction.
+    \end{itemize}
+\end{proof}
+
+
+\begin{prob}[4.23]
+    A ring \( R \) has Krull dimension 0 if every prime ideal in \( R \) is maximal. Prove that fields and Boolean rings have Krull dimension 0.
+\end{prob}
+\begin{proof}
+    Let $p$ be a prime ideal of a Boolean ring, then $R/p\cong\Z/2\Z$, which is a field, hence $p$ is also a maxiaml ideal.
+\end{proof}
+
+
+\begin{prob}[6.3]
+    Let \( R \) be a ring, \( M \) an \( R \)-module, and \( p : M \to M \) an \( R \)-module homomorphism such that \( p^2 = p \). (Such a map is called a projection.) Prove that \( M \cong \ker p \oplus \text{im}\, p \).
+\end{prob}
+\begin{proof}
+    Let $m\in M$, then $m=(m-p(m))+p(m)$.
+\end{proof}
+
+
+\begin{prob}[6.6]
+    Let \( R \) be a ring, and let \( F = R^{\oplus n} \) be a finitely generated free \( R \)-module. Prove that \(\text{Hom}_{R\text{-Mod}}(F, R) \cong F\). On the other hand, find an example of a ring \( R \) and a nonzero \( R \)-module \( M \) such that \(\text{Hom}_{R\text{-Mod}}(M, R) = 0\).
+\end{prob}
+\begin{proof}
+    Define the map $F\to\text{Hom}(F,R)$ as
+    \begin{equation*}
+        (r_1,\dots, r_n)\mapsto \left(\varphi: (a_1,\dots, a_n)\mapsto \sum_{i=1}^na_ir_i\right)
+    \end{equation*}
+    Take $M=\Z/2\Z, R=\Z$ in the second question.
+\end{proof}
+
+
+\begin{prob}[6.16]
+    Let \( R \) be a ring. A (left-)\( R \)-module \( M \) is \textit{cyclic} if \( M = \langle m \rangle \) for some \( m \in M \). 
+    \begin{itemize}
+        \item[(i)] Prove that simple modules are cyclic.
+        \item[(ii)] Prove that an \( R \)-module \( M \) is cyclic if and only if \( M \cong R/I \) for some (left-)ideal \( I \).
+        \item[(iii)] Prove that every quotient of a cyclic module is cyclic.
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(i)] Take any nonzero $r\in R$, then $M=\la r\ra$.
+        \item[(ii)] For the forward directin, $M=\la m\ra$, consider the map $\varphi: m\mapsto 1$; for the backwards, $1+I$ is a generator of $R/I$, where $R/I$ viewed as a $R$-module.
+        \item[(iii)] Follows from (ii) and the second isomorphism theorem.
+    \end{itemize}
+\end{proof}
+
+\begin{prob}[6.18]
+    Let \( M \) be an \( R \)-module, and let \( N \) be a submodule of \( M \). Prove that if \( N \) and \( M/N \) are both finitely generated, then \( M \) is finitely generated.
+\end{prob}
+\begin{proof}
+    Suppose $N=\la r_1,\dots, r_k\ra, M/N=\la r_{k+1}+N,\dots, r_{k+m}+N\ra$, then we claim $M=\la r_1,\dots, r_{k+m}\ra$. If $m\in M$ is such that $m\in N$, then done; if $m\not\in N$, then $m\in r_i+N$ for some $i$, then 
+    \begin{equation*}
+        m=\sum a_ir_i\Rightarrow m-\sum a_ir_i\in N
+    \end{equation*}
+    thus again writting it as a finite sum, we are done.
+\end{proof}
+
+
+
+\begin{prop}[2.8]
+    Every subring of a field is an integral domain.
+\end{prop}
+
+\begin{prop}[2.9]
+    The center of a division ring is a field.
+\end{prop}
+
+\begin{prop}[3.9]
+    A nonzero ring with ideals being only $\{0\}$ and $R$ are called simple rings. The only simple commutative rings are fields. Moreover, $M_n(\R)$ is also simple.
+\end{prop}
+
+\begin{prop}[3.14]
+    The characteristic of an integral domain is either $0$ or a prime ideal $p$.
+\end{prop}
+
+
+\begin{prop}[4.4]
+    If $k$ is a field, then $k[x]$ is a PID.
+\end{prop}
+
+
+
+\begin{prop}[4.9]
+    Let \( R \) be a commutative ring, and let \( f(x) \) be a zero-divisor in \( R[x] \). There exists \( \exists b \in R, b \neq 0 \), such that \( f(x)b = 0 \). (Let $fg=0$, where $g=b_ex^e+\dots+b_0$, set $b=b_e$.)
+\end{prop}
+
+
+
+\begin{prop}[4.10]
+    Let \( d \) be an integer that is not the square of an integer, and consider the subset of \( \mathbb{C} \) defined by 
+    \[ \mathbb{Q}(\sqrt{d}) := \{a + b\sqrt{d} \mid a, b \in \mathbb{Q}\}. \]
+    Then \( \mathbb{Q}(\sqrt{d}) \) is a field, and \[ \mathbb{Q}(\sqrt{d}) \cong \mathbb{Q}[t]/(t^2 - d) \]
+\end{prop}
+
+
+\begin{prop}[4.19]
+    Let \( R \) be a commutative ring, let \( P \) be a prime ideal in \( R \), and let \( I_j \) be ideals of \( R \).
+    \begin{itemize}
+        \item[(i)] Assume that \( I_1 \cdots I_r \subseteq P \), then that \( I_j \subseteq P \) for some \( j \).
+        \item[(ii)] By (i), if \( P \supseteq \bigcap_{j=1}^r I_j \), then \( P \) contains one of the ideals \( I_j \). The following is not true: \( P \supseteq \bigcap_{j=1}^\infty I_j \), then \( P \) contains one of the ideals \( I_j \). Consider $I_j=(p_j)$ then $\cap I_j=0$.
+    \end{itemize}
+\end{prop}
+
+
+\begin{prop}[4.20]
+    Let \( M \) be a two-sided ideal in a (not necessarily commutative) ring \( R \). Then \( M \) is maximal if and only if \( R/M \) is a simple ring.
+\end{prop}
+
+\begin{prop}[4.21]
+    Let \( k \) be an algebraically closed field, and let \( I \subseteq k[x] \) be an ideal. Then \( I \) is maximal if and only if \( I = (x - c) \) for some \( c \in k \).
+\end{prop}
+
+
+\begin{prop}[4.22]
+    \( (x^2 + 1) \) is maximal in \( \mathbb{R}[x] \).
+\end{prop}
+
+
+\begin{prop}[5.4]
+    Let \( R \) be a ring. A nonzero \( R \)-module \( M \) is \textit{simple} (or \textit{irreducible}) if its only submodules are \(\{0\}\) and \( M \). Let \( M, N \) be simple modules, and let \(\varphi : M \to N\) be a homomorphism of \( R \)-modules. Prove that either \(\varphi = 0\) or \(\varphi\) is an isomorphism. (This rather innocent statement is known as Schur's lemma.)
+\end{prop}
+
+
+\begin{prop}[5.5]
+    Let $R$ be commutative, viewed as $R$-module over itself, let $M$ be an $R$-module, then 
+    \begin{equation*}
+        \text{Hom}(R,M)\cong M
+    \end{equation*}
+    as $R$-modules.
+\end{prop}
+
+\begin{prop}[5.13]
+    Let $R$ be an integral domain, let $I$ be a nonzero principal ideal, then $I$ is isomorphic to $R$ as an $R$-module.
+\end{prop}
+
+\begin{prop}[5.16]
+    Let $R$ be commutative, $a\in R$ be nilpotent, consider the submodule $aM$ of $M$. Then 
+    \begin{equation*}
+        M=0\iff aM=M
+    \end{equation*}
+\end{prop}
+\begin{proof}
+    Multiplication by $a$ is a surjective map, composition of surjective maps is still surjective.
+\end{proof}
+
+
+\begin{prop}[6.16]
+    Let $M$ be an $R$-module, it is cyclic if $M=\la m\ra$, then $M$ is cyclic if and only if $M\cong R/I$ for some ideal $I$.
+\end{prop}
+
+\begin{prop}[6.18]
+    Let \( M \) be an \( R \)-module, and let \( N \) be a submodule of \( M \). Prove that if \( N \) and \( M/N \) are both finitely generated, then \( M \) is finitely generated.
+\end{prop}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -77,6 +709,7 @@
         \item Find an example showing that the minimal polynomial is not multiplicative under direct sums.
     \end{itemize}
 \end{prob}
+\textcolor{red}{here}
 
 
 \begin{prob}[6.13]
@@ -94,17 +727,23 @@
 \begin{prob}[7.3]
     Prove that two linear transformations of a vector space of dimension \(\leq 3\) are similar if and only if they have the same characteristic and minimal polynomials. Is this true in dimension \(4\)? [§6.2]
 \end{prob}
-
+\textcolor{red}{here}
 
 \begin{prob}[7.4]
     Let \(k\) be a field, and let \(K\) be a field containing \(k\). Two square matrices \(A, B \in M_n(k)\) may be viewed as matrices with entries in the larger field \(K\). Prove that \(A\) and \(B\) are similar over \(k\) if and only if they are similar over \(K\).
 \end{prob}
+\textcolor{red}{here}
+\begin{proof}
+    For the interesting direction, if $A,B$ are similar in $K$: 
+\end{proof}
 
 \begin{prob}[7.7]
     Let \( V \) be a \( k \)-vector space of dimension \( n \), and let \( \alpha \in \text{End}_k(V) \). Prove that the minimal and characteristic polynomials of \( \alpha \) coincide if and only if there is a vector \( v \in V \) such that  
-\[ v, \alpha(v), \dots, \alpha^{n-1}(v) \] 
+    \[ \{v, \alpha(v), \dots, \alpha^{n-1}(v)\} \] 
 is a basis of \( V \).
 \end{prob}
+\textcolor{red}{here}
+
 
 
 \begin{prob}[7.8]
@@ -148,16 +787,34 @@ is a basis of \( V \).
 \[
 0 = V_0 \subsetneq V_1 \subsetneq \cdots \subsetneq V_{n-1} \subsetneq V_n = V
 \]
-with \(\dim V_i = i\). In other words, a complete flag is a composition series in the sense of Exercise 1.16.
+with \(\dim V_i = i\). In other words, a complete flag is a composition series in the sense of Exercise 1.16. Let $V$ be a finite-dim vector space over algebraically closed $k$. Prove that every linear transformation $\alpha$ of $V$ preserves a complete flag: there is a complete flag as above and such that $\alpha(V_i)\subset V_i$.
+
+Find a linear transformation of $\R^2$ that does not preserve a complete flag.
 \end{prob}
 
+\begin{proof}
+    It suffices take $V_i$ as the subspaces generated by eigenvectors.
+    An example in $\R^2$:
+    \begin{equation*}
+        \begin{pmatrix}
+            0&1\\
+            -1&0
+        \end{pmatrix}
+    \end{equation*}
+
+\end{proof}
 
 
 
 
-\begin{prob}[7.17]
-    A matrix \( M \in M_n(\mathbb{C}) \) is \textbf{normal} if \( MM^\dagger = M^\dagger M \). Note that unitary matrices ($UU^*=U^*U=I$) and Hermitian matrices ($U=U^*$) are both normal. Prove that a triangular normal matrix is diagonal. [7.18]
-\end{prob}
+
+
+% \begin{prob}[7.17]
+%     A matrix \( M \in M_n(\mathbb{C}) \) is \textbf{normal} if \( MM^\dagger = M^\dagger M \). Note that unitary matrices ($UU^*=U^*U=I$) and Hermitian matrices ($U=U^*$) are both normal. Prove that a triangular normal matrix is diagonal. [7.18]
+% \end{prob}
+% \begin{proof}
+%     Direct computation.
+% \end{proof}
 
 
 

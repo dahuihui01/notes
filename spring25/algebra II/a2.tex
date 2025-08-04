@@ -264,24 +264,23 @@ Topics: finitely generated modules/PID, triangularization, diagonalization, Jord
 Prove that the minimal and characteristic polynomials of \( \alpha \) coincide if and only if there is a vector \( v \in V \) so that:  
 
 \[\{v, \alpha(v), \ldots, \alpha^{n-1}(v)\}\]
-
 is a basis for \( V \).
 \end{prob}
 \begin{proof}
-    We will show there is not vector $v\in V$ such that $\{v, \alpha(v), \ldots, \alpha^{n-1}(v)\}$ is linearly independent if and only if the minimal and characteristic polynomials aren't the same. 
-    \begin{align*}
-        \text{no $v$ s.t. $\{v,\dots, \alpha^{n-1}(v)\}$ is linearly independent}&\iff \text{ for all } v\in V, \{v,\ldots, \alpha^{n-1}v\} \text{is linearly dependent}\\
-        &\iff \alpha^{n-1}v=c_0v+\dots+c_{n-2}\alpha^{n-2}v \text{ for all } v
-    \end{align*}
-    We then claim that $\alpha^{n-1}v=c_0v+\dots+c_{n-2}\alpha^{n-2}v \text{ for all } v$ if and only if the minimal polynomial $p_m$ has degree less than the characteristic polynomial $p_n$. Note that $p_n$ has degree $n$, and we can write 
-    \begin{equation*}
-        p_n(t)=a_nt^n+\dots+a_1t+a_0
-    \end{equation*}
-    and $p_n(\alpha)v=0$ for all $v\in V$, therefore $\alpha^{n-1}v=c_0v+\dots+c_{n-2}\alpha^{n-2}v \text{ for all } v$ if and only if 
-    \begin{equation*}
-        p_n(\alpha)v=a_n\alpha^{n-1}v+\dots+a_1\alpha v+a_0=p_{n-1}(\alpha)v=0
-    \end{equation*}
-    where $p_{n-1}$ is a polynomial of degree at most $n-1$ and is such that $p_{n-1}(\alpha)=0$. Thus no $v$ such that $\{v,\dots,\alpha^{n-v}v\}$ is linearly independent if and only if minimal and characteristic polynomial have different degrees.
+    % We will show there is no vector $v\in V$ such that $\{v, \alpha(v), \ldots, \alpha^{n-1}(v)\}$ is linearly independent if and only if the minimal and characteristic polynomials aren't the same. 
+    % \begin{align*}
+    %     \text{no $v$ s.t. $\{v,\dots, \alpha^{n-1}(v)\}$ is linearly independent}&\iff \text{ for all } v\in V, \{v,\ldots, \alpha^{n-1}v\} \text{is linearly dependent}\\
+    %     &\iff \alpha^{n-1}v=c_0v+\dots+c_{n-2}\alpha^{n-2}v \text{ for all } v
+    % \end{align*}
+    % We then claim that $\alpha^{n-1}v=c_0v+\dots+c_{n-2}\alpha^{n-2}v \text{ for all } v$ if and only if the minimal polynomial $p_m$ has degree less than the characteristic polynomial $p_n$. Note that $p_n$ has degree $n$, and we can write 
+    % \begin{equation*}
+    %     p_n(t)=a_nt^n+\dots+a_1t+a_0
+    % \end{equation*}
+    % and $p_n(\alpha)v=0$ for all $v\in V$, therefore $\alpha^{n-1}v=c_0v+\dots+c_{n-2}\alpha^{n-2}v \text{ for all } v$ if and only if 
+    % \begin{equation*}
+    %     p_n(\alpha)v=a_n\alpha^{n-1}v+\dots+a_1\alpha v+a_0=p_{n-1}(\alpha)v=0
+    % \end{equation*}
+    % where $p_{n-1}$ is a polynomial of degree at most $n-1$ and is such that $p_{n-1}(\alpha)=0$. Thus no $v$ such that $\{v,\dots,\alpha^{n-v}v\}$ is linearly independent if and only if minimal and characteristic polynomial have different degrees.
 \end{proof}
 
 
