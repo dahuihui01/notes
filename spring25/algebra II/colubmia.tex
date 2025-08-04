@@ -72,9 +72,66 @@
     (a) True (b) False (c) False, consider $(1,0)\cdot (0,1)$ (d) False Consider $5+5=1$ in $\Z/6\Z$ (e) True.
 \end{proof}
 
+\begin{prob}[6]
+    \begin{enumerate}
+        \item[6.] An element \( x \) of a ring \( R \) is called \textit{nilpotent} if \( x^n = 0 \) for some \( n > 0 \). Note that \( 0 \in R \) is always nilpotent. (Remark: A nonzero nilpotent element is a zero divisor, while a zero divisor does not have to be nilpotent.)
+        
+        \begin{enumerate}
+            \item[(a)] (5 points) Show that \( 0 \) is the only nilpotent element of an integral domain \( R \).
+            
+            \item[(b)] (5 points) Find all nilpotent elements in the following rings:
+            \[
+            \mathbb{Z}, \quad \mathbb{Q}, \quad \mathbb{Z}/9\mathbb{Z}, \quad \mathbb{Z}/12\mathbb{Z}, \quad \mathbb{Q}[x].
+            \]
+            
+            \item[(c)] (optional, 10 points) Show that if \( x, y \) are nilpotent then \( x + y \) is nilpotent (assume that \( x^n = 0 \), \( y^m = 0 \), use that the ring is commutative and apply the binomial theorem from lecture 1 to some large power of \( x + y \)).
+        \end{enumerate}
+    \end{enumerate}    
+\end{prob}
+\begin{proof}
+    \begin{prop}
+        If $a\in\Z/n\Z$ is nilpotent, then $a$ is nilpotent in $\Z/d\Z$ for all divisors $d$ of $n$. Moreover, units are not nilpotent.
+    \end{prop}
+    (b) For $\Z/9\Z$: $\{0,3,6\}$ are nilpotents. For $\Z/12\Z$: $\{0, 6\}$ are nilpotents. (c) try $(x+y)^{m+n}$.
+\end{proof}
+
+\begin{prop}
+    An integral domain must have characteristic $0$ or equal to some prime $p$; however, there exists char prime ring that is not an integral domain: $\Z/p\Z\times\Z/p\Z$.
+\end{prop}
 
 
 
+\chapter{HW3}
+
+
+\begin{prob}[Q7]
+    Let \( e \in R \) be an idempotent (i.e., \( e^2 = e \)) in a commutative ring \( R \).
+
+\begin{enumerate}
+    \item[(a)] Check that \( Re \) and \( R(1 - e) \) are ideals of \( R \) and that their intersection \( Re \cap R(1 - e) = 0 \). Show that any element \( a \in R \) has a unique presentation as a sum of an element in \( Re \) and an element in \( R(1 - e) \).
+
+    \item[(b)] Prove that \( Re \) is a ring, with identity \( e \) and addition and multiplication inherited from \( R \). Likewise for \( R(1 - e) \). (Since \( 1 - e \) is also an idempotent, you don't need to repeat your arguments twice.)
+
+    \item[(c)] Show that the map \( \phi: Re \times R(1 - e) \to R \) defined by \( \phi(a, b) = a + b \) is an isomorphism of rings.
+\end{enumerate}
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item[(a)] Let $a=re=r'(1-e)$, then 
+        \begin{equation*}
+            a=re=r'-r'e=r'e-r'e=0
+        \end{equation*}
+        Clearly we have $a=ae+a(1-e)$, and one can show this presentation is unique.
+        \item[(b)] True.
+        \item[(c)] It is surjective and injective both by part (a). 
+    \end{enumerate}
+    \begin{prop}
+        Let $e\in R$ be a nontrivial idempotent, then viewing $Re, R(1-e)$ as rings with identities $e, (1-e)$, we can decompose $R$ into a product of two rings:
+        \begin{equation*}
+            R\cong Re\cong R(1-e)
+        \end{equation*}
+    \end{prop}
+\end{proof}
 
 
 \end{document}
