@@ -658,8 +658,8 @@ Elements of \(\mathbb{H}\) are called \textit{quaternions}. Note that \( Q_8 \) 
 
 
 \chapter{Groups II}
-Entire of chapter 4 will be included.
 
+\section{Class Formula}
 \begin{prob}
 Let $p$ be a prime integer, let $G$ be a $p$-group, and let $S$ be a set such that $|S| \neq 0 \mod p$. If $G$ acts on $S$, prove that the action must have fixed points. 
 \end{prob}
@@ -779,7 +779,7 @@ which has order $p^3$ and noncommutative.
 The class formula for both $D_8$ and $Q_8$ is $8 = 2 + 2 + 2 + 2$. (Also note that $D_8 \not\cong Q_8$.)
 \end{prop}
 
-\begin{prob}
+\begin{prob}[1.13]
 Let $G$ be a noncommutative group of order 6. Then, $G$ must have trivial center and exactly two conjugacy classes, of order 2 and 3.
 \begin{itemize}
     \item Prove that if every element of a group has order $\leq 2$, then the group is commutative. Conclude that $G$ has an element $y$ of order 3.
@@ -788,10 +788,20 @@ Let $G$ be a noncommutative group of order 6. Then, $G$ must have trivial center
     \item Prove that there is an $x \in G$ such that $yx = xy^2$.
 \end{itemize}
 \end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item Compute $(ab)^2$.
+        \item It has index $2$.
+        \item Note that the centralizer $C_G(y)$ has order dividing $G$, not all $G$ ($G$ is nonabelian), and contains $\la y\ra$, thus must be $3$, hence $[y]$ has order $2$.
+    \end{itemize}
+\end{proof}
 
-\begin{prob}
+\begin{prob}[1.14]
 Let $G$ be a group, and assume $[G : Z(G)] = n$ is finite. Let $A \subseteq G$ be any subset. Prove that the number of conjugates of $A$ is at most $n$.
 \end{prob}
+\begin{proof}
+    The number of conjugates of $A$ is $[G: N_G(A)]$, and $Z(G)\subset N_G(A)$. 
+\end{proof}
 
 \begin{prob}
 Suppose that the class formula for a group $G$ is $60 = 1 + 15 + 20 + 12 + 12$. Prove that the only normal subgroups of $G$ are $\{e\}$ and $G$.
@@ -800,26 +810,47 @@ Suppose that the class formula for a group $G$ is $60 = 1 + 15 + 20 + 12 + 12$. 
     Use the fact that normal subgroups divide $|G|$ and are unions of conjugacy classes.
 \end{proof}
 
-\begin{prob}
-Let $G$ be a finite group, and let $H \subseteq G$ be a subgroup of index 2. For $a \in H$, denote by $[a]_H$, resp., $[a]_G$, the conjugacy class of $a$ in $H$, resp., $G$. Prove that either $[a]_H = [a]_G$ or $[a]_H$ is half the size of $[a]_G$, according to whether the centralizer $Z_G(a)$ is not or is contained in $H$. (Hint: Note that $H$ is normal in $G$, by Exercise [II.8.2]; apply Proposition [II.8.11].) [\S 4.4]
-\end{prob}
+\begin{prop}
+    Let $G$ be a finite group, and let $H \subseteq G$ be a subgroup of index 2. For $a \in H$, denote by $[a]_H$, resp., $[a]_G$, the conjugacy class of $a$ in $H$, resp., $G$. Then, either $[a]_H = [a]_G$ or $[a]_H$ is half the size of $[a]_G$, according to whether the centralizer $Z_G(a)$ is not or is contained in $H$.
+\end{prop}
 
-\begin{prob}
-Let $H$ be a proper subgroup of a finite group $G$. Prove that $G$ is not the union of the conjugates of $H$. (Hint: You know the number of conjugates of $H$; keep in mind that any two subgroups overlap, at least at the identity.)
-\end{prob}
 
-\begin{prob}
-Let $S$ be a set endowed with a transitive action of a finite group $G$, and assume $|S| \geq 2$. Prove that there exists a $g \in G$ without fixed points in $S$, that is, such that $gs \neq s$ for all $s \in S$. (Hint: By Proposition [II.9.9], you may assume $S = G/H$, with $H$ proper in $G$. Use Exercise [1.17].)
+\begin{prob}[1.17]
+Let $H$ be a proper subgroup of a finite group $G$. Prove that $G$ is not the union of the conjugates of $H$. 
 \end{prob}
+\begin{proof}
+    Suppose that $G$ is a union of conjugates of $H$, then 
+    \begin{align*}
+        |G|&=[G:H]\cdot H\\
+        &=[G:N_G(H)]\cdot [N_G(H): H]\cdot |H|\\
+        &\leq [G:N_G(H)]\cdot |H|-1
+    \end{align*}
+which is a contradiction.
+\end{proof}
 
-\begin{prob}
+\begin{prob}[1.18]
+Let $S$ be a set endowed with a transitive action of a finite group $G$, and assume $|S| \geq 2$. Prove that there exists a $g \in G$ without fixed points in $S$, that is, such that $gs \neq s$ for all $s \in S$. 
+
+
+
+% (Hint: By Proposition [II.9.9], you may assume $S = G/H$, with $H$ proper in $G$. Use Exercise [1.17].)
+\end{prob}
+\begin{proof}
+    Follows from 1.17.
+\end{proof}
+
+
+\begin{prob}[1.19]
 Let $H$ be a proper subgroup of a finite group $G$. Prove that there exists a $g \in G$ whose conjugacy class is disjoint from $H$.
 \end{prob}
+\begin{proof}
+    Follows immediately from 1.17.
+\end{proof}
 
 \begin{prop}
     Let $G=\text{GL}_2(\C)$, every $2\times 2$ matrix is conjugate to an upper triangular matrix.
 
-    Warning: You need the fact that $\C$ is algebraically closed.
+    Warning: You need the fact that $\C$ is algebraically closed. (Use Jordan canonical form).
 \end{prop}
 
 
@@ -828,14 +859,14 @@ Let $H$ be a proper subgroup of a finite group $G$. Prove that there exists a $g
 % \end{prob}
 
 
-\begin{prob}
+\begin{prob}[1.21]
 Let $H$, $K$ be subgroups of a group $G$, with $H \subseteq N_G(K)$. Verify that the function $\gamma : H \to \operatorname{Aut}_{Grp}(K)$ defined by conjugation is a homomorphism of groups and that $\ker \gamma = H \cap Z_G(K)$, where $Z_G(K)$ is the centralizer of $K$.
 \end{prob}
 \begin{proof}
    $r_h(g)=hgh^{-1}=g$ for all $g\in K$ implies that $h\in Z_G(K)$.
 \end{proof}
 
-\begin{prob}
+\begin{prob}[1.22]
 Let $G$ be a finite group, and let $H$ be a cyclic subgroup of $G$ of order $p$. Assume that $p$ is the smallest prime dividing the order of $G$ and that $H$ is normal in $G$. Prove that $H$ is contained in the center of $G$. (Hint: By Exercise [1.21], there is a homomorphism $\gamma : G \to \operatorname{Aut}_{Grp}(H)$; by Exercise [II.4.14], $\operatorname{Aut}(H)$ has order $p - 1$. What can you say about $\gamma$?) 
 \end{prob}
 \begin{proof}
@@ -849,6 +880,200 @@ Let $G$ be a finite group, and let $H$ be a cyclic subgroup of $G$ of order $p$.
     \end{equation*}
     This contradicts with the fact that $p$ is the smallest prime dividing $|G|$. 
 \end{proof}
+
+
+\section{Sylow}
+
+\begin{prob}[2.2]
+Let \( G \) be a group. A subgroup \( H \) of \( G \) is characteristic if \( \varphi(H) \subseteq H \) for every automorphism \( \varphi \) of \( G \).
+\begin{itemize}
+    \item Prove that characteristic subgroups are normal.
+    \item Let \( H \subseteq K \subseteq G \), with \( H \) characteristic in \( K \) and \( K \) normal in \( G \). Prove that \( H \) is normal in \( G \).
+    \item Let \( G, K \) be groups, and assume \( G \) contains a single subgroup \( H \) isomorphic to \( K \). Prove that \( H \) is normal in \( G \).
+\end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item conjugation is an automorphism.
+        \item conjugation by $g\in G$ on $K$ is an automorphism, thus $H$ is also preserved under conjugation by $g$.
+        \item Let $\varphi$ be any automprhism $G\to G$, 
+        \begin{equation*}
+            \varphi(H)\cong H
+        \end{equation*}
+        since $\varphi$ has trivial kernel, thus $\varphi(H)=H$ by assumtpion, i.e. $H$ is normal by taking $\varphi$ as the conjugation action.
+    \end{itemize}
+\end{proof}
+
+\begin{prop}
+    Let $G$ be a nontrivial $p$-group, then $G$ is not simple.
+\end{prop}
+\begin{proof}
+    It has nontrivial center, and the center is normal.
+\end{proof}
+
+
+
+\begin{prob}[2.8]
+Let \( G \) be a finite group, \( p \) a prime, and \( N \) the intersection of all \( p \)-Sylow subgroups of \( G \). Prove:
+\begin{itemize}
+    \item[(1)] \( N \) is a normal \( p \)-subgroup of \( G \).
+    \item[(2)] Every normal \( p \)-subgroup of \( G \) is contained in \( N \).
+\end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(1)] Let $g\in G$, then 
+        \begin{equation*}
+            gNg^{-1}=\bigcap_{P}gPg^{-1}=\bigcap_{P'}P'=N
+        \end{equation*}
+        where $P,P'$ are $p$-sylow subgroups.
+        \item[(2)] Let $N'$ be a normal $p$-subgroup, then $N'\subset P$ for some $p$-Sylow subgroup of $G$, since $N'$ is normal, we know
+        \begin{equation*}
+            N'\subset\bigcap_{P'}P'=N
+        \end{equation*}
+    \end{itemize}
+\end{proof}
+
+\begin{prop}
+Let \( P \) be a \( p \)-Sylow subgroup of \( G \), and let \( P \) act by conjugation on the set of \( p \)-Sylow subgroups. Then \( P \) is the unique fixed point. 
+\end{prop}
+
+
+
+\begin{prob}[2.12]
+Let \( P \) be a \( p \)-Sylow subgroup of \( G \), and \( H \subseteq G \) a subgroup containing \( N_G(P) \). Prove \( [G : H] \equiv 1 \mod p \).
+\end{prob}
+\begin{proof}
+    We know
+    \begin{equation*}
+        n_p=[G:N_G(P)]\equiv 1\mod p
+    \end{equation*}
+    Hence by
+    \begin{equation*}
+        [G:N_G(P)]=[G:H]\cdot[H:N_G(P)]
+    \end{equation*}
+    it suffices to show that 
+    \begin{equation*}
+        [H:N_G(P)]\equiv 1\mod p
+    \end{equation*}
+    It suffices to see that 
+    \begin{equation*}
+        N_G(P)=\{g\in G: gPg^{-1}=P\}=N_H(P)
+    \end{equation*}
+    since $H$ contains $N_G(P)$.
+\end{proof}
+
+
+
+
+\begin{prob}[2.15]
+Classify all groups of order \( n \leq 15 \) (except \( n = 8, 12 \)) up to isomorphism.
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item $n=6$: $\Z/6\Z$ and $S_3$.
+        \item $n=8$: abelian or $D_8$ or $Q_8$.
+        \item $n=9$: abelian.
+        \item $n=10$: abelian or $P_5\rtimes P_2$, where $P_5$ is the normal $5$-Sylow subgroup. The action $\Z/2\Z\to\text{Aut}(\Z/5\Z)\cong(\Z/5\Z)^\times$ gives 
+        \begin{equation*}
+            G\cong \la g,h: g^5=h^2=e, hgh^{-1}=g^4\ra
+        \end{equation*}
+        \item $n=14$. $\Z/14\Z$ or $D_{14}$. (The nontrivial action inverts the elements of $\Z/7\Z$).
+    \end{enumerate}
+\end{proof}
+
+
+% \begin{prob}
+% Let \( G \) be a noncommutative group of order 8.
+% \begin{itemize}
+%     \item Prove \( G \) has elements of order 4 and no elements of order 8.
+%     \item Let \( y \) have order 4. Show \( G = \langle x, y \rangle \) where \( x^2 = e \) or \( x^2 = y^2 \).
+%     \item Prove \( xy = y^3x \), and conclude \( G \cong D_8 \) or \( G \cong Q_8 \).
+% \end{itemize}
+% \end{prob}
+
+% \begin{prob}
+% Let \( R \) be a division ring with \( |R| = 64 \). Prove \( R \) is commutative (hence a field) using:
+% \begin{itemize}
+%     \item The unit group has order 63; find a commutative subgroup of order 9.
+%     \item Show \( R \) is the only sub-division ring containing \( G \).
+%     \item The centralizer of \( G \) in \( R \) is a sub-division ring containing \( G \).
+%     \item Conclude \( G \) is central, making \( R \) commutative.
+% \end{itemize}
+% \end{prob}
+% \begin{proof}
+    
+% \end{proof}
+
+% \begin{prob}
+% Give an alternative proof of Claim 2.16: Count elements of order \( p \) and \( q \) in \( G \) using Sylow theorems, deduce the existence of an element of order \( pq \), and conclude \( G \) is cyclic.
+% \end{prob}
+
+\begin{prob}[2.19]
+Let \( G \) be noncommutative of order \( pq \) (\( p < q \) primes).
+\begin{itemize}
+    \item Show \( q \equiv 1 \mod p \).
+    \item Prove \( Z(G) \) is trivial.
+    \item Draw the subgroup lattice of \( G \).
+    \item Find the number of elements of each possible order.
+    \item Find the number and size of the conjugacy classes in $G$.
+\end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item Consider $n_q=1$ or $p$, and $n_q\equiv 1\mod q$. This implies that $n_q=1$. Let $Q$ be the normal $q$-subgroup, and $P$ be a $p$-Sylow subgroup, then consider the semidirect product 
+        \begin{equation*}
+            Q\rtimes P
+        \end{equation*}
+        For $G$ to be noncommutative, this requires the map $\theta: P\to\text{Aut}(Q)$ to be nontrivial, i.e., $p$ divides $q-1$, i.e.
+        \begin{equation*}
+            q\equiv 1\mod p
+        \end{equation*}
+        \item If not trivial, then commutative.
+        \item There are $q$ subgroups of order $p$, and $1$ subgroup of order $q$.
+        \item Compute the size of the centralizer for an element $g$ of order $p$: it is $p$, thus the conjugacy has order $q$.
+    \end{itemize}
+\end{proof}
+
+
+\begin{prob}[2.21]
+Let \( p < q < r \) be primes. Prove no group of order \( pqr \) is simple.
+\end{prob}
+\begin{proof}
+    Consider $n_r=1$ or $pq$, if $n_r=pq$, then suppose the map $\gamma: G\to S_{pq}$ has trivial kernel, then $pqr$ divides $pq!$, which is a contradiction.
+\end{proof}
+
+
+
+\begin{prob}[2.23]
+For \( G \) simple, 
+\begin{itemize}
+    \item[(1)] Prove \( |G| \) divides \( N_p! \) for all primes \( p \) dividing \( |G| \), where \( N_p \) is the number of \( p \)-Sylow subgroups. 
+    \item[(2)] If \( H \leq G \) has index \( N > 1 \), then \( |G| \) divides \( N! \). 
+\end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(1)] The kernel $\gamma: G \to \{P_1,\dots, P_{n_p}\}$ is trivial, hence $|G|$ divides $N_p!$.
+        \item[(2)] $G$ acts the cosets $G/H$ transitively, thus same trivial kernel argument shows $|G|$ divides $N!$. 
+    \end{itemize}
+\end{proof}
+
+
+\begin{prob}[2.25]
+Assume \( G \) is simple of order 60.
+\begin{itemize}
+    \item Prove \( G \) has 5 or 15 Sylow 2-subgroups (15 elements of order 2 or 4).
+    \item If 15 Sylow 2-subgroups, find \( g \in G \) of order 2 in two of them, and show \( C_G(g) \) has index 5.
+\end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item $n_2=1,3,5,15$, $G$ simple and trivial kernel argument shows $n_2=5,15$.
+        \item The $2$-Sylow subgroups must have overlap by a size argument; consider $C_G(g)$: we know that $P_1,P_2\subset C_G(g)$, hence $|C_G(g)|\geq 4$, and $|C_G(g)|\neq 60$ because that'd be nontrivial center, hence $|C_G(g)|=12$, i.e., index $5$.
+    \end{itemize}
+\end{proof}
+
 
 
 

@@ -407,7 +407,7 @@ This corresponds to Aluffi Chapter IV.
     \begin{equation*}
         Z_G(g)=\left\{h\in G: hgh^{-1}=g\right\}
     \end{equation*}
-    The conjugacy class of $g\in G$ is the orbit $[g]$.
+    The conjugacy class of $g\in G$ is the orbit $[g]$. (In other words, centralizer is the set of elements that commute with $g$.)
 \end{defn}
 For arbitrary $a\in G$, we have 
 \begin{equation*}
@@ -541,6 +541,13 @@ The centralizer of $A$ is the subgroup $Z_G(A)\subset N_G(A)$ fixing each $a\in 
         n_p\equiv 1\mod p
     \end{equation*}
 \end{thm}
+\begin{prop}
+    Let $G$ be a finite group, let $P$ be a $p$-Sylow subgroup,  
+    \begin{equation*}
+        n_p=[G:N_G(P)]
+    \end{equation*}
+    by definition.
+\end{prop}
 
 \begin{prop}
     Let $G$ be a group of order $mp^r$, where $p$ is prime and $1<m<p$, then $G$ is not simple.
@@ -869,11 +876,12 @@ This corresponds to Aluffi Chapter III.
 \end{prop}
 Notice that in a commutative ring, this means $u$ is a unit iff multiplication by $u$ is bijective.
 
-\begin{defn}[division ring]
+\begin{defn}[division ring, field]
     A division ring is a ring in which every nonzero element is a unit.
 
     A field is a nonzero commutative ring in which every nonzero element is a unit.
 \end{defn}
+
 
 \begin{prop}
     The group of units in $\Z/n\Z$ is exactly the group $(\Z/n\Z)^*$.
@@ -953,21 +961,119 @@ Notice that in a commutative ring, this means $u$ is a unit iff multiplication b
     for some $r_1,\dots, r_n\in R$.
 \end{defn}
 
+\begin{prop}
+    Let $\bar{b}$ be the class of $b$ in $R/(a)$, then 
+    \begin{equation*}
+        \frac{R/(a)}{(\bar{b})}\cong\frac{R}{(a,b)}
+    \end{equation*}
+\end{prop}
+\begin{prop}
+    $\Z$ is a PID by taking the smallest positive element $d$ in each ideal, obtaining $(d)$.
+\end{prop}
+
+
 \begin{defn}
     $I$ is a prime ideal if $R/I$ is an integral domain, and is a maximal ideal if $R/I$ is a field.
 \end{defn}
+\begin{defn}
+    Let $I,J$ be ideals of $R$, then $IJ$ is the ideal \textbf{generated} by elements $ij, i\in I, j\in J$.
+
+    Note that $IJ\subset I\cap J$. 
+\end{defn}
+
+\begin{example}
+    In $\Z$:
+    \begin{equation*}
+        (4)\cap(3)=(12)
+    \end{equation*}
+    and 
+    \begin{equation*}
+        (4)\cap(6)=(12)
+    \end{equation*}
+\end{example}
+\begin{defn}[Long division]
+    Let $f(x)\in R[x]$ be monic, if $g(x)\in R[x]$ be another polynomial, then there exists unique $q,r\in R[x]$, where $\deg(r)<\deg(f)$, such that 
+    \begin{equation*}
+        g(x)=f(x)q(x)+r(x)
+    \end{equation*}
+    Moreover, 
+    \begin{equation*}
+        g(x)+(f(x))=r(x)+(f(x))
+    \end{equation*}
+    as cosets of $(f(x))$.
+\end{defn}
+
+
 
 \begin{prop}
     Let $I$ be an ideal of commutative $R$, if $R/I$ is finite, then $I$ is prime if and only if maximal.
 \end{prop}
 
-\begin{prop}[*]
+\begin{prop}
     Let $R$ be a PID, a nonzero ideal $I$ is prime if and only if it is maximal.
 \end{prop}
 \begin{proof}
     Is simple proof, you just do it.
 \end{proof}
 
+
+\begin{thm}
+    Let $R$ be commutative, let $f(x)\in R[x]$ be a monic polynomial of degree $d$, then 
+    \begin{equation*}
+        \varphi: R[x]\to R^{\oplus d}
+    \end{equation*}
+    where 
+    \begin{equation*}
+        \varphi: g(x)\mapsto r(x)
+    \end{equation*}
+    where $r(x)$ is the remainder $g(x)=f(x)q(x)+r(x)$ induces an isomorphism of \textbf{groups}:
+    \begin{equation*}
+        \frac{R[x]}{(f(x))}\cong R^{\oplus d}
+    \end{equation*}
+\end{thm}
+\textbf{Ring Structure}: can be induced by the map $\varphi$.
+
+\begin{example}
+    Let $f(x)=x-a$ for some $a\in R$, then 
+    \begin{equation*}
+        \frac{R[x]}{(x-a)}\cong R
+    \end{equation*}
+\end{example}
+\begin{example}
+    Let $f(x)=x^2+1$, then there is isomorphism of groups:
+    \begin{equation*}
+        R\oplus R\cong\frac{R[x]}{(x^2+1)}
+    \end{equation*}
+    note that elements on the right are of the form $a_0+a_1x$. One can give a ring structure on $R\oplus R$ by $\varphi$.
+\end{example}
+
+\begin{example}
+    The ideal $(2,x)$ is maximal in $\Z[x]$.
+\end{example}
+
+\begin{example}
+    The maximal ideals in $\C[x]$ are precisely 
+    \begin{equation*}
+        (x-a)
+    \end{equation*}
+    where $a\in\C$.
+\end{example}
+
+\begin{defn}[Krull dimension]
+    Let $R$ be commutative, the Krull dimension is the length of the longest chain of prime ideals in $R$. For example, PIDs but not fields have Krull dimension $1$. 
+    \begin{equation*}
+        (0)\subset (d)
+    \end{equation*}
+    has length $1$.
+
+    Moreover, $k[x_1,\dots,x_n]$ have Kruell dimension $n$:
+    \begin{equation*}
+        (0)\subset (x_1)\subset(x_1,x_2)\subset\dots(x_1,\dots,x_n)
+    \end{equation*}
+\end{defn}
+
+
+\section{Modules}
 \begin{defn}[module]
     A $R$-module $M$ is an abelian group with a ring action, satisfying:
     \begin{enumerate}
@@ -976,7 +1082,39 @@ Notice that in a commutative ring, this means $u$ is a unit iff multiplication b
         \item $(rs)m=r(sm)$
         \item $1m=m$.
     \end{enumerate}
+    A \textbf{submodule} $N$ of $M$ is an abelian group such that for all $r\in R$, $n\in N$,
+    \begin{equation*}
+        rn\in N
+    \end{equation*}
+    A \textbf{homomorphism} of $R$-modules $\varphi: M\to M'$ is such that 
+    \begin{equation*}
+        \begin{cases}
+            \varphi(m+n)=\varphi(m)+\varphi(n)\\
+            \varphi(rm)=r\varphi(m)
+        \end{cases}
+    \end{equation*}
 \end{defn}
+Let $R=k$ be a field, then $R$-modules are called vector spaces over $k$.
+
+\begin{defn}
+    Let $r\in M$ be in the center of $M$, then 
+    \begin{equation*}
+        rM=\{rm: m\in M\}
+    \end{equation*}
+    is a submodule of $M$. If $I$ is an ideal of $R$, then 
+    \begin{equation*}
+        IM=\{\sum_ir_im_i: r\in I, m\in M\}
+    \end{equation*}
+    i.e., generated by $rm, r\in I$ is a submodule.
+\end{defn}
+
+\begin{example}
+    If $R$ is not commutative, then $R/I$ is not a ring, where $I$ is a left ideal, but is defined as a left-module. The multiplication given by $r(a+I)=ra+I$.
+\end{example}
+
+
+
+
 
 \begin{defn}
     An $R$-algebra is a ring with a ring $R$ action.
@@ -1004,18 +1142,105 @@ Notice that in a commutative ring, this means $u$ is a unit iff multiplication b
 \end{prop}
 
 
+\section{Free Modules}
+
+\begin{defn}
+    Let $A$ be a set, then 
+    \begin{equation*}
+        F^R(A)\cong R^{\oplus A}
+    \end{equation*}
+    where $F^R(A)$ denotes the free modules over $A$. Every element is written as 
+    \begin{equation*}
+        \sum_{a\in A}r_aa
+    \end{equation*}
+    (always a finite sum). We say a module $M=\la A\ra$ is finitely generated if $A$ is finite.
+\end{defn}
+
+\begin{example}
+    Let $R=\Z[x_1,\dots,x_n]$, when $R$ viewed as a $R$-module over itself, it is finitely generated (by $1$), by the ideal 
+    \begin{equation*}
+        (x_1,x_2,\dots)
+    \end{equation*}
+    as an $R$-module, is not finitely generated. 
+\end{example}
+
+\begin{defn}[Noetherian Modules]
+    An $R$-module is Noetherian if every submodule of $M$ is finitely generated as an $R$-module.
+\end{defn}
+
+\begin{prop}
+    Let $M$ be an $R$-module, $N$ be a submodule, then $M$ is Noetherian iff $N,M/N$ are both Noetherian.
+\end{prop}
+
+\begin{defn}[finite, finite-type $R$-algebra]
+    Let $S$ be an $R$-algebra, it is called \textbf{finite} if it is finitely generated as an $R$-module; equivalently, 
+    \begin{equation*}
+        S\cong\frac{R^{\oplus n}}{M}
+    \end{equation*}
+    for some submodule $M$. 
+
+    An $R$-algebra $S$ is called \textbf{finite-type} if it is finitely generated as an $R$-algebra, i.e., 
+    \begin{equation*}
+        S\cong\frac{R[x_1,\dots, x_n]}{I}
+    \end{equation*}
+    for some ideal $I$.
+\end{defn}
+Elements in finite $R$-algebra is of the form:
+\begin{equation*}
+    \sum_{i=1}^nr_is_i
+\end{equation*}
+where $S=\la s_1,\dots, s_n\ra$. Elements in finite-type $R$-algebra is of the form:
+\begin{equation*}
+    r_{11}s_1+r_{12}s_1^2+\dots+r_{21}s_2+r_{22}s_2^2+\dots+r_{nk}s_n^k
+\end{equation*}
+
+
+\begin{prop}
+    The polynomial ring $R[x]$ is finite-type, not finite.
+\end{prop}
+
+
 \begin{prop}
     Let $R$ be a PID, and $F$ be a finitely generated free module over $R$, and let $M\subset F$ be a submodule, then $M$ is free.
 \end{prop}
 
 
-\begin{defn}
+\begin{defn}[???]
     Let $R$ be an integral domain, the rank of $M$ is the maximal number of linearly independent elements of $M$.
 \end{defn}
 
 
 
-
+\begin{defn}[SES, split]
+    A sequence 
+    \[\begin{tikzcd}
+        0 & A & B & C & 0
+        \arrow[from=1-1, to=1-2]
+        \arrow["f", from=1-2, to=1-3]
+        \arrow["g", from=1-3, to=1-4]
+        \arrow[from=1-4, to=1-5]
+    \end{tikzcd}\]
+    is short exact iff $f$ is injective, $g$ is surjective, and 
+    \begin{equation*}
+        \ker(g)=\im(f)
+    \end{equation*}
+    A SES is said to \textbf{split} if it is isomorphic in a sense that the following diagram commutes:
+    \[\begin{tikzcd}
+        0 & A & B & C & 0 \\
+        0 & {A'} & {A\oplus C} & {C'} & 0
+        \arrow[from=1-1, to=1-2]
+        \arrow["f", from=1-2, to=1-3]
+        \arrow["\cong", tail reversed, from=1-2, to=2-2]
+        \arrow["g", from=1-3, to=1-4]
+        \arrow["\cong", tail reversed, from=1-3, to=2-3]
+        \arrow[from=1-4, to=1-5]
+        \arrow["\cong", tail reversed, from=1-4, to=2-4]
+        \arrow[from=2-1, to=2-2]
+        \arrow[from=2-2, to=2-3]
+        \arrow[from=2-3, to=2-4]
+        \arrow[from=2-4, to=2-5]
+    \end{tikzcd}\]
+\end{defn}
 
 
 
