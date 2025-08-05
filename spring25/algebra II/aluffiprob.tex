@@ -658,7 +658,197 @@ Elements of \(\mathbb{H}\) are called \textit{quaternions}. Note that \( Q_8 \) 
 
 
 \chapter{Groups II}
+Entire of chapter 4 will be included.
 
+\begin{prob}
+Let $p$ be a prime integer, let $G$ be a $p$-group, and let $S$ be a set such that $|S| \neq 0 \mod p$. If $G$ acts on $S$, prove that the action must have fixed points. 
+\end{prob}
+\begin{proof}
+    The class formula $|S|=|Z|+\sum_a[G:\text{Stab}(a)]$.
+\end{proof}
+
+\begin{prob}
+Find the center of $D_{2n}$ using the size of conjugacy class.
+\end{prob}
+\begin{proof}
+    For $n$ odd, it suffices to show that there is only the identity that is its own conjugacy class. In other words, for any $r,s$, show that there are more things in their conjugacy class: 
+    \begin{equation*}
+        rsr^{-1}=sr^{-2}=s \iff r^{-2}=e
+    \end{equation*}
+    and there is no such $r$. 
+    \begin{equation*}
+        srs^{-1}=r^{-1}
+    \end{equation*}
+    again there is no element such that $r=r^{-1}$, hence the conjugacy class of $r$ contains at least one other element $r^{-1}$.
+\end{proof}
+
+\begin{prob}
+Prove that the center of $S_n$ is trivial for $n \geq 3$. (Suppose that $\sigma \in S_n$ sends $a$ to $b \neq a$, and let $c \neq a, b$. Let $\tau$ be the permutation that acts solely by swapping $b$ and $c$. Then compare the action of $\sigma \tau$ and $\tau \sigma$ on $a$.)
+\end{prob}
+\begin{proof}
+    You just do it and see $\sigma\tau\neq\tau\sigma$.
+\end{proof}
+
+\begin{prop}
+    The center of $S_n$ is trivial for all $n\geq 3$.
+\end{prop}
+
+\begin{prop}
+Let $G$ be a group, and let $N$ be a subgroup of $Z(G)$. Prove that $N$ is normal in $G$, note $Z(G)$ is normal in $G$.
+\end{prop}
+
+\begin{prop}
+    Let $G$ be a group, then 
+    \begin{equation*}
+        \frac{G}{Z(G)}\cong\text{Inn}(G)
+    \end{equation*}
+    Recall $\text{Inn}(G)$ is cyclic iff $G$ is commutative, this shows if $G/Z(G)$ is cyclic, then $G$ is commutative.
+\end{prop}
+
+
+
+
+\begin{prop}
+    Let $p, q$ be prime integers, and let $G$ be a group of order $pq$. Prove that either $G$ is commutative or the center of $G$ is trivial.
+\end{prop}
+
+
+
+\begin{prob}
+Prove or disprove that if $p$ is prime, then every group of order $p^3$ is commutative.
+\end{prob}
+\begin{proof}
+    Consider the Heisenburg group over $\F_p$:
+    \[
+G = \left\{
+\begin{pmatrix}
+1 & a & b \\
+0 & 1 & c \\
+0 & 0 & 1
+\end{pmatrix}
+\;\Bigg|\; a, b, c \in \mathbb{F}_p
+\right\},
+\]
+which has order $p^3$ and noncommutative.
+\end{proof}
+
+
+\begin{prop}
+    Let $G$ be a $p$-group, $|G|=p^r$, then there exists a normal subgroup of size $p^k$ for every $k\leq r$.
+\end{prop}
+
+\begin{prob}
+  Let $p$ be a prime number, and let $G$ be a $p$-group: $|G| = p^r$. Prove that $G$ contains a normal subgroup of order $p^k$ for every nonnegative $k \leq r$.
+\end{prob}
+\begin{proof}
+    First the center is nontrivial and is normal, then we take the quotient $G/\la z\ra$, where $z$ is an order $p$ element in the center. Do the same and lift it to a normal subgroup of $G$.
+\end{proof}
+
+\begin{prob}
+  Let $p$ be a prime number, $G$ a $p$-group, and $H$ a nontrivial normal subgroup of $G$. Prove that $H \cap Z(G) \neq \{e\}$.
+\end{prob}
+\begin{proof}
+    Consider the action of $G$ on $H$ by conjugation:
+    \begin{equation*}
+        |H|=|Z(G)\cap H|+\sum_h|[h]|
+    \end{equation*}
+    Hence 
+    \begin{equation*}
+        |Z(G)\cap H|\equiv 0\mod p
+    \end{equation*}
+    thus is nontrivial.
+\end{proof}
+
+\begin{prop}
+    Let $G$ be a $p$-group, and $H$ be a nontrivial normal subgroup, then 
+    \begin{equation*}
+        H\cap Z(G)\neq\{e\}
+    \end{equation*}
+    In other words, there are nontrivial elements in $H$ that commutes with every $g\in G$.
+\end{prop}
+
+% \begin{prob}
+% Prove that if $G$ is a group of odd order and $g \in G$ is conjugate to $g^{-1}$, then $g = e_G$.
+% \end{prob}
+
+% \begin{prob}
+% Let $G$ be a finite group, and suppose there exist representatives $g_1, \ldots, g_r$ of the $r$ distinct conjugacy classes in $G$, such that $\forall i, j, g_i g_j = g_j g_i$. Prove that $G$ is commutative. (Hint: What can you say about the sizes of the conjugacy classes?)
+% \end{prob}
+
+\begin{prop}
+The class formula for both $D_8$ and $Q_8$ is $8 = 2 + 2 + 2 + 2$. (Also note that $D_8 \not\cong Q_8$.)
+\end{prop}
+
+\begin{prob}
+Let $G$ be a noncommutative group of order 6. Then, $G$ must have trivial center and exactly two conjugacy classes, of order 2 and 3.
+\begin{itemize}
+    \item Prove that if every element of a group has order $\leq 2$, then the group is commutative. Conclude that $G$ has an element $y$ of order 3.
+    \item Prove that $\langle y \rangle$ is normal in $G$.
+    \item Prove that $[y]$ is the conjugacy class of order 2 and $[y]=\{y,y^2\}$.
+    \item Prove that there is an $x \in G$ such that $yx = xy^2$.
+\end{itemize}
+\end{prob}
+
+\begin{prob}
+Let $G$ be a group, and assume $[G : Z(G)] = n$ is finite. Let $A \subseteq G$ be any subset. Prove that the number of conjugates of $A$ is at most $n$.
+\end{prob}
+
+\begin{prob}
+Suppose that the class formula for a group $G$ is $60 = 1 + 15 + 20 + 12 + 12$. Prove that the only normal subgroups of $G$ are $\{e\}$ and $G$.
+\end{prob}
+\begin{proof}
+    Use the fact that normal subgroups divide $|G|$ and are unions of conjugacy classes.
+\end{proof}
+
+\begin{prob}
+Let $G$ be a finite group, and let $H \subseteq G$ be a subgroup of index 2. For $a \in H$, denote by $[a]_H$, resp., $[a]_G$, the conjugacy class of $a$ in $H$, resp., $G$. Prove that either $[a]_H = [a]_G$ or $[a]_H$ is half the size of $[a]_G$, according to whether the centralizer $Z_G(a)$ is not or is contained in $H$. (Hint: Note that $H$ is normal in $G$, by Exercise [II.8.2]; apply Proposition [II.8.11].) [\S 4.4]
+\end{prob}
+
+\begin{prob}
+Let $H$ be a proper subgroup of a finite group $G$. Prove that $G$ is not the union of the conjugates of $H$. (Hint: You know the number of conjugates of $H$; keep in mind that any two subgroups overlap, at least at the identity.)
+\end{prob}
+
+\begin{prob}
+Let $S$ be a set endowed with a transitive action of a finite group $G$, and assume $|S| \geq 2$. Prove that there exists a $g \in G$ without fixed points in $S$, that is, such that $gs \neq s$ for all $s \in S$. (Hint: By Proposition [II.9.9], you may assume $S = G/H$, with $H$ proper in $G$. Use Exercise [1.17].)
+\end{prob}
+
+\begin{prob}
+Let $H$ be a proper subgroup of a finite group $G$. Prove that there exists a $g \in G$ whose conjugacy class is disjoint from $H$.
+\end{prob}
+
+\begin{prop}
+    Let $G=\text{GL}_2(\C)$, every $2\times 2$ matrix is conjugate to an upper triangular matrix.
+
+    Warning: You need the fact that $\C$ is algebraically closed.
+\end{prop}
+
+
+% \begin{prob}
+% Let $G = \text{GL}_2(\mathbb{C})$, and let $H$ be the subgroup consisting of upper triangular matrices. Prove that $G$ is the union of the conjugates of $H$. Thus, the finiteness hypothesis in Exercise [1.17] is necessary. (Hint: Equivalently, prove that every $2 \times 2$ matrix is conjugate to a matrix in $H$. You will use the fact that $\mathbb{C}$ is algebraically closed; see Example [III.4.14].)
+% \end{prob}
+
+
+\begin{prob}
+Let $H$, $K$ be subgroups of a group $G$, with $H \subseteq N_G(K)$. Verify that the function $\gamma : H \to \operatorname{Aut}_{Grp}(K)$ defined by conjugation is a homomorphism of groups and that $\ker \gamma = H \cap Z_G(K)$, where $Z_G(K)$ is the centralizer of $K$.
+\end{prob}
+\begin{proof}
+   $r_h(g)=hgh^{-1}=g$ for all $g\in K$ implies that $h\in Z_G(K)$.
+\end{proof}
+
+\begin{prob}
+Let $G$ be a finite group, and let $H$ be a cyclic subgroup of $G$ of order $p$. Assume that $p$ is the smallest prime dividing the order of $G$ and that $H$ is normal in $G$. Prove that $H$ is contained in the center of $G$. (Hint: By Exercise [1.21], there is a homomorphism $\gamma : G \to \operatorname{Aut}_{Grp}(H)$; by Exercise [II.4.14], $\operatorname{Aut}(H)$ has order $p - 1$. What can you say about $\gamma$?) 
+\end{prob}
+\begin{proof}
+    To show $H$ is contained in the center, it suffices to show that the centralizer $Z_G(H)=G$, by the previous exercise 
+    \begin{equation*}
+        \ker\gamma=G\cap Z_G(H)
+    \end{equation*}
+    It suffices to show that $\ker\gamma=G$. Suppose it is not the trivial map, then $[G:\ker\gamma]$ divides both $|G|$, and $(p-1)$ because 
+    \begin{equation*}
+        \frac{G}{\ker\gamma}\cong\im(\gamma)\subset\text{Aut}(H)
+    \end{equation*}
+    This contradicts with the fact that $p$ is the smallest prime dividing $|G|$. 
+\end{proof}
 
 
 

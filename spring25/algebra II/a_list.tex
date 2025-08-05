@@ -363,14 +363,21 @@ This corresponds to Aluffi Chapter II.
 
 
 
-
-
-
-
-
-
 \chapter{Group Theory II}
 This corresponds to Aluffi Chapter IV.
+
+
+\begin{prop}
+    Every \textbf{transitive} action of a group $G$ on a set $S$ is isomorphic to the left multiplication on the cosets $G/H$. Here, $H$ can be taken to be the stabilizer of any element $a\in S$. 
+
+    Moreover, suppose $G$ is finite, then 
+    \begin{equation*}
+        |G|=|O_a|\cdot|\text{Stab}(a)|
+    \end{equation*}
+    for any $a\in S$. (The size of the orbit must divide $|G|$.)
+\end{prop}
+
+
 
 \begin{prop}[class formula]
     Let $S$ be a finite set, and $G$ act on $S$, then 
@@ -388,33 +395,66 @@ This corresponds to Aluffi Chapter IV.
         |S|\equiv |Z|\mod p
     \end{equation*}
 \end{prop}
+\begin{warn}
+    The important takeaway is that each summand on the right, $|O_a|$ divides $|G|$.
+\end{warn}
 
+\section{Conjugation Action}
 
-\begin{prop}
-    Let $G$ be finite, and if $G/Z(G)$ is cyclic, then $G$ is abelian.
-\end{prop}
-
-\begin{defn}[centralizer, conjugacy class]
+\begin{defn}[fixed points, centralizer, conjugacy class]
+    The fixed points under the conjugation action is the center of $G$.
     The centralizer $Z_G(g)$ where $g\in G$ is its stabilizer under conjugation:
     \begin{equation*}
         Z_G(g)=\left\{h\in G: hgh^{-1}=g\right\}
     \end{equation*}
-    The conjugacy class of $g\in G$ is the orbit $[g]$ of the conjugation action.
+    The conjugacy class of $g\in G$ is the orbit $[g]$.
 \end{defn}
+For arbitrary $a\in G$, we have 
+\begin{equation*}
+    Z(G)\subset Z_G(a)
+\end{equation*}
+Moroever, $a$ is the only element in $[a]$ iff $a\in Z(G)$.
+
+
+\begin{prop}
+    The center is the set of fixed points of $G$ under the conjugation action, the conjugacy classes are the orbits. 
+\end{prop}
+
+\begin{thm}
+    Let $G$ be finite, and if $G/Z(G)$ is cyclic, then $G$ is abelian.
+\end{thm}
+\begin{proof}
+    One can show that every element $a\in G$ can be written as 
+    \begin{equation*}
+        a=g^rz
+    \end{equation*}
+    for some $z\in Z(G)$, then compute $ab=ba$.
+\end{proof}
+
+
 
 
 \begin{prop}[Class formula]
     Let $G$ be finite, then 
-    \begin{equation*}
-        |G|=|Z(G)|+\sum_{[a]\in A}|[a]|
-    \end{equation*}
+    \begin{align*}
+        |G|=&|Z(G)|+\sum_{[a]\in A}|[a]|\\
+        &=|Z(G)|+\sum_a[G:Z_G(a)]
+    \end{align*}
     where $A$ contains one representative for each nontrivial conjugacy class.
 \end{prop}
 
+\begin{warn}
+    There are many consequences of the class formula, showing center is nontrivial, etc. Mainly using the summand divides $|G|$!
+\end{warn}
 
-\begin{cor}
+
+\begin{thm}
     Let $G$ be a nontrivial $p$-group, then $G$ has a nontrivial center.
-\end{cor}
+\end{thm}
+
+\begin{prop}
+    Let $G$ be a group of $p^2$ elements, where $p$ is prime, then $G$ is commutative.
+\end{prop}
 
 \begin{prop}
     The only possibility for the class formula of a nonabelian group of order $6$ is 
@@ -425,26 +465,34 @@ This corresponds to Aluffi Chapter IV.
 \end{prop}
 
 
+\begin{prop}
+    Normal subgroups are unions of conjugacy classes. Thus, a noncommutative group of order $6$ cannot have a normal subgroup of order $2$.
+\end{prop}
+It contains the identity, and there is no other conjugacy class of size $1$.
+
+
+
 \begin{defn}[normalizer]
     Let $A\subset G$ be a subset. The normalizer $N_G(A)$ of $A$ is 
     \begin{equation*}
         \text{Stab}_G(A)=\left\{g: gAg^{-1}=A\right\}
     \end{equation*}
-    The centralizer of $A$ is the subgroup $Z_G(A)\subset N_G(A)$ fixing each $a\in A$:
+    If $H$ is subgroup of $G$, every conjugate $gHg^{-1}$ is also a subgroup of $G$, and all conjugate groups have the same order.
+\end{defn}
+The centralizer of $A$ is the subgroup $Z_G(A)\subset N_G(A)$ fixing each $a\in A$:
     \begin{equation*}
         Z_G(A)=\left\{ g: gag^{-1}=a \text{ for all } a\in A\right\}
     \end{equation*}
 
-    If $H$ is subgroup of $G$, every conjugate $gHg^{-1}$ is also a subgroup of $G$, and all conjugate groups have the same order.
-\end{defn}
-
 \begin{prop}[*]
-    $H$ is a normal subgroup of $G$ if and only if $N_G(H)=G$. More generally, the normalizer $N_G(H)$ for any subgroup $H$ is the largest subgroup of $G$ in which $H$ is normal.
+    $H$ is a normal in $G$ if and only if $N_G(H)=G$. More generally, the normalizer $N_G(H)$ for any subgroup $H$ is the largest subgroup such that $H$ is normal in $N_G(H)$.
 \end{prop}
 
 \begin{prop}[*]
-    Let $H\subset G$ be a subgroup, then the number of subgroups conjugate to $H$ is equal to $[G:N_G(H)]$.
+    Let $H\subset G$ be a subgroup, then the number of subgroups conjugate to $H$ is the size of the orbit=index of the stabilizer, which is $[G:N_G(H)]$.
 \end{prop}
+
+
 \begin{cor}
     If $[G:H]$ is finite, then the number of subgroups conjugate to $H$ is finite, and 
     \begin{equation*}
@@ -452,6 +500,9 @@ This corresponds to Aluffi Chapter IV.
     \end{equation*}
     In other words, the number of subgroups conjugate to $H$ divides the index $[G:H]$.
 \end{cor}
+
+
+\section{Sylow}
 
 
 \begin{thm}[Cauchy's Theorem]
