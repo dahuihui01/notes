@@ -542,7 +542,7 @@ The centralizer of $A$ is the subgroup $Z_G(A)\subset N_G(A)$ fixing each $a\in 
     \end{equation*}
 \end{thm}
 \begin{prop}
-    Let $G$ be a finite group, let $P$ be a $p$-Sylow subgroup,  
+    Let $G$ be a finite group, let $P$ be a $p$-Sylow subgroup, the number of $p$-Sylow subgroup $n_p$ is
     \begin{equation*}
         n_p=[G:N_G(P)]
     \end{equation*}
@@ -567,7 +567,16 @@ The centralizer of $A$ is the subgroup $Z_G(A)\subset N_G(A)$ fixing each $a\in 
         G\cong D_{2q}
     \end{equation*}
 \end{prop}
-(claim 2.17 should know this proof).
+
+\section{Series and Solvability}
+\begin{defn}[composition series]
+    A comp series for $G$ is a normal series
+    \begin{equation*}
+        \{e\}=G_0\subset G_1\subset \dots\subset G_n=G
+    \end{equation*}
+    such that $G_{i+1}/G_i$ is simple.
+\end{defn}
+
 
 \begin{defn}[commutator subgroup]
     Let $G$ be a group, the commutator subgroup of $G$ is the subgroup \textbf{generated} by all elements 
@@ -598,6 +607,8 @@ The centralizer of $A$ is the subgroup $Z_G(A)\subset N_G(A)$ fixing each $a\in 
 \end{defn}
 
 
+
+
 \begin{prop}
     All $p$-groups are solvable!
 \end{prop}
@@ -605,6 +616,9 @@ The centralizer of $A$ is the subgroup $Z_G(A)\subset N_G(A)$ fixing each $a\in 
 \begin{prop}
     Let $N$ be normal in $G$, then $G$ is solvable if and only if $N, G/N$ are solvable.
 \end{prop}
+
+
+\section{$S_n$ and $A_n$}
 
 \begin{prop}
     Disjoint cycles commute. For every $\sigma\in S_n$, $\sigma$ can be written as disjoint nontrivial cycles, unique up to rearranging.
@@ -615,35 +629,61 @@ The centralizer of $A$ is the subgroup $Z_G(A)\subset N_G(A)$ fixing each $a\in 
 \end{prop}
 
 \begin{prop}
-    Normal subgroups are unions of conjugacy classes. 
-
-    One can use this fact to show that there is no normal subgroup of order 30 in $S_5$. 
+    Let $\sigma\in S_n$, and $(a_1\dots a_n)$ is a cycle in $S_n$, then 
+    \begin{equation*}
+        \sigma(a_1\dots a_n)\sigma^{-1}=(\sigma(a_1)\dots\sigma(a_n))
+    \end{equation*}
+    Proof: try $\varphi(a_1)$ on the left hand side.
 \end{prop}
+
+\begin{warn}
+    Very useful!
+\end{warn}
+\begin{example}
+    In $S_4$, we have 
+    \begin{equation*}
+        (1234)(12)(1234)^{-1}=(23)
+    \end{equation*}
+\end{example}
+
+% \begin{prop}
+%     Normal subgroups are unions of conjugacy classes. 
+
+%     One can use this fact to show that there is no normal subgroup of order 30 in $S_5$. 
+% \end{prop}
 
 \begin{defn}[Even permutation]
     Let $\sigma\in S_n$, then $\sigma$ is even if 
     \begin{equation*}
-        \prod_{i<j}(x_{\sigma(i)}-x_{\sigma(j)})=\prod_{i<j}(x_i-x_j)
+        \prod_{i<j}(x_i-x_j)=\prod_{i<j}(x_{\sigma(i)}-x_{\sigma(j)})
     \end{equation*}
 \end{defn}
 
-\begin{defn}
-    The alternating group $A_n$ consists of even permutations of $\sigma\in S_n$, and 
-    \begin{equation*}
-        [S_n:A_n]=2
-    \end{equation*}
-\end{defn}
+\begin{prop}
+    $A_n$ is always normal in $S_n$, because it is the kernel of the $\varepsilon: S_n\to\{\pm 1\}$ (determining parity).
+\end{prop}
+% \begin{defn}
+%     The alternating group $A_n$ consists of even permutations of $\sigma\in S_n$, and 
+%     \begin{equation*}
+%         [S_n:A_n]=2
+%     \end{equation*}
+% \end{defn}
 
 
 \begin{prop}
-    Let $\sigma\in A_n$, where $n\geq 2$, then the conjugacy class of $\sigma$ in $S_n$ splits into two conjugacy classes in $A_n$ precisely if the type of $\sigma$ consists of distinct odd numbers. 
-
-    For example, the $5$-cycle of $S_5$ splits into $2$ conjugacy classes in $A_5$.
+    Let $\sigma\in A_n$, where $n\geq 2$, then the conjugacy class of $\sigma$ in $S_n$ splits into two conjugacy classes in $A_n$ precisely if the type of $\sigma$ consists of distinct odd numbers; or equivalently, the centralizer of $\sigma$ is contained $A_n$. Otherwise, the conjugacy class stays the same.
 \end{prop}
+\begin{example}
+    $S_5$ has even permutations $5, 3, 2+2, 1$, and only $5$-cycle of $S_5$ splits into $2$ conjugacy classes in $A_5$.
+\end{example}
 
 \begin{prop}
-    The group $A_5$ is a simple noncommutative group of order $60$ 
+    The group $A_5$ is a simple noncommutative group of order $60$. 
 \end{prop}
+\begin{prop}
+    Every simple group of order $<60$ is commutative, $A_5$ is the smallest simple group that is not commutative.
+\end{prop}
+
 \begin{proof}
     Any nontrivial normal subgroup consists of nontrivial conjugacy classes and $\{e\}$, the conjugacy classes of $A_5$ has the following size:
     \begin{equation*}
@@ -662,24 +702,19 @@ The centralizer of $A$ is the subgroup $Z_G(A)\subset N_G(A)$ fixing each $a\in 
 \begin{proof}
     It suffices to note that the $3$ cycles form a conjugacy class that doesn't split from $S_n$ to $A_n$.
 \end{proof}
-\begin{thm}
-    The alternating group $A_n$ is simple for $n\geq 5$.
-
-    As a corollary, $S_n$ is not solvable for $n\geq 5$.
-\end{thm}
-
-
 \begin{prop}
-    Let $N,H$ be normal subgroups of $G$, then 
+    The alternating group $A_n$ is simple for $n\geq 5$. As a result, $S_n$ is not solvable for $n\geq 5$.
+\end{prop}
+
+\section{Product of Groups}
+\begin{prop}
+    Let $N,H$ be normal subgroups of $G$, let $[N,H]$ be the commutator of $N,H$, then 
     \begin{equation*}
         [N,H]\subset N\cap H
     \end{equation*}
-    where $[N,H]$ is the commutator of $N,H$.
+    Thus if $N\cap H=\{e\}$, then $N,H$ commute with each other.
 \end{prop}
-
-\begin{prop}[*]
-    Let $N,H$ be normal subgroups, and $N\cap H=\{e\}$, then $N,H$ commute with each other.
-\end{prop}
+A stronger statement is the following:
 
 \begin{thm}
     Let $N,H$ be normal subgroups of $G$, such that $N\cap H=\{e\}$, then 
@@ -689,7 +724,7 @@ The centralizer of $A$ is the subgroup $Z_G(A)\subset N_G(A)$ fixing each $a\in 
 \end{thm}
 
 
-\begin{defn}[Short exact sequence]
+\begin{defn}[Split Short exact sequence]
     A short exact sequence of groups is a sequence:
     \[\begin{tikzcd}
         1 & N & G & H & 1
@@ -698,9 +733,7 @@ The centralizer of $A$ is the subgroup $Z_G(A)\subset N_G(A)$ fixing each $a\in 
         \arrow["\psi", from=1-3, to=1-4]
         \arrow[from=1-4, to=1-5]
     \end{tikzcd}\]
-    where $\psi$ surjective and $\varphi$ is injective, and $N$ is normal in $\varphi$ which induces an isomorphism $G/N\cong H$.
-
-    A SES splits if $H$ is identified with a subgroup of $G$ such that 
+    splits if $H$ is identified with a subgroup of $G$ such that 
     \begin{equation*}
         N\cap H=\{e\}
     \end{equation*}
@@ -708,36 +741,36 @@ The centralizer of $A$ is the subgroup $Z_G(A)\subset N_G(A)$ fixing each $a\in 
 
 
 \begin{defn}[semidirect product]
-    Let $N$ be a normal subgroup, and let $\theta: H\to\text{Aut}(N)$, then define an operator $\cdot_\theta$ as 
+    Let $N$ be a normal subgroup, and let $\theta: H\to\text{Aut}(N)$, then define an operator $\cdot_\theta$ on $N\times H$ as 
     \begin{equation*}
         (n_1,h_1)\cdot_\theta(n_2,h_2)=(n_1\theta(h_1)(n_2), h_1h_2)
     \end{equation*}
-    The semidirect product of $N\rtimes_\theta$ is the group $N\times H$ with operator $\cdot_\theta$.
+    The semidirect product of $N\rtimes_\theta H$ is the group $N\times H$ with operation $\cdot_\theta$.
 \end{defn}
 
-\begin{thm}
-    Let $N,H$ be groups, and $\theta: H\to\text{Aut}(N)$, let $G=N\rtimes_\theta H$, then 
-    \begin{enumerate}
-        \item $G$ contains isomorphic copies of $N,H$.
-        \item The natural projection $G\to H$ is surjective, with kernel $N$, thus $N$ is normal in $G$ and the sequence 
-        \[\begin{tikzcd}
-            1 & N & {N\rtimes_\theta H} & H & 1
-            \arrow[from=1-1, to=1-2]
-            \arrow[from=1-2, to=1-3]
-            \arrow[from=1-3, to=1-4]
-            \arrow[from=1-4, to=1-5]
-        \end{tikzcd}\]
-        is split exact.
-        \item $N\cap H=\{e\}$.
-        \item $G=NH$.
-        \item The homomorphism is conjugation: 
-        \begin{equation*}
-            \theta(h)(n)=hnh^{-1}
-        \end{equation*}
-    \end{enumerate}
-\end{thm}
+% \begin{thm}
+%     Let $N,H$ be groups, and $\theta: H\to\text{Aut}(N)$, let $G=N\rtimes_\theta H$, then 
+%     \begin{enumerate}
+%         \item $G$ contains isomorphic copies of $N,H$.
+%         \item The natural projection $G\to H$ is surjective, with kernel $N$, thus $N$ is normal in $G$ and the sequence 
+%         \[\begin{tikzcd}
+%             1 & N & {N\rtimes_\theta H} & H & 1
+%             \arrow[from=1-1, to=1-2]
+%             \arrow[from=1-2, to=1-3]
+%             \arrow[from=1-3, to=1-4]
+%             \arrow[from=1-4, to=1-5]
+%         \end{tikzcd}\]
+%         is split exact.
+%         \item $N\cap H=\{e\}$.
+%         \item $G=NH$.
+%         \item The homomorphism is conjugation: 
+%         \begin{equation*}
+%             \theta(h)(n)=hnh^{-1}
+%         \end{equation*}
+%     \end{enumerate}
+% \end{thm}
 
-\begin{prop}[*]
+\begin{prop}
     Let $N,H$ be subgroups, and $N$ is normal, suppose that $N\cap H=\{e\}$, and $G=NH$, then let $\theta: H\to\text{Aut}(N)$ be $\theta\mapsto\theta_h$, and 
     \begin{equation*}
         \theta_h(n)=nhn^{-1}
@@ -746,9 +779,14 @@ The centralizer of $A$ is the subgroup $Z_G(A)\subset N_G(A)$ fixing each $a\in 
     \begin{equation*}
         G\cong N\rtimes_\theta H
     \end{equation*}
-    (Recall that the operation defined on $N\otimes_\theta H$ is $(n_1,h_1)\cdot(n_2,h_2)=(n_1\theta_{h_1}(n_2), h_1h_2)$). 
+\end{prop}
+(Recall that the operation defined on $N\otimes_\theta H$ is $(n_1,h_1)\cdot(n_2,h_2)=(n_1\theta_{h_1}(n_2), h_1h_2)$). 
+
+\begin{prop}
+    Let $G$ be a noncommutative group of order $pq$, then there is exactly one group up to isomorphism.
 \end{prop}
 
+\section{Classification of Finite Abelian Groups}
 
 \begin{prop}
     Let $G$ be abelian, let $H,K$ be subgroups such that $|H|, |N|$ are relatively prime, then 
@@ -764,11 +802,11 @@ The centralizer of $A$ is the subgroup $Z_G(A)\subset N_G(A)$ fixing each $a\in 
 \end{prop}
 
 
-\begin{prop}
-    Let $p$ be prime, and $r\geq 1$, let $G$ be a noncyclic abelian group of order $p^{r+1}$, then let $g\in G$ be an element of order $p^r$, then there exists an element $h\in G$ such that $h\not\in\la g\ra$, such that $|h|=p$.
+\begin{thm}
+    % Let $p$ be prime, and $r\geq 1$, let $G$ be a noncyclic abelian group of order $p^{r+1}$, then let $g\in G$ be an element of order $p^r$, then there exists an element $h\in G$ such that $h\not\in\la g\ra$, such that $|h|=p$.
 
-    If $G$ is finite and abelian, then $G$ is a direct sum of cyclic groups, which may be assumed to be cyclic $p$-groups.
-\end{prop}
+    If $G$ is finite and abelian, then $G$ is a direct sum of cyclic $p$-groups.
+\end{thm}
 
 
 
@@ -783,6 +821,9 @@ The centralizer of $A$ is the subgroup $Z_G(A)\subset N_G(A)$ fixing each $a\in 
     \end{equation*}
 \end{thm}
 
+\begin{example}
+    Finite abelian group of order $360$ has $6$ isomorphism classes.
+\end{example}
 
 
 \begin{thm}
@@ -1265,15 +1306,7 @@ where $S=\la s_1,\dots, s_n\ra$. Elements in finite-type $R$-algebra is of the f
 
 
 
-
-
-
-
-
-
-
-
-\chapter{Irreducibility and Factorization}
+\chapter{Ring Theory II}
 This corresponds to Aluffi Chapter V.
 
 
