@@ -19,6 +19,7 @@
 \newcommand{\F}{\mathbb{F}}
 \newcommand{\la}{\langle}
 \newcommand{\ra}{\rangle}
+\newcommand{\aut}{\text{Aut}}
 \newcommand{\colim}{\text{colim}}
 \DeclareMathOperator{\im}{im}
 \let\oldemptyset\emptyset
@@ -1318,29 +1319,60 @@ A group is \emph{nilpotent} if $Z_m = G$ for some $m$.
     \begin{prob}[5.11]
     For all $n > 0$ express $D_{2n}$ as a semidirect product $C_n \rtimes_\theta C_2$, finding $\theta$ explicitly. 
     \end{prob}
+\begin{proof}
+    $\Z/n\Z=\{1,r,\dots, r^{n-1}\}$ is an index $2$ subgroup, hence normal, thus 
+    \begin{equation*}
+        D_{2n}=\la r,s: r^n=s^2=e, srs^{-1}=r^{-1}\ra
+    \end{equation*}
+\end{proof}
     
     \begin{prob}[5.12]
     Classify groups $G$ of order $pq$, with $p < q$ prime: show that if $|G| = pq$, then either $G$ is cyclic or $q \equiv 1 \mod p$ and there is exactly one isomorphism class of noncommutative groups of order $pq$ in this case. 
     \end{prob}
+\begin{proof}
+    There is a normal subgroup of order $q$: then 
+    \begin{equation*}
+        \theta: \frac{\Z}{p\Z}\to\aut\left(\Z/q\Z\right)\cong(\Z/q\Z)^\times
+    \end{equation*}
+    If the action is trivial, then
+    \begin{equation*}
+        G\cong\frac{\Z}{p\Z}\times\frac{\Z}{q\Z}\cong\frac{\Z}{pq\Z}
+    \end{equation*}
+    i.e., $G$ is cyclic.
+
+    If $q-1\equiv 0\mod p$, then there exists $r\in(\Z/q\Z)^\times$ such that $r^p=1$, thus we have 
+    \begin{equation*}
+        G=\la g,h: g^q=h^p=e, hgh^{-1}=g^r\ra
+    \end{equation*}
+    This is the noncommutative group.
+\end{proof}
     
     \begin{prob}[5.13]
     Let $G = N \rtimes_\theta H$ be a semidirect product, and let $K$ be the subgroup of $G$ corresponding to $\ker \theta \subseteq H$. Prove that $K$ is the kernel of the action of $G$ on the set $G/H$ of left-cosets of $H$. 
     \end{prob}
-    
+\begin{proof}
+    $K$ is the largest normal subgroup of $G$ contained in $H$.
+\end{proof}
   
     
     \begin{prob}[5.15]
     Let $G$ be a group of order 28.
     
-    \begin{itemize}
+    \begin{enumerate}
         \item Prove that $G$ contains a normal subgroup $N$ of order 7.
-        \item Recall (or prove again) that, up to isomorphism, the only groups of order 4 are $C_4$ and $C_2 \times C_2$. Prove that there are two homomorphisms $C_4 \to \operatorname{Aut}_{Grp}(N)$ and two homomorphisms $C_2 \times C_2 \to \operatorname{Aut}_{Grp}(N)$ up to the choice of generators for the sources.
+        \item Recall that, up to isomorphism, the only groups of order 4 are $C_4$ and $C_2 \times C_2$. Prove that there are two homomorphisms $C_4 \to \operatorname{Aut}_{Grp}(N)$ and two homomorphisms $C_2 \times C_2 \to \operatorname{Aut}_{Grp}(N)$ up to the choice of generators for the sources.
         \item Conclude that there are four groups of order 28 up to isomorphism: the two direct products $C_4 \times C_7$, $C_2 \times C_2 \times C_7$, and two noncommutative groups.
         \item Prove that $D_{28} \cong C_2 \times D_{14}$. The other noncommutative group of order 28 is a generalized quaternionic group.
-    \end{itemize}
-    
-
+    \end{enumerate}
     \end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item $n_7=1$.
+        \item There is a trivial isomorphism for both; $1\mapsto r$, where $r^2=1$ for $C_4$; $(1,0)\mapsto r, (0,1)\mapsto 0$ or the other way around which is the same.
+        \item By 2.
+        \item There is no element of order $4$ in $D_{28}$. (There is an element of order $4$ iff $d$ divides $n$ in $D_{2n}$).
+    \end{enumerate}
+\end{proof}
     
     \begin{prop}[5.16]
     The quaternionic group $Q_8$  cannot be written as a semidirect product of two nontrivial subgroups.
@@ -1394,7 +1426,19 @@ The dual of a finite group \( G \) is the abelian group \( G^\vee := \text{Hom}_
     \item Prove that if \( p \) is prime, all finite modules over \( \mathbb{Z}/p\mathbb{Z} \) are free.
 \end{enumerate}
 \end{prob}
-\textcolor{red}{here}
+\begin{proof}
+    \begin{enumerate}
+        \item Any finite $G$ is written as 
+        \begin{equation*}
+            G\cong\frac{\Z}{p_1^{a_1}}\bigoplus\dots\bigoplus\frac{\Z}{p_k^{a_k}}
+        \end{equation*}
+        where the $p$'s are not necessarily distinct. The $\Z/n\Z$-module condition requires that for $n\cdot m=0$ for all $m\in M$, i.e., $p_i^{a_i}$ must divide $n$ for all $i$. This shows that any finite abelian group over $\Z/n\Z$ is of the form
+        \begin{equation*}
+            G\cong\bigoplus_{p\mid n}\bigoplus_{i=1}^k\frac{\Z}{p^i\Z}
+        \end{equation*}
+        \item It shows that only $\Z/p\Z$ terms are allowed in the above expression.
+    \end{enumerate}
+\end{proof}
 
 \begin{prop}
 Let \( G, H \) be finite abelian groups such that, for all positive integers \( n \), \( G \) and \( H \) have the same number of elements of order \( n \). Then $G\cong H$.
@@ -1427,6 +1471,429 @@ Let \( G \) be a finite abelian group, and let \( a \in G \) be an element of ma
 
 
 \chapter{Ring Theory II, Irreducibility of Polynomials}
+
+
+\section{factorizations}
+\begin{prob}[1.4]
+    Show that the ring of real-valued continuous functions on $[0,1]$ is not Noetherian.
+\end{prob}
+\begin{proof}
+    Let $I_n$ be the functions $f$ such that $f(x)=0$ on $[\frac{1}{n+1},1]$, then it fails acc.
+\end{proof}
+
+\begin{prob}[1.10]
+    Recall a ring \( R \) is Noetherian if and only if it satisfies the ascending chain condition for ideals. A ring is Artinian if it satisfies the descending chain condition for ideals. 
+\begin{enumerate}
+    \item Prove that if \( R \) is Artinian and \( I \subset R \) is an ideal, then \( R/I \) is Artinian.
+    \item Prove that if \( R \) is an Artinian integral domain, then it is a field. 
+    (Hint: Consider the descending chain \( (a) \supseteq (a^2) \supseteq (a^3) \supseteq \dots \) for a nonzero element \( a \in R \).)
+\end{enumerate}
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item Ideals in $R/I$ have a one-to-one correspondence to ideals $J\subset R$ containing $I$.
+        \item Then $(a^i)=(a^{i+1})$ for some $i$. This shows $a$ is a unit.
+    \end{enumerate}
+\end{proof}
+
+\begin{prop}
+    An Artinian ring $R$ that is also an integral domain is a field!
+\end{prop}
+
+
+
+
+\begin{prob}[1.15]
+    Let \( S = \mathbb{Z}[x_1, \ldots, x_n] \) be naturally identified with a subring of \( R = \mathbb{Z}[x_1, x_2, x_3, \ldots] \). 
+\begin{enumerate}
+    \item Prove that if \( f \in S \) and \( (f) \subseteq (g) \) in \( R \), then \( g \in S \) as well.
+    \item Conclude that the ascending chain condition for principal ideals holds in \( R \), and factorization exists.
+\end{enumerate}
+\end{prob}
+\begin{proof}
+    is obvious.
+\end{proof}
+\begin{prop}
+    A non-Noetherian ring where factorizations exist:
+    \begin{equation*}
+        \Z[x_1,x_2,x_3,\dots]
+    \end{equation*}
+\end{prop}
+
+
+\begin{prob}[1.17]
+    Consider the subring of \( \mathbb{C} \):
+
+\[
+\mathbb{Z}[\sqrt{-5}] := \{a + bi\sqrt{5} \mid a, b \in \mathbb{Z}\}.
+\]
+
+\begin{enumerate}
+    \item Prove that this ring is isomorphic to \( \mathbb{Z}[t]/(t^2 + 5) \). Prove that it is a Noetherian integral domain.
+    \item Define a norm \( N \) on \( \mathbb{Z}[\sqrt{-5}] \) by setting \( N(a + bi\sqrt{5}) = a^2 + 5b^2 \). Note that $N(zw) = N(z)N(w)$.
+    \item Prove that \( 2, 3, 1 + i\sqrt{5}, 1 - i\sqrt{5} \) are all irreducible nonassociate elements of \( \mathbb{Z}[\sqrt{-5}] \).
+    \item Prove that no element listed in the preceding point is prime. (Rings obtained by modding out the ideals generated by these elements are not integral domains.)
+    \item Prove that \( \mathbb{Z}[\sqrt{-5}] \) is not a UFD.
+\end{enumerate}
+\end{prob}
+\begin{proof}
+    1. Establish by evaluation map at $\sqrt{5}$, and $\Z$ is Noetherian, which impies $\Z[t]/I$ is Noetherian. 3. Use norm. 4. For example quotient out by $(2)$, then $(1+i\sqrt{5})(1+i\sqrt{5})=0$. 5. $6=2\cdot 3=(1+i\sqrt{5})(1+i\sqrt{5})$.
+\end{proof}
+
+\section{UFD, PID, ED}
+
+\begin{prob}[2.5]
+    gcd exists in UFD's but they don't in general:
+    Let \( R \) be the subring of \( \mathbb{Z}[t] \) consisting of polynomials with no term of degree 1:
+\[
+R = \{a_0 + a_2 t^2 + \cdots + a_d t^d \mid a_i \in \mathbb{Z}\}.
+\]
+
+\begin{enumerate}
+    \item Prove that \( R \) is indeed a subring of \( \mathbb{Z}[t] \), and conclude that \( R \) is an integral domain.
+    \item List all common divisors of \( t^5 \) and \( t^6 \) in \( R \).
+    \item Prove that \( t^5 \) and \( t^6 \) have no gcd in \( R \).
+\end{enumerate}
+\end{prob}
+\begin{proof}
+    2. $t^2, t^3, t^4, t^5$. 3. $t^5$ doesn't work because $t\not\in R$.
+\end{proof}
+
+
+\begin{prob}[2.8]
+    Let \( R \) be a UFD, and let \( I \neq (0) \) be an ideal of \( R \). Prove that every descending chain of principal ideals containing \( I \) must stabilize.
+\end{prob}
+\begin{proof}
+    There exists $a\neq 0\in I$, consider its finite multiset of irreducible factors, every descending 
+    \begin{equation*}
+        (a_1)\supset(a_2)\supset\dots
+    \end{equation*}
+    gives an ascending 
+    \begin{equation*}
+        m(a_1)\subset m(a_2)\subset\dots
+    \end{equation*}
+\end{proof}
+
+\begin{prob}[2.11]
+    Let \( R \) be a PID, and let \( I \) be a nonzero ideal of \( R \). Show that \( R/I \) is an Artinian ring, by proving explicitly that the d.c.c. holds in \( R/I \).
+\end{prob}
+\begin{proof}
+    Ideals in $R/I$ corresponds to ideals $J$ in $R$ contaning $J$, then using the above.
+\end{proof}
+
+
+
+\begin{prob}[2.19]
+    A \textbf{discrete valuation} on a field \( k \) is a surjective homomorphism of abelian groups \( v : (k^*, \cdot) \to (\mathbb{Z}, +) \) such that \( v(a+b) \geq \min(v(a), v(b)) \) for all \( a, b \in k^* \) with \( a + b \in k^* \).
+
+\begin{enumerate}
+    \item Prove that the set \( R := \{a \in k^* \mid v(a) \geq 0\} \cup \{0\} \) is a subring of \( k \).
+    \item Prove that \( R \) is a Euclidean domain.
+    \item Prove that the ring of rational numbers \( \frac{a}{b} \) with \( b \) not divisible by a fixed prime integer \( p \) is a DVR.
+    
+    (Rings arising in this fashion are called \textbf{discrete valuation rings} (DVR). Note that the Krull dimension of a DVR is 1.)
+\end{enumerate}
+\end{prob}
+\begin{proof}
+    2. You show that $v$ is a Euclidean valuation: let $a\in R, b\neq 0$, then 
+    \begin{equation*}
+        v(a/b)=v(a)-v(b)
+    \end{equation*}
+    if $\geq 0$, then $a/b\in R$, we set $q=1, r=0$; if $<0$, then set $q=0$, then $r=a$, we have $v(r)<v(b)$. 3. Set $v(p)=1, v(m)=0$ for $m$ not divisible by $p$.
+\end{proof}
+
+
+\begin{prob}[2.20]
+    DVRs are Euclidean domains. In particular, they must be PIDs. Check this directly, as follows. Let \( R \) be a DVR, and let \( t \in R \) be an element such that \( v(t) = 1 \). Prove that if \( I \subseteq R \) is any nonzero ideal, then \( I = (t^k) \) for some \( k \geq 1 \). (The element \( t \) is called a \textbf{local parameter} of \( R \).)
+\end{prob}
+\begin{proof}
+    Let $b\in I$ be such that $v(b)$ is minimal in $I$, let $k=v(b)$, we claim $I=(t^k)$.
+\end{proof}
+
+
+
+
+
+\section{}
+
+\begin{prob}[3.13]
+    Let \( R \) be a commutative ring, and let \( N \) be its nilradical. Let \( r \notin N \).
+
+\begin{enumerate}
+    \item Consider the family \( \mathcal{F} \) of ideals of \( R \) that do not contain any power \( r^k \) of \( r \) for \( k > 0 \). Prove that \( \mathcal{F} \) has maximal elements.
+    
+    \item Let \( I \) be a maximal element of \( \mathcal{F} \). Prove that \( I \) is prime.
+    
+    \item Conclude that \( r \notin N \) implies \( r \) is not in the intersection of all prime ideals of \( R \).
+\end{enumerate}
+
+This shows the nilradical of a commutative ring \( R \) equals the intersection of all prime ideals of \( R \).
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item Zorn's lemma: suffices to show every chain $\{I_\alpha\}$ has an upper bound, which is the union.
+        \item Consider $ab\in I$, suppose $a,b\not\in I$, then $I+(a), I+(b)$ are not in $\mathcal{F}$, then it shows $I$ is not in $\mathcal{F}$, contradiction.
+        \item $r\not\in I$, done.
+    \end{enumerate}
+\end{proof}
+
+
+
+\begin{prob}[3.14]
+    The \textbf{Jacobson radical} of a commutative ring \( R \) is the intersection of the maximal ideals in \( R \). (Thus, the Jacobson radical contains the nilradical.) 
+
+Prove that \( r \) is in the Jacobson radical if and only if \( 1 + rs \) is invertible for every \( s \in R \).
+\end{prob}
+\begin{proof}
+    If $r$ is in every $\mathfrak{m}\in M$, then for every $s\in R$, $rs\in\mathfrak{m}$ for every $\mathfrak{m}$, this implies that $1+rs\not\in\mathfrak{m}$ for any $\mathfrak{m}$, i.e., $1+rs$ is a unit. This is because if it is not a unit, then we can consider $(1+rs)$, by Zorn's lemma, it is contained in some $\mathfrak{m}$, which is a contradiction. 
+
+    For the reverse reflection, suppose $r\not\in\mathfrak{m}$ for some $\mathfrak{m}$, then 
+    \begin{equation*}
+        \mathfrak{m}\subset \mathfrak{m}+(r)\Rightarrow m+(r)=R
+    \end{equation*}
+    i.e., for $1=rs+m$ for some $m\in\mathfrak{m}$, i.e., $m$ is a unit, which is a contradiction.
+\end{proof}
+
+
+
+\section{}
+
+
+% \begin{prob}[4.7]
+%     A subset \( S \) of a commutative ring \( R \) is a \textbf{multiplicative subset} (or multiplicatively closed) if:
+% \begin{enumerate}
+%     \item \( 1 \in S \)
+%     \item \( s, t \in S \implies st \in S \)
+% \end{enumerate}
+
+% Define a relation on the set of pairs \((a, s)\) with \( a \in R, s \in S \) as follows:
+% \[
+% (a, s) \sim (a', s') \iff (\exists t \in S), t(s'a - sa') = 0.
+% \]
+
+% \begin{enumerate}
+%     \item Prove that the relation \(\sim\) is an equivalence relation.
+%     \item Denote by \(\frac{a}{s}\) the equivalence class of \((a, s)\), and define operations \(+\) and \(\cdot\) on these fractions as in §4.2. Prove these operations are well-defined.
+%     \item The set \( S^{-1}R \) of fractions, with operations \(+\) and \(\cdot\), is the \textbf{localization} of \( R \) at \( S \). Prove:
+%     \begin{itemize}
+%         \item \( S^{-1}R \) is a commutative ring
+%         \item The function \( \ell: R \to S^{-1}R \) given by \( a \mapsto \frac{a}{1} \) is a ring homomorphism
+%     \end{itemize}
+%     \item Prove \( \ell(s) \) is invertible for every \( s \in S \).
+%     \item Prove \( \ell: R \to S^{-1}R \) is initial among ring homomorphisms \( f: R \to R' \) where \( f(s) \) is invertible for all \( s \in S \).
+%     \item Prove \( S^{-1}R \) is an integral domain if \( R \) is.
+%     \item Prove \( S^{-1}R \) is the zero-ring if and only if \( 0 \in S \).
+% \end{enumerate}
+% \end{prob}
+
+% \begin{prob}[4.8]
+%     Let \( S \) be a multiplicative subset of \( R \). For an \( R \)-module \( M \), define:
+% \[
+% (m, s) \sim (m', s') \iff (\exists t \in S), t(s'm - sm') = 0.
+% \]
+
+% \begin{enumerate}
+%     \item Prove \(\sim\) is an equivalence relation
+%     \item Define an \( S^{-1}R \)-module structure on \( S^{-1}M \) (the set of equivalence classes) compatible with the \( R \)-module structure
+% \end{enumerate}
+% \end{prob}
+
+
+% \begin{prob}[4.11]
+%     A ring is \textbf{local} if it has a single maximal ideal.
+
+% Let \( R \) be a commutative ring with prime ideal \( \mathfrak{p} \). Let \( S = R \setminus \mathfrak{p} \).
+
+% \begin{enumerate}
+%     \item Prove \( S \) is multiplicatively closed
+%     \item Prove there's an inclusion-preserving bijection between:
+%     \begin{itemize}
+%         \item Prime ideals of \( R_{\mathfrak{p}} \)
+%         \item Prime ideals of \( R \) contained in \( \mathfrak{p} \)
+%     \end{itemize}
+%     \item Deduce \( R_{\mathfrak{p}} \) is local
+% \end{enumerate}
+% \end{prob}
+
+
+% \begin{prob}[4.12]
+%     Let \( M \) be an \( R \)-module. Prove equivalent:
+% \begin{enumerate}
+%     \item \( M = 0 \)
+%     \item \( M_{\mathfrak{p}} = 0 \) for all prime ideals \( \mathfrak{p} \)
+%     \item \( M_{m} = 0 \) for all maximal ideals \( m \)
+% \end{enumerate}
+% \end{prob}
+
+
+% \begin{prob}[4.13]
+%     Let \( k \) be a field with discrete valuation \( v \), and \( R \) the corresponding DVR.
+
+% \begin{enumerate}
+%     \item Prove \( R \) is local with maximal ideal \( \mathfrak{m} = (t) \)
+%     \item Prove \( k \) is the field of fractions of \( R \)
+%     \item Let \( A \) be a PID with prime ideal \( \mathfrak{p} = (p) \). Prove \( A_{\mathfrak{p}} \) is a DVR
+% \end{enumerate}
+% \end{prob}
+
+
+\begin{prop}[4.18]
+    Let \( R \) be an integral domain. Prove the invertible elements in \( R[x] \) are exactly the units of \( R \) (as constant polynomials).
+\end{prop}
+
+
+
+\begin{prob}[4.19]
+    An element \( a \in R \) is \textbf{nilpotent} if \( a^n = 0 \) for some \( n \geq 0 \). Prove that if \( a \) is nilpotent, then \( 1 + a \) is a unit.
+\end{prob}
+\begin{proof}
+    $a$ is in the intersection of all prime ideals, hence all maximal ideals, this implies $1+a$ cannot be in any maximal ideal, i.e., $1+a$ is a unit. (If $1+a$ is not a unit, then $(a+1)$ is contained in some $m$).
+\end{proof}
+
+
+% \begin{prob}[4.20]
+%     For commutative ring \( R \), prove \( f = \sum a_i x^i \in R[x] \) is a unit if and only if:
+% \begin{itemize}
+%     \item \( a_0 \) is a unit in \( R \)
+%     \item \( a_1, \ldots, a_d \) are nilpotent
+% \end{itemize}
+% \end{prob}
+
+
+\section{Irreducibility}
+
+\begin{prob}[5.4]
+    Prove that $f(x)=x^4+x^2+1$ is reducible over $\Z$, and that it has no rational roots.
+\end{prob}
+\begin{proof}
+    It can be factored completely: 
+    \begin{equation*}
+        f(x)=\frac{x^6-1}{x^2-1}=\frac{(x^3+1)(x^3-1)}{(x+1)(x-1)}=(1-x+x^2)(1+x+x^2)
+    \end{equation*}
+    The rational root theorem states $\alpha=\pm1$, and neither are roots.
+\end{proof}
+
+\begin{prob}[5.6]
+    Construct fields of $27$ and $121$ elements.
+\end{prob}
+\begin{proof}
+    $f(x)=x^3+2x+1$ has no roots in $\F_3$ and $g(x)=x^2+x+7$ has no roots in $\F_{11}$.
+\end{proof}
+
+
+\begin{prob}[5.7]
+    Let $R$ be an integral domain, let $f\in R[x]$ be of degree $d$, prove that $f(x)$ is determined uniquely by $d+1$ points in $R$.
+\end{prob}
+\begin{proof}
+    Suppose $f(x_i)=g(x_i)$ for $1\leq i\leq d+1$, then consider $h=f-g$, then $h(x_i)=0$ for all $i$, since nonzero polynomials of degree $d$ can have at most $d$ roots, this shows $h=0$.
+\end{proof}
+
+\begin{prob}[5.10]
+    Prove that $(x-1)(x-2)\dots(x-n)-1$ is irreducible over $\Q$ for all $n\geq 1$.
+\end{prob}
+\begin{proof}
+    When $n$ is odd, suppose $F(x)=f(x)g(x)$, then WLOG assume $f$ has degree $\leq \frac{n-1}{2}$, and we know for $x_i=i$, $f(x_i)g(x_i)=\pm 1$, i.e., consider either $f(x)-1$ or $f(x)+1$, we get a polynomial with more zeros than its degree, i.e., $f\equiv 0$.
+
+    If $n$ is even (and the only case remaining is when $\deg(f)=\deg(g)=\frac{n}{2}$), consider $f(x)^2-1$, this polynomial also has degree $n$, and has roots at $x=1,\dots, n$, since $f$ is monic, we know 
+    \begin{equation*}
+        f(x)^2-1=(x-1)\dots(x-n)
+    \end{equation*}
+    This implies that 
+    \begin{equation*}
+        f(x)g(x)=f(x)^2-2\Rightarrow f(x)(g(x)-f(x))=-1
+    \end{equation*}
+    which is impossible.
+\end{proof}
+
+% \begin{prob}[5.11]
+%     Let $F$ be a finite field, prove that there are irreducible polynomials over $F$ of arbitrarily high degree.
+% \end{prob}
+
+\begin{prob}[5.14]
+    How many different embeddings of the field $\Q[t]/(t^3-2)$ are there in $\R$ and $\C$.
+\end{prob}
+\begin{proof}
+    Embeddings refer to the homomorphisms 
+    \begin{equation*}
+        \varphi: \Q[t]/(f(t))\to\R
+    \end{equation*}
+    where 
+    \begin{equation*}
+        \varphi: t\mapsto \alpha \text{ where } f(\alpha)=0
+    \end{equation*}
+    Thus there is $1$ embedding into $\R$ and $3$ into $\C$.
+\end{proof}
+
+\begin{prob}[5.18]
+    Let $f\in\Z[x]$ be a cubic polynomial such that $f(0), f(1)$ are odd and with odd leading coefficients. Prove that $f$ is irreducible over $\Q$.
+\end{prob}
+\begin{proof}
+    Suffices to prove $f$ is irreducible over $\Z/p\Z$ for some $p$. Consider $\Z/2\Z$, then let $f(x)=a_3x^3+a_2x^2+a_1x+a_0$, we see $f(x)$ can be $x^3+x^2+1$ or $x^3+x+1$, and both are irreducible over $\Z/2\Z$. 
+\end{proof}
+
+\begin{prob}[5.20]
+    Prove that $x^6+4x^3+1$ is irreducible by Eisenstein.
+\end{prob}
+\begin{proof}
+    Replace $x$ with $x+1$, then done.
+\end{proof}
+
+\begin{prob}[5.21]
+    Prove that $1+x+x^2+\dots +x^{n-1}$ is reducible over $\Z$ if $n$ is not prime.
+
+    \begin{warn}
+        $1+x+x^2+\dots+x^{p-1}$ is irreducible by Eisenstein.
+    \end{warn}
+\end{prob}
+\begin{proof}
+    Let $n=ab$, 
+    \begin{equation*}
+        f(x)=\frac{x^n-1}{x-1}
+    \end{equation*}
+    where 
+    \begin{equation*}
+        (x^a)^b-1=(x^a-1)(1+x^a+\dots+x^{a(b-1)})
+    \end{equation*}
+    Then we see $f$ is reducible.
+\end{proof}
+
+
+
+% \begin{prob}[5.22]
+%     Let $R$ be a UFD, and let $a\in R$ be an element not divisible by the square of some irreducible element in this factorization. Prove that $x^n-a$ is irreducible for every $n\geq 1$.
+% \end{prob}
+
+
+
+
+
+
+
+\section{CRT}
+\begin{prop}[6.2]
+    Recall idempotent: $a\in R$ such that $a^2=a$, if $R$ contains an idempotent, then 
+    \begin{equation*}
+        R\cong\frac{R}{(a)}\times\frac{R}{(1-a)}
+    \end{equation*}
+    (Proof sketch: endow $(a)$ with a ring structure with $(a)$ as the identity, then $(a)\cong R/(1-a)$).
+\end{prop}
+
+\begin{prop}[6.8]
+    Let $n\in\Z$, and $n=p_1^{n_1}\dots p_r^{n_r}$, then 
+    \begin{equation*}
+        \frac{\Z}{(n)}\cong\frac{\Z}{(p_1^{n_r})}\times\dots\times\frac{\Z}{(p_r^{n_r})}
+    \end{equation*}
+    and 
+    \begin{equation*}
+        \left(\frac{\Z}{(n)}\right)^*\cong\left(\frac{\Z}{(p_1^{n_r})}\right)^*\times\dots\times\left(\frac{\Z}{(p_r^{n_r})}\right)^*
+    \end{equation*}
+    where $(\Z/n\Z)^*$ is the group of units.
+\end{prop}
+
+
+
+
+
 
 
 

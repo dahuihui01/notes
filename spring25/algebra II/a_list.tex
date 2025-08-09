@@ -1301,51 +1301,64 @@ where $S=\la s_1,\dots, s_n\ra$. Elements in finite-type $R$-algebra is of the f
 
 
 
-
-
-
-
-
 \chapter{Ring Theory II}
 This corresponds to Aluffi Chapter V.
 
 
 
 \begin{prop}
-    Let $R$ be commutative, and $M$ be an $R$-module, then the following are equivalent:
+    Let $R$ be commutative, and $M$ be an $R$-module, then TFAE:
     \begin{enumerate}
-        \item $M$ is Noetherian: every submodule of $M$ is finitely generated.
-        \item Every ascending chain of submodules of $M$ stabilizes: no infinite strict inclusions of submodules.
+        \item $M$ is \textbf{Noetherian}.
+        \item $M$ satisfies the \textbf{ascending chain condition}. (sequence of submodules.)
         \item Every nonempty family of submodules has a maximal element with respect to inclusion.
     \end{enumerate}
 \end{prop}
-
-
-\begin{prop}[*]
-    Let $R$ be a Noetherian ring, then $R[x_1,\dots, x_n]$ is Noetherian. Let $J$ be an ideal of the polynoial ring $R[x_1,\dots, x_n]$, then the ring 
-    \begin{equation*}
-        \frac{R[x_1,\dots,x_n]}{J}
-    \end{equation*}
-    is Noetherian, so is $R[x_1,\dots, x_n]$.
-\end{prop}
+\begin{proof}
+    Noetherian implies acc: given $N_1\subset N_2\subset\dots$, then $N=\bigcup_iN_i$ is finitely generated. 
+\end{proof}
 
 
 \begin{prop}[Hilbert's basis theorem]
-    If $R$ is Noetherian, then $R[x]$ is also Noetherian.
+    Let $R$ be a Noetherian ring, then $R[x_1,\dots, x_n]$ is Noetherian. This is the same as If $R$ is Noetherian, then $R[x]$ is also Noetherian.
 \end{prop}
-\begin{defn}[prime, irreducible elements]
-    Let $R$ be an integral domain, an element $a\in R$ is prime if the ideal $(a)$ is prime, i.e., $a$ is not a unit and $a\mid bc$ implies $a\mid b$ or $a\mid c$. ($a\mid b$ if $b\in(a)$.)
 
-    An element $a\in R$ is irreducible if $a$ is not a unit and 
-    \begin{equation*}
-        a=bc
-    \end{equation*}
-    implies $b$ is a unit or $c$ is a unit. Equivalently, $a$ is irreducible if $(a)\subset (b)$ implies $(b)=(a)$ or $(b)=(1)=R$, i.e., $(a)$ is maximal in principal ideals.
+\begin{prop}
+    Let $a,b\in R$, then $(a)=(b)$ iff $a=ub$ for some unit $u$.
+\end{prop}
+
+
+
+\begin{defn}[prime, irreducible elements]
+    Let $R$ be commutatie
+    \begin{enumerate}
+        \item Let $R$ be an integral domain, an element $a\in R$ is \textbf{prime} if the ideal $(a)$ is prime.
+        \item An element $a\in R$ is \textbf{irreducible} if $a$ is not a unit and 
+        \begin{equation*}
+            a=bc
+        \end{equation*}
+        implies $b$ is a unit or $c$ is a unit. Equivalently, $a$ is irreducible if $(a)\subset (b)$ implies $(b)=(a)$ or $(b)=(1)=R$, i.e., $(a)$ is maximal in principal ideals.
+    \end{enumerate}
 \end{defn}
 
 \begin{prop}
-    Let $R$ be an integral domain, and let $a\in R$ be a nonzero prime element, then $a$ is irreducible.
+    Let $R$ be an \textbf{integral domain}, then 
+    \begin{equation*}
+        \text{nonzero prime elements}\Rightarrow \text{ irreducible}
+    \end{equation*}
 \end{prop}
+
+\begin{defn}[factorization]
+    $r\in R$ has a factorization if there exists \textbf{finite} irreducibles $q_1,\dots, q_n$ such that 
+    \begin{equation*}
+        r=q_1\dots q_n
+    \end{equation*}
+\end{defn}
+
+
+
+
+
 
 % \begin{defn}
 %     Let $R$ be an ID. An element $r\in R$ has a factorization into irreducibles if there exist irreducible elements $q_1,\dots, q_n$ such that $r=q_1\dots q_n$. 
@@ -1354,44 +1367,73 @@ This corresponds to Aluffi Chapter V.
 
 
 \begin{prop}
+    
     Let $R$ be an integral domain, and let $r$ be a nonzero, nonunit element of $R$. Assume that every ascedning chain of principal ideals, 
     \begin{equation*}
-        (r)\subset (r_1)\subset\dots
+        (r)\subset (r_1)\subset (r_2)\dots
     \end{equation*}
     stabilizes. Then $r$ has a factorization into irreducibles.
 \end{prop}
+Of course if a ring is ACC, then factorizations exist.
 
-\begin{cor}
-    Let $R$ be a Noetherian ring, then factorizations exist in $R$.
 
+
+\begin{prop}
+    Factorization exists in Noetherian rings.
+
+\end{prop}
+
+
+\begin{example}  
     A non-Noetherian ring but factorization still exists:
     \begin{equation*}
         \Z[x_1,\dots,x_n]
     \end{equation*}
-\end{cor}
+\end{example}
 
+\begin{prop}
+    Let $R$ be Noetherian and $I$ be an ideal, then $R/I$ is also Noetherian.
+\end{prop}
 
-
+\section{UFD, PID, ED}
+\begin{defn}[gcd]
+    Let $a,b\in R$, then the gcd of $a,b$ is $d$ such that $(d)$ is the smallest principal ideal such that 
+    \begin{equation*}
+        (a,b)\subset (d)
+    \end{equation*}
+\end{defn}
 
 \begin{prop}
     Let $R$ ba UFD, and $a,b,c\in R$ be nonzero, then 
     \begin{equation*}
-        (a)\subset(b)
+        (a)\subset(b)\iff m(b)\subset m(a)
     \end{equation*}
-    iff the multiset of irreducible factors of $b$ is contained in that of $a$. Moreover, the irreducible factors of $bc$ are the collection of irreducible factors of $b$ and $c$.
+    where $m(a)$ is the multiset of irreducible factors of $a$. Moreover, the irreducible factors of $bc$ are the collection of irreducible factors of $b$ and $c$.
 \end{prop}
 
 
 
 \begin{prop}
-    Let $R$ be a UFD, let $a,b$ be nonzero elements, then $a,b$ have a greatest common divisor, i.e., the smallest ideal $(d)$ such that $(a,b)\subset (d)$.
+    Let $R$ be a UFD, then gcd of any $a,b$ exsits.
 \end{prop}
+\begin{example}
+    There exists Noetherian rings that are not UFD.
+    \begin{equation*}
+        \frac{\C[x,y,z,w]}{(xw-yz)}
+    \end{equation*}
+    since $r=xw=yz$.
+\end{example}
 
-\begin{prop}[*]
+
+\begin{prop}
     In UFD, $a$ is irreducible implies $a$ is prime.
 \end{prop}
+\begin{proof}
+    Assume $bc\in (a)$, then $(bc)\subset (a)$, hence the multiset of irreducible factors of $a$ is contained in the multiset of $b,c$, but $a$ is irreducible implies that $a$ must be among the factors of $b$ or $c$.
+\end{proof}
 
-\begin{thm}[*]
+
+\begin{thm}
     An integral domain $R$ is a UFD if and only if 
     \begin{enumerate}
         \item The acc holds for principal ideals in $R$.
@@ -1399,12 +1441,20 @@ This corresponds to Aluffi Chapter V.
     \end{enumerate}
 \end{thm}
 
-
 \begin{prop}
-    If $R$ is a PID, then it is a UFD. (Hence irreducibles are primes).
-
-    ($\Z[x]$ is not a PID).
+    If $R$ is a PID, and $a,b\in R$, then $d=\gcd(a,b)$ iff $(a,b)=(d)$. In other words, there exists $r,s\in R$, such that 
+    \begin{equation*}
+        d=ra+sb
+    \end{equation*}
 \end{prop}
+
+
+\begin{example}
+    UFD but not PID:
+    \begin{equation*}
+        \Z[x]
+    \end{equation*}
+\end{example}
 
 \begin{defn}[Euclidean domain]
     A Euclidean valuation on an integral domain $R$ is an valuation: for all $a\in R$, and all nonzero $b\in R$, there exists $q,r$ such that 
@@ -1414,111 +1464,180 @@ This corresponds to Aluffi Chapter V.
     with either $r=0$ or $v(r)<v(b)$. An integral domain is a ED if it admits a Euclidean valuation.
 \end{defn}
 
-\begin{prop}
-    ED is also PID.
-\end{prop}
-
-
-\begin{defn}[*Field of fractions]
-    Let $R$ be an integral domain, then the field of fractions is 
-    \begin{equation*}
-        K(R)=\left\{\frac{a}{r}: a,r\in R, r\neq 0\right\}
-    \end{equation*}
-\end{defn}
-
-
-\begin{defn}
-    (Assuming $R$ is an integral domain). The field of rational functions with coefficients in $R$ is the field of fractions of the ring $R[x]$, denoted as $R(x)$.
-\end{defn}
-
-
-
-
-
-
-
-
-
-
+\section{$R(x)$ and Field of Fractions}
 
 \begin{thm}
     Let $R$ be a UFD, then $R[x]$ is also a UFD.
 \end{thm}
+\begin{example}
+    $\Z[x],\Z[x_1,\dots,x_n]$ are UFD.
+\end{example}
 
-\begin{prop}
-    Let $R$ be a UFD, and $K$ be its field of fractions, let $f\in R[x]$ be a nonconstant, irreducible polynomial, then $f$ is irreducible as an element in $K[x]$.
-\end{prop}
-
+\begin{defn}[Field of fractions]
+    Let $R$ be an integral domain, then the field of fractions is 
+    \begin{equation*}
+        \text{Frac}(R)=\left\{\frac{a}{r}: a,r\in R, r\neq 0\right\}
+    \end{equation*}
+    where $\frac{a}{r}$ is the equivalence given by $\frac{a}{r}\sim \frac{b}{s}\iff as=br$.
+\end{defn}
 
 
 \begin{defn}
-    Let $R$ be a commutative ring, let $f\in R[x]$, then $f$ is primitive if for all principal prime ideals $p$, 
+    The field of fractions $R[x]$ is the field of rational functions with coefficients in $R$: elements are of the form 
     \begin{equation*}
-        f\not\in pR[x]
+        \frac{p(x)}{q(x)}, q(x)\neq 0
     \end{equation*}
-    where $pR[x]$ is an ideal of $R[x]$ of polynomials with coefficients from $p$.
+    \textbf{denoted as $R(x)$.}
 \end{defn}
 
-\begin{prop}[*]
+
+
+
+\begin{defn}[primitive]
     Let $R$ be a UFD, $f$ is primitive if and only if $\gcd(a_0,\dots, a_d)=1$.
-\end{prop}
-
-\begin{defn}
-    Let $R$ be a UFD.
-    The content of a nonzero polynomial $f\in R[x]$ denoted by 
-    \begin{equation*}
-        \text{cont}(f)=\gcd(a_0,\dots,a_n)
-    \end{equation*}
-    The principal ideal generated by $(\text{cont}f)$ is uniquely determined by $f$.
 \end{defn}
 
-\begin{prop}[Gauss's lemma]
-    Let $R$ be a UFD. Let $f,g\in R[x]$, then 
+
+
+\begin{prop}
+    Let $R$ be a UFD, and $K$ be its field of fractions, let $f\in R[x]$ be a nonconstant, irreducible polynomial, then $f$ is irreducible in $K[x]$.
+\end{prop}
+
+
+
+% \begin{defn}
+%     Let $R$ be a commutative ring, let $f\in R[x]$, then $f$ is primitive if for all principal prime ideals $p$, 
+%     \begin{equation*}
+%         f\not\in pR[x]
+%     \end{equation*}
+%     where $pR[x]$ is an ideal of $R[x]$ of polynomials with coefficients from $p$.
+% \end{defn}
+
+
+
+% \begin{defn}
+%     Let $R$ be a UFD.
+%     The content of a nonzero polynomial $f\in R[x]$ denoted by 
+%     \begin{equation*}
+%         \text{cont}(f)=\gcd(a_0,\dots,a_n)
+%     \end{equation*}
+%     The principal ideal generated by $(\text{cont}f)$ is uniquely determined by $f$.
+% \end{defn}
+
+% \begin{prop}[Gauss's lemma]
+%     Let $R$ be a UFD. Let $f,g\in R[x]$, then 
+%     \begin{equation*}
+%         (\text{cont}(fg))=(\text{cont}(f))(\text{cont}(g))
+%     \end{equation*}
+% \end{prop}
+
+
+
+% \begin{prop}
+%     Let $R$ be a UFD, and $K$ be its field of fractions. Let $f\in R[x]$ be nonconstant, then $f$ is irreducible in $R[x]$ if and only if it is irreducible in $K[x]$ and $\gcd(a_0,\dots, a_n)=1$. 
+% \end{prop}
+
+% \section{}
+
+
+% \begin{prop}
+%     Let $R$ be a UFD, $K$ its field of fractions.  Let 
+%     \begin{equation*}
+%         f(x)=a_0+\dots+a_nx^n\in R[x]
+%     \end{equation*}
+%     let $c=\frac{p}{q}\in K$ be a root of $f$, then $p\mid a_0$ and $q\mid a_n$.  (Note $p/q$ is written in the minimal form).
+% \end{prop}
+
+
+% \begin{prop}
+%     Let $k$ be a field, $f(t)\in k[t]$, be irreducible, then 
+%     \begin{equation*}
+%         F=\frac{k[t]}{(f(t))}
+%     \end{equation*}
+%     is a field.
+% \end{prop}
+
+
+% \begin{defn}
+%     A field is algebraically closed if all the irreducible polynomials in $k[x]$ have degree $1$.
+% \end{defn}
+
+
+% \begin{prop}
+%     Every polynomial $f\in R[x]$ of degree $\geq 3$ is reducible.
+% \end{prop}
+
+% \begin{prop}
+%     Let $f\in\Z[x]$ be a polynomial such $\gcd(a_0,\dots, a_n)=1$ then let $p$ be a prime integer. Assume $f\mod p$ has the same degree as $f$ and is irreducible over $\Z/p\Z$, then $f$ is irreducible over $\Z$.
+% \end{prop}
+
+
+
+
+
+\section{Irreducibility}
+\begin{prop}
+    Let $R$ be an ID, then $f\in R[x]$ of degree $d$ can have at most $d$ roots.
+\end{prop}
+This is not true for non-ID, for example, $x^2+2$ over $\Z/6\Z$.
+
+\begin{prop}
+    Let $k$ be a field, then $f\in k[x]$ of degree $2$ or $3$ is irreducible iff it has no root in $k$.
+\end{prop}
+\begin{example}
+    $t^2+t+1$ is irreducible over $\F_2$ (therefore over $\Q$).
+\end{example}
+
+\begin{prop}[rational root theorem]
+    Let $R$ be a UFD, and $K$ be its field of fractions, let 
     \begin{equation*}
-        (\text{cont}(fg))=(\text{cont}(f))(\text{cont}(g))
+        f(x)=a_0+a_1x+\dots+a_nx^n\in R[x]
+    \end{equation*}
+    if $\frac{p}{q}\in K$ is a root, ($\gcd(p,q)=1$), then 
+    \begin{equation*}
+        p\text{ divides } a_0, q\text{ divides } a_n
     \end{equation*}
 \end{prop}
 
-
-
 \begin{prop}
-    Let $R$ be a UFD, and $K$ be its field of fractions. Let $f\in R[x]$ be nonconstant, then $f$ is irreducible in $R[x]$ if and only if it is irreducible in $K[x]$ and $\gcd(a_0,\dots, a_n)=1$ 
-\end{prop}
-
-\begin{prop}
-    Let $k$ be field, $f\in k[x]$ of degree $2$ or $3$ is irreducible iff it has a root in $k$.
-\end{prop}
-
-\begin{prop}
-    Let $R$ be a UFD, $K$ its field of fractions.  Let 
-    \begin{equation*}
-        f(x)=a_0+\dots+a_nx^n\in R[x]
-    \end{equation*}
-    let $c=\frac{p}{q}\in K$ be a root of $f$, then $p\mid a_0$ and $q\mid a_n$.  (Note $p/q$ is written in the minimal form).
-\end{prop}
-
-
-\begin{prop}
-    Let $k$ be a field, $f(t)\in k[t]$, be irreducible, then 
+    Let $k$ be a field, and $f(t)\in k[t]$ be a nonzero irreducible polynomial. Then 
     \begin{equation*}
         F=\frac{k[t]}{(f(t))}
     \end{equation*}
-    is a field.
-\end{prop}
-
-
-\begin{defn}
-    A field is algebraically closed if all the irreducible polynomials in $k[x]$ have degree $1$.
-\end{defn}
-
-
-\begin{prop}
-    Every polynomial $f\in R[x]$ of degree $\geq 3$ is reducible.
+    is a field, where $k$ embeds into $F$. Moreover, $f(x)\in k[x]$ has a root in $F$, which is 
+    \begin{equation*}
+        t+(f(t))
+    \end{equation*}
 \end{prop}
 
 \begin{prop}
-    Let $f\in\Z[x]$ be a polynomial such $\gcd(a_0,\dots, a_n)=1$ then let $p$ be a prime integer. Assume $f\mod p$ has the same degree as $f$ and is irreducible over $\Z/p\Z$, then $f$ is irreducible over $\Z$.
+    A field is algebraically closed 
+    \begin{align*}
+        k \text{ is algebraically closed}&\iff \text{ all irreducible polynomials in $k[x]$ have degree $1$}\\
+        &\iff \text{ every nonconstant polynoimal $f$ factors completely into linear factors}\\
+        &\iff \text{ every nonconstant $f$ has a root in $k$}
+    \end{align*}
 \end{prop}
+
+\begin{prop}
+    Finite fields are not algebraically closed. In other words, if a field $k$ is algebraically closed, then it is infinite.
+\end{prop}
+
+\begin{example}
+    The nonconstant irreducible polynomials of $\R[x]$ are precisely those of degree $1$ and quadratic $f=ax^2+bx+c$ where $b^2-4ac<0$.
+\end{example}
+
+
+\begin{prop}
+    Let $f\in\Z[x]$ be such that $\gcd(a_0,\dots,a_n)=1$, and let $p$ be prime. If $f\mod p$ has the same degree as $f$, and is irreducible over $\F_p$, then $f$ is irreducible over $\Z$.
+\end{prop}
+\begin{warn}
+    This is important! We can show a polynomial is irreducible over $\Z$ by showing it is irreducible over $\F_p$ for some $p$.
+\end{warn}
+
+\begin{example}
+    There exists reducible polynomial over $\Z$ but irreducible over $\F_p$ for every prime $p$: $x^4+1$. (Hint: Legendre symbol).
+\end{example}
 
 \begin{prop}[Generalized Eisenstein]
     Let $R$ be a commutative ring, let $p$ be a prime ideal in $R$, let $f\in R[x]$, assume that 
@@ -1529,36 +1648,67 @@ This corresponds to Aluffi Chapter V.
     \end{enumerate}
     then $f$ is not the product of polynomials with degree strictly less than $\text{deg}(f)$.
 \end{prop}
+\begin{warn}
+    Generalized Eisenstein works for commutative rings! Some examples:
+    \begin{equation*}
+        \C[x,y], \frac{\C[x_1,x_2,x_3,x_4]}{(x_1x_2-x_3x_4)}
+    \end{equation*}
+\end{warn}
+
+\begin{example}
+    For all $n$ and all primes $p$, the polynomial $x^n-p$ is irreducible over $\Z$.
+\end{example}
+\begin{example}
+    Let $p$ be a prime, then the cyclotomic polynomial $\Phi_p(x)$ is irreducible.
+    \begin{equation*}
+        1+x+x^2+\dots+x^{p-1}
+    \end{equation*}
+\end{example}
+\begin{proof}
+    \begin{align*}
+        f(x)&=\frac{x^p-1}{x-1}
+        f(x+1)&=\frac{(x+1)^p-1}{x}
+    \end{align*}
+    We see that coefficients are now 
+    \begin{equation*}
+        \binom{p}{k}, k=1,\dots, p-1
+    \end{equation*}
+    hence $p$ divides all but leading coefficient.
+\end{proof}
 
 
+
+
+
+
+
+\section{CRT}
 \begin{thm}[CRT]
     Let $I_1,\dots, I_k$ be ideals of $R$ such that $I_i+I_j=(1)$ for all $i\neq j$. Then 
     \begin{equation*}
-        \frac{R}{I_1\cap\dots\cap I_k}\cong\frac{R}{I_1}\times\dots\times\frac{R}{I_k}
+        \frac{R}{I_1\cap\dots\cap I_k}=\frac{R}{I_1I_2\dots I_k}\cong\frac{R}{I_1}\times\dots\times\frac{R}{I_k}
     \end{equation*}
 
     (It uses if $I_i+I_j=(1)$, then $I_1\dots I_k=I_1\cap\dots\cap I_k$).
 \end{thm}
 
-\begin{cor}
+\begin{prop}[CRT in PID]
     Let $R$ be a PID, and let $a_1,\dots, a_k$ be elemnts such that $\gcd(a_i,g_j)=1$, let $a=a_1\dots a_k$, then 
     \begin{equation*}
         \frac{R}{(a)}\cong\frac{R}{(a_1)}\times\dots\times\frac{R}{(a_k)}
     \end{equation*}
-\end{cor}
-
-
-\begin{prop}
-    A positive integer prime $p\in\Z$ splits in $\Z[i]$ iff it is the sum of two squares in $\Z$.
 \end{prop}
-\begin{proof}
-    Use norm.
-\end{proof}
 
 
-\begin{thm}[Fermat]
-    A positive odd prime $p\in\Z$ is a sum of two squares iff $p\equiv 1\mod 4$.
-\end{thm}
+% \begin{prop}
+%     A positive integer prime $p\in\Z$ splits in $\Z[i]$ iff it is the sum of two squares in $\Z$. (Proof: uses norm).
+% \end{prop}
+
+
+
+% \begin{prop}[Fermat]
+%     A positive odd prime $p\in\Z$ is a sum of two squares iff $p\equiv 1\mod 4$.
+% \end{prop}
 
 
 
@@ -1927,6 +2077,26 @@ This corresponds to Aluffi Chapter VIII.
 This corresponds to Aluffi Chapter VII.
 
 \chapter{Representation Theory of Finite Groups}
+
+
+
+Let $k$ be a field and $G$ be a finite group, a representation $\rho: G\to\text{GL}(V)$ is such that 
+\begin{equation*}
+    \rho(g_1g_2)=\rho(g_1)\circ\rho(g_2)
+\end{equation*}
+And $V$ is a $k[G]$-module, i.e., elements in $k[G]$ are of the form 
+\begin{equation*}
+    \sum_{g\in G}a_gg
+\end{equation*}
+and they act on $V$ by 
+\begin{equation*}
+    \left( \sum_{g\in G}a_gg\right)\cdot v=\sum_{g\in G}a_g\left(\rho(g)(v)\right)
+\end{equation*}
+
+
+
+
+
 
 \chapter{Semisimple Algebra}
 
