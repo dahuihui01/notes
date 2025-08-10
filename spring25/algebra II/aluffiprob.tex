@@ -1354,7 +1354,8 @@ A group is \emph{nilpotent} if $Z_m = G$ for some $m$.
     $K$ is the largest normal subgroup of $G$ contained in $H$.
 \end{proof}
   
-    
+
+
     \begin{prob}[5.15]
     Let $G$ be a group of order 28.
     
@@ -1919,6 +1920,79 @@ Prove that \( r \) is in the Jacobson radical if and only if \( 1 + rs \) is inv
 
 
 \chapter{Linear Algebra I}
+
+
+
+\section{Nakayama's Lemma}
+
+\begin{prob}[3.7]
+    Let \( R \) be a commutative ring, \( M \) a finitely generated \( R \)-module, and let \( J \) be an ideal of \( R \). Assume \( JM = M \). Prove that there exists an element \( b \in J \) such that \((1 + b)M = 0\). 
+\end{prob}
+\begin{proof}
+    Let $M=\la m_1,\dots, m_r\ra$, since $JM=M$, we can write any $m_i\in M$ as 
+    \begin{equation*}
+        m_i=\sum_{j=1}^rb_{ij}m_j
+    \end{equation*}
+    defining matrix $B=(b_{ij})$, we see that 
+    \begin{equation*}
+        B\begin{pmatrix}
+            m_1\\
+            \dots\\
+            m_r
+        \end{pmatrix}=\begin{pmatrix}
+            m_1\\
+            \dots\\
+            m_r
+        \end{pmatrix}
+    \end{equation*}
+    Thus $(B-I)m=0$ for all $m\in M$, by previous exercise, we know $\det(B-1)=0$, we see that there exists $b\in J$ such that 
+    \begin{equation*}
+        (1+b)M=0
+    \end{equation*}
+\end{proof}
+
+
+
+
+
+\begin{prob}[3.8]
+    Let \( R \) be a commutative ring, \( M \) be a finitely generated \( R \)-module, and let \( J \) be an ideal of \( R \) contained in the Jacobson radical of \( R \). Prove that 
+\[
+M = 0 \iff JM = M.
+\] 
+\end{prob}
+\begin{proof}
+    It follows directly from the above exercise. If $JM=M$, then there exists $b\in J$ such that $(1+b)M=0$, moreover, if $b\in J$, then $1+b$ is a unit, i.e., $m=0$ for all $m\in M$.
+\end{proof}
+
+
+
+\begin{prob}[3.9]
+    Let \( R \) be a commutative local ring, that is, a ring with a single maximal ideal \( \mathfrak{m} \), and let \( M, N \) be finitely generated \( R \)-modules. Prove that if \( M = \mathfrak{m}M + N \), then \( M = N \). (Hint: apply Nakayama's to $M/N$ and note that $\mathfrak{m}$ is the Jacobson ideal),.
+\end{prob}
+\begin{proof}
+    Directly follows from the hint.
+\end{proof}
+
+\begin{prob}[3.10]
+    Let \( R \) be a commutative local ring, and let \( M \) be a finitely generated \( R \)-module. Note that \( M/\mathfrak{m}M \) is a finite-dimensional vector space over the field \( R/\mathfrak{m} \); let \( m_1, \ldots, m_r \in M \) be elements whose cosets mod \( \mathfrak{m}M \) form a basis of \( M/\mathfrak{m}M \). Prove that \( m_1, \ldots, m_r \) generate \( M \). Hint: Show that \(\langle m_1, \ldots, m_r \rangle + \mathfrak{m}M = M\); then apply Nakayama's lemma in the form of Exercise 3.9.
+\end{prob}
+\begin{proof}
+    We will write out this: for every $m\in M$, we know there exists $a_i$ such that
+    \begin{equation*}
+        m-\sum_{i=1}^ia_{i}m_i\in mM
+    \end{equation*}
+    hence 
+    \begin{equation*}
+        \la m_1,\dots, m_r\ra+\mathfrak{m}M=M
+    \end{equation*}
+    Then it follows from if $M=\mathfrak{m}M+N$, then $M=N$.
+\end{proof}
+
+
+
+
+
 
 
 

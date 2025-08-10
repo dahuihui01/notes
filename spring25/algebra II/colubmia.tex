@@ -134,4 +134,50 @@
 \end{proof}
 
 
+\chapter{HW4}
+
+\begin{prob}
+    Compute the following sums and intersections of ideals in \(\mathbb{Q}[x]\) (first recall the relation between sums and intersections of ideals in \(F[x]\) to gcd and lcm of polynomials). Note that all the ideals of \(\mathbb{Q}[x]\) are principal. For each ideal, list the monic polynomial which generates the ideal.
+
+    \[
+    (x) + (x + 2), \quad (x^2) + (2x), \quad (3x^2 + 2x) + (4x^2 + x),
+    \]
+    \[
+    (3x^2 + x + 5) + (0), \quad (x) \cap (2x + 1), \quad (2x) \cap (3x^2).
+    \]
+\end{prob}
+\begin{proof}
+    $(1), (x), (x), (3x^2+x+5), (x(2x+1)), (6x^2)=(x^2)$.
+\end{proof}
+\begin{prop}
+    For the sum and intersection of ideals, we have
+    \begin{equation*}
+        (f)+(g)=(\gcd(f,g)), \quad (f)\cap (g)=(\text{lcm}(f,g))
+    \end{equation*}
+\end{prop}
+
+\begin{prob}
+    Consider the ring \( R = \mathbb{F}_p[x]/(f(x)) \), where \( f(x) \) is a polynomial of degree \( n \). Show that \( R \) is a finite ring with \( p^n \) elements.
+\end{prob}
+\begin{proof}
+    Every $g(x)\in R$ is identified with its remainder by $f(x)$, where $\deg(r)<n$, hence $R$ consists of elements of the form 
+    \begin{equation*}
+        a_{n-1}x^n+\dots+a_1x+a_0
+    \end{equation*}
+    There are $p$ choices for each $a_i$, therefore this ring has size $p^n$.
+\end{proof}
+
+
+
+\begin{prob}
+    Explain how to construct an infinite field of characteristic \( p \).
+\end{prob}
+\begin{proof}
+    Start with $\F_p[x]$ it is not a field, so 
+    \begin{equation*}
+        \F_p(x)=\left\{\frac{p(x)}{q(x)}: q\neq 0\right\}
+    \end{equation*}
+    is an infinite field of characteristic $p$.
+\end{proof}
+
 \end{document}
