@@ -1921,6 +1921,63 @@ Prove that \( r \) is in the Jacobson radical if and only if \( 1 + rs \) is inv
 
 \chapter{Linear Algebra I}
 
+\section{Basis}
+\begin{prob}[1.5]
+    Let \( R \) be an integral domain. Prove or disprove the following:
+\begin{itemize}
+    \item Every linearly independent subset of a free \( R \)-module may be completed to a basis.
+    \item Every generating subset of a free \( R \)-module contains a basis.
+\end{itemize}
+\end{prob}
+\begin{proof}
+    Both are not true. $(2)\subset\Z, (2),(3)\subset\Z$.
+\end{proof}
+
+\begin{prob}[1.11]
+    Let \( R \) be a commutative ring, and let \( F = R^{\oplus B} \) be a free module over \( R \). Let \( \mathfrak{m} \) be a maximal ideal of \( R \), and let \( k = R/\mathfrak{m} \) be the quotient field. Prove that
+\[
+F/\mathfrak{m}F \cong k^{\oplus B}
+\]
+as \( k \)-vector spaces. Prove that commutative rings satisfy the IBN (Invariant Basis Number) property.
+\end{prob}
+\begin{proof}
+    We can reduce any commutative ring to the field case.
+\end{proof}
+
+
+\begin{prob}[1.12]
+    Let \( V \) be a vector space over a field \( k \), and let \( R = \text{End}_{k\text{-Vect}}(V) \) be its ring of endomorphisms (cf. Exercise [III]5.9). (Note that \( R \) is not commutative in general.)
+\begin{itemize}
+    \item Prove that \(\text{End}_{k\text{-Vect}}(V \oplus V) \cong R^4\) as an \( R \)-module.
+    \item Prove that \( R \) does not satisfy the IBN property if \( V = k^{\oplus \mathbb{N}} \).
+\end{itemize}
+(Note that \( V \cong V \oplus V \) if \( V = k^{\oplus \mathbb{N}} \).)
+\end{prob}
+\begin{proof}
+    Let $\varphi:V\oplus V\to V\oplus V$, then $\varphi$ can be viewed as a $2\times 2$ matrix. 
+
+    For $V=k^{\oplus\mathbb{N}}$, we have 
+    \begin{equation*}
+        R=\text{End}(V)=\text{End}(V\oplus V)=R^4
+    \end{equation*}
+
+
+\end{proof}
+
+\begin{prob}[1.19]
+    Let \( k \) be a field, and let \( f(x) \in k[x] \) be any polynomial. Prove that there exists a multiple of \( f(x) \) in which all exponents of nonzero monomials are prime integers. 
+
+\textit{Example:} For \( f(x) = 1 + x^5 + x^6 \),
+\[
+(1 + x^5 + x^6)(2x^2 - x^3 + x^5 - x^8 + x^9 - x^{10} + x^{11}) = 2x^2 - x^3 + x^5 + 2x^7 + 2x^{11} - x^{13} + x^{17}.
+\]
+\end{prob}
+\begin{proof}
+    Note that $k[x]/(f(x))$ is a finitely generated $k$-module, i.e., a vector space of finite dimensions, hence the polynomials of prime powers are linearly dependent and thus a nontrivial combiantion is in $(f(x))$.
+\end{proof}
+
+
+
 
 
 \section{Nakayama's Lemma}
