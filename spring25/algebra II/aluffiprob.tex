@@ -2052,7 +2052,10 @@ M = 0 \iff JM = M.
 
 
 
-
+\section{Invariants}
+\begin{prop}
+    Let $R$ be a an integral domain, $\alpha$ is injective iff $\det(\alpha)\neq 0$, and $\alpha$ is surjective iff $\det(\alpha)$ is a unit.
+\end{prop}
 
 \begin{prob}[6.10]
     Let \( F_1, F_2 \) be free \( R \)-modules of finite rank, and let \( \alpha_1 \), resp., \( \alpha_2 \), be linear transformations of \( F_1 \), resp., \( F_2 \). Let \( F = F_1 \oplus F_2 \), and let \( \alpha = \alpha_1 \oplus \alpha_2 \) be the linear transformation of \( F \) restricting to \( \alpha_1 \) on \( F_1 \) and \( \alpha_2 \) on \( F_2 \).
@@ -2063,7 +2066,9 @@ M = 0 \iff JM = M.
         \item Find an example showing that the minimal polynomial is not multiplicative under direct sums.
     \end{itemize}
 \end{prob}
-\textcolor{red}{here}
+\begin{proof}
+    The determinant of block diagonal matrices is the product of the determinant. Let both be the identity matrix.
+\end{proof}
 
 
 \begin{prob}[6.13]
@@ -2079,23 +2084,54 @@ M = 0 \iff JM = M.
 \end{proof}
 
 \begin{prob}[7.3]
-    Prove that two linear transformations of a vector space of dimension \(\leq 3\) are similar if and only if they have the same characteristic and minimal polynomials. Is this true in dimension \(4\)? [§6.2]
+    Prove that two linear transformations of a vector space of dimension \(\leq 3\) are similar if and only if they have the same characteristic and minimal polynomials. Is this true in dimension \(4\)?
 \end{prob}
-\textcolor{red}{here}
-
-\begin{prob}[7.4]
-    Let \(k\) be a field, and let \(K\) be a field containing \(k\). Two square matrices \(A, B \in M_n(k)\) may be viewed as matrices with entries in the larger field \(K\). Prove that \(A\) and \(B\) are similar over \(k\) if and only if they are similar over \(K\).
-\end{prob}
-\textcolor{red}{here}
 \begin{proof}
-    For the interesting direction, if $A,B$ are similar in $K$: 
+    Two matrices are similar iff they have the same Jordan form. For $n=4$: consider 
+    \[
+    T_1=\begin{pmatrix}
+\lambda & 1 & 0 & 0 \\
+0 & \lambda & 0 & 0 \\
+0 & 0 & \lambda & 1 \\
+0 & 0 & 0 & \lambda
+\end{pmatrix} \quad 
+T_2=\begin{pmatrix}
+\lambda & 1 & 0 & 0 \\
+0 & \lambda & 0 & 0 \\
+0 & 0 & \lambda & 0 \\
+0 & 0 & 0 & \lambda
+\end{pmatrix}
+\]
+Both $T_1,T_2$ have $p(t)=(t-\lambda)^4$ and $m(t)=(t-\lambda)^2$, but they are not similar ($\lambda$ has $2$ eigenvectors in $T_1$ but $3$ in $T_2$).
 \end{proof}
+
+\begin{prop}[7.4]
+    Let \(k\) be a field, and let \(K\) be a field containing \(k\). Then \(A\) and \(B\) are similar over \(k\) if and only if they are similar over \(K\).
+\end{prop}
+
+
 
 \begin{prob}[7.7]
     Let \( V \) be a \( k \)-vector space of dimension \( n \), and let \( \alpha \in \text{End}_k(V) \). Prove that the minimal and characteristic polynomials of \( \alpha \) coincide if and only if there is a vector \( v \in V \) such that  
     \[ \{v, \alpha(v), \dots, \alpha^{n-1}(v)\} \] 
 is a basis of \( V \).
 \end{prob}
+\begin{proof}
+    The minimal and characteristic of $\alpha$ coincide iff 
+    \begin{equation*}
+        V\cong\frac{k[t]}{(f(t))}
+    \end{equation*}
+    as $k[t]$ modules, where $f(t)=b_nt^n+\dots+b_0$ has an action on $V$ as
+    \begin{equation*}
+        f(t)(v)=b_n\alpha^n(v)+\dots+b_0v
+    \end{equation*} 
+    The RHS has basis $\{1,t,\dots, t^{n-1}\}$,  and we are given a isomorphism $\varphi: \frac{k[t]}{(f(t))}\to V$ as  $\varphi: t\mapsto\alpha(\varphi(1))$, hence we see 
+    \begin{equation*}
+        \{\varphi(1),\alpha(\varphi(1)),\dots, \alpha^{n-1}(\varphi(1))\}
+    \end{equation*}
+    is a basis of $V$. 
+\end{proof}
+
 \textcolor{red}{here}
 
 
@@ -2105,7 +2141,21 @@ is a basis of \( V \).
 \end{prob}
 \begin{proof}
     Assume that $k$ is algebraically closed, and polynomials factors, the minimal polynomial $m_\alpha$ contains all the $(t-\lambda_i)$ for distinct $\lambda_i$'s by Lemma 7.12. Thus $P_\alpha$ divides $(m_\alpha)^n$.
+
+    The more general case follows directly from decomposition theorem: there exists monic $f_1,\dots, f_m$ such that 
+    \begin{equation*}
+        V\cong\frac{k[t]}{(f_1(t))}\oplus\dots\oplus\frac{k[t]}{(f_m(t))}
+    \end{equation*}
+    as $k[t]$-modules, where $f_1(t)\mid\dots\mid f_m(t)$. The characteristic and minimal polynomials are such that 
+    \begin{equation*}
+        P_\alpha(t)=f_1(t)\dots f_m(t)
+    \end{equation*}
+    and 
+    \begin{equation*}
+        m_\alpha(t)=f_m(t)
+    \end{equation*}
 \end{proof}
+
 
 \begin{prob}[7.12]
     Let \( V \) be a finite-dimensional \( k \)-vector space, and let \( \alpha \in \text{End}_k(V) \) be a diagonalizable linear transformation. Assume that \( W \subseteq V \) is an invariant subspace, so that \( \alpha \) induces a linear transformation \( \alpha|_W \in \text{End}_k(W) \). Prove that \( \alpha|_W \) is also diagonalizable. (Use Proposition 7.18.)

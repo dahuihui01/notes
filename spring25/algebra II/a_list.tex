@@ -1838,6 +1838,31 @@ I_r & 0 \\
 \end{prop}
 
 
+\begin{prop}
+    Let $R$ be commutative, a square matrix $A$ is invertible iff $\det(A)$ is a unit in $R$; The determinant is a homomorphism $\det: \text{GL}_n(R)\to(R^*,\cdot)$, and for $A,B\in M_n(R)$, 
+    \begin{equation*}
+        \det(AB)=\det(BA)
+    \end{equation*}
+\end{prop}
+
+\begin{prop}
+    The row rank of a matrix over a field is equal to its column rank, recall that every matrix is equivalent to a matrix of the form 
+    \[ 
+        \left( 
+        \begin{array}{c|c} 
+        I_r & 0 \\ 
+        \hline 
+        0 & 0 
+        \end{array} 
+        \right) 
+        \]
+    From this we also know that 
+    \begin{equation*}
+        \dim V=\text{ rank of }\alpha +\text{ nullity of }\alpha
+    \end{equation*}
+\end{prop}
+
+
 \begin{defn}[adjoint matrix]
     Let $M$ be an $n\times n$ matrix, the adjoint matrix $\text{adj}(A)$ is such that 
     \begin{equation*}
@@ -1855,6 +1880,424 @@ I_r & 0 \\
         \item Let $J$ be the Jacobson radical of $R$, where $M$ is finitely generated $R$-module. If $M=JM+N$, then $M=N$. (A special case is when $R$ is a local ring and $\mathfrak{m}=J$).
     \end{enumerate}
 \end{prop}
+
+\section{Invariants in Linear Transformations}
+
+\begin{defn}[similar matrix]
+    Two matrices $A,B$ are similarly iff there exists invertible $P$ such that 
+    \begin{equation*}
+        A=PBP^{-1}
+    \end{equation*}
+    For example, $A$ is similar to $A^t$.
+\end{defn}
+\begin{prop}
+    Similar implies equivalent, but equivalent does not imply similar.
+\end{prop}
+
+\begin{prop}
+    Let $\alpha$ be a linear transformation of $R^n$, a free $R$-module, then 
+    \begin{equation*}
+        \det(\alpha)\neq 0\iff \alpha\text{ is injective}
+    \end{equation*}
+\end{prop}
+\begin{prop}
+    For $A,B\in M_n(R)$, 
+    \begin{equation*}
+        \tr(AB)=\tr(BA)
+    \end{equation*}
+    If $A,B$ are similar, then 
+    \begin{equation*}
+        \tr(A)=\tr(B)
+    \end{equation*}
+\end{prop}
+
+\begin{defn}[characteristic polynomial]
+    Let $\alpha\in\text{End}(F)$, where $F=R^n$, then the characteristic polynomial of $\alpha$ is 
+    \begin{equation*}
+        P_\alpha(t)=\det(tI-\alpha)
+    \end{equation*} 
+\end{defn}
+
+\begin{prop}
+    Let $\alpha\in\text{End}(F)$, and $F=R^n$, let $P_\alpha(t)=t^n+a_{n-1}t^{n-1}\dots+a_0$ be characteristic polynomial,
+    \begin{enumerate}
+        \item $P_\alpha(t)$ is of degree $n$.
+        \item $a_{n-1}t^{n-1}$ is such that $a_{n-1}=-\tr(\alpha)$.
+        \item $a_0=(-1)^n\det(\alpha)$.
+        \item If $\alpha,\beta$ are similar, then $\det(\alpha)=\det(\beta)$. 
+    \end{enumerate}
+    \begin{equation*}
+        P_\alpha(t)=t^n-\tr(\alpha)+\dots+(-1)^n\det(\alpha)
+    \end{equation*}
+\end{prop}
+
+\begin{example}
+    Having the same characteristic polynoimal does not guarantee they are similar:
+    \begin{equation*}
+        \begin{pmatrix}
+            1&0\\
+            0&1
+        \end{pmatrix}, \quad 
+        \begin{pmatrix}
+            1&1\\
+            0&1
+        \end{pmatrix}
+    \end{equation*}
+    are not similar.
+\end{example}
+
+
+\begin{defn}[annihilator ideal]
+    Given $\alpha\in\text{End}(F)$, and $f(x)\in R[x]$, the annihilator ideal of $\alpha$ is 
+    \begin{equation*}
+        \mathcal{A}(\alpha)=\{f\in R[x]: f(\alpha)=0\}
+    \end{equation*}
+\end{defn}
+
+\begin{defn}
+    Let $k$ be a field, the minimal polynomial of $\alpha$ is the monic generator $m_\alpha(t)$ of $\mathcal{A}(\alpha)=((m_\alpha(t)))$. 
+\end{defn}
+
+\begin{prop}
+    If $\alpha,\beta$ are similar, then 
+    \begin{equation*}
+        \mathcal{A}(\alpha)=\mathcal{A}(\beta)
+    \end{equation*}
+\end{prop}
+
+\begin{prop}[Cayley-Hamilton]
+    Let $P_\alpha(t)$ be the characteristic polynomial of $\alpha$, then 
+    \begin{equation*}
+        P_\alpha(\alpha)=0
+    \end{equation*}
+\end{prop}
+
+\begin{prop}
+    If $\alpha,\beta$ are similar, then they have the same eigenvalues. Moreover, $\lambda\in R$ is an eigenvalue of $\alpha$ iff it is a root of the characteristic polynomial of $\alpha$.
+\end{prop}
+
+\begin{prop}
+    If $R$ is algebraically closed, then $\alpha$ has exactly $n$ eigenvalues; more generally, it has at most $n$ eigenvalues.
+\end{prop}
+
+\begin{prop}
+    The dimension of the eigenspace wrt $\lambda$ is always less than or equal to its algebraic multiplicity $(t-\lambda)^k$. If for each $\lambda$, they are equal, then $\alpha$ is diagonalizable with respect to an eigenbasis.
+\end{prop}
+
+\section{The canonical form}
+\begin{prop}
+    Recall: every finitely generated module over a PID ($[x]$) is a direct sum of cyclic modules. 
+    \begin{equation*}
+        \frac{k[t]}{(f(t))}
+    \end{equation*}
+    is cyclic viewed as a $k[t]$-module.
+\end{prop}
+
+\begin{prop}
+    There is a one-to-one correspondence 
+    \begin{equation*}
+        \left\{\text{(V,$\alpha$)}: \alpha:V\to V\right\}\leftrightarrow \left\{k[t]-\text{modules of } V\right\}
+    \end{equation*}
+\end{prop}
+The isomorphism $(\rightarrow)$ is given by 
+\begin{equation*}
+    (V,\alpha)\mapsto (k[t]\to\text{End}(V): t\mapsto\alpha)
+\end{equation*}
+and $(\leftarrow)$ is given by 
+\begin{equation*}
+    \left(\varphi:k[t]\to\text{End}(V)\right)\mapsto (V,\varphi(t))
+\end{equation*}
+
+
+
+\begin{prop}
+    Let $k$ be a field, and $V$ finite dimensional vector space, let $\alpha$ be a linear transformation, endow $V$ with the $k[t]$-structure, there exists distinct monic irreducible polynomials $p_i(t)\in k[t]$ such that 
+    \begin{equation*}
+        V\cong\bigoplus_{i,j}\frac{k[t]}{(p_i(t)^{r_{ij}})}
+    \end{equation*}
+    as $k[t]$-modules. Moreover, there exists monic $f_1,\dots, f_m$ such that 
+    \begin{equation*}
+        V\cong\frac{k[t]}{(f_1(t))}\oplus\dots\oplus\frac{k[t]}{(f_m(t))}
+    \end{equation*}
+    as $k[t]$-modules, where $f_1(t)\mid\dots\mid f_m(t)$. The characteristic and minimal polynomials are such that 
+    \begin{equation*}
+        P_\alpha(t)=f_1(t)\dots f_m(t)=\prod_{i,j}p_i(t)^{r_{ij}}
+    \end{equation*}
+    and 
+    \begin{equation*}
+        m_\alpha(t)=f_m(t)
+    \end{equation*}
+\end{prop}
+
+\begin{prop}
+    If $P_\alpha(t)$ factors completely over $k$, i.e., 
+    \begin{equation*}
+        P_\alpha(t)=\prod_{i=1}^s(t-\lambda_i)^{m_i}
+    \end{equation*}
+    where $\lambda_i$ are distinct eigenvalues of $\alpha$, then
+    \begin{equation*}
+        V\cong\bigoplus_{i=1}^s\frac{k[t]}{(t-\lambda_i)^{m_i}}
+    \end{equation*}
+    where $m_i=\sum_jr_{ij}$ in the above expression. Moreover, 
+    \begin{equation*}
+        m_\alpha(t)=\prod_{i=1}^s(t-\lambda_i)^{\max_j\{r_{ij}\}}
+    \end{equation*}
+\end{prop}
+
+
+\begin{example}
+    One use of the Jordan canonical form is the enumeration of all possible similarity classes of transformations with given eigenvalues. For example, there are 5 similarity classes of linear transformations with a single eigenvalue $\lambda$ with algebraic multiplicity 4, over a 4-dimensional vector space: indeed, there are 5 different ways to stack together Jordan blocks corresponding to the same eigenvalue, within a $4 \times 4$ square matrix:
+
+\[
+\begin{pmatrix}
+\lambda & 0 & 0 & 0 \\
+0 & \lambda & 0 & 0 \\
+0 & 0 & \lambda & 0 \\
+0 & 0 & 0 & \lambda
+\end{pmatrix},
+\quad
+\begin{pmatrix}
+\lambda & 1 & 0 & 0 \\
+0 & \lambda & 0 & 0 \\
+0 & 0 & \lambda & 0 \\
+0 & 0 & 0 & \lambda
+\end{pmatrix},
+\quad
+\begin{pmatrix}
+\lambda & 1 & 0 & 0 \\
+0 & \lambda & 1 & 0 \\
+0 & 0 & \lambda & 0 \\
+0 & 0 & 0 & \lambda
+\end{pmatrix},
+\]
+
+\[
+\begin{pmatrix}
+\lambda & 1 & 0 & 0 \\
+0 & \lambda & 0 & 0 \\
+0 & 0 & \lambda & 1 \\
+0 & 0 & 0 & \lambda
+\end{pmatrix},
+\quad
+\begin{pmatrix}
+\lambda & 1 & 0 & 0 \\
+0 & \lambda & 1 & 0 \\
+0 & 0 & \lambda & 1 \\
+0 & 0 & 0 & \lambda
+\end{pmatrix}.
+\]
+\end{example}
+
+\begin{prop}
+    Two matrices are similar if and only if they have the same Jordan form.
+\end{prop}
+
+\begin{prop}
+    The dimension of the eigenspace with respect to $\lambda$ is the \textbf{number} of the Jordan blocks with respect to $\lambda$.
+\end{prop}
+
+\begin{prop}
+    Assume $P_\alpha(t)$ factors completely over $k$, then $\alpha$ is diagonalizable iff either of following :
+    \begin{enumerate}
+        \item The dimension of eigenspace=algebraic multiplicity of $\lambda$ for all eigenvalues $\lambda$ of $\alpha$.
+        \item Minimal polynomial $m_\alpha(t)$ has no repeated roots.
+    \end{enumerate}
+\end{prop}
+
+\begin{prop}
+    Let $k$ be algebraically closed, the minimal polynomial coincide with the characteristic iff the Jordan form has a single Jordan block for each distinct eigenvalue.
+\end{prop}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\chapter{Linear Algebra II}
+This corresponds to Aluffi Chapter VIII. (
+Section 2.1, 2.2
+Section 3
+Section 4)
+
+\section{Tensor}
+
+\begin{defn}[bilinear]
+    Let $M,N,P$ be $R$-modules. A function $\varphi: M\times N\to P$ is $R$-bilinear if 
+    \begin{enumerate}
+        \item For all $m\in M$, $n\mapsto(m,n)$ is an $R$-module homomorphism $N\to P$.
+        \item For all $n\in N$, $m\mapsto(m,n)$ is an $R$-module homomorphism $M\to P$.
+    \end{enumerate}
+    In other words, 
+    \begin{equation*}
+        \varphi(m,r_1n_1+r_2n_2)=r_1\varphi(m,n_1)+r_2\varphi(m,r_2)
+    \end{equation*}
+    similarly for $M\to P$.
+\end{defn}
+
+
+
+
+
+\begin{prop}[Tensor product]
+The tensor product can be constructed as follows:
+\begin{enumerate}
+    \item Take the \textbf{free $R$-module} generated by symbols $\{m \otimes n \mid m \in M, n \in N\}$.
+
+    \item \textbf{Quotient} by the submodule generated by the relations (to enforce bilinearity):
+    \begin{itemize}
+        \item $(m_1 + m_2) \otimes n = m_1 \otimes n + m_2 \otimes n$,
+        \item $m \otimes (n_1 + n_2) = m \otimes n_1 + m \otimes n_2$,
+        \item $(r \cdot m) \otimes n = m \otimes (r \cdot n) = r \cdot (m \otimes n)$ for $r \in R$.
+    \end{itemize}
+\end{enumerate}
+Thus, elements of $M \otimes_R N$ are finite sums of the form $\sum_i m_i \otimes n_i$, subject to the above rules.
+
+\textbf{Key Properties of Tensor Products}
+\begin{enumerate}
+    \item \textbf{Bilinearity}: The map $\otimes : M \times N \rightarrow M \otimes_R N$ is $R$-bilinear.
+
+    \item \textbf{Functoriality}: If $f : M \rightarrow M'$ and $g : N \rightarrow N'$ are $R$-linear, there is an induced map:
+    \[
+    f \otimes g : M \otimes_R N \rightarrow M' \otimes_R N', \quad (f \otimes g)(m \otimes n) = f(m) \otimes g(n).
+    \]
+
+    \item \textbf{Associativity}: $(M \otimes_R N) \otimes_R P \cong M \otimes_R (N \otimes_R P)$.
+
+    \item \textbf{Commutativity}: $M \otimes_R N \cong N \otimes_R M$ (if $R$ is commutative).
+
+    \item \textbf{Base Change}: If $S$ is an $R$-algebra, then $M \otimes_R S$ is an $S$-module.
+\end{enumerate}
+\end{prop}
+
+
+\begin{prop}[universal property]
+    Every $R$-bilinear map $\varphi: M \times N \to P$ factors uniquely through the tensor product $M \otimes_R N$,
+\begin{center}
+    \[\begin{tikzcd}
+        {M\times N} & P \\
+        {M\otimes_RN}
+        \arrow["\varphi", from=1-1, to=1-2]
+        \arrow["\otimes"', from=1-1, to=2-1]
+        \arrow["{\exists!\bar{\varphi}}"', from=2-1, to=1-2]
+    \end{tikzcd}\]
+\end{center}
+in such a way that the map $\overline{\varphi}$ is unique.
+\end{prop}
+\begin{example}
+    For all $R$-modules, 
+    \begin{enumerate}
+        \item $R\otimes_RN\cong N$.
+        \item $M\otimes_RN\cong N\otimes_RM$.
+    \end{enumerate}
+\end{example}
+
+\begin{prop}
+    Let $\alpha,\beta:M\otimes N\to P$, if 
+    \begin{equation*}
+        \alpha(m\otimes n)=\beta(m\otimes n)
+    \end{equation*}
+    for all $m\in M, n\in N$, then $\alpha=\beta$. (This means it suffices to check on pure tensors).
+\end{prop}
+
+
+
+\section{Hom and Tensor}
+
+
+\begin{prop}
+    Let $\alpha:M_1\to M_2$ be an $R$-module homomorphism, let $N$ be an $R$-module, there is an induced $R$-linear map 
+    \begin{equation*}
+        \alpha\otimes N: M_1\otimes_R N\to M_2\otimes_R N
+    \end{equation*}
+    On pure tensors, this map is given by 
+    \begin{equation*}
+        m\otimes n\mapsto \alpha(m)\otimes\alpha(n)
+    \end{equation*}
+
+\end{prop}
+
+\begin{prop}
+    For all $R$-modules $M,N,P$, there is an isomorphism of $R$-modules
+    \begin{equation*}
+        \text{Hom}_R(M,\text{Hom}(N,P))\cong\text{Hom}_R(M\otimes_RN,P)
+    \end{equation*}
+\end{prop}
+\begin{proof}
+    This says any bilinear map from $M\times N$ comes from $M\otimes_RN$.
+\end{proof}
+
+\begin{prop}
+    For all $R$-modules, $M_1,M_2, N$, we have 
+    \begin{equation*}
+        (M_1\oplus M_2)\otimes_RN\cong (M_1\otimes_RN)\oplus(M_2\otimes_RN)
+    \end{equation*}
+    The same statement is true for $\sum_\alpha M_\alpha\otimes N$. This also implies that 
+    \begin{equation*}
+        R^{\oplus n}\otimes_R R^{\oplus m}\cong R^{\oplus nm}
+    \end{equation*}
+\end{prop}
+
+
+\begin{prop}
+    Let $M,N$ be free $R$-modules of rank $m,n$, then $M\otimes_R N$ has rank $mn$.
+   ( Let $e_1,\dots, e_m$ generate $M$, $v_1,\dots, v_n$ generate $N$, where $M,N$ are free $R$-modules, then $M\otimes_RN$ is generated by $e_i\otimes v_j$, and these $mn$ elements are the basis for $M\otimes_RN$.)
+\end{prop}
+
+\begin{prop}
+    Let $N$ be an $R$-module, and $I$ be an ideal of $R$, then 
+    \begin{equation*}
+        \frac{R}{I}\otimes_RN\cong\frac{N}{IN}
+    \end{equation*}
+    ($R\otimes_RN\cong N$). Moreover, let $J\subset R$ also be an ideal, then 
+    \begin{equation*}
+        \frac{R}{I}\otimes_R\frac{R}{J}\cong\frac{R}{I+J}
+    \end{equation*}
+\end{prop}
+
+
+\begin{warn}
+    The next example is important.
+\end{warn}
+
+\begin{example}
+    We have 
+    \begin{equation*}
+        \frac{\Z}{m\Z}\otimes_\Z\frac{\Z}{n\Z}\cong\frac{\Z}{\gcd(m,n)}
+    \end{equation*}
+    (Recall that $(m)+(n)=\gcd(m,n)$ in $\Z$, and $(m)\cap(n)=(\text{lcm}(m,n)))$. For example, 
+    \begin{equation*}
+        \frac{\Z}{2\Z}\otimes_\Z\frac{\Z}{3\Z}=0
+    \end{equation*}
+    So if $\gcd(m,n)=0$, then 
+    \begin{equation*}
+        \frac{\Z}{m\Z}\otimes_\Z\frac{\Z}{n\Z}=0
+    \end{equation*}
+\end{example}
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2245,8 +2688,12 @@ each extension (reversely) corresponds to a subgroup that fixes that extension i
 
 
 
-\chapter{Linear Algebra II}
-This corresponds to Aluffi Chapter VIII.
+
+
+
+
+
+
 
 \chapter{Field Theory-Hilbert's Nullstellensatz}
 This corresponds to Aluffi Chapter VII 2.2-2.3.
