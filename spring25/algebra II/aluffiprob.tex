@@ -32,6 +32,11 @@
 \newcommand{\ach}{\text{Ach}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\gal}{\text{Gal}}
+\newcommand{\Sym}{\text{Sym}} % For symmetric products
+\newcommand{\tensor}{\otimes} % For tensor products
+\newcommand{\lambdaprod}{\wedge} % For wedge products
+\newcommand{\T}{\text{T}} % For tensor algebra
+\newcommand{\Ssq}{\text{S}}
 
 
 \input{hui.tex}
@@ -2154,6 +2159,7 @@ is a basis of \( V \).
     \begin{equation*}
         m_\alpha(t)=f_m(t)
     \end{equation*}
+    but the minimal and characteristic polynomials are the same over $k$ and $\bar{k}$, so no need for the assumption that $k$ is algebraically closed, so we are done.
 \end{proof}
 
 
@@ -2254,7 +2260,201 @@ Find a linear transformation of $\R^2$ that does not preserve a complete flag.
 \chapter{Fields}
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \chapter{Linear Algebra II}
+
+
+
+\section{Tensor and Hom}
+\begin{prop}
+    Let $S$ be a multiplicative set of $R$, and $M$ is an $R$-module, then 
+    \begin{equation*}
+        S^{-1}M\cong M\otimes_R S^{-1}R
+    \end{equation*}
+    as $R$-modules.
+\end{prop}
+
+\begin{prob}[2.7]
+    Changing the base ring in a tensor may or may not make a difference:
+    
+    \begin{enumerate}
+        \item Prove that \( \mathbb{Q} \otimes_{\mathbb{Z}} \mathbb{Q} \cong \mathbb{Q} \otimes_{\mathbb{Q}} \mathbb{Q} \).
+        \item Prove that \( \mathbb{C} \otimes_{\mathbb{R}} \mathbb{C} \cong \mathbb{C} \otimes_{\mathbb{C}} \mathbb{C} \).
+    \end{enumerate}
+    \end{prob}
+\begin{proof}
+    Viewing them as vector spaces, both are isomorphic to $\Q$; $\C\otimes_\R\C$ has dimension $4$, whereas $\C\otimes_\C\C\cong\C$ has dimension $1$.
+\end{proof}
+    
+    \begin{prop}[2.8]
+    Let \( R \) be an integral domain, with field of fractions \( K \), and let \( M \) be a finitely generated \( R \)-module. The tensor product \( V := M \otimes_R K \) is a \( K \)-vector space. Then \(\dim_K V\) equals the rank of \( M \) as an \( R \)-module (recall that rank refers to the max number of linearly  independent elements for $R$ integral domain).
+    \end{prop}
+
+
+    
+    \begin{prob}[2.9]
+    Let \( G \) be a finitely generated abelian group of rank \( r \).
+    
+    \begin{itemize}
+        \item Prove that \( G \otimes_{\mathbb{Z}} \mathbb{Q} \cong \mathbb{Q}^r \).
+        \item Prove that for infinitely many primes \( p \), \( G \otimes_{\mathbb{Z}} (\mathbb{Z}/p\mathbb{Z}) \cong (\mathbb{Z}/p\mathbb{Z})^r \).
+    \end{itemize}
+    \end{prob}
+\begin{proof}
+    We know that 
+    \begin{equation*}
+        G\cong\Z^r\oplus\left(\bigoplus_{i,j}\frac{\Z}{p_i^{r_{ij}}\Z}\right)
+    \end{equation*}
+    We see that 
+    \begin{equation*}
+        \Z^r\otimes_\Z\Q\cong\Q^r
+    \end{equation*}
+    whereas 
+    \begin{equation*}
+        \Q\otimes_\Z\frac{\Z}{p\Z}=0
+    \end{equation*}
+    for any $p$:
+    \begin{equation*}
+        \frac{a}{b}\otimes 1=\frac{a}{pb}\otimes p=0
+    \end{equation*}
+    2. We know 
+    \begin{equation*}
+        \Z^r\otimes_\Z(\Z/p\Z)\cong(\Z/p\Z)^r
+    \end{equation*}
+    And for primes that are not $p_i$ in the decomposition, we have 
+    \begin{equation*}
+        \frac{\Z}{p\Z}\otimes_\Z\frac{\Z}{p_i\Z}=\frac{\Z}{\gcd(p,p_i)}=0
+    \end{equation*}
+\end{proof}
+
+    
+    \begin{prob}[2.10]
+    Let \( k \subseteq k(\alpha) = F \) be a finite simple field extension. Note that \( F \otimes_k F \) has a natural ring structure; cf. Exercise 2.4.
+    
+    \begin{itemize}
+        \item Prove that \( \alpha \) is separable over \( k \) if and only if \( F \otimes_k F \) is reduced as a ring.
+        \item Prove that \( k \subseteq F \) is Galois if and only if \( F \otimes_k F \) is isomorphic to \( F^{[F:k]} \) as a ring.
+    \end{itemize}
+    \end{prob}
+\begin{proof}
+    If $\alpha$ is separable, then 
+    \begin{equation*}
+        F\otimes_kF\cong \frac{F[x]}{(f(x))}\otimes_kF\cong F^{[k:n]}
+    \end{equation*}
+    thus reduced.
+    Conversely, if $\alpha$ is not separable, then it has a repeated root in its splitting field, suppose for example $f(x)=(x-r)^2$, then 
+    \begin{equation*}
+        F\otimes_kF\cong\frac{F[x]}{(f(x))}\otimes_kF
+    \end{equation*}
+    then $(x-r)$ would be a nilpotent.
+\end{proof}
+
+
+
+\section{Symmetric and Wedge Products}
+\begin{prob}[4.3]
+    Let \( I \) be the ideal \((x, y)\) in \( k[x, y] \); so every element of \( I \) may be written (not uniquely) in the form \( fx + gy \) for some polynomials \( f, g \in k[x, y] \). Define a function \(\varphi : I \times I \to k\) by prescribing
+    \[
+    \varphi(f_1 x + g_1 y, f_2 x + g_2 y) := f_1(0, 0)g_2(0, 0) - f_2(0, 0)g_1(0, 0).
+    \]
+    \begin{enumerate}
+        \item Prove that \(\varphi\) is well-defined.
+        \item Prove that \(\varphi\) is \(k[x, y]\)-bilinear and alternating.
+        \item Prove that \(I \lambdaprod_{k[x, y]} I \neq 0\).
+    \end{enumerate}
+    \textit{Note}: \(I\) has rank 1 as a \(k[x, y]\)-module; if it were free, its wedge with itself would vanish.
+    \end{prob}
+    
+    \begin{prob}[4.4]
+    Let \(F_1\) and \(F_2\) be free \(R\)-modules of finite rank.
+    \begin{enumerate}
+        \item Construct a meaningful isomorphism \(\det(F_1) \tensor \det(F_2) \cong \det(F_1 \oplus F_2)\).
+        \item More generally, prove that
+        \[
+        \lambdaprod^r_R(F_1 \oplus F_2) \cong \bigoplus_{i+j=r} (\lambdaprod^i_R F_1) \tensor_R (\lambdaprod^j_R F_2).
+        \]
+    \end{enumerate}
+    \end{prob}
+    
+    
+    
+    \begin{prob}[4.6]
+    Let \(V\) be a vector space, and let \(v_1, \ldots, v_\ell \in V\). Prove that \(v_1, \ldots, v_\ell\) are linearly independent if and only if \(v_1 \lambdaprod \cdots \lambdaprod v_\ell \neq 0\).
+    \end{prob}
+
+    
+    \begin{prob}[4.7]
+    Let \(V\) be a \(k\)-vector space, and let \(\{v_1, \ldots, v_\ell\}, \{w_1, \ldots, w_\ell\}\) be two sets of linearly independent vectors in \(V\). Prove that they span the same subspace of \(V\) if and only if \(v_1 \lambdaprod \cdots \lambdaprod v_\ell\) and \(w_1 \lambdaprod \cdots \lambdaprod w_\ell\) are nonzero multiples of each other in \(\lambdaprod^k_k(V)\). 
+    
+    \textit{Hint}: For the interesting direction, if \(\langle v_1, \ldots, v_\ell \rangle \neq \langle w_1, \ldots, w_\ell \rangle\), there must be a vector \(u\) belonging to the first subspace but not to the second. Analyze \((v_1 \lambdaprod \cdots \lambdaprod v_\ell) \lambdaprod u\) and \((w_1 \lambdaprod \cdots \lambdaprod w_\ell) \lambdaprod u\) in \(\lambdaprod^k_k(V)\). 
+    \end{prob}
+    
+    \begin{prob}[4.9]
+    Assume 2 is a unit in \( R \), and let \( F \) be a free \( R \)-module of finite rank.
+    \begin{enumerate}
+        \item Define a function \( \lambda : \lambdaprod^2_R(F) \rightarrow \T^2_R(F) \) on a basis \( e_i \lambdaprod e_j, \, i < j \), by setting \( \lambda(e_i \lambdaprod e_j) = \frac{1}{2}(e_i \tensor e_j - e_j \tensor e_i) \) and extending by linearity. Prove that:
+        \begin{itemize}
+            \item \( \lambda \) is an injective homomorphism of \( R \)-modules,
+            \item \( \lambda(f_1 \lambdaprod f_2) = \frac{1}{2}(f_1 \tensor f_2 - f_2 \tensor f_1) \) for all \( f_1, f_2 \in F \).
+        \end{itemize}
+        
+        \item Define a function \( \sigma : \Ssq^2_R(F) \rightarrow \T^2_R(F) \) on a basis \( e_i \tensor e_j, \, i \leq j \), by setting \( \sigma(e_i \tensor e_j) = \frac{1}{2}(e_i \tensor e_j + e_j \tensor e_i) \) and extending by linearity. Prove that:
+        \begin{itemize}
+            \item \( \sigma \) is an injective homomorphism of \( R \)-modules,
+            \item \( \sigma(f_1 \tensor f_2) = \frac{1}{2}(f_1 \tensor f_2 + f_2 \tensor f_1) \) for all \( f_1, f_2 \in F \).
+        \end{itemize}
+        
+        \item Prove that:
+        \begin{itemize}
+            \item \( \lambda \) identifies \( \lambdaprod^2_R(F) \) with the kernel of the map \( \T^2_R(F) \rightarrow \Ssq^2_R(F) \),
+            \item \( \sigma \) identifies \( \Ssq^2_R(F) \) with the kernel of the map \( \T^2_R(F) \rightarrow \lambdaprod^2_R(F) \).
+        \end{itemize}
+    \end{enumerate}
+    \textit{Conclusion}: There is a meaningful isomorphism \( F \tensor_R F \cong \lambdaprod^2_R(F) \oplus \Ssq^2_R(F) \).
+    \end{prob}
+
 
 
 
