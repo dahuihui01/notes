@@ -836,6 +836,17 @@ A stronger statement is the following:
 \end{proof}
 
 
+\begin{warn}
+    Next one is important.
+\end{warn}
+
+
+\begin{prop}
+    Let $G$ be a finite group of order $n$, then $G$ can be embedded into $S_n$.
+\end{prop}
+\begin{proof}
+    $G$ acts on itself by left multiplication.
+\end{proof}
 
 
 
@@ -2374,11 +2385,14 @@ where $e_i^{k_i}$ denotes the symmetric product $e_i\dots e_i$ ($k_i$ times). Th
 \end{prop}
 
 \begin{prop}
-    Let $V$ have dimension $n$ with basis $\{e_1,\dots, e_n\}$, then $\text{Sym}^n(V)$ is spanned by basis:
+    Let $V$ have dimension $n$ with basis $\{e_1,\dots, e_n\}$, then $\text{Sym}^k(V)$ is spanned by basis:
     \begin{equation*}
-        \left\{ e_{i_1}\dots e_{i_l}, 1\leq i_1\leq\dots\leq i_{k}\leq n\right\}
+        \left\{ e_{i_1}\dots e_{i_k}, 1\leq i_1\leq\dots\leq i_{k}\leq n\right\}
     \end{equation*}
-    (It contains the equality case compared to the wedge product).
+    (It contains the equality case compared to the wedge product). Moreover, the dimension of $\text{Sym}^kV$ is 
+    \begin{equation*}
+        \binom{n+k-1}{k}
+    \end{equation*}
 \end{prop}
 \begin{example}
     $\Sym^2(V)$ for $\dim V = 2$

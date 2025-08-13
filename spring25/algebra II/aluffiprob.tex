@@ -2130,14 +2130,32 @@ is a basis of \( V \).
     \begin{equation*}
         f(t)(v)=b_n\alpha^n(v)+\dots+b_0v
     \end{equation*} 
+    (And $\alpha$ has an action on the $k[t]$-module by multiplication by $t$).
     The RHS has basis $\{1,t,\dots, t^{n-1}\}$,  and we are given a isomorphism $\varphi: \frac{k[t]}{(f(t))}\to V$ as  $\varphi: t\mapsto\alpha(\varphi(1))$, hence we see 
     \begin{equation*}
         \{\varphi(1),\alpha(\varphi(1)),\dots, \alpha^{n-1}(\varphi(1))\}
     \end{equation*}
-    is a basis of $V$. 
+    is a basis of $V$. Note that for example, as $k[t]$-modules, we have
+    \begin{equation*}
+        \varphi(t)=t\varphi(1)=\alpha(\varphi(1))
+    \end{equation*}
+    because $\alpha$ acts by multiplication by $t$.
+
+    Conversely, suppose that $\{v,\alpha(v),\alpha^{n-1}(v)\}$ is a basis for $V$, then there exists a surjective map $\psi: k[t]\to V$ given by 
+    \begin{equation*}
+        \psi(1)=v
+    \end{equation*}
+    because 
+    \begin{equation*}
+        \psi(t^k)=t^k\varphi(1)=\alpha^{k}(v)
+    \end{equation*}
+    Hence 
+    \begin{equation*}
+        V\cong\frac{k[t]}{(f(t))}
+    \end{equation*}
+    for irreducible $(f(t))$ because $k[t]$ is a PID. This shows that characteristic polynomial and minimal polynomial coincide.
 \end{proof}
 
-\textcolor{red}{here}
 
 
 
@@ -2422,22 +2440,50 @@ Find a linear transformation of $\R^2$ that does not preserve a complete flag.
         \begin{equation*}
             \det(F_1)\otimes_R\det(F_2)\cong R\otimes_R\cong R\cong\det(F_1\oplus F_2)
         \end{equation*}
-        therefore they are isomorphic. 
+        therefore they are isomorphic. Let $F_1,F_2$ have rank $n,k$. 
+        \begin{equation*}
+            \det(F_1)=\text{Span}(v_1\wedge\dots\wedge v_n), \quad \det(F_2)=\text{Span}(w_1\wedge\dots\wedge w_k)
+        \end{equation*}
+        whereas 
+        \begin{equation*}
+            \det(F_1\oplus F_2)=\text{Span}(e_1\wedge\dots\wedge e_{n+k})
+        \end{equation*}
+        after reindexing the basis. Thus the isomorphism is 
+        \begin{equation*}
+            \varphi: (v_1\wedge\dots\wedge v_n)\otimes w_1\wedge\dots\wedge w_k\mapsto e_1\wedge\dots\wedge e_{n+k}
+        \end{equation*}
+        2. By dimension argument, or equivalently construct an isomorphism: 
+        \[
+\phi\left( (x_1 \wedge \cdots \wedge x_i) \otimes (y_1 \wedge \cdots \wedge y_j) \right) = (x_1, 0) \wedge \cdots \wedge (x_i, 0) \wedge (0, y_1) \wedge \cdots \wedge (0, y_j).
+\]
     \end{proof}
 
     
     
     
     \begin{prob}[4.6]
-    Let \(V\) be a vector space, and let \(v_1, \ldots, v_\ell \in V\). Prove that \(v_1, \ldots, v_\ell\) are linearly independent if and only if \(v_1 \lambdaprod \cdots \lambdaprod v_\ell \neq 0\).
+    Let \(V\) be a vector space, and let \(v_1, \ldots, v_k \in V\). Prove that \(v_1, \ldots, v_k\) are linearly independent if and only if \(v_1 \lambdaprod \cdots \lambdaprod v_k\neq 0\).
     \end{prob}
+    \begin{proof}
+        We want to show linear dependence iff $v_1\wedge\dots\wedge v_k=0$. Suppose they are linear independent, then there exists $a_i$ not all $=0$ such that $\sum_ia_iv_i=0$. Suppose WLOG $a_1\neq 0$, then
+        \begin{equation*}
+            0=\left(\sum_ia_iv_i\right)\wedge v_2\wedge\dots\wedge v_k=a_1 (v_1\wedge\dots\wedge v_k)
+        \end{equation*}
+        which implies $v_1\wedge\dots\wedge v_k=0$. Conversely, given $v_1\wedge\dots\wedge v_k=0$, suppose instead that $v_1,\dots, v_k$ are linearly independent, then they can be completed to a basis, which is a contradiction.
+    \end{proof}
+
 
     
     \begin{prob}[4.7]
-    Let \(V\) be a \(k\)-vector space, and let \(\{v_1, \ldots, v_\ell\}, \{w_1, \ldots, w_\ell\}\) be two sets of linearly independent vectors in \(V\). Prove that they span the same subspace of \(V\) if and only if \(v_1 \lambdaprod \cdots \lambdaprod v_\ell\) and \(w_1 \lambdaprod \cdots \lambdaprod w_\ell\) are nonzero multiples of each other in \(\lambdaprod^k_k(V)\). 
+    Let \(V\) be a \(k\)-vector space, and let \(\{v_1, \ldots, v_\ell\}, \{w_1, \ldots, w_\ell\}\) be two sets of linearly independent vectors in \(V\). Prove that they span the same subspace of \(V\) if and only if \(v_1 \lambdaprod \cdots \lambdaprod v_\ell\) and \(w_1 \lambdaprod \cdots \lambdaprod w_\ell\) are nonzero multiples of each other in \(\lambdaprod^\ell_k(V)\). 
     
     \textit{Hint}: For the interesting direction, if \(\langle v_1, \ldots, v_\ell \rangle \neq \langle w_1, \ldots, w_\ell \rangle\), there must be a vector \(u\) belonging to the first subspace but not to the second. Analyze \((v_1 \lambdaprod \cdots \lambdaprod v_\ell) \lambdaprod u\) and \((w_1 \lambdaprod \cdots \lambdaprod w_\ell) \lambdaprod u\) in \(\lambdaprod^k_k(V)\). 
     \end{prob}
+    \begin{proof}
+        If they span the same subspace $W$, then $\dim W=l$, i.e., $\wedge^l(V)\cong k$ is one-dimensional, and by the previous problem, $v_1\wedge\dots\wedge v_l, w_1\wedge\dots\wedge w_\ell\neq 0$, thus they are nonzero multiples of each other. Conversely, suppose they don't span the same subspace, then there exists $u$ in the first subspace but not the second: $u$ is linearly dependent with $v_1,\dots, v_l$ but linearly independent with $w_1,\dots, w_l$, then by the previous problem, wedging them gives $0$ and nonzero.
+    \end{proof}
+
+
     
     \begin{prob}[4.9]
     Assume 2 is a unit in \( R \), and let \( F \) be a free \( R \)-module of finite rank.
@@ -2460,9 +2506,72 @@ Find a linear transformation of $\R^2$ that does not preserve a complete flag.
             \item \( \sigma \) identifies \( \Ssq^2_R(F) \) with the kernel of the map \( \T^2_R(F) \rightarrow \lambdaprod^2_R(F) \).
         \end{itemize}
     \end{enumerate}
-    \textit{Conclusion}: There is a meaningful isomorphism \( F \tensor_R F \cong \lambdaprod^2_R(F) \oplus \Ssq^2_R(F) \).
+    \textit{Conclusion}: There is a meaningful isomorphism \( F \tensor F \cong \lambdaprod^2_R(F) \oplus \Ssq^2_R(F) \).
     \end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item Suppose $\lambda\left(\sum_{i,j}a_{ij}e_i\wedge e_j\right)=0$, then 
+        \begin{equation*}
+            \frac{1}{2}\sum_{i,j}a_{ij}\left(e_i\otimes e_j-e_j\otimes e_i\right)=0
+        \end{equation*}
+        but $e_i\otimes e_j$ is linearly independent in $T^2(F)$, hence $a_{ij}=0$ for all $i,j$.
+        \item Same with $\lambda$.
+    \end{enumerate}
+\end{proof}
 
+\begin{prob}[4.14]
+    Let $F$ be a free $R$-module of rank $r$. Prove that $\text{Sym}^2(F)$ is free and compute its rank.
+\end{prob}
+\begin{proof}
+    An $R$-module is free iff it admits a basis. The basis is given by 
+    \begin{equation*}
+        \{e_ie_j: 1\leq i\leq j\leq r\}
+    \end{equation*}
+    Hence its rank is $\frac{n(n+1)}{2}$.
+\end{proof}
+
+
+
+\begin{prob}[4.15]
+        Let \( F_1, \, F_2 \) be free \( R \)-modules of finite rank. Prove that \( S_R^*(F_1 \oplus F_2) \cong S_R^*(F_1) \otimes_R S_R^*(F_2) \).
+\end{prob}
+\begin{proof}
+    Recall that 
+    \begin{equation*}
+        S^*(F)=\sum_{k=0}^\infty S^k(F)
+    \end{equation*}
+    We will construct an isomorphism using basis for both sides. Let $\{e_i\}_{i=1}^n, \{f_j\}_{j=1}^k$ be bases of $F_1,F_2$, then $S^*(F_1)\otimes S_R^*(F_2)$ is spanned by the monomials:
+    \begin{equation*}
+        e_1^{a_1}\dots e_n^{a_n}\otimes f_1^{b_1}\dots f_k^{b_k}
+    \end{equation*}
+    where $a_i,b_j\geq 0$. One can construct map:
+    \begin{equation*}
+        \left(e_1^{a_1}\dots e_n^{a_n}\otimes f_1^{b_1}\dots f_k^{b_k}\right)\mapsto (e_1,0)^{a_1}\dots(e_n,0)^{a_n}(0,f_1)^{b_1}\dots(0,f_k)^{b_k}
+    \end{equation*}
+    since it is clear that 
+    \begin{equation*}
+        \left\{(e_i,0)^{a_i}, (0,f_j)^{b_j}: 1\leq i\leq n, 1\leq j\leq k\right\}
+    \end{equation*}
+    forms a basis of $S^*(F_1\oplus F_2)$.
+\end{proof}
+        
+
+        
+\begin{prob}[4.17]
+        Let \( V \) be a \( k \)-vector space of dimension \( r \). Prove that, as a vector space, the exterior algebra \( \Lambda^*(V) \) has dimension \( 2^r \).
+\end{prob}
+\begin{proof}
+    Note that $\bigwedge^0=k, \bigwedge^1V=V$, and 
+    \begin{equation*}
+        \Lambda^*(V)=\bigoplus_{k=0}^r\Lambda^k(V)
+    \end{equation*}
+    hence
+    \begin{align*}
+        \dim\Lambda^*(V)&=\sum_{k=0}^r\binom{r}{k}\\
+        &=(1+1)^r\\
+        &=2^r
+    \end{align*}
+\end{proof}
 
 
 
