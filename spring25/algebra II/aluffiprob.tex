@@ -1899,6 +1899,22 @@ Prove that \( r \) is in the Jacobson radical if and only if \( 1 + rs \) is inv
 
 
 
+\begin{prop}
+    The polynomial $x^4+x+1$ is irreducible over $\Q$.
+\end{prop}
+\begin{proof}
+    It is primitive, hence it is irreducible if there exists prime $p$ such that $f\mod p$ is irreducible over $\F_p$. Let $p=2$. 
+    \begin{enumerate}
+        \item $f\mod 2$ has no linear factors: $0,1$ are not roots of this polynomial.
+        \item $f$ has no quadratic factors: there is only one irreducible quadratic polynomial over $\F_2$: $x^2+x+1$. However, $f(x)\neq (x^2+x+1)^2$.
+    \end{enumerate}
+    Thus we see $f$ is irreducible.
+\end{proof}
+
+
+
+
+
 
 
 
