@@ -37,6 +37,7 @@
 \newcommand{\lambdaprod}{\wedge} % For wedge products
 \newcommand{\T}{\text{T}} % For tensor algebra
 \newcommand{\Ssq}{\text{S}}
+\newcommand{\om}{\omega}
 
 
 \input{hui.tex}
@@ -2280,8 +2281,406 @@ Find a linear transformation of $\R^2$ that does not preserve a complete flag.
 
 
 
+\section{}
 
 
+\begin{prob}
+    Fix an ideal $I$, show that 
+    \begin{equation*}
+        \text{rad}(I)=\bigcap_{\mathfrak{p}\supset I}\mathfrak{p}
+    \end{equation*}
+    where the RHS ranges over all prime ideals $\mathfrak{p}$ containing $I$. This shows that the nilradical is the intersection of all prime ideals.
+\end{prob}
+\textcolor{red}{here}
+
+
+
+% \begin{prob}
+% Prove that if \( k \subseteq K \) is a field extension, then \(\text{char}\, k = \text{char}\, K\). Prove that the category \(\text{Fld}\) has no initial object.
+% \end{prob}
+
+
+\begin{prop}
+    If \( k \subseteq E \) is a field extension, then \(\text{char}\, k = \text{char}\, E\).
+\end{prop}
+
+\begin{prop}
+    For simple extension $k\subset k(\alpha)$:
+    \begin{enumerate}
+        \item If $\alpha$ is algebraic, then every element in $k(\alpha)$ can be written as a polynomial in $\alpha$.
+        \item If $\alpha$ is transcendental, then every element in $k(\alpha)$ can be written as a rational function in $\alpha$.
+    \end{enumerate}
+\end{prop}
+
+
+\begin{prob}
+    Let $\varphi: k(t)\to k(\alpha)$, such that 
+    \begin{equation*}
+        \varphi: t\mapsto \alpha
+    \end{equation*}
+    Why is this map not in general surjective?
+\end{prob}
+\begin{proof}
+    Suppose that $\alpha$ is algebraic, then $k(\alpha)$ is finite-dimensional, and $\varphi$ is a field homomorphism, so if nontrivial then is injective. This is a contradiciton.
+\end{proof}
+
+
+\begin{prob}
+Let \( k \subseteq k(\alpha) \) be a simple extension, with \(\alpha\) transcendental over \(k\). Let \( E \) be a subfield of \( k(\alpha) \) properly containing \(k\). Prove that \( k(\alpha) \) is a finite extension of \(E\).
+\end{prob}
+\begin{proof}
+    Since every element in $k(\alpha)$ is a rational function in $\alpha$, then $E$ contains at least some element 
+    \begin{equation*}
+        \frac{p(\alpha)}{q(\alpha)}\in E
+    \end{equation*}
+    It suffices to show that $\alpha$ is algebraic over $E$, indeed we can define 
+    \begin{equation*}
+        f(t)=\frac{p(\alpha)}{q(\alpha)}q(t)-p(t)
+    \end{equation*}
+    We see that $f(\alpha)=0$. Hence $[k(\alpha):E]\leq\deg(f)$, we are done.
+\end{proof}
+
+
+\begin{prob}
+    Show the following:
+\begin{enumerate}
+    \item Prove that there is exactly one subfield of \(\mathbb{R}\) isomorphic to \(\mathbb{Q}[t]/(t^2 - 2)\).
+    \item Prove that there are exactly three subfields of \(\mathbb{C}\) isomorphic to \(\mathbb{Q}[t]/(t^3 - 2)\).
+\end{enumerate}
+% From a ''topological'' point of view, one of these copies of \(\mathbb{Q}[t]/(t^3 - 2)\) looks very different from the other two: it is not dense in \(\mathbb{C}\), but the others are.
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item We have $\Q(\sqrt{2})=\Q(-\sqrt{2})$.
+        \item Let $\om_3$ denote the $3$rd root of unity, then the three subfields are 
+        \begin{equation*}
+            \Q(\sqrt[3]{2}), \Q(\om_3\sqrt[3]{2}), \Q(\om_3^2\sqrt[3]{2})
+        \end{equation*}
+        We show that they are not contained in one another: suppose 
+        \begin{equation*}
+            \om_3\sqrt[3]{2}\in\Q(\om_3^2\sqrt[3]{2})
+        \end{equation*}
+        Then 
+        \begin{equation*}
+            \frac{\om_3\sqrt[3]{2}}{\om_3^2\sqrt[3]{2}}=\om_3^{-1}=\om_3^2\in\Q(\om_3^2\sqrt[3]{2})
+        \end{equation*}
+        but $\om_3^2$ has minimal polynomial 
+        \begin{equation*}
+            p(t)=t^2+t+1
+        \end{equation*}
+        over $\Q$, which means that 
+        \begin{equation*}
+            \Q\subset\Q(\om_3^2)\subset\Q(\om_3^2\sqrt[3]{2})
+        \end{equation*}
+        a degree $3$ extension contains a degree $2$ extension, which is impossible.
+    \end{enumerate}
+\end{proof}
+
+\begin{prob}
+Let \( k \subseteq F \) be a field extension, and let \( f(x) \in k[x] \) be a polynomial. Prove that \(\text{Aut}_k(F)\) acts on the set of roots of \( f(x) \) contained in \(F\). Provide examples showing that this action need not be transitive or faithful.
+\end{prob}
+\begin{proof}
+    Not transitive: $Q(\sqrt{2}, \sqrt{3})$, there is $\varphi$ that takes $\sqrt{2}$ to $\sqrt{3}$. Not faithful: consider $f(x)=x^2-2$ in this field extension, then $\sigma: \sqrt{3}\mapsto -\sqrt{3}$ fixes all roots of $f$, but $\sigma$ is not the identity.
+\end{proof}
+
+\begin{prop}
+Let \( k \subseteq F \) be a field extension, and let \(\alpha \in F\) be algebraic over \(k\). Let $p(x)$ be the minimal polynomial of $\alpha$, then $f(\alpha)=0$ iff $p(x) \mid f(x)$. 
+% \begin{itemize}
+%     \item Suppose \( p(x) \in k[x] \) is an irreducible monic polynomial such that \( p(\alpha) = 0 \); prove that \( p(x) \) is the minimal polynomial of \(\alpha\) over \(k\), in the sense of Proposition I.3.
+%     \item Let \( f(x) \in k[x] \). Prove that \( f(\alpha) = 0 \) if and only if \( p(x) \mid f(x) \).
+%     \item Show that the minimal polynomial of \(\alpha\) is the minimal polynomial of a certain \(k\)-linear transformation of \(F\), in the sense of Definition VI.6.12.
+% \end{itemize}
+\end{prop}
+
+\begin{prob}
+Let \( f(x) \in k[x] \) be a polynomial over a field \( k \) of degree \( d \), and let \(\alpha_1, \ldots, \alpha_d\) be the roots of \( f(x) \) in an extension of \( k \) where the polynomial factors completely. For a subset \( I \subseteq \{1, \ldots, d\} \), denote by \(\alpha_I\) the sum \(\sum_{i \in I} \alpha_i\). Assume that \(\alpha_I \in k\) only for \( I = \emptyset \) and \( I = \{1, \ldots, d\} \). Prove that \( f(x) \) is irreducible over \( k \).
+\end{prob}
+\begin{proof}
+    Suppose that $f(x)=g(x)h(x)$, then let $\alpha_I=\sum_{i=1}^na_i$, where the sum is over the roots of $g$. We claim that $\alpha_I\in k$: 
+    \begin{equation*}
+        g(x)=(x-\alpha_1)\dots(x-\alpha_n)
+    \end{equation*} 
+    then the coefficient of $x^{n-1}$ is exactly $(-1)^n\alpha_I$, which is in $k$.
+\end{proof}
+
+\begin{prop}
+Let \( k \) be a finite field. Prove that the order \(|k|\) is a power of a prime integer. (Any finite field has characteristic of some prime $p$, then it is a vector space over $\F_p$).
+\end{prop}
+
+
+\begin{prop}
+Let \( k \) be a field.Then the ring of square \( n \times n \) matrices \(\mathcal{M}_n(k)\) contains an isomorphic copy of every extension of \( k \) of degree \(\leq n\). Proof: if \( k \subseteq F \) is an extension of degree \( n \) and \(\alpha \in F\), then `multiplication by \(\alpha\)` is a \(k\)-linear transformation of \(F\).
+\end{prop}
+\begin{proof}
+    Note that this determines a \text{injective ring map} $\varphi: F\to\text{End}_kF$, 
+    \begin{equation*}
+        \varphi:\alpha\mapsto M_\alpha
+    \end{equation*}
+\end{proof}
+
+\begin{prob}
+Let \( k \subseteq F \) be a finite field extension, and let \( p(x) \) be the characteristic polynomial of the \(k\)-linear transformation of \(F\) given by multiplication by \(\alpha\). Prove that \( p(\alpha) = 0 \).
+\end{prob}
+\begin{proof}
+    We have $p(M_\alpha)=0$ by Cayley-Hamilton, because the above map is injective, we know 
+    \begin{equation*}
+        p(\alpha)=0
+    \end{equation*}
+\end{proof}
+
+
+\begin{prob}
+Let \( k \subseteq F \) be a finite field extension, and let \( \alpha \in F \). The norm of \( \alpha \), \( N_{k \subseteq F}(\alpha) \), is the determinant of the linear transformation of \( F \) given by multiplication by \( \alpha \). Prove that the norm is multiplicative: for \( \alpha, \beta \in F \),
+\[ N_{k \subseteq F}(\alpha \beta) = N_{k \subseteq F}(\alpha) N_{k \subseteq F}(\beta). \]
+Compute the norm of a complex number viewed as an element of the extension \( \mathbb{R} \subseteq \mathbb{C} \). Do the same for elements of an extension \( \mathbb{Q}(\sqrt{d}) \) of \( \mathbb{Q} \), where \( d \) is an integer that is not a square.
+\end{prob}
+\begin{proof}
+    It's just saying that 
+    \begin{equation*}
+        \det(M_{\alpha\beta})=\det(M_\alpha)\det(M_\beta)
+    \end{equation*}
+    and you check this by hand.
+\end{proof}
+
+\begin{prob}
+Define the trace \( \operatorname{tr}_{k \subseteq F}(\alpha) \) of an element \( \alpha \) of a finite extension \( F \) of a field \( k \) analogously to the norm. Prove that the trace is additive:
+\[ \operatorname{tr}_{k \subseteq F}(\alpha + \beta) = \operatorname{tr}_{k \subseteq F}(\alpha) + \operatorname{tr}_{k \subseteq F}(\beta) \]
+for \( \alpha, \beta \in F \). Compute the trace of an element of an extension \( \mathbb{Q} \subseteq \mathbb{Q}(\sqrt{d}) \), for \( d \) an integer that is not a square.
+\end{prob}
+\begin{proof}
+    This is just to say trace is additive as a ring map.
+\end{proof}
+
+\begin{prob}
+Let \( k \subseteq k(\alpha) \) be a simple algebraic extension, and let \( x^d + a_{d-1}x^{d-1} + \cdots + a_0 \) be the minimal polynomial of \( \alpha \) over \( k \). Prove that
+\[ \operatorname{tr}_{k \subseteq k(\alpha)}(\alpha) = -a_{d-1} \quad \text{and} \quad N_{k \subseteq k(\alpha)}(\alpha) = (-1)^d a_0. \]
+\end{prob}
+\begin{proof}
+    Write the basis as $\{1,\alpha,\dots, \alpha^{n-1}\}$.
+\end{proof}
+
+\begin{prob}
+Let \( k \subseteq F \) be a finite extension, and let \( \alpha \in F \). Assume \([F : k(\alpha)] = r\). Prove that
+\[ \operatorname{tr}_{k \subseteq F}(\alpha) = r \operatorname{tr}_{k \subseteq k(\alpha)}(\alpha) \quad \text{and} \quad N_{k \subseteq F}(\alpha) = N_{k \subseteq k(\alpha)}(\alpha)^r. \]
+(Hint: If \( f_1, \ldots, f_r \) is a basis of \( F \) over \( k(\alpha) \) and \( \alpha \) has degree \( d \) over \( k \), then \( (f_i \alpha^j)_{i=1,\ldots,r} \) is a basis of \( F \) over \( k \). The matrix corresponding to multiplication by \( \alpha \) with respect to this basis consists of \( r \) identical square blocks.)
+\end{prob}
+
+
+
+\begin{prob}
+Let \( k \subseteq L \subseteq F \) be fields, and let \( \alpha \in F \). If \( k \subseteq k(\alpha) \) is a finite extension, then \( L \subseteq L(\alpha) \) is finite and \([L(\alpha) : L] \leq [k(\alpha) : k]\).
+\end{prob}
+\begin{proof}
+    Let $p_k$ be the minimal polynomial of $\alpha$ over $k$, then the minimal polynomial $p_L$ of $\alpha$ over $L$ is such that 
+    \begin{equation*}
+        p_L \mid p_k
+    \end{equation*}
+    because $p_k(\alpha)=0$. Thus $L(\alpha)/L$ has degree less than or equal to that of $k(\alpha)/k$.
+\end{proof}
+
+% \begin{prob}
+% Let \( k \subseteq F = k(\alpha_1, \ldots, \alpha_n) \) be a finitely generated extension. Prove that the evaluation map
+% \[ k[t_1, \ldots, t_n] \to F, \quad t_i \mapsto \alpha_i \]
+% is an epimorphism of rings (although it need not be onto).
+% \end{prob}
+
+\begin{prob}
+Let \( R \) be a ring sandwiched between a field \( k \) and an algebraic extension \( F \) of \( k \). Prove that \( R \) is a field. Is it necessary to assume that the extension is algebraic? 
+\end{prob}
+\begin{proof}
+    \begin{warn}
+        You should be comfortable with solving for $\alpha^{-1}$.
+    \end{warn}
+    It suffices to show that $R$ is closed under taking inverses. We have the minimal polynomial of $\alpha\in R$ as 
+    \begin{equation*}
+        p(t)=t^n+\dots +a_1t+a_0
+    \end{equation*}
+    Then solving for $\alpha^{-1}$: 
+    \begin{equation*}
+        \alpha(\alpha^{n-1}+\dots+a_1)=-a_0
+    \end{equation*}
+    Thus we see 
+    \begin{equation*}
+        \alpha^{-1}=-\frac{(\alpha^{n-1}+\dots+a_1)}{a_0}
+    \end{equation*}
+    Since $R$ is a ring containing $\alpha$, then $\alpha^{-1}$ is in $R$. The assumption is necessary: $\Q\subset\Q[x]\subset\Q(x)$.
+\end{proof}
+
+\begin{prop}
+Let \( k \subseteq F \) be a field extension of degree \( p \), a prime integer. Then there are no subrings of \( F \) properly containing \( k \) and properly contained in \( F \).
+\end{prop}
+\begin{proof}
+    By the previous problem.
+\end{proof}
+
+\begin{prob}
+Let \( p \) be a prime integer, and let \( \alpha = \sqrt[p]{2} \in \mathbb{R} \). Let \( g(x) \in \mathbb{Q}[x] \) be any non-constant polynomial of degree \( <p \). Prove that \( \alpha \) may be expressed as a polynomial in \( g(\alpha) \) with rational coefficients.  Note an analogous statement for \( \sqrt[4]{2} \) is false.
+\end{prob}
+\begin{proof}
+    Consider 
+    \begin{equation*}
+        \Q\subset\Q(g(\alpha))\subset Q(\alpha)
+    \end{equation*}
+    We must have $\Q(g(\alpha))=\Q(\alpha)$. 
+\end{proof}
+
+
+\begin{prob}
+Let \( k \subseteq F \) be a field extension, and let \( E \) be the intermediate field consisting of the elements of \( F \) which are algebraic over \( k \). For \( \alpha \in F \), prove that \( \alpha \) is algebraic over \( E \) if and only if \( \alpha \in E \). 
+\end{prob}
+\begin{proof}
+    \begin{warn}
+        This uses finitely generated extensions are finite iff algebraic!
+    \end{warn}
+    For forward direction, it suffices to show that $\alpha$ is algebraic over $k$, consider the minimal polynomial of $\alpha$ over $E$, 
+    \begin{equation*}
+        p(t)=t^n+\dots+a_1t+a_0\in E[t]
+    \end{equation*}
+    Then $\alpha$ is algebraic over $k(a_0,\dots, a_{n-1})$, which is finite over $k$ because each $a_i$ is in $E$, hence algebraic over $k$. Now 
+    \begin{equation*}
+        k(a_0,\dots, a_{n-1},\alpha)
+    \end{equation*}
+    is a finite extension, i.e., $\alpha$ is algebraic over $k$. 
+\end{proof}
+
+
+\begin{prob}
+Let \( k \subseteq F \) be a field extension, and let \( \alpha \in F \), \( \beta \in F \) be algebraic, of degree \( d \), \( e \), resp. Assume \( d \), \( e \) are relatively prime, and let \( p(x) \) be the minimal polynomial of \( \beta \) over \( k \). Prove \( p(x) \) is irreducible over \( k(\alpha) \).
+\end{prob}
+\begin{warn}
+    This is a qual question.
+\end{warn}
+\begin{proof}
+    It suffices to show that $k(\alpha,\beta)/k(\alpha)$ has degree $e$. We know that $[k(\alpha,\beta):k(\alpha)]\leq e$, moreover, 
+    \begin{equation*}
+        e \mid d\cdot [k(\alpha,\beta):k(\alpha)]
+    \end{equation*}
+    which implies that 
+    \begin{equation*}
+        e \mid [k(\alpha,\beta):k(\alpha)]
+    \end{equation*}
+    In other words, $[k(\alpha,\beta):k(\alpha)]=e$, and we are done.
+    \[\begin{tikzcd}
+        & {k(\alpha, \beta)} \\
+        {k(\alpha)} && {k(\beta)} \\
+        & k
+        \arrow["{\textcolor{red}{e}}", no head, from=2-1, to=1-2]
+        \arrow[no head, from=2-3, to=1-2]
+        \arrow["d"', no head, from=3-2, to=2-1]
+        \arrow["e", no head, from=3-2, to=2-3]
+    \end{tikzcd}\]
+\end{proof}
+
+
+\begin{prob}
+Express \( \sqrt{2} \) explicitly as a polynomial function in \( \sqrt{2} + \sqrt{3} \) with rational coefficients.
+\end{prob}
+\begin{proof}
+    Let $a=\sqrt{2} + \sqrt{3}$, find minimal polynomial, solve for $a^{-1}$: write $a^{-1}$ as a polynomial in $a$, then we see $2\sqrt{2}=a-a^{-1}$.
+\end{proof}
+
+\begin{prop}
+Let \( k \) be a field of characteristic \( \neq 2 \), and let \( a, b \in k \) be elements that are not squares in \( k \); prove that \( k(\sqrt{a}, \sqrt{b}) = k(\sqrt{a} + \sqrt{b}) \).
+\end{prop}
+
+\begin{prob}
+Let \( \xi := \sqrt{2 + \sqrt{2}} \).
+\begin{itemize}
+    \item Find the minimal polynomial of \( \xi \) over \( \mathbb{Q} \), and show that \( \mathbb{Q}(\xi) \) has degree 4 over \( \mathbb{Q} \).
+    \item Prove that \( \sqrt{2 - \sqrt{2}} \) is another root of the minimal polynomial of \( \xi \).
+    \item Prove that \( \sqrt{2 - \sqrt{2}} \in \mathbb{Q}(\xi) \). (Hint: \( (a + b)(a - b) = a^2 - b^2 \).)
+    \item By Proposition I.5, sending \( \xi \) to \( \sqrt{2 - \sqrt{2}} \) defines an automorphism of \( \mathbb{Q}(\xi) \) over \( \mathbb{Q} \). Find the matrix of this automorphism w.r.t. the basis \( 1, \xi, \xi^2, \xi^3 \).
+    \item Prove that \( \text{Aut}_{\mathbb{Q}}(\mathbb{Q}(\xi)) \) is cyclic of order 4.
+\end{itemize}
+\end{prob}
+\begin{proof}
+    This is a standard exercise, the matrix given in part 4 has order $4$, hence showing the automorphism group is cyclic of order $4$.
+\end{proof}
+
+
+
+
+% \begin{prob}
+% Let \( k \subseteq F \) be a field extension, let \( I \) be an indexing set, and let \( \{\alpha_i\}_{i \in I} \) be a choice of elements of \( F \). This choice determines a homomorphism \( \varphi \) of \( k \)-algebras from the polynomial ring \( k[I] \) on the set \( I \) to \( F \). We say that \( \{\alpha_i\}_{i \in I} \) is algebraically independent over \( k \) if \( \varphi \) is injective. For example, distinct elements \( \alpha_1, \ldots, \alpha_n \) of \( F \) are algebraically independent over \( k \) if there is no nonzero polynomial \( f(x_1, \ldots, x_n) \in k[x_1, \ldots, x_n] \) such that \( f(\alpha_1, \ldots, \alpha_n) = 0 \). Prove that \( \alpha_1, \ldots, \alpha_n \) are algebraically independent if and only if the assignment \( t_1 \mapsto \alpha_1, \ldots, t_n \mapsto \alpha_n \) defines a homomorphism of \( k \)-algebras (and hence an isomorphism) from the field of rational functions \( k(t_1, \ldots, t_n) \) to \( k(\alpha_1, \ldots, \alpha_n) \).
+% With notation and terminology as in Exercise 1.26, the indexed set \(\{\alpha_i\}_{i \in I}\) is a transcendence basis for \(F\) over \(k\) if it is a maximal algebraically independent set in \(F\).
+% \begin{itemize}
+%     \item Prove that \(\{\alpha_i\}_{i \in I}\) is a transcendence basis for \(F\) over \(k\) if and only if it is algebraically independent and \(F\) is algebraic over \(k(\{\alpha_i\}_{i \in I})\).
+%     \item Prove that transcendence bases exist. (Zorn)
+%     \item Prove that any two transcendence bases for \(F\) over \(k\) have the same cardinality. (Mimic the proof of Proposition VII.9. Don’t feel too bad if you prefer to deal only with the case of finite transcendence bases.)
+% \end{itemize}
+% The cardinality of a transcendence basis is called the transcendence degree of \(F\) over \(k\), denoted \(\operatorname{tr.deg}_{k \subseteq F}\).
+% \end{prob}
+
+% \begin{prob}
+% Let \(k \subseteq E \subseteq F\) be field extensions. Prove that \(\operatorname{tr.deg}_{k \subseteq F}\) is finite if and only if both \(\operatorname{tr.deg}_{k \subseteq E}\) and \(\operatorname{tr.deg}_{E \subseteq F}\) are finite and in this case
+% \[ \operatorname{tr.deg}_{k \subseteq F} = \operatorname{tr.deg}_{k \subseteq E} + \operatorname{tr.deg}_{E \subseteq F}. \]
+% \end{prob}
+
+% \begin{prob}
+% An extension \(k \subseteq F\) is purely transcendental if it admits a transcendence basis \(\{\alpha_i\}_{i \in I}\) such that \(F = k(\{\alpha_i\}_{i \in I})\). Prove that any field extension \(k \subseteq F\) may be decomposed as a purely transcendental extension followed by an algebraic extension. (Not all field extensions may be decomposed as an algebraic extension followed by a purely transcendental extension.)
+% \end{prob}
+
+% \begin{prob}
+% Let \(k \subseteq k(\alpha)\) be a simple extension, with \(\alpha\) transcendental over \(k\). Let \(E\) be a subfield of \(k(\alpha)\) properly containing \(k\). Prove that \(\operatorname{tr.deg}_{k \subseteq E} = 1\). Lüroth’s theorem asserts that in this situation \(k \subseteq E\) is itself a simple transcendental extension of \(k\); that is, it is purely transcendental.
+% \end{prob}
+
+
+
+
+
+\section{}
+
+
+\begin{prob}
+    Let \( k \subseteq \overline{k} \) be an algebraic closure, and let \( L \) be an intermediate field. Assume that every polynomial \( f(x) \in k[x] \subseteq L[x] \) factors as a product of linear terms in \( L[x] \). Prove that \( L = \overline{k} \).
+    \end{prob}
+\begin{proof}
+    Let $\alpha\in\bar{k}$, then $\alpha$ is algebraic over $k$, i.e., there exists $f\in k[x]$ such that $f(\alpha)=0$, and by assumption
+    \begin{equation*}
+        f(x)=(x-c_1)\dots (x-c_n)
+    \end{equation*}
+    where $c_i\in L$. This implies that $\alpha=c_i$ for some $i$, i.e, $\alpha\in L$. 
+\end{proof}
+
+    
+    \begin{prob}
+    Let $\sqrt{I}$ be the radical of an ideal of ring $R$.
+    \begin{equation*}
+        \text{rad}(I)=\sqrt{I}=\{a\in R: a^n\in I \text{ for some } n\}
+    \end{equation*}
+    \begin{itemize}
+        \item Prove that the set \( \sqrt{I} \) is an ideal of \( R \).
+        \item Prove that \( \sqrt{I} \) corresponds to the nilradical of \( R/I \) via the correspondence between ideals of \( R/I \) and ideals of \( R \) containing \( I \).
+        \item Prove that \( \sqrt{I} \) is in fact the intersection of all prime ideals of \( R \) containing \( I \).
+        \item Prove that \( I \) is radical if and only if \( R/I \) is reduced.
+    \end{itemize}
+    \end{prob}
+\begin{proof}
+    Definitions: radical of $I$ is 
+    \begin{equation*}
+        \sqrt{I}=\{a\in R: a^n\in I \text{ for some $n$}\}
+    \end{equation*}
+    and an ideal $I$ is called radical if $a^n\in I$ implies $a\in I$. One can note that ``radical of an ideal is radical.'' (We will show 
+    \begin{equation*}
+        \sqrt{I}=\bigcap_{p\supset I}p
+    \end{equation*}
+    where $p$ is the collection of prime ideals in $R$. Note that a prime ideal $p\subset R$ corresponds to a prime ideal in $R/I$. We will show 2,3 separately). Now for last bullet: if $I$ is radical, then $I=\sqrt{I}$ (we know a priori $I\subset\sqrt{I}$), so $R/I$ is reduced. Conversely assume that $R/I$ is reduced, then $\sqrt{I}=I$, thus $I$ is radical because $\sqrt{I}$ is radical.  
+\end{proof}
+    
+    
+    \begin{prob}
+    Prove that every ideal in a Noetherian ring contains a power of its radical.
+    \end{prob}
+    \begin{proof}
+        Let $\sqrt{I}=(a_1,\dots, a_k)$, then by definition, $a_i^{n_i}\in I$ for each $i$. Let $N=\sum_in_i$, we see that 
+        \begin{equation*}
+            (\sqrt{I})^N=\left\la a_1^{m_i}\dots a_k^{m_k}: \sum_im_i=N\right\ra
+        \end{equation*}
+        Then by pigenholing, there exists $n_i, m_i$ such that $m_i\geq n_i$ for some $i$. In other words, $a_i^{m_i}\dots a_k^{m_k}\in I$, thus 
+        \begin{equation*}
+           (\sqrt{I})^N\subset I
+        \end{equation*}
+    \end{proof}
 
 
 

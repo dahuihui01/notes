@@ -33,7 +33,8 @@
 \newcommand{\gal}{\text{Gal}}
 \newcommand{\Sym}{\text{Sym}} % Macro for symmetric product
 \newcommand{\tensor}{\otimes} % Macro for tensor product
-
+\newcommand{\rad}{\text{rad}}
+\newcommand{\aut}{\text{Aut}}
 
 \input{hui.tex}
 
@@ -849,6 +850,22 @@ A stronger statement is the following:
 \end{proof}
 
 
+
+\begin{prop}
+    The number of conjugacy classes of $D_n=\la r, s: r^n=s^2=e, rs=sr^{-1}$: 
+    \begin{enumerate}
+        \item $n=$odd, then $\{e\}$ is its own conjugacy class, the pairs of rotations $\{r^k, r^{-k}\}$ are conjugacy classes, the reflections form ONE conjugacy class: 
+        \begin{equation*}
+            1+\frac{n-1}{2}+1=\frac{n+3}{2}
+        \end{equation*}
+        conjugacy classes.
+        \item $n=$even, then $[e], [r^{n/2}]$ forms their own conjugacy classes, the remaining rotations $[r^k, r^{-k}]$, and there are TWO conjugacy classes of reflection:
+        \begin{equation*}
+            1+1+\frac{n-2}{2}+1+1=\frac{n+6}{2}
+        \end{equation*}
+        conjugacy classes.
+    \end{enumerate}
+\end{prop}
 
 
 
@@ -1938,10 +1955,11 @@ I_r & 0 \\
         \item $a_{n-1}t^{n-1}$ is such that $a_{n-1}=-\tr(\alpha)$.
         \item $a_0=(-1)^n\det(\alpha)$.
         \item If $\alpha,\beta$ are similar, then $\det(\alpha)=\det(\beta)$. 
+        \item We have 
+        \begin{equation*}
+            P_\alpha(t)=t^n-\tr(\alpha)+\dots+(-1)^n\det(\alpha)
+        \end{equation*}
     \end{enumerate}
-    \begin{equation*}
-        P_\alpha(t)=t^n-\tr(\alpha)+\dots+(-1)^n\det(\alpha)
-    \end{equation*}
 \end{prop}
 
 \begin{example}
@@ -2483,7 +2501,32 @@ where:
 
 \chapter{Field Theory}
 
-Aluffi Chapter VII. (Excluding 2.2-2.3).
+Aluffi Chapter VII. 
+
+
+\begin{defn}[radical]
+    The \textbf{radical} of an ideal $I\subset R$ is 
+    \begin{equation*}
+        \rad(I)=\sqrt{I}=\left\{a\in R: a^n\in I \text{ for some $n$}\right\}
+    \end{equation*}
+
+    An ideal is called radical if for any $a\in R$, $a^n\in I$ for some $n$, then $a\in I$.
+\end{defn}
+
+
+\begin{prop}
+    The radical $\sqrt{I}$ of an ideal $I$ in $R$ is an ideal. Moreover, $\sqrt{I}$ is radical.
+\end{prop}
+
+\begin{example}
+    The nilradical of $R$ is $\sqrt{(0)}$, i.e., the radical of the zero ideal.
+\end{example}
+
+
+
+
+
+
 
 
 \begin{prop}
@@ -2491,16 +2534,49 @@ Aluffi Chapter VII. (Excluding 2.2-2.3).
 \end{prop}
 
 
+\begin{prop}
+    The characteristic of a field is either $0$ or a prime number. (This is also true for integral domains). Moreover, let $k\subset E$ be an extension, then $\text{char}(k)=\text{char}(E)$. Moreover, for such extension, $E$ is a vector space over $k$. 
+\end{prop}
+
+
+
+
+
+
+
 \begin{defn}[finite field extension]
-    A field extension $k\subset F$ is finite, of degree $n$, if $F$ has finite dimension $\dim F=n$ as a vector space over $k$.
+    A field extension $k\subset F$ is finite of degree $n$, if $F$ has is a dimension $n$ vector space over $k$. We denote 
+    \begin{equation*}
+        [F:k]=\dim_k(F)
+    \end{equation*}
 \end{defn}
+
+\begin{example}
+    Let $k$ be a field, and $f$ is an irreducible polynomial over $k$, then 
+    \begin{equation*}
+        K=\frac{k[t]}{(f(t))}
+    \end{equation*}
+    is an extension in which $f$ has a root. (To see this is a field, we see $f(t)$ is irreducible, which is prime, which is maximal in $k[t]$).
+\end{example}
 
 
 \begin{defn}[simple extension]
-    A field extension $k\subset F$ is simple if there exists an element $\alpha\in F$ such that $F=k(\alpha)$.
-
-    For example, the extension $\frac{K[t]}{(f(t))}=K(\alpha)$ for some $f(\alpha)=0$. 
+    A field extension $k\subset F$ is simple if there exists $\alpha\in F$ such that $F=k(\alpha)$, where $k(\alpha)$ is the smallest field containing $\alpha$ and $k$. If $k(\alpha)/k$ is a finite extension, then $\alpha$ is algebraic, if infinite, then $\alpha$ is called transcendental.
 \end{defn}
+
+\begin{example}
+    The extension $k\subset\frac{k[t]}{(f(t))}$ is simple because 
+    \begin{equation*}
+        \frac{k[t]}{(f(t))}\cong k(\alpha)
+    \end{equation*}
+    for some $\alpha$ such that $f(\alpha)=0$.
+\end{example}
+
+% \begin{defn}[simple extension]
+%     A field extension $k\subset F$ is simple if there exists an element $\alpha\in F$ such that $F=k(\alpha)$.
+
+%     For example, 
+% \end{defn}
 
 
 \begin{prop}
@@ -2508,52 +2584,87 @@ Aluffi Chapter VII. (Excluding 2.2-2.3).
     \begin{equation*}
         \varepsilon: f(t)\mapsto f(\alpha)
     \end{equation*}
-    Then $\varepsilon$ is not injective iff $k(\alpha)$ is a finite extension, i.e., there exists a monic irreducible polynomial $p$ such that 
+    Then $\varepsilon$ is not injective iff $k(\alpha)$ is a finite extension, i.e., $\alpha$ is algebraic, thus there exists a monic irreducible polynomial $p$ such that 
     \begin{equation*}
         k(\alpha)=\frac{k[t]}{(p(t))}
     \end{equation*}
+    And $\varepsilon$ is injective iff $\alpha$ is transcendental.
 \end{prop}
 
-\begin{defn}
-    Let $k\subset F$ be an extension, then the group of automorphisms of this extension, denoted $\text{Aut}_k(F)$ is the group of automorphisms $\varphi:F\to F$ that fixes $k$.
+
+\begin{prop}[lifting]
+    Let $k_1\subset k_1(\alpha_1), k_2\subset k(\alpha_2)$ be two simple finite extensions, then let $p_1,p_2$ be the minimal polynomials of $\alpha_1,\alpha_2$, let $i: k_1\to k_2$ be an isomorphism such that 
+    \begin{equation*}
+        i(p_1(t))=i(p_2(t))
+    \end{equation*}
+    Then there exists a unique isomorphism $j: k_1(\alpha_1)\to k_2(\alpha_2)$ such that $j=i$ on $k_1$ and 
+    \begin{equation*}
+        j(\alpha_1)=\alpha_2
+    \end{equation*}
+    This says that we can extend isomorphisms between fields into their simple extensions provided that this isomorphism agrees with the structure of the extensions.
+\end{prop}
+
+
+\begin{defn}[Aut group]
+    Let $k\subset F$ be an extension, then the group of automorphisms of this extension, denoted $\text{Aut}_k(F)$ is the group of automorphisms $\varphi:F\to F$ that fixes $k$, $\varphi(x)=x$ for all $x\in k, \varphi\in\text{Aut}_k(F)$.
 \end{defn}
 
-\begin{cor}
+\begin{prop}
     Let $k\subset k(\alpha)$, and $p(x)$ be the minimal polynomial over $k$, then 
     \begin{equation*}
         |\text{Aut}_k(k(\alpha))|=\text{ number of distinct roots of $p$ in $k(\alpha)$}
     \end{equation*}
     and 
     \begin{equation*}
-        |\text{Aut}_k(k(\alpha))|\leq [k(\alpha):k]
+        |\text{Aut}_k(k(\alpha))|\leq [k(\alpha):k]=\deg(p)
     \end{equation*}
     with equality if and only if $p(x)$ factors over $k(\alpha)$ as a product of distinct linear factors.
-\end{cor}
-
-
-\begin{prop}
-    Let $k\subset F$ be finite, then it is also an algebraic extension, where for any $\alpha\in F$, 
-    \begin{equation*}
-        [k(\alpha):k]\leq [F: k]
-    \end{equation*}
 \end{prop}
 
+\begin{prop}
+    Let $k\subset k(\alpha)=F$, then $\aut_kF$ acts faithfully and transitively on the set of roots of $p(t)$ in $F$. 
+\end{prop}
+
+\begin{defn}[algebraic extension]
+    Let $k\subset F$, and $\alpha\in F$, then $\alpha$ is algebraic over $k$ iff $k(\alpha)$ is a finite extension; this is equivalent to saying there exists a nonzero $f(x)\in k[x]$ such that $f(\alpha)=0$. If $k(\alpha)/k$ is not finite, then $\alpha$ is transcendental.
+
+    If $\alpha$ is algebraic over $k$, then every element in $k(\alpha)$ can be written as a polynomial in $\alpha$.
+\end{defn}
 
 
 \begin{prop}
-    Let $k\subset E\subset F$ be field extensions, then $k\subset F$ is finite iff both $E/k$ and $F/E$ are finite, in this case 
+    Finite extensions are algebraic.
+    % Let $k\subset F$ be finite, then it is also an algebraic extension, where for any $\alpha\in F$, 
+    % \begin{equation*}
+    %     [k(\alpha):k]\leq [F: k]
+    % \end{equation*}
+\end{prop}
+\begin{proof}
+    Let $k\subset F$ be finite, then consideer $\alpha\in F$, we have $k\subset k(\alpha)\subset F$, hence $k(\alpha)$ is also finite.
+\end{proof}
+
+
+
+\begin{prop}
+    Let $k\subset E\subset F$, then $k\subset F$ is finite iff both $E/k$ and $F/E$ are finite, in this case 
     \begin{equation*}
         [F:k]=[F:E][E:k]
     \end{equation*}
+    This implies: let $k\subset F$ be finite, and $E$ be an intermediate field, then both $[E:k],[F:E]$ divide $[F:k]$.
 \end{prop}
 
 
-\begin{cor}
-    Let $k\subset F$ be finite, and $E$ be an intermediate field, then both $[E:k],[F:E]$ divide $[F:k]$.
-\end{cor}
+\begin{example}
+    Let $k\subset F$, let $\alpha\in F$ be an algebraic element of odd degree over $k$. Then $\alpha$ can be written as a polynomial in $\alpha^2$. It suffices to show that $k(\alpha^2)=k(\alpha)$. We consider 
+    \begin{equation*}
+        k\subset k(\alpha^2)\subset k(\alpha)
+    \end{equation*}
+    We see that $k(\alpha)/k(\alpha^2)$ has degree at most $2$ because $t^2-\alpha^2$, and the degree must divide $[k(\alpha):k]$, thus it must be $1$.
+\end{example}
 
-\begin{defn}
-    A field ext $k\subset F$  is finitely generated if there exists $\{\alpha_i\}\subset F$ such that 
+
+\begin{defn}[finitely generated field extensions]
+    A field extension $k\subset F$  is finitely generated if there exists $\{\alpha_i\}\subset F$ such that 
     \begin{equation*}
         F=k(\alpha_1)\dots(\alpha_n)
     \end{equation*}
@@ -2562,21 +2673,58 @@ Aluffi Chapter VII. (Excluding 2.2-2.3).
 
 \begin{prop}
     Let $k\subset k(\alpha_1,\dots,\alpha_n)$ be finitely generated, then
-    $k\subset F$ is algebraic implies that $k\subset F$ is finite.
+    $F/k$ is algebraic iff $F/k$ is finite iff all $\alpha_i$ are algebraic over $k$. (Thus given a finitely generated extension, to show that it is finite, it suffices to show each $\alpha_i$ is algebraic).
+\end{prop}
+
+\begin{prop}
+    If $\alpha,\beta$ are algebraic over $k$, then 
+    \begin{equation*}
+        \alpha+\beta, \alpha\beta, \alpha\beta^{-1}
+    \end{equation*}
+    are all algebraic over $k$. (For example, $k(\alpha+\beta)\subset k(\alpha,\beta)$). This implies that given $k\subset F$, 
+    \begin{equation*}
+        E=\{\alpha\in F: \alpha \text{ algebraic over }k \}
+    \end{equation*}
+    is a field.
 \end{prop}
 
 
-\begin{cor}
-    Let $k\subset F$ be a field extension, then 
-    \begin{equation*}
-        E=\{\alpha\in F: \alpha\text{ is algebraic over $k$}\}
-    \end{equation*}
-    is a field extension over $k$.
-\end{cor}
 
-\begin{cor}
-    Let $k\subset E\subset F$, then $k\subset F$ is algebraic iff both $k\subset E$ and $E\subset F$ are algebraic.
-\end{cor}
+% \begin{cor}
+%     Let $k\subset F$ be a field extension, then 
+%     \begin{equation*}
+%         E=\{\alpha\in F: \alpha\text{ is algebraic over $k$}\}
+%     \end{equation*}
+%     is a field extension over $k$.
+% \end{cor}
+
+\begin{prop}
+    (Composite algebraic extensions are algebraic). Let $k\subset E\subset F$, then $k\subset F$ is algebraic iff both $k\subset E$ and $E\subset F$ are algebraic.
+\end{prop}
+
+
+\begin{example}
+    $\Q(\sqrt{2}+\sqrt{3})=\Q(\sqrt{2},\sqrt{3})$.
+\end{example}
+
+\section{Algebraic Closure}
+
+\begin{prop}
+    Recall that $k$ is algebraically closed iff all irreducible polynomials in $k[x]$ have degree $1$, iff every polynomial factors into linear factors, iff every maximal ideal is of the form $(x-c)$ for some $c\in k$.
+\end{prop}
+
+
+\begin{prop}
+    Field $k$ is algebraically closed iff $k$ has no nontrivial algebraic extensions, iff if $k\subset F$, and $\alpha\in F$ is algebraic over $k$, then $\alpha\in k$.
+\end{prop}
+
+
+\begin{defn}[algebraic closure]
+    The $\bar{k}$ of $k$ is such that $\bar{k}$ is an algebraic extension and $\bar{k}$ is algebraically closed. (The requirement that $\bar{k}/k$ is algebraic is to ensure there is no intermediate field that is also algebraically closed). Equivalently, $\bar{k}$ is the smallest field that is algebraically closed containing $k$.
+\end{defn}
+
+\section{splitting, normal, separable}
+
 
 
 \begin{defn}
@@ -2785,6 +2933,8 @@ each extension (reversely) corresponds to a subgroup that fixes that extension i
         \gal(F/\Q)=G
     \end{equation*}
 \end{proof}
+
+
 
 
 
