@@ -137,6 +137,10 @@ The class formula is when $G$ acts on itself by conjugation:
         \end{equation*} 
         where $Q$ is the normal subgroup of order $q$ and $\theta: P\to\text{Aut}(Q)=(\Z/q\Z)^\times$. We know either $\theta: 1\mapsto 1$, is the trivial map which produces  a commutative group; or $\theta: 1\mapsto r$, where $r\in(\Z/q\Z)^\times$ is some element of order $p$. 
         
+
+        \begin{warn}
+            For completeness, we show that 
+        \end{warn}
         
         % By (a), such an element exists. Since $(q-1)$ is even, we know there only exists $1$ element in $(\Z/q\Z)^\times=\Z/(q-1)\Z$ of order $2$, namely, $r$. Therefore 
         % \begin{equation*}
@@ -1443,19 +1447,19 @@ table. Construct the character table in detail.
     \begin{equation*}
         V_{\text{triv}}=\text{Span}\{e_1+e_2+\dots+e_n\}, \quad V_{\text{std}}=\left\{\sum_ia_ie_i: \sum_ia_i=0\right\}
     \end{equation*}
-    and we note that $V_{\text{std}}$ is spanned by elements of the form 
-    \begin{equation*}
-        e_i-e_j
-    \end{equation*}
-    This is because for any $v\in V_{\text{std}}$, we can write 
-    \begin{equation*}
-        v=a_1e_1+\dots a_ne_n, a_n=-(a_0+\dots+a_{n-1})
-    \end{equation*}
-    Thus we can write 
-    \begin{equation*}
-        v=a_1(e_1-e_n)+\dots+a_{n-1}(e_{n-1}-e_n)
-    \end{equation*}
-    And is clear that $V_{\text{triv}}$ is 1-dim and $V_{\text{std}}$ is $(n-1)$-dimensional. It suffices to show that $V_{\text{std}}$ is irreducible. Since $S_n$ acts transitively on $\{e_1,\dots, e_n\}$, if a subspace $W\subset V_{\text{std}}$ contains some vector $e_i-e_j$, then it must contain all $e_k-e_l$, $1\leq k,l\leq n$ of this form, hence all of $V_{\text{std}}$. This shows that $V_{\text{std}}$ is irreducible.
+    % and we note that $V_{\text{std}}$ is spanned by elements of the form 
+    % \begin{equation*}
+    %     e_i-e_j
+    % \end{equation*}
+    % This is because for any $v\in V_{\text{std}}$, we can write 
+    % \begin{equation*}
+    %     v=a_1e_1+\dots a_ne_n, a_n=-(a_0+\dots+a_{n-1})
+    % \end{equation*}
+    % Thus we can write 
+    % \begin{equation*}
+    %     v=a_1(e_1-e_n)+\dots+a_{n-1}(e_{n-1}-e_n)
+    % \end{equation*}
+    % And is clear that $V_{\text{triv}}$ is 1-dim and $V_{\text{std}}$ is $(n-1)$-dimensional. It suffices to show that $V_{\text{std}}$ is irreducible. Since $S_n$ acts transitively on $\{e_1,\dots, e_n\}$, if a subspace $W\subset V_{\text{std}}$ contains some vector $e_i-e_j$, then it must contain all $e_k-e_l$, $1\leq k,l\leq n$ of this form, hence all of $V_{\text{std}}$. This shows that $V_{\text{std}}$ is irreducible.
 \end{proof}
 
 \begin{prob}[S2012-Q4]
@@ -1476,6 +1480,13 @@ Q = \langle t, s_i, s_j, s_k \mid t^2 = 1,\ s_i^2 = s_j^2 = s_k^2 = s_i s_j s_k 
     \item[(c)] Classify all irreducible complex representations of \( Q \) up to isomorphism.
 \end{enumerate}
 \end{prob}
+\begin{proof}
+    % \begin{enumerate}
+    %     \item[(a)] It contains center $\Z/2\Z$, thus we see $Q/\Z/2\Z\cong\frac{\Z}{2\Z}\times\frac{\Z}{2\Z}$, giving four one-dimensional representations.
+    %     \item[(b)]  
+    % \end{enumerate}
+\end{proof}
+
 
 \begin{prob}[F2004-Q6]
     Let \( D_8 \) be the dihedral group of order 8, with presentation:
@@ -1491,6 +1502,9 @@ Q = \langle t, s_i, s_j, s_k \mid t^2 = 1,\ s_i^2 = s_j^2 = s_k^2 = s_i s_j s_k 
         \item Construct the complete complex character table of \( D_8 \).
     \end{enumerate}
 \end{prob}
+\begin{proof}
+    $D_{4}$ has $\frac{4+6}{2}=5$ conjugacy classes. The commutator subgroup $[D_4,D_4]=\{e,r^2\}$, thus $D_4^{ab}$ gives $4$ one-dimensional representations of $D_4$.
+\end{proof}
 
 \begin{prob}[F2000-Q7]
     Let \( D_{10} \) be the dihedral group of order 10, with presentation:
@@ -1511,6 +1525,17 @@ Q = \langle t, s_i, s_j, s_k \mid t^2 = 1,\ s_i^2 = s_j^2 = s_k^2 = s_i s_j s_k 
 
 
 
+\begin{prop}
+    The character table for $D_n$, when $n=$odd. There are $\frac{n+3}{2}$ conjugacy classes, for example, $D_5$ has $4$ conjugacy classes:
+    \begin{equation*}
+        e, \{r,r^4\}, \{r^2,r^3\}, s
+    \end{equation*}
+    And there are two one-dimensional irreducible representataions: trivial and sign: sending reflection $s$ to $-1$, and rotations to $1$. The rest are two-dimensional irreducible representations: one example is 
+    \begin{equation*}
+        r\mapsto 2\cos(2\pi i/n), s\mapsto 0
+    \end{equation*}
+\end{prop}
+The character table for $D_n$, when $n=$even. There are $\frac{n+6}{2}$ conjugacy classes: for example, $D_4$ has $5$ conjugacy classes. And the character is more complicated, know that of $D_4$. Remember that it has at most dimension 2 irreducible representations.
 
 
 

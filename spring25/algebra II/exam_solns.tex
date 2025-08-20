@@ -556,6 +556,16 @@ I will never be strong enough for 6.
 \begin{prob}
     Prove that the polynomial \(x^{l} - x - 1\) is irreducible over the rational numbers for every prime integer \(l\).
 \end{prob}
+\begin{proof}
+    It suffices to show that $f(x)=x^l-x-1\mod l$ is irreducible over $\F_l$. Let $\alpha$ be a root of $f(x)$, then $\alpha+k$ is also a root, for all $1<k<p$. Since $0$ is not a root, $f$ has no root over $\F_p$. Now let $\alpha\in\bar{\F}_p$ be a root of $f$, then we see 
+    \begin{equation*}
+        \alpha^{p^p}-\alpha=(\alpha+1)^{p^{p-1}}-\alpha=\alpha^{p^{p-1}}-\alpha+1=\dots=\alpha^p-\alpha=0
+    \end{equation*}
+    This implies $\alpha\in\F_{p^p}$. Since $\alpha\not\in\F_p$, we must have the minimal polynomial of $\alpha$ have degree $p$, because any degree $<p$ would give a subfield of $\F_{p^p}$, which is only $\F_p$. This shows that $f$ is the minimal polynomial, i.e., irreducible. 
+    \begin{equation*}
+        m_\alpha(x)\mid f(x), \quad \deg(m_\alpha)=\deg(f)\Rightarrow f=m_\alpha
+    \end{equation*}
+\end{proof}
 
 
 \begin{prob}
@@ -861,7 +871,7 @@ I will never be strong enough for 6.
 
 \chapter{Spring 2018}
 
-\textcolor{red}{I cannot do 5.}
+{I will not do 5.}
 
 \textcolor{red}{2,3}
 

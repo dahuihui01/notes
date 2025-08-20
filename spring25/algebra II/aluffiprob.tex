@@ -1918,12 +1918,46 @@ Prove that \( r \) is in the Jacobson radical if and only if \( 1 + rs \) is inv
 
 
 
+% \begin{prob}
+% Let \( k \subseteq F \) be an algebraic extension, in positive characteristic. With notation as in Exercises 4.14 and 4.16, prove that the extension \( F_{\text{sep}} \subseteq F \) is purely inseparable. Prove that an extension \( k \subseteq F \) is purely inseparable if and only if \( F_{\text{sep}} = k \).
+% \end{prob}
+
+% \begin{prob}
+% Let \( k \subseteq F \) be a finite extension, in positive characteristic. Define the inseparable degree \([F : k]_i\) to be the quotient \([F : k]/[F : k]_s\).
+
+% \begin{itemize}
+%     \item Prove that \([k(\alpha) : k]_i\) equals the inseparable degree of \(\alpha\), as defined in Exercise 4.13.
+%     \item Prove that the inseparable degree is multiplicative: if \( k \subseteq E \subseteq F \) are finite extensions, then \([F : k]_i = [F : E]_i[E : k]_i\).
+%     \item Prove that a finite extension is purely inseparable if and only if its inseparable degree equals its degree.
+%     \item With notation as in Exercise 4.16, prove that \([F : k]_s = [F_{\text{sep}} : k]\) and \([F : k]_i = [F : F_{\text{sep}}]\). 
+% \end{itemize}
+
+% In particular, \([F : k]_s\) divides \([F : k]\); the inseparable degree \([F : k]_i\) is an integer.
+% \end{prob}
+
+
+% \begin{prob}
+% Let \( k \subseteq E \subseteq F \) be finite separable extensions, and let \(\alpha \in F\). Prove that
+% \[
+% N_{k \subseteq F}(\alpha) = N_{k \subseteq E}(N_{E \subseteq F}(\alpha))
+% \]
+% and 
+% \[
+% \operatorname{tr}_{k \subseteq F}(\alpha) = \operatorname{tr}_{k \subseteq E}(\operatorname{tr}_{E \subseteq F}(\alpha)).
+% \]
+% This 'transitivity' of norm and trace extends to separable extensions.
+% \end{prob}
+
+
+% \begin{prob}
+% Generalize Exercises 4.19–4.21 to all finite extensions \( k \subseteq F \). (For the norm, raise to power \([F : k]_i\); for the trace, multiply by \([F : k]_i\).)
+% \end{prob}
 
 
 
 
 
-
+\section{Finite Fields, Cyclotomic Polynomials}
 
 
 
@@ -2709,6 +2743,231 @@ Let \( \xi := \sqrt{2 + \sqrt{2}} \).
 
 
 
+    \section{Field extensions II}
+
+    \begin{prob}
+        Describe the splitting field of \( x^6 + x^3 + 1 \) over \(\mathbb{Q}\). Do the same for \( x^4 + 4 \).
+        \end{prob}
+        \begin{proof}
+            Replacing $y=x^3$, we see that 
+            \begin{equation*}
+                y^2+y+1=\frac{y^3-1}{y-1}
+            \end{equation*}
+            Hence 
+            \begin{equation*}
+                f(x)=x^6+x^3+1=\frac{x^9-1}{x^3-1}
+            \end{equation*}
+            Hence the roots of $f$ are $\om_9^k$, that are not the roots of $x^3-1$. Thus the roots are 
+            \begin{equation*}
+                \om_9^k, k=1,2,4,5,7,8
+            \end{equation*}
+            The splitting field is still $\Q(\om_9)$.
+    
+            Now for $x^4+4$. We see that the roots are 
+            \begin{equation*}
+                \sqrt{2}\om_8
+            \end{equation*}
+            However, 
+            \begin{equation*}
+                \om_8=\cos(\pi/4)+i\sin(\pi/4)=\frac{1}{\sqrt{2}}(1+i)
+            \end{equation*}
+            This implies the roots are 
+            \begin{equation*}
+                \pm 1\pm i
+            \end{equation*}
+            Thus the splitting field of $x^4+4$ is $\Q(i)$.
+        \end{proof}
+    
+    
+        
+        \begin{prob}
+        Find the order of the automorphism group of the splitting field of \( x^4 + 2 \) over \(\mathbb{Q}\).
+        \end{prob}
+        \begin{proof}
+            $8$, and the Galois group is $D_4$.
+        \end{proof}
+        
+        \begin{prob}
+        Prove that the field \(\mathbb{Q}(\sqrt[4]{2})\) is not the splitting field of any polynomial over \(\mathbb{Q}\).
+        \end{prob}
+        \begin{proof}
+            It is not normal: doesn't contain all the roots of $x^4-2$.
+        \end{proof}
+        
+        % \begin{prob}
+        % Let \( F \) be a splitting field for a polynomial \( f(x) \in k[x] \), and let \( g(x) \in k[x] \) be a factor of \( f(x) \). Prove that \( F \) contains a unique copy of the splitting field of \( g(x) \).
+        % \end{prob}
+        
+        \begin{prop}
+        Let \( k \subseteq F_1, \, k \subseteq F_2 \) be two finite extensions, viewed as embedded in the algebraic closure \(\overline{k}\) of \( k \). Assume that \( F_1 \) and \( F_2 \) are splitting fields of polynomials in \( k[x] \). Then the intersection \( F_1 \cap F_2 \) and the composite \( F_1F_2 \) (the smallest subfield of \(\overline{k}\) containing both \( F_1 \) and \( F_2 \)) are both also splitting fields over \( k \).
+        \end{prop}
+        
+        \begin{prob}
+        Let \( k \subseteq F = k(\alpha) \) be a simple algebraic extension. Prove that \( F \) is normal over \( k \) if and only if for every algebraic extension \( F \subseteq K \) and every \( \sigma \in \text{Aut}_k(K) \), \( \sigma(F) = F \).
+        \end{prob}
+        \begin{proof}
+            Let's just assume $k(\alpha)/k$ is finite, then it states that $F/k$ is Galois iff for every $F\subset K$, every $\sigma(F)=F$. If the extension is Galois, then it contains all the roots of $p_\alpha$. Since $\sigma$ fixes $k$, it permutes the roots of $p_\alpha$, thus $\sigma(F)=F$. Conversely, suppose $\sigma(F)=F$, then let $\beta$ be another root of $p_\alpha$, since $\sigma(\alpha)\in F$ for all $\sigma$, this shows that $\beta\in F$, i.e., the extension is Galois.
+        \end{proof}
+    
+    
+    
+    \begin{prob}
+    Let \( k \subseteq F \) be a finite extension in characteristic \( p > 0 \). Assume that \( p \) does not divide \([F : k]\). Prove that \( k \subseteq F \) is separable.
+    \end{prob}
+    \begin{proof}
+        (Assume $F=k(\alpha)$)
+        In char$(k)=p$, let $\alpha\in F$, the minimal polynomial $f$ is separable unless $f(x)=g(x^p)$, thus 
+        \begin{equation*}
+            \deg(f)=p\cdot\deg(g)
+        \end{equation*}
+        But $p$ doesn't divide $[F:k]$.
+    \end{proof}
+    
+    Recall that $x\mapsto x^{p}$ is the identity on $\F_p$, and is surjective over finite fields of char$(k)=p$.
+    
+    
+    \begin{prob}
+    Let \( k \) be a field, and assume that \( k \) is not perfect. Prove that there are inseparable irreducible polynomials in \( k[x] \). (If char \( k = p \) and \( u \in k \), how many roots does \( x^p - u \) have in \( \overline{k}? \))
+    \end{prob}
+    \begin{proof}
+        Consider $f(x)=x^p-u$, assume that $u$ is not a $p$-th power, then it is not separable because $\gcd(f,f')=f$, note that $x^p-u$ has only one root: let $\alpha$ be a root, then 
+        \begin{equation*}
+            \alpha^p=u
+        \end{equation*}
+        Hence 
+        \begin{equation*}
+            f(x)=x^p-\alpha^p=(x-\alpha)^p
+        \end{equation*}
+    \end{proof}
+    
+    
+    
+    \begin{prob}
+    Let \( k \) be a field of positive characteristic \( p \), and let \( f(x) \) be an irreducible polynomial. Prove that there exist an integer \( d \) and a separable irreducible polynomial \( f_{\text{sep}}(x) \) such that
+    \[
+    f(x) = f_{\text{sep}}(x^{p^d}).
+    \]
+    The number \( p^d \) is called the inseparable degree of \( f(x) \). If \( f(x) \) is the minimal polynomial of an algebraic element \( \alpha \), the inseparable degree of \( \alpha \) is defined to be the inseparable degree of \( f(x) \). Then we see that \( \alpha \) is inseparable if and only if its inseparable degree is \( \geq p \).
+    
+    % The picture to keep in mind is as follows: the roots of the minimal polynomial \( f(x) \) of \( \alpha \) are distributed into \(\deg f_{\text{sep}}\) 'clumps', each collecting a number of coincident roots equal to the inseparable degree of \( \alpha \). We say that \( \alpha \) is 'purely inseparable' if there is only one clump, that is, if all roots of \( f(x) \) coincide.
+    \end{prob}
+    \begin{proof}
+        We know that $f$ is inseparable only if $f$ takes the form 
+        \begin{equation*}
+            f(x)=g(x^p)
+        \end{equation*}
+        If $g$ is separable, we are done; if not, then we can continue this process until we exhaust the degree. 
+    \end{proof}
+    
+    
+    
+    \begin{prob}
+    Let \( k \subseteq F \) be an algebraic extension, in positive characteristic \( p \). An element \( \alpha \in F \) is purely inseparable over \( k \) if \( \alpha^{p^d} \in k \) for some \( d \geq 0 \). The extension is defined to be purely inseparable if every \( \alpha \in F \) is purely inseparable over \( k \).
+    
+    Prove that \( \alpha \) is purely inseparable if and only if \([k(\alpha) : k]_s = 1\), if and only if its degree equals its inseparability degree.
+    \end{prob}
+    \begin{proof}
+        We are trying to the following three statements are equivalent:
+        \begin{enumerate}
+            \item $\alpha$ is purely inseparable.
+            \item $[k(\alpha):k]_s=1$.
+            \item $\deg(\alpha)$ is equal to its inseparable degree.
+        \end{enumerate}
+        We first show that 1 implies 2: if $\alpha$ is purely inseparable, then there exists $d\geq 0$, such that $\alpha^{p^d}\in k$, then we can simply set $t\in k$ such that $t=\alpha^{p^d}$. Then we can take 
+        \begin{equation*}
+            f(x)=x^{p^d}-t=(x-t^{1/p^d})^{p^d}
+        \end{equation*}
+        We see $f(\alpha)=0$, hence the minimal polynomial of $\alpha$ divides $f(x)$. Since $f$ only has one root, its follows that the minimal polynomial of $\alpha$ also only has 1 unique root, i.e., $[k(\alpha),k]_s=1$.
+    
+        We now show that 2 implies 3: this is the hardest direction. We will use an induction argument. Let the minimal polynomial of $\alpha$ be $p(x)$, then it only has 1 root, we know it must be of the form:
+        \begin{equation*}
+            p(x)=(x-\alpha)^e
+        \end{equation*}
+        and it suffices to show that $e=p^d$ for some $d\geq 0$, i.e., it is a power of $p$. First if $\alpha\in k$, then we simply take $e=1, d=0$, and we are done. If $\alpha\not\in k$, then we can rewrite:
+        \begin{equation*}
+            p(x)=(x^p-\alpha^p)^{e/p}
+        \end{equation*}
+        And we continue the above process. If $\alpha^p\in k$, then we take $e=p$, $d=1$, and we are done. If $\alpha^p\not\in k$, then we rewrite 
+        \begin{equation*}
+            p(x)=(x^{p^2}-\alpha^{p^2})^{e/p^2}
+        \end{equation*}
+        And we continue, eventually this process stops, i.e., $\alpha^{p^d}\in k$, then $e=p^d$, this is because $e$ is a bounded integer and $e/p^k$ will keep getting smaller yet still $\geq0$. Hence for some $d$, $\alpha^{p^d}\in k$, and $e=p^d$, i.e., the degree of $\alpha$ is equal to its inseparable degree.
+    
+        Finally we show that 3 implies 1: if $\deg(\alpha)$ is equal to the inseparability degree, then let the minimal polynomial of $\alpha$ be $p(x)$, we have (by exercise 4.13)
+        \begin{equation*}
+            p(x)=p_{sep}(x^{p^d})
+        \end{equation*}
+        This implies that $p_{sep}$ must be linear: 
+        \begin{equation*}
+            p_{sep}=cx+d
+        \end{equation*}
+        for some $c,d\in k$. This shows that 
+        \begin{equation*}
+            p(\alpha)=p_{sep}(\alpha^{p^d})=c\alpha^{p^d}+b=0
+        \end{equation*}
+        This implies that $\alpha^{p^d}=-bc^{-1}\in k$, as desired. Hence we've now shown 1 implies 2 implies 3, which implies 1!
+    \end{proof}
+    
+    
+    
+    
+    \begin{prob}
+    Let \( k \subseteq F \) be an algebraic extension, and let \( \alpha \in F \) be separable over \( k \). For every intermediate field \( k \subseteq E \subseteq F \), prove that \( \alpha \) is separable over \( E \).
+    \end{prob}
+    \begin{proof}
+        The minimal polynomial of $\alpha$ over $E$ divides that over $k$.
+    \end{proof}
+    
+    
+    \begin{prop}
+        Let $k\subset E\subset F$ be such that $E/k$ and $F/E$ are both separable, then $F/k$ is separable.
+    % Let \( k \subseteq E \subseteq F \) be algebraic field extensions, and assume that \( k \subseteq E \) is separable. Prove that if \( \alpha \in F \) is separable over \( E \), then \( k \subseteq E(\alpha) \) is a separable extension. (Reduce to the case of finite extensions.)
+    
+    % Deduce that the set of elements of \( F \) which are separable over \( k \) form an intermediate field \( F_{\text{sep}} \), such that every element \( \alpha \in F \), \( \alpha \notin F_{\text{sep}} \) is inseparable over \( F_{\text{sep}} \).
+    \end{prop}
+    
+
+
+    \begin{prob}[HW]
+        Let \( k \subseteq F \) be a finite separable extension, and let \( \iota_1, \ldots, \iota_d \) be the distinct embeddings of \( F \) in \( \overline{k} \) extending \(\text{id}_k\). For \(\alpha \in F\), prove that the norm \( N_{k \subseteq F}(\alpha) \) equals \(\prod_{i=1}^d \iota_i(\alpha)\) and its trace \(\operatorname{tr}_{k \subseteq F}(\alpha)\) equals \(\sum_{i=1}^d \iota_i(\alpha)\).
+        \end{prob}
+\begin{proof}
+    First assume that $F=k(\alpha)$, 
+\end{proof}
+        
+        
+        \begin{prob}
+        Let \( k \subseteq F \) be a finite separable extension, and let \(\alpha \in F\). Prove that for all \(\sigma \in \operatorname{Aut}_k(F)\), \(N_{k \subseteq F}(\alpha) = N_{k\subset F}(\sigma(\alpha))\) and \(\operatorname{tr}_{k \subseteq F}(\alpha)=\tr(\sigma(\alpha)) = 0\).
+        \end{prob}
+        \begin{proof}
+            This follows from the above.
+        \end{proof}
+        
+
+
+\section{}
+
+
+
+% \begin{prob}
+% Let $p > 0$ be a prime integer. Prove that the additive group of a finite field with $p^d$ elements is isomorphic to $(\mathbb{Z}/p\mathbb{Z})^d$.
+% \end{prob}
+
+% \begin{prob}
+% Prove that every element of a finite field $F$ is a sum of two squares in $F$. (Hint: Keep in mind that the multiplicative group of $F$ is cyclic.)
+% \end{prob}
+
+\begin{prob}
+Find an explicit isomorphism
+\[ \frac{\mathbb{F}_2[x]}{(x^3 + x^2 + 1)} \cong \frac{\mathbb{F}_2[x]}{(x^3 + x + 1)}. \]
+\end{prob}
+\begin{proof}
+    You just need to construct a ring homomrophism between them. $\varphi$ is determined by where you send $x$, and it needs to satisfy $\varphi(0)=0$, i.e., 
+    \begin{equation*}
+        (x^3+x+1)\mid \varphi(x^3+x^2+1)
+    \end{equation*}
+    Choosing $\varphi(x)=x^2+1$ works.
+\end{proof}
 
 
 
@@ -2718,6 +2977,397 @@ Let \( \xi := \sqrt{2 + \sqrt{2}} \).
 
 
 
+\begin{prob}
+Find all irreducible polynomials of degree 4 over $\mathbb{F}_2$, and count those of degree 5.
+\end{prob}
+\begin{proof}
+
+        There are $3$ of them:
+        \begin{equation*}
+            x^4+x+1, x^4+x^3+1, x^4+x^3+x^2+x+1
+        \end{equation*}
+        There are $6$ irreducible polynomials of degree $5$ over $\F_2$.
+
+\end{proof}
+
+
+
+\begin{prob}
+Find the number of irreducible polynomials of degree 12 over $\mathbb{F}_9$.
+\end{prob}
+\begin{proof}
+    Use the formula:
+    \begin{equation*}
+        x^{q^n}-x=\prod_{\deg(f)\mid n}f
+    \end{equation*}
+    where $f$ is monic and irreducible on the RHS. Take the degree and get a recursive formula.
+\end{proof}
+
+
+\begin{prob}
+Write out explicitly the action of the cyclic group $C_4$ on $\mathbb{F}_{16}$, in terms of any realization of this field as a quotient of $\mathbb{F}_2[x]$.
+\end{prob}
+
+\begin{prob}
+Let $p$ be a prime integer. View the Frobenius automorphism $\varphi : \mathbb{F}_{p^d} \to \mathbb{F}_{p^d}$ as a linear transformation of the $\mathbb{F}_p$-vector space $\mathbb{F}_{p^d}$. Find the rational canonical form of $\varphi$.
+\end{prob}
+
+\begin{prob}
+For a prime $p$, find the factorization of $\Phi_p(x)$ over $\mathbb{F}_p$.
+\end{prob}
+\begin{proof}
+    We have 
+    \begin{equation*}
+        \Phi_p(x)=\frac{x^p-1}{x-1}=\frac{(x-1)^p}{x-1}=(x-1)^{p-1}
+    \end{equation*}
+\end{proof}
+
+
+\begin{prob}
+Find all cyclotomic polynomials $\Phi_n(x)$ for $1 \leq n \leq 15$. 
+\end{prob}
+\begin{proof}
+    Recall the formula:
+    \begin{equation*}
+        x^n-1=\prod_{d \mid n}\Phi_d(x)
+    \end{equation*}
+    where $1\leq d\leq n$. Hence we can work our way up:
+    \begin{equation*}
+        x^9-1=\Phi_1(x)\Phi_3(x)\Phi_9(x)
+    \end{equation*}
+    Hence we have 
+    \begin{equation*}
+        \Phi_9(x)=\frac{x^9-1}{(x-1)(x^2+x+1)}=\frac{x^9-1}{x^3-1}=x^6+x^3+1
+    \end{equation*}
+    Similarly, prime powers have this nice property:
+    \begin{equation*}
+        \Phi_8(x)=\frac{x^8-1}{\Phi_1\Phi_2\Phi_4}=\frac{x^8-1}{x^4-1}=x^4+!
+    \end{equation*}
+\end{proof}
+
+
+
+
+
+\begin{prob}
+Find the cyclotomic polynomials $\Phi_{2^m}(x)$ for all $m \geq 0$.
+\end{prob}
+\begin{proof}
+    Following the above, we have 
+    \begin{equation*}
+        \Phi_{2^m}(x)=x^{2^{m-1}}+1
+    \end{equation*}
+\end{proof}
+
+
+
+\begin{prop}
+Prove that if $n$ is odd, then $\Phi_{2n}(x) = \Phi_n(-x)$. For example, $\Phi_6(x)=\Phi_3(-x)=x^2-x+1$.
+\end{prop}
+
+
+\begin{prob}
+Let $a, n$ be positive integers, with $a > 1$. Prove that if $\Phi_n(a)$ divides $a - 1$, then $n = 1$.
+\end{prob}
+\begin{proof}
+    One can show that $\Phi_n(a)>a-1$, hence we are done.
+\end{proof}
+
+% \begin{prob}
+% Let $a, d, n$ be positive integers, with $d < n$ and $a > 1$. Assume that $a^d - 1$ divides $a^n - 1$. Prove that $\Phi_n(a)$ divides the quotient $(a^n - 1)/(a^d - 1)$.
+% \end{prob}
+
+% \begin{prob}
+% Let $R$ be a finite division ring.
+% \begin{itemize}
+% \item Prove that the center of $R$ is isomorphic to $\mathbb{F}_q$, for $q$ a prime power. Prove that $|R| = q^n$ for some $n$.
+% \item For every $r \in R$, prove that the centralizer of $r$ in the multiplicative group $(R^*, \cdot)$ has order $q^d - 1$ for some $d \leq n$.
+% \item Prove that there are integers $d_1, \ldots, d_r < n$ such that
+% \[ q^n - 1 = q - 1 + \sum_{i=1}^r \frac{q^{n_i} - 1}{q^{d_i} - 1}. \]
+% \item Deduce that $\Phi_n(q)$ divides $q-1$ and hence $n = 1$.
+% \item Conclude that $R$ equals its center, showing that $R$ is commutative.
+% \end{itemize}
+% Thus, every finite division ring is a field: this is Wedderburn's little theorem.
+% \end{prob}
+
+\begin{prob}
+Let $a, p, n$ be integers, with $p, n$ positive and $p$ prime, $p \nmid n$.
+\begin{itemize}
+\item Show that $x^n - 1$ has no multiple roots modulo $p$.
+\item Show that if $p$ divides $\Phi_n(a)$, then $a^n \equiv 1$ modulo $p$.
+\item Show that if $p$ divides $\Phi_n(a)$, then $a^d \not\equiv 1$ modulo $p$ for every $d < n$.
+\item Deduce that $p \mid \Phi_n(a)$ if and only if the order of $[a]_p$ in $(\mathbb{Z}/p\mathbb{Z})^*$ is $n$.
+\item Compute $\Phi_{15}(9)$, and show it is divisible by 31.
+\end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item Let $f(x)=x^n-1$, if $f$ has repeated roots, then $f,f'$ have at least one common root. Thus we compute 
+        \begin{equation*}
+            f'(x)=nx^{n-1}
+        \end{equation*}
+        But this shows that $0$ is the only root of $f'$ but $0$ is not a root of $f$, hence they do not have common roots.
+        \item Consider the formula:
+        \begin{equation*}
+            \Phi_n(x)=\frac{x^n-1}{\prod_{d\mid n, d<n}\Phi_d}
+        \end{equation*}
+        \item Assuming the contrary, one can show that $a$ is a double root of $x^n-1$, which is impossible.
+        \item Follows directly.
+        \item do it.
+    \end{enumerate}
+\end{proof}
+
+
+
+% \begin{prob}
+% Let $a,p,n$ be integers, with $p,n$ positive and $p$ prime, $p \nmid n$. Assume that $p$ divides $\Phi_n(a)$. Prove that $p \equiv 1 \mod n$.
+% \end{prob}
+
+\begin{prob}
+Recall that every field extension of degree $\leq n$ over a field $k$ is a sub-$k$-algebra of the ring of matrices $\mathcal{M}_n(k)$. Prove that if $k$ is finite or has characteristic 0, then every extension of $k$ contained in $\mathcal{M}_n(k)$ has degree $\leq n$.
+\end{prob}
+\begin{proof}
+    The extension is separable and also finite ($\leq n^2$), thus simple. Moreover, let $p(t)$ be the characteristic polynomial, then from previous exercise, we know 
+    \begin{equation*}
+        p(\alpha)=0
+    \end{equation*}
+    This implies the minimal polynomial divides $p(t)$, i.e., with degree $\leq n$. (Cayley-Hamilton used!)
+\end{proof}
+
+
+\begin{prob}[HW]
+Prove that if $k \subseteq F$ is the splitting field of a separable polynomial, then it is the splitting field of an irreducible separable polynomial.
+\end{prob}
+\begin{proof}
+    Splitting means finite and normal, with separable, this implies simple $F=k(\alpha)$.
+\end{proof}
+
+% \begin{prob}
+% Let $k$ be an infinite field. If $F = k(\alpha_1, \ldots, \alpha_r)$, with each $\alpha_i$ separable over $k$, prove that there exist $c_1, \ldots, c_r \in k$ such that $F = k(c_1\alpha_1 + \cdots + c_r\alpha_r)$.
+% \end{prob}
+
+\begin{prob}
+Let $k$ be a field, and let $n > 0$ be an integer. Assume that there are no irreducible polynomials of degree $n$ in $k[x]$. Prove that there are no separable extensions of $k$ of degree $n$.
+\end{prob}
+\begin{proof}
+    If there were a separable extension of degree $n$, then the extension is simple, i.e., its minimal polynomial is of degree $n$.
+\end{proof}
+
+
+
+
+\section{Galois Theory I}
+
+
+
+
+\section*{Problems}
+
+\begin{prob}
+Prove that quadratic extensions in characteristic $\neq 2$ are Galois.
+\end{prob}
+
+% \begin{prob}
+% Let $k \subseteq F$ be a Galois extension, and let $E$ be an intermediate field. Prove that $E \subseteq F$ is a Galois extension.
+% \end{prob}
+
+% \begin{prob}
+% Let $k \subseteq E$ be a finite separable extension. Prove that $E$ may be identified with an intermediate field of a Galois extension $k \subseteq F$ of $k$.
+
+% In fact, prove that there is a smallest such extension $k \subseteq F$, in the sense that if $k \subseteq E \subseteq K$, with $k \subseteq K$ Galois, then there exists an embedding of $F$ in $K$ which is the identity on $E$. (The extension $k \subseteq F$ is the Galois closure of the extension $k \subseteq E$.)
+% \end{prob}
+
+\begin{prob}
+We have proved that all finite separable extensions $k \subseteq E$ are simple. Let $k \subseteq F$ be a Galois closure of $k \subseteq E$. For $\alpha \in E$, prove that $E = k(\alpha)$ if and only if $\alpha$ is moved by all $\sigma \in \text{Aut}_k(F) \setminus \text{Aut}_E(F)$.
+\end{prob}
+
+\begin{prob}
+    Do the following Galois problems:
+\begin{itemize}
+    \item Prove that $\mathbb{Q} \subseteq \mathbb{Q}(\sqrt{2 + \sqrt{2}})$ is Galois, with cyclic Galois group.
+    \item Prove that $\mathbb{Q} \subseteq \mathbb{Q}(\sqrt{3 + \sqrt{5}})$ is Galois and its Galois group is isomorphic to $(\mathbb{Z}/2\mathbb{Z}) \times (\mathbb{Z}/2\mathbb{Z})$.
+    \item Prove that $\mathbb{Q} \subseteq \mathbb{Q}(\sqrt{1 + \sqrt{2}})$ is not Galois, and compute its Galois closure $\mathbb{Q} \subseteq F$. Prove that $\text{Aut}_{\mathbb{Q}}(F) \cong D_8$.
+\end{itemize}
+\end{prob}
+
+\begin{prop}
+Let $p > 0$ be prime, and let $d \mid e$ be positive integers, so that there is an extension $\mathbb{F}_{p^d} \subseteq \mathbb{F}_{p^e}$. Prove that $\text{Aut}_{\mathbb{F}_{p^d}} \mathbb{F}_{p^e}$ is cyclic, and describe a generator of this group.
+\end{prop}
+
+\begin{prop}
+Let $k \subseteq F$ be a Galois extension of degree $n$, and let $E$ be an intermediate field. Assume that $[E : k]$ is the smallest prime dividing $n$. Prove $k \subseteq E$ is Galois.
+\end{prop}
+
+\begin{prob}
+Let $k \subseteq F$ be a Galois extension of degree 75. Prove that there exists an intermediate field $E$, with $k \subset E \subset F$, such that the extension $k \subseteq E$ is Galois.
+\end{prob}
+\begin{proof}
+    There exists a normal subgroup of order $25$ by Sylow, and it has index $3$.
+\end{proof}
+
+\begin{prob}
+Let $k \subseteq F$ be a Galois extension and $E$ an intermediate field. Prove that the normalizer of $\text{Aut}_E(F)$ in $\text{Aut}_k(F)$ is the set of $\sigma \in \text{Aut}_k(F)$ such that $\sigma(E) \subseteq E$.
+
+Use this to give an alternative proof of the fact that $E$ is Galois over $k$ if and only if $\text{Aut}_E(F)$ is normal in $\text{Aut}_k(F)$.
+\end{prob}
+
+\begin{prob}
+Let $k \subseteq E$ and $E \subseteq F$ be Galois extensions.
+\begin{itemize}
+    \item Find an example showing that $k \subseteq F$ is not necessarily Galois.
+    \item Prove that if every $\sigma \in \text{Aut}_k(E)$ is the restriction of an element of $\text{Aut}_k(F)$, then $k \subseteq F$ is Galois.
+\end{itemize}
+\end{prob}
+
+\begin{prob}
+Find two algebraic extensions $k \subseteq F$, $k \subseteq K$ and embeddings $F \subseteq \overline{k}$, $\sigma_1 : K \subseteq \overline{k}$, $\sigma_2 : K \subseteq \overline{k}$ extending $k \subseteq \overline{k}$, such that the composites $F\sigma_1(K)$, $F\sigma_2(K)$ are not isomorphic.
+
+Prove that no such example exists if $F$ and $K$ are Galois over $k$.
+\end{prob}
+
+\begin{prop}
+Let $k \subseteq F$ and $k \subseteq K$ be Galois extensions, and assume $F$ and $K$ are subfields of a larger field. Prove that $k \subseteq FK$ and $k \subseteq F \cap K$ are both Galois extensions.
+\end{prop}
+
+\begin{prob}
+Let $k \subseteq F$ be a field extension, and let $\varphi_1, \ldots, \varphi_m \in \text{Aut}_k(F)$ be pairwise distinct automorphisms. Prove that $\varphi_1, \ldots, \varphi_m$ are linearly independent over $F$.
+\end{prob}
+
+\begin{prob}
+Let $k \subseteq F$ be a Galois extension, and let $\alpha \in F$. Prove that
+\[ N_{k \subseteq F}(\alpha) = \prod_{\sigma \in \text{Aut}_k(F)} \sigma(\alpha), \quad \operatorname{tr}_{k \subseteq F}(\alpha) = \sum_{\sigma \in \text{Aut}_k(F)} \sigma(\alpha). \]
+\end{prob}
+
+\begin{prob}
+Let $k \subseteq F$ be a cyclic Galois extension of degree $d$, and let $\varphi$ be a generator of $\text{Aut}_k(F)$. Let $\alpha \in F$ be an element such that $N_{k \subseteq F}(\alpha) = 1$.
+\begin{itemize}
+    \item Prove that the automorphisms $\text{id}_F, \varphi, \ldots, \varphi^{d-1}$ are linearly independent over $F$.
+    \item Prove that there exists a $\gamma \in F$ such that
+    \[ \beta := \gamma + \alpha \varphi(\gamma) + \alpha \varphi(\alpha) \varphi^2(\gamma) + \cdots + \alpha \varphi(\alpha) \cdots \varphi^{d-2}(\alpha) \varphi^{d-1}(\gamma) \neq 0. \]
+    \item Prove that $\alpha \varphi(\alpha) \varphi^2(\alpha) \cdots \varphi^{d-1}(\alpha) \varphi^d(\gamma) = \gamma$, and deduce that $\alpha = \beta / \varphi(\beta)$.
+\end{itemize}
+\end{prob}
+
+\begin{prob}
+Let $k \subseteq F$ be a cyclic Galois extension of degree $d$, and let $\varphi$ be a generator of $\text{Aut}_k(F)$. Let $\alpha \in F$ be an element such that $\operatorname{tr}_{k \subseteq F}(\alpha) = 0$.
+\begin{itemize}
+    \item Prove that there exists a $\gamma \in F$ such that $\operatorname{tr}_{k \subseteq F}(\gamma) \neq 0$.
+    \item Consider the expression
+    \[ \alpha \varphi(\gamma) + (\alpha + \varphi(\alpha))\varphi^2(\gamma) + \cdots + (\alpha + \varphi(\alpha) + \cdots + \varphi^{d-2}(\alpha))\varphi^{d-1}(\gamma). \]
+    \item Prove that there exists a $\beta \in F$ such that $\alpha = \beta - \varphi(\beta)$.
+\end{itemize}
+\end{prob}
+
+
+
+\section{Galois Theory II}
+
+\begin{prob}
+    Find explicitly a generator of a quadratic intermediate field of the extension $\mathbb{Q} \subseteq \mathbb{Q}(\zeta_{10})$.
+    \end{prob}
+    
+\begin{prob}
+    Let $R$ be an integral domain, and let $f(x) \in R[x]$ be a polynomial of degree $n$. Show how to obtain $f(x)$ by specializing the 'universal' polynomial $P_n(x)$.
+\end{prob}
+
+
+
+
+
+\begin{prob}
+Prove that the elementary symmetric functions \( s_1, \ldots, s_n \) (see \S7.3) are algebraically independent. (Hint: Use Exercise I.28.)
+\end{prob}
+
+\begin{prob}
+Prove that every finite group is isomorphic to the group of automorphisms of some Galois extension.
+\end{prob}
+
+\begin{prob}
+Let \( k \subseteq F \) be a radical extension, and let \( k \subseteq K \) be any extension; assume \( F \) and \( K \) are contained in a larger field. Prove that \( K \subseteq FK \) is radical.
+\end{prob}
+
+\begin{prob}
+Let \( f(x) \in \mathbb{Q}[x] \) be an irreducible cubic, and let \( \rho \) be a real root of \( f(x) \). Prove that the splitting field of \( f(x) \) over \( \mathbb{Q} \) is \( \mathbb{Q}(\rho, \sqrt{D}) \), where \( D \) is the discriminant of \( f(x) \).
+\end{prob}
+
+\begin{prob}
+Let \( f(x) \in \mathbb{Q}[x] \) be an irreducible cubic with exactly one real root. Prove that the discriminant of \( f(x) \) is not a square in \( \mathbb{Q} \).
+\end{prob}
+
+\begin{prob}
+Find (mathematically or by library search) the lattice of subgroups of \( S_4 \), and verify that the transitive subgroups of \( S_4 \) are (isomorphic to) \( S_4 \), \( A_4 \), \( D_8 \), \( \mathbb{Z}/2\mathbb{Z} \times \mathbb{Z}/2\mathbb{Z} \), and \( \mathbb{Z}/4\mathbb{Z} \).
+\end{prob}
+
+\begin{prob}
+Compute the Galois group of the polynomial \( x^4 - 2 \).
+\end{prob}
+
+\begin{prob}
+Prove that the polynomial \( x^5 - 5x - 1 \) has exactly 3 real roots (this is a calculus exercise!) and is irreducible over \( \mathbb{Q} \). Prove that its Galois group is \( S_5 \).
+\end{prob}
+
+\begin{prob}
+Let \( n > 0 \) be an integer. Note that
+\[ f_n(x) := (x^2 + 2) \cdot x \cdot (x - 2) \cdots (x - 2(n - 4)) \cdot (x - 2(n - 3)) \]
+has \( n - 2 \) rational roots and 2 nonreal, complex roots. Prove that for infinitely many integers \( q \), the polynomial
+\[ qf_n(x) + 2 \in \mathbb{Z}[x] \]
+has \( (n - 2) \) real roots, 2 nonreal complex roots, and is irreducible over \( \mathbb{Q} \). Conclude that for each prime \( p \) there are infinitely many polynomials of degree \( p \) in \( \mathbb{Z}[x] \) whose Galois group is \( S_p \).
+\end{prob}
+
+\begin{prob}
+Let \( f(x) \in k[x] \) be a separable irreducible polynomial of prime degree \( p \) over a field \( k \), and let \( \alpha_1, \ldots, \alpha_p \) be the roots of \( f(x) \) in its splitting field \( F \). Prove that the Galois group of \( f(x) \) contains an element \( \sigma \) of order \( p \), 'cycling' through the roots.
+\end{prob}
+
+\begin{prob}
+Let \( f(x) \in k[x] \) be a separable irreducible polynomial of prime degree \( p \) over a field \( k \). Let \( \alpha \) be a root of \( f(x) \) in \( \bar{k} \), and suppose you can express another root of \( f(x) \) as a polynomial in \( \alpha \), with coefficients in \( k \). Prove that you can express all roots as polynomials in \( \alpha \) and that the Galois group of \( f(x) \) is \( \mathbb{Z}/p\mathbb{Z} \). (Use Exercise 7.12.)
+\end{prob}
+
+\begin{prob}
+Let \( k \) be a field of characteristic \( p > 0 \), and let \( f(x) = x^p - x - a \in k[x] \). Assume that \( f(x) \) has no roots in \( k \). Prove that \( f(x) \) is irreducible and that its Galois group is \( \mathbb{Z}/p\mathbb{Z} \). (Note that if \( \alpha \) is a root of \( f(x) \), so is \( \alpha + 1 \); use Exercises I.8 and 7.13.)
+
+The splitting field of \( f(x) \) is an Artin-Schreier extension of \( \mathbb{F}_p \).
+\end{prob}
+
+
+
+\begin{prob}
+Let \( k \subseteq F \) be a cyclic Galois extension of degree \( p \), where char \( k = p > 0 \).  
+Prove that it is an Artin-Schreier extension. (Hint: What is \( \operatorname{tr}_{k \subseteq F}(1) \)? Use the additive version of Hilbert's theorem 90.)
+\end{prob}
+
+\begin{prob}
+The \emph{Artin-Schreier map} on a field \( k \) of positive characteristic \( p \) is the function  
+\[x \mapsto x^p - x.\]  
+Denote this function by \( \mathit{AS} \), and let \( \mathit{AS}^{-1} \) denote its inverse (which is only defined up to the addition of an element of \( \mathbb{F}_p \).
+
+Express the solutions of a quadratic equation \( x^2 + bx + c = 0 \) in \emph{characteristic 2} in terms of \( \mathit{AS}^{-1} \), for \( b \neq 0 \). (For \( b \neq 0 \), the roots must live in an Artin-Schreier extension of \( k \), since the polynomial is then separable. It is inseparable for \( b = 0 \); solving the equation in this case amounts to extending \( k \) by the unique square root of \( c \).)
+\end{prob}
+
+\begin{prob}
+Let \( f(x) \in k[x] \) be a separable irreducible polynomial of degree \( n \) over a field \( k \), and let \( F \) be its splitting field. Assume \( \operatorname{Aut}_{k}(F) \cong S_n \), and let \( \alpha \) be a root of \( f(x) \) in \( F \).  
+
+\begin{itemize}
+    \item Prove that \( \operatorname{Aut}_{k(\alpha)}(F) \cong S_{n-1} \).  
+    \item Prove that there are no proper subfields of \( k(\alpha) \) properly containing \( k \). (Hint: Consider the subgroup structure of \( S_n \).)
+\end{itemize}
+\end{prob}
+
+\begin{prob}
+Let \( f(x) \in k[x] \) be a separable irreducible polynomial of degree \( n \) over a field \( k \), with Galois group \( S_n \). Let \( \alpha \) be a root of \( f(x) \) in \( \overline{k} \), and let \( g(x) \in k[x] \) be any nonconstant polynomial of degree \( < n \). Prove that \( \alpha \) may be expressed as a polynomial in \( g(\alpha) \), with coefficients in \( k \).
+\end{prob}
+
+\begin{prob}
+Let \( d \) be a positive integer.  
+
+\begin{itemize}
+    \item Prove that the discriminant of a polynomial \( f(x) = \prod_{i=1}^d (x - \alpha_i) \) equals the product \( \pm \prod_{i=1}^d f'(\alpha_i) \).  
+    \item Prove that the discriminant of \( x^d - 1 \) is \( \pm d^d \), and note that this is a square in \( \mathbb{Q}(\zeta_d) \).  
+    \item Prove that \( \mathbb{Q}(\zeta_{8d}) \) contains square roots of \( d \) and \( -d \).  
+    \item Conclude that every \emph{quadratic} extension of \( \mathbb{Q} \) may be embedded in a cyclotomic field \( \mathbb{Q}(\zeta_n) \), for a suitable \( n \).  
+\end{itemize}
+
+(This is a very special case of the Kronecker-Weber theorem.)
+\end{prob}
 
 
 
@@ -2987,6 +3637,10 @@ Let \( \xi := \sqrt{2 + \sqrt{2}} \).
         &=2^r
     \end{align*}
 \end{proof}
+
+
+
+
 
 
 
