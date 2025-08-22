@@ -38,6 +38,7 @@
 \newcommand{\T}{\text{T}} % For tensor algebra
 \newcommand{\Ssq}{\text{S}}
 \newcommand{\om}{\omega}
+\usepackage{enumitem}
 
 
 \input{hui.tex}
@@ -3161,11 +3162,17 @@ Let $k$ be a field, and let $n > 0$ be an integer. Assume that there are no irre
 
 
 
-\section*{Problems}
-
 \begin{prob}
 Prove that quadratic extensions in characteristic $\neq 2$ are Galois.
 \end{prob}
+\begin{proof}
+    One can show that there exists $\alpha$ such that $F=k(\alpha)$, where the minimal polynomial of $\alpha$ is degree $2$, hence let $m_\alpha(x)=x^2+ax+b$, one can see that $f,f'$ are relatively prime if char$(k)\neq 2$.
+\end{proof}
+
+
+
+
+
 
 % \begin{prob}
 % Let $k \subseteq F$ be a Galois extension, and let $E$ be an intermediate field. Prove that $E \subseteq F$ is a Galois extension.
@@ -3180,6 +3187,9 @@ Prove that quadratic extensions in characteristic $\neq 2$ are Galois.
 \begin{prob}
 We have proved that all finite separable extensions $k \subseteq E$ are simple. Let $k \subseteq F$ be a Galois closure of $k \subseteq E$. For $\alpha \in E$, prove that $E = k(\alpha)$ if and only if $\alpha$ is moved by all $\sigma \in \text{Aut}_k(F) \setminus \text{Aut}_E(F)$.
 \end{prob}
+
+
+
 
 \begin{prob}
     Do the following Galois problems:
@@ -3338,7 +3348,7 @@ Prove that it is an Artin-Schreier extension. (Hint: What is \( \operatorname{tr
 \begin{prob}
 The \emph{Artin-Schreier map} on a field \( k \) of positive characteristic \( p \) is the function  
 \[x \mapsto x^p - x.\]  
-Denote this function by \( \mathit{AS} \), and let \( \mathit{AS}^{-1} \) denote its inverse (which is only defined up to the addition of an element of \( \mathbb{F}_p \).
+Denote this function by \( \mathit{AS} \), and let \( \mathit{AS}^{-1} \) denote its inverse (which is only defined up to the addition of an element of \( \mathbb{F}_p \)).
 
 Express the solutions of a quadratic equation \( x^2 + bx + c = 0 \) in \emph{characteristic 2} in terms of \( \mathit{AS}^{-1} \), for \( b \neq 0 \). (For \( b \neq 0 \), the roots must live in an Artin-Schreier extension of \( k \), since the polynomial is then separable. It is inseparable for \( b = 0 \); solving the equation in this case amounts to extending \( k \) by the unique square root of \( c \).)
 \end{prob}
@@ -3637,6 +3647,65 @@ Let \( d \) be a positive integer.
         &=2^r
     \end{align*}
 \end{proof}
+
+
+
+\chapter{Representation Theory of Finite Groups}
+\begin{prob}
+Let \( A \) be a finite dimensional semisimple algebra. Show that \( A \) has only finitely many isomorphism types of modules in each dimension. 
+
+
+
+% [This is not in general true for algebras that are not semisimple: we saw in Chapter 1 Exercise 9 that \( k[C_2 \times C_2] \) has infinitely many non-isomorphic 2-dimensional representations when \( k \) is an infinite field of characteristic 2.]
+\end{prob}
+\begin{proof}
+    For a fixed dimension $d$, show that there are finitely many isomorphism classes of $A$-modules of dimension $d$. This is equivalent to decompose any finite representation of $G$ into irreducible ones:
+    \begin{equation*}
+        V\cong S_1^{n_1}\oplus\dots\oplus S_k^{n_k}
+    \end{equation*}
+    where $S_i$ are irreducible representations, and 
+    \begin{equation*}
+        d=\sum_{i=1}^k \dim(S_i)n_i
+    \end{equation*}
+    There are only finitely many ways to write this as a sum.
+\end{proof}
+
+
+
+
+
+
+
+\chapter{Problems I guess}
+
+
+\begin{prob}
+Let \( D \) be a division ring and \( n \) a natural number.
+
+\begin{enumerate}[label=(\alph*)]
+    \item Show that the natural \( M_n(D) \)-module, consisting of column vectors of length \( n \) with entries in \( D \), is a simple module.
+    \item Show that \( M_n(D) \) is semisimple and has up to isomorphism only one simple module.
+    \item Show that every algebra of the form
+    \[
+    M_{n_1}(D_1) \oplus \cdots \oplus M_{n_r}(D_r)
+    \]
+    is semisimple.
+    \item Show that \( M_n(D) \) is a simple ring, namely one in which the only 2-sided ideals are the zero ideal and the whole ring.
+\end{enumerate}
+\end{prob}
+
+\begin{prob}
+(We exploit results from a basic algebra course in our suggested approach to this question.) Let \( G \) be a cyclic group of order \( n \) and \( k \) a field.
+
+\begin{enumerate}[label=(\alph*)]
+    \item By considering a homomorphism \( k[X] \to kG \) or otherwise, where \( k[X] \) is a polynomial ring, show that \( kG \cong k[X]/(X^n - 1) \) as rings.
+    \item Suppose that the characteristic of \( k \) does not divide \( n \). Use the Chinese Remainder Theorem and separability of \( X^n - 1 \) to show that when \( kG \) is expressed as a direct sum of irreducible representations, no two of the summands are isomorphic, and that their degrees are the same as the degrees of the irreducible factors of \( X^n - 1 \) in \( k[X] \). Deduce, as a special case of Corollary 2.1.7, that when \( k \) is algebraically closed all irreducible representations of \( G \) have degree 1.
+    \item When \( n \) is prime and \( k = \mathbb{Q} \), use irreducibility of \( X^{n-1} + X^{n-2} + \cdots + X + 1 \) to show that \( G \) has a simple module \( S \) of degree \( n - 1 \), and that \( \mathrm{End}_{kG}(S) \cong \mathbb{Q}(e^{2\pi i/n}) \).
+    \item When \( k = \mathbb{R} \) and \( n \) is odd show that \( G \) has \( \frac{n-1}{2} \) simple representations of degree 2 as well as the trivial representation of degree 1. When \( k = \mathbb{R} \) and \( n \) is even show that \( G \) has \( \frac{n-2}{2} \) simple representations of degree 2 as well as two simple representations of degree 1. If \( S \) is one of the simple representations of degree 2 show that \( \mathrm{End}_{kG}(S) = \mathbb{C} \).
+\end{enumerate}
+\end{prob}
+
+
 
 
 
