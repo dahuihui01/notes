@@ -3187,7 +3187,9 @@ Prove that quadratic extensions in characteristic $\neq 2$ are Galois.
 \begin{prob}
 We have proved that all finite separable extensions $k \subseteq E$ are simple. Let $k \subseteq F$ be a Galois closure of $k \subseteq E$. For $\alpha \in E$, prove that $E = k(\alpha)$ if and only if $\alpha$ is moved by all $\sigma \in \text{Aut}_k(F) \setminus \text{Aut}_E(F)$.
 \end{prob}
-
+\begin{proof}
+    You can do this!
+\end{proof}
 
 
 
@@ -3199,6 +3201,9 @@ We have proved that all finite separable extensions $k \subseteq E$ are simple. 
     \item Prove that $\mathbb{Q} \subseteq \mathbb{Q}(\sqrt{1 + \sqrt{2}})$ is not Galois, and compute its Galois closure $\mathbb{Q} \subseteq F$. Prove that $\text{Aut}_{\mathbb{Q}}(F) \cong D_8$.
 \end{itemize}
 \end{prob}
+\begin{proof}
+    You can do this. Probably good to note 3.
+\end{proof}
 
 \begin{prop}
 Let $p > 0$ be prime, and let $d \mid e$ be positive integers, so that there is an extension $\mathbb{F}_{p^d} \subseteq \mathbb{F}_{p^e}$. Prove that $\text{Aut}_{\mathbb{F}_{p^d}} \mathbb{F}_{p^e}$ is cyclic, and describe a generator of this group.
@@ -3220,6 +3225,12 @@ Let $k \subseteq F$ be a Galois extension and $E$ an intermediate field. Prove t
 
 Use this to give an alternative proof of the fact that $E$ is Galois over $k$ if and only if $\text{Aut}_E(F)$ is normal in $\text{Aut}_k(F)$.
 \end{prob}
+
+
+
+
+
+
 
 \begin{prob}
 Let $k \subseteq E$ and $E \subseteq F$ be Galois extensions.
@@ -3275,6 +3286,11 @@ Let $k \subseteq F$ be a cyclic Galois extension of degree $d$, and let $\varphi
 \begin{prob}
     Find explicitly a generator of a quadratic intermediate field of the extension $\mathbb{Q} \subseteq \mathbb{Q}(\zeta_{10})$.
     \end{prob}
+\begin{proof}
+    \textcolor{red}{here}
+    The Galois group is $(\Z/10\Z)^\times$, and the order $2$ element is $\zeta_{10}^9$.
+\end{proof}
+
     
 \begin{prob}
     Let $R$ be an integral domain, and let $f(x) \in R[x]$ be a polynomial of degree $n$. Show how to obtain $f(x)$ by specializing the 'universal' polynomial $P_n(x)$.
@@ -3284,17 +3300,17 @@ Let $k \subseteq F$ be a cyclic Galois extension of degree $d$, and let $\varphi
 
 
 
-\begin{prob}
-Prove that the elementary symmetric functions \( s_1, \ldots, s_n \) (see \S7.3) are algebraically independent. (Hint: Use Exercise I.28.)
-\end{prob}
+% \begin{prob}
+% Prove that the elementary symmetric functions \( s_1, \ldots, s_n \) (see \S7.3) are algebraically independent. (Hint: Use Exercise I.28.)
+% \end{prob}
 
-\begin{prob}
-Prove that every finite group is isomorphic to the group of automorphisms of some Galois extension.
-\end{prob}
+% \begin{prob}
+% Prove that every finite group is isomorphic to the group of automorphisms of some Galois extension.
+% \end{prob}
 
-\begin{prob}
-Let \( k \subseteq F \) be a radical extension, and let \( k \subseteq K \) be any extension; assume \( F \) and \( K \) are contained in a larger field. Prove that \( K \subseteq FK \) is radical.
-\end{prob}
+% \begin{prob}
+% Let \( k \subseteq F \) be a radical extension, and let \( k \subseteq K \) be any extension; assume \( F \) and \( K \) are contained in a larger field. Prove that \( K \subseteq FK \) is radical.
+% \end{prob}
 
 \begin{prob}
 Let \( f(x) \in \mathbb{Q}[x] \) be an irreducible cubic, and let \( \rho \) be a real root of \( f(x) \). Prove that the splitting field of \( f(x) \) over \( \mathbb{Q} \) is \( \mathbb{Q}(\rho, \sqrt{D}) \), where \( D \) is the discriminant of \( f(x) \).
@@ -3303,18 +3319,29 @@ Let \( f(x) \in \mathbb{Q}[x] \) be an irreducible cubic, and let \( \rho \) be 
 \begin{prob}
 Let \( f(x) \in \mathbb{Q}[x] \) be an irreducible cubic with exactly one real root. Prove that the discriminant of \( f(x) \) is not a square in \( \mathbb{Q} \).
 \end{prob}
+\begin{proof}
+    Since it's cubic, it is not a square iff the Galois group is $S_3$.
+\end{proof}
+
+
+% \begin{prob}
+% Find (mathematically or by library search) the lattice of subgroups of \( S_4 \), and verify that the transitive subgroups of \( S_4 \) are (isomorphic to) \( S_4 \), \( A_4 \), \( D_8 \), \( \mathbb{Z}/2\mathbb{Z} \times \mathbb{Z}/2\mathbb{Z} \), and \( \mathbb{Z}/4\mathbb{Z} \).
+% \end{prob}
 
 \begin{prob}
-Find (mathematically or by library search) the lattice of subgroups of \( S_4 \), and verify that the transitive subgroups of \( S_4 \) are (isomorphic to) \( S_4 \), \( A_4 \), \( D_8 \), \( \mathbb{Z}/2\mathbb{Z} \times \mathbb{Z}/2\mathbb{Z} \), and \( \mathbb{Z}/4\mathbb{Z} \).
+Compute the Galois group of \( x^4 - 2 \).
 \end{prob}
 
-\begin{prob}
-Compute the Galois group of the polynomial \( x^4 - 2 \).
-\end{prob}
+
 
 \begin{prob}
-Prove that the polynomial \( x^5 - 5x - 1 \) has exactly 3 real roots (this is a calculus exercise!) and is irreducible over \( \mathbb{Q} \). Prove that its Galois group is \( S_5 \).
+    Compute the Galois group of  \( x^5 - 5x - 1 \). 
 \end{prob}
+\begin{proof}
+    It has $2$ complex roots, $3$ real roots. And 
+    \textcolor{red}{why is it important that it is irreducibe}
+    % Prove that the polynomial \( x^5 - 5x - 1 \) has exactly 3 real roots (this is a calculus exercise!) and is irreducible over \( \mathbb{Q} \). Prove that its Galois group is \( S_5 \).
+\end{proof}
 
 \begin{prob}
 Let \( n > 0 \) be an integer. Note that

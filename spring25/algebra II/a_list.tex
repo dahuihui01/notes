@@ -3466,6 +3466,114 @@ $\Phi_8(x)=x^4+1$.
 
 
 \section{}
+
+\begin{defn}[symmetric functions]
+    Consider $P_n(x)=(x-t_1)\dots(x-t_n)\in\Z[t_1,\dots,t_n]$, and consider its coefficients
+    \begin{equation*}
+        P_n(x)=x^n-s_1(t_1, \dots, t_n)x^{n-1}+\dots+(-1)^{n}s_n(t_1,\dots, t_n)
+    \end{equation*}
+    are elementary symmetric functions of $t_1,\dots, t_n$. For example, when $n=3$, the symmetric functions are 
+    \begin{equation*}
+        s_1=t_1+t_2+t_3, s_2=t_1t_2+t_1t_3+t_2t_3, s_3=t_1t_2t_3
+    \end{equation*}
+\end{defn}
+
+\begin{prop}
+    Let $k$ be a field, and $\varphi\in k(t_1,\dots,t_n)$, then $\varphi$ is symmetric iff $\varphi$ is a rational function of elementary symmetric functions $s_1,\dots, s_n$.
+\end{prop}
+\begin{proof}
+    Let $k'=k(s_1,\dots, s_n)$ and $F=k(t_1,\dots, t_n)$, then $k'\subset F$ is Galois because $F$ is the splitting field of the separalbe polynomial $P_n(x)$ over $k'$. The symmetric group $S_n$ acts on $F$ by permuting $t_1,\dots, t_n$, and $S_n$ is the identity on $k'$. Thus $S_n$ is a subgroup of $\aut_{k'}(F)$, i.e., $n!\leq [F:k']\leq n!$, where the second inequality follows from degree of $P_n(x)$. This implies that 
+    \begin{equation*}
+        \aut_{k'}(F)=S_n, k'=k(s_1,\dots, s_n)=F^{S_n}
+    \end{equation*}
+    We reiterate: 
+    \begin{equation*}
+        k(s_1,\dots,s_n)\subset k(t_1,\dots,t_n)
+    \end{equation*}
+    is Galois, with Galois group $S_n$.
+\end{proof}
+
+\begin{prop}
+    As a corollary, every finite group $G$ can be realized as the Galois group of some extension.
+\end{prop}
+
+
+\begin{prop}
+    Next we construct Galois extension with Galois group $A_n$: recall 
+    \begin{equation*}
+        \Delta=\prod_{1\leq i<j\leq n}(t_i-t_j)
+    \end{equation*}
+    Then 
+    \begin{equation*}
+        k(s_1,\dots, s_n)(\Delta)\subset k(t_1,\dots, t_n)
+    \end{equation*}
+    is Galois, with Galois group $A_n$.
+\end{prop}
+\begin{proof}
+    $\Delta$ has degree $2$ over $k(s_1,\dots,s_n)$ because 
+    \begin{equation*}
+        \Delta^2=D=\prod_{i<j}(t_i-t_j)^2\in k(s_1,\dots, s_n)
+    \end{equation*}
+    and the only transitive subgroup of index $2$ is $A_n$.
+\end{proof}
+
+
+\begin{prop}
+    Let $k$ be a field of characteristic $0$, and $f(x)\in k[x]$ be an irreducible polynomial. Then $f(x)$ is solvable by radicals iff its Galois group is solvable.
+\end{prop}
+
+\begin{prop}
+    (This may seem repetitive). Let $f(x)\in k[x]$ be an irreducible separable polynomial of degree $n$, then $\gal_k(f(x))$ acts transitively on the set of roots of $f$ in $\bar{k}$, i.e., $\gal_k(f(x))$ can be identified as a subgroup of $S_n$.
+\end{prop}
+
+\begin{example}
+    The only transitive subgroups of $S_3$: $S_3$ and $A_3$. This implie that an irreducible cubic separable polynomial can only have Galois group $A_3$ or $S_3$.
+\end{example}
+
+\begin{example}
+    The only transitive subgroups of $S_4$:
+    \begin{equation*}
+        S_4, A_4, D_8, \Z/2\Z\times\Z/2\Z, \Z/4\Z
+    \end{equation*}
+\end{example}
+\begin{defn}[discriminant]
+    Let $f\in k[x]$ be separable, and $\alpha_1,\dots,\alpha_n$ be its roots in some splitting field, then the \textbf{discriminant} of $f$ is 
+    \begin{equation*}
+        D=\prod_{1\leq i<j\leq n}(\alpha_i-\alpha_j)^2=\Delta^2
+    \end{equation*}
+\end{defn}
+We notice that $D$ is always fixed by Galois group $G$, whereas $\Delta$ is fixed by $G$ iff $G\subset A_n$.
+
+\begin{prop}
+    Let $k$ be field of characteristic $\neq 2$, let $f(x)\in k[x]$ be a separable polynoimal, with discriminant $D$. Then the Galois group of $f(x)$ is contained in $A_n$ iff $D$ is a square in $k$, i.e., $\Delta\in k$.
+\end{prop}
+
+\begin{example}
+    For $S_3$: the Galois group is $A_3$ if $D$ is a square, and $S_3$ if it is not a square. 
+\end{example}
+
+
+
+\begin{prop}
+    Let $f\in\Q[x]$ be an irreducible polynomial of degree $p$, where $p$ is prime. Assume that $f$ has exactly $2$ complex roots, then the Galois group is $S_p$.
+\end{prop}
+\begin{proof}
+    $G$ is a subgroup of $S_p$: complex conjugation gives an order $2$ element of $G$; we also know $p$ divides $|G|$, thus there exists an element of order $p$, which is a $p$-cycle, i.e., they generate $S_p$.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \begin{prop}
     Every finite abelian group is the Galois group of some extension $F$ over $\Q$. 
 
@@ -3496,6 +3604,16 @@ $\Phi_8(x)=x^4+1$.
         \gal(F/\Q)=G
     \end{equation*}
 \end{proof}
+
+\begin{warn}
+    If you are just given irreducible $f$, asked to compute the Galois group of $f$: remember the degree of extension could be as large as $\deg(f)!$. 
+\end{warn}
+
+\begin{warn}
+    Sometimes we get asked to find $\gal(f)$, if it's irreducible, then 
+\end{warn}
+
+
 
 
 
@@ -3920,6 +4038,106 @@ You have
 
 
 \section{Induction and Restriction}
+
+\begin{defn}[Induced Representation]
+    Let $H$ be a subgroup of $G$, let $V$ be a $kG$-module. Let $g_1H, \dots, g_{[G:H]}H$ be the list of left cosets of $G/H$. Then 
+    \begin{equation*}
+        \text{Ind}_H^G(V)=\bigoplus_{i=1}^{[G:H]}g_i\otimes V
+    \end{equation*}
+    where 
+    \begin{equation*}
+        g_i\otimes V=\{g_i\otimes v: v\in V\}
+    \end{equation*}
+    note that if $g\in G$, then 
+    \begin{equation*}
+        g(g_i\otimes V)=g_j\otimes V
+    \end{equation*}
+    where $gg_i=g_jh$ for some $h\in H$. Note that $g_i\otimes V\cong V$ for each $i$. 
+\end{defn}
+The $g_i\otimes V$ submodules of $\text{Ind}_H^G(V)$ are permuted under the action of $G$, which is transitive.
+
+
+\begin{defn}[Induced character]
+    Let $H$ be a subgroup of $G$, let $V$ be a $\C H$-module with character $\chi$. Then the induced character on $G$ is 
+    \begin{equation*}
+        \text{Ind}_H^G(\chi)(g)=\frac{1}{|H|}\sum_{t\in G: t^{-1}gt\in H}\chi(t^{-1}gt)
+    \end{equation*}
+\end{defn}
+
+\begin{example}
+    Consider $G=S_3$, $H=\la(123)\ra$, and let $\chi$ be the trivial representation on $H$, then 
+    \begin{equation*}
+        \text{Ind}_H^G\chi(g)=\begin{cases}
+            2, g=e\\
+            0, g=(12)\\
+            2, g=(123)
+        \end{cases}
+    \end{equation*}
+\end{example}
+
+\begin{prop}[Frobenius reciprocity]
+    Let $\text{Res}_H^G(V)$ be the restriction of representation of $V$ on $G$ to $H$. Let $H\subset K\subset G$ be subgroups of $G$ and $V$ be a $kH$-module and $W$ be a $kG$-module. 
+    \begin{equation*}
+        \text{Hom}_{kG}(\text{Ind}_H^GV,W)\cong\text{Hom}_{kG}(V,\text{Res}_H^GW)
+    \end{equation*}
+    and similarly, 
+    \begin{equation*}
+        \text{Hom}_{kG}(W,\text{Ind}_H^GV)\cong\text{Hom}_{kG}(\text{Res}_H^GW,V)
+    \end{equation*}
+\end{prop}
+
+\begin{prop}
+    Some more properties of induction and restriction:
+    \begin{enumerate}
+        \item $\text{Ind}_K^G\text{Ind}_H^KV\cong\text{Ind}_H^GV$.
+        \item Similarly for restrictions.
+        \item $\text{Ind}_H^GV\cong\text{Hom}_{kH}(kG, V)$ as $kG$-modules.
+    \end{enumerate}
+\end{prop}
+
+\begin{prop}[Frobenius reciprocity for characters]
+    Let $\psi,\chi$ be complex characters of $G$.
+    \begin{equation*}
+        \la\text{Ind}_H^G\chi, \psi\ra_G=\la \chi,\text{Res}_H^G\psi\ra_H
+    \end{equation*}
+\end{prop}
+
+
+\begin{prop}
+    Let $V$ be a representation of $G$ over $k$ whose characteristic is not $2$, then
+    \begin{equation*}
+        V\otimes V\cong S^2(V)\oplus\wedge^2(V)
+    \end{equation*}
+    Moreover, 
+    \begin{equation*}
+        S^2\chi(g)=\frac{1}{2}(\chi(g)^2-\chi(g^2))
+    \end{equation*}
+    and 
+    \begin{equation*}
+        \wedge^2(g)=\frac{1}{2}(\chi(g)^2-\chi(g^2))
+    \end{equation*}
+\end{prop}
+
+\begin{warn}
+    So how to construct character tables.
+\end{warn}
+\begin{prop}
+    \begin{enumerate}
+        \item Find the number of conjugacy classes of $G$ (to identify the size of the table).
+        \item Take the abelianization $G/[G,G]$ to find all the one-dimensional characters.
+        \item For characters of dimension greater than $1$: 
+        \begin{enumerate}
+            \item Find the natural representations.
+            \item Find representations lifted from quotient groups.
+            \item Representations induced from subgroups.
+            \item Tensor products of other representations.
+            \item Symmetric and alternating powers of representations.
+        \end{enumerate}
+    \end{enumerate}
+    Keep in mind of \textbf{Frobenius Reciprocity} and \textbf{Orthogonality Relations}.
+\end{prop}
+
+
 
 
 
