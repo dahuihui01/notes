@@ -2249,7 +2249,6 @@ where $\phi=\frac{1+\sqrt{5}}{2}$.
 \chapter{Fall 2007}
 
 
-
 \begin{prob}
     Let \(G\) be a cyclic group of order 12. Construct a Galois extension \(K\) over \(\mathbb{Q}\) so that the Galois group is isomorphic to \(G\).
 \end{prob}
@@ -2306,25 +2305,6 @@ where $\phi=\frac{1+\sqrt{5}}{2}$.
 \end{proof}
 
 
-\begin{prob}
-    A differentiation of a ring \(R\) is a mapping \(D : R \to R\) such that, for all \(x,y \in R\),
-    \begin{itemize}
-        \item[(1)] \(D(x+y) = D(x) + D(y)\); and
-        \item[(2)] \(D(xy) = D(x)y + xD(y)\).
-    \end{itemize}
-    If \(K\) is a field and \(R\) is a \(K\)-algebra, then its differentiation are supposed to be over \(K\), that is,
-    \begin{itemize}
-        \item[(3)] \(D(x) = 0\) for any \(x \in K\).
-    \end{itemize}
-    Let \(D\) be a differentiation of the \(K\)-algebra \(M_n(K)\) of \(n \times n\)-matrices. Prove that there exists a matrix \(A \in M_n(K)\) such that \(D(X) = AX - XA\) for all \(X \in M_n(K)\).
-\end{prob}
-\begin{proof}
-    It suffices to consider basis elements of $M_{ij}$, 
-    \begin{equation*}
-        A=\sum_{i,j}D(M_{ij})E_{ji}
-    \end{equation*}
-    and one can check \(D(X) = AX - XA\) holds.
-\end{proof}
 
 
 
@@ -2356,6 +2336,31 @@ where $\phi=\frac{1+\sqrt{5}}{2}$.
     \end{equation*}
 
 \end{proof}
+
+
+
+Omitted:
+
+\begin{prob}
+    A differentiation of a ring \(R\) is a mapping \(D : R \to R\) such that, for all \(x,y \in R\),
+    \begin{itemize}
+        \item[(1)] \(D(x+y) = D(x) + D(y)\); and
+        \item[(2)] \(D(xy) = D(x)y + xD(y)\).
+    \end{itemize}
+    If \(K\) is a field and \(R\) is a \(K\)-algebra, then its differentiation are supposed to be over \(K\), that is,
+    \begin{itemize}
+        \item[(3)] \(D(x) = 0\) for any \(x \in K\).
+    \end{itemize}
+    Let \(D\) be a differentiation of the \(K\)-algebra \(M_n(K)\) of \(n \times n\)-matrices. Prove that there exists a matrix \(A \in M_n(K)\) such that \(D(X) = AX - XA\) for all \(X \in M_n(K)\).
+\end{prob}
+
+% \begin{proof}
+%     It suffices to consider basis elements of $M_{ij}$, 
+%     \begin{equation*}
+%         A=\sum_{i,j}D(M_{ij})E_{ji}
+%     \end{equation*}
+%     and one can check \(D(X) = AX - XA\) holds.
+% \end{proof}
 
 
 
@@ -2502,6 +2507,162 @@ S_4 & (1) & (12) & (123) & (1234) & (12)(34) \vspace{2pt} \\
     \end{equation*}
     i.e., it is not injective. This shows that $S_4$ cannot be embedded into $\text{GL}_2(\C)$.
 \end{proof}
+
+
+
+\chapter{Fall 2010}
+
+
+
+% \section*{Algebra Qualifying Exam Fall 2010}
+% \subsection*{September 6, 2010 (150 minutes)}
+
+% Do all problems. All problems are equally weighted. Show all work.
+
+\begin{prob}
+    Let \(G\) be a group. Let \(H\) be a subset of \(G\) that is closed under group multiplication. Assume that \(g^2 \in H\) for all \(g \in G\). Show that \(H\) is a normal subgroup of \(G\) and \(G/H\) is abelian.
+\end{prob}
+\begin{proof}
+    This is purely computational. 
+\end{proof}
+
+\begin{prob}
+    \begin{itemize}
+        \item[(a)] Find the complete factorization of the polynomial \(f(x) = x^6 - 17x^4 + 80x^2 - 100\) in \(\mathbb{Z}[x]\).
+        \item[(b)] For which prime numbers \(p\) does \(f(x)\) have a root in \(\mathbb{Z}/p\mathbb{Z}\) (i.e, \(f(x)\) has a root modulo \(p\))? Explain your answer.
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item Replacing $y=x^2$, we see that 
+        \begin{equation*}
+            f(y)=(y-10)(y-2)(y-5)
+        \end{equation*}
+        Thus we have 
+        \begin{equation*}
+            f(x)=(x^2-10)(x^2-2)(x^2-5)
+        \end{equation*}
+        \item $f(x)$ has a root over $\F_p$ for all prime $p$. This is because one can consider the Legendre symbol $\chi:\F_p\to\{\pm1\}$
+        \begin{equation*}
+            \chi(g)=\begin{cases}
+                1, g \text{ is a square}\\
+                -1, \text{ if not}
+            \end{cases}
+        \end{equation*}
+        where $g\in\F_p$. We see that either $\sqrt{2}$ or $\sqrt{5}$ or $\sqrt{10}$ is in $\F_p$. Suppose both $\sqrt{2}$ or $\sqrt{5}$ are not in $\F_p$, then 
+        \begin{equation*}
+            \chi(10)=\chi(2)\chi(5)=-1\cdot -1=1
+        \end{equation*}
+        In other words, $\sqrt{10}\in\F_p$. This shows that $f$ has a root over $\F_p$ for all $p$.
+    \end{enumerate}
+\end{proof}
+
+\begin{prob}
+    Let \(K = \mathbb{Q}(\sqrt[8]{2}, \sqrt{-1})\) and \(F = \mathbb{Q}(\sqrt{-2})\). Show that \(K\) is Galois over \(F\) and determine the Galois group \(\text{Gal}(K/F)\).
+\end{prob}
+\begin{proof}
+    
+\end{proof}
+
+
+
+\begin{prob}
+    Let \(A\) be a commutative Noetherian local ring with maximal ideal \(\mathfrak{m}\). Assume \(\mathfrak{m}^n = \mathfrak{m}^{n+1}\) for some \(n > 0\). Show that \(A\) is Artinian.
+\end{prob}
+
+
+
+\begin{prob}
+    Let \(\mathbb{F}_q\) be a finite field with \(q = p^n\) elements. Here \(p\) is a prime number. Let \(\varphi : \mathbb{F}_q \rightarrow \mathbb{F}_q\) be given by \(\varphi(x) = x^p\).
+    \begin{itemize}
+        \item[(a)] Show that \(\varphi\) is a linear transformation on \(\mathbb{F}_q\) (as vector space over \(\mathbb{F}_p\)), then determine its minimal polynomial.
+        \item[(b)] Supposed that \(\varphi\) is diagonalizable over \(\mathbb{F}_p\). Show that \(n\) divides \(p - 1\).
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item[(a)] We see that $\varphi$ has characteristic polynomial $p(t)=t^n-1$. 
+        \item[(b)] 
+    \end{enumerate}
+\end{proof}
+
+
+\begin{prob}
+    Let \(G\) be a non-abelian group of order \(p^3\). Here \(p\) is a prime number.
+    \begin{itemize}
+        \item[(a)] Determine the number of (isomorphic classes of) irreducible complex representations of \(G\), and find their dimensions.
+        \item[(b)] Which of the irreducible complex representations of \(G\) are faithful? Explain your answer.
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(a)] Note that $[G,G]$ has order $p$, thus $G$ has $p^2$ one-dimensional irreducible representations; thus there are $p-1$ $p$-dimensional irreducible representations.
+        \item[(b)] The $p$-dimensional one is faithful: know that $\bar{\rho}:\frac{G}{\ker\rho}\to\text{GL}_p(\C)$ is still irreducible of dimension $p$, if $\ker\rho$ is nontrivial, then $\bar{\rho}$ has dimension $1$, i.e., a contradiction. 
+        
+        The one-dimensional ones are not faithful because if it were, then $G$ embeds into $\C^\times$, and finite subgroups of $\C^\times$ is cyclic, contradiction.
+    \end{itemize}
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\chapter{Spring 2010}
+% \section*{Algebra Qualifying Exam Spring 2010}
+% \subsection*{May 13, 2010 (150 minutes)}
+
+Do all problems. All problems are equally weighted. Show all work.
+
+
+\begin{prob}
+    Let \(G\) be a non-abelian group of order \(p^3\), here \(p\) is prime. Determine the number of distinct conjugacy classes in \(G\).
+\end{prob}
+
+
+
+
+
+\begin{prob}
+    Compute Galois groups of the following polynomials.
+    \begin{itemize}
+        \item[(a)] \(x^3 + t^2x - t^3\) over \(k\), where \(k = \mathbb{C}(t)\) is the field of rational functions in one variable over complex numbers \(\mathbb{C}\).
+        \item[(b)] \(x^4 - 14x^2 + 9\) over \(\mathbb{Q}\).
+    \end{itemize}
+\end{prob}
+
+
+
+\begin{prob}
+    Let \(V\) be a \(n\)-dimensional vector space over a field \(k\). Let \(T \in \text{End}_k(V)\).
+    \begin{itemize}
+        \item[(a)] Show that \(tr(T \otimes T \otimes T) = (tr(T))^3\). Here \(tr(T)\) is the trace of \(T\).
+        \item[(b)] Find a similar formula for the determinant \(\det(T \otimes T \otimes T)\).
+    \end{itemize}
+\end{prob}
+
+
+
+\begin{prob}
+    Classify all non-commutative semi-simple rings with 512 elements. (You can use the fact that finite division rings are fields.)
+\end{prob}
+
+
+\begin{prob}
+    Let \(G\) be a group with 24 elements. \textbf{Use representation theory} to show that \(G \neq [G, G]\). (Here \([G, G]\) is the commutator subgroup of \(G\).)
+\end{prob}
+
+
+Omitted:
+
+\begin{prob}
+    Let \(R\) be a ring such that \(r^3 = r\) for all \(r \in R\). Show that \(R\) is commutative. (Hint: First show that \(r^2\) is central for all \(r \in R\).)
+\end{prob}
+
 
 
 

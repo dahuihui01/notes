@@ -2458,6 +2458,10 @@ where:
 \end{warn}
 
 
+\begin{prop}
+    Let $M\in\text{GL}_n(k)$, then $M$ is triangularizable iff the characteristic polynomial factors completely into linear factors. This is 
+\end{prop}
+
 
 
 
@@ -3615,6 +3619,17 @@ We notice that $D$ is always fixed by Galois group $G$, whereas $\Delta$ is fixe
 
 
 
+\begin{prop}
+    Let $k\subset F$ be Galois, fix $H\subset\gal(F/k)$, for any element $\alpha\in L$, then 
+    \begin{equation*}
+        \sum_{h\in H}h(\alpha), \quad \prod_{h\in H}h(\alpha)
+    \end{equation*}
+    are in $L^H$. 
+\end{prop}
+This is $\tr_{L/L^H}(m_\alpha)$, where $m_\alpha$ is the multiplication by $\alpha$, and similarly the determinant.
+
+
+
 
 
 
@@ -3714,6 +3729,23 @@ This corresponds to Aluffi Chapter VII 2.2-2.3.
     \end{equation*}
     forms a basis of $K$ over $k$.
 \end{prop}
+
+
+
+
+
+\begin{prop}
+    Let $k\subset k(\alpha)$ be a simple  extension, then for $f(\alpha)=0$, 
+    \begin{equation*}
+        [k(\alpha):k]\leq (\deg(f))
+    \end{equation*}
+    and the splitting field $F$ 
+    \begin{equation*}
+        [F:k]\leq (\deg(f))!
+    \end{equation*}
+\end{prop}
+
+
 
 
 \chapter{Representation Theory of Finite Groups}
@@ -4032,6 +4064,11 @@ You have
 \end{prop}
 
 
+\begin{prop}
+    Let $\chi_1,\dots, \chi_n$ be pairwise distinct one-dimensional characters over $k$, then $\chi_1,\dots, \chi_n$ are linearly independent over $k$.
+\end{prop}
+
+
 
 
 
@@ -4139,6 +4176,9 @@ The $g_i\otimes V$ submodules of $\text{Ind}_H^G(V)$ are permuted under the acti
 
 
 
+\begin{prop}
+    Suppose an abelian group $G$ admits a faithful representation, then show $G$ is cyclic.
+\end{prop}
 
 
 
@@ -4163,10 +4203,7 @@ The $g_i\otimes V$ submodules of $\text{Ind}_H^G(V)$ are permuted under the acti
 
 
 
-
-
-
-\chapter{Semisimple Algebra}
+% \chapter{Semisimple Algebra}
 
 
 \newpage
