@@ -33,6 +33,7 @@ Quick reminder whether a polynomial has a rational root:
 % \end{example}
 
 
+
 \begin{prop}
     Let $G$ be a Galois group of a polynomial $f$ of degree $4$, and $|G|=8$, then 
     \begin{equation*}
@@ -51,36 +52,36 @@ Quick reminder whether a polynomial has a rational root:
     Let $k\subset K$ be a Galois extension, then the intermediate field extensions $k\subset E\subset K$ is determined by the subgroups of $\gal(K/k)$. Namely, let $E$ be an intermediate extension, there exists a subgroup $H$ of $\gal(K/k)$ that fixes $E$. This extension is normal if and only if $H$ is normal. And $E/k$ is Galois if and only if $H$ is normal.
 \end{prop}
 
-\begin{prop}
-    We can draw the lattice of subgroups of $\gal(K/k)$ and lattice of subfields:
+% \begin{prop}
+%     We can draw the lattice of subgroups of $\gal(K/k)$ and lattice of subfields:
 
-    \begin{tikzpicture}[node distance=2cm]
-        % Nodes for fields
-        \node (k) {$k$};
-        \node[right of=k] (E) {$E$};
-        \node[right of=E] (F) {$F$};
+%     \begin{tikzpicture}[node distance=2cm]
+%         % Nodes for fields
+%         \node (k) {$k$};
+%         \node[right of=k] (E) {$E$};
+%         \node[right of=E] (F) {$F$};
         
-        % Nodes for automorphism groups (placed below)
-        \node[below of=k, yshift=-1.5cm] (Autk) {$\text{Aut}_k(F)$};
-        \node[below of=E, yshift=-1.5cm] (AutE) {$\text{Aut}_E(F)$};
-        \node[below of=F, yshift=-1.5cm] (e) {$\{e\}$};
+%         % Nodes for automorphism groups (placed below)
+%         \node[below of=k, yshift=-1.5cm] (Autk) {$\text{Aut}_k(F)$};
+%         \node[below of=E, yshift=-1.5cm] (AutE) {$\text{Aut}_E(F)$};
+%         \node[below of=F, yshift=-1.5cm] (e) {$\{e\}$};
         
-        % Field extension lines
-        \draw (k) -- (E) node[midway, above] {$\subseteq$};
-        \draw (E) -- (F) node[midway, above] {$\subseteq$};
+%         % Field extension lines
+%         \draw (k) -- (E) node[midway, above] {$\subseteq$};
+%         \draw (E) -- (F) node[midway, above] {$\subseteq$};
         
-        % Automorphism group lines (reverse inclusions)
-        \draw (Autk) -- (AutE) node[midway, below] {$\supseteq$};
-        \draw (AutE) -- (e) node[midway, below] {$\supseteq$};
+%         % Automorphism group lines (reverse inclusions)
+%         \draw (Autk) -- (AutE) node[midway, below] {$\supseteq$};
+%         \draw (AutE) -- (e) node[midway, below] {$\supseteq$};
         
-        % Vertical dotted lines to show correspondence
-        \draw[dashed] (k) -- (Autk);
-        \draw[dashed] (E) -- (AutE);
-        \draw[dashed] (F) -- (e);
-    \end{tikzpicture}
+%         % Vertical dotted lines to show correspondence
+%         \draw[dashed] (k) -- (Autk);
+%         \draw[dashed] (E) -- (AutE);
+%         \draw[dashed] (F) -- (e);
+%     \end{tikzpicture}
     
 
-\end{prop}
+% \end{prop}
 
 
 
@@ -113,6 +114,8 @@ Quick reminder whether a polynomial has a rational root:
 \end{proof}
 
 
+\section{Problems}
+
 \begin{prob}[S2001-Q2]
     Let \(K\) be the splitting field of \(f(X)=X^3-2\) over \(\mathbb{Q}\).
     \begin{itemize}
@@ -128,8 +131,11 @@ Quick reminder whether a polynomial has a rational root:
         \begin{equation*}
             \left\{\sqrt[3]{2}, e^\frac{2\pi i}{3} \right\}
         \end{equation*}
-        \item[(b)] The minimal polynomial of $e^\frac{2\pi i}{3}$ is $x^2+x+1$. This shows that the Galois group $G$ has order $6$, and because of the complex root, there exists an element of order $2$, a transposition, that only swaps the two complex roots, and $G$ also has an element of order $3$ because $3$ divides $|G|$, this shows that $G$ must be $S_3$.
-        \item[(c)]  The following is the subgroup lattice of $S_3$ and subfield lattice: 
+        \item[(b)] The Galois group is a subgroup of $S_3$, hence it suffices to show $G$ has order $6$, i.e., the extension is of degree $6$.
+        
+        
+        % The minimal polynomial of $e^\frac{2\pi i}{3}$ is $x^2+x+1$. This shows that the Galois group $G$ has order $6$, and because of the complex root, there exists an element of order $2$, a transposition, that only swaps the two complex roots, and $G$ also has an element of order $3$ because $3$ divides $|G|$, this shows that $G$ must be $S_3$.
+        \item[(c)]  The following is the \textbf{complete} subgroup lattice of $S_3$ and subfield lattice: 
         \[\begin{tikzcd}
             & K &&&& {\{e\}} \\
             {\mathbb{Q}(\sqrt[3]{2})} & {\mathbb{Q}(\sqrt[3]{2}\omega)} & {\mathbb{Q}(\sqrt[3]{2}\omega^2)} & {\mathbb{Q}(\omega)} & {\langle(23)\rangle} & {\langle(13)\rangle} & {\langle(12)\rangle} & {\langle(123)\rangle} \\
@@ -153,7 +159,7 @@ Quick reminder whether a polynomial has a rational root:
         \end{tikzcd}\]
         Thus all the $\Q\subset k$ such that $[k:\Q]=3$ are 
         \begin{equation*}
-            \{\Q(\sqrt[3]{2}), \Q(\sqrt[3]{2})e^\frac{2\pi i}{3}, \Q(\sqrt[3]{2})e^\frac{4\pi i}{3}\}
+            \{\Q(\sqrt[3]{2}), \Q(\sqrt[3]{2}\om_3), \Q(\sqrt[3]{2}\om_3^2)\}
         \end{equation*}
 
 
@@ -260,6 +266,7 @@ Quick reminder whether a polynomial has a rational root:
     \begin{equation*}
         \left(\Z/8\Z\right)^\times\cong\frac{\Z}{2\Z}\times\frac{\Z}{2\Z}
     \end{equation*}
+    Alternatively, we can find $K=\Q(i,\sqrt{2})$, then $\gal(F/\Q)\cong\frac{\Z}{2\Z}\times\frac{\Z}{2\Z}$.
 \end{proof}
 
 
@@ -298,7 +305,7 @@ Quick reminder whether a polynomial has a rational root:
             G\cong D_8
         \end{equation*}
 
-        \item[(b)] The argument is given in (a).
+        \item[(b)] Notice that we need to check that $f$ is irreducible, then we can embed $\gal$ into $S_4$. Suppose that it is not irreducible, then either $f=g_1g_2,g_i$ is quadratic, or $f=g(x)(x-a)$, for some $a\in\Q$. In former case, we see $\gal$ embeds in $\Z/2\Z\times\Z/2\Z$, so cannot be of order $8$; similarly for cubic+linear, $S_3$ does not have subgroup of order $8$. Hence a degree $4$ polynomial with Galois group of order $8$ must be irreducible.
     \end{itemize}
 \end{proof}
 
@@ -320,9 +327,27 @@ Quick reminder whether a polynomial has a rational root:
         \begin{equation*}
             \gal(K/\Q)\cong D_8
         \end{equation*}
-        \item[(b)] \textcolor{red}{not finished}
+        \item[(b)] There are 10 subgroups of $D_8$, and $6$ of them are normal. Let 
+        \begin{equation*}
+            r: \alpha\mapsto\beta, s: i\mapsto i
+        \end{equation*}
+        Then we see, for example, $r^2$ fixes $i$ and $\sqrt{10}$, thus we must have the lattice 
+        \[\begin{tikzcd}
+            & K \\
+            & {\mathbb{Q}(i, \sqrt{10})} \\
+            {\mathbb{Q}(i)} & {\mathbb{Q}(\sqrt{10}i)} & {\mathbb{Q}(\sqrt{10})} \\
+            & {\mathbb{Q}}
+            \arrow[no head, from=2-2, to=1-2]
+            \arrow[no head, from=3-1, to=2-2]
+            \arrow[no head, from=3-2, to=2-2]
+            \arrow[no head, from=3-2, to=4-2]
+            \arrow[no head, from=3-3, to=2-2]
+            \arrow[no head, from=4-2, to=3-1]
+            \arrow[no head, from=4-2, to=3-3]
+        \end{tikzcd}\]
     \end{itemize}
 \end{proof}
+
 
 
 
@@ -337,7 +362,7 @@ Quick reminder whether a polynomial has a rational root:
 \end{prob}
 \begin{proof}
     \begin{itemize}
-        \item[(a)] The polynomial completely factors over $\C(t)$, so the Galois group is $\{e\}$.
+        \item[(a)] The polynomial completely factors over $\C(t)$, so the Galois group is $\{e\}$. Try taking $x=\lambda t$, then solving for $\lambda$, which splits into linear factors because $\C$ is algebraically closed.
         \item[(b)] The roots are 
         \begin{equation*}
             \left\{\pm\sqrt{7\pm 2\sqrt{10}}\right\}
@@ -433,10 +458,12 @@ Quick reminder whether a polynomial has a rational root:
     \begin{equation*}
         \Q\subset F\subset K
     \end{equation*}
-    Since $K$ is Galois over $\Q$ (splitting field of $x^8-2$), we know $K/F$ is also Galois. Now The Galois group $\gal(K/F)$ corresponds to the subgroup of $\gal(K/\Q)$ of index $2$, i.e., a subgroup of order $8$, hence 
-    \begin{equation*}
-        \gal(K/F)=\frac{\Z}{8\Z}
-    \end{equation*} 
+    The Galois group can be computed to be $Q_8$.
+    % The Galois group can be computed by first noting $\gal(K/\Q)$ is generated by two elements:
+    % Since $K$ is Galois over $\Q$ (splitting field of $x^8-2$), we know $K/F$ is also Galois. Now The Galois group $\gal(K/F)$ corresponds to the subgroup of $\gal(K/\Q)$ of index $2$, i.e., a subgroup of order $8$, hence 
+    % \begin{equation*}
+    %     \gal(K/F)=\frac{\Z}{8\Z}
+    % \end{equation*} 
 
 
     % We know that $K$ is Galois because it is the splitting field of the following separable polynomial:
@@ -464,63 +491,86 @@ Quick reminder whether a polynomial has a rational root:
             r^ks^m
         \end{equation*}
         where $0\leq k\leq n-1, m=0,1$. Hence there are $2n$ elements.
-        \item[(b)] The Galois group is indeed diahedral, note that 
-        \begin{equation*}
-            K=\Q(\zeta_8,\sqrt[8]{2})
-        \end{equation*}
-        Thus $\gal(K/\Q)$ has order 16 and the only transitive subgroup of $S_8$ of order $16$ is $D_{16}$.
+        \item[(b)] It is not $D_{16}$, you can compute the number of elements of each order.
+        % \item[(b)] The Galois group is indeed diahedral, note that 
+        % \begin{equation*}
+        %     K=\Q(\zeta_8,\sqrt[8]{2})
+        % \end{equation*}
+        % Thus $\gal(K/\Q)$ has order 16 and the only transitive subgroup of $S_8$ of order $16$ is $D_{16}$.
     \end{itemize}
 \end{proof}
 
 
-\begin{prob}[S2019-Q1]
-    Show that any transitive subgroup of \(A_{5}\) is isomorphic to one of the following groups:
+\begin{prop}[S2019-Q1]
+    Any transitive subgroup of \(A_{5}\) is isomorphic to one of the following groups:
     \begin{itemize}
         \item[(a)] the cyclic group \(\mathbb{Z}/5\mathbb{Z}\),
         \item[(b)] the dihedral group \(D_{5}\),
         \item[(c)] \(A_{5}\).
     \end{itemize}
-\end{prob}
+\end{prop}
 
 
-\begin{prob}[S2019-Q2]
-    Let \(f(x)=x^{5}-5x+12\). Verify that \(f(x)\) is irreducible in \(\mathbb{Q}[x]\) and its discriminant is \(d(f)=(2^{6}5^{3})^{2}\). If \(r_{1},\ldots,r_{5}\) are the roots of \(f\), let
-    \[P(x)=\prod_{1\leq i<j\leq 5}(x-(r_{i}+r_{j})).\]
-    Show that \(P(x)\) is a product of two monic irreducible polynomials in \(\mathbb{Q}[x]\):
-    \[P(x)=(x^{5}-5x^{3}-10x^{2}+30x-36)(x^{5}+5x^{3}+10x^{2}+10x+4).\]
-    Use this information, Problem 1 and properties of \(f_{3}\in\mathbb{F}_{3}[x]\), the reduction of \(f\) modulo 3, to show that the the Galois group \(G_{f}\) of \(f\) is isomorphic to \(D_{5}\).
-\end{prob}
+
+% \begin{prob}[S2019-Q2]
+%     Let \(f(x)=x^{5}-5x+12\). Verify that \(f(x)\) is irreducible in \(\mathbb{Q}[x]\) and its discriminant is \(d(f)=(2^{6}5^{3})^{2}\). If \(r_{1},\ldots,r_{5}\) are the roots of \(f\), let
+%     \[P(x)=\prod_{1\leq i<j\leq 5}(x-(r_{i}+r_{j})).\]
+%     Show that \(P(x)\) is a product of two monic irreducible polynomials in \(\mathbb{Q}[x]\):
+%     \[P(x)=(x^{5}-5x^{3}-10x^{2}+30x-36)(x^{5}+5x^{3}+10x^{2}+10x+4).\]
+%     Use this information, Problem 1 and properties of \(f_{3}\in\mathbb{F}_{3}[x]\), the reduction of \(f\) modulo 3, to show that the the Galois group \(G_{f}\) of \(f\) is isomorphic to \(D_{5}\).
+% \end{prob}
 
 
-\begin{prob}[F2018-Q6]
-    Determine the Galois group over \(\mathbb{Q}\) of the polynomial
-    \[X^{6}+22X^{5}-9X^{4}+12X^{3}-37X^{2}-29X-15.\]
-\end{prob}
+% \begin{prob}[F2018-Q6]
+%     Determine the Galois group over \(\mathbb{Q}\) of the polynomial
+%     \[X^{6}+22X^{5}-9X^{4}+12X^{3}-37X^{2}-29X-15.\]
+% \end{prob}
 
 \begin{prob}[F2017-Q4]
     Compute the Galois group of \(x^{5}-10x+5\) over \(\mathbb{Q}\).
 \end{prob}
+\begin{proof}
+    $S_5$.
+\end{proof}
 
 
 \begin{prob}[F2004-Q3]
     Let \(f(x) = x^5 - 9x + 3\). Determine the Galois group of \(f\) over \(\mathbb{Q}\).
 \end{prob}
+\begin{proof}
+    $S_5$.
+\end{proof}
 
 \begin{prob}[F2006-Q2]
-    Let \(f\) be a polynomial in \(\mathbb{Q}[x]\). Let \(E\) be a splitting field of \(f\) over \(\mathbb{Q}\). For the following cases, determine whether \(E\) is solvable by radicals.
+    Let \(f\) be a polynomial in \(\mathbb{Q}[x]\). Let \(E\) be a splitting field of \(f\) over \(\mathbb{Q}\). For the following cases, determine whether \(E\) is solvable by radicals. (i.e., whether the Galois group is solvable or not).
     \begin{itemize}
         \item[(1)] \(f(x) = x^4 - 4x + 2\).
         \item[(2)] \(f(x) = x^5 - 4x + 2\).
     \end{itemize}
 \end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item[(1)] It is a subgroup of $S_4$, so solvable.
+        \item[(2)] The Galois group is $S_5$, so not solvable.  
+    \end{enumerate}
+\end{proof}
+
+\begin{prop}
+    Any group of order $<60$ is solvable.
+\end{prop}
+
+
 
 \begin{prob}[S2011-Q3]
-    Determine the Galois group [up to isomorphism] of the splitting field of each of the following polynomials over \(\mathbb{Q}\):
+    Determine the Galois group of the splitting field of each of the following polynomials over \(\mathbb{Q}\):
     \begin{itemize}
         \item[(a)] \(f(x)=x^4-9x^3+9x+4\),
         \item[(b)] \(g(x)=x^5-6x^2+2\).
     \end{itemize}
 \end{prob}
+\begin{proof}
+    For (a): do the modulo thing to find different cycle types. (b) is $S_5$ as usual.
+\end{proof}
 
 
 \begin{prob}[F2014-Q1]
@@ -539,6 +589,9 @@ Quick reminder whether a polynomial has a rational root:
 \begin{prob}[F2009-Q3]
     Determine the Galois group of \(x^4 - 4x^2 + 7x - 3\) over \(\mathbb{Q}\).
 \end{prob}
+\begin{proof}
+    $f\mod 2$ is irreducible of degree $4$, hence there is a $4$-cycle. And $f\mod 3$ gives a $3$-cycle. This implies the galois group has order at least $12$, inside of $S_4$, this means $A_4$ or $S_4$, but it cannot be $A_4$ because it contains no $4$-cycle.
+\end{proof}
 
 \begin{prob}[S2012-Q3]
     In this problem, \(G\) denotes the group \(S_5 \times C_2\), where \(S_5\) is the symmetric group on five letters and \(C_2\) is the cyclic group of order 2.
@@ -547,6 +600,9 @@ Quick reminder whether a polynomial has a rational root:
         \item[(b)] Give an example of a polynomial with rational coefficients whose Galois group is \(G\), deducing that from basic principles.
     \end{itemize}
 \end{prob}
+\begin{proof}
+    Consider $(x^5-4x-2)(x^2-3)$.
+\end{proof}
 
 
 \begin{prob}[F2015-Q4]
@@ -556,6 +612,9 @@ Quick reminder whether a polynomial has a rational root:
         \item[(b)] Describe, in full detail, the construction of a polynomial with rational coefficients, whose Galois group is isomorphic to \(H\).
     \end{itemize}
 \end{prob}
+\begin{proof}
+    Consider $(x^5-4x-2)(x^3-2)$.
+\end{proof}
 
 
 

@@ -3286,6 +3286,7 @@ Same proof that distinct one-dimensional characters are linearly independent.
 Let $k \subseteq F$ be a Galois extension, and let $\alpha \in F$. Prove that
 \[ N_{k \subseteq F}(\alpha) = \prod_{\sigma \in \text{Aut}_k(F)} \sigma(\alpha), \quad \operatorname{tr}_{k \subseteq F}(\alpha) = \sum_{\sigma \in \text{Aut}_k(F)} \sigma(\alpha). \]
 \end{prob}
+\textcolor{red}{can we do it without using the embeddings}
 
 % \begin{prob}
 % Let $k \subseteq F$ be a cyclic Galois extension of degree $d$, and let $\varphi$ be a generator of $\text{Aut}_k(F)$. Let $\alpha \in F$ be an element such that $N_{k \subseteq F}(\alpha) = 1$.
@@ -3454,9 +3455,14 @@ Let \( f(x) \in k[x] \) be a separable irreducible polynomial of degree \( n \) 
 \end{itemize}
 \end{prob}
 
+
+
 \begin{prob}
 Let \( f(x) \in k[x] \) be a separable irreducible polynomial of degree \( n \) over a field \( k \), with Galois group \( S_n \). Let \( \alpha \) be a root of \( f(x) \) in \( \overline{k} \), and let \( g(x) \in k[x] \) be any nonconstant polynomial of degree \( < n \). Prove that \( \alpha \) may be expressed as a polynomial in \( g(\alpha) \), with coefficients in \( k \).
 \end{prob}
+\begin{proof}
+    Follows directly from above: consider $k\subset k(g(\alpha))\subset k(\alpha)$, where $k(\alpha)$ has no proper subfields of $k(\alpha)$ containing $k$. 
+\end{proof}
 
 % \begin{prob}
 % Let \( d \) be a positive integer.  

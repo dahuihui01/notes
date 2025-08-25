@@ -984,7 +984,7 @@ to the center of $G/Z_{i-1}$. One can show that $Z_i$ is normal in $G$. A group 
     Conversely, let $|G|=n$, if every irreducible $\rho$ is one-dimensional, then there are $n$ irreducible representations, i.e., $n$ conjugacy classes, i.e., $G$ is abelian.
 \end{proof}
 
-\section{Characters}
+\section{Problems}
 
 \begin{prob}[S2008-Q4]
     Let \( V \cong \mathbb{C}^n \) be an \( n \)-dimensional complex vector space with standard basis \( e_1, \ldots, e_n \). Consider the permutation action \( S_n \times V \to V \) defined by:
@@ -1396,6 +1396,54 @@ for \( g \in G \) and \( A \in M_n(K) \). This action induces a group homomorphi
 
     Moreover, let $\rho:G\to\text{GL}_n(\C)$ be an irreducible  representation, then $\bar{\rho}:\frac{G}{\ker\rho}\to\text{GL}_n(\C)$ is also irreducible.
 \end{warn}
+
+
+\begin{prob}
+    Every irreducible representation of a finite cyclic group $G$ over $\R$ has dimension $\leq 2$.
+\end{prob}
+\begin{proof}
+    Consider $\rho(g): \R^n\to\R^n$, then 
+    \begin{equation*}
+        \R^n\cong\bigoplus_{i=1}^d\frac{\R[x]}{(f_i(x))}
+    \end{equation*}
+    where $f_1\mid f_2\mid\dots\mid f_d$, because $\rho$ is irreducible, there can only be one summand. Namely, $f$ needs to be irreducible and 
+    \begin{equation*}
+        \R^n\cong\frac{\R[x]}{(f(x))}
+    \end{equation*}
+    since $f$ has degree at most $2$, we know $n\leq 2$.
+\end{proof}
+
+\begin{warn}
+    The above problem is linear algebra and rep theeory!
+\end{warn}
+
+
+\begin{prop}
+    Let $\rho:G\to\text{GL}_n(\bar{k})$, if $\rho=\sigma(\rho)$ for all $\sigma\in\gal(\bar{k}/k)$, then $\rho: G\to\text{GL}_n(k)$. In other words, it is a representation over $k$. 
+
+    For example, if $\rho$ is a complex representation, and $\rho=\bar{\rho}$, then $\rho$ is a real representation.
+\end{prop}
+
+
+Now we give an alternative proof of the above problem:
+\begin{proof}
+    $\rho:G\to\text{GL}_n(\R)$ can be viewed as a representation over $\C$, then 
+    \begin{equation*}
+        \rho=\rho_1\oplus\dots\oplus\rho_k
+    \end{equation*}
+    If $\rho_i$ is real for any $i$, then we are done; if not, we note that 
+    \begin{equation*}
+        \rho=\bar{\rho}=\bar{\rho_1}\oplus\dots\oplus\bar{\rho_k}
+    \end{equation*}
+    then $\rho_i=\bar{\rho}_1$ for some $i$, then we can consider 
+    \begin{equation*}
+        \rho'=\rho_1\oplus\bar{\rho}_1
+    \end{equation*}
+    This is a real representation because $\rho'=\bar{\rho'}$, by Galois descent, $\rho'$ is a real representation, i.e., $\rho$ is at most two-dimensional.
+\end{proof}
+
+
+
 \section{Induced representations, Frobenius Reciprocity}
 
 

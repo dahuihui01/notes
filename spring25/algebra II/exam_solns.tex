@@ -2566,10 +2566,6 @@ S_4 & (1) & (12) & (123) & (1234) & (12)(34) \vspace{2pt} \\
 
 
 
-\begin{prob}
-    Let \(A\) be a commutative Noetherian local ring with maximal ideal \(\mathfrak{m}\). Assume \(\mathfrak{m}^n = \mathfrak{m}^{n+1}\) for some \(n > 0\). Show that \(A\) is Artinian.
-\end{prob}
-
 
 
 \begin{prob}
@@ -2581,10 +2577,35 @@ S_4 & (1) & (12) & (123) & (1234) & (12)(34) \vspace{2pt} \\
 \end{prob}
 \begin{proof}
     \begin{enumerate}
-        \item[(a)] We see that $\varphi$ has characteristic polynomial $p(t)=t^n-1$. 
-        \item[(b)] 
+        \item[(a)] We see that $\varphi$ has characteristic polynomial $p(t)=t^n-1$. Let $m(t)$ be the minimal polynomial, then we use the linear independence of $\varphi^k$!
+        \begin{equation*}
+            a_0\id+a_1\varphi+\dots+a_{n-1}\varphi^{n-1}=0
+        \end{equation*}
+        implies 
+        \begin{equation*}
+            a_0=\dots=a_{n-1}=0
+        \end{equation*}
+        Hence this indicates any polynomial of degree $<n$ that take $\varphi$ to $0$ would have to be identically zero. This gives $m(t)=t^n-1$.
+        \item[(b)] We know $m(t)=t^n-1$ factors into distinct linear factors over $\F_p$. In other words, 
+        \begin{equation*}
+            x^n-1\mid\prod_{a\in\F_p}(x-a)
+        \end{equation*}
+        since $0$ is not a root of $m$, we know 
+        \begin{equation*}
+            x^n-1\mid\prod_{a\neq 0}(x-a)
+        \end{equation*}
+        We claim that 
+        \begin{equation*}
+            \prod_{a\neq 0, a\in\F_p}(x-a)=x^{p-1}-1
+        \end{equation*}
+        This is because every element in $\F_p$ satisfies $x^{p-1}-1$, and $x^{p-1}-1$ has $p-1$ roots. Then 
+        \begin{equation*}
+            x^n-1\mid(x^{p-1}-1)
+        \end{equation*}
+        implies that $n\mid(p-1)$.
     \end{enumerate}
 \end{proof}
+
 
 
 \begin{prob}
@@ -2604,6 +2625,12 @@ S_4 & (1) & (12) & (123) & (1234) & (12)(34) \vspace{2pt} \\
 \end{proof}
 
 
+
+Omit:
+
+\begin{prob}
+    Let \(A\) be a commutative Noetherian local ring with maximal ideal \(\mathfrak{m}\). Assume \(\mathfrak{m}^n = \mathfrak{m}^{n+1}\) for some \(n > 0\). Show that \(A\) is Artinian.
+\end{prob}
 
 
 

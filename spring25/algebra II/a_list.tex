@@ -176,9 +176,9 @@ This corresponds to Aluffi Chapter II.
     For example, there is no nontrivial homomorphism from $\Z/n\Z$ to $\Z$.
 \end{prop}
 
-\begin{prop}
-    There is an isomorphism between $D_3$ and $S_3$.
-\end{prop}
+% \begin{prop}
+%     There is an isomorphism between $D_3$ and $S_3$.
+% \end{prop}
 
 \begin{prop}
     Let $\varphi: G\to H$ be an isomorphism, for all $g\in G$, $|\varphi(g)|=|g|$, and $G$ is commutative if and only if $H$ is commutative.
@@ -239,12 +239,12 @@ This corresponds to Aluffi Chapter II.
 \end{prop}
 
 
-\begin{thm}
+\begin{prop}
     Let $\varphi:G_1\to G_2$ be a surjective homomorphism, then 
     \begin{equation*}
         G_2\cong\frac{G_1}{\ker\varphi}
     \end{equation*}
-\end{thm}
+\end{prop}
 
 \begin{prop}
     Let $H_1,H_2$ be normal subgroups of $G_1,G_2$, then $H_1\times H_2$ are normal subgroups of $G_1\times G_2$, then 
@@ -258,7 +258,7 @@ This corresponds to Aluffi Chapter II.
 \end{prop}
 
 \begin{prop}
-    Let $H$ be a normal subgroup of $G$, then every subgroup $K$ containing $H$, $K/H$ can be identified with a subgroup of $G/H$.
+    Let $H$ be a normal subgroup of $G$, then every subgroup $K/H$ of $G/H$ can be identified with a subgroup of $K$ containing $H$.
 \end{prop}
 
 
@@ -295,12 +295,16 @@ This corresponds to Aluffi Chapter II.
     In particular, $|H|$ divides $|G|$.
 \end{thm}
 
-\begin{thm}[Fermat's Little Theorem]
-    Let $p$ be a prime integer, and $a$ be any integer, then 
+\begin{prop}[Fermat's Little Theorem]
+    Let $a\in\Z/p\Z$, then 
     \begin{equation*}
-        a^p\equiv a\mod p
+        a^p\equiv a
     \end{equation*}
-\end{thm}
+    % Let $p$ be a prime integer, and $a$ be any integer, then 
+    % \begin{equation*}
+    %     a^p\equiv a\mod p
+    % \end{equation*}
+\end{prop}
 
 % \begin{defn}[action]
 %     An action of a group $G$ on a set $A$ is a homomorphism $\varphi: G\to \text{Aut}(A)$, 
@@ -362,6 +366,21 @@ This corresponds to Aluffi Chapter II.
 
     For example,there is no transitive action of $S_3$ on the set of $5$ elements. 
 \end{prop}
+
+\begin{prop}
+    Let $G$ act on itself by conjugation, let $g\in G$, then 
+    \begin{equation*}
+        |[g]|\mid |G|
+    \end{equation*}
+    and 
+    \begin{equation*}
+        |Z_G(g)|\mid |G|
+    \end{equation*}
+    the size of the conjugacy class and the centralizer both divide $|G|$!
+\end{prop}
+
+
+
 
 
 
@@ -488,13 +507,13 @@ The centralizer of $A$ is the subgroup $Z_G(A)\subset N_G(A)$ fixing each $a\in 
         Z_G(A)=\left\{ g: gag^{-1}=a \text{ for all } a\in A\right\}
     \end{equation*}
 
-\begin{prop}[*]
+\begin{prop}
     $H$ is a normal in $G$ if and only if $N_G(H)=G$. More generally, the normalizer $N_G(H)$ for any subgroup $H$ is the largest subgroup such that $H$ is normal in $N_G(H)$.
 \end{prop}
 
-\begin{prop}[*]
+\begin{thm}
     Let $H\subset G$ be a subgroup, then the number of subgroups conjugate to $H$ is the size of the orbit=index of the stabilizer, which is $[G:N_G(H)]$.
-\end{prop}
+\end{thm}
 
 
 \begin{cor}
@@ -545,32 +564,37 @@ The centralizer of $A$ is the subgroup $Z_G(A)\subset N_G(A)$ fixing each $a\in 
         n_p\equiv 1\mod p
     \end{equation*}
 \end{thm}
-\begin{prop}
+
+
+\begin{thm}
     Let $G$ be a finite group, let $P$ be a $p$-Sylow subgroup, the number of $p$-Sylow subgroup $n_p$ is
     \begin{equation*}
         n_p=[G:N_G(P)]
     \end{equation*}
     by definition.
-\end{prop}
+\end{thm}
 
-\begin{prop}
+\begin{thm}
     Let $G$ be a group of order $mp^r$, where $p$ is prime and $1<m<p$, then $G$ is not simple.
-\end{prop}
+\end{thm}
 
 
-\begin{prop}[*]
+\begin{thm}
     Let $p<q$ be primes, let $G$ has order $pq$, if $p\nmid (q-1)$, then $G$ is cyclic.
-\end{prop}
+\end{thm}
 \begin{proof}
     If $G$ is abelian, use elements of orders $p,q$. If $G$ not necessarily abelian, then use the conjugation action.
 \end{proof}
 
-\begin{prop}[*]
-    Let $q$ be an odd prime, and $G$ be a noncommutative group of order $2q$, then 
+
+
+
+\begin{thm}
+    Let $p$ be a prime $\neq 2$, and $G$ be a noncommutative group of order $2p$, then 
     \begin{equation*}
-        G\cong D_{2q}
+        G\cong D_{2p}
     \end{equation*}
-\end{prop}
+\end{thm}
 
 \section{Series and Solvability}
 \begin{defn}[composition series]
@@ -596,12 +620,16 @@ The centralizer of $A$ is the subgroup $Z_G(A)\subset N_G(A)$ fixing each $a\in 
         G^{\text{ab}}=\frac{G}{[G,G]}
     \end{equation*}
     is commutative.
+\end{prop}
 
+
+\begin{thm}
     If $\varphi: G\to H$, where $H$ is commutative, then 
     \begin{equation*}
         [G,G]\subset\ker(\varphi)
     \end{equation*}
-\end{prop}
+\end{thm}
+
 \begin{defn}
     A group $G$ is solvable, if ther exists a sequence such that 
     \begin{equation*}
@@ -729,7 +757,7 @@ A stronger statement is the following:
 
 
 \begin{defn}[Split Short exact sequence]
-    A short exact sequence of groups is a sequence:
+    A short exact sequence of groups
     \[\begin{tikzcd}
         1 & N & G & H & 1
         \arrow[from=1-1, to=1-2]
@@ -737,7 +765,7 @@ A stronger statement is the following:
         \arrow["\psi", from=1-3, to=1-4]
         \arrow[from=1-4, to=1-5]
     \end{tikzcd}\]
-    splits if $H$ is identified with a subgroup of $G$ such that 
+    \textbf{splits} if $H$ is identified with a subgroup of $G$ such that 
     \begin{equation*}
         N\cap H=\{e\}
     \end{equation*}
@@ -1144,6 +1172,14 @@ Notice that in a commutative ring, this means $u$ is a unit iff multiplication b
     \end{equation*}
 \end{defn}
 
+\begin{prop}
+    The product of two fields need not to be a field:
+    \begin{equation*}
+        \F_2\times\F_2
+    \end{equation*}
+    has zero divisors!
+\end{prop}
+
 
 \section{Modules}
 \begin{defn}[module]
@@ -1229,16 +1265,18 @@ Let $R=k$ be a field, then $R$-modules are called vector spaces over $k$.
 \end{defn}
 
 \begin{example}
-    Let $R=\Z[x_1,\dots,x_n]$, when $R$ viewed as a $R$-module over itself, it is finitely generated (by $1$), by the ideal 
+    Let $R=\Z[x_1,x_2, \dots]$, viewed as a $R$-module over itself, it is finitely generated (by $1$). 
+    But the ideal 
     \begin{equation*}
-        (x_1,x_2,\dots)
+        (x_1,x_2,\dots)\subset R
     \end{equation*}
     as an $R$-module, is not finitely generated. 
 \end{example}
 
 \begin{defn}[Noetherian Modules]
-    An $R$-module is Noetherian if every submodule of $M$ is finitely generated as an $R$-module.
+    An $R$-module is Noetherian if every submodule of $M$ is finitely generated as an $R$-module. The above example is not Noetherian.
 \end{defn}
+
 
 \begin{prop}
     Let $M$ be an $R$-module, $N$ be a submodule, then $M$ is Noetherian iff $N,M/N$ are both Noetherian.
@@ -1277,7 +1315,7 @@ where $S=\la s_1,\dots, s_n\ra$. Elements in finite-type $R$-algebra is of the f
 \end{prop}
 
 
-\begin{defn}[???]
+\begin{defn}[rank of a module]
     Let $R$ be an integral domain, the rank of $M$ is the maximal number of linearly independent elements of $M$.
 \end{defn}
 
@@ -1371,7 +1409,7 @@ This corresponds to Aluffi Chapter V.
 
 
 \begin{defn}[prime, irreducible elements]
-    Let $R$ be commutatie
+    Let $R$ be commutative
     \begin{enumerate}
         \item Let $R$ be an integral domain, an element $a\in R$ is \textbf{prime} if the ideal $(a)$ is prime.
         \item An element $a\in R$ is \textbf{irreducible} if $a$ is not a unit and 
@@ -1482,12 +1520,12 @@ Of course if a ring is ACC, then factorizations exist.
     \end{enumerate}
 \end{thm}
 
-\begin{prop}
+\begin{thm}
     If $R$ is a PID, and $a,b\in R$, then $d=\gcd(a,b)$ iff $(a,b)=(d)$. In other words, there exists $r,s\in R$, such that 
     \begin{equation*}
         d=ra+sb
     \end{equation*}
-\end{prop}
+\end{thm}
 
 
 \begin{example}
@@ -1660,9 +1698,11 @@ This is not true for non-ID, for example, $x^2+2$ over $\Z/6\Z$.
     \end{align*}
 \end{prop}
 
-\begin{prop}
-    Finite fields are not algebraically closed. In other words, if a field $k$ is algebraically closed, then it is infinite.
-\end{prop}
+\begin{thm}
+    Finite fields $\F_{p^n}$ are not algebraically closed. 
+    
+    % In other words, if a field $k$ is algebraically closed, then it is infinite.
+\end{thm}
 
 \begin{example}
     The nonconstant irreducible polynomials of $\R[x]$ are precisely those of degree $1$ and quadratic $f=ax^2+bx+c$ where $b^2-4ac<0$.
@@ -1699,6 +1739,11 @@ This is not true for non-ID, for example, $x^2+2$ over $\Z/6\Z$.
 \begin{example}
     For all $n$ and all primes $p$, the polynomial $x^n-p$ is irreducible over $\Z$.
 \end{example}
+% \begin{proof}
+%     Eisenstein!
+% \end{proof}
+
+
 \begin{example}
     Let $p$ be a prime, then the cyclotomic polynomial $\Phi_p(x)$ is irreducible.
     \begin{equation*}
@@ -1707,7 +1752,7 @@ This is not true for non-ID, for example, $x^2+2$ over $\Z/6\Z$.
 \end{example}
 \begin{proof}
     \begin{align*}
-        f(x)&=\frac{x^p-1}{x-1}
+        f(x)&=\frac{x^p-1}{x-1}\\
         f(x+1)&=\frac{(x+1)^p-1}{x}
     \end{align*}
     We see that coefficients are now 
@@ -1734,7 +1779,7 @@ This is not true for non-ID, for example, $x^2+2$ over $\Z/6\Z$.
 \end{thm}
 
 \begin{prop}[CRT in PID]
-    Let $R$ be a PID, and let $a_1,\dots, a_k$ be elemnts such that $\gcd(a_i,g_j)=1$, let $a=a_1\dots a_k$, then 
+    Let $R$ be a PID, and let $a_1,\dots, a_k$ be elemnts such that $\gcd(a_i,a_j)=1$, let $a=a_1\dots a_k$, then 
     \begin{equation*}
         \frac{R}{(a)}\cong\frac{R}{(a_1)}\times\dots\times\frac{R}{(a_k)}
     \end{equation*}
@@ -1786,7 +1831,7 @@ This corresponds to Aluffi Chapter VI, excluding Section 4-5.
 \end{prop}
 
 \begin{prop}
-    Let $R$ be an \textbf{integral domain}, and $M$ a free $R$-module, let $B$ be a maximal linearly independent subset of $M$. If $S$ is any independent subset, then 
+    Let $R$ be an \textbf{integral domain}, and $M$ a free $R$-module, let $B$ be a maximal linearly independent subset of $M$. Then the rank of $M$ is $|B|$. If $S$ is any independent subset, then 
     \begin{equation*}
         |S|\leq|B|
     \end{equation*}
@@ -1839,7 +1884,7 @@ This corresponds to Aluffi Chapter VI, excluding Section 4-5.
 0 & 1 & 0 & 0
 \end{pmatrix}
 \]
-interchanges the second and fourth row of a \(4 \times n\) matrix. Multiplying on the right by
+interchanges the second and fourth row of a \(4 \times 4\) matrix. Multiplying on the right by
 \[
 \begin{pmatrix}
 1 & 0 & c \\
@@ -1915,7 +1960,7 @@ I_r & 0 \\
 \section{Invariants in Linear Transformations}
 
 \begin{defn}[similar matrix]
-    Two matrices $A,B$ are similarly iff there exists invertible $P$ such that 
+    Two matrices $A,B$ are similar iff there exists invertible $P$ such that 
     \begin{equation*}
         A=PBP^{-1}
     \end{equation*}
@@ -1949,7 +1994,7 @@ I_r & 0 \\
     \end{equation*} 
 \end{defn}
 
-\begin{prop}
+\begin{thm}
     Let $\alpha\in\text{End}(F)$, and $F=R^n$, let $P_\alpha(t)=t^n+a_{n-1}t^{n-1}\dots+a_0$ be characteristic polynomial,
     \begin{enumerate}
         \item $P_\alpha(t)$ is of degree $n$.
@@ -1961,7 +2006,16 @@ I_r & 0 \\
             P_\alpha(t)=t^n-\tr(\alpha)+\dots+(-1)^n\det(\alpha)
         \end{equation*}
     \end{enumerate}
-\end{prop}
+\end{thm}
+
+\begin{thm}
+    Let $\alpha:V\to V$ be an endomorphism over $k$, then 
+    \begin{equation*}
+        \tr(\alpha)=\sum_{i=1}^n\lambda_i
+    \end{equation*}
+    where $\lambda_i$ is the eigevnalues of $V$ over the algebraic closure $\bar{k}$.
+\end{thm}
+
 
 \begin{example}
     Having the same characteristic polynoimal does not guarantee they are similar:
@@ -2017,12 +2071,29 @@ I_r & 0 \\
 \end{prop}
 
 \section{The canonical form}
+
+
 \begin{prop}
-    Recall: every finitely generated module over a PID ($[x]$) is a direct sum of cyclic modules. 
+    Let $R$ be a PID, then submodules of a free $R$-module $M$ is also free.
+\end{prop}
+
+\begin{prop}
+    If $M$ is finitely generated as an $R$-module, then 
+    \begin{equation*}
+        M\cong\frac{R^{\oplus n}}{N}
+    \end{equation*}
+    for some submodule of $R^{\oplus n}$.
+\end{prop}
+\begin{prop}
+    Recall: every finitely generated $R$-module over a PID (meaning when $R$ is a PID) is a direct sum of cyclic modules. Let $R=k[t]$, then
     \begin{equation*}
         \frac{k[t]}{(f(t))}
     \end{equation*}
-    is cyclic viewed as a $k[t]$-module.
+    is cyclic viewed as a $k[t]$-module. (The generator is $1$.).
+\end{prop}
+
+\begin{prop}
+    We call a module finitely generated over a PID if $R$ is a PID and $M$ is finitely generated as an $R$-module, 
 \end{prop}
 
 \begin{prop}
@@ -2075,6 +2146,17 @@ and $(\leftarrow)$ is given by
         m_\alpha(t)=\prod_{i=1}^s(t-\lambda_i)^{\max_j\{r_{ij}\}}
     \end{equation*}
 \end{prop}
+
+
+\begin{thm}
+    The above translated into Jordan form is:
+    \begin{equation*}
+        m_\alpha(t)=\prod_{i=1}^s(t-\lambda_i)^{\text{biggest Jordan block of $\lambda_i$}}
+    \end{equation*}
+    where $\lambda_i$ are distinct eigenvalues. 
+\end{thm}
+
+
 
 
 \begin{example}
@@ -2261,20 +2343,21 @@ in such a way that the map $\overline{\varphi}$ is unique.
     \end{equation*}
     On pure tensors, this map is given by 
     \begin{equation*}
-        m\otimes n\mapsto \alpha(m)\otimes\alpha(n)
+        m\otimes n\mapsto \alpha(m)\otimes n
     \end{equation*}
 
 \end{prop}
 
-\begin{prop}
+\begin{thm}
     For all $R$-modules $M,N,P$, there is an isomorphism of $R$-modules
     \begin{equation*}
         \text{Hom}_R(M,\text{Hom}(N,P))\cong\text{Hom}_R(M\otimes_RN,P)
     \end{equation*}
-\end{prop}
+\end{thm}
 \begin{proof}
     This says any bilinear map from $M\times N$ comes from $M\otimes_RN$.
 \end{proof}
+
 
 \begin{prop}
     For all $R$-modules, $M_1,M_2, N$, we have 
@@ -2293,6 +2376,11 @@ in such a way that the map $\overline{\varphi}$ is unique.
    ( Let $e_1,\dots, e_m$ generate $M$, $v_1,\dots, v_n$ generate $N$, where $M,N$ are free $R$-modules, then $M\otimes_RN$ is generated by $e_i\otimes v_j$, and these $mn$ elements are the basis for $M\otimes_RN$.)
 \end{prop}
 
+
+
+\begin{warn}
+    The next examples are important.
+\end{warn}
 \begin{prop}
     Let $N$ be an $R$-module, and $I$ be an ideal of $R$, then 
     \begin{equation*}
@@ -2304,10 +2392,26 @@ in such a way that the map $\overline{\varphi}$ is unique.
     \end{equation*}
 \end{prop}
 
+\begin{prop}
+    Let $S$ be a ring with an $R$ action, and $R$ is a ring, then 
+    \begin{equation*}
+        R[x]\otimes_RS\cong S[x]
+    \end{equation*}
+\end{prop}
 
-\begin{warn}
-    The next example is important.
-\end{warn}
+
+\begin{prop}
+    Let $R, S$ be the above, 
+    \begin{equation*}
+        \frac{R[x]}{(f(x))}\otimes_RS\cong\frac{S[x]}{(f(x))}
+    \end{equation*}
+    For example, 
+    \begin{equation*}
+        \C\otimes_R\C\cong \frac{\R[x]}{(x^2+1)}\otimes_R\C\cong\frac{\C[x]}{(x^2+1)}
+    \end{equation*}
+\end{prop}
+
+
 
 \begin{example}
     We have 
@@ -2399,8 +2503,10 @@ Next we generalize it.
 \[
 \left\{ e_1^{k_1} e_2^{k_2} \cdots e_d^{k_d} \ \Bigg| \ k_1+\dots+k_d = n, \ k_i \geq 0 \right\},
 \]
-where $e_i^{k_i}$ denotes the symmetric product $e_i\dots e_i$ ($k_i$ times). The 
-\textbf{Dimension} is the number of such monomials, $\binom{n + d - 1}{d - 1}$.
+where $e_i^{k_i}$ denotes the symmetric product $e_i\dots e_i$ ($k_i$ times). 
+
+% The 
+% \textbf{Dimension} is the number of such monomials, $\binom{n + d - 1}{d - 1}$.
 \end{prop}
 
 \begin{prop}
@@ -2425,7 +2531,7 @@ where:
     e_1 \odot e_2 &= \frac{1}{2}(e_1 \tensor e_2 + e_2 \tensor e_1), \\
     e_2 \odot e_2 &= e_2 \tensor e_2.
 \end{align*}
-\textbf{Dimension}: $\binom{2 + 2 - 1}{2 - 1} = 3$.
+\textbf{Dimension}: $\binom{2 + 2 - 1}{2} = 3$.
 \end{example}
 
 \begin{defn}[determinant]
@@ -2459,7 +2565,7 @@ where:
 
 
 \begin{prop}
-    Let $M\in\text{GL}_n(k)$, then $M$ is triangularizable iff the characteristic polynomial factors completely into linear factors. This is 
+    Let $M\in\text{GL}_n(k)$, then $M$ is triangularizable iff the characteristic polynomial factors completely into linear factors. It is diagonalizable iff the characteristic polynomial completely factors into linear factors, and the minimal polynomial has no repeated roots.
 \end{prop}
 
 
@@ -2773,6 +2879,7 @@ Aluffi Chapter VII.
     \begin{equation*}
         [F:k]\leq(\deg(f))!
     \end{equation*}
+    Recall that if $k\subset k(\alpha)$ is simple extension, the $|\aut_kk(\alpha)|=$ the number of distinct roots of $m_\alpha$, and $|\aut_kk(\alpha)|\leq\deg(m_\alpha)$.
 \end{prop}
 
 \begin{prop}
@@ -2935,21 +3042,24 @@ Remark: the reason the example $x^p-t\in\F_p(t)[x]$ works is because $\F_p(t)$ i
 % \end{defn}
 
 \begin{prop}
-    For every prime power $q$, there is a unique field $F_q$ of size $q$, up to isomorphisms. (This is the splitting field of $x^q-x$ over $\F_p$.)
+    For every prime power $q$, there is a unique field $\F_q$ of size $q$, up to isomorphisms. (This is the splitting field of $x^q-x$ over $\F_p$.)
 \end{prop}
+
 \begin{proof}
     Existence: we claim that 
     \begin{equation*}
-        \{x\in\bar{\F}_p: x^q=x\}
+        F=\{x\in\bar{\F}_p: x^q=x\}
     \end{equation*}
-    is a field of $q$ elements. One can show this is a subring, hence an integral domain, hence is a field because it is finite. Moreover, $F$ has at most $q$ elements, but $f(x)=x^q-x$ is separable because $f,f'$ are relatively prime. 
+    is a field of $q$ elements. Note that $f(x)=x^q-x\in\F_p[x]$ is separable over $\F_p$, hence it splits into distinct linear factors over $\bar{\F}_p$, i.e., it has $p$ distinct roots.
 
-    Uniqueness: for every $F_p\subset F$, this is a finite, hence algebraic extension, thus it can be embedded into $\bar{\F}_p$. And we claim that there's exactly one subfield of $\bar{F}_p$ with $q$ elements:
+    (One can show this is a subring, hence an integral domain, hence is a field because it is finite.) 
+    % ($F$ has at most $q$ elements, but $f(x)=x^q-x$ is separable because $f,f'$ are relatively prime. 
+
+    Uniqueness: for every $\F_p\subset F$, this is a finite, hence algebraic extension, thus it can be embedded into $\bar{\F}_p$. And we claim that there's exactly one subfield of $\bar{\F}_p$ with $q$ elements:
     \begin{equation*}
         F\subset 0\cup\{x\in\bar{\F}_p: x^q=x\}
     \end{equation*}
     This implies $F=RHS$.
-    
     
     
     
@@ -3087,11 +3197,11 @@ In particular, $\F_q$ is fixed by $\sigma$: for all $x\in\F_q$, we must have
 % \end{cor}
 
 \begin{defn}[$n$th cyclotomic polynomial]
-    Let $\om_n=e^{2\pi i/n}$ be the primitive $n$th root, then $\om_n^m$ is also a primitive $n$th root iff $\gcd(m,n)=1$. This implies that there are $\phi(n)$ primitive rootsof $1$, and the polynomial 
+    Let $\om_n=e^{2\pi i/n}$ be the primitive $n$th root, then $\om_n^m$ is also a primitive $n$th root iff $\gcd(m,n)=1$. This implies that there are $\phi(n)$ primitive $n$th roots of unity, and the polynomial 
     \begin{equation*}
         \Phi_n(x)=\prod_{1\leq m\leq n, \gcd(m,n)=1}(x-\om_n^m)
     \end{equation*}
-    taking over all the primitive roots of $n$, is called the $n$th cyclotomic polynomial. For example, 
+    taking over all the primitive $n$th roots of unity, $\Phi_n$ is called the $n$th cyclotomic polynomial. For example, 
     \begin{equation*}
         \Phi_p(x)=\frac{x^p-1}{x-1}=x^{p-1}+\dots+1
     \end{equation*}
@@ -3108,6 +3218,10 @@ In particular, $\F_q$ is fixed by $\sigma$: for all $x\in\F_q$, we must have
         \item When $n$ not prime, 
         \begin{equation*}
             x^n-1=\prod_{1\leq d, d \mid n} \Phi_d(x)
+        \end{equation*}
+        In other words,
+        \begin{equation*}
+            \Phi_n(x)=\frac{x^n-1}{\prod_{d\mid n, d<n}\Phi_d(x)}
         \end{equation*}
     \end{enumerate}
 \end{prop}
@@ -3175,18 +3289,13 @@ $\Phi_8(x)=x^4+1$.
 
 
 
-
-
-
-
-
-\begin{cor}
-    Let $F=\F_q$, then 
-    \begin{equation*}
-        x^{q^n}-n
-    \end{equation*}
-    factors over $\F_q$ as irreducible polynomials of degree $d$, where $d$ ranges over all divisors of $n$. These polynomials factor completely over $\F_{q^n}$.
-\end{cor}
+% \begin{cor}
+%     Let $F=\F_q$, then 
+%     \begin{equation*}
+%         x^{q^n}-n
+%     \end{equation*}
+%     factors over $\F_q$ as irreducible polynomials of degree $d$, where $d$ ranges over all divisors of $n$. These polynomials factor completely over $\F_{q^n}$.
+% \end{cor}
 
 \begin{prop}
     Every finite extension of $\Q$ or of finite fields $\F_q$ is simple.
@@ -3342,7 +3451,11 @@ $\Phi_8(x)=x^4+1$.
         \item $k\subset F$ is normal and separable.
         \item $|\aut_k(F)|=[F:k]$.
         \item $k=F^{\aut_k(F)}$.
-        \item The Galois correspondence $H\mapsto F^H$, $E\mapsto\aut_E(F)$ is a bijection.
+        \item The Galois correspondence $H\mapsto F^H$, $E\mapsto\aut_E(F)$ is a bijection: the map 
+        \begin{equation*}
+            H\mapsto F^H\mapsto \aut_{F^H}F
+        \end{equation*}
+        is the identity.
         \item $k\subset F$ is separable, and if $k\subset F\subset K$ is an algebraic extension and $\sigma\in\aut_k(K)$, then $\sigma(F)=F$.
     \end{enumerate}
 \end{defn}
@@ -3614,7 +3727,10 @@ We notice that $D$ is always fixed by Galois group $G$, whereas $\Delta$ is fixe
 \end{warn}
 
 \begin{warn}
-    Sometimes we get asked to find $\gal(f)$, if it's irreducible, then 
+    Sometimes we get asked to find $\gal(f)$, if it's irreducible, then the Galois group acts transitively on the set of roots, i.e., can be identified with a subgroup of 
+    \begin{equation*}
+        S_{\deg(f)}
+    \end{equation*}
 \end{warn}
 
 
@@ -3631,6 +3747,46 @@ This is $\tr_{L/L^H}(m_\alpha)$, where $m_\alpha$ is the multiplication by $\alp
 
 
 
+
+
+
+
+\begin{prop}[normal basis theorem]
+    Let $k\subset K$ be a Galois extension of degree $n$, let $\{\sigma_1,\dots,\sigma_n\}$ be the elements of the Galois group, then there exists $w\in K$ such that 
+    \begin{equation*}
+        \{\sigma_1(w),\dots, \sigma_n(w)\}
+    \end{equation*}
+    forms a basis of $K$ over $k$.
+\end{prop}
+
+
+
+
+
+\begin{prop}
+    Let $k\subset k(\alpha)$ be a simple  extension, then for $f(\alpha)=0$, 
+    \begin{equation*}
+        [k(\alpha):k]\leq (\deg(f))
+    \end{equation*}
+    and the splitting field $F$ 
+    \begin{equation*}
+        [F:k]\leq (\deg(f))!
+    \end{equation*}
+\end{prop}
+
+
+
+
+\begin{prop}[Artin-Schreier]
+    Let $k$ be $\text{char}(k)=p$, then $f(x)=x^p-x-a$ is either irreducible over $k$, or $f$ splits into linear factors over $k$. If it is irreducible, let $x_0$ be a root of $f$, then 
+    \begin{equation*}
+        k\subset k(x_0)
+    \end{equation*}
+    is a Galois extension of degree $p$, generated by 
+    \begin{equation*}
+        \sigma: x_0\mapsto x_0+1
+    \end{equation*}
+\end{prop}
 
 
 
@@ -3719,31 +3875,6 @@ This corresponds to Aluffi Chapter VII 2.2-2.3.
 
 
 
-
-
-
-\begin{prop}[normal basis theorem]
-    Let $k\subset K$ be a Galois extension of degree $n$, let $\{\sigma_1,\dots,\sigma_n\}$ be the elements of the Galois group, then there exists $w\in K$ such that 
-    \begin{equation*}
-        \{\sigma_1(w),\dots, \sigma_n(w)\}
-    \end{equation*}
-    forms a basis of $K$ over $k$.
-\end{prop}
-
-
-
-
-
-\begin{prop}
-    Let $k\subset k(\alpha)$ be a simple  extension, then for $f(\alpha)=0$, 
-    \begin{equation*}
-        [k(\alpha):k]\leq (\deg(f))
-    \end{equation*}
-    and the splitting field $F$ 
-    \begin{equation*}
-        [F:k]\leq (\deg(f))!
-    \end{equation*}
-\end{prop}
 
 
 
