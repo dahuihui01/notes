@@ -3736,13 +3736,19 @@ We notice that $D$ is always fixed by Galois group $G$, whereas $\Delta$ is fixe
 
 
 \begin{prop}
-    Let $k\subset F$ be Galois, fix $H\subset\gal(F/k)$, for any element $\alpha\in L$, then 
+    Let $k\subset F$ be Galois, fix $H\subset\gal(F/k)$, for any element $\alpha\in F$, then 
     \begin{equation*}
         \sum_{h\in H}h(\alpha), \quad \prod_{h\in H}h(\alpha)
     \end{equation*}
-    are in $L^H$. 
+    are in $F^H$. Moreover, if $\alpha$ is such that 
+    \begin{equation*}
+        \{\sigma(\alpha):\sigma\in\gal(F/k)\} \text{ is a basis of } F/k
+    \end{equation*}
+    then $\sum_{h}h(\alpha)$ generates $F^H$.
 \end{prop}
-This is $\tr_{L/L^H}(m_\alpha)$, where $m_\alpha$ is the multiplication by $\alpha$, and similarly the determinant.
+
+This is $\tr_{F/F^H}(m_\alpha)$, where $m_\alpha$ is the multiplication by $\alpha$, and similarly the determinant.
+
 
 
 
@@ -3788,6 +3794,31 @@ This is $\tr_{L/L^H}(m_\alpha)$, where $m_\alpha$ is the multiplication by $\alp
     \end{equation*}
 \end{prop}
 
+
+\begin{prop}
+    Let $F/k$ be finite, then 
+    \begin{equation*}
+        F=k(\alpha_1,\dots, \alpha_n)
+    \end{equation*}
+    i.e., finitely generated as a field extension.
+\end{prop}
+
+
+\begin{prop}
+    When you see char$k=0$, know that $k\subset F$ is separable!
+\end{prop}
+
+\begin{prop}
+    To check separable: check $\gcd(f,f')=1$.
+\end{prop}
+
+
+\begin{prop}
+    Let $\F_p\subset \F_p(\sqrt{a})$,  where $a\in k$, then 
+    \begin{equation*}
+        \F_p(\sqrt{2})\subset\F_{p^2}
+    \end{equation*}
+\end{prop}
 
 
 
