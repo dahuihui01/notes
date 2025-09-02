@@ -1,0 +1,118 @@
+\documentclass[openany]{book}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsfonts,amsthm, amssymb}
+\usepackage{yhmath}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{comment}
+\usepackage{tikz-cd}
+\usepackage{quiver}
+\renewcommand{\familydefault}{ppl}
+\newcommand{\tr}{\text{tr}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\colim}{\text{colim}}
+\DeclareMathOperator{\im}{im}
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+\newcommand{\tor}{\text{Tor}}
+\newcommand{\id}{\text{id}}
+\newcommand{\ext}{\text{Ext}}
+\newcommand{\ptop}{\text{PTop}}
+\newcommand{\pt}{\text{pt}}
+\newcommand{\ach}{\text{Ach}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\gal}{\text{Gal}}
+
+
+\input{hui.tex}
+
+\title{Calc III Sections
+\\ 
+\vspace{0.4cm}
+\large Fall 2025}
+
+
+
+
+\date{\today}
+\author{Hui Sun}
+
+
+\begin{document}
+
+\maketitle
+
+% \tableofcontents
+\newpage
+
+
+\begin{center}
+    \Large Calc III-Week 2
+\end{center}
+
+\renewcommand\thesection{\arabic{section}}
+
+
+\begin{defn}[cross product]
+    Let $a=(a_1,a_2,a_3), b=(b_1,b_2,b_3)$ be vectors in $\R^3$, the cross product of $a,b$ is the vector $a\times b$, 
+    \begin{equation*}
+        a\times b=\begin{bmatrix}
+            i&j&k\\
+            a_1&a_2&a_3\\
+            b_1&b_2&b_3
+        \end{bmatrix}
+    \end{equation*}
+    where $i,j,k$ are the standard vectors in $\R^3$.
+\end{defn}
+
+\begin{prop}
+    Here are some properties of the cross product:
+    \begin{enumerate}
+        \item $a\times b$ is perpendicular to vectors $a,b$.
+        \item The length of the cross product is the area of the parallelogram:
+        \begin{equation*}
+            \|a\times b\|=\|a\|\|b\|\sin\theta
+        \end{equation*}
+        where $\theta$ is the angle between them. (Compare this with the dot product).
+        \item $a\times b=-b\times a$, and $a\times (b+c)=a\times b+a\times c$. Moreover, $a\times b=0$ iff $a,b$ are parallel or either $a$ or $b$ are $0$.
+        \item (HW) The cross product is \textbf{not} associative! For example, compute 
+        \begin{equation*}
+            (i\times i)\times j, \quad i\times (i\times j)
+        \end{equation*}
+    \end{enumerate}
+\end{prop}
+
+\begin{defn}[Plane in three dimensions]
+    A perpendicular vector and a normal vector uniquely define a plane in $\R^3$: given the plane $\mathcal{P}$ passing containing the point $(x_0,y_0,z_0)$ that has a normal vector $(A,B,C)$ is given by the equation:
+    \begin{equation*}
+        \mathcal{P}=A(x-x_0)+B(y-y_0)+C(z-z_0)
+    \end{equation*}
+\end{defn}
+
+
+\begin{prob}
+    Let $\vec{u}=(1,2,3), \vec{v}=(0,1,1)$ be vectors in $\R^3$, compute the area of the parallelogram spanned by these two vectors.
+\end{prob}
+
+\begin{prob}
+    Compute the plane containg all three points:
+    \begin{equation*}
+        (1,0,2), \quad (2, -1, 0), \quad (-1, 2, 3)
+    \end{equation*}
+\end{prob}
+
+% \begin{proof}
+%     Find the cross product of $AB=(1,-1,-2), AC=(-2,2,1)$, the 
+% \end{proof}
+
+
+\end{document}

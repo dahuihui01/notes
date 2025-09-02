@@ -67,6 +67,141 @@
 % \textcolor{blue}{Spring 2018, Spring 2015, Spring 2014}
 
 
+
+\chapter{Exam Dos}
+\begin{prob}
+    Show that there is no simple group of order $132$.
+\end{prob}
+\begin{proof}
+    $132=2^2\cdot 3\cdot 11$. We know that 
+    \begin{equation*}
+        n_{11}=1\text{ or } 12
+    \end{equation*}
+    Suppose that $n_{11}=12$, and $n_3\geq 4$, then there is room for only one $2$-Sylow subgroup.
+\end{proof}
+
+
+
+\begin{prob}
+    Let $R$ be a unique factorization domain. Let $\mathfrak p\subseteq R$ be a nonzero prime ideal. Suppose that $\mathfrak p$ is minimal in the following sense: for any nonzero prime ideal $\mathfrak q$ such that $0\subsetneq\mathfrak q\subseteq\mathfrak p$, we have $\mathfrak p=\mathfrak q$. Show that $\mathfrak p$ is principal.
+\end{prob}
+
+
+
+\begin{prob}
+    Let $F$ be a field, and choose a polynomial
+    \[f(x)=x^n+a_{n-1}x^{n-1}+a_{n-2}x^{n-2}+\cdots+a_2x^2+a_1x+a_0\]
+    in $F[x]$. Show that the splitting field of $f\left(x^2\right)$ contains a square root of $(-1)^na_0$.
+\end{prob}
+
+
+\begin{prob}
+    Let $\alpha$ be an endomorphism of a finite-dimensional vector space $V$. Show that the characteristic polynomial of $\alpha$ is irreducible if and only if there is no nonzero proper subspace $W\subseteq V$ such that $\alpha(W)\subseteq W$.
+\end{prob}
+
+\begin{prob}
+    Let $G$ be a finite group. Let $\rho\colon G\to\operatorname{GL}_n(\mathbb C)$ be a representation of $G$. Show that
+    \[\{g\in G:\left|\tr\rho(g)\right|=n\}\]
+    is a normal subgroup of $G$. (Note that $\rho$ is not assumed to be irreducible.)
+\end{prob}
+
+\begin{prob}
+    Let $n$ be a positive integer, and let $\zeta$ be a primitive $n$th root of unity.
+    \begin{enumerate}
+        \item Show that the extension $\mathbb Q(\zeta,i,\sqrt[4]2)/\mathbb Q$ is Galois.
+        \item Show that the Galois group $\operatorname{Gal}(\mathbb Q(\zeta,i,\sqrt[4]2)/\mathbb Q)$ is not abelian.
+        \item Conclude that there $\sqrt[4]2\notin\mathbb{Q}(\zeta)$.
+    \end{enumerate}
+\end{prob}
+
+
+\chapter{Exam Uno}
+\begin{prob}
+    Show that there is no simple group of order $80$. ($120$).
+\end{prob}
+\begin{proof}
+    $80=2^4\cdot 5$, then consider 
+    \begin{equation*}
+        n_5=1 \text{ or } 16
+    \end{equation*}
+    Suppose that $n_5=16$, then 
+    \begin{equation*}
+        80-4\cdot 16=16
+    \end{equation*}
+    i.e., there is only space for one Sylow-$2$ subgroup. This shows there must exist either a Sylow-$5$ subgroup, or a Sylow-$2$ subgroup.
+\end{proof}
+
+\begin{prob}
+    Choose an automorphism $\sigma$ of $S_4$. If $\tau\in S_4$ is any transposition, show that $\sigma(\tau)$ is still a transposition.
+\end{prob}
+\begin{proof}
+    We first note that if $\tau_1,\tau_2$ are conjugate $\tau_1=s\tau_2s^{-1}$, i.e., they are of the same cycle type, then for any automorphism $\sigma$, 
+    \begin{equation*}
+        \sigma(\tau_1)=\sigma(s)\sigma(\tau_2)\tau(s)^{-1}
+    \end{equation*}
+    they are still of the same cycle type. We first note that $\sigma$ sends a transposition to an order $2$ element: either a transposition or an element of cycle type $2+2$. However, there are $6$ transpositions and $3$ elements of cycle type $2+2$. Namely, if $\sigma$ sends $\tau$ to a product of two transpositions, then this map is no longer bijective.
+\end{proof}
+
+
+\begin{prob}
+    Compute the number of $\mathbb F_2[x]$-modules with eight elements, considered up to isomorphism.
+\end{prob}
+\begin{proof}
+    We know there is a bijection between $\F_2[x]$ modules with a vector space over $\F_2$ with $8$ elements. We know by the classification of finitely generated modules over PID, 
+    \begin{equation*}
+        V\cong\bigoplus_{i=1}^d\frac{\F_2[x]}{(f_i(x))}
+    \end{equation*} 
+    where $f_i\mid f_{i+1}$. Thus we need to choose $f_i$ such that $V$ has $8$ elements: different polynomials will give different $\F_2[x]$ structures. Note that this is different from vector space structures. 
+\end{proof}
+
+\begin{prob}
+    Show that the polynomial $f(x)=x^5-9x+3$ is irreducible over $\mathbb Q$ and compute the Galois group of its splitting field.
+\end{prob}
+\begin{proof}
+    Eisenstein, $S_5$.
+\end{proof}
+
+\begin{prob}
+    Let $F$ be a field of positive characteristic $p$. Choose $a\in F$. Show that the polynomial $x^p-a$ either is irreducible or splits completely into linear factors over $F$.
+\end{prob}
+\begin{proof}
+    Suppose that $x_0\in F$, then 
+    \begin{equation*}
+        x_0^p=a
+    \end{equation*}
+    i.e., $x_0$ is the $p$th root of $a$ in $K$, thus we can write 
+    \begin{equation*}
+        x^p-a=(x-x_0)^p
+    \end{equation*}
+    Suppose $f$ has no root over $F$, then over $\overline{K}$, we can factor $f$ as 
+    \begin{equation*}
+        f(x)=(x-\alpha)^p
+    \end{equation*}
+    where $\alpha\in\overline{F}$. Suppose $f$ is not irreducible, then 
+    \begin{equation*}
+        f(x)=g(x)h(x)
+    \end{equation*}
+    where $\deg(g)=s<p$, and 
+    \begin{equation*}
+        g(x)=(x-\alpha)^s
+    \end{equation*}
+    over $\overline{F}$, this implies that $s\alpha\in F$, which implies that $\alpha\in F$, which is a contradiction.
+\end{proof}
+
+\begin{prob}
+    Fix a complex vector space $V$, and choose a nontrivial finite subgroup $G\subseteq\operatorname{GL}(V)$. If $\dim V=\left|G\right|$, show that there is a nonzero, proper subspace $W\subseteq V$ such that $g(W)\subseteq W$ for all $g\in G$.
+\end{prob}
+\begin{proof}
+    One can consider the representations of $G$, it suffices to show that $V$ is not an irreducible representation of $G$. This is because 
+    \begin{equation*}
+        |G|=\sum_id_i^2
+    \end{equation*}
+    where $d_i$ is dimension of each irreducible representation of $G$. Since $\dim V=|G|$, $V$ must not be irreducible.
+\end{proof}
+
+
+
+
 \chapter{Spring 2025}
 
 

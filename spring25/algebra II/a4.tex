@@ -162,11 +162,19 @@ Page 42-43
     Let \(F,L\) be extensions of a field \(K\). Suppose that \(F/K\) is finite. Show that there exists an extension \(E/K\) such that there are monomorphisms of \(F\) into \(E\) and of \(L\) into \(E\) which are identical on \(K\).
 \end{prob}
 \begin{proof}
-    Consider the ring $F\otimes_kL$, and taking a maximal ideal 
+    Let $F=K(\alpha_1,\dots,\alpha_n)$, 
+    take 
     \begin{equation*}
-        E=\frac{F\otimes_KL}{(m)}
+        \frac{L[x]}{m(\alpha_i)}=\frac{L[x]}{(f_1)}\times\dots\times\frac{L[x]}{(f_n)}
     \end{equation*}
-    Then one can show that the morphisms of $F,L$ into $E$ are injective.
+    take $E_1$ to be one of the fields in the product, then repeat the process on $E_1$ to add in $\alpha_2$.
+
+
+    % Consider the ring $F\otimes_kL$, and taking a maximal ideal 
+    % \begin{equation*}
+    %     E=\frac{F\otimes_KL}{(m)}
+    % \end{equation*}
+    % Then one can show that the morphisms of $F,L$ into $E$ are injective.
 \end{proof}
 
 
@@ -174,7 +182,14 @@ Page 42-43
     Let \(E\) and \(F\) be finite field extensions of a field \(k\) such that \(E \cap F = k\), and that \(E\) and \(F\) are both contained in a larger field \(L\). Assume that \(E\) is Galois over \(k\). Show that \(E \otimes_k F \cong EF\).
 \end{prob}
 \begin{proof}
-    
+    Finite separable $E=k(\alpha)$, then 
+    \begin{equation*}
+        E=\frac{k[x]}{(f(x))}
+    \end{equation*}
+    It suffices to show that $f$ is irreducible over $F$, because 
+    \begin{equation*}
+        EF=F(\alpha)=\frac{F[x]}{(f(x))}=E\otimes_k F
+    \end{equation*}
 \end{proof}
 
 
@@ -182,11 +197,17 @@ Page 42-43
 \begin{prob}[S2008-Q5]
     Let \(k\) be a field of characteristic zero. Assume that \(E\) and \(F\) are algebraic extensions of \(k\) and both contained in a larger field \(L\). Show that the \(k\)-algebra \(E \otimes_k F\) has no nonzero nilpotent elements.
 \end{prob}
+\begin{proof}
+    Reduce to the case where $E,F$ are finite, then show this on any element of $E\otimes_kF$ (nilpotent is a local condition). Finite separable means product of fields, which has no nilpotent elements.
+\end{proof}
 
 
 \begin{prob}[S2004-Q5]
     Show that there is a \(\mathbb{C}\)-algebra isomorphism between \(\mathbb{C} \otimes_{\mathbb{R}} \mathbb{C}\) and \(\mathbb{C} \times \mathbb{C}\).
 \end{prob}
+\begin{proof}
+    Done.
+\end{proof}
 
 
 \begin{prob}[F2005-Q5]
@@ -196,13 +217,18 @@ Page 42-43
         \item[(2)] Determine if they are fields.
     \end{itemize}
 \end{prob}
+\begin{proof}
+    Nah.
+\end{proof}
 
 \begin{prob}[F2003-Q4]
     Verify the isomorphism of algebras over a field \(K\):
     \[\mathbb{M}_n(K) \otimes_K \mathbb{M}_{m}(K) \simeq \mathbb{M}_{mn}(K).\]
     [Note: \(\mathbb{M}_n(K)\) denotes the algebra of \(n \times n\) matrices over \(K\).]
 \end{prob}
-
+\begin{proof}
+    The matrix of matrices.
+\end{proof}
 
 
 
@@ -249,7 +275,7 @@ A fact that I keep forgetting.
 \begin{prop}
     Fix any prime $p$, the polynomial 
     \begin{equation*}
-        f(x)=x^{p-1}+\dots+x+1
+        f(x)=x^{p-1}+\dots+x+1=\Phi_p(x)
     \end{equation*}
     is irreducible over $\mathbb{Q}$. Similarly 
     \begin{equation*}
@@ -298,7 +324,7 @@ A fact that I keep forgetting.
     \begin{equation*}
         f(x)=(x^2-1)(x^3-1)(x^6-1)
     \end{equation*}
-    has a linear factor.
+    has a linear factor over $\F_p$, for all $p$.
 \end{cor}
 
 
@@ -318,19 +344,21 @@ A fact that I keep forgetting.
     Let \(R\) be the ring \(\mathbb{Z}[\zeta_p]\), where \(p\) is a prime number and \(\zeta_p\) denotes a primitive \(p\)th root of unity in \(\mathbb{C}\). Prove that if an integer \(n \in \mathbb{Z}\) is divisible by \(1 - \zeta_p\) in \(R\), then \(p\) divides \(n\).
 \end{prob}
 \begin{proof}
-    We know the polynomial 
-    \begin{equation*}
-        x^p-1=(x-1)(x^{p-1}-\dots-x+1)
-    \end{equation*}
-    And $\zeta_p$ is a roots of $(x^{p-1}-\dots-x+1)$, hence we are write $\zeta_p^{p-1}$ as 
-    \begin{equation*}
-        \zeta_p^{p-1}=-\zeta_p^{p-2}-\dots-1
-    \end{equation*}
-    Hence 
-    \begin{equation*}
-        n=(1-\zeta_p)(a_0+\dots+a_{p-2}\zeta_p^{p-2})
-    \end{equation*}
-    We see that $p$ divides the constant term, hence $p\mid n$.
+    Compute $N(1-\zeta_p)$, which is $p$, and norm of $n$ is $n^p$.
+
+    % We know the polynomial 
+    % \begin{equation*}
+    %     x^p-1=(x-1)(x^{p-1}+\dots+x+1)
+    % \end{equation*}
+    % And $\zeta_p$ is a roots of $\Phi_p(x)$, hence we are write $\zeta_p^{p-1}$ as 
+    % \begin{equation*}
+    %     \zeta_p^{p-1}=-\zeta_p^{p-2}-\dots-1
+    % \end{equation*}
+    % Hence 
+    % \begin{equation*}
+    %     n=(1-\zeta_p)(a_0+\dots+a_{p-2}\zeta_p^{p-2})
+    % \end{equation*}
+    % We see that $p$ divides the constant term, hence $p\mid n$.
 \end{proof}
 
 
@@ -482,13 +510,14 @@ If $p$ is prime, then $\F_p$ is a field of $p$ elements, isomorphic to $\Z/p\Z$.
     \begin{equation*}
         \F_4\cong\frac{\F_2}{(x^2-x+1)}
     \end{equation*}
-    Clearly $x^2-x+1$ is not irreducible over $\F_4$. For any $\F_{2^n}$, we know $(x^2-x+1)$ is irreducible if and only if $\F_4$ does not embed into $\F{2^n}$, i.e., $2\nmid n$. This shows that when $n$ is odd, the polynomial $x^2-x+1$ is irreducible over $\F_{2^n}$.
+    Clearly $x^2-x+1$ is not irreducible over $\F_4$. For any $\F_{2^n}$, we know $(x^2-x+1)$ is irreducible if and only if $\F_4$ does not embed into $\F_{2^n}$, i.e., $2\nmid n$. This shows that when $n$ is odd, the polynomial $x^2-x+1$ is irreducible over $\F_{2^n}$.
 \end{proof}
 
 
 \begin{prob}[F2015-Q5]
     Let \(L\) be a finite field. Let \(a\) and \(b\) be elements of \(L^\times\) (the multiplicative group of \(L\)) and \(c \in L\). Show that there exist \(x\) and \(y\) in \(L\) such that \(ax^2 + by^2 = c\).
 \end{prob}
+hard.
 
 
 
@@ -504,7 +533,7 @@ If $p$ is prime, then $\F_p$ is a field of $p$ elements, isomorphic to $\Z/p\Z$.
     \begin{itemize}
         \item[(a)] You just do it, the field has character $p$.
         \item[(b)] Observe that it is surjective.
-        \item[(c)] $x$ is not in the image of $\varphi$. 
+        \item[(c)] $x$ is not in the image of $\varphi$. Suppose that $\varphi(f(x)/g(x))=x$, then $p$ divides the degree of $f$ and $g$.
     \end{itemize}
 \end{proof}
 
@@ -520,7 +549,15 @@ If $p$ is prime, then $\F_p$ is a field of $p$ elements, isomorphic to $\Z/p\Z$.
 \begin{proof}
     \begin{itemize}
         \item[(a)] Same as above.
-        \item[(b)]   
+        \item[(b)] The minimal coincide with the characteristic polynomial, thus we can write 
+        \begin{equation*}
+            K\cong\frac{k[x]}{(f(x))}
+        \end{equation*}
+        and the RHS has a basis of $\{1,t,\dots, t^{n-1}\}$, using this isomorphism, letting $v=\Phi(1)$, $K$ has a basis of the form 
+        \begin{equation*}
+            \{v, \Phi(v),\dots, \Phi^{n-1}(v)\}
+        \end{equation*}
+        because the Galois group is cyclic, we have the above.
     \end{itemize}
 \end{proof}
 
@@ -532,7 +569,19 @@ If $p$ is prime, then $\F_p$ is a field of $p$ elements, isomorphic to $\Z/p\Z$.
         \item[(b)] Supposed that \(\varphi\) is diagonalizable over \(\mathbb{F}_p\). Show that \(n\) divides \(p - 1\).
     \end{itemize}
 \end{prob}
-
+\begin{proof}
+    \begin{enumerate}
+        \item Use the linear independence of one-dimensional characters to show the minimal polynomial is at least degree $n$.
+        \item It suffices to show there is an element of order $n$ in $\F_p^\times$. Now we see 
+        \begin{equation*}
+            x^n-1=\prod_{d\mid n}\Phi_d(x)
+        \end{equation*}
+        and any root of $\Phi_n(x)$ has order $n$. Alternatively, note that 
+        \begin{equation*}
+            x^n-1\mid x^{p^n-1}-1
+        \end{equation*}
+    \end{enumerate}
+\end{proof}
 
 
 
@@ -542,7 +591,15 @@ If $p$ is prime, then $\F_p$ is a field of $p$ elements, isomorphic to $\Z/p\Z$.
     Let \(p\) be a prime, \(F\) a finite field with \(p\) elements and \(K\) a finite extension of \(F\). Denote by \(F^\times\) and \(K^\times\) the multiplicative groups of nonzero elements of fields \(F\) and \(K\), respectively. Prove that the norm homomorphism \(N:K^\times\to F^\times\) is surjective.
 \end{prob}
 \begin{proof}
-
+    Note that 
+    \begin{equation*}
+        \det(m_\alpha)=\prod_{\sigma\in\gal(K/F)}\sigma(\alpha)
+    \end{equation*}
+    and we know this is 
+    \begin{equation*}
+        \alpha\cdot\alpha^p\cdot\dots\cdot\alpha^{p^{n-1}}
+    \end{equation*}
+    then this element has order $p-1$.
 \end{proof}
 
 
@@ -551,7 +608,7 @@ If $p$ is prime, then $\F_p$ is a field of $p$ elements, isomorphic to $\Z/p\Z$.
     Let \(k\) be a finite field and \(K\) be a finite extension of \(k\). Let \(\mathfrak{Tr} = \text{Tr}_k^K\) be the trace function from \(K\) to \(k\). Determine the image of \(\mathfrak{Tr}\) and prove your answer.
 \end{prob}
 \begin{proof}
-    Step 1: show that there exists an element $\alpha$ such that 
+    Step 1: show that there exists an element $\alpha$ such that the trace is nonzero. Then note that the image is a $k$-subspace of $k$, so is the entire thing.
 \end{proof}
 
 
@@ -578,6 +635,9 @@ If $p$ is prime, then $\F_p$ is a field of $p$ elements, isomorphic to $\Z/p\Z$.
 \begin{prob}[S2002-Q5]
     Let \(\zeta = e^{\frac{2\pi i}{5}}\) and \(K = \mathbb{Q}(\zeta)\) the field generated by \(\zeta\) over the field of rational numbers. Prove that \(K\) contains \(\sqrt{5}\).
 \end{prob}
+\begin{proof}
+    The degree $2$ extension corresponds to the field where $\om_5+\om_5^{-1}$ are fixed. The minimal polynomial for this is $x^2+x-1$, which contains $\sqrt{5}$. Note that $\om_5$ solves $\Phi_5$.
+\end{proof}
 
 
 
