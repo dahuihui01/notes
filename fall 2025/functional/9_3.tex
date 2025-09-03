@@ -1,0 +1,119 @@
+\documentclass[openany]{book}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsfonts,amsthm, amssymb}
+\usepackage{yhmath}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{comment}
+\usepackage{tikz-cd}
+\usepackage{quiver}
+\renewcommand{\familydefault}{ppl}
+\newcommand{\tr}{\text{tr}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\colim}{\text{colim}}
+\DeclareMathOperator{\im}{im}
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+\newcommand{\tor}{\text{Tor}}
+\newcommand{\id}{\text{id}}
+\newcommand{\ext}{\text{Ext}}
+\newcommand{\ptop}{\text{PTop}}
+\newcommand{\pt}{\text{pt}}
+\newcommand{\ach}{\text{Ach}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\gal}{\text{Gal}}
+
+
+\input{hui.tex}
+
+\title{Functional Analysis
+\\ 
+\vspace{0.4cm}
+\large Fall 2025}
+
+
+
+
+\date{\today}
+\author{Hui Sun}
+
+
+\begin{document}
+
+\maketitle
+
+\chapter{Preliminary}
+
+
+\begin{defn}[orthonormal basis]
+    Let $S$ be an orthonormal set in the Hilbert space such that no other orthonormal set contains $S$ as a proper subset. Then $S$ is called an orthonormal basis.
+\end{defn}
+
+\begin{prop}
+    Every Hilbert space admits an orthonormal basis.
+\end{prop}
+\begin{proof}
+    Zorn's lemma.
+\end{proof}
+Remark: if $H$ is separable, i.e., $H$ has a countable dense subset, then the proof does not require Zorn's lemma. For example, $L^2$ is separable.
+
+\begin{prop}[II.6, Parsevel's formula]
+    Let $\mathcal{H}$ be a Hilbert space, and $S=\{x_n\}$ be an orthonormal basis, then for each $y\in\mathcal{H}$, 
+    \begin{equation*}
+        y=\sum_{\alpha\in\mathcal{A}}(x_\alpha,y)x_\alpha, \quad \|y\|^2=\sum|(x_n,y)|^2
+    \end{equation*}
+    where $\mathcal{A}$ is an index set.
+\end{prop}
+\begin{proof}
+    Bessel's inequality states that for any $\mathcal{A}'\subset\mathcal{A}$ finite, we have 
+    \begin{equation*}
+        \sum_{\alpha\in\mathcal{A}'}|(x_\alpha,y)|^2\leq\|y\|^2<\infty
+    \end{equation*}
+    It follows that $|(x_\alpha,y)|>\frac{1}{n}$ for at most finitely many $\alpha$'s, and $|(x_\alpha,y)|\neq 0$ for at most countably many $\alpha$'s. Let $\{\alpha_i\}_{i=1}^\infty$ be an enumeration of such $\alpha$'s. Then 
+    \begin{equation*}
+        \sum_{i=1}^N|(x_{\alpha_i},y)|^2\leq\|y\|^2<\infty
+    \end{equation*}
+    which implies 
+    \begin{equation*}
+        \sum_{i=1}^\infty|(x_{\alpha_i},y)|^2<\infty
+    \end{equation*}
+    Let 
+    \begin{equation*}
+        y_n=\sum_{i=1}^n(x_{\alpha_i},y)x_{\alpha_i}, 
+    \end{equation*}
+    we would like to show that the sequence $\{y_n\}$ is cauchy, 
+    \begin{equation*}
+        \|y_n-y_m\|^2=\left\|\sum_{i=m+1}^n(x_{\alpha_i}, y)x_{\alpha_i}\right\|^2\to 0 \text{ as } m\to\infty
+    \end{equation*}
+    Thus $\{y_n\}$ is Cauchy. In other words,
+    \begin{equation*}
+        y_n\to y=\sum_{i=1}^\infty (x_{\alpha_i},y)x_{\alpha_i}
+    \end{equation*}
+\end{proof}
+
+
+\begin{defn}
+    A metric space is separable if it has a countable dense subset.
+\end{defn}
+
+\begin{prop}[II.7]
+    Let $\mathcal{H}$ be a Hilbert space, then it is separable iff it has a countable orthonormal basis.
+\end{prop}
+\begin{proof}
+    Suppose $\mathcal{H}$ is separable, let $\{x_n\}$ be a countable dense set, then we throw out terms in $\{x_n\}$ until we get a linearly indepedent dense subset $\{u_n\}\subset \{x_n\}$. Applying Gram-Schmidt, we can assume $\{u_n\}$ to be countable and orthonormal.
+\end{proof}
+
+
+
+
+
+\end{document}
