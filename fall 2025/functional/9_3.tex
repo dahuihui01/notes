@@ -114,6 +114,29 @@ Remark: if $H$ is separable, i.e., $H$ has a countable dense subset, then the pr
 
 
 
+\begin{defn}[Fourier Coefficient]
+    The $n$th Fourier coefficient of a $2\pi$-periodic function $f$ is 
+    \begin{equation*}
+        c_n=\frac{1}{\sqrt{2\pi}}\int_0^{2\pi}e^{-inx}f(x)dx
+    \end{equation*}
+    The Fourier series of $f$ is 
+    \begin{equation*}
+        \tilde{f}(x)=\lim_{M\to\infty}
+        \sum_{M=-N}^N\frac{1}{\sqrt{2\pi}}c_ne^{inx}
+    \end{equation*}
+\end{defn}
+
+\begin{prop}
+    The Fourier series $\sum_{k}c_k$ converges if $f\in L^2$. Moreover, the series converges uniformly to a continuous function if $\sum|c_k|<\infty$ 
+\end{prop}
+I am too lazzy to type it up, but it uses the fun lemma below:
+\begin{lem}
+    Suppose $f$ is $2\pi$-periodic, and $(f, e^{inx})=0$ for all $n$, then $f\equiv 0$. (In other words, if all the Fourier coefficients are $0$, then the function must be identically zero).
+\end{lem}
+
+
+
+
 
 
 \end{document}
