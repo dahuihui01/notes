@@ -53,6 +53,9 @@
 
 \chapter{Preliminary}
 
+\section{9/3 lecture}
+
+
 
 \begin{defn}[orthonormal basis]
     Let $S$ be an orthonormal set in the Hilbert space such that no other orthonormal set contains $S$ as a proper subset. Then $S$ is called an orthonormal basis.
@@ -133,6 +136,105 @@ I am too lazzy to type it up, but it uses the fun lemma below:
 \begin{lem}
     Suppose $f$ is $2\pi$-periodic, and $(f, e^{inx})=0$ for all $n$, then $f\equiv 0$. (In other words, if all the Fourier coefficients are $0$, then the function must be identically zero).
 \end{lem}
+
+
+\section{9/8 Lecture}
+\begin{defn}[Banach space]
+    A complete normed linear space is called a Banach space.
+\end{defn}
+\begin{example}
+    \begin{enumerate}
+        \item $L^\infty(\R)=\{f:f(x)\leq M \text{ a.e. }\}$, where $\|f\|_\infty$ is the smallest such $M$, is a Banach space.
+        \item Let $C(\R)$ be the bounded continuous functions on $\R$. Let $C(\R)\subset L^\infty(\R)$ and equip it with the same norm. Moreover, $C(\R)$ is also a Banach space (due to the uniform convergence of continuous functions is still continuous).
+        \item Let $C_c(\R)$ be the space of continuous functions with compact support, and this is not a Banach space under $\|\cdot\|_\infty$.
+        \item $L^p$ is complete for all $1\leq p<\infty$.
+        \item Let $a=\{a_n\}$ be a sequence of complex numbers, ad 
+        \begin{equation*}
+            \|a\|=\sup_n|a_n|<\infty
+        \end{equation*}
+        let $c_0=\{\lim_{n\to\infty}a_n=0\}$, $s=\{\lim_{n\to\infty}n^Na_n=0 \forall N\}$, and $l_p=\{\|a\|_p^p=\sum_{n=1}^\infty|a_n|^p<\infty\}$. Note that the space 
+        \begin{equation*}
+            f=\{a_n=0 \text{ for al but finitely many $n$}\}
+        \end{equation*}
+        is not complete! However, it is a dense subset in $l^p$. Morever, the set of elements in $f$ with rational coefficients, and the closure of $f$ in $s, l^p, c_0$ are exactly the whole spaces, i.e., $s,l^p, c_0$ are separable.
+        \item Let $L(X,Y)$ be bounded linear operators from $X,Y$, with the operator norm, and $L(X,Y)$ is a Banach psace.
+    \end{enumerate}
+\end{example}
+
+\begin{prop}
+    Let $L^p(\R)$, where $1\leq p<\infty$ be the space of functions with the norm 
+    \begin{equation*}
+        \|f\|_p=\left(\int_\R|f(x)|^pdx\right)^p
+    \end{equation*}
+    then 
+    \begin{enumerate}
+        \item (Minkowski's inequality) $\|f\|_p\leq\|f\|_p+\|g\|_p$.
+        \item (Riesz-Fischer) $L^p$ is complete.
+        \item (Holder) Given $\frac{1}{p}+\frac{1}{q}=\frac{1}{r}$, we have 
+        \begin{equation*}
+            \|fg\|_r\leq\|f\|_p\|g\|_q
+        \end{equation*}
+        if $f\in L^p, g\in L^q$.
+    \end{enumerate}
+\end{prop}
+
+
+\begin{prop}
+    If $Y$ is complete, then $L(X,Y)$ is a Banach space.
+\end{prop}
+\begin{proof}
+    Suppose $\{A_n\}$ is Cauchy, now we construct the limit: for each $x$, $A_nx=y_n$ is a Cauchy sequence:
+    \begin{equation*}
+        \|y_n-y_m\|\leq\|A_n-Am\|\cdot\|x\|
+    \end{equation*}
+    Now since $Y$ is complete, we know that $A_nx\to y$. Let $Ax=y$. (This is our limit)! Now $\|A_n\|\leq C$ for all $n$, which implies $\|A\|\leq C$. Thus $L(X,Y)$ is complete!
+\end{proof}
+
+\subsection{Duals}
+\begin{defn}[dual space]
+    The space of bounded linear functionals $L(X,\C)$, where $X$ is Banach, is called the dual space to $X$, denoted by $X^*$. Let $f\in X^*$, then define the norm 
+    \begin{equation*}
+        \|f\|=\sup_{x\in X, \|x\|\leq 1}|f(x)|
+    \end{equation*}
+\end{defn}
+
+
+\begin{example}
+    \begin{enumerate}
+        \item Suppose that $1<p<\infty$, $\frac{1}{p}+\frac{1}{q}=1$, and let $g\in L^q$, then 
+        \begin{equation*}
+            G(f)=\int_{-\infty}^\infty\bar{g}(x)f(x)dx
+        \end{equation*}
+        Then $G$ is in $(L^p)^*$. Moreover, any such linear functional on $L^p$ can be written in this way for some $g\in L^q$. And 
+        \begin{equation*}
+            |G(f)|\leq\|f\|_p\|g\|_q
+        \end{equation*}
+        by Holder. Moreover, 
+        \begin{equation*}
+            L^q(\R)^*=L^p, (L^q(\R)^*)^*=L^q
+        \end{equation*}
+        because $L^q$ is reflexive! In particular, $L^2$ is its own dual space.
+        \item Suppose $\{\lambda_k\}\subset l^q$, then 
+        \begin{equation*}
+            \Lambda(\{a_k\})=\sum_k\lambda_ka_k
+        \end{equation*}
+        is a bounded linear functional on $l^p$. Thus 
+        \begin{equation*}
+            l_q\subset (l^p)^*
+        \end{equation*}
+    \end{enumerate}
+    for $1\leq p\leq\infty$. It turns out every linear functional on $l^p$ can be written in this form.
+\end{example}
+\begin{example}
+    Let $p=1$, we have 
+    \begin{equation*}
+        L^1(\R)^*=L^\infty, \text{ but } L^\infty(\R)^*\neq L^1(\R)
+    \end{equation*}
+    in fact $L^\infty(\R)^*$ is bigger. 
+\end{example}
+
+
+
 
 
 
