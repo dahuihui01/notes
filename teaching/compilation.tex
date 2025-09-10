@@ -337,7 +337,7 @@ Topics: (1) Graphing multivariable functions, (2) Introducing limits and continu
     For the following functions, find their (1) image, (2) graph, (3) draw their graphs.
     \begin{enumerate}
         \item  Let $f: \R\to\R$, and $f(x)=x^2+1$.
-        \item Let $g: \R^2\to \R$, and $g(x)=x^2+y^2$.
+        \item Let $g: \R^2\to \R$, and $g(x,y)=x^2+y^2$.
     \end{enumerate}
 \end{prob}
 
@@ -357,18 +357,18 @@ Topics: (1) Graphing multivariable functions, (2) Introducing limits and continu
         \end{equation*}
     \end{enumerate}
 \end{prob}
-% \begin{proof}
-%     \begin{enumerate}
-%         \item Following the hint, we see 
-%         \begin{equation*}
-%             \lim_{(x,y)\to(0,0)}\frac{\sin xy}{y}=\lim_{(x,y)\to(0,0)}\frac{\sin xy}{xy}x=\lim_{x\to 0}x=0
-%         \end{equation*}
-%         \item This one uses the exact same trick: \begin{equation*}
-%             \lim_{(x,y)\to(0,0)}\frac{e^{xy}-1}{xy}\cdot y=0
-%         \end{equation*}
-%         \item First letting $x\to 0$ along $y=0$, we see the limit is $1$; letting $x=y\to 0$, we see the limit is $0$, thus the limit doesn't exist!
-%     \end{enumerate}
-% \end{proof}
+\begin{proof}
+    \begin{enumerate}
+        \item Following the hint, we see 
+        \begin{equation*}
+            \lim_{(x,y)\to(0,0)}\frac{\sin xy}{y}=\lim_{(x,y)\to(0,0)}\frac{\sin xy}{xy}x=\lim_{x\to 0}x=0
+        \end{equation*}
+        \item This one uses the exact same trick: \begin{equation*}
+            \lim_{(x,y)\to(0,0)}\frac{e^{xy}-1}{xy}\cdot y=0
+        \end{equation*}
+        \item First letting $x\to 0$ along $y=0$, we see the limit is $1$; letting $x=y\to 0$, we see the limit is $0$, thus the limit doesn't exist!
+    \end{enumerate}
+\end{proof}
 
 
 \begin{prob}
@@ -389,21 +389,28 @@ Topics: (1) Graphing multivariable functions, (2) Introducing limits and continu
         % \item $h(x,y)=\frac{\sin(xy)}{x+y}$ as $(x,y)\to (0,0)$. Recall that $\lim_{x\to 0}\frac{\sin(x)}{x}=1$.
     \end{enumerate}
 \end{prob}
-% \begin{proof}
-%     \begin{enumerate}
-%         \item First fix $x=0$, let $y\to 0$, then the limit is $0$; now fix $y=0$, let $x\to 0$, the limit is $1$. The limit doesn't exist!
-%         \item Consider $y=x^2-x$, (as $x\to0, y\to 0$), then 
-%         \begin{equation*}
-%             \lim_{(x,y)\to(0,0)}\frac{xy}{x+y}=\lim_{x\to 0}\frac{x^3-x^2}{x^2}=\lim_{x\to 0}x-1=-1
-%         \end{equation*}
-%         and consider $y=x$, we see the limit is $0$, thus the limit doesn't exist!
-%         \item We see that 
-%         \begin{equation*}
-%             \lim_{(x,y)\to(0,0)}\frac{\sin(xy)}{xy}\frac{xy}{x+y}
-%         \end{equation*}
-%         Note that the limit of $\sin(xy)/(xy)=1$, but the second one doesn't exist, thus the limit doesn't exist!
-%     \end{enumerate}
-% \end{proof}
+\begin{proof}
+    \begin{enumerate}
+        \item First fix $x=0$, let $y\to 0$, then the limit is $0$; now fix $y=0$, let $x\to 0$, the limit is $1$. The limit doesn't exist!
+        \item Consider $y=x^2-x$, (as $x\to0, y\to 0$), then 
+        \begin{equation*}
+            \lim_{(x,y)\to(0,0)}\frac{xy}{x+y}=\lim_{x\to 0}\frac{x^3-x^2}{x^2}=\lim_{x\to 0}x-1=-1
+        \end{equation*}
+        and consider $y=x$, we see the limit is $0$, thus the limit doesn't exist!
+        \begin{warn}
+            2 does not follow from 1! A student suggests a proof: $\lim_{(x,y)\to(0,0)}=\frac{x}{x+y}\cdot y$, and because by 1, the limit $\frac{x}{x+y}$ doesn't exist, this implies $\frac{xy}{x+y}$'s limit doesn't exist. This argument is not correct! Consider the following example: $\lim_{y\to 0}\frac{1}{y}$ doesn't exist, but 
+            \begin{equation*}
+                \lim_{y\to 0}\frac{1}{y}\cdot y=1
+            \end{equation*}
+            exists! More concretely, if you multiply by any function that doesn't tend to $0$, the argument follows, but it doesn't work when the function tends to $0$! (Sorry I wasn't able to give a concrete counterexample in class other than noting this gives ``bad and untrue vibes'').
+        \end{warn}
+        \item We see that 
+        \begin{equation*}
+            \lim_{(x,y)\to(0,0)}\frac{\sin(xy)}{xy}\frac{xy}{x+y}
+        \end{equation*}
+        Note that the limit of $\sin(xy)/(xy)=1$, but the second one doesn't exist, thus the limit doesn't exist!
+    \end{enumerate}
+\end{proof}
 
 \noindent
 How to find a a limit $\lim_{x\to x_0}f(x)$:

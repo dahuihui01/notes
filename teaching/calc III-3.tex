@@ -170,7 +170,14 @@ Topics: (1) Graphing multivariable functions, (2) Introducing limits and continu
 \begin{proof}
     \begin{enumerate}
         \item First fix $x=0$, let $y\to 0$, then the limit is $0$; now fix $y=0$, let $x\to 0$, the limit is $1$. The limit doesn't exist!
-        \item Consider $y=x^2-x$, (as $x\to0, y\to 0$), then 
+        \item 
+      %
+        % \begin{equation*}
+        %     \lim_{(x,y)\to(0,0)}\frac{xy}{x+y}=\lim_{(x,y)}\frac{x}{x+y}\cdot y
+        % \end{equation*}
+        % and the limit doesn't exist by the previous problem
+        
+        Consider $y=x^2-x$, (as $x\to0, y\to 0$), then 
         \begin{equation*}
             \lim_{(x,y)\to(0,0)}\frac{xy}{x+y}=\lim_{x\to 0}\frac{x^3-x^2}{x^2}=\lim_{x\to 0}x-1=-1
         \end{equation*}
