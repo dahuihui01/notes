@@ -62,219 +62,72 @@
 \renewcommand\thesection{\arabic{section}}
 
 \noindent
-Topics: (1) Partial derivatives. (2) 
+Topics: (1) Partial derivatives. (2) Definition of total derivatives.
 
-\begin{defn}[graph]
-    The \textbf{image} of a function $f: \R^n\to\R^m$ is a subset of $\R^m$,
+\begin{defn}[tangent plane]
+    Let $f:\R^2\to\R$ (and $f$ is smooth enough), then the \textbf{tangent plane} to the graph $f$ in $\R^3$ is the given by 
     \begin{equation*}
-        \text{Image}(f)=\{f(x)\in\R^m: x\in\R^n\}
-    \end{equation*}
-    and the \textbf{graph} of $f$ is a subset of $\R^{n+m}$,
-    \begin{equation*}
-        \text{Graph}(f)=\{(x,f(x)): x\in\R^n\}
+        z=f(x_0,y_0)+\frac{\partial f}{\partial x}(x_0,y_0)+\frac{\partial f}{\partial y}(x_0,y_0)
     \end{equation*}
 \end{defn}
-
-
-
-\begin{defn}[limit]
-    Let $f: A\subset\R^n\to\R^m$, ($A$ is open), let $N$ be a neighborhood of a point $b\in\R^m$. Now let $x$ approach $x_0$ ($x_0\in\bar{A}$,) $f$ is said to be \textbf{eventually in $N$} if there exists a neighborhood $U$ of $x_0$ such that whenever $x\in U$, then $f(x)\in N$ as well. 
-
-    The \textbf{limit} of $f$ as $x\to x_0$, if it exists, is $\lim_{x\to x_0}f(x):=b\in\R^m$ such that $f$ is eventually in $N$, for every neighborhood $N$ of $b$. 
-\end{defn}
-
-\begin{defn}[limit']
-    $\lim_{x\to x'}f(x)=b$ is when $x=(x_1, x_2, \dots, x_n)\to x'=(x_1',x_2',\dots, x_n')$ from \textbf{all directions}, $f(x)$ approaches $b=(b_1,\dots, b_m)$.
-\end{defn}
-
-
-
-\begin{defn}[continuity]
-    Let $f:A\subset\R^n\to\R^m$ is said to be \textbf{continuous} at $x_0\in A$ if 
-    \begin{equation*}
-        \lim_{x\to x_0}f(x)=f(x_0)
-    \end{equation*}
-    And $f$ is called continuous if $f$ is continuous at every $x_0\in A$.
-\end{defn}
-
-\begin{example}
-    The limit doesn't need to exist! For example, let 
-    \begin{equation*}
-        H(x)=\begin{cases}
-            1, x\geq 0\\
-            -1, x<0
-        \end{cases}
-    \end{equation*}
-    Note the limit doesn't exist at $x=0$.
-\end{example}
-
-
-
 
 \begin{prob}
-    For the following functions, find their (1) image, (2) graph, (3) draw their graphs.
-    \begin{enumerate}
-        \item  Let $f: \R\to\R$, and $f(x)=x^2+1$.
-        \item Let $g: \R^2\to \R$, and $g(x)=x^2+y^2$.
-    \end{enumerate}
-\end{prob}
-
-
-\begin{prob}
-    Compute the following limits:
+    Compute $\frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}$ for the following functions:
     \begin{enumerate}
         \item \begin{equation*}
-            \lim_{(x,y)\to (0,0)}\frac{\sin xy}{y}
-        \end{equation*}
-       ( Hint: try writing $\frac{\sin xy}{y}=\frac{\sin xy}{xy}\cdot x$, and recall $\lim_{t\to 0}\frac{\sin t}{t}=1$).
-        \item \begin{equation*}
-            \lim_{(x,y)\to(0,0)}\frac{e^{xy}-1}{y}
+            x^3y^4-xy^2
         \end{equation*}
         \item \begin{equation*}
-            \lim_{(x,y)\to(0,0)}\frac{(x-y)^2}{x^2+y^2}
+            x^2\sin(2y)+3
+        \end{equation*}
+        \item \begin{equation*}
+            \ln\left(\frac{y}{x}\right)+\ln\left(\frac{1}{x+y}\right)-\ln\left(\frac{x}{2}\right)
+        \end{equation*}
+        You may use the following identities to simply the equation first:
+        \begin{equation*}
+            \ln\left(\frac{a}{b}\right)=\ln a-\ln b, \quad \ln\left(\frac{1}{a}\right)=-\ln a
         \end{equation*}
     \end{enumerate}
 \end{prob}
 \begin{proof}
+    We have 
     \begin{enumerate}
-        \item Following the hint, we see 
-        \begin{equation*}
-            \lim_{(x,y)\to(0,0)}\frac{\sin xy}{y}=\lim_{(x,y)\to(0,0)}\frac{\sin xy}{xy}x=\lim_{x\to 0}x=0
+        \item \begin{equation*}
+            \partial x: 3x^2y^4-y^2, \quad \partial y: 4x^3y^3-2xy
         \end{equation*}
-        \item This one uses the exact same trick: \begin{equation*}
-            \lim_{(x,y)\to(0,0)}\frac{e^{xy}-1}{xy}\cdot y=0
+        \item \begin{equation*}
+            \partial x: 2x\sin(2y), \quad \partial y: 2x^2\cos(2y)
         \end{equation*}
-        \item First letting $x\to 0$ along $y=0$, we see the limit is $1$; letting $x=y\to 0$, we see the limit is $0$, thus the limit doesn't exist!
+        \item \begin{equation*}
+            \partial x: -\frac{2}{x}-\frac{1}{x+y}, \quad \partial y: \frac{1}{y}-\frac{1}{x+y}
+        \end{equation*}
     \end{enumerate}
 \end{proof}
+
+
 
 
 \begin{prob}
-    Compute the limit of the following functions:
-    \begin{enumerate}
-        \item \begin{equation*}
-            \lim_{(x,y)\to(0,0)}\frac{x}{x+y} 
-        \end{equation*}
-        \item \begin{equation*}
-            \lim_{(x,y)\to(0,0)}\frac{xy}{x+y}
-        \end{equation*}
-        (Hint: try considering $y=x^2-x$ and $y=x$)
-        \item \begin{equation*}
-            \lim_{(x,y)\to (0,0)}\frac{\sin(xy)}{x+y}
-        \end{equation*}
-        % \item $f(x,y)=\frac{x}{x+y}$ as $(x,y)\to (0,0)$.
-        % \item $g(x,y)=\frac{xy}{x+y}$ as $(x,y)\to (0,0)$.
-        % \item $h(x,y)=\frac{\sin(xy)}{x+y}$ as $(x,y)\to (0,0)$. Recall that $\lim_{x\to 0}\frac{\sin(x)}{x}=1$.
-    \end{enumerate}
+    Compute the plane tangent to the graph of $f(x,y)=x^2y+2xy-y^2$ at $(1,2)$.
 \end{prob}
 \begin{proof}
-    \begin{enumerate}
-        \item First fix $x=0$, let $y\to 0$, then the limit is $0$; now fix $y=0$, let $x\to 0$, the limit is $1$. The limit doesn't exist!
-        \item 
-      %
-        % \begin{equation*}
-        %     \lim_{(x,y)\to(0,0)}\frac{xy}{x+y}=\lim_{(x,y)}\frac{x}{x+y}\cdot y
-        % \end{equation*}
-        % and the limit doesn't exist by the previous problem
-        
-        Consider $y=x^2-x$, (as $x\to0, y\to 0$), then 
-        \begin{equation*}
-            \lim_{(x,y)\to(0,0)}\frac{xy}{x+y}=\lim_{x\to 0}\frac{x^3-x^2}{x^2}=\lim_{x\to 0}x-1=-1
-        \end{equation*}
-        and consider $y=x$, we see the limit is $0$, thus the limit doesn't exist!
-        \item We see that 
-        \begin{equation*}
-            \lim_{(x,y)\to(0,0)}\frac{\sin(xy)}{xy}\frac{xy}{x+y}
-        \end{equation*}
-        Note that the limit of $\sin(xy)/(xy)=1$, but the second one doesn't exist, thus the limit doesn't exist!
-    \end{enumerate}
+    We have 
+    \begin{equation*}
+        \frac{\partial f}{\partial x}(1,2)=2xy+2y\vert_{(1,2)}=8, \quad \frac{\partial f}{\partial y}(1,2)=x^2+2x-2y\vert_{(1,2)}=-1
+    \end{equation*}
+    and $f(1,2)=2$, thus the plane is given by
+    \begin{equation*}
+        z=2+8x-y     
+    \end{equation*}
 \end{proof}
 
 
-How to find a a limit $\lim_{x\to x_0}f(x)$:
-\begin{itemize}
-    \item Step 1: Guess what the limit should be.
-    \item Step 2: Try from approaching $x_0$ from different directions.
-    \item Step 3: Try to replace terms with expressions you are familiar with.
-\end{itemize}
-
-
-\newpage
 
 
 
 
 
 
-
-% $(x^3-x^2)/x^2=x-1$, 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-% \begin{defn}[cross product]
-%     Let $a=(a_1,a_2,a_3), b=(b_1,b_2,b_3)$ be vectors in $\R^3$, the cross product of $a,b$ is the vector $a\times b$, 
-%     \begin{equation*}
-%         a\times b=\begin{bmatrix}
-%             i&j&k\\
-%             a_1&a_2&a_3\\
-%             b_1&b_2&b_3
-%         \end{bmatrix}
-%     \end{equation*}
-%     where $i,j,k$ are the standard vectors in $\R^3$.
-% \end{defn}
-
-% \begin{prop}
-%     Here are some properties of the cross product:
-%     \begin{enumerate}
-%         \item $a\times b$ is perpendicular to vectors $a,b$.
-%         \item The length of the cross product is the area of the parallelogram:
-%         \begin{equation*}
-%             \|a\times b\|=\|a\|\|b\|\sin\theta
-%         \end{equation*}
-%         where $\theta$ is the angle between them. (Compare this with the dot product).
-%         \item $a\times b=-b\times a$, and $a\times (b+c)=a\times b+a\times c$. Moreover, $a\times b=0$ iff $a,b$ are parallel or either $a$ or $b$ are $0$.
-%         \item (HW) The cross product is \textbf{not} associative! For example, compute 
-%         \begin{equation*}
-%             (i\times i)\times j, \quad i\times (i\times j)
-%         \end{equation*}
-%     \end{enumerate}
-% \end{prop}
-
-% \begin{defn}[Plane in three dimensions]
-%     A perpendicular vector and a normal vector uniquely define a plane in $\R^3$: given the plane $\mathcal{P}$ passing containing the point $(x_0,y_0,z_0)$ that has a normal vector $(A,B,C)$ is given by the equation:
-%     \begin{equation*}
-%         \mathcal{P}=A(x-x_0)+B(y-y_0)+C(z-z_0)
-%     \end{equation*}
-% \end{defn}
-
-
-% \begin{prob}
-%     Let $\vec{u}=(1,2,3), \vec{v}=(0,1,1)$ be vectors in $\R^3$, compute the area of the parallelogram spanned by these two vectors.
-% \end{prob}
-
-% \begin{prob}
-%     Compute the plane containg all three points:
-%     \begin{equation*}
-%         (1,0,2), \quad (2, -1, 0), \quad (-1, 2, 3)
-%     \end{equation*}
-% \end{prob}
-
-% % \begin{proof}
-% %     Find the cross product of $AB=(1,-1,-2), AC=(-2,2,1)$, the 
-% % \end{proof}
 
 
 \end{document}
