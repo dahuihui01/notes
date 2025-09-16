@@ -429,6 +429,183 @@ How to find a a limit $\lim_{x\to x_0}f(x)$:
 
 
 
+\newpage
+
+
+\begin{center}
+    \Large Calc III-Week 4 (9/15-9/19)
+\end{center}
+
+\renewcommand\thesection{\arabic{section}}
+
+\noindent
+Topics: (1) Partial derivatives. (2) Definition of total derivatives.
+
+\begin{defn}[tangent plane]
+    Let $f:\R^2\to\R$ be differentiable at $(x_0,y_0)$, then the \textbf{tangent plane} to the graph $f$ in $\R^3$ is the given by 
+    \begin{equation*}
+        z=f(x_0,y_0)+\frac{\partial f}{\partial x}\bigg\vert_{(x_0,y_0)}(x-x_0)+\frac{\partial f}{\partial y}\bigg\vert_{(x_0,y_0)}(y-y_0)
+    \end{equation*}
+\end{defn}
+
+
+\begin{defn}[derivative for two variables]
+    Let $f:\R^2\to\R$, then $f$ is said to be \textbf{differentiable} at $(x_0,y_0)$ if $\frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}$ exist at $(x_0,y_0)$ and if 
+    \begin{equation*}
+        \lim_{(x,y)\to(x_0,y_0)}\frac{f(x,y)-\mathcal{P}(x,y)}{\|(x,y)-(x_0,y_0)\|}=0
+    \end{equation*}
+    where $\mathcal{P}(x,y)=f(x_0,y_0)+\frac{\partial f}{\partial x}\bigg\vert_{(x_0,y_0)}(x-x_0)+\frac{\partial f}{\partial y}\bigg\vert_{(x_0,y_0)}(y-y_0)$ is the tangent plane to $f$ at $(x_0,y_0)$.
+\end{defn}
+
+
+\begin{defn}[derivative for $n$ variables]
+    Let $f:\R^n\to\R$, then the \textbf{gradient} of $f$, denoted as $\nabla f$ is given by 
+    \begin{equation*}
+        \nabla f=\begin{bmatrix}
+            \frac{\partial f}{\partial x_1}, \dots, \frac{\partial f}{\partial x_n}
+        \end{bmatrix}
+    \end{equation*}
+    is a $1\times n$ matrix. And $f$ is said to be \textbf{differentiable} at $x_0\in\R^n$ if 
+    \begin{equation*}
+        \lim_{x\to x_0}\frac{\|f(x)-f(x_0)-\nabla f(x_0)(x-x_0)\|}{\|x-x_0\|}=0
+    \end{equation*}
+    and the derivative of $f$ is exactly the gradient $\nabla f$ at $x_0$.
+\end{defn}
+
+\begin{defn}[derivative for $m$ outputs]
+    Let $f:\R\to\R^m$, where $f(x)=(f_1(x),\dots, f_m(x))$, then let $T$ denote the $n\times 1$ matrix 
+    \begin{equation*}
+        T=\begin{bmatrix}
+            \frac{df_1}{dx}(x_0)\\
+            \frac{df_2}{dx}(x_0)\\
+            \dots\\
+            \frac{df_m}{dx}(x_0)
+        \end{bmatrix}
+    \end{equation*}
+    Then $f$ is said to be \textbf{differentiable} at $x_0$ if 
+    \begin{equation*}
+        \lim_{x\to x_0}\frac{|f(x)-f(x_0)-T(x-x_0)|}{|x-x_0|}=0
+    \end{equation*}
+    and the matrix $T$ is the derivative at $x_0$.
+\end{defn}
+\begin{example}
+    Let $f(x)=(x^2, 2x, -x)$, then 
+    \begin{equation*}
+        T=Df(1)=\begin{bmatrix}
+            2x\\
+            2\\
+            -1
+        \end{bmatrix}=
+        \begin{bmatrix}
+            2\\
+            2\\
+            -1
+        \end{bmatrix}
+    \end{equation*}
+\end{example}
+
+
+\begin{defn}[derivative for general functions]
+    Let $f: \R^n\to\R^m$, let $T$ be the $m\times n$ matrix with entries $\partial f_i/\partial x_j$ evaluated at $x_0\in \R^n$. Then  $f$ is said to be \textbf{differentiable} at $x_0$ if 
+    \begin{equation*}
+        \lim_{x\to x_0}\frac{\|f(x)-f(x_0)-T(x-x_0)\|}{\|x-x_0\|}=0
+    \end{equation*}
+    then $f$ is differentiable at $x_0$, and the matrix $T$ is the derivative at $x_0$. Note that $T$ loosk like 
+    \[
+T=Df(x_0) = 
+\begin{bmatrix}
+\frac{\partial f_1}{\partial x_1}(x_0) & \cdots & \frac{\partial f_1}{\partial x_n}(x_0) \\
+\vdots & \ddots & \vdots \\
+\frac{\partial f_m}{\partial x_1}(x_0) & \cdots & \frac{\partial f_m}{\partial x_n}(x_0)
+\end{bmatrix}
+\]
+\end{defn}
+
+
+% \begin{warn}
+%     It is not enough to just know the partial derivatives exist at $(x_0,y_0)$. Consider the following example: $f(x,y)=\sqrt{|xy|}$, note that $f$ is not differentiable at $(0,0)$.
+% \end{warn}
+% \begin{proof}
+%     The partial derivatives are 
+% \end{proof}
+
+\begin{prob}
+    Compute $\frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}$ for the following functions:
+    \begin{enumerate}
+        \item \begin{equation*}
+            x^3y^4-xy^2
+        \end{equation*}
+        \item \begin{equation*}
+            x^2\sin(2y)+3
+        \end{equation*}
+        \item \begin{equation*}
+            \ln\left(\frac{y}{x}\right)+\ln\left(\frac{1}{x+y}\right)-\ln\left(\frac{x}{2}\right)
+        \end{equation*}
+        You may use the following identities to simply the equation first:
+        \begin{equation*}
+            \ln\left(\frac{a}{b}\right)=\ln a-\ln b, \quad \ln\left(\frac{1}{a}\right)=-\ln a
+        \end{equation*}
+    \end{enumerate}
+\end{prob}
+% \begin{proof}
+%     We have 
+%     \begin{enumerate}
+%         \item \begin{equation*}
+%             \partial x: 3x^2y^4-y^2, \quad \partial y: 4x^3y^3-2xy
+%         \end{equation*}
+%         \item \begin{equation*}
+%             \partial x: 2x\sin(2y), \quad \partial y: 2x^2\cos(2y)
+%         \end{equation*}
+%         \item \begin{equation*}
+%             \partial x: -\frac{2}{x}-\frac{1}{x+y}, \quad \partial y: \frac{1}{y}-\frac{1}{x+y}
+%         \end{equation*}
+%     \end{enumerate}
+% \end{proof}
+
+
+
+
+\begin{prob}
+    Compute the plane tangent to the graph of $f(x,y)=x^2y+2xy-y^2$ at $(1,2)$.
+\end{prob}
+% \begin{proof}
+%     We have 
+%     \begin{equation*}
+%         \frac{\partial f}{\partial x}(1,2)=2xy+2y\vert_{(1,2)}=8, \quad \frac{\partial f}{\partial y}(1,2)=x^2+2x-2y\vert_{(1,2)}=-1
+%     \end{equation*}
+%     and $f(1,2)=2$, thus the plane is given by
+%     \begin{equation*}
+%         z=2+8(x-1)-(y-2)
+%     \end{equation*}
+%     i.e., $z=8x-y-4$.
+% \end{proof}
+
+
+\begin{prob}
+    Let \( f : \mathbb{R}^3 \to \mathbb{R} \) be defined by  
+\[
+f(x, y, z) = x^2 y + y \sin(z) + z e^x.
+\]  
+Compute the gradient of $f$ at $(1,2,0)$.
+\end{prob}
+% \begin{proof}
+%     You can compute the partial derivatives 
+%     \begin{align*}
+%         \frac{\partial f}{\partial x} &= 2xy + ze^x, \\
+%         \frac{\partial f}{\partial y} &= x^2 + \sin(z), \\
+%         \frac{\partial f}{\partial z} &= y \cos(z) + e^x.
+%         \end{align*}
+%     thus the gradient is 
+%     \[
+% \nabla f = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \frac{\partial f}{\partial z} \right)=(2xy+ze^x, x^2+\sin z, y\cos z+e^x)
+% \]
+% Hence 
+% \begin{equation*}
+%     \nabla f(1,2,0)=(4, 1, 2+e)
+% \end{equation*}
+
+% \end{proof}
+
 
 
 
