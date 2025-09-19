@@ -309,9 +309,76 @@ And we have the following analytic version of Hahn-Banach.
 \begin{prop}[Analytic Hahn-Banach]
     Let $W$ be a subspace of $V$, and $f$ linear form on $W$ such that $|f(x)|\leq p(x)$, for all $x\in W$. Then there is a linear form $f_1$ such that $f_1(x)=f(x)$ on $W$, and $|f_1(x)|\leq p(x)$ for all $x$.
 \end{prop}
+I am too lazy to follow the proof.
 % \begin{proof}
 %     Let $W$ be the affine subspace, $\{x\in W: f(x)=1\}$. Then $W_1$ does not meet the set $A=\{x\in V: p(x)<1\}$. By the geometric Hahn-Banach, there is a hyperplane $V_1=\{x\in V: f_1(x)=1\}$, which constains $W_1$ and does not intersect $A$. (For $x_1\in W_1$, let $W_1'=W_1-x_1, A'=A-x_1$, which gives $V_1'=V_1-x_1$).
 % \end{proof}
+
+\section{9/17 Lecture}
+
+\begin{prop}
+    Let $T:X\to Y$ be a linear map, $T$ is bounded iff 
+    \begin{equation*}
+        T^{-1}(\{y: \|y\|\leq 1\})
+    \end{equation*}
+    has nonempty interior. 
+\end{prop}
+\begin{proof}
+    Suppose that it has a nonempty interior, then 
+    \begin{equation*}
+        \{x: \|x-x_0\|\leq\varepsilon\}\subset T^{-1}(\{y: \|y\|\leq 1\})
+    \end{equation*}
+    Then if $\|x\|\leq\varepsilon$, then 
+    \begin{equation*}
+        \|Tx\|\leq\|T(x-x_0)\|+\|Tx_0\|\leq 1+\|Tx_0\|
+    \end{equation*}
+    then 
+    \begin{equation*}
+        T\left(\frac{\varepsilon x}{\|x\|}\right)=\frac{\varepsilon}{\|x\|}T(x)\Rightarrow \|T(x)\|\leq(1+\|Tx_0\|)\frac{1}{\varepsilon}\|x\|
+    \end{equation*}
+\end{proof}
+
+\begin{defn}[nowhere dense]
+    A set $S$ is called nowhere dense if $\overline{S}$ has empty interior.
+\end{defn}
+
+\begin{prop}[Baire category theorem]
+    A complete metric space $M$ is never a union of a countable number of nowhere dense sets.
+\end{prop}
+\begin{proof}
+    Suppose $M=\bigcup_{n=1}^\infty A_n$, where $A_n$ is nowhere dense. We will construct $\{x_n\}$ that stays away from each $A_n$ so the limit $x$ is in any $A_n$, which gives a contradiction. Take $x_1\in\bar{A}_1$, and $B_1\cap A_1=\emptyset$, and $B_1=B(x_1,r_1)=\{d(x,x_1)<\varepsilon\}$, let $x_2\in B_1\setminus A_1$, and let $B_2=B(x_2, r_2)$, and so on, $\{x_n\}$ is a Cauchy sequence, $x_n\to x$ as $n\to\infty$. We have $x_n\in B_N, n\geq N$, but $\bar{B}_N\subset B_{N-1}$, thus $x\in B_{N-1}$ for any $N$, and $x\not\in A_{N-1}$ for any $N$. This gives our contradiction.
+\end{proof}
+
+\begin{prop}[UBP]
+    Let $X$ be a Banach space, let $\mathcal{F}$ be a family of bounded linear maps $T: X\to Y$. Suppose that for each $x\in X$,
+    \begin{equation*}
+        \left\{\|Tx\|: T\in\mathcal{F}\right\}
+    \end{equation*}
+    is bounded, then
+    \begin{equation*}
+        \sup_{T\in\mathcal{F}}\|T\|<\infty
+    \end{equation*}
+\end{prop}
+\begin{proof}
+    Key ingredient: Baire category theorem. Let $B_n=\{x: \|Tx\|\leq n, T\in\mathcal{F}\}$, each $x$ is in some $B_n$, and $X=\bigcup_{n=1}^\infty B_n$, where $B_n$ is closed. Baire category theorem, some $B_n$ has nonempty interior. 
+    \begin{equation*}
+        B_n\{x: \|Tx\|\leq n\}\Rightarrow \{|x: \|Tx\|\leq 1\}
+    \end{equation*}
+    And 
+    \begin{equation*}
+        \|Tx\|\leq(1+\|Tx_0\|)\|x\|\Rightarrow \|T\|\leq 1+\|T(x_0)\|
+    \end{equation*}
+\end{proof}
+
+% An immediate corollary is the following:
+% \begin{prop}
+%     Let $X,Y$ be Banach spaces, let $B(\cdot, \cdot)$ be separately continuous on $X,Y$, then 
+%     \begin{equation*}
+%         B: X\times Y\to \mathbb{C}
+%     \end{equation*}
+%     is jointly continuous. If $x_n\to x, y_n\to y$, then $B(x_n,y_n)\to B(x,y)$.
+% \end{prop}
+
 
 
 

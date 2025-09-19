@@ -122,8 +122,68 @@
     \end{enumerate}
 \end{proof}
 
+% \begin{prob}
+%     \begin{enumerate}
+%         \item[(a)] Prove that for \(\vec{x} \in \mathbb{R}^n\) and \(s < t\), \(D_s(\vec{x}) \subset D_t(\vec{x})\).
+    
+%         \item[(b)] Prove that if \(U\) and \(V\) are neighborhoods of \(\vec{x} \in \mathbb{R}^n\), then so are their union and intersection i.e. show that \(U \cap V\) and \(U \cup V\) are neighborhoods of \(\vec{x} \in \mathbb{R}^n\).
+    
+%         \item[(c)] Prove that the boundary points of an open interval \((a, b) \subset \mathbb{R}\) are the endpoints \(a\) and \(b\).
+%     \end{enumerate}
+% \end{prob}
+% \begin{proof}
+%     \begin{enumerate}
+%         \item[(a)] To show $D_s(x)\subset D_t({x})$, it suffices to show that if $y\in D_s(x)$, then $y\in D_t(x)$. By definition,  $D_s(x)=\{z: \|z-x\|<s\}$ and $D_t(x)=\{w: \|w-x\|<t\}$. If $y\in D_s(x)$, then $\|y-x\|<s<t$, hence by definition, $y\in D_t(x)$.
+%         \item[(b)] By definition, an neighborhood around $x$ is an open set that contains $x$.
+%         \begin{enumerate}
+%             \item[(i)] We want to show $U\cup V$ is a neighborhood of $x$, i.e., $U\cup V$ is an open set containing $x$. To check that $U\cup V$ contains $x$, we note $U$ and $V$ both contain $x$, so $x\in U\cup V$ follows.
+            
+%             It remains to show that $U\cup V$ is an open set. Let $y\in U\cup V$, so we want to show there exists some $r>0$ such that $D_r(y)\subset U\cup V$. Because $y\in U\cup V$, either $y\in U$ or $y\in V$, so there are two cases.
+%             \begin{itemize}
+%                 \item If $y\in U$, then because $U$ is open, there is $r_1>0$ such that $D_{r_1}(y)\subseteq U$. Thus, $D_{r_1}(y)\subseteq U\cup V$ as well.
+%                 \item Otherwise if $y\in V$, then again because $V$ is open, there is $r_2>0$ such that $D_{r_2}(y)\subseteq V$. Thus, $D_{r_2}(y)\subseteq V$ as well.
+%             \end{itemize}
+%             % Let $y\in U\cup V$ be arbitrary, then either $y\in U$ or $y\in V$. If $y\in U$, then there exists $r_1>0$ such that $D_{r_1}(y)\subset U\subset U\cup V$, and similarly if $y\in V$, then there exists $D_{r_2}(y)\subset V\subset U\cup V$. In either case, we have found some $r_i>0, i=1,2$, such that $D_{r_i}\subset U\cup V$, showing that $U\cup V$ is an open set around $x$ by definition.
 
+%             \item[(ii)] We want to show $U\cap V$ is a neighborhood of $x$. To show $x\in U\cap V$, recall we know $x\in U$ and $x\in V$, so $x\in U\cap V$.
+            
+%             It remains to show that $U\cap V$ is an open set. This is similar to the previous part. Let $y\in U\cap V$ be arbitrary, and we need to find $r>0$ such that $D_r(y)\subseteq U\cap V$. Because both $y\in U$ and $y\in V$, there are positive real numbers $r_1$ and $r_2$ for which
+%             \[D_{r_1}(y)\subseteq U\qquad\text{and}\qquad D_{r_2}(y)\subseteq V.\]
+%             Now, let $r=\min\{r_1,r_2\}$, and we claim that $D_r(y)\subseteq U\cap V$, which will completes the proof. Well, following the same proof as in (a), one can show that $r\leq r_1$ implies that $D_r(y)\subseteq D_{r_1}(y)$; similarly, $r\le r_2$ implies that $D_r(y)\subseteq D_{r_2}(y)$. Thus,
+%             \[D_r(y)\subseteq D_{r_1}(y)\cap D_{r_2}(y)\subseteq U\cap V,\]
+%             as desired.
+%             % , then $D_s(x)\subseteq D_t(x)$. Thus $D_r(y)\subseteq D_{r_1}(y)\subset U$ and $D_r(y)\subseteq D_{r_2}(y)\subset V$ because $r\leq r_1$ and $r\leq r_2$. This implies that 
+%             % \begin{equation*}
+%             %     D_r(y)\subset U\cap V
+%             % \end{equation*}
+%             % as desired.
+%         \end{enumerate}
+%         \item[(c)] There are three scenarios we need to consider: (i) elements in $(a,b)$, (ii) endpoints $a$ and $b$, (iii) points outside of $[a,b]$. Recall that a boundary point $x$ of $U$ is defined as a point $x$ such that any neighborhood of $x$ contains one element in the set $U$ and one element outside of the set of $U$.
+%         \begin{enumerate}
+%             \item[(i)] Let $x\in (a,b)$, so we would like to show $x$ is not a boundary point. We will show that there is an open neighborhood of $x$ contained in $(a,b)$. Let $r=\min\left\{\frac{x-a}{2},\frac{b-x}{2}\right\}$. Consider the neighborhood of $x$ defined by $\left(x-r,x+r\right)$. This set is open and contained in $(a,b)$, so it is the desired neighborhood of $x$.
+%             \item[(ii)] Let $x=a$ or $x=b$. We will show that $x$ is a boundary point. Consider first $x=a$:  let $U$ be any open set around $x$, then there exists some $r>0$ such that $D_r(x)\subset U$. By (a) We see that 
+%             \begin{equation*}
+%                 D_r(x)=(x-r, x+r).
+%             \end{equation*}
+%             If $x=a$, then 
+%             \begin{equation*}
+%                 D_r(a)=(a-r, a+r).
+%             \end{equation*}
+%             We see $D_r(a)$ contains $\frac{a+\min\{r,b\}}{2}$, which is an element in $(a,b)$; $D_r(a)$ also contains $\frac{a-r}{2}$, which is an element not in $(a,b)$. This completes the proof that $a$ is a boundary point. The exact same proof works for $x=b$.
+%             \item[(iii)] Let $x\not\in[a,b]$, then $x<a$ or $x>b$, we want to show $x$ is not a boundary point. We will show that there is a neighborhood of $x$ which does not intersect $(a,b)$. We will take $x<a$ as an example: let $r=\frac{a-x}{2}$, then consider the neighborhood 
+%             \begin{equation*}
+%                 D_r(x)=(x-r, x+r)
+%             \end{equation*}
+%             One can see that $D_r(x)$ does not contain any points in $(a,b)$ because each $y\in D_r(x)$ has $y<a$. Thus, $x$ is not a boundary point. The exact same argument works for $x>b$.
+%         \end{enumerate}
+        
+        
+        
+        
+%     \end{enumerate}
+% \end{proof}
 
+% \newpage
 
 
 \begin{prob}
@@ -618,6 +678,12 @@ Hence
 \end{equation*}
 
 \end{proof}
+
+
+
+
+
+
 
 
 
