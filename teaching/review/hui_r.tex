@@ -1,0 +1,405 @@
+\usepackage{thmtools,thm-restate}
+
+% Fixing mdframed skip below
+% See https://tex.stackexchange.com/a/292090/143086
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{xpatch}
+\makeatletter
+\xpatchcmd{\endmdframed}
+	{\aftergroup\endmdf@trivlist\color@endgroup}
+	{\endmdf@trivlist\color@endgroup\@doendpe}
+	{}{}
+\makeatother
+
+\definecolor{huilightpink}{HTML}{fff2fe}
+\definecolor{huidarkpink}{HTML}{d955b7}
+\declaretheoremstyle[
+	mdframed={
+		backgroundcolor=huilightpink,
+		linecolor=huidarkpink,
+		rightline=false,
+		topline=false,
+		bottomline=false,
+		linewidth=2pt,
+		innertopmargin=5pt,
+		innerbottommargin=8pt,
+		innerleftmargin=8pt,
+		leftmargin=-2pt,
+		skipbelow=2pt,
+		nobreak
+	},
+	headfont=\normalfont\bfseries\color{huidarkpink}
+]{huipinkbox}
+\declaretheorem[style=huipinkbox,name=Theorem,within=chapter]{thm}
+\declaretheorem[style=huipinkbox,name=Theorem,sibling=thm]{theorem}
+
+
+
+
+\begin{comment}
+\definecolor{huilightyellow}{HTML}{fff5d6}
+\definecolor{huidarkyellow}{HTML}{fcad03}
+\declaretheoremstyle[
+	mdframed={
+		backgroundcolor=huilightyellow,
+		linecolor=huidarkyellow,
+		rightline=false,
+		topline=false,
+		bottomline=false,
+		linewidth=2pt,
+		innertopmargin=5pt,
+		innerbottommargin=8pt,
+		innerleftmargin=8pt,
+		leftmargin=-2pt,
+		skipbelow=2pt,
+		nobreak
+	},
+	headfont=\normalfont\bfseries\color{huidarkyellow}
+]{huiyellowbox}
+\declaretheorem[style=huiyellowbox,name=Proposition,within=chapter]{prop}
+\end{comment}
+
+
+
+\definecolor{huilightpurple}{HTML}{faf2ff}
+\definecolor{huidarkpurple}{HTML}{912ed9}
+\declaretheoremstyle[
+	mdframed={
+		backgroundcolor=huilightpurple,
+		linecolor=huidarkpurple,
+		rightline=false,
+		topline=false,
+		bottomline=false,
+		linewidth=2pt,
+		innertopmargin=5pt,
+		innerbottommargin=8pt,
+		innerleftmargin=8pt,
+		leftmargin=-2pt,
+		skipbelow=2pt,
+		nobreak
+	},
+	headfont=\normalfont\bfseries\color{huidarkpurple}
+]{huipurplebox}
+\declaretheorem[style=huipurplebox,name=Proposition, within=chapter]{prop}
+
+
+
+% \definecolor{huilightpurple}{HTML}{faf2ff}
+% \definecolor{huidarkpurple}{HTML}{912ed9}
+% \declaretheoremstyle[
+% 	mdframed={
+% 		backgroundcolor=huilightpurple,
+% 		linecolor=huidarkpurple,
+% 		rightline=false,
+% 		topline=false,
+% 		bottomline=false,
+% 		linewidth=2pt,
+% 		innertopmargin=5pt,
+% 		innerbottommargin=8pt,
+% 		innerleftmargin=8pt,
+% 		leftmargin=-2pt,
+% 		skipbelow=2pt,
+% 		nobreak
+% 	},
+% 	headfont=\normalfont\bfseries\color{huidarkpurple}
+% ]{huipurplebox}
+\declaretheorem[style=huipurplebox,name=Lemma,within=chapter]{lem}
+
+
+\definecolor{lightpink}{HTML}{f0f6fc}
+\definecolor{darkpink}{HTML}{2c72b8}
+\declaretheoremstyle[
+	mdframed={
+		backgroundcolor=lightpink,
+		linecolor=darkpink,
+		rightline=false,
+		topline=false,
+		bottomline=false,
+		linewidth=2pt,
+		innertopmargin=5pt,
+		innerbottommargin=8pt,
+		innerleftmargin=8pt,
+		leftmargin=-2pt,
+		skipbelow=2pt,
+		nobreak
+	},
+	headfont=\normalfont\bfseries\color{darkpink}
+]{pinkbox}
+
+
+
+\definecolor{huilightblue}{HTML}{edf9ff}
+\definecolor{huidarkblue}{HTML}{4b79db}
+\declaretheoremstyle[
+	mdframed={
+		backgroundcolor=huilightblue,
+		linecolor=huidarkblue,
+		rightline=false,
+		topline=false,
+		bottomline=false,
+		linewidth=2pt,
+		innertopmargin=5pt,
+		innerbottommargin=8pt,
+		innerleftmargin=8pt,
+		leftmargin=-2pt,
+		skipbelow=2pt,
+		nobreak
+	},
+	headfont=\normalfont\bfseries\color{huidarkblue}
+]{huiblueblox}
+\declaretheorem[style=huiblueblox,name=Example, within=chapter]{example}
+
+\declaretheorem[style=huiblueblox,name=Definition, within=chapter]{defn}
+
+
+% \definecolor{huilightblue}{HTML}{edf9ff}
+% \definecolor{huidarkblue}{HTML}{4b79db}
+% \declaretheoremstyle[
+% 	mdframed={
+% 		backgroundcolor=huilightblue,
+% 		linecolor=huidarkblue,
+% 		rightline=false,
+% 		topline=false,
+% 		bottomline=false,
+% 		linewidth=2pt,
+% 		innertopmargin=5pt,
+% 		innerbottommargin=8pt,
+% 		innerleftmargin=8pt,
+% 		leftmargin=-2pt,
+% 		skipbelow=2pt,
+% 		nobreak
+% 	},
+% 	headfont=\normalfont\bfseries\color{huidarkblue}
+% ]{huiblueblox}
+% \declaretheorem[style=huiblueblox,name=Example,within=chapter]{example}
+
+% \declaretheoremstyle[
+% 	mdframed={
+% 		backgroundcolor=huilightblue,
+% 		linecolor=huidarkblue,
+% 		rightline=false,
+% 		topline=false,
+% 		bottomline=false,
+% 		linewidth=2pt,
+% 		innertopmargin=5pt,
+% 		innerbottommargin=8pt,
+% 		innerleftmargin=8pt,
+% 		leftmargin=-2pt,
+% 		skipbelow=2pt,
+% 		nobreak
+% 	},
+% 	headfont=\normalfont\bfseries\color{huidarkblue}
+% ]{huiblueblox}
+\declaretheorem[style=huiblueblox,name=Problem, within=chapter]{prob}
+
+
+
+% \declaretheoremstyle[
+% 	mdframed={
+% 		backgroundcolor=huilightblue,
+% 		linecolor=huidarkblue,
+% 		rightline=false,
+% 		topline=false,
+% 		bottomline=false,
+% 		linewidth=2pt,
+% 		innertopmargin=5pt,
+% 		innerbottommargin=8pt,
+% 		innerleftmargin=8pt,
+% 		leftmargin=-2pt,
+% 		skipbelow=2pt,
+% 		nobreak
+% 	},
+% 	headfont=\normalfont\bfseries\color{huidarkblue}
+% ]{huiblueblox}
+\declaretheorem[style=huiblueblox,name=Exercise]{exer}
+\declaretheorem[style=huipinkbox, name=Corollary, within=chapter]{cor}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newcommand{\nirwarnsymbol}{%
+	\begin{tikzpicture}[baseline=(x.base)]
+		\draw[rounded corners=.01em] (-.05em,-1.07em)rectangle(.05em,.78em);
+		\draw[fill=white,rounded corners=1.3] (0,.75em)--(.75em,0)--(0,-.75em)--(-.75em,0)--cycle;
+		\draw[line width=0.2mm, line cap=round](-.4em,-1.07em)--(.4em,-1.07em);
+		\node(x) at (0,0em) {};
+		% Thank you https://tex.stackexchange.com/a/262510
+		\draw[
+			line cap=but,
+			line join=round,
+			x=.5em,
+			line width=0.5mm,
+			y=1*(height("Z")-\pgflinewidth)*(1-sin(10)),
+			rotate=-10,
+			rounded corners=1.5pt,
+		](-0.57, 0.57) -- (0.57, 0.57) -- (-0.57, -0.57) -- (0.57, -0.57);
+	\end{tikzpicture}%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% MARGINS
+\usepackage{marginnote}
+% Thank you https://tex.stackexchange.com/a/472882
+% Makes marginnotes always appear on the left, apparently
+%
+\makeatletter
+\long\def\@mn@@@marginnote[#1]#2[#3]{%
+	\begingroup
+		\ifmmode\mn@strut\let\@tempa\mn@vadjust\else
+			\if@inlabel\leavevmode\fi
+			\ifhmode\mn@strut\let\@tempa\mn@vadjust\else\let\@tempa\mn@vlap\fi
+		\fi
+		\@tempa{%
+			\vbox to\z@{%
+				\vss
+				\@mn@margintest
+				\if@reversemargin\if@tempswa
+						\@tempswafalse
+					\else
+						\@tempswatrue
+				\fi\fi
+
+					\llap{%
+						\vbox to\z@{\kern\marginnotevadjust\kern #3
+							\vbox to\z@{%
+								\hsize\marginparwidth
+								\linewidth\hsize
+								\kern-\parskip
+								%\mn@parboxrestore
+								\marginfont\raggedleftmarginnote\strut\hspace{\z@}%
+								\ignorespaces#1\endgraf
+								\vss
+							}%
+							\vss
+						}%
+						\if@mn@verbose
+							\PackageInfo{marginnote}{xpos seems to be \@mn@currxpos}%
+						\fi
+						\begingroup
+							\ifx\@mn@currxpos\relax\else\ifx\@mn@currpos\@empty\else
+									\kern\@mn@currxpos
+							\fi\fi
+							\ifx\@mn@currpage\relax
+								\let\@mn@currpage\@ne
+							\fi
+							\if@twoside\ifodd\@mn@currpage\relax
+									\kern-\oddsidemargin
+								\else
+									\kern-\evensidemargin
+								\fi
+							\else
+								\kern-\oddsidemargin
+							\fi
+							\kern-1in
+						\endgroup
+						\kern\marginparsep
+					}%
+			}%
+		}%
+	\endgroup
+}
+\makeatother
+%
+% Mostly for todonotes
+\renewcommand{\marginpar}{\marginnote}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% /MARGINS
+
+\definecolor{nirlightred}{RGB}{250, 220, 220}
+\definecolor{nirdarkred}{HTML}{f40000}
+\declaretheoremstyle[
+	mdframed={
+		backgroundcolor=nirlightred,
+		linecolor=nirdarkred,
+		rightline=false,
+		topline=false,
+		bottomline=false,
+		linewidth=2pt,
+		innertopmargin=5pt,
+		innerbottommargin=8pt,
+		innerleftmargin=8pt,
+		leftmargin=-2pt,
+		skipbelow=2pt,
+		nobreak
+	},
+	headfont=\normalfont\bfseries\color{nirdarkred}
+]{nirredbox}
+
+% \makeatletter
+% \declaretheorem[
+% 	style=nirredbox,
+% 	name=Warning,
+% 	sibling=thm,
+% 	% without \leavevmode, the first item in a list gets misformatted
+% 	postheadhook={\leavevmode\marginnote{\nirwarnsymbol}[-3pt]%
+% 	\ifthmt@thisistheone% restatable makes alignment weird
+% 		\hspace{-2.2pt}%
+% 	\fi}
+% ]{warn}
+% \makeatother
+
+\newcommand{\nirideasymbol}{%
+	\begin{tikzpicture}[baseline=(x.base)]
+		\draw[rounded corners=.01em] (-.05em,-1.07em)rectangle(.05em,.78em);
+		\draw[fill=white,rounded corners=1.3] (0,.75em)--(.75em,0)--(0,-.75em)--(-.75em,0)--cycle;
+		\draw[line width=0.2mm, line cap=round](-.4em,-1.07em)--(.4em,-1.07em);
+		\node(x) at (0,0em) {};
+		\node at (0,0em) {{\textbf{!}}};
+	\end{tikzpicture}%
+}
+\renewcommand{\nirwarnsymbol}{%
+	\begin{tikzpicture}[baseline=(x.base)]
+		\draw[rounded corners=.01em] (-.05em,-1.07em)rectangle(.05em,.78em);
+		\draw[fill=white,rounded corners=1.3] (0,.75em)--(.75em,0)--(0,-.75em)--(-.75em,0)--cycle;
+		\draw[line width=0.2mm, line cap=round](-.4em,-1.07em)--(.4em,-1.07em);
+		\node(x) at (0,0em) {};
+		% Thank you https://tex.stackexchange.com/a/262510
+		\draw[
+			line cap=but,
+			line join=round,
+			x=.5em,
+			line width=0.5mm,
+			y=1*(height("Z")-\pgflinewidth)*(1-sin(10)),
+			rotate=-10,
+			rounded corners=1.5pt,
+		](-0.57, 0.57) -- (0.57, 0.57) -- (-0.57, -0.57) -- (0.57, -0.57);
+	\end{tikzpicture}%
+}
+\makeatletter
+\declaretheorem[
+	style=nirredbox,
+	name=Idea,
+	sibling=thm,
+	% without \leavevmode, the first item in a list gets misformatted
+	postheadhook={\leavevmode\marginnote{\nirideasymbol}[-3pt]%
+	\ifthmt@thisistheone% restatable makes alignment weird
+		\hspace{-2.2pt}%
+	\fi}
+]{idea}
+
+\declaretheorem[
+	style=nirredbox,
+	name=Warning,
+	sibling=thm,
+	% without \leavevmode, the first item in a list gets misformatted
+	postheadhook={\leavevmode\marginnote{\nirwarnsymbol}[-3pt]%
+	\ifthmt@thisistheone% restatable makes alignment weird
+		\hspace{-2.2pt}%
+	\fi}
+]{warn}
+\makeatother
