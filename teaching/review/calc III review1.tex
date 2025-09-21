@@ -168,11 +168,11 @@
 \end{defn}
 
 \begin{defn}[Plane in $\R^3$]\label{plane}
-   If a plane $\mathcal{P}$ passes through some point $(x_0,y_0,z_0)$, and $n=(A,B,C)$ is a vector orthognal to the plane, then the plane $\mathcal{P}$ is given by the equation:
+   If a plane ${P}$ passes through some point $(x_0,y_0,z_0)$, and $n=(A,B,C)$ is a vector orthognal to the plane, then the plane ${P}$ is given by the equation:
     \begin{equation*}
         A(x-x_0)+B(y-y_0)+C(z-z_0)=0
     \end{equation*}
-    (Notice that a point in $\mathcal{P}$ and a normal vector to $\mathcal{P}$ uniquely define a plane in $\R^3$.)
+    (Notice that a point in ${P}$ and a normal vector to ${P}$ uniquely define a plane in $\R^3$.)
 \end{defn}
 
 
@@ -319,6 +319,30 @@
 \begin{warn}
     Make sure you normalize any given direction $v$! This formula works for unit vectors.
 \end{warn}
+
+
+
+\begin{defn}[First order Taylor expansion]
+    Let $f:U\subset\R^n\to\R$ be differentiable at $a\in U$, then 
+    \begin{equation*}
+        f(x)=f(a)+\sum_{i=1}^n\frac{\partial f}{\partial x_i}(a)(x_i-a_i)+R_1(a,x)
+    \end{equation*}
+    where 
+    \begin{equation*}
+        \frac{R_1(a,x)}{\|x-a\|}\to 0 \text{ as } x\to a
+    \end{equation*}
+\end{defn}
+
+\begin{defn}[Second order Taylor expansion]\label{taylor}
+    Let $f:U\subset\R^n\to\R$ be twice continuously differentiable at $a\in U$, then 
+    \begin{equation*}
+        f(x)=f(a)+\sum_{i=1}^n\frac{\partial f}{\partial x_i}(a)(x_i-a_i)+\frac{1}{2}\sum_{i,j=1}^n\frac{\partial^2 f}{\partial x_i\partial x_j}(a)(x_i-a_i)(x_j-a_j)+R_2(a,x)
+    \end{equation*}
+    where 
+    \begin{equation*}
+        \frac{R_2(a,x)}{\|x-a\|}\to 0 \text{ as } x\to a
+    \end{equation*}
+\end{defn}
 
 
 
@@ -538,6 +562,657 @@
 
 \chapter{Practice Problems}
 
+
+\begin{prob}
+    Find the equation of the line passing through $(1,0,2)$ in the direction $(2,-1,3)$.
+\end{prob}
+% \begin{proof}
+%     By definition \ref{line}, the line is given by 
+%     \begin{equation*}
+%         l(t)=(1+2t, -t, 2+3t)
+%     \end{equation*}
+% \end{proof}
+
+\begin{prob}
+    In which direction does the line 
+    \begin{equation*}
+        l(t)=(3-2t, 2+5t, 1+t)
+    \end{equation*}
+    point?
+\end{prob}
+% \begin{proof}
+%     In the direction of the vector $(-2, 5, 1)$.
+% \end{proof}
+
+
+\begin{prob}
+    Do the following two lines intersect?
+    \begin{equation*}
+        l_1(t)=(1+2t, 2+t, 3-t), \quad l_2(s)=(3-s, 4-s, 2+s)
+    \end{equation*}
+\end{prob}
+% \begin{proof}
+%     For them to intersect, we must have $t,s$ such that 
+%     \begin{equation*}
+%         \begin{cases}
+%             1+2t=3-s \quad (1)\\
+%             2+t=4-s \quad (2)\\
+%             3-t=2+s \quad (3)
+%         \end{cases}
+%     \end{equation*}
+%     $(2)-(1)$ gives $-t+1=1$, which implies $t=0, s=2$, but this does not satisfy $(3)$, hence these two lines do not intersect!
+% \end{proof}
+
+
+\begin{prob}
+    Do the following points lie on the same line?
+    \begin{equation*}
+        A=(1,0,1),\quad B=(2,1,1), \quad C=(0,-1,1)
+    \end{equation*}
+\end{prob}
+% \begin{proof}
+%     We can find the unique line passing through $A,B$ by the equation given in\ref{line}
+%     \begin{equation*}
+%         l(t)=(1,0,1)+(1,1,0)t
+%     \end{equation*}
+%     then for $C$ to lie on this line, there must exists some $t$ such that 
+%     \begin{equation*}
+%         \begin{cases}
+%             1+t=0\\
+%             t=-1\\
+%             1=1
+%         \end{cases}
+%     \end{equation*}
+%     and $t=-1$ satisfies. This means all three points lie on the same line!
+% \end{proof}
+
+
+\begin{prob}
+    Find the angle between two vectors $(1,2,0), (3,1,1)$.
+\end{prob}
+% \begin{proof}
+%     By Proposition \ref{dot} 
+%     \begin{equation*}
+%         \cos\theta=\frac{a\cdot b}{\|a\|\|b\|}=\frac{5}{\sqrt{5}\sqrt{11}}=\sqrt{\frac{5}{11}}
+%     \end{equation*}
+%     hence 
+%     \begin{equation*}
+%         \theta=\arccos\left(\sqrt{\frac{5}{11}}\right)
+%     \end{equation*}
+% \end{proof}
+
+\begin{prob}
+    Let $b=(2,1,3)$ and $P$ be the plane through the origin given by $x+y+2z=0$. 
+    \begin{enumerate}
+        \item[(a)] Find two distinct vectors $v_1,v_2$ that are orthogonal in $P$.
+        \item[(b)] Find the projection of $b$ onto the plane $P$, namely, 
+        \begin{equation*}
+            \text{Proj}_{v_1}b+\text{Proj}_{v_2}b
+        \end{equation*}
+    \end{enumerate}
+\end{prob}
+% \begin{proof}
+%     \begin{enumerate}
+%         \item[(a)] We can let $v_1=(1,-1,0), v_2=(1,1,-1)$. One can verify that $v_1,v_2\in P$ and $v_1\cdot v_2=0$.
+%         \item[(b)] The projection is given by
+%         \begin{align*}
+%             \text{Proj}_{v_1}b+\text{Proj}_{v_2}b&=\frac{v_1\cdot b}{v_1\cdot v_1}v_1+\frac{v_2\cdot b}{v_2\cdot v_2}v_2\\
+%             &=\frac{1}{2}(1,-1,0)+0\\
+%             &=\left(\frac{1}{2}, -\frac{1}{2},0\right)
+%         \end{align*}
+%     \end{enumerate}
+% \end{proof}
+
+
+\begin{prob}
+    Find a unit vector orthognal to both vectors $a=(1,2,-1), b=(2,3,-1)$.
+\end{prob}
+% \begin{proof}
+%     The cross product is orthognal to both of the vectors:
+%     \begin{equation*}
+%         a\times b=\det\begin{bmatrix}
+%             i&j&k\\
+%             1&2&-1\\
+%             2&3&-1
+%         \end{bmatrix}=(1,-1, -1)
+%     \end{equation*}
+% \end{proof}
+
+
+\begin{prob}
+    Find the equation of the plane containing all three points below:
+    \begin{equation*}
+        P=(2,1,-1), \quad Q=(1,0,-2), \quad T=(3,2,1)
+    \end{equation*}
+\end{prob}
+% \begin{proof}
+%     We can find two vectors in this plane:
+%     \begin{equation*}
+%         \text{PQ}=Q-P=(-1,-1,-1), \text{ PT}=T-Q=(1,1,2)
+%     \end{equation*}
+%     then we can find a normal vector $n$ to the plane by taking the cross product:
+%     \begin{equation*}
+%         n=\text{PQ}\times\text{PT}=\det\begin{bmatrix}
+%             i&j&k\\
+%             -1&-1&-1\\
+%             1&1&2
+%         \end{bmatrix}=(-1,1,0)
+%     \end{equation*}
+%     Then by Definition \ref{plane}, using point $Q$, we see the plane can be written as 
+%     \begin{equation*}
+%         -1(x-1)+y=0
+%     \end{equation*}
+%     simplifying we get $x-y=1$.
+% \end{proof}
+
+\begin{prob}
+    \begin{enumerate}
+        \item[(a)] Find an equation for the line that passes through the point $(1,1,0)$ and is perpendicular to the plane $3x+y-2z+1=0$.
+        \item[(b)] Find an equation for the plane that contains the line 
+        \begin{equation*}
+            l(t)=(-1+t, 2+2t, 1+3t)
+        \end{equation*}
+        and is perpendicular to the plane 
+        \begin{equation*}
+            2x+y-z+1=0
+        \end{equation*}
+    \end{enumerate}
+\end{prob}
+% \begin{proof}
+%     \begin{enumerate}
+%         \item[(a)] A normal vector to the plane $3x+y-2z+1$ is $(3,1,-2)$, since the line is perpendicular to the plane, the line is parallel along the direction $(3,1,-2)$. Now the line passes through $(1,1,0)$, thus we have the equation for the line 
+%         \begin{equation*}
+%             l(t)=(1,1,0)+t(3,1,-2)
+%         \end{equation*}
+%         \item[(b)] A normal vector to $2x+y-z$ is $n=(2,1,-1)$, and since our plane is perpendicular to this, it is parallel to the vector $n$. Thus a normal vector to our plane must be orthogonal to both $n$ and $(1,2,3)$, where the latter is given by the line in the plane. Thus taking the cross product:
+%         \begin{equation*}
+%             n_1=n\times (1,2,3)=(5,-7,3)
+%         \end{equation*}
+%         Hence the equation for the plane is given by:
+%         \begin{equation*}
+%             5(x+1)-7(y-2)+3(z-1)=0
+%         \end{equation*}
+%         simplifying we get $5x-7y+3z+16=0$.
+%     \end{enumerate}
+% \end{proof}
+
+\begin{prob}
+    Compute the area of the parallelogram spanned by the vectors $(1,1,0), (0,2,1)$.
+\end{prob}
+% \begin{proof}
+%     Since we know 
+%     \begin{equation*}
+%         \|u\times v\|=\|u\|\|v\|\sin\theta
+%     \end{equation*}
+%     the length of the cross product is exactly the area of the parallelogram, thus computing
+%     \begin{equation*}
+%         \|(1,1,0)\times(0,2,1)\|=\|(1,-1,2)\|=\sqrt{6}
+%     \end{equation*}
+% \end{proof}
+
+
+\begin{prob}
+    Use the traingle inequality \ref{traingle} to show the reverse triangle inequality:
+    \begin{equation*}
+        \bigg|\|a\|-\|b\|\bigg|\leq\|a-b\|
+    \end{equation*}
+\end{prob}
+% \begin{proof}
+%     We know by traingle inequality 
+%     \begin{align*}
+%         \|a\|&=\|(a-b)+b\|\\
+%         &\leq \|a-b\|+\|b\|
+%     \end{align*}
+%     rearranging, we get $\|a\|-\|b\|\leq\|a-b\|$. Similarly 
+%     \begin{equation*}
+%         \|b\|-\|a\|\leq \|a-b\|
+%     \end{equation*}
+%     Together this implies 
+%     \begin{equation*}
+%         \bigg|\|a\|-\|b\|\bigg|\leq\|a-b\|
+%     \end{equation*}
+% \end{proof}
+
+
+
+
+
+
+\begin{prob}
+    Compute the following limits if they exist; if the limits don't exist, please explain why.
+    \begin{enumerate}
+        \item \begin{equation*}
+            \lim_{(x,y)\to(2,1)}\frac{x^2+y^2-2xy}{x-y}
+        \end{equation*}
+        \item \begin{equation*}
+            \lim_{(x,y)\to(0,0)}\frac{\cos x-1}{x^2+y^2}
+        \end{equation*}
+        \item \begin{equation*}
+            \lim_{(x,y)\to (0,0)}\frac{(x-y)^2}{(x+y)^2}
+        \end{equation*}
+        \item \begin{equation*}
+            \lim_{(x,y)\to(0,0)}\frac{\sin 2x-2x+y}{x^3+y}
+        \end{equation*}
+        \item \begin{equation*}
+            \lim_{(x,y,z)\to(0,0,0)}\frac{2x^2y\cos z}{x^2+y^2}
+        \end{equation*}
+        \item \begin{equation*}
+            \lim_{(x,y)\to(2,1)}\frac{x^2-2xy}{x^2-4y^2}
+        \end{equation*}
+        \item \begin{equation*}
+            \lim_{(x,y)\to(0,0)}\frac{x^2-y^6}{xy^3}
+        \end{equation*}
+    \end{enumerate}
+\end{prob}
+% \begin{proof}
+%     \begin{enumerate}
+%         \item \begin{equation*}
+%             \lim_{(x,y)\to(2,1)}\frac{x^2+y^2-2xy}{x-y}=\lim_{(x,y)\to(2,1)}\frac{(x-y)^2}{x-y}=\lim_{(x,y)\to(2,1)}x-y=1
+%         \end{equation*}
+%         \item The limit doesn't exist, \begin{equation*}
+%             \lim_{(x,y)\to(0,0)}\frac{\cos x-1}{x^2+y^2}
+%         \end{equation*}
+%         Consider the path $x=0, y\to 0$, we have 
+%         \begin{equation*}
+%             \lim_{x=0,y\to 0}\frac{0}{y^2}=0
+%         \end{equation*}
+%         Consider the path $y=0, x\to 0$, 
+%         \begin{equation*}
+%             \lim_{y=0, x\to 0}\frac{\cos x-1}{x^2}=\lim_{x\to 0}\frac{-\sin x}{2x}=\lim_{x\to 0}\frac{-\cos x}{2}=-\frac{1}{2}
+%         \end{equation*}
+%         \item The limit doesn't exist, \begin{equation*}
+%             \lim_{(x,y)\to (0,0)}\frac{(x-y)^2}{(x+y)^2}
+%         \end{equation*}
+%         Consider the path $x=0, y\to 0$, 
+%         \begin{equation*}
+%             \lim_{x=0,y\to 0}\frac{y^2}{y^2}=1
+%         \end{equation*}
+%         Consider the path $y=x\to 0$, 
+%         \begin{equation*}
+%             \lim_{x=y\to 0}\frac{0}{4x^2}=0
+%         \end{equation*}
+%         \item The limit doesn't exist, \begin{equation*}
+%             \lim_{(x,y)\to(0,0)}\frac{\sin 2x-2x+y}{x^3+y}
+%         \end{equation*}
+%         Consider the path $x=0, y\to 0$,
+%         \begin{equation*}
+%             \lim_{x=0, y\to 0}\frac{y}{y}=1
+%         \end{equation*}
+%         Consider the path $y=0, x\to 0$, 
+%         \begin{align*}
+%             \lim_{y=0, x\to 0}\frac{\sin 2x-2x}{x^3}&=\lim_{x\to 0}\frac{2\cos 2x-2}{3x^2}\\
+%             &=\lim_{x\to 0}\frac{-4\sin 2x}{6x}\\
+%             &=\lim_{x\to 0}\frac{-8\cos 2x}{6}\\
+%             &=-\frac{4}{3}
+%         \end{align*}
+%         \item \begin{equation*}
+%             \lim_{(x,y,z)\to(0,0,0)}\frac{2x^2y\cos z}{x^2+y^2}
+%         \end{equation*}
+%         Writing $x=r\cos\theta, y=r\sin\theta$ in polar coordinates, we can rewrite this as 
+%         \begin{equation*}
+%             \left|\frac{2r^3\cos^2\theta\sin\theta\cos z}{r^2}\right|=|2r\cos^2\theta\sin\theta\cos z|\leq 2r\to 0
+%         \end{equation*}
+%         as $(x,y,z)\to(0,0,0)$. Thus the limit is $0$.
+%         \item \begin{equation*}
+%             \lim_{(x,y)\to(2,1)}\frac{x^2-2xy}{x^2-4y^2}
+%         \end{equation*}
+%         We factor:
+%         \begin{equation*}
+%             \lim_{(x,y)\to(2,1)}\frac{x^2-2xy}{x^2-4y^2}=\lim_{(x,y)\to(2,1)}\frac{(x-2y)x}{(x+2y)(x-2y)}=\lim_{(x,y)\to(2,1)}\frac{x}{x+2y}=\frac{1}{2}
+%         \end{equation*}
+%         \item The limit doesn't exist, \begin{equation*}
+%             \lim_{(x,y)\to(0,0)}\frac{x^2-y^6}{xy^3}
+%         \end{equation*}
+%         Consider $x=y\to 0$, then 
+%         \begin{equation*}
+%             \lim_{x=y\to 0}\frac{x^2-x^6}{x^4}=\lim_{x\to 0}\frac{1-x^4}{x^2}=\infty
+%         \end{equation*}
+%         Consider $x=y^3\to 0$, then 
+%         \begin{equation*}
+%             \lim_{x=y^3\to 0}\frac{0}{y^6}=0
+%         \end{equation*}
+%     \end{enumerate}
+% \end{proof}
+
+
+\begin{prob}
+    \begin{enumerate}
+        \item[(a)] Show that $f:\R\to\R$,
+        \begin{equation*}
+            f(x)=(1-x)^8+\cos(1+x^3)
+        \end{equation*}
+        is continuous.
+        \item[(b)] Show $f:\R\to\R$, 
+        \begin{equation*}
+            f(x)=\frac{x^2e^x}{2-\sin x}
+        \end{equation*}
+        is continuous.
+    \end{enumerate}
+\end{prob}
+% \begin{proof}
+%     \begin{enumerate}
+%         \item[(a)] $(1-x)^8$ is a polynomial, thus continuous, and $\cos x, 1+x^3$ are both continuous, thus the composition $\cos(1+x^3)$ is also continuous. Thus adding continuous functions gives another continuous function.
+%         \item[(b)] $x^2e^x, 2-\sin x$ are both continuous, and $\frac{x^2e^x}{2-\sin x}$ is continuous if $2-\sin x\neq 0$ for all $x$. This is indeed true because $-1\leq\sin x\leq 1$, thus $1\leq 2-\sin x\leq 3$.
+%     \end{enumerate}
+% \end{proof}
+
+
+\begin{prob}
+    Compute all the partial derivatives.
+    \begin{enumerate}
+        \item $w=e^{xy}\log(x^2+y^2)$.
+        \item $w=\cos(ye^{xy})\sin x$.
+    \end{enumerate}
+\end{prob}
+% \begin{proof}
+%     \begin{enumerate}
+%         \item \begin{equation*}
+%             \frac{\partial w}{\partial x}=ye^{xy}\ln(x^2+y^2)+e^{xy}\frac{2x}{x^2+y^2}
+%         \end{equation*}
+%         and 
+%         \begin{equation*}
+%             \frac{\partial w}{\partial y}=xe^{xy}\ln(x^2+y^2)+e^{xy}\frac{2y}{x^2+y^2}
+%         \end{equation*}
+%         \item \begin{equation*}
+%             \frac{\partial w}{\partial x}=-y^2e^{xy}\sin (ye^{xy})\sin x+\cos(ye^{xy})\cos x
+%         \end{equation*}
+%         and 
+%         \begin{equation*}
+%             \frac{\partial w}{\partial y}=-(1+xy)e^{xy}\sin(ye^{xy})\sin x
+%         \end{equation*}
+%     \end{enumerate}
+% \end{proof}
+
+
+\begin{prob}
+    Compute the gradient of $h(x,y,z)=(x+z)e^{x-y}$ at $(1,1,0)$.
+\end{prob}
+% \begin{proof}
+%     The gradient is 
+%     \begin{align*}
+%         \nabla h(x,y,z)&=\begin{bmatrix}
+%             \frac{\partial h}{\partial x}&\frac{\partial h}{\partial y}&\frac{\partial h}{\partial z}
+%         \end{bmatrix}\\
+%         &=\begin{bmatrix}
+%             e^{x-y}(1+x+z)&-(x+z)e^{x-y}&e^{x-y}
+%         \end{bmatrix}
+%     \end{align*}
+%     Thus 
+%     \begin{equation*}
+%         \nabla h(1,1,0)=\begin{bmatrix}
+%             2&-1&1
+%         \end{bmatrix}
+%     \end{equation*}
+% \end{proof}
+
+
+
+
+
+\begin{prob}
+    Determine the velocity vector of the given path:
+    \begin{equation*}
+        c(t)=(\cos 2t, 3t^2-t, -t)
+    \end{equation*}
+\end{prob}
+% \begin{proof}
+%     It is given by 
+%     \begin{equation*}
+%         c'(t)=(-2\sin 2t, 6t-1, -1)
+%     \end{equation*}
+% \end{proof}
+
+
+\begin{prob}
+    Find the tangent line to the given path at $t=0$
+    \begin{equation*}
+        c(t)=(e^t\sin t, 2t, -t^3)
+    \end{equation*}
+\end{prob}
+% \begin{proof}
+%     By the equation in Definition \ref{tangent path}, we have 
+%     \begin{equation*}
+%         c'(t)=(e^t\sin t+e^t\cos t, 2, -3t^2)
+%     \end{equation*}
+%     and $c(0)=(0,0,0), c'(0)=(1,2,0)$. Thus the tangent line is given by 
+%     \begin{equation*}
+%         l(t)=(t,2t,0)
+%     \end{equation*}
+% \end{proof}
+
+
+
+\begin{prob}
+    Compute the derivatives.
+    \begin{enumerate}
+        \item Let
+        \begin{equation*}
+            f(u,v)=u^2v+2v, \quad u=-x^2+y, v=x+y
+        \end{equation*}
+        Compute $\frac{\partial f}{\partial x},\frac{\partial f}{\partial y}$.
+        \item Let 
+        \begin{equation*}
+            g(u,v)=(e^u, u+\sin v), \quad f(x,y,z)=(x^2, yz)
+        \end{equation*}
+        Compute $D(g\circ f)$ at $(0,1,0)$.
+        \item Let $f:\R^3\to\R$ and $c(t)=\R\to\R^3$. Suppose $c(0)=(1,2,0)$, and 
+        \begin{equation*}
+            \nabla f(1,2,0)=(0,0,1), \quad c'(0)=(2,1,1)
+        \end{equation*}
+        Compute $\frac{d(f\circ c)}{dt}$ at $t=0$.
+    \end{enumerate}
+\end{prob}
+% \begin{proof}
+%     \begin{enumerate}
+%         \item We have 
+%         \begin{equation*}
+%             \frac{\partial f}{\partial x}=\frac{\partial f}{\partial u}\frac{\partial u}{\partial x}+\frac{\partial f}{\partial v}\frac{\partial v}{\partial x}=-4xuv+u^2+2
+%         \end{equation*}
+%         and 
+%         \begin{equation*}
+%             \frac{\partial f}{\partial y}=\frac{\partial f}{\partial u}\frac{\partial u}{\partial y}+\frac{\partial f}{\partial v}\frac{\partial v}{\partial y}=2uv+u^2+2
+%         \end{equation*}
+%         (You might want to replace $u,v$ with $x,y$, but I am lazy).
+%         \item We have 
+%         \begin{equation*}
+%             D(g\circ f)(0,1,0)=Dg(f(0,1,0))Df(0,1,0)
+%         \end{equation*}
+%         where $f(0,1,0)=(0,0)$
+%         \begin{equation*}
+%             Dg(u,v)=\begin{bmatrix}
+%                 e^u&0\\
+%                 1&\cos v
+%             \end{bmatrix}, \quad, Df(x,y,z)=\begin{bmatrix}
+%                 2x&0&0\\
+%                 0&z&y
+%             \end{bmatrix}
+%         \end{equation*}
+%         Thus 
+%         \begin{align*}
+%             D(g\circ f)(0,1,0)&=Dg(0,0)Df(0,1,0)\\
+%             &=\begin{bmatrix}
+%                 1&0\\
+%                 1&1
+%             \end{bmatrix}
+%             \begin{bmatrix}
+%                 0&0&0\\
+%                 0&0&1
+%             \end{bmatrix}\\
+%             &=\begin{bmatrix}
+%                 0&0&0\\
+%                 0&0&1
+%             \end{bmatrix}
+%         \end{align*}
+%         \item We have 
+%         \begin{equation*}
+%             \frac{d(f\circ c)}{dt}(0)=\nabla f(1,2,0)c'(0)=\begin{bmatrix}
+%                 0 &0&1
+%             \end{bmatrix}\begin{bmatrix}
+%                 2\\
+%                 1\\
+%                 1
+%             \end{bmatrix}=1
+%         \end{equation*}
+%     \end{enumerate}
+% \end{proof}
+
+
+
+\begin{prob}
+    Determine the directional derivative of 
+    \begin{equation*}
+        f(x,y,z)=x^3y-xyz
+    \end{equation*}
+    at $(1,1,0)$ along $v=(0,-1,1)$.
+\end{prob}
+% \begin{proof}
+%     First we compute 
+%     \begin{equation*}
+%         \nabla f(x,y,z)=(3x^2y-yz, x^3-xz, -xy)
+%     \end{equation*}
+%     Thus 
+%     \begin{equation*}
+%         \nabla f(1,1,0)=(3, 1, -1)
+%     \end{equation*}
+%     Recall the directional derivative is given by 
+%     \begin{equation*}
+%         \nabla f(1,1,0)\cdot \frac{v}{\|v\|}=-\frac{2}{\sqrt{2}}
+%     \end{equation*}
+%     We need to make sure that the direction vector is a unit vector!
+% \end{proof}
+
+
+
+
+
+\begin{prob}
+    Find a unit vector normal to the surface
+    \[xe^y+ye^z+ze^x=e+1\]
+    at the point $(0,1,1)$. % ye^z + z = 0
+\end{prob}
+% \begin{proof}
+%     This is a level set for the multivariate function $f(x,y,z)=xe^y+ye^z+ze^x$. We compute the gradient
+%     \[\nabla f(x,y,z)=(e^y+ze^x,e^z+xe^y,e^x+ye^z).\]
+%     hence $\nabla f(0,1,1)=(e+1,e,e+1)$, and this vector is normal to the surface. To make this a unit vector, we normalize to get
+%     \[\frac{\nabla f(0,1,1)}{\left\|\nabla f(0,1,1)\right\|}=\frac1{\sqrt{3e^2+4e+2}}(e+1,e,e+1),\]
+% \end{proof}
+
+
+
+
+
+
+\begin{prob}
+    Find the tangent plane of $f(x,y,z)=\ln(x+y)-2xz$ at $(1,2,-1)$.
+\end{prob}
+% \begin{proof}
+%     By the equation given in Proposition \ref{tangent plane}, the point $(1,2)$ lies on the level set 
+%     \begin{equation*}
+%         f(x,y)=2-\ln 3
+%     \end{equation*}
+%     In order to find a normal vector to the tangent plane, we compute the gradient of $f$ at $(1,2,-1)$:
+%     \begin{equation*}
+%         \nabla f(x,y)=\left(\frac{1}{x+y}-2z, \frac{1}{x+y}, -2x\right)
+%     \end{equation*}
+%     and $\nabla f(1,2, -1)=\left(\frac{7}{3}, \frac{1}{3}, -2\right)$, thus the tangent plane is given by 
+%     \begin{equation*}
+%         \frac{7}{3}(x-1)+\frac{1}{3}(y-2)-2(z+1)=0
+%     \end{equation*}
+%     simplifying we get $7x+y-6z-15=0$.
+% \end{proof}
+
+
+\begin{prob}
+    A function $f\colon\R^n\to\R$ is called an \textit{even} function if $f(x)=f(-x)$ for every $x$ in $\R^n$. If $f$ is differentiable and even, find $\nabla f$ at the origin.
+\end{prob}
+% \begin{proof}
+%     We claim that $\nabla f(0,\dots,0)=0$. It suffices to show that $\nabla f(0,\dots, 0)\cdot v=\nabla f(0, \dots, 0)\cdot (-v)$ for any vector $v\in\R^n$. Because this implies $2\nabla f(0,\dots, 0)\cdot v=0$ for every $v\in\R^n$, so $Df(0,\dots, 0)=0$.
+%     We know that
+%     \[\nabla f(0,\dots, 0)\cdot v=\frac d{dt}f(tv)\bigg|_{t=0}, \quad \nabla f(0,\dots, 0)(-v)=\frac d{dt}f(-tv)\bigg|_{t=0}\]
+%     But $f(tv)=f(-tv)$ since $f$ is even, thus 
+%     \begin{equation*}
+%         \nabla f(0,\dots, 0)\cdot v=\nabla f(0,\dots, 0)\cdot (-v)
+%     \end{equation*}
+%     as desired.
+% \end{proof}
+
+
+
+\begin{prob}
+    Consider the function
+    \[f(x,y)=\frac1{\log(x^2+y)}.\]
+    Verify by hand that $f_{xy}=f_{yx}$.
+\end{prob}
+% \begin{proof}
+%     We compute these separately.
+%     \begin{equation*}
+%         f_x=\frac{2x}{x^2+y}, \quad f_{xy}=-\frac{2x}{\left(x^2+y\right)^2}
+%     \end{equation*}
+%     and 
+%     \begin{equation*}
+%         f_y=\frac1{x^2+y}, \quad f_{yx}=-\frac{2x}{\left(x^2+y\right)^2}
+%     \end{equation*}
+% \end{proof}
+
+
+\begin{prob}
+    Consider the function $f(x,y,z)=\left(x^2+y^2+z^2\right)^{-1/2}$. Show that
+    \[f_{xx}+f_{yy}+f_{zz}=0.\]
+\end{prob}
+% \begin{proof}
+%     Note
+%     \[f_x=-\frac12\cdot\frac{2x}{\left(x^2+y^2+z^2\right)^{3/2}}=-\frac{x}{\left(x^2+y^2+z^2\right)^{3/2}},\]
+%     so
+%     \[f_{xx}=-\frac{\left(x^2+y^2+z^2\right)^{3/2}-x\cdot\frac32\left(x^2+y^2+z^2\right)^{1/2}\cdot2x}{\left(x^2+y^2+z^2\right)^{3}},\]
+%     which is
+%     \[f_{xx}=-\frac{x^2+y^2+z^2-3x^2}{\left(x^2+y^2+z^2\right)^{5/2}},\]
+%     or
+%     \[f_{xx}=-\frac{-2x^2+y^2+z^2}{\left(x^2+y^2+z^2\right)^{5/2}}.\]
+%     By symmetry,
+%     \[f_{yy}=-\frac{x^2-2y^2+z^2}{\left(x^2+y^2+z^2\right)^{5/2}},\]
+%     and
+%     \[f_{zz}=-\frac{x^2+y^2-2z^2}{\left(x^2+y^2+z^2\right)^{5/2}},\]
+%     so we see that $f_{xx}+f_{yy}+f_{zz}=0$.
+% \end{proof}
+
+
+\begin{prob}
+    Find the second-order Taylor expansion for the function 
+    \begin{equation*}
+        f(x,y)=x^2+2xy
+    \end{equation*}
+    at $(1,1)$.
+\end{prob}
+% \begin{proof}
+%     First $f(1,1)=3$, then we find all first-order and second-order partial derivatives:
+%     \begin{equation*}
+%         f_x=2x+2y, f_y=2x, f_{xx}=2, f_{xy}=2, f_{yy}=0
+%     \end{equation*}
+%     Thus by formula in Definition \ref{taylor}, we have 
+%     \begin{align*}
+%         f(x,y)&=3+4(x-1)+2(y-1)+\frac{1}{2}2(x-1)^2+\frac{1}{2}2(x-1)(y-1)+\frac{1}{2}2(x-1)(y-1)+R_2((1,1),(x,y))\\
+%         &=3+4(x-1)+2(y-1)+(x-1)^2+2(x-1)(y-1)+R_2((1,1),(x,y))
+%     \end{align*}
+%     where 
+%     \begin{equation*}
+%         \frac{R_2((1,1),(x,y))}{\|(x-1, y-1)\|}\to 0
+%     \end{equation*}
+%     as $(x,y)\to (1,1)$.
+% \end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\chapter{Answer Key}
 
 \begin{prob}
     Find the equation of the line passing through $(1,0,2)$ in the direction $(2,-1,3)$.
@@ -1131,7 +1806,50 @@
 \end{proof}
 
 
+\begin{prob}
+    Consider the function $f(x,y,z)=\left(x^2+y^2+z^2\right)^{-1/2}$. Show that
+    \[f_{xx}+f_{yy}+f_{zz}=0.\]
+\end{prob}
+\begin{proof}
+    Note
+    \[f_x=-\frac12\cdot\frac{2x}{\left(x^2+y^2+z^2\right)^{3/2}}=-\frac{x}{\left(x^2+y^2+z^2\right)^{3/2}},\]
+    so
+    \[f_{xx}=-\frac{\left(x^2+y^2+z^2\right)^{3/2}-x\cdot\frac32\left(x^2+y^2+z^2\right)^{1/2}\cdot2x}{\left(x^2+y^2+z^2\right)^{3}},\]
+    which is
+    \[f_{xx}=-\frac{x^2+y^2+z^2-3x^2}{\left(x^2+y^2+z^2\right)^{5/2}},\]
+    or
+    \[f_{xx}=-\frac{-2x^2+y^2+z^2}{\left(x^2+y^2+z^2\right)^{5/2}}.\]
+    By symmetry,
+    \[f_{yy}=-\frac{x^2-2y^2+z^2}{\left(x^2+y^2+z^2\right)^{5/2}},\]
+    and
+    \[f_{zz}=-\frac{x^2+y^2-2z^2}{\left(x^2+y^2+z^2\right)^{5/2}},\]
+    so we see that $f_{xx}+f_{yy}+f_{zz}=0$.
+\end{proof}
 
+
+\begin{prob}
+    Find the second-order Taylor expansion for the function 
+    \begin{equation*}
+        f(x,y)=x^2+2xy
+    \end{equation*}
+    at $(1,1)$.
+\end{prob}
+\begin{proof}
+    First $f(1,1)=3$, then we find all first-order and second-order partial derivatives:
+    \begin{equation*}
+        f_x=2x+2y, f_y=2x, f_{xx}=2, f_{xy}=2, f_{yy}=0
+    \end{equation*}
+    Thus by formula in Definition \ref{taylor}, we have 
+    \begin{align*}
+        f(x,y)&=3+4(x-1)+2(y-1)+\frac{1}{2}2(x-1)^2+\frac{1}{2}2(x-1)(y-1)+\frac{1}{2}2(x-1)(y-1)+R_2((1,1),(x,y))\\
+        &=3+4(x-1)+2(y-1)+(x-1)^2+2(x-1)(y-1)+R_2((1,1),(x,y))
+    \end{align*}
+    where 
+    \begin{equation*}
+        \frac{R_2((1,1),(x,y))}{\|(x-1, y-1)\|}\to 0
+    \end{equation*}
+    as $(x,y)\to (1,1)$.
+\end{proof}
 
 
 
@@ -1140,24 +1858,36 @@
 
 \chapter{Tips}
 
-
-Tips on finding limits:
-
-All functions are continuous.-NE 2025
-
-
-
-Tips on computing directional derivative.
-
-
-
-\chapter{Answer Key}
-
-
-
-\renewcommand\thesection{\arabic{section}}
-
-\noindent
+\begin{enumerate}
+    \item When asked to find the limit: 
+    \begin{enumerate}
+        \item[Step 1:] Factor out common factor, for example,
+        \begin{equation*}
+            \frac{x^2-2xy}{x^2-4y^2}=\frac{(x-2y)x}{(x-2y)(x+2y)}=\frac{x}{x+2y}
+        \end{equation*}
+        \item[Step 2:] Try the following four paths: take $(x,y)\to (0,0)$ as an example,
+        \begin{enumerate}
+            \item $x=0, y\to 0$.
+            \item $y=0, x\to 0$.
+            \item $x=y\to 0$.
+            \item $x=-y\to 0$.
+        \end{enumerate}
+        \item[Step 3:] Try to put into expressions that you are familiar with, for example, 
+        \begin{equation*}
+            \lim_{(x,y)\to(0,0)}\frac{\sin xy}{x}=\lim_{(x,y)\to(0,0)}\frac{\sin xy}{xy}y
+        \end{equation*}
+        and use the fact that $\lim_{t\to 0}\frac{\sin t}{t}=1$.
+    \end{enumerate}
+   
+    If any two paths give different limits, then the limit doesn't exist. Step 2: 
+    \item When asked to find a directional derivative of $f$ along $v$ : make sure you normalize $v$ as $\frac{v}{\|v\|}$.
+    \item When asked to find an equation for a plane: identify a normal vector by
+    \begin{enumerate}
+        \item taking the cross product of two vectors in the plane \ref{plane}.
+        \item computing the gradient if the plane is the tangent plane to a level surface \ref{tangent plane}.
+    \end{enumerate}
+    \item Let $f:U\subset\R^n\to\R^m$ be differentiable, then $Df$ is an $m\times n$ matrix. Let $A$ be an $m\times n$ matrix, and $B$ be a $k\times p$ matrix, then matrix multiplication $AB$ only makes sense when $n=k$.
+\end{enumerate}
 
 
 
