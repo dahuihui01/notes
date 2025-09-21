@@ -360,9 +360,14 @@ Topics: (1) graphing multivariable functions, (2) limits and continuity.
 
 
 \begin{defn}[limit]
-    Let $f: A\subset\R^n\to\R^m$, ($A$ is open), let $N$ be a neighborhood of a point $b\in\R^m$. Now let $x$ approach $x_0$ ($x_0\in\bar{A}$,) $f$ is said to be \textbf{eventually in $N$} if there exists a neighborhood $U$ of $x_0$ such that whenever $x\in U$, then $f(x)\in N$ as well. 
-
-    The \textbf{limit} of $f$ as $x\to x_0$, if it exists, is $\lim_{x\to x_0}f(x):=b\in\R^m$ such that $f$ is eventually in $N$, for every neighborhood $N$ of $b$. 
+    Let $f: A\subset\R^n\to\R^m$, where $A$ is open, let $x_0$ be in $A$ or be a boundary point of $A$ and $N$ be a neighborhood of a point $b\in\R^m$. Now let $x$ approach $x_0$, $f$ is said to be \textbf{eventually in $N$} if there exists a neighborhood $U$ of $x_0$ such that 
+    \begin{equation*}
+        \text{ if } x\in U, \text{ then } f(x)\in N
+    \end{equation*}
+    If $f$ is eventually in $N$ for \textit{any} neighborhood $N$ around $b$, then the \textbf{limit} of $f$ as $x\to x_0$ exists, denoted as 
+    \begin{equation*}
+        \lim_{x\to x_0}f(x)=b
+    \end{equation*}
 \end{defn}
 
 \begin{defn}[limit']
@@ -745,7 +750,7 @@ Topics: (1) properties of derivatives, (2) directional derivatives, (3) gradient
     \end{enumerate}
 \end{prop}
 
-\begin{defn}[directiona derivative]
+\begin{defn}[directional derivative]
     Let $f:\R^3\to\R$, be differentiable, then the directional directive at $x_0\in\R^3$ in the direction of a \textbf{unit vector} $v$ is given by 
     \begin{equation*}
         \nabla f(x_0)\cdot v=\left[\frac{\partial f}{\partial x_1}(x_0)\right]v_1+\left[\frac{\partial f}{\partial x_2}(x_0)\right]v_2+\left[\frac{\partial f}{\partial x_3}(x_0)\right]v_3
