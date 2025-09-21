@@ -1,0 +1,3819 @@
+\documentclass[openany]{book}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsfonts,amsthm, amssymb}
+\usepackage{yhmath}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{comment}
+\usepackage{tikz-cd}
+\usepackage{quiver}
+\renewcommand{\familydefault}{ppl}
+\newcommand{\tr}{\text{tr}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\aut}{\text{Aut}}
+\newcommand{\colim}{\text{colim}}
+\DeclareMathOperator{\im}{im}
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+\newcommand{\tor}{\text{Tor}}
+\newcommand{\id}{\text{id}}
+\newcommand{\ext}{\text{Ext}}
+\newcommand{\ptop}{\text{PTop}}
+\newcommand{\pt}{\text{pt}}
+\newcommand{\ach}{\text{Ach}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\gal}{\text{Gal}}
+\newcommand{\Sym}{\text{Sym}} % For symmetric products
+\newcommand{\tensor}{\otimes} % For tensor products
+\newcommand{\lambdaprod}{\wedge} % For wedge products
+\newcommand{\T}{\text{T}} % For tensor algebra
+\newcommand{\Ssq}{\text{S}}
+\newcommand{\om}{\omega}
+\usepackage{enumitem}
+
+
+\input{hui.tex}
+
+\title{Aluffi Problems}
+
+\date{\today}
+\author{Hui Sun}
+
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+\newpage
+
+\chapter{Category Theory}
+
+\chapter{Groups I}
+
+\begin{prob}[1.8]
+    Let \( G \) be a finite abelian group with exactly one element \( f \) of order 2. Prove that \(\prod_{g \in G} g = f\).
+\end{prob}
+\begin{proof}
+    It suffices to see that $\prod_gg^2=e$, which is true by every element has an inverse.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\begin{prob}[1.13]
+    Give an example showing that \( |gh| \) is not necessarily equal to \( \text{lcm}(|g|, |h|) \), even if \( g \) and \( h \) commute.
+\end{prob}
+\begin{proof}
+    Let $g=h=1\in\Z/2\Z$.
+\end{proof}
+
+\begin{prob}[1.14]
+    If \( g \) and \( h \) commute and \( \text{gcd}(|g|, |h|) = 1 \), then \( |gh| = |g||h| \). (Hint: Let \( N = |gh| \); then \( g^N = (h^{-1})^N \). What can you say about this element?)
+\end{prob}
+\begin{proof}
+    We know that $g^N = (h^{-1})^N=e$.
+\end{proof}
+
+\begin{prob}[6.7]
+    If $\mathrm{Aut}(G)$ is cyclic, then $G$ is abelian.
+\end{prob}
+\begin{proof}
+    This implies $\text{Inn}(G)$ is cyclic, which is iff $\text{Inn}(G)$ is trivial, iff $G$ is abelian.
+\end{proof}
+
+
+
+
+
+
+\begin{prob}[6.9]
+    Prove that every finitely generated subgroup of $\mathbb{Q}$ is cyclic. Prove that $\mathbb{Q}$ is not finitely generated.
+\end{prob}
+\begin{proof}
+    Suppose we just have $H=\left\la\frac{p_1}{q_1}, \frac{p_2}{q_2}\right\ra$, find $\text{lcm}(q_1,q_2)=q$, then 
+    \begin{equation*}
+        H=\left\la\frac{a_1}{q},\frac{a_2}{q}\right\ra
+    \end{equation*}
+    find $\gcd(a_1,a_2)=p$, we claim that 
+    \begin{equation*}
+        H=\left\la\frac{p}{q}\right\ra
+    \end{equation*}
+    If $\Q$ were to be finitely generated, then it is cyclic, $\Q=\la\frac{p}{q}\ra$, then try $(p+1)/q$.
+\end{proof}
+
+\begin{prob}[8.1]
+    If a group \( H \) may be realized as a subgroup of two groups \( G_1 \) and \( G_2 \) and if  
+    \[
+    \frac{G_1}{H} \cong \frac{G_2}{H},
+    \]
+    does it follow that \( G_1 \cong G_2 \)? Give a counterexample.
+\end{prob}
+\begin{proof}
+    Let $G_1=S_3, G_2=\Z/6\Z$, and $H=\Z/3\Z$.
+\end{proof}
+
+\begin{prob}[8.2]
+    Suppose \( G \) is a group and \( H \subseteq G \) is a subgroup of index 2, that is, such that there are precisely two cosets of \( H \) in \( G \). Prove that \( H \) is normal in \( G \).
+\end{prob}
+\begin{proof}
+    For any $g\not\in H$, we have 
+    \begin{equation*}
+        G=H\sqcup gH=H\sqcup Hg
+    \end{equation*}
+    Thus $gH=Hg$.
+\end{proof}
+
+
+\begin{prob}[8.13]
+    Let \( G \) be a finite group, and assume \(|G|\) is odd. Prove that every element of \( G \) is a square.
+\end{prob}
+\begin{proof}
+    Consider the set function $\varphi:g\mapsto g^2$, this function is injective hence surjective.
+\end{proof}
+
+
+\begin{prob}[8.18]
+    Let \( G \) be an abelian group of order \( 2n \), where \( n \) is odd. Prove that \( G \) has exactly one element of order 2. (It has at least one, for example by Exercise [8.17]. Use Lagrange's theorem to establish that it cannot have more than one.) Does the same conclusion hold if \( G \) is not necessarily commutative?
+\end{prob}
+\begin{proof}
+    There exists one element $g$ of order $2$, then take its quotient $G/\la g\ra$. 
+\end{proof}
+
+\begin{prob}[9.11]
+    Let $G$ be a finite group, and $H$ be subgroup of index $p$, where $p$ is the smallest prime dividing $|G|$, then $H$ is normal in $G$.
+\end{prob}
+\begin{proof}
+    (I will abuse the notatoin $\left|\frac{G}{H}\right|=[G:H]$).
+    Let $G$ act on the cosets $G/H$ by left multiplication, this action $\sigma: G\to\text{Aut}(G/H)$ is not trivial, hence 
+    \begin{equation*}
+        \left|\frac{G}{\ker(\sigma)}\right|\text{ divides } p!
+    \end{equation*}
+    Moreover, we notice that $\ker(\sigma)\subset H$, hence $p$ divides $\left|\frac{G}{\ker(\sigma)}\right|$. Now we recall that $p$ is the smallest prime dividing $|G|$, we must have $\left|\frac{G}{\ker(\sigma)}\right|=p$, hence $H=\ker(\sigma)$.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{prop}[1.12]
+    There exists elements $g,h\in G$, such that $|g|,|h|<\infty$, but $|gh|=\infty$.
+    \[
+    g = \begin{pmatrix}
+    0 & -1 \\
+    1 & 0
+    \end{pmatrix}, \quad h = \begin{pmatrix}
+    0 & 1 \\
+    -1 & -1
+    \end{pmatrix}.
+    \]
+\end{prop}
+
+
+
+\begin{prop}[1.15]
+    Let \( G \) be a commutative group, and let \( g \in G \) be an element of maximal finite order, that is, such that if \( h \in G \) has finite order, then \( |h| \leq |g| \). Then, if \( h \) has finite order in \( G \), then \( |h| \) divides \( |g| \).
+\end{prop}
+
+
+\begin{prop}
+    When $n$ is odd, the center of $D_{2n}$ is trivial, when $n$ is even, the center consists of $\{e, r^\frac{n}{2}\}$.
+    \begin{equation*}
+        r^\frac{n}{2}s=sr^{-\frac{n}{2}}=sr^\frac{n}{2}
+    \end{equation*}
+\end{prop}
+
+
+\begin{prop}[4.8]
+    The map $g\mapsto \left(r_g: a\mapsto gag^{-1}\right)$ defines a homomorphism from $G\to \text{Aut}(G)$.
+\end{prop}
+
+
+\begin{prop}[4.9]
+    Let $m,n$ be positive integers such that $\gcd(m,n)=1$, then 
+    \begin{equation*}
+        \frac{\Z}{mn\Z}\cong\frac{\Z}{m\Z}\times\frac{\Z}{n\Z}
+    \end{equation*}
+\end{prop}
+
+
+\begin{prop}[4.14]
+    The order of the group of automorphisms of $\Z/n\Z$ is the the number of generators of $\Z/\Z$, i.e., 
+    \begin{equation*}
+        \left|\text{Aut}(\Z/n\Z)\right|=\left|(\Z/n\Z)^\times\right|
+    \end{equation*}
+\end{prop}
+
+\begin{prop}[4.15]
+    Let $p$ be a prime, then 
+    \begin{equation*}
+        \text{Aut}(\Z/p\Z)\cong\frac{\Z}{(p-1)\Z}
+    \end{equation*}
+\end{prop}
+
+\begin{prop}[6.3]
+    Every matrix in $\mathrm{SU}(2)$ may be written in the form
+    \[
+    \begin{pmatrix}
+    a + bi & c + di \\
+    -c + di & a - bi
+    \end{pmatrix}=\begin{pmatrix}
+        \gamma&\omega\\
+        -\bar{\omega}&\bar{\gamma}
+    \end{pmatrix},
+    \]
+    where $a, b, c, d \in \mathbb{R}$ and $a^2 + b^2 + c^2 + d^2 = 1$.
+\end{prop}
+
+
+\begin{prop}[6.10]
+    The set of \( 2 \times 2 \) matrices with integer entries and determinant 1 is denoted \(\text{SL}_2(\mathbb{Z})\):
+
+\[
+\text{SL}_2(\mathbb{Z}) = \left\{ 
+\begin{pmatrix}
+a & b \\
+c & d
+\end{pmatrix} 
+\quad \text{such that } a, b, c, d \in \mathbb{Z}, \, ad - bc = 1 \right\}.
+\]
+
+Note that \(\text{SL}_2(\mathbb{Z})\) is generated by the matrices
+
+\[
+s = 
+\begin{pmatrix}
+0 & -1 \\
+1 & 0
+\end{pmatrix} \quad \text{and } \, t = 
+\begin{pmatrix}
+1 & 1 \\
+0 & 1
+\end{pmatrix}.
+\]
+
+\end{prop}
+
+\begin{prop}[7.7]
+    Let $G$ be a group and $n$ a positive integer, let $H\subset G$ be the subgroup generated by all elements of order $n$ in $G$, then $H$ is normal.
+\end{prop}
+
+\begin{prop}[7.14]
+    $\text{Inn}(G)$ is a normal subgroup of $\text{Aut}(G)$.
+\end{prop}
+
+\begin{prop}[8.4]
+    The dihedral group $D_{2n}$ can also be represented as 
+    \begin{equation*}
+        \la a,b: a^2=b^2=(ab)^n=e\ra
+    \end{equation*}
+    ($a,b$ are two reflections, take $a=s, b=rs$).
+\end{prop}
+
+\begin{prop}[8.8]
+    $\text{SL}_n(\R)$ is a normal subgroup of $\text{GL}_n(\R)$, and 
+    \begin{equation*}
+        \frac{\text{GL}_n(\R)}{\text{SL}_n(\R)}=(\R^\times,\cdot)
+    \end{equation*}
+    as groups.
+\end{prop}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\chapter{Rings and Modules}
+
+\begin{prob}[1.12]
+    
+Just as complex numbers may be viewed as combinations \( a + bi \), where \( a, b \in \mathbb{R} \) and \( i \) satisfies the relation \( i^2 = -1 \) (and commutes with \(\mathbb{R}\)), we may construct a ring \(\mathbb{H}\) by considering linear combinations \( a + bi + cj + dk \) where \( a, b, c, d \in \mathbb{R} \) and \( i, j, k \) commute with \(\mathbb{R}\) and satisfy the following relations:
+
+\[
+i^2 = j^2 = k^2 = -1, \quad ij = -ji = k, \quad jk = -kj = i, \quad ki = -ik = j.
+\]
+
+Addition in \(\mathbb{H}\) is defined componentwise, while multiplication is defined by imposing distributivity and applying the relations. For example,
+
+\[
+(1+i+j) \cdot (2+k) = 1 \cdot 2 + i \cdot 2 + j \cdot 2 + 1 \cdot k + i \cdot k + j \cdot k = 2 + 2i + 2j + k - j + i = 2 + 3i + j + k.
+\]
+\begin{enumerate}
+    \item Verify that this prescription does indeed define a ring.
+    \item Compute \((a + bi + cj + dk)(a - bi - cj - dk)\), where \( a, b, c, d \in \mathbb{R}\).
+    \item Prove that \(\mathbb{H}\) is a division ring.
+    \item List all subgroups of \( Q_8 := \{\pm 1, \pm i, \pm j, \pm k\} \), and prove that they are all normal.
+    \item Prove that \( Q_8 \) and \( D_8 \) are not isomorphic.
+    \item Prove that \( Q_8 \) admits the presentation \(\langle x, y \mid x^2 y^{-2}, y^4, xy x^{-1} y \rangle\).
+\end{enumerate}
+
+Elements of \(\mathbb{H}\) are called \textit{quaternions}. Note that \( Q_8 \) forms a subgroup of the group of units of \(\mathbb{H}\); it is a noncommutative group of order 8, called the \textit{quaternionic group}.
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item :)
+        \item $a^2+b^2+c^2+d^2$.
+        \item follows from 2.
+        \item $\{\pm 1\}, \{\pm 1,\pm i\},  \{\pm 1,\pm j\},  \{\pm 1,\pm k\}$
+        \item Number of order $4$ elements: $2$ in $D_8$ and $6$ in $Q_8$.
+        \item Take $x=i, y=j$, then 
+        \begin{equation*}
+            Q_8=\{1, i, i^2, i^3, j, ij, i^2j, i^3j\}
+        \end{equation*}
+    \end{enumerate}
+\end{proof}
+
+
+\begin{prob}[1.15]
+    Prove that \( R[x] \) is an integral domain if and only if \( R \) is an integral domain.
+\end{prob}
+\begin{proof}
+    For sufficiency: observe that if $f,g\neq 0\in R[x]$, then $fg\neq 0$.
+\end{proof}
+
+
+\begin{prob}[1.16]
+    Let \( R \) be a ring, and consider the ring of power series \( R[[x]] \) (cf. \{1.3\}).
+
+\begin{enumerate}
+    \item Prove that a power series \( a_0 + a_1 x + a_2 x^2 + \cdots \) is a unit in \( R[[x]] \) if and only if \( a_0 \) is a unit in \( R \). What is the inverse of \( 1 - x \) in \( R[[x]] \)?
+    \item Prove that \( R[[x]] \) is an integral domain if and only if \( R \) is.
+\end{enumerate}
+\end{prob}
+\begin{proof}
+    1. For sufficiency: you do it term by term; the inverse of $(1-x)$ is $1+x+x^2+\dots=\sum_{i=0}^\infty x^i$.
+\end{proof}
+
+
+
+
+\begin{prob}[2.11]
+    Prove (by hand) that division ring $R$ of $p^2$ elements where $p$ is prime, is commutative.
+\end{prob}
+\begin{proof}
+    Assume not commutative, then the center of $R$ must contain $p$ elements. Let $r\in R$ such that $r$ is not in the center, then the centralizer of $r$ must be the entire ring $R$, and this holds for all such $r$.
+\end{proof}
+
+\begin{prob}[2.16]
+    Prove that there is (up to isomorphism) only one structure of ring with identity on the abelian group $(\mathbb{Z}, +)$. (Hint: Let $R$ be a ring whose underlying group is $\mathbb{Z}$. By Proposition [2.7] there is an injective ring homomorphism $\lambda : R \to \operatorname{End}_{Ab}(R)$, and the latter is isomorphic to $\mathbb{Z}$. Prove that $\lambda$ is surjective.)
+\end{prob}
+\begin{proof}
+    There exists an injective map 
+    \begin{equation*}
+        \lambda: R\to\Z
+    \end{equation*}
+    note that this map is also surjective.
+\end{proof}
+
+\begin{prob}[2.17]
+    Let $R$ be a ring, and let $E = \operatorname{End}_{Ab}(R)$ be the ring of endomorphisms of the underlying abelian group $(R, +)$. Prove that the center of $E$ is isomorphic to a subring of the center of $R$. (Prove that if $\alpha \in E$ commutes with all right-multiplications by elements of $R$, then $\alpha$ is left-multiplication by an element of $R$; then use Proposition [2.7])
+\end{prob}
+\begin{proof}
+    If $\alpha$ commutes with all the right multiplications $r_x$, then 
+    \begin{equation*}
+        \alpha r_x(s)=\alpha(sx)=\alpha(s)x
+    \end{equation*}
+    letting $s=1$, we see
+    \begin{equation*}
+        \alpha(x)=\alpha(1)x
+    \end{equation*}
+    Thus $\alpha$ is a left multiplication. Let $\varphi: \alpha\mapsto\alpha(1)$, this is injective, surjective onto its image.
+\end{proof}
+
+\begin{prob}[3.4]
+    Let \( R \) be a ring such that every subgroup of \( (R, +) \) is in fact an ideal of \( R \). Prove that \( R \cong \mathbb{Z}/n\mathbb{Z} \), where \( n \) is the characteristic of \( R \).
+\end{prob}
+\begin{proof}
+    It suffices to exhibit a surjective map from $\Z$ to $R$, consider the subgroup $\varphi(\Z)$, where $\varphi: 1\mapsto 1$. We know that $\varphi(\Z)$ is an ideal, i.e., for every $r\in R$, 
+    \begin{equation*}
+        r\cdot 1\in\varphi(\Z)
+    \end{equation*}
+    since $1\in\varphi(\Z)$, thus this map is surjective.
+\end{proof}
+
+
+\begin{prob}[4.5]
+    Let \( I, J \) be ideals in a commutative ring \( R \), such that \( I + J = (1) \). Prove that \( IJ = I \cap J \).
+\end{prob}
+\begin{proof}
+    We know $IJ\subset I\cap J$, now let $r\in I\cap J$, then
+    \begin{equation*}
+        r\cdot 1=r(i+j)=ri+rj\in IJ
+    \end{equation*} 
+\end{proof}
+
+\begin{prob}[4.6]
+    Let \( I, J \) be ideals in a commutative ring \( R \). Assume that \( R/(IJ) \) is reduced (that is, it has no nonzero nilpotent elements). Prove that \( IJ = I \cap J \).
+\end{prob}
+\begin{proof}
+    Consider nonzero $r\in I\cap J$, then $r^2\in IJ$, hence in $R/IJ$, $r=0+IJ$, i.e., $r\in IJ$.
+\end{proof}
+
+
+\begin{prob}[4.11]
+    Let \( R \) be a commutative ring, \( a \in R \), and \( f_1(x), \ldots, f_r(x) \in R[x] \).
+    \begin{itemize}
+        \item Prove the equality of ideals
+        \[ (f_1(x), \ldots, f_r(x), x - a) = (f_1(a), \ldots, f_r(a), x - a). \]
+        \item Note the useful substitution trick
+        \[ \frac{R[x]}{(f_1(x), \ldots, f_r(x), x - a)} \cong \frac{R}{(f_1(a), \ldots, f_r(a))}. \]
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    Use long division: $f_1(x)=q(x)(x-a)+f_1(a)$.
+\end{proof}
+
+\begin{prob}[4.17]
+    Let \( K \) be a compact topological space, and let \( R \) be the ring of continuous real-valued functions on \( K \), with addition and multiplication defined pointwise.
+    \begin{itemize}
+        \item[(i)] For \( p \in K \), let \( M_p = \{f \in R \mid f(p) = 0\} \). Prove that \( M_p \) is a maximal ideal in \( R \).
+        \item[(ii)] Prove that if \( f_1, \ldots, f_r \in R \) have no common zeros, then \( (f_1, \ldots, f_r) = (1) \). (Hint: Consider \( f_1^2 + \cdots + f_r^2 \).)
+        \item[(iii)] Prove that every maximal ideal \( M \) in \( R \) is of the form \( M_p \) for some \( p \in K \). (Hint: You will use the compactness of \( K \) and (ii).)
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(i)] Note that $\frac{R}{M_p}\cong\R$, given by evaluation at $p$.
+        \item[(ii)] Note that $g(p)=f_1^2+\dots+f_r^2(p)>0$ for all $p\in K$, thus one can construct an inverse. Namely, 
+        \begin{equation*}
+            1=h(f_1^2+\dots+f_r^2)
+        \end{equation*}
+        where $h=\frac{1}{g}$.
+        \item[(iii)] Let $M$ be a maximal ideal, suppose $M$ is not contained in $M_p$ for any $p$. This implies that there exists $f\in M$ such that $f(p)\neq 0$ for every $p\in K$. Then we consider the set 
+        \begin{equation*}
+            \left\{f^{-1}(\R\setminus\{0\}):f\in M\right\}
+        \end{equation*}
+        This is an open cover of $K$, hence there exists $f_1,\dots, f_r$ such that 
+        \begin{equation*}
+            \{f_i(\R\setminus\{0\}): 1\leq i\leq r\}
+        \end{equation*}
+        is also a cover of $K$. We know that $f_1,\dots, f_r$ have no common roots, thus 
+        \begin{equation*}
+            (f_1,\dots, f_r)=R
+        \end{equation*}
+        which is a contradiction.
+    \end{itemize}
+\end{proof}
+
+
+\begin{prob}[4.23]
+    A ring \( R \) has Krull dimension 0 if every prime ideal in \( R \) is maximal. Prove that fields and Boolean rings have Krull dimension 0.
+\end{prob}
+\begin{proof}
+    Let $p$ be a prime ideal of a Boolean ring, then $R/p\cong\Z/2\Z$, which is a field, hence $p$ is also a maxiaml ideal.
+\end{proof}
+
+
+\begin{prob}[6.3]
+    Let \( R \) be a ring, \( M \) an \( R \)-module, and \( p : M \to M \) an \( R \)-module homomorphism such that \( p^2 = p \). (Such a map is called a projection.) Prove that \( M \cong \ker p \oplus \text{im}\, p \).
+\end{prob}
+\begin{proof}
+    Let $m\in M$, then $m=(m-p(m))+p(m)$.
+\end{proof}
+
+
+\begin{prob}[6.6]
+    Let \( R \) be a ring, and let \( F = R^{\oplus n} \) be a finitely generated free \( R \)-module. Prove that \(\text{Hom}_{R\text{-Mod}}(F, R) \cong F\). On the other hand, find an example of a ring \( R \) and a nonzero \( R \)-module \( M \) such that \(\text{Hom}_{R\text{-Mod}}(M, R) = 0\).
+\end{prob}
+\begin{proof}
+    Define the map $F\to\text{Hom}(F,R)$ as
+    \begin{equation*}
+        (r_1,\dots, r_n)\mapsto \left(\varphi: (a_1,\dots, a_n)\mapsto \sum_{i=1}^na_ir_i\right)
+    \end{equation*}
+    Take $M=\Z/2\Z, R=\Z$ in the second question.
+\end{proof}
+
+
+\begin{prob}[6.16]
+    Let \( R \) be a ring. A (left-)\( R \)-module \( M \) is \textit{cyclic} if \( M = \langle m \rangle \) for some \( m \in M \). 
+    \begin{itemize}
+        \item[(i)] Prove that simple modules are cyclic.
+        \item[(ii)] Prove that an \( R \)-module \( M \) is cyclic if and only if \( M \cong R/I \) for some (left-)ideal \( I \).
+        \item[(iii)] Prove that every quotient of a cyclic module is cyclic.
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(i)] Take any nonzero $r\in R$, then $M=\la r\ra$.
+        \item[(ii)] For the forward directin, $M=\la m\ra$, consider the map $\varphi: m\mapsto 1$; for the backwards, $1+I$ is a generator of $R/I$, where $R/I$ viewed as a $R$-module.
+        \item[(iii)] Follows from (ii) and the second isomorphism theorem.
+    \end{itemize}
+\end{proof}
+
+\begin{prob}[6.18]
+    Let \( M \) be an \( R \)-module, and let \( N \) be a submodule of \( M \). Prove that if \( N \) and \( M/N \) are both finitely generated, then \( M \) is finitely generated.
+\end{prob}
+\begin{proof}
+    Suppose $N=\la r_1,\dots, r_k\ra, M/N=\la r_{k+1}+N,\dots, r_{k+m}+N\ra$, then we claim $M=\la r_1,\dots, r_{k+m}\ra$. If $m\in M$ is such that $m\in N$, then done; if $m\not\in N$, then $m\in r_i+N$ for some $i$, then 
+    \begin{equation*}
+        m=\sum a_ir_i\Rightarrow m-\sum a_ir_i\in N
+    \end{equation*}
+    thus again writting it as a finite sum, we are done.
+\end{proof}
+
+
+
+\begin{prop}[2.8]
+    Every subring of a field is an integral domain.
+\end{prop}
+
+\begin{prop}[2.9]
+    The center of a division ring is a field.
+\end{prop}
+
+\begin{prop}[3.9]
+    A nonzero ring with ideals being only $\{0\}$ and $R$ are called simple rings. The only simple commutative rings are fields. Moreover, $M_n(\R)$ is also simple.
+\end{prop}
+
+\begin{prop}[3.14]
+    The characteristic of an integral domain is either $0$ or a prime ideal $p$.
+\end{prop}
+
+
+\begin{prop}[4.4]
+    If $k$ is a field, then $k[x]$ is a PID.
+\end{prop}
+
+
+
+\begin{prop}[4.9]
+    Let \( R \) be a commutative ring, and let \( f(x) \) be a zero-divisor in \( R[x] \). There exists \( \exists b \in R, b \neq 0 \), such that \( f(x)b = 0 \). (Let $fg=0$, where $g=b_ex^e+\dots+b_0$, set $b=b_e$.)
+\end{prop}
+
+
+
+\begin{prop}[4.10]
+    Let \( d \) be an integer that is not the square of an integer, and consider the subset of \( \mathbb{C} \) defined by 
+    \[ \mathbb{Q}(\sqrt{d}) := \{a + b\sqrt{d} \mid a, b \in \mathbb{Q}\}. \]
+    Then \( \mathbb{Q}(\sqrt{d}) \) is a field, and \[ \mathbb{Q}(\sqrt{d}) \cong \mathbb{Q}[t]/(t^2 - d) \]
+\end{prop}
+
+
+\begin{prop}[4.19]
+    Let \( R \) be a commutative ring, let \( P \) be a prime ideal in \( R \), and let \( I_j \) be ideals of \( R \).
+    \begin{itemize}
+        \item[(i)] Assume that \( I_1 \cdots I_r \subseteq P \), then that \( I_j \subseteq P \) for some \( j \).
+        \item[(ii)] By (i), if \( P \supseteq \bigcap_{j=1}^r I_j \), then \( P \) contains one of the ideals \( I_j \). The following is not true: \( P \supseteq \bigcap_{j=1}^\infty I_j \), then \( P \) contains one of the ideals \( I_j \). Consider $I_j=(p_j)$ then $\cap I_j=0$.
+    \end{itemize}
+\end{prop}
+
+
+\begin{prop}[4.20]
+    Let \( M \) be a two-sided ideal in a (not necessarily commutative) ring \( R \). Then \( M \) is maximal if and only if \( R/M \) is a simple ring.
+\end{prop}
+
+\begin{prop}[4.21]
+    Let \( k \) be an algebraically closed field, and let \( I \subseteq k[x] \) be an ideal. Then \( I \) is maximal if and only if \( I = (x - c) \) for some \( c \in k \).
+\end{prop}
+
+
+\begin{prop}[4.22]
+    \( (x^2 + 1) \) is maximal in \( \mathbb{R}[x] \).
+\end{prop}
+
+
+\begin{prop}[5.4]
+    Let \( R \) be a ring. A nonzero \( R \)-module \( M \) is \textit{simple} (or \textit{irreducible}) if its only submodules are \(\{0\}\) and \( M \). Let \( M, N \) be simple modules, and let \(\varphi : M \to N\) be a homomorphism of \( R \)-modules. Prove that either \(\varphi = 0\) or \(\varphi\) is an isomorphism. (This rather innocent statement is known as Schur's lemma.)
+\end{prop}
+
+
+\begin{prop}[5.5]
+    Let $R$ be commutative, viewed as $R$-module over itself, let $M$ be an $R$-module, then 
+    \begin{equation*}
+        \text{Hom}(R,M)\cong M
+    \end{equation*}
+    as $R$-modules.
+\end{prop}
+
+\begin{prop}[5.13]
+    Let $R$ be an integral domain, let $I$ be a nonzero principal ideal, then $I$ is isomorphic to $R$ as an $R$-module.
+\end{prop}
+
+\begin{prop}[5.16]
+    Let $R$ be commutative, $a\in R$ be nilpotent, consider the submodule $aM$ of $M$. Then 
+    \begin{equation*}
+        M=0\iff aM=M
+    \end{equation*}
+\end{prop}
+\begin{proof}
+    Multiplication by $a$ is a surjective map, composition of surjective maps is still surjective.
+\end{proof}
+
+
+\begin{prop}[6.16]
+    Let $M$ be an $R$-module, it is cyclic if $M=\la m\ra$, then $M$ is cyclic if and only if $M\cong R/I$ for some ideal $I$.
+\end{prop}
+
+\begin{prop}[6.18]
+    Let \( M \) be an \( R \)-module, and let \( N \) be a submodule of \( M \). Prove that if \( N \) and \( M/N \) are both finitely generated, then \( M \) is finitely generated.
+\end{prop}
+
+
+
+
+
+
+\chapter{Groups II}
+
+\section{Class Formula}
+\begin{prob}
+Let $p$ be a prime integer, let $G$ be a $p$-group, and let $S$ be a set such that $|S| \neq 0 \mod p$. If $G$ acts on $S$, prove that the action must have fixed points. 
+\end{prob}
+\begin{proof}
+    The class formula $|S|=|Z|+\sum_a[G:\text{Stab}(a)]$.
+\end{proof}
+
+\begin{prob}
+Find the center of $D_{2n}$ using the size of conjugacy class.
+\end{prob}
+\begin{proof}
+    For $n$ odd, it suffices to show that there is only the identity that is its own conjugacy class. In other words, for any $r,s$, show that there are more things in their conjugacy class: 
+    \begin{equation*}
+        rsr^{-1}=sr^{-2}=s \iff r^{-2}=e
+    \end{equation*}
+    and there is no such $r$. 
+    \begin{equation*}
+        srs^{-1}=r^{-1}
+    \end{equation*}
+    again there is no element such that $r=r^{-1}$, hence the conjugacy class of $r$ contains at least one other element $r^{-1}$.
+\end{proof}
+
+\begin{prob}
+Prove that the center of $S_n$ is trivial for $n \geq 3$. (Suppose that $\sigma \in S_n$ sends $a$ to $b \neq a$, and let $c \neq a, b$. Let $\tau$ be the permutation that acts solely by swapping $b$ and $c$. Then compare the action of $\sigma \tau$ and $\tau \sigma$ on $a$.)
+\end{prob}
+\begin{proof}
+    You just do it and see $\sigma\tau\neq\tau\sigma$.
+\end{proof}
+
+\begin{prop}
+    The center of $S_n$ is trivial for all $n\geq 3$.
+\end{prop}
+
+\begin{prop}
+Let $G$ be a group, and let $N$ be a subgroup of $Z(G)$. Prove that $N$ is normal in $G$, note $Z(G)$ is normal in $G$.
+\end{prop}
+
+\begin{prop}
+    Let $G$ be a group, then 
+    \begin{equation*}
+        \frac{G}{Z(G)}\cong\text{Inn}(G)
+    \end{equation*}
+    Recall $\text{Inn}(G)$ is cyclic iff $G$ is commutative, this shows if $G/Z(G)$ is cyclic, then $G$ is commutative.
+\end{prop}
+
+
+
+
+\begin{prop}
+    Let $p, q$ be prime integers, and let $G$ be a group of order $pq$. Prove that either $G$ is commutative or the center of $G$ is trivial.
+\end{prop}
+
+
+
+\begin{prob}
+Prove or disprove that if $p$ is prime, then every group of order $p^3$ is commutative.
+\end{prob}
+\begin{proof}
+    Consider the Heisenburg group over $\F_p$:
+    \[
+G = \left\{
+\begin{pmatrix}
+1 & a & b \\
+0 & 1 & c \\
+0 & 0 & 1
+\end{pmatrix}
+\;\Bigg|\; a, b, c \in \mathbb{F}_p
+\right\},
+\]
+which has order $p^3$ and noncommutative.
+\end{proof}
+
+
+\begin{prop}
+    Let $G$ be a $p$-group, $|G|=p^r$, then there exists a normal subgroup of size $p^k$ for every $k\leq r$.
+\end{prop}
+
+\begin{prob}
+  Let $p$ be a prime number, and let $G$ be a $p$-group: $|G| = p^r$. Prove that $G$ contains a normal subgroup of order $p^k$ for every nonnegative $k \leq r$.
+\end{prob}
+\begin{proof}
+    First the center is nontrivial and is normal, then we take the quotient $G/\la z\ra$, where $z$ is an order $p$ element in the center. Do the same and lift it to a normal subgroup of $G$.
+\end{proof}
+
+\begin{prob}
+  Let $p$ be a prime number, $G$ a $p$-group, and $H$ a nontrivial normal subgroup of $G$. Prove that $H \cap Z(G) \neq \{e\}$.
+\end{prob}
+\begin{proof}
+    Consider the action of $G$ on $H$ by conjugation:
+    \begin{equation*}
+        |H|=|Z(G)\cap H|+\sum_h|[h]|
+    \end{equation*}
+    Hence 
+    \begin{equation*}
+        |Z(G)\cap H|\equiv 0\mod p
+    \end{equation*}
+    thus is nontrivial.
+\end{proof}
+
+\begin{prop}
+    Let $G$ be a $p$-group, and $H$ be a nontrivial normal subgroup, then 
+    \begin{equation*}
+        H\cap Z(G)\neq\{e\}
+    \end{equation*}
+    In other words, there are nontrivial elements in $H$ that commutes with every $g\in G$.
+\end{prop}
+
+% \begin{prob}
+% Prove that if $G$ is a group of odd order and $g \in G$ is conjugate to $g^{-1}$, then $g = e_G$.
+% \end{prob}
+
+% \begin{prob}
+% Let $G$ be a finite group, and suppose there exist representatives $g_1, \ldots, g_r$ of the $r$ distinct conjugacy classes in $G$, such that $\forall i, j, g_i g_j = g_j g_i$. Prove that $G$ is commutative. (Hint: What can you say about the sizes of the conjugacy classes?)
+% \end{prob}
+
+\begin{prop}
+The class formula for both $D_8$ and $Q_8$ is $8 = 2 + 2 + 2 + 2$. (Also note that $D_8 \not\cong Q_8$.)
+\end{prop}
+
+\begin{prob}[1.13]
+Let $G$ be a noncommutative group of order 6. Then, $G$ must have trivial center and exactly two conjugacy classes, of order 2 and 3.
+\begin{itemize}
+    \item Prove that if every element of a group has order $\leq 2$, then the group is commutative. Conclude that $G$ has an element $y$ of order 3.
+    \item Prove that $\langle y \rangle$ is normal in $G$.
+    \item Prove that $[y]$ is the conjugacy class of order 2 and $[y]=\{y,y^2\}$.
+    \item Prove that there is an $x \in G$ such that $yx = xy^2$.
+\end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item Compute $(ab)^2$.
+        \item It has index $2$.
+        \item Note that the centralizer $C_G(y)$ has order dividing $G$, not all $G$ ($G$ is nonabelian), and contains $\la y\ra$, thus must be $3$, hence $[y]$ has order $2$.
+    \end{itemize}
+\end{proof}
+
+\begin{prob}[1.14]
+Let $G$ be a group, and assume $[G : Z(G)] = n$ is finite. Let $A \subseteq G$ be any subset. Prove that the number of conjugates of $A$ is at most $n$.
+\end{prob}
+\begin{proof}
+    The number of conjugates of $A$ is $[G: N_G(A)]$, and $Z(G)\subset N_G(A)$. 
+\end{proof}
+
+\begin{prob}
+Suppose that the class formula for a group $G$ is $60 = 1 + 15 + 20 + 12 + 12$. Prove that the only normal subgroups of $G$ are $\{e\}$ and $G$.
+\end{prob}
+\begin{proof}
+    Use the fact that normal subgroups divide $|G|$ and are unions of conjugacy classes.
+\end{proof}
+
+\begin{prop}
+    Let $G$ be a finite group, and let $H \subseteq G$ be a subgroup of index 2. For $a \in H$, denote by $[a]_H$, resp., $[a]_G$, the conjugacy class of $a$ in $H$, resp., $G$. Then, either $[a]_H = [a]_G$ or $[a]_H$ is half the size of $[a]_G$, according to whether the centralizer $Z_G(a)$ is not or is contained in $H$.
+\end{prop}
+
+
+\begin{prob}[1.17]
+Let $H$ be a proper subgroup of a finite group $G$. Prove that $G$ is not the union of the conjugates of $H$. 
+\end{prob}
+\begin{proof}
+    Suppose that $G$ is a union of conjugates of $H$, then 
+    \begin{align*}
+        |G|&=[G:H]\cdot H\\
+        &=[G:N_G(H)]\cdot [N_G(H): H]\cdot |H|\\
+        &\leq [G:N_G(H)]\cdot |H|-1
+    \end{align*}
+which is a contradiction.
+\end{proof}
+
+\begin{prob}[1.18]
+Let $S$ be a set endowed with a transitive action of a finite group $G$, and assume $|S| \geq 2$. Prove that there exists a $g \in G$ without fixed points in $S$, that is, such that $gs \neq s$ for all $s \in S$. 
+
+
+
+% (Hint: By Proposition [II.9.9], you may assume $S = G/H$, with $H$ proper in $G$. Use Exercise [1.17].)
+\end{prob}
+\begin{proof}
+    Follows from 1.17.
+\end{proof}
+
+
+\begin{prob}[1.19]
+Let $H$ be a proper subgroup of a finite group $G$. Prove that there exists a $g \in G$ whose conjugacy class is disjoint from $H$.
+\end{prob}
+\begin{proof}
+    Follows immediately from 1.17.
+\end{proof}
+
+\begin{prop}
+    Let $G=\text{GL}_2(\C)$, every $2\times 2$ matrix is conjugate to an upper triangular matrix.
+
+    Warning: You need the fact that $\C$ is algebraically closed. (Use Jordan canonical form).
+\end{prop}
+
+
+% \begin{prob}
+% Let $G = \text{GL}_2(\mathbb{C})$, and let $H$ be the subgroup consisting of upper triangular matrices. Prove that $G$ is the union of the conjugates of $H$. Thus, the finiteness hypothesis in Exercise [1.17] is necessary. (Hint: Equivalently, prove that every $2 \times 2$ matrix is conjugate to a matrix in $H$. You will use the fact that $\mathbb{C}$ is algebraically closed; see Example [III.4.14].)
+% \end{prob}
+
+
+\begin{prob}[1.21]
+Let $H$, $K$ be subgroups of a group $G$, with $H \subseteq N_G(K)$. Verify that the function $\gamma : H \to \operatorname{Aut}_{Grp}(K)$ defined by conjugation is a homomorphism of groups and that $\ker \gamma = H \cap Z_G(K)$, where $Z_G(K)$ is the centralizer of $K$.
+\end{prob}
+\begin{proof}
+   $r_h(g)=hgh^{-1}=g$ for all $g\in K$ implies that $h\in Z_G(K)$.
+\end{proof}
+
+\begin{prob}[1.22]
+Let $G$ be a finite group, and let $H$ be a cyclic subgroup of $G$ of order $p$. Assume that $p$ is the smallest prime dividing the order of $G$ and that $H$ is normal in $G$. Prove that $H$ is contained in the center of $G$. (Hint: By Exercise [1.21], there is a homomorphism $\gamma : G \to \operatorname{Aut}_{Grp}(H)$; by Exercise [II.4.14], $\operatorname{Aut}(H)$ has order $p - 1$. What can you say about $\gamma$?) 
+\end{prob}
+\begin{proof}
+    To show $H$ is contained in the center, it suffices to show that the centralizer $Z_G(H)=G$, by the previous exercise 
+    \begin{equation*}
+        \ker\gamma=G\cap Z_G(H)
+    \end{equation*}
+    It suffices to show that $\ker\gamma=G$. Suppose it is not the trivial map, then $[G:\ker\gamma]$ divides both $|G|$, and $(p-1)$ because 
+    \begin{equation*}
+        \frac{G}{\ker\gamma}\cong\im(\gamma)\subset\text{Aut}(H)
+    \end{equation*}
+    This contradicts with the fact that $p$ is the smallest prime dividing $|G|$. 
+\end{proof}
+
+
+\section{Sylow}
+
+\begin{prob}[2.2]
+Let \( G \) be a group. A subgroup \( H \) of \( G \) is characteristic if \( \varphi(H) \subseteq H \) for every automorphism \( \varphi \) of \( G \).
+\begin{itemize}
+    \item Prove that characteristic subgroups are normal.
+    \item Let \( H \subseteq K \subseteq G \), with \( H \) characteristic in \( K \) and \( K \) normal in \( G \). Prove that \( H \) is normal in \( G \).
+    \item Let \( G, K \) be groups, and assume \( G \) contains a single subgroup \( H \) isomorphic to \( K \). Prove that \( H \) is normal in \( G \).
+\end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item conjugation is an automorphism.
+        \item conjugation by $g\in G$ on $K$ is an automorphism, thus $H$ is also preserved under conjugation by $g$.
+        \item Let $\varphi$ be any automprhism $G\to G$, 
+        \begin{equation*}
+            \varphi(H)\cong H
+        \end{equation*}
+        since $\varphi$ has trivial kernel, thus $\varphi(H)=H$ by assumtpion, i.e. $H$ is normal by taking $\varphi$ as the conjugation action.
+    \end{itemize}
+\end{proof}
+
+\begin{prop}
+    Let $G$ be a nontrivial $p$-group, then $G$ is not simple.
+\end{prop}
+\begin{proof}
+    It has nontrivial center, and the center is normal.
+\end{proof}
+
+
+
+\begin{prob}[2.8]
+Let \( G \) be a finite group, \( p \) a prime, and \( N \) the intersection of all \( p \)-Sylow subgroups of \( G \). Prove:
+\begin{itemize}
+    \item[(1)] \( N \) is a normal \( p \)-subgroup of \( G \).
+    \item[(2)] Every normal \( p \)-subgroup of \( G \) is contained in \( N \).
+\end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(1)] Let $g\in G$, then 
+        \begin{equation*}
+            gNg^{-1}=\bigcap_{P}gPg^{-1}=\bigcap_{P'}P'=N
+        \end{equation*}
+        where $P,P'$ are $p$-sylow subgroups.
+        \item[(2)] Let $N'$ be a normal $p$-subgroup, then $N'\subset P$ for some $p$-Sylow subgroup of $G$, since $N'$ is normal, we know
+        \begin{equation*}
+            N'\subset\bigcap_{P'}P'=N
+        \end{equation*}
+    \end{itemize}
+\end{proof}
+
+\begin{prop}
+Let \( P \) be a \( p \)-Sylow subgroup of \( G \), and let \( P \) act by conjugation on the set of \( p \)-Sylow subgroups. Then \( P \) is the unique fixed point. 
+\end{prop}
+
+
+
+\begin{prob}[2.12]
+Let \( P \) be a \( p \)-Sylow subgroup of \( G \), and \( H \subseteq G \) a subgroup containing \( N_G(P) \). Prove \( [G : H] \equiv 1 \mod p \).
+\end{prob}
+\begin{proof}
+    We know
+    \begin{equation*}
+        n_p=[G:N_G(P)]\equiv 1\mod p
+    \end{equation*}
+    Hence by
+    \begin{equation*}
+        [G:N_G(P)]=[G:H]\cdot[H:N_G(P)]
+    \end{equation*}
+    it suffices to show that 
+    \begin{equation*}
+        [H:N_G(P)]\equiv 1\mod p
+    \end{equation*}
+    It suffices to see that 
+    \begin{equation*}
+        N_G(P)=\{g\in G: gPg^{-1}=P\}=N_H(P)
+    \end{equation*}
+    since $H$ contains $N_G(P)$.
+\end{proof}
+
+
+
+
+\begin{prob}[2.15]
+Classify all groups of order \( n \leq 15 \) (except \( n = 8, 12 \)) up to isomorphism.
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item $n=6$: $\Z/6\Z$ and $S_3$.
+        \item $n=8$: abelian or $D_8$ or $Q_8$.
+        \item $n=9$: abelian.
+        \item $n=10$: abelian or $P_5\rtimes P_2$. The nontrivial action $\Z/2\Z\to\text{Aut}(\Z/5\Z)\cong(\Z/5\Z)^\times$ gives 
+        \begin{equation*}
+            G\cong \la g,h: g^5=h^2=e, hgh^{-1}=g^4\ra
+        \end{equation*}
+        \begin{warn}
+            You know how to do this! The nontrivial action sends $1$ to another order $2$ element, which is $4$, thus the automorphism is multiplication by $4$, using the multiplicative notation, we have $hgh^{-1}=g^4$. (additive notation would have been $h+g-h=4g$).
+        \end{warn}
+        \item $n=14$. $\Z/14\Z$ or $D_{14}$. (The nontrivial action inverts the elements of $\Z/7\Z$).
+    \end{enumerate}
+\end{proof}
+
+
+% \begin{prob}
+% Let \( G \) be a noncommutative group of order 8.
+% \begin{itemize}
+%     \item Prove \( G \) has elements of order 4 and no elements of order 8.
+%     \item Let \( y \) have order 4. Show \( G = \langle x, y \rangle \) where \( x^2 = e \) or \( x^2 = y^2 \).
+%     \item Prove \( xy = y^3x \), and conclude \( G \cong D_8 \) or \( G \cong Q_8 \).
+% \end{itemize}
+% \end{prob}
+
+% \begin{prob}
+% Let \( R \) be a division ring with \( |R| = 64 \). Prove \( R \) is commutative (hence a field) using:
+% \begin{itemize}
+%     \item The unit group has order 63; find a commutative subgroup of order 9.
+%     \item Show \( R \) is the only sub-division ring containing \( G \).
+%     \item The centralizer of \( G \) in \( R \) is a sub-division ring containing \( G \).
+%     \item Conclude \( G \) is central, making \( R \) commutative.
+% \end{itemize}
+% \end{prob}
+% \begin{proof}
+    
+% \end{proof}
+
+% \begin{prob}
+% Give an alternative proof of Claim 2.16: Count elements of order \( p \) and \( q \) in \( G \) using Sylow theorems, deduce the existence of an element of order \( pq \), and conclude \( G \) is cyclic.
+% \end{prob}
+
+\begin{prob}[2.19]
+Let \( G \) be noncommutative of order \( pq \) (\( p < q \) primes).
+\begin{itemize}
+    \item Show \( q \equiv 1 \mod p \).
+    \item Prove \( Z(G) \) is trivial.
+    \item Draw the subgroup lattice of \( G \).
+    \item Find the number of elements of each possible order.
+    \item Find the number and size of the conjugacy classes in $G$.
+\end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item Consider $n_q=1$ or $p$, and $n_q\equiv 1\mod q$. This implies that $n_q=1$. Let $Q$ be the normal $q$-subgroup, and $P$ be a $p$-Sylow subgroup, then consider the semidirect product 
+        \begin{equation*}
+            Q\rtimes P
+        \end{equation*}
+        For $G$ to be noncommutative, this requires the map $\theta: P\to\text{Aut}(Q)$ to be nontrivial, i.e., $p$ divides $q-1$, i.e.
+        \begin{equation*}
+            q\equiv 1\mod p
+        \end{equation*}
+        \item If not trivial, then commutative.
+        \item There are $q$ subgroups of order $p$, and $1$ subgroup of order $q$.
+        \item Compute the size of the centralizer for an element $g$ of order $p$: it is $p$, thus the conjugacy has order $q$.
+    \end{itemize}
+\end{proof}
+
+
+\begin{prob}[2.21]
+Let \( p < q < r \) be primes. Prove no group of order \( pqr \) is simple.
+\end{prob}
+\begin{proof}
+    Suppose $n_q, n_p, n_r\neq 1$, then compute the smallest size allowed by Sylow theorems, this will exceed $pqr$.
+\end{proof}
+
+
+
+\begin{prob}[2.23]
+For \( G \) simple, 
+\begin{itemize}
+    \item[(1)] Prove \( |G| \) divides \( N_p! \) for all primes \( p \) dividing \( |G| \), where \( N_p \) is the number of \( p \)-Sylow subgroups. 
+    \item[(2)] If \( H \leq G \) has index \( N > 1 \), then \( |G| \) divides \( N! \). 
+\end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(1)] The kernel $\gamma: G \to \{P_1,\dots, P_{n_p}\}$ is trivial, hence $|G|$ divides $N_p!$.
+        \item[(2)] $G$ acts the cosets $G/H$ transitively, thus same trivial kernel argument shows $|G|$ divides $N!$. 
+    \end{itemize}
+\end{proof}
+
+
+\begin{prob}[2.25]
+Assume \( G \) is simple of order 60.
+\begin{itemize}
+    \item Prove \( G \) has 5 or 15 Sylow 2-subgroups (15 elements of order 2 or 4).
+    \item If 15 Sylow 2-subgroups, find \( g \in G \) of order 2 in two of them, and show \( C_G(g) \) has index 5.
+\end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item $n_2=1,3,5,15$, $G$ simple and trivial kernel argument shows $n_2=5,15$.
+        \item The $2$-Sylow subgroups must have overlap by a size argument; consider $C_G(g)$: we know that $P_1,P_2\subset C_G(g)$, hence $|C_G(g)|\geq 4$, and $|C_G(g)|\neq 60$ because that'd be nontrivial center, hence $|C_G(g)|=12$, i.e., index $5$.
+    \end{itemize}
+\end{proof}
+
+
+\section{Commutator subgroup and Solvability}
+
+\begin{prob}
+    $G$ is solvable iff $N, G/N$ are solvable, where $N$ is a normal subgroup of $G$.
+\end{prob}
+
+
+% \begin{prob}[3.2]
+%     Let $G$ be a finite cyclic group. Compute $\ell(G)$ in terms of $|G|$. Generalize to finite solvable groups.
+% \end{prob}
+
+
+\begin{prob}[3.10]
+    Let $G$ be a group. Define inductively an increasing sequence $Z_0 = \{e\} \subseteq Z_1 \subseteq Z_2 \subseteq \cdots$ of subgroups of $G$ as follows: for $i \geq 1$, $Z_i$ is the subgroup of $G$ corresponding (as in Proposition II.8.9) to the center of $G / Z_{i-1}$.
+
+\begin{itemize}
+    \item Prove that each $Z_i$ is normal in $G$, so that this definition makes sense.
+\end{itemize}
+
+A group is \emph{nilpotent} if $Z_m = G$ for some $m$.
+
+\begin{itemize}
+    \item Prove that $G$ is nilpotent if and only if $G / Z(G)$ is nilpotent.
+    \item Prove that $p$-groups are nilpotent.
+    \item Prove that nilpotent groups are solvable.
+    \item Find a solvable group that is not nilpotent.
+\end{itemize}
+\end{prob}
+
+
+\begin{prob}[3.11]
+    Let $H$ be a nontrivial normal subgroup of a nilpotent group $G$ (cf. Exercise 3.10). Prove that $H$ intersects $Z(G)$ nontrivially. (Hint: Let $r \geq 1$ be the smallest index such that $\exists h \neq e, h \in H \cap Z_r$. Contemplate a well-chosen commutator $[g, h]$.) Since $p$-groups are nilpotent, this strengthens the result of Exercise 1.9.
+\end{prob}
+
+\begin{prob}[3.12]
+    Let $H$ be a proper subgroup of a finite nilpotent group $G$ (cf. Exercise 3.10). Prove that $H \subset N_G(H)$. (Hint: $Z(G)$ is nontrivial. First dispose of the case in which $H$ does not contain $Z(G)$, and then use induction to deal with the case in which $H$ does contain $Z(G)$.) Deduce that every Sylow subgroup of a finite nilpotent group is normal.
+\end{prob}
+
+
+\begin{prob}[3.15]
+    Let $p, q$ be prime integers, and let $G$ be a group of order $p^2q$. Prove that $G$ is solvable. (This is a particular case of Burnside's theorem: for $p, q$ primes, every group of order $p^aq^b$ is solvable.)
+\end{prob}
+\begin{proof}
+    Consider 
+    \begin{equation*}
+        \{e\}=G_0\subset Q\subset G
+    \end{equation*}
+    where $Q$ is the normal subgroup of order $q$, using Sylow theorems, one can show that $n_q=1$. $G/Q$ is abelian, so it $Q$. 
+\end{proof}
+
+\begin{prob}[3.16]
+    Prove that every group of order $< 60$ and $\neq 60$ is solvable.
+\end{prob}
+\begin{proof}
+    All $p$-groups, $p^2q$ are solvable; moreover, $G$ is solvable iff $G/N, N$ are solvable, where $N$ is a normal subgroup.
+\end{proof}
+
+\section{$S_n$ and $A_n$}
+\begin{prob}[4.5]
+    Find the class formula for $S_n$, where $n\leq 5$.
+\end{prob}
+\begin{proof}
+    \begin{equation*}
+        \begin{cases}
+            S_3=1+2+3\\
+            S_4=1+6+8+6+3\\
+            S_5=1+24+30+20+15+10+20
+        \end{cases}
+    \end{equation*}
+\end{proof}
+
+\begin{prob}[4.7]
+    $\triangleright$ Prove that $S_n$ is generated by $(12)$ and $(12\ldots n)$. 
+    \end{prob}
+\begin{proof}
+    It suffices to generate all the transpositions: let $\sigma=(12\dots n)$, 
+    \begin{equation*}
+        \sigma(12)\sigma^{-1}=(\sigma(1)\sigma(2))=(23)
+    \end{equation*}
+    thus this process allows us to get all the $(n,n+1)$ adjacent swaps. Then we see that 
+    \begin{equation*}
+        (23)(12)(23)^{-1}=(13)
+    \end{equation*}
+    and we can generate all the transpositions like this.
+\end{proof}
+    
+\begin{prob}[4.8]
+    For $n > 1$, prove that the subgroup $H$ of $S_n$ consisting of permutations fixing 1 is isomorphic to $S_{n-1}$. Prove that there are no proper subgroups of $S_n$ properly containing $H$.
+    \end{prob}
+\begin{proof}
+    By a rearranging of indices, the first statement is true. Any subgroup properly containing $H$ must contain $\sigma$ such that $\sigma(1)=i$, and with transpositions in $H$, this generates $S_n$. 
+\end{proof}
+\begin{prop}
+    The subgroup $H$ of $S_n$:
+    \begin{equation*}
+        H=\{\sigma\in S_n: \sigma(1)=1\}
+    \end{equation*}
+    is isomorphic to $S_{n-1}$.
+\end{prop}
+    
+    \begin{prop}[4.9]
+    $(13)$ and $(1234)$ generate a copy of $D_8$ in $S_4$. Every subgroup of $S_4$ of order 8 is conjugate to $\langle (13), (1234)\rangle$, and there are exactly $3$ such subgroups. For all $n \geq 3$, $S_n$ contains a copy of the dihedral group $D_{2n}$.
+    \end{prop}
+    
+
+    \begin{prop}[4.10]
+        \begin{enumerate}
+            \item There are exactly $(n-1)!$ $n$-cycles in $S_n$.
+            \item More generally, the size of the conjugacy class of a permutation of given type in $S_n$: \(\sigma \in S_n\) with cycle type \((1^{a_1}, 2^{a_2}, \ldots, n^{a_n})\) (where \(a_k\) is the number of \(k\)-cycles), the size of its conjugacy class is:
+
+            \[
+            \frac{n!}{\prod_{k=1}^n (k^{a_k} \cdot a_k!)}
+            \]
+        \end{enumerate}
+    \end{prop}
+    
+    \begin{prob}[4.11]
+    Let $p$ be a prime integer. Compute the number of $p$-Sylow subgroups of $S_p$.
+    \end{prob}
+    \begin{proof}
+        There are $(p-1)!$ $p$-cycles, and each $p$-Sylow subgroup contains $(p-1)$ of these cycles, i.e., there are $(p-2)!$ $p$-Sylow subgroups. (This uses the fact that if $N,H$ are subgroups of prime order $p$, then they either intersect trivally or are equal).
+    \end{proof}
+    
+    \begin{prob}[4.12]
+        A subgroup $G$ of $S_n$ is \emph{transitive} if the induced action of $G$ on $\{1,\ldots,n\}$ is transitive.
+
+    \begin{enumerate}
+        \item Prove that if $G \subseteq S_n$ is transitive, then $|G|$ is a multiple of $n$.
+        \item Prove that the following subgroups of $S_4$ are all transitive:
+        \begin{itemize}
+            \item $\langle (1234)\rangle \cong C_4$ and its conjugates,
+            \item $\langle (12)(34), (13)(24)\rangle \cong C_2 \times C_2$,
+            \item $\langle (12)(34), (1234)\rangle \cong D_8$ and its conjugates,
+            \item $A_4$, and $S_4$.
+        \end{itemize}
+    \end{enumerate}
+    (These are the \emph{only} transitive subgroups of $S_4$.)
+    \end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item $G$ acts on $\{1,\dots, n\}$ transitively, thus the orbit of any $i$, $O(i)=\{1,\dots, i\}$, thus $n$ divides $|G|$.
+        \item  \textcolor{red}{really?}
+    \end{enumerate}
+\end{proof}
+
+
+\begin{prop}[4.14]
+    The center of $A_n$ is trivial for all $n\geq 4$. (This can be shown using the class formula of $S_n$ and how conjugacy class splits to $A_n$).
+\end{prop}
+
+\begin{prob}[4.18]
+    For \( n \geq 5 \), let \( H \) be a proper subgroup of \( A_n \). Prove that \([A_n : H] \geq n\) and \( A_n \) has a subgroup of index \( n \) for all \( n \geq 3 \).
+    \end{prob}
+\begin{proof}
+    Consider the transitive action of $A_n$ on the cosets $A_n/H$, this action is nontrivial, hence must be injective since $A_n$ is simple for $n\geq 5$, this shows that 
+    \begin{equation*}
+        |A_n|\leq[A_n:H]!
+    \end{equation*}
+    which implies $[A_n:H]\geq n$.
+
+    The index $n$ subgroup of $A_n$ can be chosen as the subgroup $H$ that fixes $1$, then $H\cong A_{n-1}$.
+\end{proof}
+    
+\begin{prob}[4.19]
+    \begin{enumerate}
+        \item Prove that for \( n \geq 5 \) there are no nontrivial actions of \( A_n \) on any set \( S \) with \( |S| < n \).
+        
+        \item Construct a nontrivial action of \( A_4 \) on a set \( S \), \( |S| = 3 \).
+        
+        \item Is there a nontrivial action of \( A_4 \) on a set \( S \) with \( |S| = 2 \)?
+    \end{enumerate}    
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item  Same as above, using the simplicity of $A_n$ for $n\geq 5$.
+        \item $A_4$ has a normal subgroup $N=\Z/2\Z\times\Z/2\Z$, thus is nontrivial transitive action on $G/N$.
+        \item The kernel $\ker(\psi)$ must be nontrivial (size), and is normal with index $2$, which $A_4$ does not have.
+    \end{enumerate}
+\end{proof}
+
+\section{Semidirect Products}
+
+
+\begin{prop}[5.1]
+    Let $G$ be a finite group, and let $P_1, \ldots, P_r$ be its nontrivial Sylow subgroups. Assume all $P_i$ are normal in $G$.
+
+\begin{itemize}
+    \item Prove that $G \cong P_1 \times \cdots \times P_r$.
+    \item Prove that $G$ is nilpotent. (Hint: Mod out by the center, and work by induction on $|G|$. What is the center of a direct product of groups?)
+\end{itemize}
+\end{prop}
+\begin{proof}
+    Think about their intersection, and what does the center look like.
+\end{proof}
+
+
+
+\begin{prob}[5.4]
+    Give an example of a SES that doesn't split.
+\end{prob}
+\begin{proof}
+    \[0 \longrightarrow \mathbb{Z} \xrightarrow{\cdot 2} \mathbb{Z} \longrightarrow \mathbb{Z}/2\mathbb{Z} \longrightarrow 0\]
+\end{proof}
+
+\begin{prob}[5.7]
+    Let $N$ be a group, and let $\alpha : N \to N$ be an automorphism of $N$. Prove that $\alpha$ may be realized as conjugation, in the sense that there exists a group $G$ containing $N$ as a normal subgroup and such that $\alpha(n) = gng^{-1}$ for some $g \in G$.
+\end{prob}
+\begin{proof}
+    Construct the semidirect product by taking $H=\Z$ and $\theta:\Z\to\text{Aut}(N)$ as 
+    \begin{equation*}
+        \theta_k(n)=\alpha^k(n)
+    \end{equation*}
+\end{proof}
+
+
+\begin{prob}[5.8]
+    Prove that any semidirect product of two solvable groups is solvable. Show that semidirect products of nilpotent groups need not be nilpotent.
+\end{prob}
+\begin{proof}
+    Construct sequence such that quotients are quotients from $N,H$; $S_3$ is a semidirect product of $\Z/2\Z$ and $\Z/3\Z$.
+\end{proof}
+
+\begin{prob}[5.10]
+    Let $N$ be a normal subgroup of a finite group $G$, and assume that $|N|$ and $|G/N|$ are relatively prime. Assume there is a subgroup $H$ in $G$ such that $|H| = |G/N|$. Prove that $G$ is a semidirect product of $N$ and $H$.
+    \end{prob}
+\begin{proof}
+    To prove $G=N\rtimes H$, you need 
+    \begin{enumerate}
+        \item $G=NH$.
+        \item $N\cap H=\{e\}$.
+    \end{enumerate}
+    The second is obvious: the first is done by showing $|G|=|N||H|$, recall 
+    \begin{equation*}
+        |NH|=\frac{|N|\cdot|H|}{|N\cap H|}
+    \end{equation*}
+\end{proof}
+    
+    \begin{prob}[5.11]
+    For all $n > 0$ express $D_{2n}$ as a semidirect product $C_n \rtimes_\theta C_2$, finding $\theta$ explicitly. 
+    \end{prob}
+\begin{proof}
+    $\Z/n\Z=\{1,r,\dots, r^{n-1}\}$ is an index $2$ subgroup, hence normal, thus 
+    \begin{equation*}
+        D_{2n}=\la r,s: r^n=s^2=e, srs^{-1}=r^{-1}\ra
+    \end{equation*}
+\end{proof}
+    
+    \begin{prob}[5.12]
+    Classify groups $G$ of order $pq$, with $p < q$ prime: show that if $|G| = pq$, then either $G$ is cyclic or $q \equiv 1 \mod p$ and there is exactly one isomorphism class of noncommutative groups of order $pq$ in this case. 
+    \end{prob}
+\begin{proof}
+    There is a normal subgroup of order $q$: then 
+    \begin{equation*}
+        \theta: \frac{\Z}{p\Z}\to\aut\left(\Z/q\Z\right)\cong(\Z/q\Z)^\times
+    \end{equation*}
+    If the action is trivial, then
+    \begin{equation*}
+        G\cong\frac{\Z}{p\Z}\times\frac{\Z}{q\Z}\cong\frac{\Z}{pq\Z}
+    \end{equation*}
+    i.e., $G$ is cyclic.
+
+    If $q-1\equiv 0\mod p$, then there exists $r\in(\Z/q\Z)^\times$ such that $r^p=1$, thus we have 
+    \begin{equation*}
+        G=\la g,h: g^q=h^p=e, hgh^{-1}=g^r\ra
+    \end{equation*}
+    This is the noncommutative group.
+\end{proof}
+    
+    \begin{prob}[5.13]
+    Let $G = N \rtimes_\theta H$ be a semidirect product, and let $K$ be the subgroup of $G$ corresponding to $\ker \theta \subseteq H$. Prove that $K$ is the kernel of the action of $G$ on the set $G/H$ of left-cosets of $H$. 
+    \end{prob}
+\begin{proof}
+    $K$ is the largest normal subgroup of $G$ contained in $H$.
+\end{proof}
+  
+
+
+    \begin{prob}[5.15]
+    Let $G$ be a group of order 28.
+    
+    \begin{enumerate}
+        \item Prove that $G$ contains a normal subgroup $N$ of order 7.
+        \item Recall that, up to isomorphism, the only groups of order 4 are $C_4$ and $C_2 \times C_2$. Prove that there are two homomorphisms $C_4 \to \operatorname{Aut}_{Grp}(N)$ and two homomorphisms $C_2 \times C_2 \to \operatorname{Aut}_{Grp}(N)$ up to the choice of generators for the sources.
+        \item Conclude that there are four groups of order 28 up to isomorphism: the two direct products $C_4 \times C_7$, $C_2 \times C_2 \times C_7$, and two noncommutative groups.
+        \item Prove that $D_{28} \cong C_2 \times D_{14}$. The other noncommutative group of order 28 is a generalized quaternionic group.
+    \end{enumerate}
+    \end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item $n_7=1$.
+        \item There is a trivial isomorphism for both; $1\mapsto r$, where $r^2=1$ for $C_4$; $(1,0)\mapsto r, (0,1)\mapsto 0$ or the other way around which is the same.
+        \item By 2.
+        \item There is no element of order $4$ in $D_{28}$. (There is an element of order $4$ iff $d$ divides $n$ in $D_{2n}$).
+    \end{enumerate}
+\end{proof}
+    
+    \begin{prop}[5.16]
+    The quaternionic group $Q_8$  cannot be written as a semidirect product of two nontrivial subgroups.
+    \end{prop}
+
+
+
+\section{Classification of Finite Abelian Group}
+
+
+
+
+\begin{prob}
+Complete the classification of groups of order 8.
+\end{prob}
+\begin{proof}
+    There are $5$: $\Z/8\Z, \Z/2\Z\times\Z/4\Z, \Z/2\Z\times\Z/2\Z\times\Z/2\Z, D_8,Q_8$.
+\end{proof}
+
+\begin{prop}
+Let \( G \) be a noncommutative group of order \( p^3 \), where \( p \) is a prime integer. Prove that \( Z(G) \cong \mathbb{Z}/p\mathbb{Z} \) and \( G/Z(G) \cong \mathbb{Z}/p\mathbb{Z} \times \mathbb{Z}/p\mathbb{Z} \).
+\end{prop}
+
+
+
+
+\begin{prop}
+Let \( p \) be a prime integer. Prove that the number of distinct isomorphism classes of abelian groups of order \( p^r \) equals the number of partitions of the integer \( r \).
+\end{prop}
+
+\begin{prob}
+    Classify abelian groups of order 400.
+\end{prob}
+\begin{proof}
+    By the above, there are 10 isomorphism classes.
+\end{proof}
+
+\begin{prop}
+The dual of a finite group \( G \) is the abelian group \( G^\vee := \text{Hom}_{\text{Grp}}(G, \mathbb{C}^*) \), where \( \mathbb{C}^* \) is the multiplicative group of \( \mathbb{C} \).
+\begin{itemize}
+    \item The image of every \( \sigma \in G^\vee \) consists of roots of 1 in \( \mathbb{C} \), that is, roots of polynomials \( x^n - 1 \) for some \( n \).
+    \item If \( G \) is a finite abelian group, then \( G \cong G^\vee \). (Hint: First prove this for cyclic groups; then use the classification theorem to generalize to the arbitrary case.)
+\end{itemize}
+\end{prop}
+
+
+\begin{prob} 
+    Finite abelian group classifications for modules:
+\begin{enumerate}
+    \item Use the classification theorem for finite abelian groups to classify all finite modules over the ring \( \mathbb{Z}/n\mathbb{Z} \).
+    \item Prove that if \( p \) is prime, all finite modules over \( \mathbb{Z}/p\mathbb{Z} \) are free.
+\end{enumerate}
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item Any finite $G$ is written as 
+        \begin{equation*}
+            G\cong\frac{\Z}{p_1^{a_1}}\bigoplus\dots\bigoplus\frac{\Z}{p_k^{a_k}}
+        \end{equation*}
+        where the $p$'s are not necessarily distinct. The $\Z/n\Z$-module condition requires that for $n\cdot m=0$ for all $m\in M$, i.e., $p_i^{a_i}$ must divide $n$ for all $i$. This shows that any finite abelian group over $\Z/n\Z$ is of the form
+        \begin{equation*}
+            G\cong\bigoplus_{p\mid n}\bigoplus_{i=1}^k\frac{\Z}{p^i\Z}
+        \end{equation*}
+        \item It shows that only $\Z/p\Z$ terms are allowed in the above expression.
+    \end{enumerate}
+\end{proof}
+
+\begin{prop}
+Let \( G, H \) be finite abelian groups such that, for all positive integers \( n \), \( G \) and \( H \) have the same number of elements of order \( n \). Then $G\cong H$.
+\end{prop}
+
+
+\begin{prob}
+Let \( G \) be a finite abelian \( p \)-group, and assume \( G \) has only one subgroup of order \( p \). Prove that \( G \) is cyclic.
+\end{prob}
+\begin{proof}
+    $G$ must take the form
+    \begin{equation*}
+        G\cong \frac{\Z}{p^{a_1}\Z}
+    \end{equation*}
+    with no other factors.
+\end{proof}
+
+
+\begin{prob}
+Let \( G \) be a finite abelian group, and let \( a \in G \) be an element of maximal order in \( G \). Prove that the order of every \( b \in G \) divides \( |a| \).
+\end{prob}
+\begin{proof}
+    For different primes, the orders multiply.
+\end{proof}
+
+
+
+
+
+
+
+\chapter{Ring Theory II, Irreducibility of Polynomials}
+
+
+\section{factorizations}
+\begin{prob}[1.4]
+    Show that the ring of real-valued continuous functions on $[0,1]$ is not Noetherian.
+\end{prob}
+\begin{proof}
+    Let $I_n$ be the functions $f$ such that $f(x)=0$ on $[\frac{1}{n+1},1]$, then it fails acc.
+\end{proof}
+
+\begin{prob}[1.10]
+    Recall a ring \( R \) is Noetherian if and only if it satisfies the ascending chain condition for ideals. A ring is Artinian if it satisfies the descending chain condition for ideals. 
+\begin{enumerate}
+    \item Prove that if \( R \) is Artinian and \( I \subset R \) is an ideal, then \( R/I \) is Artinian.
+    \item Prove that if \( R \) is an Artinian integral domain, then it is a field. 
+    (Hint: Consider the descending chain \( (a) \supseteq (a^2) \supseteq (a^3) \supseteq \dots \) for a nonzero element \( a \in R \).)
+\end{enumerate}
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item Ideals in $R/I$ have a one-to-one correspondence to ideals $J\subset R$ containing $I$.
+        \item Then $(a^i)=(a^{i+1})$ for some $i$. This shows $a$ is a unit.
+    \end{enumerate}
+\end{proof}
+
+\begin{prop}
+    An Artinian ring $R$ that is also an integral domain is a field!
+\end{prop}
+
+
+
+
+\begin{prob}[1.15]
+    Let \( S = \mathbb{Z}[x_1, \ldots, x_n] \) be naturally identified with a subring of \( R = \mathbb{Z}[x_1, x_2, x_3, \ldots] \). 
+\begin{enumerate}
+    \item Prove that if \( f \in S \) and \( (f) \subseteq (g) \) in \( R \), then \( g \in S \) as well.
+    \item Conclude that the ascending chain condition for principal ideals holds in \( R \), and factorization exists.
+\end{enumerate}
+\end{prob}
+\begin{proof}
+    is obvious.
+\end{proof}
+\begin{prop}
+    A non-Noetherian ring where factorizations exist:
+    \begin{equation*}
+        \Z[x_1,x_2,x_3,\dots]
+    \end{equation*}
+\end{prop}
+
+
+\begin{prob}[1.17]
+    Consider the subring of \( \mathbb{C} \):
+
+\[
+\mathbb{Z}[\sqrt{-5}] := \{a + bi\sqrt{5} \mid a, b \in \mathbb{Z}\}.
+\]
+
+\begin{enumerate}
+    \item Prove that this ring is isomorphic to \( \mathbb{Z}[t]/(t^2 + 5) \). Prove that it is a Noetherian integral domain.
+    \item Define a norm \( N \) on \( \mathbb{Z}[\sqrt{-5}] \) by setting \( N(a + bi\sqrt{5}) = a^2 + 5b^2 \). Note that $N(zw) = N(z)N(w)$.
+    \item Prove that \( 2, 3, 1 + i\sqrt{5}, 1 - i\sqrt{5} \) are all irreducible nonassociate elements of \( \mathbb{Z}[\sqrt{-5}] \).
+    \item Prove that no element listed in the preceding point is prime. (Rings obtained by modding out the ideals generated by these elements are not integral domains.)
+    \item Prove that \( \mathbb{Z}[\sqrt{-5}] \) is not a UFD.
+\end{enumerate}
+\end{prob}
+\begin{proof}
+    1. Establish by evaluation map at $\sqrt{5}$, and $\Z$ is Noetherian, which impies $\Z[t]/I$ is Noetherian. 3. Use norm. 4. For example quotient out by $(2)$, then $(1+i\sqrt{5})(1+i\sqrt{5})=0$. 5. $6=2\cdot 3=(1+i\sqrt{5})(1+i\sqrt{5})$.
+\end{proof}
+
+\section{UFD, PID, ED}
+
+\begin{prob}[2.5]
+    gcd exists in UFD's but they don't in general:
+    Let \( R \) be the subring of \( \mathbb{Z}[t] \) consisting of polynomials with no term of degree 1:
+\[
+R = \{a_0 + a_2 t^2 + \cdots + a_d t^d \mid a_i \in \mathbb{Z}\}.
+\]
+
+\begin{enumerate}
+    \item Prove that \( R \) is indeed a subring of \( \mathbb{Z}[t] \), and conclude that \( R \) is an integral domain.
+    \item List all common divisors of \( t^5 \) and \( t^6 \) in \( R \).
+    \item Prove that \( t^5 \) and \( t^6 \) have no gcd in \( R \).
+\end{enumerate}
+\end{prob}
+\begin{proof}
+    2. $t^2, t^3, t^4, t^5$. 3. $t^5$ doesn't work because $t\not\in R$.
+\end{proof}
+
+
+\begin{prob}[2.8]
+    Let \( R \) be a UFD, and let \( I \neq (0) \) be an ideal of \( R \). Prove that every descending chain of principal ideals containing \( I \) must stabilize.
+\end{prob}
+\begin{proof}
+    There exists $a\neq 0\in I$, consider its finite multiset of irreducible factors, every descending 
+    \begin{equation*}
+        (a_1)\supset(a_2)\supset\dots
+    \end{equation*}
+    gives an ascending 
+    \begin{equation*}
+        m(a_1)\subset m(a_2)\subset\dots
+    \end{equation*}
+\end{proof}
+
+\begin{prob}[2.11]
+    Let \( R \) be a PID, and let \( I \) be a nonzero ideal of \( R \). Show that \( R/I \) is an Artinian ring, by proving explicitly that the d.c.c. holds in \( R/I \).
+\end{prob}
+\begin{proof}
+    Ideals in $R/I$ corresponds to ideals $J$ in $R$ contaning $J$, then using the above.
+\end{proof}
+
+
+
+\begin{prob}[2.19]
+    A \textbf{discrete valuation} on a field \( k \) is a surjective homomorphism of abelian groups \( v : (k^*, \cdot) \to (\mathbb{Z}, +) \) such that \( v(a+b) \geq \min(v(a), v(b)) \) for all \( a, b \in k^* \) with \( a + b \in k^* \).
+
+\begin{enumerate}
+    \item Prove that the set \( R := \{a \in k^* \mid v(a) \geq 0\} \cup \{0\} \) is a subring of \( k \).
+    \item Prove that \( R \) is a Euclidean domain.
+    \item Prove that the ring of rational numbers \( \frac{a}{b} \) with \( b \) not divisible by a fixed prime integer \( p \) is a DVR.
+    
+    (Rings arising in this fashion are called \textbf{discrete valuation rings} (DVR). Note that the Krull dimension of a DVR is 1.)
+\end{enumerate}
+\end{prob}
+\begin{proof}
+    2. You show that $v$ is a Euclidean valuation: let $a\in R, b\neq 0$, then 
+    \begin{equation*}
+        v(a/b)=v(a)-v(b)
+    \end{equation*}
+    if $\geq 0$, then $a/b\in R$, we set $q=1, r=0$; if $<0$, then set $q=0$, then $r=a$, we have $v(r)<v(b)$. 3. Set $v(p)=1, v(m)=0$ for $m$ not divisible by $p$.
+\end{proof}
+
+
+\begin{prob}[2.20]
+    DVRs are Euclidean domains. In particular, they must be PIDs. Check this directly, as follows. Let \( R \) be a DVR, and let \( t \in R \) be an element such that \( v(t) = 1 \). Prove that if \( I \subseteq R \) is any nonzero ideal, then \( I = (t^k) \) for some \( k \geq 1 \). (The element \( t \) is called a \textbf{local parameter} of \( R \).)
+\end{prob}
+\begin{proof}
+    Let $b\in I$ be such that $v(b)$ is minimal in $I$, let $k=v(b)$, we claim $I=(t^k)$.
+\end{proof}
+
+
+
+
+
+\section{}
+
+\begin{prob}[3.13]
+    Let \( R \) be a commutative ring, and let \( N \) be its nilradical. Let \( r \notin N \).
+
+\begin{enumerate}
+    \item Consider the family \( \mathcal{F} \) of ideals of \( R \) that do not contain any power \( r^k \) of \( r \) for \( k > 0 \). Prove that \( \mathcal{F} \) has maximal elements.
+    
+    \item Let \( I \) be a maximal element of \( \mathcal{F} \). Prove that \( I \) is prime.
+    
+    \item Conclude that \( r \notin N \) implies \( r \) is not in the intersection of all prime ideals of \( R \).
+\end{enumerate}
+
+This shows the nilradical of a commutative ring \( R \) equals the intersection of all prime ideals of \( R \).
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item Zorn's lemma: suffices to show every chain $\{I_\alpha\}$ has an upper bound, which is the union.
+        \item Consider $ab\in I$, suppose $a,b\not\in I$, then $I+(a), I+(b)$ are not in $\mathcal{F}$, then it shows $I$ is not in $\mathcal{F}$, contradiction.
+        \item $r\not\in I$, done.
+    \end{enumerate}
+\end{proof}
+
+
+
+\begin{prob}[3.14]
+    The \textbf{Jacobson radical} of a commutative ring \( R \) is the intersection of the maximal ideals in \( R \). (Thus, the Jacobson radical contains the nilradical.) 
+
+Prove that \( r \) is in the Jacobson radical if and only if \( 1 + rs \) is invertible for every \( s \in R \).
+\end{prob}
+\begin{proof}
+    If $r$ is in every $\mathfrak{m}\in M$, then for every $s\in R$, $rs\in\mathfrak{m}$ for every $\mathfrak{m}$, this implies that $1+rs\not\in\mathfrak{m}$ for any $\mathfrak{m}$, i.e., $1+rs$ is a unit. This is because if it is not a unit, then we can consider $(1+rs)$, by Zorn's lemma, it is contained in some $\mathfrak{m}$, which is a contradiction. 
+
+    For the reverse reflection, suppose $r\not\in\mathfrak{m}$ for some $\mathfrak{m}$, then 
+    \begin{equation*}
+        \mathfrak{m}\subset \mathfrak{m}+(r)\Rightarrow m+(r)=R
+    \end{equation*}
+    i.e., for $1=rs+m$ for some $m\in\mathfrak{m}$, i.e., $m$ is a unit, which is a contradiction.
+\end{proof}
+
+
+
+\section{}
+
+
+% \begin{prob}[4.7]
+%     A subset \( S \) of a commutative ring \( R \) is a \textbf{multiplicative subset} (or multiplicatively closed) if:
+% \begin{enumerate}
+%     \item \( 1 \in S \)
+%     \item \( s, t \in S \implies st \in S \)
+% \end{enumerate}
+
+% Define a relation on the set of pairs \((a, s)\) with \( a \in R, s \in S \) as follows:
+% \[
+% (a, s) \sim (a', s') \iff (\exists t \in S), t(s'a - sa') = 0.
+% \]
+
+% \begin{enumerate}
+%     \item Prove that the relation \(\sim\) is an equivalence relation.
+%     \item Denote by \(\frac{a}{s}\) the equivalence class of \((a, s)\), and define operations \(+\) and \(\cdot\) on these fractions as in §4.2. Prove these operations are well-defined.
+%     \item The set \( S^{-1}R \) of fractions, with operations \(+\) and \(\cdot\), is the \textbf{localization} of \( R \) at \( S \). Prove:
+%     \begin{itemize}
+%         \item \( S^{-1}R \) is a commutative ring
+%         \item The function \( \ell: R \to S^{-1}R \) given by \( a \mapsto \frac{a}{1} \) is a ring homomorphism
+%     \end{itemize}
+%     \item Prove \( \ell(s) \) is invertible for every \( s \in S \).
+%     \item Prove \( \ell: R \to S^{-1}R \) is initial among ring homomorphisms \( f: R \to R' \) where \( f(s) \) is invertible for all \( s \in S \).
+%     \item Prove \( S^{-1}R \) is an integral domain if \( R \) is.
+%     \item Prove \( S^{-1}R \) is the zero-ring if and only if \( 0 \in S \).
+% \end{enumerate}
+% \end{prob}
+
+% \begin{prob}[4.8]
+%     Let \( S \) be a multiplicative subset of \( R \). For an \( R \)-module \( M \), define:
+% \[
+% (m, s) \sim (m', s') \iff (\exists t \in S), t(s'm - sm') = 0.
+% \]
+
+% \begin{enumerate}
+%     \item Prove \(\sim\) is an equivalence relation
+%     \item Define an \( S^{-1}R \)-module structure on \( S^{-1}M \) (the set of equivalence classes) compatible with the \( R \)-module structure
+% \end{enumerate}
+% \end{prob}
+
+
+% \begin{prob}[4.11]
+%     A ring is \textbf{local} if it has a single maximal ideal.
+
+% Let \( R \) be a commutative ring with prime ideal \( \mathfrak{p} \). Let \( S = R \setminus \mathfrak{p} \).
+
+% \begin{enumerate}
+%     \item Prove \( S \) is multiplicatively closed
+%     \item Prove there's an inclusion-preserving bijection between:
+%     \begin{itemize}
+%         \item Prime ideals of \( R_{\mathfrak{p}} \)
+%         \item Prime ideals of \( R \) contained in \( \mathfrak{p} \)
+%     \end{itemize}
+%     \item Deduce \( R_{\mathfrak{p}} \) is local
+% \end{enumerate}
+% \end{prob}
+
+
+% \begin{prob}[4.12]
+%     Let \( M \) be an \( R \)-module. Prove equivalent:
+% \begin{enumerate}
+%     \item \( M = 0 \)
+%     \item \( M_{\mathfrak{p}} = 0 \) for all prime ideals \( \mathfrak{p} \)
+%     \item \( M_{m} = 0 \) for all maximal ideals \( m \)
+% \end{enumerate}
+% \end{prob}
+
+
+% \begin{prob}[4.13]
+%     Let \( k \) be a field with discrete valuation \( v \), and \( R \) the corresponding DVR.
+
+% \begin{enumerate}
+%     \item Prove \( R \) is local with maximal ideal \( \mathfrak{m} = (t) \)
+%     \item Prove \( k \) is the field of fractions of \( R \)
+%     \item Let \( A \) be a PID with prime ideal \( \mathfrak{p} = (p) \). Prove \( A_{\mathfrak{p}} \) is a DVR
+% \end{enumerate}
+% \end{prob}
+
+
+\begin{prop}[4.18]
+    Let \( R \) be an integral domain. Prove the invertible elements in \( R[x] \) are exactly the units of \( R \) (as constant polynomials).
+\end{prop}
+
+
+
+\begin{prob}[4.19]
+    An element \( a \in R \) is \textbf{nilpotent} if \( a^n = 0 \) for some \( n \geq 0 \). Prove that if \( a \) is nilpotent, then \( 1 + a \) is a unit.
+\end{prob}
+\begin{proof}
+    $a$ is in the intersection of all prime ideals, hence all maximal ideals, this implies $1+a$ cannot be in any maximal ideal, i.e., $1+a$ is a unit. (If $1+a$ is not a unit, then $(a+1)$ is contained in some $m$).
+\end{proof}
+
+
+% \begin{prob}[4.20]
+%     For commutative ring \( R \), prove \( f = \sum a_i x^i \in R[x] \) is a unit if and only if:
+% \begin{itemize}
+%     \item \( a_0 \) is a unit in \( R \)
+%     \item \( a_1, \ldots, a_d \) are nilpotent
+% \end{itemize}
+% \end{prob}
+
+
+\section{Irreducibility}
+
+\begin{prob}[5.4]
+    Prove that $f(x)=x^4+x^2+1$ is reducible over $\Z$, and that it has no rational roots.
+\end{prob}
+\begin{proof}
+    It can be factored completely: 
+    \begin{equation*}
+        f(x)=\frac{x^6-1}{x^2-1}=\frac{(x^3+1)(x^3-1)}{(x+1)(x-1)}=(1-x+x^2)(1+x+x^2)
+    \end{equation*}
+    The rational root theorem states $\alpha=\pm1$, and neither are roots.
+\end{proof}
+
+\begin{prob}[5.6]
+    Construct fields of $27$ and $121$ elements.
+\end{prob}
+\begin{proof}
+    $f(x)=x^3+2x+1$ has no roots in $\F_3$ and $g(x)=x^2+x+7$ has no roots in $\F_{11}$.
+\end{proof}
+
+
+\begin{prob}[5.7]
+    Let $R$ be an integral domain, let $f\in R[x]$ be of degree $d$, prove that $f(x)$ is determined uniquely by $d+1$ points in $R$.
+\end{prob}
+\begin{proof}
+    Suppose $f(x_i)=g(x_i)$ for $1\leq i\leq d+1$, then consider $h=f-g$, then $h(x_i)=0$ for all $i$, since nonzero polynomials of degree $d$ can have at most $d$ roots, this shows $h=0$.
+\end{proof}
+
+\begin{prob}[5.10]
+    Prove that $(x-1)(x-2)\dots(x-n)-1$ is irreducible over $\Q$ for all $n\geq 1$.
+\end{prob}
+\begin{proof}
+    When $n$ is odd, suppose $F(x)=f(x)g(x)$, then WLOG assume $f$ has degree $\leq \frac{n-1}{2}$, and we know for $x_i=i$, $f(x_i)g(x_i)=\pm 1$, i.e., consider either $f(x)-1$ or $f(x)+1$, we get a polynomial with more zeros than its degree, i.e., $f\equiv 0$.
+
+    If $n$ is even (and the only case remaining is when $\deg(f)=\deg(g)=\frac{n}{2}$), consider $f(x)^2-1$, this polynomial also has degree $n$, and has roots at $x=1,\dots, n$, since $f$ is monic, we know 
+    \begin{equation*}
+        f(x)^2-1=(x-1)\dots(x-n)
+    \end{equation*}
+    This implies that 
+    \begin{equation*}
+        f(x)g(x)=f(x)^2-2\Rightarrow f(x)(g(x)-f(x))=-1
+    \end{equation*}
+    which is impossible.
+\end{proof}
+
+% \begin{prob}[5.11]
+%     Let $F$ be a finite field, prove that there are irreducible polynomials over $F$ of arbitrarily high degree.
+% \end{prob}
+
+\begin{prob}[5.14]
+    How many different embeddings of the field $\Q[t]/(t^3-2)$ are there in $\R$ and $\C$.
+\end{prob}
+\begin{proof}
+    Embeddings refer to the homomorphisms 
+    \begin{equation*}
+        \varphi: \Q[t]/(f(t))\to\R
+    \end{equation*}
+    where 
+    \begin{equation*}
+        \varphi: t\mapsto \alpha \text{ where } f(\alpha)=0
+    \end{equation*}
+    Thus there is $1$ embedding into $\R$ and $3$ into $\C$.
+\end{proof}
+
+\begin{prob}[5.18]
+    Let $f\in\Z[x]$ be a cubic polynomial such that $f(0), f(1)$ are odd and with odd leading coefficients. Prove that $f$ is irreducible over $\Q$.
+\end{prob}
+\begin{proof}
+    Suffices to prove $f$ is irreducible over $\Z/p\Z$ for some $p$. Consider $\Z/2\Z$, then let $f(x)=a_3x^3+a_2x^2+a_1x+a_0$, we see $f(x)$ can be $x^3+x^2+1$ or $x^3+x+1$, and both are irreducible over $\Z/2\Z$. 
+\end{proof}
+
+\begin{prob}[5.20]
+    Prove that $x^6+4x^3+1$ is irreducible by Eisenstein.
+\end{prob}
+\begin{proof}
+    Replace $x$ with $x+1$, then done.
+\end{proof}
+
+\begin{prob}[5.21]
+    Prove that $1+x+x^2+\dots +x^{n-1}$ is reducible over $\Z$ if $n$ is not prime.
+
+    \begin{warn}
+        $1+x+x^2+\dots+x^{p-1}$ is irreducible by Eisenstein.
+    \end{warn}
+\end{prob}
+\begin{proof}
+    Let $n=ab$, 
+    \begin{equation*}
+        f(x)=\frac{x^n-1}{x-1}
+    \end{equation*}
+    where 
+    \begin{equation*}
+        (x^a)^b-1=(x^a-1)(1+x^a+\dots+x^{a(b-1)})
+    \end{equation*}
+    Then we see $f$ is reducible.
+\end{proof}
+
+
+
+% \begin{prob}[5.22]
+%     Let $R$ be a UFD, and let $a\in R$ be an element not divisible by the square of some irreducible element in this factorization. Prove that $x^n-a$ is irreducible for every $n\geq 1$.
+% \end{prob}
+
+
+
+
+
+
+
+\section{CRT}
+\begin{prop}[6.2]
+    Recall idempotent: $a\in R$ such that $a^2=a$, if $R$ contains an idempotent, then 
+    \begin{equation*}
+        R\cong\frac{R}{(a)}\times\frac{R}{(1-a)}
+    \end{equation*}
+    (Proof sketch: endow $(a)$ with a ring structure with $(a)$ as the identity, then $(a)\cong R/(1-a)$).
+\end{prop}
+
+\begin{prop}[6.8]
+    Let $n\in\Z$, and $n=p_1^{n_1}\dots p_r^{n_r}$, then 
+    \begin{equation*}
+        \frac{\Z}{(n)}\cong\frac{\Z}{(p_1^{n_r})}\times\dots\times\frac{\Z}{(p_r^{n_r})}
+    \end{equation*}
+    and 
+    \begin{equation*}
+        \left(\frac{\Z}{(n)}\right)^*\cong\left(\frac{\Z}{(p_1^{n_r})}\right)^*\times\dots\times\left(\frac{\Z}{(p_r^{n_r})}\right)^*
+    \end{equation*}
+    where $(\Z/n\Z)^*$ is the group of units.
+\end{prop}
+
+
+
+\begin{prop}
+    The polynomial $x^4+x+1$ is irreducible over $\Q$.
+\end{prop}
+\begin{proof}
+    It is primitive, hence it is irreducible if there exists prime $p$ such that $f\mod p$ is irreducible over $\F_p$. Let $p=2$. 
+    \begin{enumerate}
+        \item $f\mod 2$ has no linear factors: $0,1$ are not roots of this polynomial.
+        \item $f$ has no quadratic factors: there is only one irreducible quadratic polynomial over $\F_2$: $x^2+x+1$. However, $f(x)\neq (x^2+x+1)^2$.
+    \end{enumerate}
+    Thus we see $f$ is irreducible.
+\end{proof}
+
+
+
+
+
+
+
+
+% \begin{prob}
+% Let \( k \subseteq F \) be an algebraic extension, in positive characteristic. With notation as in Exercises 4.14 and 4.16, prove that the extension \( F_{\text{sep}} \subseteq F \) is purely inseparable. Prove that an extension \( k \subseteq F \) is purely inseparable if and only if \( F_{\text{sep}} = k \).
+% \end{prob}
+
+% \begin{prob}
+% Let \( k \subseteq F \) be a finite extension, in positive characteristic. Define the inseparable degree \([F : k]_i\) to be the quotient \([F : k]/[F : k]_s\).
+
+% \begin{itemize}
+%     \item Prove that \([k(\alpha) : k]_i\) equals the inseparable degree of \(\alpha\), as defined in Exercise 4.13.
+%     \item Prove that the inseparable degree is multiplicative: if \( k \subseteq E \subseteq F \) are finite extensions, then \([F : k]_i = [F : E]_i[E : k]_i\).
+%     \item Prove that a finite extension is purely inseparable if and only if its inseparable degree equals its degree.
+%     \item With notation as in Exercise 4.16, prove that \([F : k]_s = [F_{\text{sep}} : k]\) and \([F : k]_i = [F : F_{\text{sep}}]\). 
+% \end{itemize}
+
+% In particular, \([F : k]_s\) divides \([F : k]\); the inseparable degree \([F : k]_i\) is an integer.
+% \end{prob}
+
+
+% \begin{prob}
+% Let \( k \subseteq E \subseteq F \) be finite separable extensions, and let \(\alpha \in F\). Prove that
+% \[
+% N_{k \subseteq F}(\alpha) = N_{k \subseteq E}(N_{E \subseteq F}(\alpha))
+% \]
+% and 
+% \[
+% \operatorname{tr}_{k \subseteq F}(\alpha) = \operatorname{tr}_{k \subseteq E}(\operatorname{tr}_{E \subseteq F}(\alpha)).
+% \]
+% This 'transitivity' of norm and trace extends to separable extensions.
+% \end{prob}
+
+
+% \begin{prob}
+% Generalize Exercises 4.19–4.21 to all finite extensions \( k \subseteq F \). (For the norm, raise to power \([F : k]_i\); for the trace, multiply by \([F : k]_i\).)
+% \end{prob}
+
+
+
+
+
+\section{Finite Fields, Cyclotomic Polynomials}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\chapter{Linear Algebra I}
+
+\section{Basis}
+\begin{prob}[1.5]
+    Let \( R \) be an integral domain. Prove or disprove the following:
+\begin{itemize}
+    \item Every linearly independent subset of a free \( R \)-module may be completed to a basis.
+    \item Every generating subset of a free \( R \)-module contains a basis.
+\end{itemize}
+\end{prob}
+\begin{proof}
+    Both are not true. $(2)\subset\Z, (2),(3)\subset\Z$.
+\end{proof}
+
+\begin{prob}[1.11]
+    Let \( R \) be a commutative ring, and let \( F = R^{\oplus B} \) be a free module over \( R \). Let \( \mathfrak{m} \) be a maximal ideal of \( R \), and let \( k = R/\mathfrak{m} \) be the quotient field. Prove that
+\[
+F/\mathfrak{m}F \cong k^{\oplus B}
+\]
+as \( k \)-vector spaces. Prove that commutative rings satisfy the IBN (Invariant Basis Number) property.
+\end{prob}
+\begin{proof}
+    We can reduce any commutative ring to the field case.
+\end{proof}
+
+
+\begin{prob}[1.12]
+    Let \( V \) be a vector space over a field \( k \), and let \( R = \text{End}_{k\text{-Vect}}(V) \) be its ring of endomorphisms (cf. Exercise [III]5.9). (Note that \( R \) is not commutative in general.)
+\begin{itemize}
+    \item Prove that \(\text{End}_{k\text{-Vect}}(V \oplus V) \cong R^4\) as an \( R \)-module.
+    \item Prove that \( R \) does not satisfy the IBN property if \( V = k^{\oplus \mathbb{N}} \).
+\end{itemize}
+(Note that \( V \cong V \oplus V \) if \( V = k^{\oplus \mathbb{N}} \).)
+\end{prob}
+\begin{proof}
+    Let $\varphi:V\oplus V\to V\oplus V$, then $\varphi$ can be viewed as a $2\times 2$ matrix. 
+
+    For $V=k^{\oplus\mathbb{N}}$, we have 
+    \begin{equation*}
+        R=\text{End}(V)=\text{End}(V\oplus V)=R^4
+    \end{equation*}
+
+
+\end{proof}
+
+\begin{prob}[1.19]
+    Let \( k \) be a field, and let \( f(x) \in k[x] \) be any polynomial. Prove that there exists a multiple of \( f(x) \) in which all exponents of nonzero monomials are prime integers. 
+
+\textit{Example:} For \( f(x) = 1 + x^5 + x^6 \),
+\[
+(1 + x^5 + x^6)(2x^2 - x^3 + x^5 - x^8 + x^9 - x^{10} + x^{11}) = 2x^2 - x^3 + x^5 + 2x^7 + 2x^{11} - x^{13} + x^{17}.
+\]
+\end{prob}
+\begin{proof}
+    Note that $k[x]/(f(x))$ is a finitely generated $k$-module, i.e., a vector space of finite dimensions, hence the polynomials of prime powers are linearly dependent and thus a nontrivial combiantion is in $(f(x))$.
+\end{proof}
+
+
+
+
+
+\section{Nakayama's Lemma}
+
+\begin{prob}[3.7]
+    Let \( R \) be a commutative ring, \( M \) a finitely generated \( R \)-module, and let \( J \) be an ideal of \( R \). Assume \( JM = M \). Prove that there exists an element \( b \in J \) such that \((1 + b)M = 0\). 
+\end{prob}
+\begin{proof}
+    Let $M=\la m_1,\dots, m_r\ra$, since $JM=M$, we can write any $m_i\in M$ as 
+    \begin{equation*}
+        m_i=\sum_{j=1}^rb_{ij}m_j
+    \end{equation*}
+    defining matrix $B=(b_{ij})$, we see that 
+    \begin{equation*}
+        B\begin{pmatrix}
+            m_1\\
+            \dots\\
+            m_r
+        \end{pmatrix}=\begin{pmatrix}
+            m_1\\
+            \dots\\
+            m_r
+        \end{pmatrix}
+    \end{equation*}
+    Thus $(B-I)m=0$ for all $m\in M$, by previous exercise, we know $\det(B-1)=0$, we see that there exists $b\in J$ such that 
+    \begin{equation*}
+        (1+b)M=0
+    \end{equation*}
+\end{proof}
+
+
+
+
+
+\begin{prob}[3.8]
+    Let \( R \) be a commutative ring, \( M \) be a finitely generated \( R \)-module, and let \( J \) be an ideal of \( R \) contained in the Jacobson radical of \( R \). Prove that 
+\[
+M = 0 \iff JM = M.
+\] 
+\end{prob}
+\begin{proof}
+    It follows directly from the above exercise. If $JM=M$, then there exists $b\in J$ such that $(1+b)M=0$, moreover, if $b\in J$, then $1+b$ is a unit, i.e., $m=0$ for all $m\in M$.
+\end{proof}
+
+
+
+\begin{prob}[3.9]
+    Let \( R \) be a commutative local ring, that is, a ring with a single maximal ideal \( \mathfrak{m} \), and let \( M, N \) be finitely generated \( R \)-modules. Prove that if \( M = \mathfrak{m}M + N \), then \( M = N \). (Hint: apply Nakayama's to $M/N$ and note that $\mathfrak{m}$ is the Jacobson ideal),.
+\end{prob}
+\begin{proof}
+    Directly follows from the hint.
+\end{proof}
+
+\begin{prob}[3.10]
+    Let \( R \) be a commutative local ring, and let \( M \) be a finitely generated \( R \)-module. Note that \( M/\mathfrak{m}M \) is a finite-dimensional vector space over the field \( R/\mathfrak{m} \); let \( m_1, \ldots, m_r \in M \) be elements whose cosets mod \( \mathfrak{m}M \) form a basis of \( M/\mathfrak{m}M \). Prove that \( m_1, \ldots, m_r \) generate \( M \). Hint: Show that \(\langle m_1, \ldots, m_r \rangle + \mathfrak{m}M = M\); then apply Nakayama's lemma in the form of Exercise 3.9.
+\end{prob}
+\begin{proof}
+    We will write out this: for every $m\in M$, we know there exists $a_i$ such that
+    \begin{equation*}
+        m-\sum_{i=1}^ia_{i}m_i\in mM
+    \end{equation*}
+    hence 
+    \begin{equation*}
+        \la m_1,\dots, m_r\ra+\mathfrak{m}M=M
+    \end{equation*}
+    Then it follows from if $M=\mathfrak{m}M+N$, then $M=N$.
+\end{proof}
+
+
+
+
+
+
+
+\section{Invariants}
+\begin{prop}
+    Let $R$ be a an integral domain, $\alpha$ is injective iff $\det(\alpha)\neq 0$, and $\alpha$ is surjective iff $\det(\alpha)$ is a unit.
+\end{prop}
+
+\begin{prob}[6.10]
+    Let \( F_1, F_2 \) be free \( R \)-modules of finite rank, and let \( \alpha_1 \), resp., \( \alpha_2 \), be linear transformations of \( F_1 \), resp., \( F_2 \). Let \( F = F_1 \oplus F_2 \), and let \( \alpha = \alpha_1 \oplus \alpha_2 \) be the linear transformation of \( F \) restricting to \( \alpha_1 \) on \( F_1 \) and \( \alpha_2 \) on \( F_2 \).
+
+    \begin{itemize}
+        \item Prove that \( P_\alpha(t) = P_{\alpha_1}(t)P_{\alpha_2}(t) \). That is, the characteristic polynomial is multiplicative under direct sums.
+    
+        \item Find an example showing that the minimal polynomial is not multiplicative under direct sums.
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    The determinant of block diagonal matrices is the product of the determinant. Let both be the identity matrix.
+\end{proof}
+
+
+\begin{prob}[6.13]
+    Let $A$ be a square matrix with integer entries. Prove that if $\lambda$ is a rational eigenvalue, then $\lambda\in\mathbb{Z}$.
+\end{prob}
+
+\begin{proof}
+    Let $p(t)=a_0+a_1t+\dots+a_nt^n$ be the characteristic polynomial of $A$, then $p(\lambda)=0$, letting $\lambda=\frac{p}{q}$, then 
+    \begin{equation*}
+        p\mid a_0,\quad q\mid a_n
+    \end{equation*}
+    we know that $p$ is monic, thus $a_n=1$, hence $\lambda\in\Z$.
+\end{proof}
+
+\begin{prob}[7.3]
+    Prove that two linear transformations of a vector space of dimension \(\leq 3\) are similar if and only if they have the same characteristic and minimal polynomials. Is this true in dimension \(4\)?
+\end{prob}
+\begin{proof}
+    Two matrices are similar iff they have the same Jordan form. For $n=4$: consider 
+    \[
+    T_1=\begin{pmatrix}
+\lambda & 1 & 0 & 0 \\
+0 & \lambda & 0 & 0 \\
+0 & 0 & \lambda & 1 \\
+0 & 0 & 0 & \lambda
+\end{pmatrix} \quad 
+T_2=\begin{pmatrix}
+\lambda & 1 & 0 & 0 \\
+0 & \lambda & 0 & 0 \\
+0 & 0 & \lambda & 0 \\
+0 & 0 & 0 & \lambda
+\end{pmatrix}
+\]
+Both $T_1,T_2$ have $p(t)=(t-\lambda)^4$ and $m(t)=(t-\lambda)^2$, but they are not similar ($\lambda$ has $2$ eigenvectors in $T_1$ but $3$ in $T_2$).
+\end{proof}
+\begin{warn}
+    Each distinct Jordan block contributes one dimension to the corresponding eigenspace. Thus, $\dim(T-\lambda I)$ is equal to the number of Jordan blocks with eigenvalue $\lambda$.
+\end{warn}
+
+\begin{prop}[7.4]
+    Let \(k\) be a field, and let \(K\) be a field containing \(k\). Then \(A\) and \(B\) are similar over \(k\) if and only if they are similar over \(K\).
+\end{prop}
+
+
+
+\begin{prob}[7.7]
+    Let \( V \) be a \( k \)-vector space of dimension \( n \), and let \( \alpha \in \text{End}_k(V) \). Prove that the minimal and characteristic polynomials of \( \alpha \) coincide if and only if there is a vector \( v \in V \) such that  
+    \[ \{v, \alpha(v), \dots, \alpha^{n-1}(v)\} \] 
+is a basis of \( V \).
+\end{prob}
+\begin{proof}
+    The minimal and characteristic of $\alpha$ coincide iff 
+    \begin{equation*}
+        V\cong\frac{k[t]}{(f(t))}
+    \end{equation*}
+    as $k[t]$ modules, where $f(t)=b_nt^n+\dots+b_0$ has an action on $V$ as
+    \begin{equation*}
+        f(t)(v)=b_n\alpha^n(v)+\dots+b_0v
+    \end{equation*} 
+    (And $\alpha$ has an action on the $k[t]$-module by multiplication by $t$).
+    The RHS has basis $\{1,t,\dots, t^{n-1}\}$,  and we are given a isomorphism $\varphi: \frac{k[t]}{(f(t))}\to V$ as  $\varphi: t\mapsto\alpha(\varphi(1))$, hence we see 
+    \begin{equation*}
+        \{\varphi(1),\alpha(\varphi(1)),\dots, \alpha^{n-1}(\varphi(1))\}
+    \end{equation*}
+    is a basis of $V$. Note that for example, as $k[t]$-modules, we have
+    \begin{equation*}
+        \varphi(t)=t\varphi(1)=\alpha(\varphi(1))
+    \end{equation*}
+    because $\alpha$ acts by multiplication by $t$.
+
+    Conversely, suppose that $\{v,\alpha(v),\alpha^{n-1}(v)\}$ is a basis for $V$, then there exists a surjective map $\psi: k[t]\to V$ given by 
+    \begin{equation*}
+        \psi(1)=v
+    \end{equation*}
+    because 
+    \begin{equation*}
+        \psi(t^k)=t^k\varphi(1)=\alpha^{k}(v)
+    \end{equation*}
+    Hence 
+    \begin{equation*}
+        V\cong\frac{k[t]}{(f(t))}
+    \end{equation*}
+    for irreducible $(f(t))$ because $k[t]$ is a PID. This shows that characteristic polynomial and minimal polynomial coincide.
+\end{proof}
+
+
+
+
+\begin{prob}[7.8]
+    Let \( V \) be a \( k \)-vector space of dimension \( n \), and let \( \alpha \in \text{End}_k(V) \). Prove that the characteristic polynomial \( P_\alpha(t) \) divides a power of the minimal polynomial \( m_\alpha(t) \).
+\end{prob}
+\begin{proof}
+    Assume that $k$ is algebraically closed, and polynomials factors, the minimal polynomial $m_\alpha$ contains all the $(t-\lambda_i)$ for distinct $\lambda_i$'s by Lemma 7.12. Thus $P_\alpha$ divides $(m_\alpha)^n$.
+
+    The more general case follows directly from decomposition theorem: there exists monic $f_1,\dots, f_m$ such that 
+    \begin{equation*}
+        V\cong\frac{k[t]}{(f_1(t))}\oplus\dots\oplus\frac{k[t]}{(f_m(t))}
+    \end{equation*}
+    as $k[t]$-modules, where $f_1(t)\mid\dots\mid f_m(t)$. The characteristic and minimal polynomials are such that 
+    \begin{equation*}
+        P_\alpha(t)=f_1(t)\dots f_m(t)
+    \end{equation*}
+    and 
+    \begin{equation*}
+        m_\alpha(t)=f_m(t)
+    \end{equation*}
+    but the minimal and characteristic polynomials are the same over $k$ and $\bar{k}$, so no need for the assumption that $k$ is algebraically closed, so we are done.
+\end{proof}
+
+
+\begin{prob}[7.12]
+    Let \( V \) be a finite-dimensional \( k \)-vector space, and let \( \alpha \in \text{End}_k(V) \) be a diagonalizable linear transformation. Assume that \( W \subseteq V \) is an invariant subspace, so that \( \alpha \) induces a linear transformation \( \alpha|_W \in \text{End}_k(W) \). Prove that \( \alpha|_W \) is also diagonalizable. (Use Proposition 7.18.)
+\end{prob}
+\begin{proof}
+    Assume that characteristic polynomial factors completely over $k$, then $\alpha$ is diagonalizable iff minimal polynomial $m_\alpha$ has no repeated roots, thus $\alpha\vert_W$ also has no repeated roots as it divides $m_\alpha$.
+\end{proof}
+
+
+\begin{prob}[7.13]
+    Let \( R \) be an integral domain. Assume that \( A \in \mathcal{M}_n(R) \) is diagonalizable, with distinct eigenvalues. Let \( B \in \mathcal{M}_n(R) \) be such that \( AB = BA \). Prove that \( B \) is also diagonalizable, and in fact it is diagonal w.r.t. a basis of eigenvectors of \( A \). (If \( P \) is such that \( PAP^{-1} \) is diagonal, note that \( PAP^{-1} \) and \( PBP^{-1} \) also commute.)
+\end{prob}
+\begin{proof}
+    It suffices to see that if $v_1\neq 0$ is such that $Av_1=\lambda_1v_1$, then
+    \begin{align*}
+        A(Bv_1)&=B(Av_1)\\
+        &=B\lambda_1v_1\\
+        &=\lambda_1(Bv_1)
+    \end{align*}
+    Thus $Bv_1$ is contained in the one-dimensional subspace generated by $v_1$.
+\end{proof}
+
+
+\begin{prob}[7.14]
+    Prove that "commuting transformations may be simultaneously diagonalized", in the following sense. Let \( V \) be a finite-dimensional vector space, and let \( \alpha, \beta \in \text{End}_k(V) \) be diagonalizable transformations. Assume that \( \alpha\beta = \beta\alpha \). Prove that \( V \) has a basis consisting of eigenvectors of both \( \alpha \) and \( \beta \). (Argue as in Exercise 7.13 to reduce to the case in which \( V \) is an eigenspace for \( \alpha \); then use Exercise 7.12.)
+\end{prob}
+\begin{proof}
+    Separate into eigenspaces: consider eigenspace $E_1$ of $\alpha$, then diagonalize $\beta$ in $E_1$ (by 7.12), note that $E_1$ is invariant under $\beta$.
+\end{proof}
+
+\begin{prob}[7.15]
+    A \textbf{complete flag} of subspaces of a vector space \( V \) of dimension \( n \) is a sequence of nested subspaces
+\[
+0 = V_0 \subsetneq V_1 \subsetneq \cdots \subsetneq V_{n-1} \subsetneq V_n = V
+\]
+with \(\dim V_i = i\). In other words, a complete flag is a composition series in the sense of Exercise 1.16. Let $V$ be a finite-dim vector space over algebraically closed $k$. Prove that every linear transformation $\alpha$ of $V$ preserves a complete flag: there is a complete flag as above and such that $\alpha(V_i)\subset V_i$.
+
+Find a linear transformation of $\R^2$ that does not preserve a complete flag.
+\end{prob}
+
+\begin{proof}
+    It suffices take $V_i$ as the subspaces generated by eigenvectors.
+    An example in $\R^2$:
+    \begin{equation*}
+        \begin{pmatrix}
+            0&1\\
+            -1&0
+        \end{pmatrix}
+    \end{equation*}
+
+\end{proof}
+
+
+\section{Classification of Finitely Generated Modules over PID}
+
+5.2, 5.13, 5.14
+
+
+
+
+
+
+
+% \begin{prob}[7.17]
+%     A matrix \( M \in M_n(\mathbb{C}) \) is \textbf{normal} if \( MM^\dagger = M^\dagger M \). Note that unitary matrices ($UU^*=U^*U=I$) and Hermitian matrices ($U=U^*$) are both normal. Prove that a triangular normal matrix is diagonal. [7.18]
+% \end{prob}
+% \begin{proof}
+%     Direct computation.
+% \end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\chapter{Fields}
+
+
+
+
+\section{}
+
+
+\begin{prob}
+    Fix an ideal $I$, show that 
+    \begin{equation*}
+        \text{rad}(I)=\bigcap_{\mathfrak{p}\supset I}\mathfrak{p}
+    \end{equation*}
+    where the RHS ranges over all prime ideals $\mathfrak{p}$ containing $I$. This shows that the nilradical is the intersection of all prime ideals.
+\end{prob}
+\textcolor{red}{here}
+
+
+
+% \begin{prob}
+% Prove that if \( k \subseteq K \) is a field extension, then \(\text{char}\, k = \text{char}\, K\). Prove that the category \(\text{Fld}\) has no initial object.
+% \end{prob}
+
+
+\begin{prop}
+    If \( k \subseteq E \) is a field extension, then \(\text{char}\, k = \text{char}\, E\).
+\end{prop}
+
+\begin{prop}
+    For simple extension $k\subset k(\alpha)$:
+    \begin{enumerate}
+        \item If $\alpha$ is algebraic, then every element in $k(\alpha)$ can be written as a polynomial in $\alpha$.
+        \item If $\alpha$ is transcendental, then every element in $k(\alpha)$ can be written as a rational function in $\alpha$.
+    \end{enumerate}
+\end{prop}
+
+
+\begin{prob}
+    Let $\varphi: k(t)\to k(\alpha)$, such that 
+    \begin{equation*}
+        \varphi: t\mapsto \alpha
+    \end{equation*}
+    Why is this map not in general surjective?
+\end{prob}
+\begin{proof}
+    Suppose that $\alpha$ is algebraic, then $k(\alpha)$ is finite-dimensional, and $\varphi$ is a field homomorphism, so if nontrivial then is injective. This is a contradiciton.
+\end{proof}
+
+
+\begin{prob}
+Let \( k \subseteq k(\alpha) \) be a simple extension, with \(\alpha\) transcendental over \(k\). Let \( E \) be a subfield of \( k(\alpha) \) properly containing \(k\). Prove that \( k(\alpha) \) is a finite extension of \(E\).
+\end{prob}
+\begin{proof}
+    Since every element in $k(\alpha)$ is a rational function in $\alpha$, then $E$ contains at least some element 
+    \begin{equation*}
+        \frac{p(\alpha)}{q(\alpha)}\in E
+    \end{equation*}
+    It suffices to show that $\alpha$ is algebraic over $E$, indeed we can define 
+    \begin{equation*}
+        f(t)=\frac{p(\alpha)}{q(\alpha)}q(t)-p(t)
+    \end{equation*}
+    We see that $f(\alpha)=0$. Hence $[k(\alpha):E]\leq\deg(f)$, we are done.
+\end{proof}
+
+
+\begin{prob}
+    Show the following:
+\begin{enumerate}
+    \item Prove that there is exactly one subfield of \(\mathbb{R}\) isomorphic to \(\mathbb{Q}[t]/(t^2 - 2)\).
+    \item Prove that there are exactly three subfields of \(\mathbb{C}\) isomorphic to \(\mathbb{Q}[t]/(t^3 - 2)\).
+\end{enumerate}
+% From a ''topological'' point of view, one of these copies of \(\mathbb{Q}[t]/(t^3 - 2)\) looks very different from the other two: it is not dense in \(\mathbb{C}\), but the others are.
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item We have $\Q(\sqrt{2})=\Q(-\sqrt{2})$.
+        \item Let $\om_3$ denote the $3$rd root of unity, then the three subfields are 
+        \begin{equation*}
+            \Q(\sqrt[3]{2}), \Q(\om_3\sqrt[3]{2}), \Q(\om_3^2\sqrt[3]{2})
+        \end{equation*}
+        We show that they are not contained in one another: suppose 
+        \begin{equation*}
+            \om_3\sqrt[3]{2}\in\Q(\om_3^2\sqrt[3]{2})
+        \end{equation*}
+        Then 
+        \begin{equation*}
+            \frac{\om_3\sqrt[3]{2}}{\om_3^2\sqrt[3]{2}}=\om_3^{-1}=\om_3^2\in\Q(\om_3^2\sqrt[3]{2})
+        \end{equation*}
+        but $\om_3^2$ has minimal polynomial 
+        \begin{equation*}
+            p(t)=t^2+t+1
+        \end{equation*}
+        over $\Q$, which means that 
+        \begin{equation*}
+            \Q\subset\Q(\om_3^2)\subset\Q(\om_3^2\sqrt[3]{2})
+        \end{equation*}
+        a degree $3$ extension contains a degree $2$ extension, which is impossible.
+    \end{enumerate}
+\end{proof}
+
+\begin{prob}
+Let \( k \subseteq F \) be a field extension, and let \( f(x) \in k[x] \) be a polynomial. Prove that \(\text{Aut}_k(F)\) acts on the set of roots of \( f(x) \) contained in \(F\). Provide examples showing that this action need not be transitive or faithful.
+\end{prob}
+\begin{proof}
+    Not transitive: $Q(\sqrt{2}, \sqrt{3})$, there is $\varphi$ that takes $\sqrt{2}$ to $\sqrt{3}$. Not faithful: consider $f(x)=x^2-2$ in this field extension, then $\sigma: \sqrt{3}\mapsto -\sqrt{3}$ fixes all roots of $f$, but $\sigma$ is not the identity.
+\end{proof}
+
+\begin{prop}
+Let \( k \subseteq F \) be a field extension, and let \(\alpha \in F\) be algebraic over \(k\). Let $p(x)$ be the minimal polynomial of $\alpha$, then $f(\alpha)=0$ iff $p(x) \mid f(x)$. 
+% \begin{itemize}
+%     \item Suppose \( p(x) \in k[x] \) is an irreducible monic polynomial such that \( p(\alpha) = 0 \); prove that \( p(x) \) is the minimal polynomial of \(\alpha\) over \(k\), in the sense of Proposition I.3.
+%     \item Let \( f(x) \in k[x] \). Prove that \( f(\alpha) = 0 \) if and only if \( p(x) \mid f(x) \).
+%     \item Show that the minimal polynomial of \(\alpha\) is the minimal polynomial of a certain \(k\)-linear transformation of \(F\), in the sense of Definition VI.6.12.
+% \end{itemize}
+\end{prop}
+
+\begin{prob}
+Let \( f(x) \in k[x] \) be a polynomial over a field \( k \) of degree \( d \), and let \(\alpha_1, \ldots, \alpha_d\) be the roots of \( f(x) \) in an extension of \( k \) where the polynomial factors completely. For a subset \( I \subseteq \{1, \ldots, d\} \), denote by \(\alpha_I\) the sum \(\sum_{i \in I} \alpha_i\). Assume that \(\alpha_I \in k\) only for \( I = \emptyset \) and \( I = \{1, \ldots, d\} \). Prove that \( f(x) \) is irreducible over \( k \).
+\end{prob}
+\begin{proof}
+    Suppose that $f(x)=g(x)h(x)$, then let $\alpha_I=\sum_{i=1}^na_i$, where the sum is over the roots of $g$. We claim that $\alpha_I\in k$: 
+    \begin{equation*}
+        g(x)=(x-\alpha_1)\dots(x-\alpha_n)
+    \end{equation*} 
+    then the coefficient of $x^{n-1}$ is exactly $(-1)^n\alpha_I$, which is in $k$.
+\end{proof}
+
+\begin{prop}
+Let \( k \) be a finite field. Prove that the order \(|k|\) is a power of a prime integer. (Any finite field has characteristic of some prime $p$, then it is a vector space over $\F_p$).
+\end{prop}
+
+
+\begin{prop}
+Let \( k \) be a field.Then the ring of square \( n \times n \) matrices \(\mathcal{M}_n(k)\) contains an isomorphic copy of every extension of \( k \) of degree \(\leq n\). Proof: if \( k \subseteq F \) is an extension of degree \( n \) and \(\alpha \in F\), then `multiplication by \(\alpha\)` is a \(k\)-linear transformation of \(F\).
+\end{prop}
+\begin{proof}
+    Note that this determines a \text{injective ring map} $\varphi: F\to\text{End}_kF$, 
+    \begin{equation*}
+        \varphi:\alpha\mapsto M_\alpha
+    \end{equation*}
+\end{proof}
+
+\begin{prob}
+Let \( k \subseteq F \) be a finite field extension, and let \( p(x) \) be the characteristic polynomial of the \(k\)-linear transformation of \(F\) given by multiplication by \(\alpha\). Prove that \( p(\alpha) = 0 \).
+\end{prob}
+\begin{proof}
+    We have $p(M_\alpha)=0$ by Cayley-Hamilton, because the above map is injective, we know 
+    \begin{equation*}
+        p(\alpha)=0
+    \end{equation*}
+\end{proof}
+
+
+\begin{prob}
+Let \( k \subseteq F \) be a finite field extension, and let \( \alpha \in F \). The norm of \( \alpha \), \( N_{k \subseteq F}(\alpha) \), is the determinant of the linear transformation of \( F \) given by multiplication by \( \alpha \). Prove that the norm is multiplicative: for \( \alpha, \beta \in F \),
+\[ N_{k \subseteq F}(\alpha \beta) = N_{k \subseteq F}(\alpha) N_{k \subseteq F}(\beta). \]
+Compute the norm of a complex number viewed as an element of the extension \( \mathbb{R} \subseteq \mathbb{C} \). Do the same for elements of an extension \( \mathbb{Q}(\sqrt{d}) \) of \( \mathbb{Q} \), where \( d \) is an integer that is not a square.
+\end{prob}
+\begin{proof}
+    It's just saying that 
+    \begin{equation*}
+        \det(M_{\alpha\beta})=\det(M_\alpha)\det(M_\beta)
+    \end{equation*}
+    and you check this by hand.
+\end{proof}
+
+\begin{prob}
+Define the trace \( \operatorname{tr}_{k \subseteq F}(\alpha) \) of an element \( \alpha \) of a finite extension \( F \) of a field \( k \) analogously to the norm. Prove that the trace is additive:
+\[ \operatorname{tr}_{k \subseteq F}(\alpha + \beta) = \operatorname{tr}_{k \subseteq F}(\alpha) + \operatorname{tr}_{k \subseteq F}(\beta) \]
+for \( \alpha, \beta \in F \). Compute the trace of an element of an extension \( \mathbb{Q} \subseteq \mathbb{Q}(\sqrt{d}) \), for \( d \) an integer that is not a square.
+\end{prob}
+\begin{proof}
+    This is just to say trace is additive as a ring map.
+\end{proof}
+
+\begin{prob}
+Let \( k \subseteq k(\alpha) \) be a simple algebraic extension, and let \( x^d + a_{d-1}x^{d-1} + \cdots + a_0 \) be the minimal polynomial of \( \alpha \) over \( k \). Prove that
+\[ \operatorname{tr}_{k \subseteq k(\alpha)}(\alpha) = -a_{d-1} \quad \text{and} \quad N_{k \subseteq k(\alpha)}(\alpha) = (-1)^d a_0. \]
+\end{prob}
+\begin{proof}
+    Write the basis as $\{1,\alpha,\dots, \alpha^{n-1}\}$.
+\end{proof}
+
+\begin{prob}
+Let \( k \subseteq F \) be a finite extension, and let \( \alpha \in F \). Assume \([F : k(\alpha)] = r\). Prove that
+\[ \operatorname{tr}_{k \subseteq F}(\alpha) = r \operatorname{tr}_{k \subseteq k(\alpha)}(\alpha) \quad \text{and} \quad N_{k \subseteq F}(\alpha) = N_{k \subseteq k(\alpha)}(\alpha)^r. \]
+(Hint: If \( f_1, \ldots, f_r \) is a basis of \( F \) over \( k(\alpha) \) and \( \alpha \) has degree \( d \) over \( k \), then \( (f_i \alpha^j)_{i=1,\ldots,r} \) is a basis of \( F \) over \( k \). The matrix corresponding to multiplication by \( \alpha \) with respect to this basis consists of \( r \) identical square blocks.)
+\end{prob}
+
+
+
+\begin{prob}
+Let \( k \subseteq L \subseteq F \) be fields, and let \( \alpha \in F \). If \( k \subseteq k(\alpha) \) is a finite extension, then \( L \subseteq L(\alpha) \) is finite and \([L(\alpha) : L] \leq [k(\alpha) : k]\).
+\end{prob}
+\begin{proof}
+    Let $p_k$ be the minimal polynomial of $\alpha$ over $k$, then the minimal polynomial $p_L$ of $\alpha$ over $L$ is such that 
+    \begin{equation*}
+        p_L \mid p_k
+    \end{equation*}
+    because $p_k(\alpha)=0$. Thus $L(\alpha)/L$ has degree less than or equal to that of $k(\alpha)/k$.
+\end{proof}
+
+% \begin{prob}
+% Let \( k \subseteq F = k(\alpha_1, \ldots, \alpha_n) \) be a finitely generated extension. Prove that the evaluation map
+% \[ k[t_1, \ldots, t_n] \to F, \quad t_i \mapsto \alpha_i \]
+% is an epimorphism of rings (although it need not be onto).
+% \end{prob}
+
+\begin{prob}
+Let \( R \) be a ring sandwiched between a field \( k \) and an algebraic extension \( F \) of \( k \). Prove that \( R \) is a field. Is it necessary to assume that the extension is algebraic? 
+\end{prob}
+\begin{proof}
+    \begin{warn}
+        You should be comfortable with solving for $\alpha^{-1}$.
+    \end{warn}
+    It suffices to show that $R$ is closed under taking inverses. We have the minimal polynomial of $\alpha\in R$ as 
+    \begin{equation*}
+        p(t)=t^n+\dots +a_1t+a_0
+    \end{equation*}
+    Then solving for $\alpha^{-1}$: 
+    \begin{equation*}
+        \alpha(\alpha^{n-1}+\dots+a_1)=-a_0
+    \end{equation*}
+    Thus we see 
+    \begin{equation*}
+        \alpha^{-1}=-\frac{(\alpha^{n-1}+\dots+a_1)}{a_0}
+    \end{equation*}
+    Since $R$ is a ring containing $\alpha$, then $\alpha^{-1}$ is in $R$. The assumption is necessary: $\Q\subset\Q[x]\subset\Q(x)$.
+\end{proof}
+
+\begin{prop}
+Let \( k \subseteq F \) be a field extension of degree \( p \), a prime integer. Then there are no subrings of \( F \) properly containing \( k \) and properly contained in \( F \).
+\end{prop}
+\begin{proof}
+    By the previous problem.
+\end{proof}
+
+\begin{prob}
+Let \( p \) be a prime integer, and let \( \alpha = \sqrt[p]{2} \in \mathbb{R} \). Let \( g(x) \in \mathbb{Q}[x] \) be any non-constant polynomial of degree \( <p \). Prove that \( \alpha \) may be expressed as a polynomial in \( g(\alpha) \) with rational coefficients.  Note an analogous statement for \( \sqrt[4]{2} \) is false.
+\end{prob}
+\begin{proof}
+    Consider 
+    \begin{equation*}
+        \Q\subset\Q(g(\alpha))\subset Q(\alpha)
+    \end{equation*}
+    We must have $\Q(g(\alpha))=\Q(\alpha)$. 
+\end{proof}
+
+
+\begin{prob}
+Let \( k \subseteq F \) be a field extension, and let \( E \) be the intermediate field consisting of the elements of \( F \) which are algebraic over \( k \). For \( \alpha \in F \), prove that \( \alpha \) is algebraic over \( E \) if and only if \( \alpha \in E \). 
+\end{prob}
+\begin{proof}
+    \begin{warn}
+        This uses finitely generated extensions are finite iff algebraic!
+    \end{warn}
+    For forward direction, it suffices to show that $\alpha$ is algebraic over $k$, consider the minimal polynomial of $\alpha$ over $E$, 
+    \begin{equation*}
+        p(t)=t^n+\dots+a_1t+a_0\in E[t]
+    \end{equation*}
+    Then $\alpha$ is algebraic over $k(a_0,\dots, a_{n-1})$, which is finite over $k$ because each $a_i$ is in $E$, hence algebraic over $k$. Now 
+    \begin{equation*}
+        k(a_0,\dots, a_{n-1},\alpha)
+    \end{equation*}
+    is a finite extension, i.e., $\alpha$ is algebraic over $k$. 
+\end{proof}
+
+
+\begin{prob}
+Let \( k \subseteq F \) be a field extension, and let \( \alpha \in F \), \( \beta \in F \) be algebraic, of degree \( d \), \( e \), resp. Assume \( d \), \( e \) are relatively prime, and let \( p(x) \) be the minimal polynomial of \( \beta \) over \( k \). Prove \( p(x) \) is irreducible over \( k(\alpha) \).
+\end{prob}
+\begin{warn}
+    This is a qual question.
+\end{warn}
+\begin{proof}
+    It suffices to show that $k(\alpha,\beta)/k(\alpha)$ has degree $e$. We know that $[k(\alpha,\beta):k(\alpha)]\leq e$, moreover, 
+    \begin{equation*}
+        e \mid d\cdot [k(\alpha,\beta):k(\alpha)]
+    \end{equation*}
+    which implies that 
+    \begin{equation*}
+        e \mid [k(\alpha,\beta):k(\alpha)]
+    \end{equation*}
+    In other words, $[k(\alpha,\beta):k(\alpha)]=e$, and we are done.
+    \[\begin{tikzcd}
+        & {k(\alpha, \beta)} \\
+        {k(\alpha)} && {k(\beta)} \\
+        & k
+        \arrow["{\textcolor{red}{e}}", no head, from=2-1, to=1-2]
+        \arrow[no head, from=2-3, to=1-2]
+        \arrow["d"', no head, from=3-2, to=2-1]
+        \arrow["e", no head, from=3-2, to=2-3]
+    \end{tikzcd}\]
+\end{proof}
+
+
+\begin{prob}
+Express \( \sqrt{2} \) explicitly as a polynomial function in \( \sqrt{2} + \sqrt{3} \) with rational coefficients.
+\end{prob}
+\begin{proof}
+    Let $a=\sqrt{2} + \sqrt{3}$, find minimal polynomial, solve for $a^{-1}$: write $a^{-1}$ as a polynomial in $a$, then we see $2\sqrt{2}=a-a^{-1}$.
+\end{proof}
+
+\begin{prop}
+Let \( k \) be a field of characteristic \( \neq 2 \), and let \( a, b \in k \) be elements that are not squares in \( k \); prove that \( k(\sqrt{a}, \sqrt{b}) = k(\sqrt{a} + \sqrt{b}) \).
+\end{prop}
+
+\begin{prob}
+Let \( \xi := \sqrt{2 + \sqrt{2}} \).
+\begin{itemize}
+    \item Find the minimal polynomial of \( \xi \) over \( \mathbb{Q} \), and show that \( \mathbb{Q}(\xi) \) has degree 4 over \( \mathbb{Q} \).
+    \item Prove that \( \sqrt{2 - \sqrt{2}} \) is another root of the minimal polynomial of \( \xi \).
+    \item Prove that \( \sqrt{2 - \sqrt{2}} \in \mathbb{Q}(\xi) \). (Hint: \( (a + b)(a - b) = a^2 - b^2 \).)
+    \item By Proposition I.5, sending \( \xi \) to \( \sqrt{2 - \sqrt{2}} \) defines an automorphism of \( \mathbb{Q}(\xi) \) over \( \mathbb{Q} \). Find the matrix of this automorphism w.r.t. the basis \( 1, \xi, \xi^2, \xi^3 \).
+    \item Prove that \( \text{Aut}_{\mathbb{Q}}(\mathbb{Q}(\xi)) \) is cyclic of order 4.
+\end{itemize}
+\end{prob}
+\begin{proof}
+    This is a standard exercise, the matrix given in part 4 has order $4$, hence showing the automorphism group is cyclic of order $4$.
+\end{proof}
+
+
+
+
+% \begin{prob}
+% Let \( k \subseteq F \) be a field extension, let \( I \) be an indexing set, and let \( \{\alpha_i\}_{i \in I} \) be a choice of elements of \( F \). This choice determines a homomorphism \( \varphi \) of \( k \)-algebras from the polynomial ring \( k[I] \) on the set \( I \) to \( F \). We say that \( \{\alpha_i\}_{i \in I} \) is algebraically independent over \( k \) if \( \varphi \) is injective. For example, distinct elements \( \alpha_1, \ldots, \alpha_n \) of \( F \) are algebraically independent over \( k \) if there is no nonzero polynomial \( f(x_1, \ldots, x_n) \in k[x_1, \ldots, x_n] \) such that \( f(\alpha_1, \ldots, \alpha_n) = 0 \). Prove that \( \alpha_1, \ldots, \alpha_n \) are algebraically independent if and only if the assignment \( t_1 \mapsto \alpha_1, \ldots, t_n \mapsto \alpha_n \) defines a homomorphism of \( k \)-algebras (and hence an isomorphism) from the field of rational functions \( k(t_1, \ldots, t_n) \) to \( k(\alpha_1, \ldots, \alpha_n) \).
+% With notation and terminology as in Exercise 1.26, the indexed set \(\{\alpha_i\}_{i \in I}\) is a transcendence basis for \(F\) over \(k\) if it is a maximal algebraically independent set in \(F\).
+% \begin{itemize}
+%     \item Prove that \(\{\alpha_i\}_{i \in I}\) is a transcendence basis for \(F\) over \(k\) if and only if it is algebraically independent and \(F\) is algebraic over \(k(\{\alpha_i\}_{i \in I})\).
+%     \item Prove that transcendence bases exist. (Zorn)
+%     \item Prove that any two transcendence bases for \(F\) over \(k\) have the same cardinality. (Mimic the proof of Proposition VII.9. Don’t feel too bad if you prefer to deal only with the case of finite transcendence bases.)
+% \end{itemize}
+% The cardinality of a transcendence basis is called the transcendence degree of \(F\) over \(k\), denoted \(\operatorname{tr.deg}_{k \subseteq F}\).
+% \end{prob}
+
+% \begin{prob}
+% Let \(k \subseteq E \subseteq F\) be field extensions. Prove that \(\operatorname{tr.deg}_{k \subseteq F}\) is finite if and only if both \(\operatorname{tr.deg}_{k \subseteq E}\) and \(\operatorname{tr.deg}_{E \subseteq F}\) are finite and in this case
+% \[ \operatorname{tr.deg}_{k \subseteq F} = \operatorname{tr.deg}_{k \subseteq E} + \operatorname{tr.deg}_{E \subseteq F}. \]
+% \end{prob}
+
+% \begin{prob}
+% An extension \(k \subseteq F\) is purely transcendental if it admits a transcendence basis \(\{\alpha_i\}_{i \in I}\) such that \(F = k(\{\alpha_i\}_{i \in I})\). Prove that any field extension \(k \subseteq F\) may be decomposed as a purely transcendental extension followed by an algebraic extension. (Not all field extensions may be decomposed as an algebraic extension followed by a purely transcendental extension.)
+% \end{prob}
+
+% \begin{prob}
+% Let \(k \subseteq k(\alpha)\) be a simple extension, with \(\alpha\) transcendental over \(k\). Let \(E\) be a subfield of \(k(\alpha)\) properly containing \(k\). Prove that \(\operatorname{tr.deg}_{k \subseteq E} = 1\). Lüroth’s theorem asserts that in this situation \(k \subseteq E\) is itself a simple transcendental extension of \(k\); that is, it is purely transcendental.
+% \end{prob}
+
+
+
+
+
+\section{}
+
+
+\begin{prob}
+    Let \( k \subseteq \overline{k} \) be an algebraic closure, and let \( L \) be an intermediate field. Assume that every polynomial \( f(x) \in k[x] \subseteq L[x] \) factors as a product of linear terms in \( L[x] \). Prove that \( L = \overline{k} \).
+    \end{prob}
+\begin{proof}
+    Let $\alpha\in\bar{k}$, then $\alpha$ is algebraic over $k$, i.e., there exists $f\in k[x]$ such that $f(\alpha)=0$, and by assumption
+    \begin{equation*}
+        f(x)=(x-c_1)\dots (x-c_n)
+    \end{equation*}
+    where $c_i\in L$. This implies that $\alpha=c_i$ for some $i$, i.e, $\alpha\in L$. 
+\end{proof}
+
+    
+    \begin{prob}
+    Let $\sqrt{I}$ be the radical of an ideal of ring $R$.
+    \begin{equation*}
+        \text{rad}(I)=\sqrt{I}=\{a\in R: a^n\in I \text{ for some } n\}
+    \end{equation*}
+    \begin{itemize}
+        \item Prove that the set \( \sqrt{I} \) is an ideal of \( R \).
+        \item Prove that \( \sqrt{I} \) corresponds to the nilradical of \( R/I \) via the correspondence between ideals of \( R/I \) and ideals of \( R \) containing \( I \).
+        \item Prove that \( \sqrt{I} \) is in fact the intersection of all prime ideals of \( R \) containing \( I \).
+        \item Prove that \( I \) is radical if and only if \( R/I \) is reduced.
+    \end{itemize}
+    \end{prob}
+\begin{proof}
+    Definitions: radical of $I$ is 
+    \begin{equation*}
+        \sqrt{I}=\{a\in R: a^n\in I \text{ for some $n$}\}
+    \end{equation*}
+    and an ideal $I$ is called radical if $a^n\in I$ implies $a\in I$. One can note that ``radical of an ideal is radical.'' (We will show 
+    \begin{equation*}
+        \sqrt{I}=\bigcap_{p\supset I}p
+    \end{equation*}
+    where $p$ is the collection of prime ideals in $R$. Note that a prime ideal $p\subset R$ corresponds to a prime ideal in $R/I$. We will show 2,3 separately). Now for last bullet: if $I$ is radical, then $I=\sqrt{I}$ (we know a priori $I\subset\sqrt{I}$), so $R/I$ is reduced. Conversely assume that $R/I$ is reduced, then $\sqrt{I}=I$, thus $I$ is radical because $\sqrt{I}$ is radical.  
+\end{proof}
+    
+    
+    \begin{prob}
+    Prove that every ideal in a Noetherian ring contains a power of its radical.
+    \end{prob}
+    \begin{proof}
+        Let $\sqrt{I}=(a_1,\dots, a_k)$, then by definition, $a_i^{n_i}\in I$ for each $i$. Let $N=\sum_in_i$, we see that 
+        \begin{equation*}
+            (\sqrt{I})^N=\left\la a_1^{m_i}\dots a_k^{m_k}: \sum_im_i=N\right\ra
+        \end{equation*}
+        Then by pigenholing, there exists $n_i, m_i$ such that $m_i\geq n_i$ for some $i$. In other words, $a_i^{m_i}\dots a_k^{m_k}\in I$, thus 
+        \begin{equation*}
+           (\sqrt{I})^N\subset I
+        \end{equation*}
+    \end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+    \section{Field extensions II}
+
+    \begin{prob}
+        Describe the splitting field of \( x^6 + x^3 + 1 \) over \(\mathbb{Q}\). Do the same for \( x^4 + 4 \).
+        \end{prob}
+        \begin{proof}
+            Replacing $y=x^3$, we see that 
+            \begin{equation*}
+                y^2+y+1=\frac{y^3-1}{y-1}
+            \end{equation*}
+            Hence 
+            \begin{equation*}
+                f(x)=x^6+x^3+1=\frac{x^9-1}{x^3-1}
+            \end{equation*}
+            Hence the roots of $f$ are $\om_9^k$, that are not the roots of $x^3-1$. Thus the roots are 
+            \begin{equation*}
+                \om_9^k, k=1,2,4,5,7,8
+            \end{equation*}
+            The splitting field is still $\Q(\om_9)$.
+    
+            Now for $x^4+4$. We see that the roots are 
+            \begin{equation*}
+                \sqrt{2}\om_8
+            \end{equation*}
+            However, 
+            \begin{equation*}
+                \om_8=\cos(\pi/4)+i\sin(\pi/4)=\frac{1}{\sqrt{2}}(1+i)
+            \end{equation*}
+            This implies the roots are 
+            \begin{equation*}
+                \pm 1\pm i
+            \end{equation*}
+            Thus the splitting field of $x^4+4$ is $\Q(i)$.
+        \end{proof}
+    
+    
+        
+        \begin{prob}
+        Find the order of the automorphism group of the splitting field of \( x^4 + 2 \) over \(\mathbb{Q}\).
+        \end{prob}
+        \begin{proof}
+            $8$, and the Galois group is $D_4$.
+        \end{proof}
+        
+        \begin{prob}
+        Prove that the field \(\mathbb{Q}(\sqrt[4]{2})\) is not the splitting field of any polynomial over \(\mathbb{Q}\).
+        \end{prob}
+        \begin{proof}
+            It is not normal: doesn't contain all the roots of $x^4-2$.
+        \end{proof}
+        
+        % \begin{prob}
+        % Let \( F \) be a splitting field for a polynomial \( f(x) \in k[x] \), and let \( g(x) \in k[x] \) be a factor of \( f(x) \). Prove that \( F \) contains a unique copy of the splitting field of \( g(x) \).
+        % \end{prob}
+        
+        \begin{prop}
+        Let \( k \subseteq F_1, \, k \subseteq F_2 \) be two finite extensions, viewed as embedded in the algebraic closure \(\overline{k}\) of \( k \). Assume that \( F_1 \) and \( F_2 \) are splitting fields of polynomials in \( k[x] \). Then the intersection \( F_1 \cap F_2 \) and the composite \( F_1F_2 \) (the smallest subfield of \(\overline{k}\) containing both \( F_1 \) and \( F_2 \)) are both also splitting fields over \( k \).
+        \end{prop}
+        
+        \begin{prob}
+        Let \( k \subseteq F = k(\alpha) \) be a simple algebraic extension. Prove that \( F \) is normal over \( k \) if and only if for every algebraic extension \( F \subseteq K \) and every \( \sigma \in \text{Aut}_k(K) \), \( \sigma(F) = F \).
+        \end{prob}
+        \begin{proof}
+            Let's just assume $k(\alpha)/k$ is finite, then it states that $F/k$ is Galois iff for every $F\subset K$, every $\sigma(F)=F$. If the extension is Galois, then it contains all the roots of $p_\alpha$. Since $\sigma$ fixes $k$, it permutes the roots of $p_\alpha$, thus $\sigma(F)=F$. Conversely, suppose $\sigma(F)=F$, then let $\beta$ be another root of $p_\alpha$, since $\sigma(\alpha)\in F$ for all $\sigma$, this shows that $\beta\in F$, i.e., the extension is Galois.
+        \end{proof}
+    
+    
+    
+    \begin{prob}
+    Let \( k \subseteq F \) be a finite extension in characteristic \( p > 0 \). Assume that \( p \) does not divide \([F : k]\). Prove that \( k \subseteq F \) is separable.
+    \end{prob}
+    \begin{proof}
+        (Assume $F=k(\alpha)$)
+        In char$(k)=p$, let $\alpha\in F$, the minimal polynomial $f$ is separable unless $f(x)=g(x^p)$, thus 
+        \begin{equation*}
+            \deg(f)=p\cdot\deg(g)
+        \end{equation*}
+        But $p$ doesn't divide $[F:k]$.
+    \end{proof}
+    
+    Recall that $x\mapsto x^{p}$ is the identity on $\F_p$, and is surjective over finite fields of char$(k)=p$.
+    
+    
+    \begin{prob}
+    Let \( k \) be a field, and assume that \( k \) is not perfect. Prove that there are inseparable irreducible polynomials in \( k[x] \). (If char \( k = p \) and \( u \in k \), how many roots does \( x^p - u \) have in \( \overline{k}? \))
+    \end{prob}
+    \begin{proof}
+        Consider $f(x)=x^p-u$, assume that $u$ is not a $p$-th power, then it is not separable because $\gcd(f,f')=f$, note that $x^p-u$ has only one root: let $\alpha$ be a root, then 
+        \begin{equation*}
+            \alpha^p=u
+        \end{equation*}
+        Hence 
+        \begin{equation*}
+            f(x)=x^p-\alpha^p=(x-\alpha)^p
+        \end{equation*}
+    \end{proof}
+    
+    
+    
+    \begin{prob}
+    Let \( k \) be a field of positive characteristic \( p \), and let \( f(x) \) be an irreducible polynomial. Prove that there exist an integer \( d \) and a separable irreducible polynomial \( f_{\text{sep}}(x) \) such that
+    \[
+    f(x) = f_{\text{sep}}(x^{p^d}).
+    \]
+    The number \( p^d \) is called the inseparable degree of \( f(x) \). If \( f(x) \) is the minimal polynomial of an algebraic element \( \alpha \), the inseparable degree of \( \alpha \) is defined to be the inseparable degree of \( f(x) \). Then we see that \( \alpha \) is inseparable if and only if its inseparable degree is \( \geq p \).
+    
+    % The picture to keep in mind is as follows: the roots of the minimal polynomial \( f(x) \) of \( \alpha \) are distributed into \(\deg f_{\text{sep}}\) 'clumps', each collecting a number of coincident roots equal to the inseparable degree of \( \alpha \). We say that \( \alpha \) is 'purely inseparable' if there is only one clump, that is, if all roots of \( f(x) \) coincide.
+    \end{prob}
+    \begin{proof}
+        We know that $f$ is inseparable only if $f$ takes the form 
+        \begin{equation*}
+            f(x)=g(x^p)
+        \end{equation*}
+        If $g$ is separable, we are done; if not, then we can continue this process until we exhaust the degree. 
+    \end{proof}
+    
+    
+    
+    \begin{prob}
+    Let \( k \subseteq F \) be an algebraic extension, in positive characteristic \( p \). An element \( \alpha \in F \) is purely inseparable over \( k \) if \( \alpha^{p^d} \in k \) for some \( d \geq 0 \). The extension is defined to be purely inseparable if every \( \alpha \in F \) is purely inseparable over \( k \).
+    
+    Prove that \( \alpha \) is purely inseparable if and only if \([k(\alpha) : k]_s = 1\), if and only if its degree equals its inseparability degree.
+    \end{prob}
+    \begin{proof}
+        We are trying to the following three statements are equivalent:
+        \begin{enumerate}
+            \item $\alpha$ is purely inseparable.
+            \item $[k(\alpha):k]_s=1$.
+            \item $\deg(\alpha)$ is equal to its inseparable degree.
+        \end{enumerate}
+        We first show that 1 implies 2: if $\alpha$ is purely inseparable, then there exists $d\geq 0$, such that $\alpha^{p^d}\in k$, then we can simply set $t\in k$ such that $t=\alpha^{p^d}$. Then we can take 
+        \begin{equation*}
+            f(x)=x^{p^d}-t=(x-t^{1/p^d})^{p^d}
+        \end{equation*}
+        We see $f(\alpha)=0$, hence the minimal polynomial of $\alpha$ divides $f(x)$. Since $f$ only has one root, its follows that the minimal polynomial of $\alpha$ also only has 1 unique root, i.e., $[k(\alpha),k]_s=1$.
+    
+        We now show that 2 implies 3: this is the hardest direction. We will use an induction argument. Let the minimal polynomial of $\alpha$ be $p(x)$, then it only has 1 root, we know it must be of the form:
+        \begin{equation*}
+            p(x)=(x-\alpha)^e
+        \end{equation*}
+        and it suffices to show that $e=p^d$ for some $d\geq 0$, i.e., it is a power of $p$. First if $\alpha\in k$, then we simply take $e=1, d=0$, and we are done. If $\alpha\not\in k$, then we can rewrite:
+        \begin{equation*}
+            p(x)=(x^p-\alpha^p)^{e/p}
+        \end{equation*}
+        And we continue the above process. If $\alpha^p\in k$, then we take $e=p$, $d=1$, and we are done. If $\alpha^p\not\in k$, then we rewrite 
+        \begin{equation*}
+            p(x)=(x^{p^2}-\alpha^{p^2})^{e/p^2}
+        \end{equation*}
+        And we continue, eventually this process stops, i.e., $\alpha^{p^d}\in k$, then $e=p^d$, this is because $e$ is a bounded integer and $e/p^k$ will keep getting smaller yet still $\geq0$. Hence for some $d$, $\alpha^{p^d}\in k$, and $e=p^d$, i.e., the degree of $\alpha$ is equal to its inseparable degree.
+    
+        Finally we show that 3 implies 1: if $\deg(\alpha)$ is equal to the inseparability degree, then let the minimal polynomial of $\alpha$ be $p(x)$, we have (by exercise 4.13)
+        \begin{equation*}
+            p(x)=p_{sep}(x^{p^d})
+        \end{equation*}
+        This implies that $p_{sep}$ must be linear: 
+        \begin{equation*}
+            p_{sep}=cx+d
+        \end{equation*}
+        for some $c,d\in k$. This shows that 
+        \begin{equation*}
+            p(\alpha)=p_{sep}(\alpha^{p^d})=c\alpha^{p^d}+b=0
+        \end{equation*}
+        This implies that $\alpha^{p^d}=-bc^{-1}\in k$, as desired. Hence we've now shown 1 implies 2 implies 3, which implies 1!
+    \end{proof}
+    
+    
+    
+    
+    \begin{prob}
+    Let \( k \subseteq F \) be an algebraic extension, and let \( \alpha \in F \) be separable over \( k \). For every intermediate field \( k \subseteq E \subseteq F \), prove that \( \alpha \) is separable over \( E \).
+    \end{prob}
+    \begin{proof}
+        The minimal polynomial of $\alpha$ over $E$ divides that over $k$.
+    \end{proof}
+    
+    
+    \begin{prop}
+        Let $k\subset E\subset F$ be such that $E/k$ and $F/E$ are both separable, then $F/k$ is separable.
+    % Let \( k \subseteq E \subseteq F \) be algebraic field extensions, and assume that \( k \subseteq E \) is separable. Prove that if \( \alpha \in F \) is separable over \( E \), then \( k \subseteq E(\alpha) \) is a separable extension. (Reduce to the case of finite extensions.)
+    
+    % Deduce that the set of elements of \( F \) which are separable over \( k \) form an intermediate field \( F_{\text{sep}} \), such that every element \( \alpha \in F \), \( \alpha \notin F_{\text{sep}} \) is inseparable over \( F_{\text{sep}} \).
+    \end{prop}
+    
+
+
+    \begin{prob}[HW]
+        Let \( k \subseteq F \) be a finite separable extension, and let \( \iota_1, \ldots, \iota_d \) be the distinct embeddings of \( F \) in \( \overline{k} \) extending \(\text{id}_k\). For \(\alpha \in F\), prove that the norm \( N_{k \subseteq F}(\alpha) \) equals \(\prod_{i=1}^d \iota_i(\alpha)\) and its trace \(\operatorname{tr}_{k \subseteq F}(\alpha)\) equals \(\sum_{i=1}^d \iota_i(\alpha)\).
+        \end{prob}
+\begin{proof}
+    First assume that $F=k(\alpha)$, 
+\end{proof}
+        
+        
+        \begin{prob}
+        Let \( k \subseteq F \) be a finite separable extension, and let \(\alpha \in F\). Prove that for all \(\sigma \in \operatorname{Aut}_k(F)\), \(N_{k \subseteq F}(\alpha) = N_{k\subset F}(\sigma(\alpha))\) and \(\operatorname{tr}_{k \subseteq F}(\alpha)=\tr(\sigma(\alpha)) = 0\).
+        \end{prob}
+        \begin{proof}
+            This follows from the above.
+        \end{proof}
+        
+
+
+\section{}
+
+
+
+% \begin{prob}
+% Let $p > 0$ be a prime integer. Prove that the additive group of a finite field with $p^d$ elements is isomorphic to $(\mathbb{Z}/p\mathbb{Z})^d$.
+% \end{prob}
+
+% \begin{prob}
+% Prove that every element of a finite field $F$ is a sum of two squares in $F$. (Hint: Keep in mind that the multiplicative group of $F$ is cyclic.)
+% \end{prob}
+
+\begin{prob}
+Find an explicit isomorphism
+\[ \frac{\mathbb{F}_2[x]}{(x^3 + x^2 + 1)} \cong \frac{\mathbb{F}_2[x]}{(x^3 + x + 1)}. \]
+\end{prob}
+\begin{proof}
+    You just need to construct a ring homomrophism between them. $\varphi$ is determined by where you send $x$, and it needs to satisfy $\varphi(0)=0$, i.e., 
+    \begin{equation*}
+        (x^3+x+1)\mid \varphi(x^3+x^2+1)
+    \end{equation*}
+    Choosing $\varphi(x)=x^2+1$ works.
+\end{proof}
+
+
+
+
+
+
+
+
+
+\begin{prob}
+Find all irreducible polynomials of degree 4 over $\mathbb{F}_2$, and count those of degree 5.
+\end{prob}
+\begin{proof}
+
+        There are $3$ of them:
+        \begin{equation*}
+            x^4+x+1, x^4+x^3+1, x^4+x^3+x^2+x+1
+        \end{equation*}
+        There are $6$ irreducible polynomials of degree $5$ over $\F_2$.
+
+\end{proof}
+
+
+
+\begin{prob}
+Find the number of irreducible polynomials of degree 12 over $\mathbb{F}_9$.
+\end{prob}
+\begin{proof}
+    Use the formula:
+    \begin{equation*}
+        x^{q^n}-x=\prod_{\deg(f)\mid n}f
+    \end{equation*}
+    where $f$ is monic and irreducible on the RHS. Take the degree and get a recursive formula.
+\end{proof}
+
+
+\begin{prob}
+Write out explicitly the action of the cyclic group $C_4$ on $\mathbb{F}_{16}$, in terms of any realization of this field as a quotient of $\mathbb{F}_2[x]$.
+\end{prob}
+
+\begin{prob}
+Let $p$ be a prime integer. View the Frobenius automorphism $\varphi : \mathbb{F}_{p^d} \to \mathbb{F}_{p^d}$ as a linear transformation of the $\mathbb{F}_p$-vector space $\mathbb{F}_{p^d}$. Find the rational canonical form of $\varphi$.
+\end{prob}
+
+\begin{prob}
+For a prime $p$, find the factorization of $\Phi_p(x)$ over $\mathbb{F}_p$.
+\end{prob}
+\begin{proof}
+    We have 
+    \begin{equation*}
+        \Phi_p(x)=\frac{x^p-1}{x-1}=\frac{(x-1)^p}{x-1}=(x-1)^{p-1}
+    \end{equation*}
+\end{proof}
+
+
+\begin{prob}
+Find all cyclotomic polynomials $\Phi_n(x)$ for $1 \leq n \leq 15$. 
+\end{prob}
+\begin{proof}
+    Recall the formula:
+    \begin{equation*}
+        x^n-1=\prod_{d \mid n}\Phi_d(x)
+    \end{equation*}
+    where $1\leq d\leq n$. Hence we can work our way up:
+    \begin{equation*}
+        x^9-1=\Phi_1(x)\Phi_3(x)\Phi_9(x)
+    \end{equation*}
+    Hence we have 
+    \begin{equation*}
+        \Phi_9(x)=\frac{x^9-1}{(x-1)(x^2+x+1)}=\frac{x^9-1}{x^3-1}=x^6+x^3+1
+    \end{equation*}
+    Similarly, prime powers have this nice property:
+    \begin{equation*}
+        \Phi_8(x)=\frac{x^8-1}{\Phi_1\Phi_2\Phi_4}=\frac{x^8-1}{x^4-1}=x^4+!
+    \end{equation*}
+\end{proof}
+
+
+
+
+
+\begin{prob}
+Find the cyclotomic polynomials $\Phi_{2^m}(x)$ for all $m \geq 0$.
+\end{prob}
+\begin{proof}
+    Following the above, we have 
+    \begin{equation*}
+        \Phi_{2^m}(x)=x^{2^{m-1}}+1
+    \end{equation*}
+\end{proof}
+
+
+
+\begin{prop}
+Prove that if $n$ is odd, then $\Phi_{2n}(x) = \Phi_n(-x)$. For example, $\Phi_6(x)=\Phi_3(-x)=x^2-x+1$.
+\end{prop}
+
+
+\begin{prob}
+Let $a, n$ be positive integers, with $a > 1$. Prove that if $\Phi_n(a)$ divides $a - 1$, then $n = 1$.
+\end{prob}
+\begin{proof}
+    One can show that $\Phi_n(a)>a-1$, hence we are done.
+\end{proof}
+
+% \begin{prob}
+% Let $a, d, n$ be positive integers, with $d < n$ and $a > 1$. Assume that $a^d - 1$ divides $a^n - 1$. Prove that $\Phi_n(a)$ divides the quotient $(a^n - 1)/(a^d - 1)$.
+% \end{prob}
+
+% \begin{prob}
+% Let $R$ be a finite division ring.
+% \begin{itemize}
+% \item Prove that the center of $R$ is isomorphic to $\mathbb{F}_q$, for $q$ a prime power. Prove that $|R| = q^n$ for some $n$.
+% \item For every $r \in R$, prove that the centralizer of $r$ in the multiplicative group $(R^*, \cdot)$ has order $q^d - 1$ for some $d \leq n$.
+% \item Prove that there are integers $d_1, \ldots, d_r < n$ such that
+% \[ q^n - 1 = q - 1 + \sum_{i=1}^r \frac{q^{n_i} - 1}{q^{d_i} - 1}. \]
+% \item Deduce that $\Phi_n(q)$ divides $q-1$ and hence $n = 1$.
+% \item Conclude that $R$ equals its center, showing that $R$ is commutative.
+% \end{itemize}
+% Thus, every finite division ring is a field: this is Wedderburn's little theorem.
+% \end{prob}
+
+\begin{prob}
+Let $a, p, n$ be integers, with $p, n$ positive and $p$ prime, $p \nmid n$.
+\begin{itemize}
+\item Show that $x^n - 1$ has no multiple roots modulo $p$.
+\item Show that if $p$ divides $\Phi_n(a)$, then $a^n \equiv 1$ modulo $p$.
+\item Show that if $p$ divides $\Phi_n(a)$, then $a^d \not\equiv 1$ modulo $p$ for every $d < n$.
+\item Deduce that $p \mid \Phi_n(a)$ if and only if the order of $[a]_p$ in $(\mathbb{Z}/p\mathbb{Z})^*$ is $n$.
+\item Compute $\Phi_{15}(9)$, and show it is divisible by 31.
+\end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item Let $f(x)=x^n-1$, if $f$ has repeated roots, then $f,f'$ have at least one common root. Thus we compute 
+        \begin{equation*}
+            f'(x)=nx^{n-1}
+        \end{equation*}
+        But this shows that $0$ is the only root of $f'$ but $0$ is not a root of $f$, hence they do not have common roots.
+        \item Consider the formula:
+        \begin{equation*}
+            \Phi_n(x)=\frac{x^n-1}{\prod_{d\mid n, d<n}\Phi_d}
+        \end{equation*}
+        \item Assuming the contrary, one can show that $a$ is a double root of $x^n-1$, which is impossible.
+        \item Follows directly.
+        \item do it.
+    \end{enumerate}
+\end{proof}
+
+
+
+% \begin{prob}
+% Let $a,p,n$ be integers, with $p,n$ positive and $p$ prime, $p \nmid n$. Assume that $p$ divides $\Phi_n(a)$. Prove that $p \equiv 1 \mod n$.
+% \end{prob}
+
+\begin{prob}
+Recall that every field extension of degree $\leq n$ over a field $k$ is a sub-$k$-algebra of the ring of matrices $\mathcal{M}_n(k)$. Prove that if $k$ is finite or has characteristic 0, then every extension of $k$ contained in $\mathcal{M}_n(k)$ has degree $\leq n$.
+\end{prob}
+\begin{proof}
+    The extension is separable and also finite ($\leq n^2$), thus simple. Moreover, let $p(t)$ be the characteristic polynomial, then from previous exercise, we know 
+    \begin{equation*}
+        p(\alpha)=0
+    \end{equation*}
+    This implies the minimal polynomial divides $p(t)$, i.e., with degree $\leq n$. (Cayley-Hamilton used!)
+\end{proof}
+
+
+\begin{prob}[HW]
+Prove that if $k \subseteq F$ is the splitting field of a separable polynomial, then it is the splitting field of an irreducible separable polynomial.
+\end{prob}
+\begin{proof}
+    Splitting means finite and normal, with separable, this implies simple $F=k(\alpha)$.
+\end{proof}
+
+% \begin{prob}
+% Let $k$ be an infinite field. If $F = k(\alpha_1, \ldots, \alpha_r)$, with each $\alpha_i$ separable over $k$, prove that there exist $c_1, \ldots, c_r \in k$ such that $F = k(c_1\alpha_1 + \cdots + c_r\alpha_r)$.
+% \end{prob}
+
+\begin{prob}
+Let $k$ be a field, and let $n > 0$ be an integer. Assume that there are no irreducible polynomials of degree $n$ in $k[x]$. Prove that there are no separable extensions of $k$ of degree $n$.
+\end{prob}
+\begin{proof}
+    If there were a separable extension of degree $n$, then the extension is simple, i.e., its minimal polynomial is of degree $n$.
+\end{proof}
+
+
+
+
+\section{Galois Theory I}
+
+
+
+
+\begin{prob}
+Prove that quadratic extensions in characteristic $\neq 2$ are Galois.
+\end{prob}
+\begin{proof}
+    One can show that there exists $\alpha$ such that $F=k(\alpha)$, where the minimal polynomial of $\alpha$ is degree $2$, hence let $m_\alpha(x)=x^2+ax+b$, one can see that $f,f'$ are relatively prime if char$(k)\neq 2$.
+\end{proof}
+
+
+
+
+
+
+% \begin{prob}
+% Let $k \subseteq F$ be a Galois extension, and let $E$ be an intermediate field. Prove that $E \subseteq F$ is a Galois extension.
+% \end{prob}
+
+% \begin{prob}
+% Let $k \subseteq E$ be a finite separable extension. Prove that $E$ may be identified with an intermediate field of a Galois extension $k \subseteq F$ of $k$.
+
+% In fact, prove that there is a smallest such extension $k \subseteq F$, in the sense that if $k \subseteq E \subseteq K$, with $k \subseteq K$ Galois, then there exists an embedding of $F$ in $K$ which is the identity on $E$. (The extension $k \subseteq F$ is the Galois closure of the extension $k \subseteq E$.)
+% \end{prob}
+
+\begin{prob}
+We have proved that all finite separable extensions $k \subseteq E$ are simple. Let $k \subseteq F$ be a Galois closure of $k \subseteq E$. For $\alpha \in E$, prove that $E = k(\alpha)$ if and only if $\alpha$ is moved by all $\sigma \in \text{Aut}_k(F) \setminus \text{Aut}_E(F)$.
+\end{prob}
+\begin{proof}
+    You can do this!
+\end{proof}
+
+
+
+\begin{prob}
+    Do the following Galois problems:
+\begin{itemize}
+    \item Prove that $\mathbb{Q} \subseteq \mathbb{Q}(\sqrt{2 + \sqrt{2}})$ is Galois, with cyclic Galois group.
+    \item Prove that $\mathbb{Q} \subseteq \mathbb{Q}(\sqrt{3 + \sqrt{5}})$ is Galois and its Galois group is isomorphic to $(\mathbb{Z}/2\mathbb{Z}) \times (\mathbb{Z}/2\mathbb{Z})$.
+    \item Prove that $\mathbb{Q} \subseteq \mathbb{Q}(\sqrt{1 + \sqrt{2}})$ is not Galois, and compute its Galois closure $\mathbb{Q} \subseteq F$. Prove that $\text{Aut}_{\mathbb{Q}}(F) \cong D_8$.
+\end{itemize}
+\end{prob}
+\begin{proof}
+    You can do this. Probably good to note 3.
+\end{proof}
+
+\begin{prop}
+Let $p > 0$ be prime, and let $d \mid e$ be positive integers, so that there is an extension $\mathbb{F}_{p^d} \subseteq \mathbb{F}_{p^e}$. Prove that $\text{Aut}_{\mathbb{F}_{p^d}} \mathbb{F}_{p^e}$ is cyclic, and describe a generator of this group.
+\end{prop}
+
+\begin{prop}
+Let $k \subseteq F$ be a Galois extension of degree $n$, and let $E$ be an intermediate field. Assume that $[E : k]$ is the smallest prime dividing $n$. Prove $k \subseteq E$ is Galois.
+\end{prop}
+
+\begin{prob}
+Let $k \subseteq F$ be a Galois extension of degree 75. Prove that there exists an intermediate field $E$, with $k \subset E \subset F$, such that the extension $k \subseteq E$ is Galois.
+\end{prob}
+\begin{proof}
+    There exists a normal subgroup of order $25$ by Sylow, and it has index $3$.
+\end{proof}
+
+\begin{prob}
+Let $k \subseteq F$ be a Galois extension and $E$ an intermediate field. Prove that the normalizer of $\text{Aut}_E(F)$ in $\text{Aut}_k(F)$ is the set of $\sigma \in \text{Aut}_k(F)$ such that $\sigma(E) \subseteq E$.
+
+Use this to give an alternative proof of the fact that $E$ is Galois over $k$ if and only if $\text{Aut}_E(F)$ is normal in $\text{Aut}_k(F)$.
+\end{prob}
+\begin{proof}
+    \begin{warn}
+        This might be important.
+    \end{warn}
+    Note that 
+    \begin{equation*}
+        N(\aut_E(F))=\{\sigma\in\aut_k(F): \sigma\aut_E(F)\sigma^{-1}=\aut_E(f)\}
+    \end{equation*}
+    and it is important to realize that 
+    \begin{equation*}
+        \sigma\aut_E(F)\sigma^{-1}=\aut_{\sigma(E)}(F)
+    \end{equation*}
+    The rest follows.
+\end{proof}
+
+
+
+
+
+
+
+\begin{prob}
+Let $k \subseteq E$ and $E \subseteq F$ be Galois extensions.
+\begin{itemize}
+    \item Find an example showing that $k \subseteq F$ is not necessarily Galois.
+    \item Prove that if every $\sigma \in \text{Aut}_k(E)$ is the restriction of an element of $\text{Aut}_k(F)$, then $k \subseteq F$ is Galois.
+\end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item Consider $\Q\subset\Q(\sqrt{2})\subset\Q(\sqrt[4]{2})$.
+        \item It is clear that $F/k$ is separable due to transitivity of separability, then consider showing the images of the embeddings $F\hookrightarrow \bar{k}$ is just $F$ itself. Alternatively, use the definition $k\subset F$ Galois iff $k=F^{\aut_k(F)}$.
+    \end{enumerate}
+\end{proof}
+
+
+
+
+\begin{prob}
+Find two algebraic extensions $k \subseteq F$, $k \subseteq K$ and embeddings $F \subseteq \overline{k}$, $\sigma_1 : K \subseteq \overline{k}$, $\sigma_2 : K \subseteq \overline{k}$ extending $k \subseteq \overline{k}$, such that the composites $F\sigma_1(K)$, $F\sigma_2(K)$ are not isomorphic.
+
+Prove that no such example exists if $F$ and $K$ are Galois over $k$.
+\end{prob}
+\textcolor{red}{suffices to require that $K$ is Galois?}
+
+
+
+\begin{prop}
+Let $k \subseteq F$ and $k \subseteq K$ be Galois extensions, and assume $F$ and $K$ are subfields of a larger field. Prove that $k \subseteq FK$ and $k \subseteq F \cap K$ are both Galois extensions.
+\end{prop}
+
+\begin{prop}
+Let $k \subseteq F$ be a field extension, and let $\varphi_1, \ldots, \varphi_m \in \text{Aut}_k(F)$ be pairwise distinct automorphisms. Prove that $\varphi_1, \ldots, \varphi_m$ are linearly independent over $F$.
+\end{prop}
+Same proof that distinct one-dimensional characters are linearly independent.
+
+
+\begin{prob}
+Let $k \subseteq F$ be a Galois extension, and let $\alpha \in F$. Prove that
+\[ N_{k \subseteq F}(\alpha) = \prod_{\sigma \in \text{Aut}_k(F)} \sigma(\alpha), \quad \operatorname{tr}_{k \subseteq F}(\alpha) = \sum_{\sigma \in \text{Aut}_k(F)} \sigma(\alpha). \]
+\end{prob}
+\textcolor{red}{can we do it without using the embeddings}
+
+% \begin{prob}
+% Let $k \subseteq F$ be a cyclic Galois extension of degree $d$, and let $\varphi$ be a generator of $\text{Aut}_k(F)$. Let $\alpha \in F$ be an element such that $N_{k \subseteq F}(\alpha) = 1$.
+% \begin{itemize}
+%     \item Prove that the automorphisms $\text{id}_F, \varphi, \ldots, \varphi^{d-1}$ are linearly independent over $F$.
+%     \item Prove that there exists a $\gamma \in F$ such that
+%     \[ \beta := \gamma + \alpha \varphi(\gamma) + \alpha \varphi(\alpha) \varphi^2(\gamma) + \cdots + \alpha \varphi(\alpha) \cdots \varphi^{d-2}(\alpha) \varphi^{d-1}(\gamma) \neq 0. \]
+%     \item Prove that $\alpha \varphi(\alpha) \varphi^2(\alpha) \cdots \varphi^{d-1}(\alpha) \varphi^d(\gamma) = \gamma$, and deduce that $\alpha = \beta / \varphi(\beta)$.
+% \end{itemize}
+% \end{prob}
+
+% \begin{prob}
+% Let $k \subseteq F$ be a cyclic Galois extension of degree $d$, and let $\varphi$ be a generator of $\text{Aut}_k(F)$. Let $\alpha \in F$ be an element such that $\operatorname{tr}_{k \subseteq F}(\alpha) = 0$.
+% \begin{itemize}
+%     \item Prove that there exists a $\gamma \in F$ such that $\operatorname{tr}_{k \subseteq F}(\gamma) \neq 0$.
+%     \item Consider the expression
+%     \[ \alpha \varphi(\gamma) + (\alpha + \varphi(\alpha))\varphi^2(\gamma) + \cdots + (\alpha + \varphi(\alpha) + \cdots + \varphi^{d-2}(\alpha))\varphi^{d-1}(\gamma). \]
+%     \item Prove that there exists a $\beta \in F$ such that $\alpha = \beta - \varphi(\beta)$.
+% \end{itemize}
+% \end{prob}
+
+
+
+\section{Galois Theory II}
+
+\begin{prob}
+    Find explicitly a generator of a quadratic intermediate field of the extension $\mathbb{Q} \subseteq \mathbb{Q}(\zeta_{10})$.
+    \end{prob}
+\begin{proof}
+    We know the element 
+    \begin{equation*}
+        \om_{10}+\om_{10}^{9}\in E
+    \end{equation*}
+    where $E$ is the quadratic extension fixed by an index $2$ subgroup of $(\Z/10\Z)^\times$. One can check that this generates $E$, because it is not in $\Q$.
+\end{proof}
+
+
+
+
+    
+% \begin{prob}
+%     Let $R$ be an integral domain, and let $f(x) \in R[x]$ be a polynomial of degree $n$. Show how to obtain $f(x)$ by specializing the 'universal' polynomial $P_n(x)$.
+% \end{prob}
+
+
+
+
+
+% \begin{prob}
+% Prove that the elementary symmetric functions \( s_1, \ldots, s_n \) (see \S7.3) are algebraically independent. (Hint: Use Exercise I.28.)
+% \end{prob}
+
+% \begin{prob}
+% Prove that every finite group is isomorphic to the group of automorphisms of some Galois extension.
+% \end{prob}
+
+% \begin{prob}
+% Let \( k \subseteq F \) be a radical extension, and let \( k \subseteq K \) be any extension; assume \( F \) and \( K \) are contained in a larger field. Prove that \( K \subseteq FK \) is radical.
+% \end{prob}
+
+\begin{prop}
+Let \( f(x) \in \mathbb{Q}[x] \) be an irreducible cubic, and let \( \rho \) be a real root of \( f(x) \). Prove that the splitting field of \( f(x) \) over \( \mathbb{Q} \) is \( \mathbb{Q}(\rho, \sqrt{D}) \), where \( D \) is the discriminant of \( f(x) \).
+\end{prop}
+
+
+
+
+\begin{prob}
+Let \( f(x) \in \mathbb{Q}[x] \) be an irreducible cubic with exactly one real root. Prove that the discriminant of \( f(x) \) is not a square in \( \mathbb{Q} \).
+\end{prob}
+\begin{proof}
+    Since it's cubic, it is not a square iff the Galois group is $S_3$.
+\end{proof}
+
+
+% \begin{prob}
+% Find (mathematically or by library search) the lattice of subgroups of \( S_4 \), and verify that the transitive subgroups of \( S_4 \) are (isomorphic to) \( S_4 \), \( A_4 \), \( D_8 \), \( \mathbb{Z}/2\mathbb{Z} \times \mathbb{Z}/2\mathbb{Z} \), and \( \mathbb{Z}/4\mathbb{Z} \).
+% \end{prob}
+
+\begin{prob}
+Compute the Galois group of \( x^4 - 2 \).
+\end{prob}
+\begin{proof}
+    It's $D_8$.
+\end{proof}
+
+
+
+\begin{prob}
+    Compute the Galois group of  \( x^5 - 5x - 1 \). 
+\end{prob}
+\begin{proof}
+    It has $2$ complex roots, $3$ real roots. It's irreducible thus it acts transitively on the set of $5$ roots, so it is a subgroup of $S_5$, hence it's $S_5$.
+
+
+    % \textcolor{red}{why is it important that it is irreducibe}
+    % Prove that the polynomial \( x^5 - 5x - 1 \) has exactly 3 real roots (this is a calculus exercise!) and is irreducible over \( \mathbb{Q} \). Prove that its Galois group is \( S_5 \).
+\end{proof}
+
+% \begin{prob}
+% Let \( n > 0 \) be an integer. Note that
+% \[ f_n(x) := (x^2 + 2) \cdot x \cdot (x - 2) \cdots (x - 2(n - 4)) \cdot (x - 2(n - 3)) \]
+% has \( n - 2 \) rational roots and 2 nonreal, complex roots. Prove that for infinitely many integers \( q \), the polynomial
+% \[ qf_n(x) + 2 \in \mathbb{Z}[x] \]
+% has \( (n - 2) \) real roots, 2 nonreal complex roots, and is irreducible over \( \mathbb{Q} \). Conclude that for each prime \( p \) there are infinitely many polynomials of degree \( p \) in \( \mathbb{Z}[x] \) whose Galois group is \( S_p \).
+% \end{prob}
+% \begin{proof}
+    
+% \end{proof}
+
+
+
+
+\begin{prob}
+Let \( f(x) \in k[x] \) be a separable irreducible polynomial of prime degree \( p \) over a field \( k \), and let \( \alpha_1, \ldots, \alpha_p \) be the roots of \( f(x) \) in its splitting field \( F \). Prove that the Galois group of \( f(x) \) contains an element \( \sigma \) of order \( p \), 'cycling' through the roots.
+\end{prob}
+\begin{proof}
+    Since $f$ is irreducible, $G$ acts transitively on the set of roots of $f$, and by Orbit-Stabilizer, we must have $p$, the size of the orbit, divide the order the group $|G|$, then there exists an element of order $p$ by Cauchy's theorem.
+\end{proof}
+
+
+
+
+
+
+
+\begin{prob}
+Let \( f(x) \in k[x] \) be a separable irreducible polynomial of prime degree \( p \) over a field \( k \). Let \( \alpha \) be a root of \( f(x) \) in \( \bar{k} \), and suppose you can express another root of \( f(x) \) as a polynomial in \( \alpha \), with coefficients in \( k \). Prove that you can express all roots as polynomials in \( \alpha \) and that the Galois group of \( f(x) \) is \( \mathbb{Z}/p\mathbb{Z} \). (Use Exercise 7.12.)
+\end{prob}
+\begin{proof}
+    Suppose $\alpha_2=g(\alpha_1)$, then we know there exists an element $\sigma\in G$ such that $\sigma:\alpha_1\mapsto\alpha_2$, thus $\sigma(\alpha_2)=g(\alpha_2)$, and so on. We know the splitting field of $f$ is just $k(\alpha)$.
+\end{proof}
+
+
+
+
+
+
+\begin{prob}
+Let \( k \) be a field of characteristic \( p > 0 \), and let \( f(x) = x^p - x - a \in k[x] \). Assume that \( f(x) \) has no roots in \( k \). Prove that \( f(x) \) is irreducible and that its Galois group is \( \mathbb{Z}/p\mathbb{Z} \). (Note that if \( \alpha \) is a root of \( f(x) \), so is \( \alpha + 1 \); use Exercises I.8 and 7.13.)
+
+The splitting field of \( f(x) \) is an Artin-Schreier extension of \( \mathbb{F}_p \).
+\end{prob}
+
+
+
+\begin{prob}
+Let \( k \subseteq F \) be a cyclic Galois extension of degree \( p \), where char \( k = p > 0 \).  
+Prove that it is an Artin-Schreier extension. (Hint: What is \( \operatorname{tr}_{k \subseteq F}(1) \)? Use the additive version of Hilbert's theorem 90.)
+\end{prob}
+
+\begin{prob}
+The \emph{Artin-Schreier map} on a field \( k \) of positive characteristic \( p \) is the function  
+\[x \mapsto x^p - x.\]  
+Denote this function by \( \mathit{AS} \), and let \( \mathit{AS}^{-1} \) denote its inverse (which is only defined up to the addition of an element of \( \mathbb{F}_p \)).
+
+Express the solutions of a quadratic equation \( x^2 + bx + c = 0 \) in \emph{characteristic 2} in terms of \( \mathit{AS}^{-1} \), for \( b \neq 0 \). (For \( b \neq 0 \), the roots must live in an Artin-Schreier extension of \( k \), since the polynomial is then separable. It is inseparable for \( b = 0 \); solving the equation in this case amounts to extending \( k \) by the unique square root of \( c \).)
+\end{prob}
+
+\begin{prob}
+Let \( f(x) \in k[x] \) be a separable irreducible polynomial of degree \( n \) over a field \( k \), and let \( F \) be its splitting field. Assume \( \operatorname{Aut}_{k}(F) \cong S_n \), and let \( \alpha \) be a root of \( f(x) \) in \( F \).  
+
+\begin{itemize}
+    \item Prove that \( \operatorname{Aut}_{k(\alpha)}(F) \cong S_{n-1} \).  
+    \item Prove that there are no proper subfields of \( k(\alpha) \) properly containing \( k \). (Hint: Consider the subgroup structure of \( S_n \).)
+\end{itemize}
+\end{prob}
+
+
+
+\begin{prob}
+Let \( f(x) \in k[x] \) be a separable irreducible polynomial of degree \( n \) over a field \( k \), with Galois group \( S_n \). Let \( \alpha \) be a root of \( f(x) \) in \( \overline{k} \), and let \( g(x) \in k[x] \) be any nonconstant polynomial of degree \( < n \). Prove that \( \alpha \) may be expressed as a polynomial in \( g(\alpha) \), with coefficients in \( k \).
+\end{prob}
+\begin{proof}
+    Follows directly from above: consider $k\subset k(g(\alpha))\subset k(\alpha)$, where $k(\alpha)$ has no proper subfields of $k(\alpha)$ containing $k$. 
+\end{proof}
+
+% \begin{prob}
+% Let \( d \) be a positive integer.  
+
+% \begin{itemize}
+%     \item Prove that the discriminant of a polynomial \( f(x) = \prod_{i=1}^d (x - \alpha_i) \) equals the product \( \pm \prod_{i=1}^d f'(\alpha_i) \).  
+%     \item Prove that the discriminant of \( x^d - 1 \) is \( \pm d^d \), and note that this is a square in \( \mathbb{Q}(\zeta_d) \).  
+%     \item Prove that \( \mathbb{Q}(\zeta_{8d}) \) contains square roots of \( d \) and \( -d \).  
+%     \item Conclude that every \emph{quadratic} extension of \( \mathbb{Q} \) may be embedded in a cyclotomic field \( \mathbb{Q}(\zeta_n) \), for a suitable \( n \).  
+% \end{itemize}
+
+% (This is a very special case of the Kronecker-Weber theorem.)
+% \end{prob}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\chapter{Linear Algebra II}
+
+
+
+\section{Tensor and Hom}
+\begin{prop}
+    Let $S$ be a multiplicative set of $R$, and $M$ is an $R$-module, then 
+    \begin{equation*}
+        S^{-1}M\cong M\otimes_R S^{-1}R
+    \end{equation*}
+    as $R$-modules.
+\end{prop}
+
+\begin{prob}[2.7]
+    Changing the base ring in a tensor may or may not make a difference:
+    
+    \begin{enumerate}
+        \item Prove that \( \mathbb{Q} \otimes_{\mathbb{Z}} \mathbb{Q} \cong \mathbb{Q} \otimes_{\mathbb{Q}} \mathbb{Q} \).
+        \item Prove that \( \mathbb{C} \otimes_{\mathbb{R}} \mathbb{C} \cong \mathbb{C} \otimes_{\mathbb{C}} \mathbb{C} \).
+    \end{enumerate}
+    \end{prob}
+\begin{proof}
+    Viewing them as vector spaces, both are isomorphic to $\Q$; $\C\otimes_\R\C$ has dimension $4$, whereas $\C\otimes_\C\C\cong\C$ has dimension $1$.
+\end{proof}
+    
+    \begin{prop}[2.8]
+    Let \( R \) be an integral domain, with field of fractions \( K \), and let \( M \) be a finitely generated \( R \)-module. The tensor product \( V := M \otimes_R K \) is a \( K \)-vector space. Then \(\dim_K V\) equals the rank of \( M \) as an \( R \)-module (recall that rank refers to the max number of linearly  independent elements for $R$ integral domain).
+    \end{prop}
+
+
+    
+    \begin{prob}[2.9]
+    Let \( G \) be a finitely generated abelian group of rank \( r \).
+    
+    \begin{itemize}
+        \item Prove that \( G \otimes_{\mathbb{Z}} \mathbb{Q} \cong \mathbb{Q}^r \).
+        \item Prove that for infinitely many primes \( p \), \( G \otimes_{\mathbb{Z}} (\mathbb{Z}/p\mathbb{Z}) \cong (\mathbb{Z}/p\mathbb{Z})^r \).
+    \end{itemize}
+    \end{prob}
+\begin{proof}
+    We know that 
+    \begin{equation*}
+        G\cong\Z^r\oplus\left(\bigoplus_{i,j}\frac{\Z}{p_i^{r_{ij}}\Z}\right)
+    \end{equation*}
+    We see that 
+    \begin{equation*}
+        \Z^r\otimes_\Z\Q\cong\Q^r
+    \end{equation*}
+    whereas 
+    \begin{equation*}
+        \Q\otimes_\Z\frac{\Z}{p\Z}=0
+    \end{equation*}
+    for any $p$:
+    \begin{equation*}
+        \frac{a}{b}\otimes 1=\frac{a}{pb}\otimes p=0
+    \end{equation*}
+    2. We know 
+    \begin{equation*}
+        \Z^r\otimes_\Z(\Z/p\Z)\cong(\Z/p\Z)^r
+    \end{equation*}
+    And for primes that are not $p_i$ in the decomposition, we have 
+    \begin{equation*}
+        \frac{\Z}{p\Z}\otimes_\Z\frac{\Z}{p_i\Z}=\frac{\Z}{\gcd(p,p_i)}=0
+    \end{equation*}
+\end{proof}
+
+    
+    \begin{prob}[2.10]
+    Let \( k \subseteq k(\alpha) = F \) be a finite simple field extension. Note that \( F \otimes_k F \) has a natural ring structure; cf. Exercise 2.4.
+    
+    \begin{itemize}
+        \item Prove that \( \alpha \) is separable over \( k \) if and only if \( F \otimes_k F \) is reduced as a ring.
+        \item Prove that \( k \subseteq F \) is Galois if and only if \( F \otimes_k F \) is isomorphic to \( F^{[F:k]} \) as a ring.
+    \end{itemize}
+    \end{prob}
+\begin{proof}
+    If $\alpha$ is separable, then 
+    \begin{equation*}
+        F\otimes_kF\cong \frac{F[x]}{(f(x))}\otimes_kF\cong F^{[k:n]}
+    \end{equation*}
+    thus reduced.
+    Conversely, if $\alpha$ is not separable, then it has a repeated root in its splitting field, suppose for example $f(x)=(x-r)^2$, then 
+    \begin{equation*}
+        F\otimes_kF\cong\frac{F[x]}{(f(x))}\otimes_kF
+    \end{equation*}
+    then $(x-r)$ would be a nilpotent.
+\end{proof}
+
+
+
+\section{Symmetric and Wedge Products}
+% \begin{prob}[4.3]
+%     Let \( I \) be the ideal \((x, y)\) in \( k[x, y] \); so every element of \( I \) may be written (not uniquely) in the form \( fx + gy \) for some polynomials \( f, g \in k[x, y] \). Define a function \(\varphi : I \times I \to k\) by prescribing
+%     \[
+%     \varphi(f_1 x + g_1 y, f_2 x + g_2 y) := f_1(0, 0)g_2(0, 0) - f_2(0, 0)g_1(0, 0).
+%     \]
+%     \begin{enumerate}
+%         \item Prove that \(\varphi\) is well-defined.
+%         \item Prove that \(\varphi\) is \(k[x, y]\)-bilinear and alternating.
+%         \item Prove that \(I \lambdaprod_{k[x, y]} I \neq 0\).
+%     \end{enumerate}
+%     \textit{Note}: \(I\) has rank 1 as a \(k[x, y]\)-module; if it were free, its wedge with itself would vanish.
+%     \end{prob}
+    
+    \begin{prob}[4.4]
+    Let \(F_1\) and \(F_2\) be free \(R\)-modules of finite rank.
+    \begin{enumerate}
+        \item Construct a meaningful isomorphism \(\det(F_1) \tensor \det(F_2) \cong \det(F_1 \oplus F_2)\).
+        \item More generally, prove that
+        \[
+        \lambdaprod^r_R(F_1 \oplus F_2) \cong \bigoplus_{i+j=r} (\lambdaprod^i_R F_1) \tensor_R (\lambdaprod^j_R F_2).
+        \]
+    \end{enumerate}
+    \end{prob}
+    \begin{proof}
+        The nonmeaning isomorphism is that both $\det(F_1), \det(F_2), \det(F_1\oplus F_2)$ are one-dimensional $R$-modules, i.e., 
+        \begin{equation*}
+            \det(F_1)\otimes_R\det(F_2)\cong R\otimes_R\cong R\cong\det(F_1\oplus F_2)
+        \end{equation*}
+        therefore they are isomorphic. Let $F_1,F_2$ have rank $n,k$. 
+        \begin{equation*}
+            \det(F_1)=\text{Span}(v_1\wedge\dots\wedge v_n), \quad \det(F_2)=\text{Span}(w_1\wedge\dots\wedge w_k)
+        \end{equation*}
+        whereas 
+        \begin{equation*}
+            \det(F_1\oplus F_2)=\text{Span}(e_1\wedge\dots\wedge e_{n+k})
+        \end{equation*}
+        after reindexing the basis. Thus the isomorphism is 
+        \begin{equation*}
+            \varphi: (v_1\wedge\dots\wedge v_n)\otimes w_1\wedge\dots\wedge w_k\mapsto e_1\wedge\dots\wedge e_{n+k}
+        \end{equation*}
+        2. By dimension argument, or equivalently construct an isomorphism: 
+        \[
+\phi\left( (x_1 \wedge \cdots \wedge x_i) \otimes (y_1 \wedge \cdots \wedge y_j) \right) = (x_1, 0) \wedge \cdots \wedge (x_i, 0) \wedge (0, y_1) \wedge \cdots \wedge (0, y_j).
+\]
+    \end{proof}
+
+    
+    
+    
+    \begin{prob}[4.6]
+    Let \(V\) be a vector space, and let \(v_1, \ldots, v_k \in V\). Prove that \(v_1, \ldots, v_k\) are linearly independent if and only if \(v_1 \lambdaprod \cdots \lambdaprod v_k\neq 0\).
+    \end{prob}
+    \begin{proof}
+        We want to show linear dependence iff $v_1\wedge\dots\wedge v_k=0$. Suppose they are linear independent, then there exists $a_i$ not all $=0$ such that $\sum_ia_iv_i=0$. Suppose WLOG $a_1\neq 0$, then
+        \begin{equation*}
+            0=\left(\sum_ia_iv_i\right)\wedge v_2\wedge\dots\wedge v_k=a_1 (v_1\wedge\dots\wedge v_k)
+        \end{equation*}
+        which implies $v_1\wedge\dots\wedge v_k=0$. Conversely, given $v_1\wedge\dots\wedge v_k=0$, suppose instead that $v_1,\dots, v_k$ are linearly independent, then they can be completed to a basis, which is a contradiction.
+    \end{proof}
+
+
+    
+    \begin{prob}[4.7]
+    Let \(V\) be a \(k\)-vector space, and let \(\{v_1, \ldots, v_\ell\}, \{w_1, \ldots, w_\ell\}\) be two sets of linearly independent vectors in \(V\). Prove that they span the same subspace of \(V\) if and only if \(v_1 \lambdaprod \cdots \lambdaprod v_\ell\) and \(w_1 \lambdaprod \cdots \lambdaprod w_\ell\) are nonzero multiples of each other in \(\lambdaprod^\ell_k(V)\). 
+    
+    \textit{Hint}: For the interesting direction, if \(\langle v_1, \ldots, v_\ell \rangle \neq \langle w_1, \ldots, w_\ell \rangle\), there must be a vector \(u\) belonging to the first subspace but not to the second. Analyze \((v_1 \lambdaprod \cdots \lambdaprod v_\ell) \lambdaprod u\) and \((w_1 \lambdaprod \cdots \lambdaprod w_\ell) \lambdaprod u\) in \(\lambdaprod^k_k(V)\). 
+    \end{prob}
+    \begin{proof}
+        If they span the same subspace $W$, then $\dim W=l$, i.e., $\wedge^l(V)\cong k$ is one-dimensional, and by the previous problem, $v_1\wedge\dots\wedge v_l, w_1\wedge\dots\wedge w_\ell\neq 0$, thus they are nonzero multiples of each other. Conversely, suppose they don't span the same subspace, then there exists $u$ in the first subspace but not the second: $u$ is linearly dependent with $v_1,\dots, v_l$ but linearly independent with $w_1,\dots, w_l$, then by the previous problem, wedging them gives $0$ and nonzero.
+    \end{proof}
+
+
+    
+    \begin{prob}[4.9]
+    Assume 2 is a unit in \( R \), and let \( F \) be a free \( R \)-module of finite rank.
+    \begin{enumerate}
+        \item Define a function \( \lambda : \lambdaprod^2_R(F) \rightarrow \T^2_R(F) \) on a basis \( e_i \lambdaprod e_j, \, i < j \), by setting \( \lambda(e_i \lambdaprod e_j) = \frac{1}{2}(e_i \tensor e_j - e_j \tensor e_i) \) and extending by linearity. Prove that:
+        \begin{itemize}
+            \item \( \lambda \) is an injective homomorphism of \( R \)-modules,
+            \item \( \lambda(f_1 \lambdaprod f_2) = \frac{1}{2}(f_1 \tensor f_2 - f_2 \tensor f_1) \) for all \( f_1, f_2 \in F \).
+        \end{itemize}
+        
+        \item Define a function \( \sigma : \Ssq^2_R(F) \rightarrow \T^2_R(F) \) on a basis \( e_i \tensor e_j, \, i \leq j \), by setting \( \sigma(e_i \tensor e_j) = \frac{1}{2}(e_i \tensor e_j + e_j \tensor e_i) \) and extending by linearity. Prove that:
+        \begin{itemize}
+            \item \( \sigma \) is an injective homomorphism of \( R \)-modules,
+            \item \( \sigma(f_1 \tensor f_2) = \frac{1}{2}(f_1 \tensor f_2 + f_2 \tensor f_1) \) for all \( f_1, f_2 \in F \).
+        \end{itemize}
+        
+        \item Prove that:
+        \begin{itemize}
+            \item \( \lambda \) identifies \( \lambdaprod^2_R(F) \) with the kernel of the map \( \T^2_R(F) \rightarrow \Ssq^2_R(F) \),
+            \item \( \sigma \) identifies \( \Ssq^2_R(F) \) with the kernel of the map \( \T^2_R(F) \rightarrow \lambdaprod^2_R(F) \).
+        \end{itemize}
+    \end{enumerate}
+    \textit{Conclusion}: There is a meaningful isomorphism \( F \tensor F \cong \lambdaprod^2_R(F) \oplus \Ssq^2_R(F) \).
+    \end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item Suppose $\lambda\left(\sum_{i,j}a_{ij}e_i\wedge e_j\right)=0$, then 
+        \begin{equation*}
+            \frac{1}{2}\sum_{i,j}a_{ij}\left(e_i\otimes e_j-e_j\otimes e_i\right)=0
+        \end{equation*}
+        but $e_i\otimes e_j$ is linearly independent in $T^2(F)$, hence $a_{ij}=0$ for all $i,j$.
+        \item Same with $\lambda$.
+    \end{enumerate}
+\end{proof}
+
+\begin{prob}[4.14]
+    Let $F$ be a free $R$-module of rank $r$. Prove that $\text{Sym}^2(F)$ is free and compute its rank.
+\end{prob}
+\begin{proof}
+    An $R$-module is free iff it admits a basis. The basis is given by 
+    \begin{equation*}
+        \{e_ie_j: 1\leq i\leq j\leq r\}
+    \end{equation*}
+    Hence its rank is $\frac{n(n+1)}{2}$.
+\end{proof}
+
+
+
+\begin{prob}[4.15]
+        Let \( F_1, \, F_2 \) be free \( R \)-modules of finite rank. Prove that \( S_R^*(F_1 \oplus F_2) \cong S_R^*(F_1) \otimes_R S_R^*(F_2) \).
+\end{prob}
+\begin{proof}
+    Recall that 
+    \begin{equation*}
+        S^*(F)=\sum_{k=0}^\infty S^k(F)
+    \end{equation*}
+    We will construct an isomorphism using basis for both sides. Let $\{e_i\}_{i=1}^n, \{f_j\}_{j=1}^k$ be bases of $F_1,F_2$, then $S^*(F_1)\otimes S_R^*(F_2)$ is spanned by the monomials:
+    \begin{equation*}
+        e_1^{a_1}\dots e_n^{a_n}\otimes f_1^{b_1}\dots f_k^{b_k}
+    \end{equation*}
+    where $a_i,b_j\geq 0$. One can construct map:
+    \begin{equation*}
+        \left(e_1^{a_1}\dots e_n^{a_n}\otimes f_1^{b_1}\dots f_k^{b_k}\right)\mapsto (e_1,0)^{a_1}\dots(e_n,0)^{a_n}(0,f_1)^{b_1}\dots(0,f_k)^{b_k}
+    \end{equation*}
+    since it is clear that 
+    \begin{equation*}
+        \left\{(e_i,0)^{a_i}, (0,f_j)^{b_j}: 1\leq i\leq n, 1\leq j\leq k\right\}
+    \end{equation*}
+    forms a basis of $S^*(F_1\oplus F_2)$.
+\end{proof}
+        
+
+        
+\begin{prob}[4.17]
+        Let \( V \) be a \( k \)-vector space of dimension \( r \). Prove that, as a vector space, the exterior algebra \( \Lambda^*(V) \) has dimension \( 2^r \).
+\end{prob}
+\begin{proof}
+    Note that $\bigwedge^0=k, \bigwedge^1V=V$, and 
+    \begin{equation*}
+        \Lambda^*(V)=\bigoplus_{k=0}^r\Lambda^k(V)
+    \end{equation*}
+    hence
+    \begin{align*}
+        \dim\Lambda^*(V)&=\sum_{k=0}^r\binom{r}{k}\\
+        &=(1+1)^r\\
+        &=2^r
+    \end{align*}
+\end{proof}
+
+
+
+\chapter{Representation Theory of Finite Groups}
+\begin{prob}
+Let \( A \) be a finite dimensional semisimple algebra. Show that \( A \) has only finitely many isomorphism types of modules in each dimension. 
+
+
+
+% [This is not in general true for algebras that are not semisimple: we saw in Chapter 1 Exercise 9 that \( k[C_2 \times C_2] \) has infinitely many non-isomorphic 2-dimensional representations when \( k \) is an infinite field of characteristic 2.]
+\end{prob}
+\begin{proof}
+    For a fixed dimension $d$, show that there are finitely many isomorphism classes of $A$-modules of dimension $d$. This is equivalent to decompose any finite representation of $G$ into irreducible ones:
+    \begin{equation*}
+        V\cong S_1^{n_1}\oplus\dots\oplus S_k^{n_k}
+    \end{equation*}
+    where $S_i$ are irreducible representations, and 
+    \begin{equation*}
+        d=\sum_{i=1}^k \dim(S_i)n_i
+    \end{equation*}
+    There are only finitely many ways to write this as a sum.
+\end{proof}
+
+
+
+
+
+
+
+\chapter{Problems I guess}
+
+
+\begin{prob}
+Let \( D \) be a division ring and \( n \) a natural number.
+
+\begin{enumerate}[label=(\alph*)]
+    \item Show that the natural \( M_n(D) \)-module, consisting of column vectors of length \( n \) with entries in \( D \), is a simple module.
+    \item Show that \( M_n(D) \) is semisimple and has up to isomorphism only one simple module.
+    \item Show that every algebra of the form
+    \[
+    M_{n_1}(D_1) \oplus \cdots \oplus M_{n_r}(D_r)
+    \]
+    is semisimple.
+    \item Show that \( M_n(D) \) is a simple ring, namely one in which the only 2-sided ideals are the zero ideal and the whole ring.
+\end{enumerate}
+\end{prob}
+
+\begin{prob}
+(We exploit results from a basic algebra course in our suggested approach to this question.) Let \( G \) be a cyclic group of order \( n \) and \( k \) a field.
+
+\begin{enumerate}[label=(\alph*)]
+    \item By considering a homomorphism \( k[X] \to kG \) or otherwise, where \( k[X] \) is a polynomial ring, show that \( kG \cong k[X]/(X^n - 1) \) as rings.
+    \item Suppose that the characteristic of \( k \) does not divide \( n \). Use the Chinese Remainder Theorem and separability of \( X^n - 1 \) to show that when \( kG \) is expressed as a direct sum of irreducible representations, no two of the summands are isomorphic, and that their degrees are the same as the degrees of the irreducible factors of \( X^n - 1 \) in \( k[X] \). Deduce, as a special case of Corollary 2.1.7, that when \( k \) is algebraically closed all irreducible representations of \( G \) have degree 1.
+    \item When \( n \) is prime and \( k = \mathbb{Q} \), use irreducibility of \( X^{n-1} + X^{n-2} + \cdots + X + 1 \) to show that \( G \) has a simple module \( S \) of degree \( n - 1 \), and that \( \mathrm{End}_{kG}(S) \cong \mathbb{Q}(e^{2\pi i/n}) \).
+    \item When \( k = \mathbb{R} \) and \( n \) is odd show that \( G \) has \( \frac{n-1}{2} \) simple representations of degree 2 as well as the trivial representation of degree 1. When \( k = \mathbb{R} \) and \( n \) is even show that \( G \) has \( \frac{n-2}{2} \) simple representations of degree 2 as well as two simple representations of degree 1. If \( S \) is one of the simple representations of degree 2 show that \( \mathrm{End}_{kG}(S) = \mathbb{C} \).
+\end{enumerate}
+\end{prob}
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

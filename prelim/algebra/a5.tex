@@ -1,0 +1,623 @@
+\chapter{Galois Theory}
+% Page 46
+% Page 52-61
+
+
+
+Quick reminder whether a polynomial has a rational root:
+\begin{prop}
+    Let $f(t)=a_nt^n+\dots+a_1t+a_0$, and if a rational (expressed in lowest terms) $\frac{p}{q}$ is a root of $f$, then $p\mid a_0, q\mid a_0$.
+\end{prop}
+
+
+\begin{defn}[Galois extension]
+    A field extension $k\subset L$ is Galois if for all $x\in L$, the minimal polynomial $f(x)\in k[x]$ splits into a linear factor without repeated roots.
+\end{defn}
+\begin{defn}[normal extension]
+    An extension $k\subset K$ is normal if $f$ has a root in $K$ if and only if $f$ splits completely into linear factors over $K$. An extension that is normal and separable is Galois.
+\end{defn}
+
+\begin{thm}
+    Suppose $k\subset L$ is Galois, 
+    \begin{equation*}
+        \left\{ k\subset M\subset L\right\} \xLeftrightarrow{\text{ one-to-one}} \left\{\text{Subgroups of Gal}(L/k) \right\}
+    \end{equation*}
+    Moreover, the order of the Galois group is the degree of the field extension.
+    \begin{equation*}
+        \left|\text{Gal}(L/k)\right|=[L:k]
+    \end{equation*}
+\end{thm}
+
+% \begin{example}
+%     Let $f(x)=x^4-4x^2-2\in\Q[x]$, compute the Galois group of $f$.
+% \end{example}
+
+
+
+\begin{prop}
+    Let $G$ be a Galois group of a polynomial $f$ of degree $4$, and $|G|=8$, then 
+    \begin{equation*}
+        G\cong D_8
+    \end{equation*}
+\end{prop}
+\begin{proof}
+    We know that $G$ permutes the four roots of $f$, i.e., $G$ embeds into $S_4$. Since $|G|=8$, we know $G$ is a Sylow-$2$ subgroup of $S_4$, and all Sylow-$2$ subgroups are conjugates (isomorphic to one another), i.e., 
+    \begin{equation*}
+        G\cong D_8
+    \end{equation*}
+    as desired.
+\end{proof}
+
+\begin{prop}
+    Let $k\subset K$ be a Galois extension, then the intermediate field extensions $k\subset E\subset K$ is determined by the subgroups of $\gal(K/k)$. Namely, let $E$ be an intermediate extension, there exists a subgroup $H$ of $\gal(K/k)$ that fixes $E$. This extension is normal if and only if $H$ is normal. And $E/k$ is Galois if and only if $H$ is normal.
+\end{prop}
+
+% \begin{prop}
+%     We can draw the lattice of subgroups of $\gal(K/k)$ and lattice of subfields:
+
+%     \begin{tikzpicture}[node distance=2cm]
+%         % Nodes for fields
+%         \node (k) {$k$};
+%         \node[right of=k] (E) {$E$};
+%         \node[right of=E] (F) {$F$};
+        
+%         % Nodes for automorphism groups (placed below)
+%         \node[below of=k, yshift=-1.5cm] (Autk) {$\text{Aut}_k(F)$};
+%         \node[below of=E, yshift=-1.5cm] (AutE) {$\text{Aut}_E(F)$};
+%         \node[below of=F, yshift=-1.5cm] (e) {$\{e\}$};
+        
+%         % Field extension lines
+%         \draw (k) -- (E) node[midway, above] {$\subseteq$};
+%         \draw (E) -- (F) node[midway, above] {$\subseteq$};
+        
+%         % Automorphism group lines (reverse inclusions)
+%         \draw (Autk) -- (AutE) node[midway, below] {$\supseteq$};
+%         \draw (AutE) -- (e) node[midway, below] {$\supseteq$};
+        
+%         % Vertical dotted lines to show correspondence
+%         \draw[dashed] (k) -- (Autk);
+%         \draw[dashed] (E) -- (AutE);
+%         \draw[dashed] (F) -- (e);
+%     \end{tikzpicture}
+    
+
+% \end{prop}
+
+
+
+
+\begin{prob}[S2009-Q3]
+    Consider the field \(K = \mathbb{Q}(\sqrt{a})\) where \(a \in \mathbb{Z}, a < 0\). Show that \(K\) cannot be embedded in a cyclic extension whose degree over \(\mathbb{Q}\) is divisible by 4.
+\end{prob}
+\begin{proof}
+    Suppose $K$ embedes into a degree $4n$ extension $L$, and 
+    \begin{equation*}
+        \text{Gal}(L/\Q)=\frac{\Z}{4n\Z}
+    \end{equation*} 
+    Since $K$ is a degree $2$ extension of $\Q$, thus $L/K$ is a degree $4n/2$ Galois extension, with Galois group 
+    \begin{equation*}
+        \text{Gal}(L/K)=\frac{2\Z}{4n\Z}
+    \end{equation*}
+    We notice that $\sqrt{a}$ is complex, hence the complex conjugation $\tau$ is in $\text{Gal}(L/\Q)$, i.e., it is an order $2$ element in $\frac{\Z}{4n\Z}$, it is therefore $[2n]$ i.e., 
+    \begin{equation*}
+        \tau\in\frac{2\Z}{4n\Z}=\text{Gal}(L/\Q)
+    \end{equation*}
+    This implies $\tau$ fixed $K$, however $\tau(\sqrt{a})\neq\sqrt{a}$, hence a contradiction.
+\end{proof}
+
+
+\begin{prob}[F2000-Q4]
+    Let \(G\) be a finite group. Show that there exists a Galois field extension \(K/k\) whose Galois group is isomorphic to \(G\).
+\end{prob}
+\begin{proof}
+    Embed any group into $S_n$, and $S_n$ embeds into $S_p$ for $p$ large enough. 
+\end{proof}
+
+
+\section{Problems}
+
+\begin{prob}[S2001-Q2]
+    Let \(K\) be the splitting field of \(f(X)=X^3-2\) over \(\mathbb{Q}\).
+    \begin{itemize}
+        \item[(a)] Determine an explicit set of generators for \(K\) over \(\mathbb{Q}\).
+        \item[(b)] Show that the Galois group \(G(K/\mathbb{Q})\) of \(K\) over \(\mathbb{Q}\) is isomorphic to the symmetric group \(S_3\).
+        \item[(c)] Provide the complete list of intermediate fields \(k\), \(\mathbb{Q} \subseteq k \subseteq K\), satisfying \([k:\mathbb{Q}]=3\).
+        \item[(d)] Which of the fields determined in (c) are normal extensions of \(\mathbb{Q}\)?
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item[(a)] The set of generators is 
+        \begin{equation*}
+            \left\{\sqrt[3]{2}, e^\frac{2\pi i}{3} \right\}
+        \end{equation*}
+        \item[(b)] The Galois group is a subgroup of $S_3$, hence it suffices to show $G$ has order $6$, i.e., the extension is of degree $6$.
+        
+        
+        % The minimal polynomial of $e^\frac{2\pi i}{3}$ is $x^2+x+1$. This shows that the Galois group $G$ has order $6$, and because of the complex root, there exists an element of order $2$, a transposition, that only swaps the two complex roots, and $G$ also has an element of order $3$ because $3$ divides $|G|$, this shows that $G$ must be $S_3$.
+        \item[(c)]  The following is the \textbf{complete} subgroup lattice of $S_3$ and subfield lattice: 
+        \[\begin{tikzcd}
+            & K &&&& {\{e\}} \\
+            {\mathbb{Q}(\sqrt[3]{2})} & {\mathbb{Q}(\sqrt[3]{2}\omega)} & {\mathbb{Q}(\sqrt[3]{2}\omega^2)} & {\mathbb{Q}(\omega)} & {\langle(23)\rangle} & {\langle(13)\rangle} & {\langle(12)\rangle} & {\langle(123)\rangle} \\
+            & {\mathbb{Q}} &&&& {S_3}
+            \arrow["2"', no head, from=1-2, to=2-3]
+            \arrow["3", no head, from=1-6, to=2-7]
+            \arrow["2", curve={height=-12pt}, no head, from=1-6, to=2-8]
+            \arrow["2", no head, from=2-1, to=1-2]
+            \arrow["3"', no head, from=2-1, to=3-2]
+            \arrow["2"', no head, from=2-2, to=1-2]
+            \arrow["3", no head, from=2-2, to=3-2]
+            \arrow["3"', no head, from=2-4, to=1-2]
+            \arrow["3", no head, from=2-5, to=1-6]
+            \arrow["2"', no head, from=2-5, to=3-6]
+            \arrow["3"', no head, from=2-6, to=1-6]
+            \arrow["3", no head, from=3-2, to=2-3]
+            \arrow["2", no head, from=3-2, to=2-4]
+            \arrow["2"', no head, from=3-6, to=2-6]
+            \arrow["2", no head, from=3-6, to=2-7]
+            \arrow["3"', no head, from=3-6, to=2-8]
+        \end{tikzcd}\]
+        Thus all the $\Q\subset k$ such that $[k:\Q]=3$ are 
+        \begin{equation*}
+            \{\Q(\sqrt[3]{2}), \Q(\sqrt[3]{2}\om_3), \Q(\sqrt[3]{2}\om_3^2)\}
+        \end{equation*}
+
+
+        % \\[
+        %     \begin{array}{c}
+        %     S_3 \\
+        %     \hline
+        %     \begin{array}{cccc}
+        %      & A_3 & & \\
+        %     \langle (1\,2) \rangle & \langle (1\,3) \rangle & \langle (2\,3) \rangle & \\
+        %      & \{e\} & & \\
+        %     \end{array} \\
+        %     \end{array}
+        %     \]
+        \item[(d)] None of the above are normal because the subgroups 
+        \begin{equation*}
+            \{\la(12)\ra, \la(13)\ra, \la(23)\ra\}
+        \end{equation*}
+        are all Sylow $2$-subgroups of $S_3$, hence all conjugates to one another, i.e., not normal. 
+    \end{enumerate}
+\end{proof}
+
+
+\begin{prob}[F2001-Q4]
+    Let \(K:=\mathbb{Q}(\sqrt{3}+\sqrt{5})\).
+    \begin{itemize}
+        \item[(a)] Show that \(K\) is the splitting field of \(X^4-6X^2+4\).
+        \item[(b)] Find the structure of the Galois group of \(K/\mathbb{Q}\).
+        \item[(c)] List all the fields \(k\), satisfying \(\mathbb{Q} \subseteq k \subseteq K\).
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(a)] I belive there is typo in (a) where the polynomial should be $f(X)=X^4-16X^2+4$. This is the minimal polynomial of $\sqrt{3}+\sqrt{5}$. We see that $\Q(\sqrt{3}+\sqrt{5})=\Q(\sqrt{3},\sqrt{5})$, hence it contains all the roots of $f$.
+        \item[(b)] We let $\alpha=\sqrt{3}+\sqrt{5}$, and $\beta=\sqrt{3}-\sqrt{5}$, then we see Galois group permutes 
+        \begin{equation*}
+            \{\alpha,-\alpha,\beta,-\beta\}
+        \end{equation*}
+        and we have $\alpha\beta\in\Q$. Thus just like the above, we have 
+        \begin{equation*}
+            \gal(K/\Q)=\frac{\Z}{2\Z}\times\frac{\Z}{2\Z}
+        \end{equation*}
+        \item[(c)] We know the intermediate fields are determined by the subgroup of $\Z/2\Z\times\Z/2\Z$. 
+        \[\begin{tikzcd}
+            & {\{e\}} \\
+            {\langle(1,0)\rangle} & {\langle(1,1)\rangle} & {\langle(0,1)\rangle} \\
+            & {\Z/2\Z\times\Z/2\Z}
+            \arrow["2", no head, from=2-1, to=1-2]
+            \arrow["2"', no head, from=2-1, to=3-2]
+            \arrow["2"', no head, from=2-2, to=1-2]
+            \arrow["2", no head, from=2-2, to=3-2]
+            \arrow["2"', no head, from=2-3, to=1-2]
+            \arrow["2", no head, from=3-2, to=2-3]
+        \end{tikzcd}\]
+        and let $(1,0)$ be the element such that 
+        \begin{equation*}
+            (1,0)\cdot (\sqrt{3}+\sqrt{5})=\sqrt{3}-\sqrt{5}
+        \end{equation*}
+        then we have the corresponding lattice of subfields
+        \[\begin{tikzcd}
+            & {\{e\}} \\
+            {\langle(1,0)\rangle} & {\langle(1,1)\rangle} & {\langle(0,1)\rangle} \\
+            & {\Z/2\Z\times\Z/2\Z} \\
+            & {\mathbb{Q}(\sqrt{3},\sqrt{5})} \\
+            {\mathbb{Q}(\sqrt{3})} & {\mathbb{Q}(\sqrt{15})} & {\mathbb{Q}(\sqrt{5})} \\
+            & {\mathbb{Q}}
+            \arrow["2", no head, from=2-1, to=1-2]
+            \arrow["2"', no head, from=2-1, to=3-2]
+            \arrow["2"', no head, from=2-2, to=1-2]
+            \arrow["2", no head, from=2-2, to=3-2]
+            \arrow["2"', no head, from=2-3, to=1-2]
+            \arrow["2", no head, from=3-2, to=2-3]
+            \arrow["2"', no head, from=5-1, to=4-2]
+            \arrow["2", no head, from=5-2, to=4-2]
+            \arrow["2", no head, from=5-3, to=4-2]
+            \arrow["2"', no head, from=6-2, to=5-1]
+            \arrow["2", no head, from=6-2, to=5-2]
+            \arrow["2", no head, from=6-2, to=5-3]
+        \end{tikzcd}\]
+    \end{itemize}
+    So all intermediate fields are 
+    \begin{equation*}
+        \left\{\Q(\sqrt{3}), \Q(\sqrt{15}),\Q(\sqrt{5})\right\}
+    \end{equation*}
+\end{proof}
+
+
+% \begin{proof}
+%     \begin{itemize}
+%         \item[(a)] The minimal polynomial of $\sqrt{3}+\sqrt{5}$ is exactly $x^4-6x^2+4$, and it is irreducible over $\Q$, hence $K$ 
+%     \end{itemize}
+% \end{proof}
+
+
+\begin{prob}[F2013-Q5]
+    Compute the Galois group of \(f(x) = x^4 + 1\) over \(\mathbb{Q}\).
+\end{prob}
+\begin{proof}
+    The splitting field for $f$ is $\Q(\xi_8)$ where $\xi_8=e^\frac{2\pi i}{8}$, and the Galois group 
+    \begin{equation*}
+        \text{Gal}(\Q(\xi_8)/\Q)\cong\left(\Z/8\Z\right)^\times
+    \end{equation*}
+    thus
+    \begin{equation*}
+        \left(\Z/8\Z\right)^\times\cong\frac{\Z}{2\Z}\times\frac{\Z}{2\Z}
+    \end{equation*}
+    Alternatively, we can find $K=\Q(i,\sqrt{2})$, then $\gal(F/\Q)\cong\frac{\Z}{2\Z}\times\frac{\Z}{2\Z}$.
+\end{proof}
+
+
+
+\begin{prob}[F2016-Q4]
+    \phantom{text}
+    \begin{itemize}
+        \item[(1)] Determine the Galois group of \(x^{4}-4x^{2}-2\) over \(\mathbb{Q}\).
+        \item[(2)] Let \(G\) be a group of order 8 such that \(G\) is the Galois group of a polynomial of degree 4 over \(\mathbb{Q}\). Show that \(G\) is isomorphic to the Galois group in part (1).
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(a)] There are four roots of this polynomial 
+        \begin{equation*}
+            \{\alpha, -\alpha, \beta, -\beta\}
+        \end{equation*}
+        where 
+        \begin{equation*}
+            \alpha=\sqrt{2+\sqrt{6}}, \beta=\sqrt{2-\sqrt{6}}
+        \end{equation*}
+        Thus the Galois group embeds into $S_4$. Notice that 
+        \begin{equation*}
+            \alpha\beta=\sqrt{2}i
+        \end{equation*}
+        Thus we see the Galois extension has degree $8$:
+        \[\begin{tikzcd}
+            {\mathbb{Q}(\sqrt{2+\sqrt{6}},\sqrt{2}i)} \\
+            {\mathbb{Q}(\sqrt{2+\sqrt{6}})} \\
+            {\mathbb{Q}}
+            \arrow["2", no head, from=1-1, to=2-1]
+            \arrow["4", no head, from=2-1, to=3-1]
+        \end{tikzcd}\]
+        Notice that the Galois grop $G$ is an order $8$ subgruop of $S_4$, which implies that $G$ is a Sylow $2$ subgroup, and all Sylow $2$ subgruops are isomorphic: 
+        \begin{equation*}
+            G\cong D_8
+        \end{equation*}
+
+        \item[(b)] Notice that we need to check that $f$ is irreducible, then we can embed $\gal$ into $S_4$. Suppose that it is not irreducible, then either $f=g_1g_2,g_i$ is quadratic, or $f=g(x)(x-a)$, for some $a\in\Q$. In former case, we see $\gal$ embeds in $\Z/2\Z\times\Z/2\Z$, so cannot be of order $8$; similarly for cubic+linear, $S_3$ does not have subgroup of order $8$. Hence a degree $4$ polynomial with Galois group of order $8$ must be irreducible.
+    \end{itemize}
+\end{proof}
+
+
+\begin{prob}[S2008-Q3]
+    Let \(K\) be the splitting field of the polynomial \(X^4 - 6X^2 - 1\) over \(\mathbb{Q}\).
+    \begin{itemize}
+        \item[(a)] Compute \(\text{Gal}(K/\mathbb{Q})\).
+        \item[(b)] Determine all intermediate fields that are Galois over \(\mathbb{Q}\).
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(a)] This computation is exactly same as above, as we have the four roots 
+        \begin{equation*}
+            \left\{\pm\sqrt{3+\sqrt{10}}, \pm\sqrt{3-\sqrt{10}}\right\}
+        \end{equation*}
+        and we see that $\alpha\beta=i$, thus the Galois group $\gal(K/\Q)$ has order $8$, and embeds into $S_4$, thus 
+        \begin{equation*}
+            \gal(K/\Q)\cong D_8
+        \end{equation*}
+        \item[(b)] There are 10 subgroups of $D_8$, and $6$ of them are normal. Let 
+        \begin{equation*}
+            r: \alpha\mapsto\beta, s: i\mapsto i
+        \end{equation*}
+        Then we see, for example, $r^2$ fixes $i$ and $\sqrt{10}$, thus we must have the lattice 
+        \[\begin{tikzcd}
+            & K \\
+            & {\mathbb{Q}(i, \sqrt{10})} \\
+            {\mathbb{Q}(i)} & {\mathbb{Q}(\sqrt{10}i)} & {\mathbb{Q}(\sqrt{10})} \\
+            & {\mathbb{Q}}
+            \arrow[no head, from=2-2, to=1-2]
+            \arrow[no head, from=3-1, to=2-2]
+            \arrow[no head, from=3-2, to=2-2]
+            \arrow[no head, from=3-2, to=4-2]
+            \arrow[no head, from=3-3, to=2-2]
+            \arrow[no head, from=4-2, to=3-1]
+            \arrow[no head, from=4-2, to=3-3]
+        \end{tikzcd}\]
+    \end{itemize}
+\end{proof}
+
+
+
+
+
+
+\begin{prob}[S2010-Q3]
+    Compute Galois groups of the following polynomials.
+    \begin{itemize}
+        \item[(a)] \(x^3 + t^2x - t^3\) over \(k\), where \(k = \mathbb{C}(t)\) is the field of rational functions in one variable over complex numbers \(\mathbb{C}\).
+        \item[(b)] \(x^4 - 14x^2 + 9\) over \(\mathbb{Q}\).
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(a)] The polynomial completely factors over $\C(t)$, so the Galois group is $\{e\}$. Try taking $x=\lambda t$, then solving for $\lambda$, which splits into linear factors because $\C$ is algebraically closed.
+        \item[(b)] The roots are 
+        \begin{equation*}
+            \left\{\pm\sqrt{7\pm 2\sqrt{10}}\right\}
+        \end{equation*}
+        and $\alpha\beta\in\Q$ again, hence the Galois group is $\Z/2\Z\times\Z/2\Z$.
+    \end{itemize}
+\end{proof}
+
+
+\begin{prob}[S2013-Q6]
+    Let \(K\) be the splitting field of \(x^6 - 5\) over \(\mathbb{Q}\).
+    \begin{itemize}
+        \item[(a)] Prove that \(x^6 - 5\) is irreducible over \(\mathbb{Q}\).
+        \item[(b)] Compute the Galois group of \(K\) over \(\mathbb{Q}\).
+        \item[(c)] Describe an intermediate field \(F\) such that \(F\) is not \(\mathbb{Q}\) or \(K\) and \(F/\mathbb{Q}\) is Galois.
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(a)] By Eisenstein.
+        \item[(b)] We know $K=\Q(\sqrt[6]{5}, \zeta_6)$, where $\zeta_6$ is the $6$th root of unity. The roots are 
+        \begin{equation*}
+            \left\{\sqrt[6]{5}, \sqrt[6]{5}\zeta_6, \dots, \sqrt[6]{5}\zeta_6^5\right\}
+        \end{equation*}
+        Note that the minimal polynomial for $\zeta_6$ is $x^2-x+1$, so the size of $\gal(K/\Q)$ is $12$. We see that any $\sigma\in \gal(K/\Q)$ is determined by where it sends $\sqrt[6]{5}$ and $\zeta_6$, so we  only need to compute the possibilities of them. The Galois action is transitive implies that there $\sqrt[6]{5}$ can be sent to any $\sqrt[6]{5}\zeta_6^k$, where $k=0, 1,2,3,4,5$, and since $\zeta_6$ has minimal polynomial 
+        \begin{equation*}
+            x^2-x+1
+        \end{equation*}
+        Then there are two possibilities for $\zeta_6\mapsto \zeta_6, \bar{\zeta}_6$, where $\bar{\zeta_6}=\zeta_6^5$. Now we see that 
+        \begin{equation*}
+            \gal(K/Q)=D_{12}
+        \end{equation*}
+        as it is generated by
+        \begin{equation*}
+            \sigma: \sqrt[6]{5}\mapsto\zeta_6\sqrt[6]{5}, \zeta_6\mapsto\zeta_6, \quad\tau: \sqrt[6]{5}\mapsto\sqrt[6]{5},  \zeta_6\mapsto \zeta_6^5
+        \end{equation*}
+        satisfying $\tau\sigma=\tau\sigma^{-1}$. (One can draw a hexagon)
+        \item[(c)] $F/\Q$ corresponds to a normal subgroup of $D_{12}$. Any subgroup of $6$ is normal, i.e., the subgroup 
+        \begin{equation*}
+            \{e, \sigma, \dots, \sigma^5\}
+        \end{equation*}
+        This subgroup fixes the field $\Q(\zeta_6)$. Hence it corresponds to
+        \begin{equation*}
+            F=\Q(\zeta_6)
+        \end{equation*}
+    \end{itemize}
+\end{proof}
+
+
+
+
+
+\begin{prob}[S2016-Q3]
+    Determine the Galois group of \(x^{6}-10x^{3}+1\) over \(\mathbb{Q}\).
+\end{prob}
+\begin{proof}
+    This is the same process as above, the roots are 
+    \begin{equation*}
+        \left\{\zeta_3^{i}\sqrt[3]{5\pm 2\sqrt{6}}: i=0,1,2\right\}
+    \end{equation*}
+    The order of the Galois group $G$ is $12$, but now we need another trick.
+    \begin{lem}
+        Transitive subgroup of $S_6$ of order 12 can only be $D_{12}$ or $A_4$. However, $A_4$ has no index $2$ subgroups, i.e., this Galois extension cannot have a subfield extension of degree $2$ over $\Q$, this gives that $G$ must be $D_{12}$:
+        \[\begin{tikzcd}
+            & {\mathbb{Q}(\sqrt[3]{2+\sqrt{6}},\zeta_3)} \\
+            {\mathbb{Q}(\zeta_3)} & {} & {\mathbb{Q}(\sqrt[3]{2+\sqrt{6}})} \\
+            & {\mathbb{Q}}
+            \arrow["2"', no head, from=1-2, to=2-3]
+            \arrow["6"', no head, from=2-1, to=1-2]
+            \arrow["2", no head, from=2-1, to=3-2]
+            \arrow["6", no head, from=3-2, to=2-3]
+        \end{tikzcd}\]
+    \end{lem} 
+  
+    % \begin{equation*}
+    %     G\la \sigma,\tau: \sigma^6=\tau^2=e, \tau\sigma=\tau\sigma^{5}\ra
+    % \end{equation*}
+    % where 
+    % \begin{equation*}
+    %     \sigma: \sqrt[3]{5\pm 2\sqrt{6}}\mapsto \sqrt[3]{5\pm 2\sqrt{6}}\zeta_3, \zeta_3\mapsto\zeta_3
+    % \end{equation*}
+    % and 
+    % \begin{equation*}
+    %     \tau: \sqrt[3]{5\pm 2\sqrt{6}}\mapsto \sqrt[3]{5\pm 2\sqrt{6}}, \zeta_3\mapsto\
+    % \end{equation*}
+\end{proof}
+
+\begin{prob}[F2010-Q3]
+    Let \(K = \mathbb{Q}(\sqrt[8]{2}, \sqrt{-1})\) and \(F = \mathbb{Q}(\sqrt{-2})\). Show that \(K\) is Galois over \(F\) and determine the Galois group \(\text{Gal}(K/F)\).
+\end{prob}
+\begin{proof}
+    Since $\sqrt{2}=\zeta_8^4$, we see $F$ is a subfield such that 
+    \begin{equation*}
+        \Q\subset F\subset K
+    \end{equation*}
+    The Galois group can be computed to be $Q_8$.
+    % The Galois group can be computed by first noting $\gal(K/\Q)$ is generated by two elements:
+    % Since $K$ is Galois over $\Q$ (splitting field of $x^8-2$), we know $K/F$ is also Galois. Now The Galois group $\gal(K/F)$ corresponds to the subgroup of $\gal(K/\Q)$ of index $2$, i.e., a subgroup of order $8$, hence 
+    % \begin{equation*}
+    %     \gal(K/F)=\frac{\Z}{8\Z}
+    % \end{equation*} 
+
+
+    % We know that $K$ is Galois because it is the splitting field of the following separable polynomial:
+    % \begin{equation*}
+    %     f(t)=t^5-2
+    % \end{equation*}
+    % We know that 
+    % \begin{equation*}
+    %     \gal(K/\Q)=S_5
+    % \end{equation*}
+    % because it contains a transposition and a degree $5$ element. 
+\end{proof}
+
+\begin{prob}[F2015-Q2]
+    The dihedral group \(D_{2n}\) is the group on two generators \(r\) and \(s\), with respective orders \(o(r)=n\) and \(o(s)=2\), subject to the relation \(rsr=s\).
+    \begin{itemize}
+        \item[(a)] Calculate the order of \(D_{2n}\).
+        \item[(b)] Let \(K\) be the splitting field of the polynomial \(x^8 - 2\). Determine whether the Galois group \(\text{Gal}(K/\mathbb{Q})\) is dihedral (i.e., isomorphic to \(D_{2n}\) for some \(n\)).
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(a)] Because of the relation $srs=r^{-1}$, we can express all the terms in $D_{2n}$ as 
+        \begin{equation*}
+            r^ks^m
+        \end{equation*}
+        where $0\leq k\leq n-1, m=0,1$. Hence there are $2n$ elements.
+        \item[(b)] It is not $D_{16}$, you can compute the number of elements of each order.
+        % \item[(b)] The Galois group is indeed diahedral, note that 
+        % \begin{equation*}
+        %     K=\Q(\zeta_8,\sqrt[8]{2})
+        % \end{equation*}
+        % Thus $\gal(K/\Q)$ has order 16 and the only transitive subgroup of $S_8$ of order $16$ is $D_{16}$.
+    \end{itemize}
+\end{proof}
+
+
+\begin{prop}[S2019-Q1]
+    Any transitive subgroup of \(A_{5}\) is isomorphic to one of the following groups:
+    \begin{itemize}
+        \item[(a)] the cyclic group \(\mathbb{Z}/5\mathbb{Z}\),
+        \item[(b)] the dihedral group \(D_{5}\),
+        \item[(c)] \(A_{5}\).
+    \end{itemize}
+\end{prop}
+
+
+
+% \begin{prob}[S2019-Q2]
+%     Let \(f(x)=x^{5}-5x+12\). Verify that \(f(x)\) is irreducible in \(\mathbb{Q}[x]\) and its discriminant is \(d(f)=(2^{6}5^{3})^{2}\). If \(r_{1},\ldots,r_{5}\) are the roots of \(f\), let
+%     \[P(x)=\prod_{1\leq i<j\leq 5}(x-(r_{i}+r_{j})).\]
+%     Show that \(P(x)\) is a product of two monic irreducible polynomials in \(\mathbb{Q}[x]\):
+%     \[P(x)=(x^{5}-5x^{3}-10x^{2}+30x-36)(x^{5}+5x^{3}+10x^{2}+10x+4).\]
+%     Use this information, Problem 1 and properties of \(f_{3}\in\mathbb{F}_{3}[x]\), the reduction of \(f\) modulo 3, to show that the the Galois group \(G_{f}\) of \(f\) is isomorphic to \(D_{5}\).
+% \end{prob}
+
+
+% \begin{prob}[F2018-Q6]
+%     Determine the Galois group over \(\mathbb{Q}\) of the polynomial
+%     \[X^{6}+22X^{5}-9X^{4}+12X^{3}-37X^{2}-29X-15.\]
+% \end{prob}
+
+\begin{prob}[F2017-Q4]
+    Compute the Galois group of \(x^{5}-10x+5\) over \(\mathbb{Q}\).
+\end{prob}
+\begin{proof}
+    $S_5$.
+\end{proof}
+
+
+\begin{prob}[F2004-Q3]
+    Let \(f(x) = x^5 - 9x + 3\). Determine the Galois group of \(f\) over \(\mathbb{Q}\).
+\end{prob}
+\begin{proof}
+    $S_5$.
+\end{proof}
+
+\begin{prob}[F2006-Q2]
+    Let \(f\) be a polynomial in \(\mathbb{Q}[x]\). Let \(E\) be a splitting field of \(f\) over \(\mathbb{Q}\). For the following cases, determine whether \(E\) is solvable by radicals. (i.e., whether the Galois group is solvable or not).
+    \begin{itemize}
+        \item[(1)] \(f(x) = x^4 - 4x + 2\).
+        \item[(2)] \(f(x) = x^5 - 4x + 2\).
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item[(1)] It is a subgroup of $S_4$, so solvable.
+        \item[(2)] The Galois group is $S_5$, so not solvable.  
+    \end{enumerate}
+\end{proof}
+
+\begin{prop}
+    Any group of order $<60$ is solvable.
+\end{prop}
+
+
+
+\begin{prob}[S2011-Q3]
+    Determine the Galois group of the splitting field of each of the following polynomials over \(\mathbb{Q}\):
+    \begin{itemize}
+        \item[(a)] \(f(x)=x^4-9x^3+9x+4\),
+        \item[(b)] \(g(x)=x^5-6x^2+2\).
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    For (a): do the modulo thing to find different cycle types. (b) is $S_5$ as usual.
+\end{proof}
+
+
+\begin{prob}[F2014-Q1]
+    \phantom{text}
+    \begin{itemize}
+        \item[(a)] Let \(S_n\) be the symmetric group (permutation group) on \(n\) objects. Prove that if \(\sigma \in S_n\) is an \(n\)-cycle and \(\tau \in S_n\) is a transposition (i.e., a 2-cycle), then \(\sigma\) and \(\tau\) generate \(S_n\).
+        \item[(b)] Let \(f_a(x)\) be the polynomial \(x^5 - 5x^3 + a\). Determine an integer \(a\) with \(-4 \leq a \leq 4\) for which \(f_a\) is irreducible over \(\mathbb{Q}\), and the Galois group of [the splitting field of] \(f_a\) over \(\mathbb{Q}\) is \(S_5\). Then explain why the equation \(f_a(x) = 0\) is not solvable in radicals.
+    \end{itemize}
+\end{prob}
+\begin{itemize}
+    \item[(a)] It suffices to assume that the $n$ cycle is $(1\dots n)$ (up to rearranging the terms), and the transposition is $(12)$. One can show that conjugation gives all the transpositions, hence generate $S_n$.
+    \item[(b)] Take $a=1$, then $f_a(x)$ is irreducible: it doesn't have a root by the Rational Root Theorem and cannot be factored into lower degree polynomial by term matching. Moreover, we see that $f_a'(x)$ has $3$ roots, by Rolle's theorem, there are at most $4$ real roots, this implies that there exists a complex root $r_1$, and since this has odd degree, it must also exist a real root $r_2$. This shows that there exists an element in the Galois group that has order $5$ and a transposition (sending conjugate complex roots to each other). Thus by (a), since the Galois group is a subgroup of $S_5$, we must have it equal to $S_5$. 
+\end{itemize}
+
+
+\begin{prob}[F2009-Q3]
+    Determine the Galois group of \(x^4 - 4x^2 + 7x - 3\) over \(\mathbb{Q}\).
+\end{prob}
+\begin{proof}
+    $f\mod 2$ is irreducible of degree $4$, hence there is a $4$-cycle. And $f\mod 3$ gives a $3$-cycle. This implies the galois group has order at least $12$, inside of $S_4$, this means $A_4$ or $S_4$, but it cannot be $A_4$ because it contains no $4$-cycle.
+\end{proof}
+
+\begin{prob}[S2012-Q3]
+    In this problem, \(G\) denotes the group \(S_5 \times C_2\), where \(S_5\) is the symmetric group on five letters and \(C_2\) is the cyclic group of order 2.
+    \begin{itemize}
+        \item[(a)] Determine all normal subgroups of \(G\).
+        \item[(b)] Give an example of a polynomial with rational coefficients whose Galois group is \(G\), deducing that from basic principles.
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    Consider $(x^5-4x-2)(x^2-3)$.
+\end{proof}
+
+
+\begin{prob}[F2015-Q4]
+    Let \(H = S_3 \times S_5\).
+    \begin{itemize}
+        \item[(a)] Determine all normal subgroups of \(H\). Make sure you have them all! What would be different if \(H\) were replaced by \(S_2 \times S_5\)?
+        \item[(b)] Describe, in full detail, the construction of a polynomial with rational coefficients, whose Galois group is isomorphic to \(H\).
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    Consider $(x^5-4x-2)(x^3-2)$.
+\end{proof}
+
+
+
+
+
+

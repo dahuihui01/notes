@@ -1,0 +1,798 @@
+\chapter{Ring Theory Random}
+% Page 41
+
+
+\begin{prop}
+    Let $I\subset R$ be an ideal, then the following are equivalent:
+    \begin{enumerate}
+        \item $I$ is a prime ideal.
+        \item There exists a field $K$ and $\varphi:R\to K$ such that $I=\ker(\varphi)$.
+    \end{enumerate}
+\end{prop}
+\begin{proof}
+    (1)$\Rightarrow$(2). Let $K$ be the field of fractions of $R/I$, which is an integral domain. (2)$\Rightarrow$ (1) is obvious given $K$ is a field.
+\end{proof}
+
+\begin{prob}[S2010-Q2]
+    Let \(R\) be a ring such that \(r^3 = r\) for all \(r \in R\). Show that \(R\) is commutative. (Hint: First show that \(r^2\) is central for all \(r \in R\).)
+\end{prob}
+\begin{proof}
+    This question is not so constructive and is purely computational (as far as I am aware) so I will skip it here.
+\end{proof}
+
+\begin{prob}[S2006-Q2]
+    Let \(R\) be a ring with identity 1. Let \(x, y \in R\) such that \(xy = 1\).
+    \begin{itemize}
+        \item[(1)] Assume \(R\) has no zero-divisor. Show that \(yx = 1\).
+        \item[(2)] Assume \(R\) is finite. Show that \(yx = 1\).
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(1)] We know $x,y\neq 0$, therefore consider 
+        \begin{equation*}
+            x(yx-1)=0
+        \end{equation*}
+        Since $R$ has no zero-divisor, we must have $yx-1=0$, as desired.
+        \item[(2)] We note the right multiplication map $m_x:R\to R$ by $x$ is injective: suppose $r_1,r_2\in R$ and 
+        \begin{equation*}
+            r_1x=xr_2x
+        \end{equation*}
+        multiplying both sides by $y$ we see $r_1=r_2$. Since $R$ is finite, this map is also surjective, i.e., there exists $s\in R$ such that 
+        \begin{equation*}
+            sx=1
+        \end{equation*} 
+        Now we see 
+        \begin{equation*}
+            yx-1=sx(yx-1)=sx-sx=0
+        \end{equation*}
+        as desired.
+    \end{itemize}
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\chapter{Tensor Products over Fields}
+Page 42-43
+
+\begin{prop}
+    If $L/k$ is finite separate extension, then there exists $\alpha\in L$ such that 
+    \begin{equation*}
+        L=k(\alpha)
+    \end{equation*}
+\end{prop}
+\begin{example}
+    Write $\Q(\sqrt{2})\otimes_\Q\Q(\sqrt{3})$ as a product of fields: 
+    \begin{equation*}
+        \Q(\sqrt{2})\otimes_\Q\frac{\Q[x]}{(x^2-3)}\cong\frac{\Q(\sqrt{2})[x]}{(x^3-2)}
+    \end{equation*}
+    and $(x^3-2)$ does not have a root in $\Q(\sqrt{2})$, thus 
+    \begin{equation*}
+        \Q(\sqrt{2})\otimes_\Q\Q(\sqrt{3})\cong\Q(\sqrt{2})\sqrt{3}
+    \end{equation*}
+\end{example}
+
+\begin{example}
+    Similarly, write the following as a product of fields
+    \begin{align*}
+        \Q(\sqrt[4]{2})\otimes_\Q\Q(\sqrt[4]{2})&=\Q(\sqrt[4]{2})\otimes_Q\frac{\Q[x]}{(x^4-2)}\\
+        &=\frac{\Q(\sqrt[4]{2})[x]}{(x^4-2)}\\
+        &=\frac{\Q(\sqrt[4]{2})[x]}{(x-\sqrt[4]{2})(x+\sqrt[4]{2})(x^2+\sqrt{2})}\\
+        &=\frac{\Q(\sqrt[4]{2})[x]}{(x-\sqrt[4]{2})}\times\frac{\Q(\sqrt[4]{2})[x]}{(x+\sqrt[4]{2})}\times \frac{\Q(\sqrt[4]{2})[x]}{(x^2+\sqrt{2})}
+    \end{align*}
+    By the Chinese Remainder theorem 
+    \begin{lem}[CRT]
+        Let $R$ be a PID, and $I+J=(1)$, then 
+        \begin{equation*}
+            \frac{R}{IJ}=\frac{R}{I}\times\frac{R}{J}
+        \end{equation*}
+    \end{lem}
+    We have 
+    \begin{equation*}
+        \Q(\sqrt[4]{2})\otimes_\Q\Q(\sqrt[4]{2})\cong \Q(\sqrt[4]{2})\times \Q(\sqrt[4]{2})\times \Q(\sqrt[4]{2})(i)
+    \end{equation*}
+\end{example}
+
+
+\begin{example}
+    The field extension generated $(x^p-t)$ of field $\F_p(t)$ is not separable, i.e., 
+    \begin{equation*}
+        \frac{\F_p(t)[x]}{(x^p-t)}
+    \end{equation*}
+    is not separable. Consider the element $x$, then the minimal polynomial $m(s)=s^p-t$ can be written as 
+    \begin{equation*}
+        s^p-t=s^p-x^p=(s-x)^p
+    \end{equation*}
+\end{example}
+
+\begin{prop}
+    Recall that a finite separable extension implies algebraic.
+\end{prop}
+
+
+
+
+
+\begin{prob}[S2017-Q3]
+    Let \(K/k\) be a finite separable field extension, and let \(L/k\) be any field extension. Show that \(K\otimes_{k}L\) is a product of fields.
+\end{prob}
+\begin{proof}
+    Finite separable implies simple. There exists $\alpha\in K$ such that 
+    \begin{equation*}
+        K=k(\alpha)
+    \end{equation*}
+    Let $p_\alpha$ be the minimal polynomial of $\alpha$, then
+    \begin{align*}
+        K\otimes_k L&=\frac{k[x]}{(p_\alpha(x))}\otimes_kL\\
+        &=\frac{L[x]}{(p_\alpha(x))}
+    \end{align*}
+    We note $p_\alpha(x)$ factors into irreducible linear factors over $K$. Hence 
+    \begin{align*}
+        K\otimes_kL&=\frac{L[x]}{(p_\alpha^1(x))\dots(p_\alpha^k(x))}\\
+        &=\frac{L[x]}{(p_\alpha^1(x))}\times\dots\times \frac{L[x]}{(p_\alpha^k(x))}
+    \end{align*}
+\end{proof}
+
+
+
+\begin{prob}[F2019-Q3]
+    Let \(F,L\) be extensions of a field \(K\). Suppose that \(F/K\) is finite. Show that there exists an extension \(E/K\) such that there are monomorphisms of \(F\) into \(E\) and of \(L\) into \(E\) which are identical on \(K\).
+\end{prob}
+\begin{proof}
+    Let $F=K(\alpha_1,\dots,\alpha_n)$, 
+    take 
+    \begin{equation*}
+        \frac{L[x]}{m(\alpha_i)}=\frac{L[x]}{(f_1)}\times\dots\times\frac{L[x]}{(f_n)}
+    \end{equation*}
+    take $E_1$ to be one of the fields in the product, then repeat the process on $E_1$ to add in $\alpha_2$.
+
+
+    % Consider the ring $F\otimes_kL$, and taking a maximal ideal 
+    % \begin{equation*}
+    %     E=\frac{F\otimes_KL}{(m)}
+    % \end{equation*}
+    % Then one can show that the morphisms of $F,L$ into $E$ are injective.
+\end{proof}
+
+
+\begin{prob}[F2009-Q4]
+    Let \(E\) and \(F\) be finite field extensions of a field \(k\) such that \(E \cap F = k\), and that \(E\) and \(F\) are both contained in a larger field \(L\). Assume that \(E\) is Galois over \(k\). Show that \(E \otimes_k F \cong EF\).
+\end{prob}
+\begin{proof}
+    Finite separable $E=k(\alpha)$, then 
+    \begin{equation*}
+        E=\frac{k[x]}{(f(x))}
+    \end{equation*}
+    It suffices to show that $f$ is irreducible over $F$, because 
+    \begin{equation*}
+        EF=F(\alpha)=\frac{F[x]}{(f(x))}=E\otimes_k F
+    \end{equation*}
+\end{proof}
+
+
+
+\begin{prob}[S2008-Q5]
+    Let \(k\) be a field of characteristic zero. Assume that \(E\) and \(F\) are algebraic extensions of \(k\) and both contained in a larger field \(L\). Show that the \(k\)-algebra \(E \otimes_k F\) has no nonzero nilpotent elements.
+\end{prob}
+\begin{proof}
+    Reduce to the case where $E,F$ are finite, then show this on any element of $E\otimes_kF$ (nilpotent is a local condition). Finite separable means product of fields, which has no nilpotent elements.
+\end{proof}
+
+
+\begin{prob}[S2004-Q5]
+    Show that there is a \(\mathbb{C}\)-algebra isomorphism between \(\mathbb{C} \otimes_{\mathbb{R}} \mathbb{C}\) and \(\mathbb{C} \times \mathbb{C}\).
+\end{prob}
+\begin{proof}
+    Done.
+\end{proof}
+
+
+\begin{prob}[F2005-Q5]
+    Let \(\mathbb{C}\) and \(\mathbb{R}\) be complex and real number fields. Let \(\mathbb{C}(x)\) and \(\mathbb{C}(y)\) be function fields of one variable. Consider \(\mathbb{C}(x) \otimes_{\mathbb{R}} \mathbb{C}(y)\) and \(\mathbb{C}(x) \otimes_{\mathbb{C}} \mathbb{C}(y)\).
+    \begin{itemize}
+        \item[(1)] Determine if they are integral domains.
+        \item[(2)] Determine if they are fields.
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    Nah.
+\end{proof}
+
+\begin{prob}[F2003-Q4]
+    Verify the isomorphism of algebras over a field \(K\):
+    \[\mathbb{M}_n(K) \otimes_K \mathbb{M}_{m}(K) \simeq \mathbb{M}_{mn}(K).\]
+    [Note: \(\mathbb{M}_n(K)\) denotes the algebra of \(n \times n\) matrices over \(K\).]
+\end{prob}
+\begin{proof}
+    The matrix of matrices.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\chapter{Irreducibility of Polynomials}
+% Page 44-45
+
+
+Reminder: 
+\begin{prop}
+    Let $K$ be a finite field, then $K^\times$ is cyclic.
+\end{prop}
+
+\begin{prop}[Artin-Schreier]
+    $x^p-x-1\in\Q[x]$ is irreducible. 
+\end{prop}
+\begin{proof}
+    It suffices to check irreducibility mod $p$. 
+
+    $x^p-x-a$ is either irreducible or factors completely into linear factors. 
+\end{proof}
+
+
+
+\begin{prop}
+    For $x\in\F_p$, $x^p=x$.
+\end{prop}
+A fact that I keep forgetting.
+
+
+
+\begin{prop}
+    Fix any prime $p$, the polynomial 
+    \begin{equation*}
+        f(x)=x^{p-1}+\dots+x+1=\Phi_p(x)
+    \end{equation*}
+    is irreducible over $\mathbb{Q}$. Similarly 
+    \begin{equation*}
+        g(x)=x^{p-1}-x^{p-2}+\dots-x+1
+    \end{equation*}
+    is irreducible over $\mathbb{Q}$.
+\end{prop}
+\begin{proof}
+    This is an application of Eisenstein. Write 
+    \begin{equation*}
+        f(x)=\frac{x^p-1}{x-1}
+    \end{equation*}
+    and replace $x$ with $x+1$ we get 
+    \begin{align*}
+        f(x)&=\frac{(x+1)^{p}-1}{x}\\
+        &=\frac{\sum_{k=1}^n\binom{p}{k}x^k}{x}\\
+        &=\sum_{k=1}^n\binom{p}{k}x^{k-1}
+    \end{align*}
+    We apply Eisenstein with prime $p$ to see $f$ is irreducible.
+\end{proof}
+
+\begin{prop}
+    For any prime $p$, either $\sqrt{2}\in\F_p$ or $\sqrt{3}\in\F_p$ or $\sqrt{6}\in\F_p$.
+\end{prop}
+\begin{proof}
+    We know there exists a legendre symbol (a character) $\chi: \F_p^\times\to \{\pm 1\}$ such that for $g\in\F_p$,
+    \begin{equation*}
+        \chi(g)=\begin{cases}
+            1, \text{ if $g$ is a square}\\
+            -1, \text{ if $g$ is not a square}
+        \end{cases}
+    \end{equation*}
+    Suppose that $\sqrt{2}$ and $\sqrt{3}$ are not in $\F_p$, then 
+    \begin{equation*}
+        \chi(2)=\chi(3)=-1
+    \end{equation*}
+    i.e., $2,3$ are not squares. However,
+    \begin{equation*}
+        \chi(2\cdot 3)=\chi(6)=1
+    \end{equation*} 
+    This implies that $6$ is a square and $\sqrt{6}\in\F_p$, as desired.
+\end{proof}
+
+\begin{cor}
+    The following polynomial 
+    \begin{equation*}
+        f(x)=(x^2-1)(x^3-1)(x^6-1)
+    \end{equation*}
+    has a linear factor over $\F_p$, for all $p$.
+\end{cor}
+
+
+\begin{prop}
+    The polynomial 
+    \begin{equation*}
+        f(x)=(x-1)(x-2)(x-3)(x-4)+1
+    \end{equation*}
+    is irreducible.
+\end{prop}
+
+
+
+
+
+\begin{prob}[S2018-Q3]
+    Let \(R\) be the ring \(\mathbb{Z}[\zeta_p]\), where \(p\) is a prime number and \(\zeta_p\) denotes a primitive \(p\)th root of unity in \(\mathbb{C}\). Prove that if an integer \(n \in \mathbb{Z}\) is divisible by \(1 - \zeta_p\) in \(R\), then \(p\) divides \(n\).
+\end{prob}
+\begin{proof}
+    Compute $N(1-\zeta_p)$, which is $p$, and norm of $n$ is $n^p$.
+
+    % We know the polynomial 
+    % \begin{equation*}
+    %     x^p-1=(x-1)(x^{p-1}+\dots+x+1)
+    % \end{equation*}
+    % And $\zeta_p$ is a roots of $\Phi_p(x)$, hence we are write $\zeta_p^{p-1}$ as 
+    % \begin{equation*}
+    %     \zeta_p^{p-1}=-\zeta_p^{p-2}-\dots-1
+    % \end{equation*}
+    % Hence 
+    % \begin{equation*}
+    %     n=(1-\zeta_p)(a_0+\dots+a_{p-2}\zeta_p^{p-2})
+    % \end{equation*}
+    % We see that $p$ divides the constant term, hence $p\mid n$.
+\end{proof}
+
+
+
+
+\begin{prob}[F2008-Q2]
+    Show that the polynomial \(x^5 - 5x^4 - 6x - 2\) is irreducible in \(\mathbb{Q}[x]\).
+\end{prob}
+\begin{proof}
+    It suffices to see that it is irreducible $\mod 5$.
+\end{proof}
+
+\begin{prob}[F2003-Q3]
+    Obtain a factorization into irreducible factors in \(\mathbb{Z}[x]\) of the polynomial \(x^{10} - 1\).
+\end{prob}
+\begin{proof}
+    There are four irreducible factors, one linear, two cyclotomic.
+\end{proof}
+
+
+\begin{prob}[S2004-Q3]
+    Let \(k\) be a field with characteristic 0. Let \(m \geq 2\) be an integer. Show that \(f(x,y) = x^m + y^m + 1\) is irreducible in \(k[x,y]\).
+\end{prob}
+\begin{proof}
+    Take an irreducible factor of $y^m+1$, and $y^m+1$ is separable, hence there exists one irreducible factor whose square doesn't divide $y^m+1$. By generalized Eisenstein, we know 
+    \begin{equation*}
+        f(x,y)\in k[y][x]
+    \end{equation*}
+    is irreducible, and done by $k[y][x]=k[x,y]$.
+\end{proof}
+
+\begin{prob}[S2017-Q2, S2007-Q3]
+    Write down the minimal polynomial for \(\sqrt{2}+\sqrt{3}\) over \(\mathbb{Q}\) and prove that it is reducible over \(\mathbb{F}_{p}\) for every prime number \(p\).
+\end{prob}
+\begin{proof}
+    The minimal polynomial of $\sqrt{2}+\sqrt{3}$ is 
+    \begin{equation*}
+        f(x)=x^4-10x^2+1=0
+    \end{equation*}
+    By the corollary, we know in any $\F_p$ for any prime $p$, either $\sqrt{2}, \sqrt{3}, \sqrt{6}$ is in $\F_p$. We claim that if $\sqrt{2}\in\F_p$, then $f$ is factors over $\mathbb{Q}(\sqrt{2})$. Suppose that $f$ does not factor over $\Q(\sqrt{2})$, i.e., $f$ is irreducible over $\Q(\sqrt{2})$, then the degree of extension 
+    \begin{equation*}
+        [\Q(\sqrt{2}+\sqrt{3}):\Q]=[\Q(\sqrt{2}+\sqrt{3}):\Q(\sqrt{2})][\Q(\sqrt{2}):\Q]=8
+    \end{equation*}
+    which is a contradiction. Hence $f$ factors over $\Q(\sqrt{2})$. Similar arguments work if $\sqrt{3}$ or $\sqrt{6}$ are in $\F_p$.
+\end{proof}
+
+\begin{prob}[S2015-Q4]
+    Prove that the polynomial \(x^{4}+1\) is not irreducible over any field of positive characteristic.
+\end{prob}
+\begin{proof}
+    The idea is the same as above, and it suffices to note that the field extension generated by $x^4+1$ is $\Q(\sqrt{2}, i)$. Using the Legendre symbol, the proof is similar to the above.
+\end{proof}
+
+
+
+\begin{prob}[F2010-Q2]
+    \phantom{text}
+    \begin{itemize}
+        \item[(a)] Find the complete factorization of the polynomial \(f(x) = x^6 - 17x^4 + 80x^2 - 100\) in \(\mathbb{Z}[x]\).
+        \item[(b)] For which prime numbers \(p\) does \(f(x)\) have a root in \(\mathbb{Z}/p\mathbb{Z}\) (i.e, \(f(x)\) has a root modulo \(p\))? Explain your answer.
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(a)] Letting $y=x^2$, we need to factorize 
+        \begin{equation*}
+            f(y)=y^3-17y+80y-100
+        \end{equation*}
+        Now $f$ is cubic, we need to find the roots of $f$: $5$ is a root, 
+        \begin{equation*}
+            f(y)=(y-5)(y-2)(y-10)
+        \end{equation*}
+        i.e., 
+        \begin{equation*}
+            f(x)=(x^2-2)(x^2-5)(x^2-10)
+        \end{equation*}
+        which consists of only irreducible factors over $\Z$.
+        \item[(b)] $f$ has a root in $\F_p$ for all prime $p$, by the above corollary.
+    \end{itemize}
+\end{proof}
+
+% \section{Quick finite field review}
+
+
+\chapter{Finite Fields}
+If $p$ is prime, then $\F_p$ is a field of $p$ elements, isomorphic to $\Z/p\Z$.
+\begin{prop}[Fact]
+    For every prime power $p^n$, there is exactly one finite field of $p^n$ elements, namely $\F_{p^n}$, up to isomorphisms.
+\end{prop}
+\begin{thm}[Galois theory of finite fields]
+    We have 
+    \begin{itemize}
+        \item[(1)] $\F_{p^n}/\F$ is a Galois extension, and 
+        \begin{equation*}
+            \text{Gal}(\F_{p^n}/\F) \text{ is cyclic}
+        \end{equation*}
+        where the generator is the Forbenius automorphism $\sigma: \F_{p^n}\to\F_{p^n}$ where 
+        \begin{equation*}
+            \sigma: x\mapsto x^p
+        \end{equation*}
+        \item[(2)] We also have 
+        \begin{equation*}
+            \F_{p^n}=\left\{\alpha\in\overline{\F}_p: \alpha^{p^n}-\alpha=0\right\}
+        \end{equation*}
+        This statement implies that $
+        \F_{p^n}$ is the splitting field of $x^{p^n}-x$.
+    \end{itemize}
+    
+
+\end{thm}
+\begin{proof}
+    We note that $\F_{p^n}$ is the splitting field of $x^{p^n}-x$ over $\F_p$.  
+    \begin{equation*}
+        \F_{p^n}=\left\{\alpha\in\overline{\F}_p: \alpha^{p^n}-\alpha=0\right\}
+    \end{equation*}
+    If $\alpha\in\F_{p^n}$, then we want to show that $\alpha^{p^n}=\alpha$: if $\alpha=0$, then done; if $\alpha\in\F_p^\times$, then using the fact that any finite field is cyclic, we know 
+    \begin{equation*}
+        \F_{p^n}\cong\Z/(p^n-1)\Z\Rightarrow \alpha^{p^n-1}=1
+    \end{equation*}
+    and we are done. Now we observe that 
+   $ \left\{\alpha\in\overline{\F}_p: \alpha^{p^n}-\alpha=0\right\}$ has $p^n$ elements, and is also a field, thus we are done.
+
+   This fact can be used to show (1) and the above proposition.
+\end{proof}
+
+
+\begin{prop}
+    $\F_{p^n}$ embeds into $\F_{p^m}$ iff $n\mid m$.
+\end{prop}
+\begin{proof}
+    If $n\mid m$, then $m=nk$ for some integer $k$. We then notice that 
+    \begin{equation*}
+        \alpha^{p^n}=\alpha\Rightarrow \alpha^{p^{kn}}=\alpha^{p^m}=\alpha
+    \end{equation*}
+   Thus $\F_{p^n}$ embeds into $\F_{p^m}$. Conversely, consider the Galois field extensions 
+   \begin{equation*}
+        \F_p\subset\F_{p^n}\subset\F_{p^m}
+   \end{equation*}
+   Then by degree of field extensions, we know $n\mid m$.
+\end{proof}
+
+
+
+\begin{prob}[F2016-Q3]
+    If field $|F|=2^n$, find all $n$ such that $x^2-x+1$ is irreducible over $F$.
+\end{prob}
+\begin{proof}
+    We know that $x^2-x+1$ is irreducible over $\F_2$, namely, it has no roots in $\F_2$. Since there is only one field of order $4$, we must have 
+    \begin{equation*}
+        \F_4\cong\frac{\F_2}{(x^2-x+1)}
+    \end{equation*}
+    Clearly $x^2-x+1$ is not irreducible over $\F_4$. For any $\F_{2^n}$, we know $(x^2-x+1)$ is irreducible if and only if $\F_4$ does not embed into $\F_{2^n}$, i.e., $2\nmid n$. This shows that when $n$ is odd, the polynomial $x^2-x+1$ is irreducible over $\F_{2^n}$.
+\end{proof}
+
+
+\begin{prob}[F2015-Q5]
+    Let \(L\) be a finite field. Let \(a\) and \(b\) be elements of \(L^\times\) (the multiplicative group of \(L\)) and \(c \in L\). Show that there exist \(x\) and \(y\) in \(L\) such that \(ax^2 + by^2 = c\).
+\end{prob}
+hard.
+
+
+
+\begin{prob}[F2013-Q6]
+    Let \(p\) be a prime and let \(F\) be a field of characteristic \(p\).
+    \begin{itemize}
+        \item[(a)] Prove that the map \(\varphi : F \to F, \varphi(a) = a^p\) is a field homomorphism.
+        \item[(b)] \(F\) is said to be \textit{perfect} if the above homomorphism \(\varphi\) is an automorphism. Prove that every finite field is perfect.
+        \item[(c)] If \(x\) is an indeterminate and \(F\) is any field of characteristic \(p\), prove that the field \(F(x)\) is not perfect.
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(a)] You just do it, the field has character $p$.
+        \item[(b)] Observe that it is surjective.
+        \item[(c)] $x$ is not in the image of $\varphi$. Suppose that $\varphi(f(x)/g(x))=x$, then $p$ divides the degree of $f$ and $g$.
+    \end{itemize}
+\end{proof}
+
+
+
+\begin{prob}[F2017-Q5]
+    Let \(K/k\) be an extension of finite fields with \(\#k=q\), let \(\Phi\colon x\mapsto x^{q}\) denote the \(q\)th power Frobenius map on \(K\), and let \(G:=\text{Gal}(K/k)\).
+    \begin{itemize}
+        \item[(a)] Compute the minimal polynomial of \(\Phi\) as a \(k\)-linear endomorphism of \(K\).
+        \item[(b)] Use (a) to prove the \textit{normal basis theorem} in the case of the extension \(K/k\): there exists \(x\in K\) such that the set \(\{\sigma x\mid\sigma\in G\}\) is a \(k\)-basis for \(K\).
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(a)] Same as above.
+        \item[(b)] The minimal coincide with the characteristic polynomial, thus we can write 
+        \begin{equation*}
+            K\cong\frac{k[x]}{(f(x))}
+        \end{equation*}
+        and the RHS has a basis of $\{1,t,\dots, t^{n-1}\}$, using this isomorphism, letting $v=\Phi(1)$, $K$ has a basis of the form 
+        \begin{equation*}
+            \{v, \Phi(v),\dots, \Phi^{n-1}(v)\}
+        \end{equation*}
+        because the Galois group is cyclic, we have the above.
+    \end{itemize}
+\end{proof}
+
+
+\begin{prob}[F2010-Q5]
+    Let \(\mathbb{F}_q\) be a finite field with \(q = p^n\) elements. Here \(p\) is a prime number. Let \(\varphi : \mathbb{F}_q \rightarrow \mathbb{F}_q\) be given by \(\varphi(x) = x^p\).
+    \begin{itemize}
+        \item[(a)] Show that \(\varphi\) is a linear transformation on \(\mathbb{F}_q\) (as vector space over \(\mathbb{F}_p\)), then determine its minimal polynomial.
+        \item[(b)] Supposed that \(\varphi\) is diagonalizable over \(\mathbb{F}_p\). Show that \(n\) divides \(p - 1\).
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item Use the linear independence of one-dimensional characters to show the minimal polynomial is at least degree $n$.
+        \item It suffices to show there is an element of order $n$ in $\F_p^\times$. Now we see 
+        \begin{equation*}
+            x^n-1=\prod_{d\mid n}\Phi_d(x)
+        \end{equation*}
+        and any root of $\Phi_n(x)$ has order $n$. Alternatively, note that 
+        \begin{equation*}
+            x^n-1\mid x^{p^n-1}-1
+        \end{equation*}
+    \end{enumerate}
+\end{proof}
+
+
+
+
+
+\begin{prob}[S2011-Q2]
+    Let \(p\) be a prime, \(F\) a finite field with \(p\) elements and \(K\) a finite extension of \(F\). Denote by \(F^\times\) and \(K^\times\) the multiplicative groups of nonzero elements of fields \(F\) and \(K\), respectively. Prove that the norm homomorphism \(N:K^\times\to F^\times\) is surjective.
+\end{prob}
+\begin{proof}
+    Note that 
+    \begin{equation*}
+        \det(m_\alpha)=\prod_{\sigma\in\gal(K/F)}\sigma(\alpha)
+    \end{equation*}
+    and we know this is 
+    \begin{equation*}
+        \alpha\cdot\alpha^p\cdot\dots\cdot\alpha^{p^{n-1}}
+    \end{equation*}
+    then this element has order $p-1$.
+\end{proof}
+
+
+
+\begin{prob}[F2008-Q3]
+    Let \(k\) be a finite field and \(K\) be a finite extension of \(k\). Let \(\mathfrak{Tr} = \text{Tr}_k^K\) be the trace function from \(K\) to \(k\). Determine the image of \(\mathfrak{Tr}\) and prove your answer.
+\end{prob}
+\begin{proof}
+    Step 1: show that there exists an element $\alpha$ such that the trace is nonzero. Then note that the image is a $k$-subspace of $k$, so is the entire thing.
+\end{proof}
+
+
+
+\begin{prob}[S2014-Q3]
+    Let \(L/K\) be a Galois extension of degree \(p\) with \(\text{char}K=p\). Show that \(L=K(\theta)\), where \(\theta\) is a root of \(x^{p}-x-a,a\in K\), and, conversely, any such extension is Galois of degree 1 or \(p\).
+\end{prob}
+\begin{warn}
+    The $f=gh$, and $g=\prod_{i\in S}(x-\alpha_i)$ trick.
+\end{warn}
+\begin{proof}
+    Artin-Schreier.
+\end{proof}
+
+
+\begin{prob}[S2015-Q1]
+    Let \(K\) be a field of characteristic \(p>0\). Prove that a polynomial \(f(x)=x^{p}-x-a\in K[x]\) either irreducible, or is a product of linear factors. Find this factorization if \(f\) has a root \(x_{0}\in K\).
+\end{prob}
+\begin{proof}
+    Artin-Schreier! If it has a root $x_0$, then all the roots $x_0+k$ for any $k\in\F_p$ is a root. 
+\end{proof}
+
+
+\begin{prob}[S2002-Q5]
+    Let \(\zeta = e^{\frac{2\pi i}{5}}\) and \(K = \mathbb{Q}(\zeta)\) the field generated by \(\zeta\) over the field of rational numbers. Prove that \(K\) contains \(\sqrt{5}\).
+\end{prob}
+\begin{proof}
+    The degree $2$ extension corresponds to the field where $\om_5+\om_5^{-1}$ are fixed. The minimal polynomial for this is $x^2+x-1$, which contains $\sqrt{5}$. Note that $\om_5$ solves $\Phi_5$.
+\end{proof}
+
+
+
+\begin{prob}[S2008-Q2]
+    Let \(\xi\) be a primitive 9-th root of unity. Find the minimal polynomial of \(\xi + \xi^{-1}\) over \(\mathbb{Q}\).
+\end{prob}
+\begin{proof}
+    Draw the picture, a degree $3$ polynomial works.
+\end{proof}
+
+\begin{prob}[F2007-Q1]
+    Let \(G\) be a cyclic group of order 12. Construct a Galois extension \(K\) over \(\mathbb{Q}\) so that the Galois group is isomorphic to \(G\).
+\end{prob}
+\begin{proof}
+    The Galois extension $\Q(\zeta_{13})$.
+\end{proof}
+
+
+\begin{prob}[F2011-Q3]
+    Let \(G\) be a cyclic group of order 100. Let \(K=\mathbb{Q}\), the field of rational numbers, or \(K=F_p\), the finite field with \(p\) elements, \(p\) being a prime number. For each such \(K\), construct a Galois extension \(L/K\) whose Galois group \(\text{Gal}(L/K)\) is isomorphic to \(G\). Explain your construction in detail.
+\end{prob}
+\begin{proof}
+    If $K=\Q$, then take $\Q(\zeta_{101})$. If $K=\F_p$, then take $\F_{p^{100}}$, we know it is the splitting field of 
+    \begin{equation*}
+        \F_{p^{100}}=\{x\in\overline{\F}_p: x^{p^{100}}-x=0\}
+    \end{equation*}
+    the Galois group has the Frobenius generator $x\mapsto x^{p}$.
+\end{proof}
+
+\begin{prop}
+    The polynomial $x^p-px-1$ is irreducible over $\Q$.
+\end{prop}
+\begin{proof}
+    Eisenstein.
+\end{proof}
+
+\begin{prop}
+    Let $\omega_n$ be the $n$th root of unity, then the minimal polynomial is $\Phi_n$ and it has degree $|(\Z/n\Z)^\times|$. 
+\end{prop}
+
+
+\begin{prob}[S2006-Q4]
+    Let $k$ be a field, and $p$ be a prime, let $a\in k$, show that $x^p-a$ either has a root in $k$ or is irreducible over $k$.
+\end{prob}
+\begin{warn}
+    The $f=gh$, and $g=\prod_{i\in S}(x-\alpha_i)$ trick.
+\end{warn}
+\begin{proof}
+    We will show that if $f$ does not have a root, then it is irreducible. Suppose that it is not irreducible, then 
+    \begin{equation*}
+        f(x)=g(x)h(x)
+    \end{equation*}
+    where $\deg(g)<p$, and we know 
+    \begin{equation*}
+        g(x)=\prod_{i\in S}(x-\alpha_i)
+    \end{equation*}
+    in the algebraic closure of $k$, and 
+    \begin{equation*}
+        \sum_{i\in S}\alpha_i\in k, \prod_{i\in S}\alpha_i\in k
+    \end{equation*}
+    We will now show that $a^\frac{1}{p}\in k$. We note that 
+    \begin{equation*}
+        c_0^p=\prod_{i\in S}\alpha_i^p=a^{|S|}\in k
+    \end{equation*}
+    We know that 
+    \begin{equation*}
+        c_0=a^\frac{|S|}{p}\in k
+    \end{equation*}
+    Since $a\in k$, we can know find $k, m$ such that $k|S|-pm=1$, and 
+    \begin{equation*}
+        a^\frac{k|S|}{p}\cdot a^{-m}=a^{\frac{k|S|-pm}{p}}\in k
+    \end{equation*}
+    i.e., $a^\frac{1}{p}\in k$. Thus a contradiction.
+\end{proof}
+
+
+
+\begin{prob}[S2005-Q2]
+    Let \(\mathbb{F}_p\) be the field with \(p\) elements, where \(p\) is a prime number. Let \(f_{n,p}(x) = x^{p^n} - x + 1\), and suppose that \(f_{n,p}(x)\) is irreducible in \(\mathbb{F}_p[x]\). Let \(\alpha\) be a root of \(f_{n,p}(x)\).
+    \begin{itemize}
+        \item[(a)] Show that \(\mathbb{F}_{p^n} \subset \mathbb{F}_p(\alpha)\) and \([\mathbb{F}_p(\alpha) : \mathbb{F}_{p^n}] = p\).
+        \item[(b)] Determine all pairs \((n, p)\) for which \(f_{n,p}(x)\) is irreducible.
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item Let $x\in\F_{p^n}$, one can show that $(x+\alpha)$ is also a root of $f$, i.e., $x+\alpha\in\F_p(\alpha)$, because $\F_{p}(\alpha)$ is Galois over $\F_{p^n}$, thus containing all the roots. 
+        
+        For $[\mathbb{F}_p(\alpha) : \mathbb{F}_{p^n}]$, we want to show that Galois group has order $p$, i.e., the Frobenius 
+        \begin{equation*}
+            x\mapsto x^{p^n}
+        \end{equation*}
+        has order $p$. This is true because 
+        \begin{equation*}
+            x\mapsto x^{p^n}=x-1
+        \end{equation*}
+        Hence it clearly has order $p$.
+        \item[(b)] Uses part (a), not irreducible unless $n=1$.
+    \end{enumerate}
+\end{proof}
+
+
+
+\begin{prop}
+    Any finite subgroup of the multiplicative group of a field is cyclic. For example, any finite field $\F_{p^n}^\times$ is generated by some $g$, such that for all $x\in\F_{p^n}^\times$,
+    \begin{equation*}
+        x=g^{k}
+    \end{equation*}
+    for some $k$.
+\end{prop}
+
+\begin{prob}[F2005-Q1]
+    Let $k$ be a finite field, with $p^n$ elements, let $d$ be a positive integer, compute 
+    \begin{equation*}
+        \sum_{x\in k}x^d
+    \end{equation*}
+\end{prob}
+\begin{proof}
+    We know $\F_{p^n}^\times$ is generated by some $g$, then 
+    \begin{equation*}
+        \sum_{x\in k}x^d=\sum_{i=0}^{p^n-2}g^{id}=\frac{g^{d(p^n-1)}-1}{g^d-1}
+    \end{equation*}
+\end{proof}
+
+
+
+
+% \section{Inseparable Field Extensions}
+
+% \begin{prob}[S2003-Q2]
+%     Let \(K\) be a field. A polynomial \(f(x) \in K[x]\) is called separable if, in any field extension, it has distinct roots. Prove that:
+%     \begin{itemize}
+%         \item[(a)] if \(K\) has characteristic 0, then each irreducible polynomial in \(K[x]\) is separable; and
+%         \item[(b)] if \(K\) has characteristic \(p \neq 0\), then an irreducible polynomial \(f(x) \in K[x]\) is separable if and only if has no form \(g(x^p)\) where \(g(x) \in K[x]\).
+%     \end{itemize}
+%     Give an example of an inseparable irreducible polynomial.
+% \end{prob}
+
+
+
+% \begin{prob}[S2001-Q4]
+%     Let \(p\) be a prime number, \(\mathbb{F}_p\) the prime field of \(p\) elements, \(X\) and \(Y\) algebraically independent variables over \(\mathbb{F}_p\), \(K=\mathbb{F}_p(X,Y)\), and \(F=\mathbb{F}_p(X^p-X,Y^p-X)\).
+%     \begin{itemize}
+%         \item[(a)] Show that \([K:F]=p^2\) and the separability and inseparability degrees of \(K/F\) are both equal to \(p\).
+%         \item[(b)] Show that there exists a field \(E\), such that \(F \subseteq E \subseteq K\), which is a purely inseparable extension of \(F\) of degree \(p\).
+%     \end{itemize}
+% \end{prob}
+
+
+% \begin{prob}[F2003-Q2]
+%     Let \(k\) be a field of characteristic \(p\) and let \(t, u\) be algebraically independent over \(k\). Prove the following:
+%     \begin{itemize}
+%         \item[(a)] \(k(t, u)\) has degree \(p^2\) over \(k(t^p, u^p)\).
+%         \item[(b)] There exist infinitely many fields between \(k(t, u)\) and \(k(t^p, u^p)\).
+%     \end{itemize}
+% \end{prob}
+
+

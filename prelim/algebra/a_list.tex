@@ -1,0 +1,4374 @@
+\documentclass[openany]{book}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsfonts,amsthm, amssymb}
+\usepackage{yhmath}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{comment}
+\usepackage{tikz-cd}
+\usepackage{quiver}
+\renewcommand{\familydefault}{ppl}
+\newcommand{\tr}{\text{tr}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\colim}{\text{colim}}
+\DeclareMathOperator{\im}{im}
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+\newcommand{\tor}{\text{Tor}}
+\newcommand{\id}{\text{id}}
+\newcommand{\ext}{\text{Ext}}
+\newcommand{\ptop}{\text{PTop}}
+\newcommand{\pt}{\text{pt}}
+\newcommand{\ach}{\text{Ach}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\gal}{\text{Gal}}
+\newcommand{\Sym}{\text{Sym}} % Macro for symmetric product
+\newcommand{\tensor}{\otimes} % Macro for tensor product
+\newcommand{\rad}{\text{rad}}
+\newcommand{\aut}{\text{Aut}}
+\newcommand{\om}{\omega}
+\newcommand{\gl}{\text{GL}}
+\input{hui.tex}
+
+\title{Algebra Definition Theorem List}
+
+\date{\today}
+\author{Hui Sun}
+
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+\newpage
+
+
+
+\chapter{Category Theory}
+\begin{defn}[initial, final]
+    Let $\mathcal{C}$ be a category, then object $I$ is initial if for every object $A$, there exists a unique morphism $I\to A$. We say $F$ is final if for every $A$, there exists a unique morphism $A\to F$.
+\end{defn}
+
+
+% \begin{defn}[products and coproducts]
+%     Let \( A, B \) be sets, and consider the product \( A \times B \), with the two natural projections:
+
+% \[ A \times B \xrightarrow{\pi_A} A \]
+
+% Then for every set \( Z \) and morphisms
+
+% % \[
+% % \begin{tikzcd}
+% %  & f_A \arrow[dashrightarrow]{d} & A \\
+% % Z & & \\
+% %  & f_B \arrow[dashrightarrow]{d} & B
+% % \end{tikzcd}
+% % \]
+
+
+% there exists a unique morphism \(\sigma : Z \to A \times B\) such that the diagram
+
+% \[
+% \begin{tikzcd}
+%  & f_A \arrow[dashrightarrow]{dd} & A \\
+% Z \arrow{r}{\sigma} & A \times B \arrow{ur}{\pi_A} \arrow{dr}[swap]{\pi_B} & \\
+%  & f_B \arrow[dashrightarrow]{uu} & B
+% \end{tikzcd}
+% \]
+
+% commutes.
+
+% In this situation, \(\sigma\) is usually denoted \( f_A \times f_B \).
+% \end{defn}
+
+
+% \begin{defn}[coproduct]
+%     Let \( A, B \) be objects of a category \( \mathcal{C} \). A coproduct \( A \amalg B \) of \( A \) and \( B \) will be an object of \( \mathcal{C} \), endowed with two morphisms \( i_A : A \to A \amalg B \), \( i_B : B \to A \amalg B \) and satisfying the following universal property: for all objects \( Z \) and morphisms
+
+% \[
+% \begin{tikzcd}
+% A \arrow{r}{i_A} \arrow[swap]{dr}{f_A} & A \amalg B \arrow[dashed]{d}{\exists! \sigma} & B \arrow{l}[swap]{i_B} \arrow{dl}{f_B} \\
+%  & Z & 
+% \end{tikzcd}
+% \]
+
+% there exists a unique morphism \( \sigma : A \amalg B \to Z \) such that the diagram commutes.
+
+% \end{defn}
+
+
+
+
+
+\chapter{Group Theory I}
+This corresponds to Aluffi Chapter II.
+
+\begin{prop}
+    Let $G$ be a group, for all $a,g,h\in G$, if 
+    \begin{equation*}
+        ga=ha
+    \end{equation*}
+    then $g=h$.
+\end{prop}
+
+% \begin{prop}
+%     Let $g\in G$ have order $n$, then 
+%     \begin{equation*}
+%         n\mid |G|
+%     \end{equation*}
+% \end{prop}
+
+\begin{cor}
+    If $g$ is an element of finite order, and let $N\in\mathbb{Z}$, then 
+    \begin{equation*}
+        g^N=e \iff N \text{ is a multiple of }|g|
+    \end{equation*}
+\end{cor}
+
+\begin{prop}
+    Let $g\in G$ be of finite order, then $g^m$ also has finite order, for all $m\geq 0$, and 
+    \begin{equation*}
+        \left|g^m\right|=\frac{\text{lcm}(m,|g|)}{m}=\frac{|g|}{\gcd(m,|g|)}
+    \end{equation*}
+\end{prop}
+
+\begin{prop}
+    If $gh=hg$, then $|gh|$ divides $\text{lcm}(|g|,|h|)$.
+\end{prop}
+
+
+\begin{defn}[Dihedral Group]
+    Let $D_{2n}$ denote the group of symmetries of a $n$-sided polynomial, consisting of $n$ rotations and $n$ reflections about lines through the origin and a vertex or a midpoint of a side.
+\end{defn}
+
+\begin{prop}
+    Let $m\in\Z/n\Z$, then 
+    \begin{equation*}
+        |m|=\frac{n}{\gcd(n,m)}
+    \end{equation*} 
+\end{prop}
+
+\begin{cor}
+    The element $m\in\Z/n\Z$ generates $\Z/n\Z$ if and only if $\gcd(m,n)=1$.
+\end{cor}
+
+
+\begin{defn}[Multiplicative $(\Z/n\Z)^\times$]
+    The multiplicative group of $\Z/n\Z$ is 
+    \begin{equation*}
+        \left(\Z/n\Z\right)^\times=\left\{m\in\Z/n\Z: \gcd(m,n)=1\right\}
+    \end{equation*}
+\end{defn}
+
+\begin{prop}
+    Let $\varphi:G\to H$ be a homomorphism, and let $g\in G$ be an element of finite order, then $|\varphi(g)|$ divides $|g|$.
+
+    For example, there is no nontrivial homomorphism from $\Z/n\Z$ to $\Z$.
+\end{prop}
+
+% \begin{prop}
+%     There is an isomorphism between $D_3$ and $S_3$.
+% \end{prop}
+
+\begin{prop}
+    Let $\varphi: G\to H$ be an isomorphism, for all $g\in G$, $|\varphi(g)|=|g|$, and $G$ is commutative if and only if $H$ is commutative.
+\end{prop}
+
+\begin{prop}
+    If $H$ is commutative, then $\text{Hom}(G,H) $ is a group.
+\end{prop}
+
+\begin{defn}
+    Let $A=\{1,\dots, n\}$, then the free abelian group on $A$ is 
+    \begin{equation*}
+        \Z\oplus\dots\oplus\Z=\Z^{\oplus n}
+    \end{equation*}
+\end{defn}
+
+% \begin{prop}
+%     For every set $A$, the free abelian group $A$ is 
+%     \begin{equation*}
+%         \Z^{\oplus A}
+%     \end{equation*}
+%     In other words, any element in the free abelian group of $A$ can be written as 
+%     \begin{equation*}
+%         \sum_{a\in A}m_aj(a)
+%     \end{equation*}
+%     where $m_a\neq 0$ for only finitely many terms, and 
+%     \begin{equation*}
+%         j_a(m)=\begin{cases}
+%             1, m=a\\
+%             0, m\neq a
+%         \end{cases}
+%     \end{equation*}
+% \end{prop}
+
+\begin{prop}
+    Let $\{H_\alpha\}$ be any family of subgroups of $G$, then 
+    \begin{equation*}
+        \bigcap_\alpha H_\alpha
+    \end{equation*}
+    is a subgroup of $G$.
+\end{prop}
+
+\begin{prop}
+    If $\varphi: G_1\to G_2$ is a group homomorphism, then if $H_2\subset G_2$ is a subgroup, then 
+    \begin{equation*}
+        \varphi^{-1}(H_2)
+    \end{equation*}
+    is a subgroup of $G_1$.
+\end{prop}
+
+\begin{prop}
+    Let $H\subset\Z/n\Z$ be a subgroup, then $H$ is generated by some $m$ where $m$ divides $n$.
+\end{prop}
+
+
+\begin{prop}
+    If $\varphi: G_1\to G_2$ is a homomorphism, then $\ker(\varphi)$ is a normal subgroup.
+\end{prop}
+
+
+\begin{prop}
+    Let $\varphi:G_1\to G_2$ be a surjective homomorphism, then 
+    \begin{equation*}
+        G_2\cong\frac{G_1}{\ker\varphi}
+    \end{equation*}
+\end{prop}
+
+\begin{prop}
+    Let $H_1,H_2$ be normal subgroups of $G_1,G_2$, then $H_1\times H_2$ are normal subgroups of $G_1\times G_2$, then 
+    \begin{equation*}
+        \frac{G_1\times G_2}{H_1\times H_1}\cong\frac{G_1}{H_1}\times\frac{G_2}{H_2}
+    \end{equation*}
+    For example, 
+    \begin{equation*}
+        \frac{Z/6\Z}{\Z/3\Z}=\Z/2\Z
+    \end{equation*}
+\end{prop}
+
+\begin{prop}
+    Let $H$ be a normal subgroup of $G$, then every subgroup $K/H$ of $G/H$ can be identified with a subgroup of $K$ containing $H$.
+\end{prop}
+
+
+\begin{prop}
+    Let $H$ be a normal subgroup of $G$, and $N$ be a subgroup of $G$ containing $H$, then $N/H$ is normal in $G/H$ if and only if $N$ is normal in $G$, in this case
+    \begin{equation*}
+        \frac{G/H}{N/H}=\frac{G}{N}
+    \end{equation*}
+\end{prop}
+
+
+
+\begin{prop}
+    Let $H,K$ be subgroups of $G$, and if $H$ is normal, then $HK$ is a subgroup of $G$ and $H$ is normal in $HK$. Moreover, $H\cap K$ is normal in $K$, and 
+    \begin{equation*}
+        \frac{HK}{H}\cong\frac{K}{H\cap K}
+    \end{equation*}
+\end{prop}
+
+
+\begin{prop}
+    Let $H$ be a subgroup of $G$, then for all $g\in G$, the function $H\to gH$ such that
+    \begin{equation*}
+       h\mapsto gh
+    \end{equation*}
+    is a bijection.
+\end{prop}
+
+\begin{thm}[Lagrange]
+    If $G$ is a fintie group, and $H\subset G$ is a subgroup, then 
+    \begin{equation*}
+        |G|=[G:H]\cdot|H|
+    \end{equation*}
+    In particular, $|H|$ divides $|G|$.
+\end{thm}
+
+\begin{prop}[Fermat's Little Theorem]
+    Let $a\in\Z/p\Z$, then 
+    \begin{equation*}
+        a^p\equiv a
+    \end{equation*}
+    % Let $p$ be a prime integer, and $a$ be any integer, then 
+    % \begin{equation*}
+    %     a^p\equiv a\mod p
+    % \end{equation*}
+\end{prop}
+
+% \begin{defn}[action]
+%     An action of a group $G$ on a set $A$ is a homomorphism $\varphi: G\to \text{Aut}(A)$, 
+% \end{defn}
+
+\begin{prop}
+    Any group $G$ acts on itself by left/right multiplications, and acts on the costs $G/H$:
+    \begin{equation*}
+        \varphi: g\mapsto \left(aH\mapsto gaH\right)
+    \end{equation*}
+\end{prop}
+
+
+\begin{defn}[orbit]
+    The orbit of $a\in A$ of a group action by $G$ is 
+    \begin{equation*}
+        O(a)=\left\{g\cdot a: g\in G\right\}
+    \end{equation*}
+    The stabilizer of $a$ is the following 
+    \begin{equation*}
+        \text{Stab}_G(a)=\left\{g\in G: g\cdot a=a\right\}
+    \end{equation*}
+\end{defn}
+
+\begin{prop}
+    The orbits of an action form a partition on the set $A$, and $G$ acts transitively on each orbit.
+\end{prop}
+
+\begin{defn}[transitive action, faithful action]
+
+
+
+
+    An action of $G$ on $A$ is transitive if for all $a,b\in G$, there exists $g\in G$ such that 
+    \begin{equation*}
+        g\cdot a=b
+    \end{equation*}
+    In other words, the orbit of any element $a\in A$ is the entire set.
+
+    An action is faithful if for any $g\in G$, 
+    \begin{equation*}
+        g\cdot a=a \text{ for all } a
+    \end{equation*}
+    implies that $g=e$.
+\end{defn}
+
+
+
+\begin{prop}
+    Every transitive action of $G$ on a set $A$ is isomorphic to multiplication of $G$ on $G/H$, where $H=\text{Stab}(a)$ for any $a\in A$.
+\end{prop}
+
+
+\begin{prop}
+    If $O(a)$ is an orbit of the action of a finite group $G$, then $O(a)$ is a finite and $|O|$ divides $|G|$. Moreover, 
+    \begin{equation*}
+        |G|=|O(a)|\cdot|\text{Stab}_G(a)|
+    \end{equation*}
+
+    For example,there is no transitive action of $S_3$ on the set of $5$ elements. 
+\end{prop}
+
+\begin{prop}
+    Let $G$ act on itself by conjugation, let $g\in G$, then 
+    \begin{equation*}
+        |[g]|\mid |G|
+    \end{equation*}
+    and 
+    \begin{equation*}
+        |Z_G(g)|\mid |G|
+    \end{equation*}
+    the size of the conjugacy class and the centralizer both divide $|G|$!
+\end{prop}
+
+
+
+
+
+
+
+
+\chapter{Group Theory II}
+This corresponds to Aluffi Chapter IV.
+
+
+\begin{prop}
+    Every \textbf{transitive} action of a group $G$ on a set $S$ is isomorphic to the left multiplication on the cosets $G/H$. Here, $H$ can be taken to be the stabilizer of any element $a\in S$. 
+
+    Moreover, suppose $G$ is finite, then 
+    \begin{equation*}
+        |G|=|O_a|\cdot|\text{Stab}(a)|
+    \end{equation*}
+    for any $a\in S$. (The size of the orbit must divide $|G|$.)
+\end{prop}
+
+
+
+\begin{prop}[class formula]
+    Let $S$ be a finite set, and $G$ act on $S$, then 
+    \begin{equation*}
+        |S|=|Z|+\sum_{a\in A}[G: \text{Stab}(a)]=|Z|+\sum_{a\in A}|O_a|
+    \end{equation*} 
+    where $Z=\left\{a\in S: g\cdot a=a\text{ for all } g\right\}$, i.e., the fixed elements, and $A\subset S$ contains exactly one element from each nontrivial orbit of the action. 
+    
+    In other words, $|S|$ is the sum of the number of trivial orbits and each nontrivial orbit.
+\end{prop}
+
+\begin{prop}
+    Let $G$ be a $p$-group that acts on a finite set $S$, then let $Z$ be fixed elements of this acion, then 
+    \begin{equation*}
+        |S|\equiv |Z|\mod p
+    \end{equation*}
+\end{prop}
+\begin{warn}
+    The important takeaway is that each summand on the right, $|O_a|$ divides $|G|$.
+\end{warn}
+
+\section{Conjugation Action}
+
+\begin{defn}[fixed points, centralizer, conjugacy class]
+    The fixed points under the conjugation action is the center of $G$.
+    The centralizer $Z_G(g)$ where $g\in G$ is its stabilizer under conjugation:
+    \begin{equation*}
+        Z_G(g)=\left\{h\in G: hgh^{-1}=g\right\}
+    \end{equation*}
+    The conjugacy class of $g\in G$ is the orbit $[g]$. (In other words, centralizer is the set of elements that commute with $g$.)
+\end{defn}
+For arbitrary $a\in G$, we have 
+\begin{equation*}
+    Z(G)\subset Z_G(a)
+\end{equation*}
+Moroever, $a$ is the only element in $[a]$ iff $a\in Z(G)$.
+
+
+\begin{prop}
+    The center is the set of fixed points of $G$ under the conjugation action, the conjugacy classes are the orbits. 
+\end{prop}
+
+\begin{thm}
+    Let $G$ be finite, and if $G/Z(G)$ is cyclic, then $G$ is abelian.
+\end{thm}
+\begin{proof}
+    One can show that every element $a\in G$ can be written as 
+    \begin{equation*}
+        a=g^rz
+    \end{equation*}
+    for some $z\in Z(G)$, then compute $ab=ba$.
+\end{proof}
+
+
+
+
+\begin{prop}[Class formula]
+    Let $G$ be finite, then 
+    \begin{align*}
+        |G|=&|Z(G)|+\sum_{[a]\in A}|[a]|\\
+        &=|Z(G)|+\sum_a[G:Z_G(a)]
+    \end{align*}
+    where $A$ contains one representative for each nontrivial conjugacy class.
+\end{prop}
+
+\begin{warn}
+    There are many consequences of the class formula, showing center is nontrivial, etc. Mainly using the summand divides $|G|$!
+\end{warn}
+
+
+\begin{thm}
+    Let $G$ be a nontrivial $p$-group, then $G$ has a nontrivial center.
+\end{thm}
+
+\begin{prop}
+    Let $G$ be a group of $p^2$ elements, where $p$ is prime, then $G$ is commutative.
+\end{prop}
+
+\begin{prop}
+    The only possibility for the class formula of a nonabelian group of order $6$ is 
+    \begin{equation*}
+        6=1+2+3
+    \end{equation*}
+    The center must be trivial if $G$ is nonabelian.
+\end{prop}
+
+
+\begin{prop}
+    Normal subgroups are unions of conjugacy classes. Thus, a noncommutative group of order $6$ cannot have a normal subgroup of order $2$.
+\end{prop}
+It contains the identity, and there is no other conjugacy class of size $1$.
+
+
+
+\begin{defn}[normalizer]
+    Let $A\subset G$ be a subset. The normalizer $N_G(A)$ of $A$ is 
+    \begin{equation*}
+        \text{Stab}_G(A)=\left\{g: gAg^{-1}=A\right\}
+    \end{equation*}
+    If $H$ is subgroup of $G$, every conjugate $gHg^{-1}$ is also a subgroup of $G$, and all conjugate groups have the same order.
+\end{defn}
+The centralizer of $A$ is the subgroup $Z_G(A)\subset N_G(A)$ fixing each $a\in A$:
+    \begin{equation*}
+        Z_G(A)=\left\{ g: gag^{-1}=a \text{ for all } a\in A\right\}
+    \end{equation*}
+
+\begin{prop}
+    $H$ is a normal in $G$ if and only if $N_G(H)=G$. More generally, the normalizer $N_G(H)$ for any subgroup $H$ is the largest subgroup such that $H$ is normal in $N_G(H)$.
+\end{prop}
+
+\begin{thm}
+    Let $H\subset G$ be a subgroup, then the number of subgroups conjugate to $H$ is the size of the orbit=index of the stabilizer, which is $[G:N_G(H)]$.
+\end{thm}
+
+
+\begin{cor}
+    If $[G:H]$ is finite, then the number of subgroups conjugate to $H$ is finite, and 
+    \begin{equation*}
+        [G:H]=[G:N_G(H)]\cdot[N_G(H): H]
+    \end{equation*}
+    In other words, the number of subgroups conjugate to $H$ divides the index $[G:H]$.
+\end{cor}
+
+
+\section{Sylow}
+
+
+\begin{thm}[Cauchy's Theorem]
+    Let $G$ be a finite group, and let $p$ be a prime divisor of $|G|$, then $G$ contains an element of order $p$.
+
+    Moreover, let $N$ be the number of cyclic subgroups of order $p$, then 
+    \begin{equation*}
+        N\equiv 1\mod p
+    \end{equation*}
+\end{thm}
+
+
+\begin{defn}[simple]
+    A group is simple if it is nontrivial and its only normal subgroups are $\{e\}$ and $G$ (has no nontrivial proper subgroup).
+\end{defn}
+
+\begin{defn}[$p$-Sylow subgroups]
+    Let $p$ be prime, a $p$-Sylow subgroup of a finite group $G$ is a subgroup of order $p^r$, where $|G|=p^rm$, $\gcd(p,m)=1$. 
+\end{defn}
+
+\begin{thm}[Sylow I]
+    Every finite group contains a $p$-Sylow subgroup for all prime $p$. If $p^k$ divides $|G|$, then $G$ has a subgroup of order $p^k$.
+\end{thm}
+
+\begin{thm}[Sylow II]
+    Let $G$ be finite, and $P$ is a $p$-Sylow subgroup, let $H\subset G$ be a $p$-group, then $H$ is contained in a conjugate of $P$. If $P_1,P_2$ are both $p$-Sylow subgroups, then they are conjugates to each other.
+\end{thm}
+
+\begin{thm}[Sylow III]
+    Let $|G|=p^rm$, and $\gcd(p,m)=1$, then the number of $p$-Sylow subgroups is 
+    \begin{equation*}
+        n_p\mid m 
+    \end{equation*}
+    and 
+    \begin{equation*}
+        n_p\equiv 1\mod p
+    \end{equation*}
+\end{thm}
+
+
+\begin{thm}
+    Let $G$ be a finite group, let $P$ be a $p$-Sylow subgroup, the number of $p$-Sylow subgroup $n_p$ is
+    \begin{equation*}
+        n_p=[G:N_G(P)]
+    \end{equation*}
+    by definition.
+\end{thm}
+
+\begin{thm}
+    Let $G$ be a group of order $mp^r$, where $p$ is prime and $1<m<p$, then $G$ is not simple.
+\end{thm}
+
+
+\begin{thm}
+    Let $p<q$ be primes, let $G$ has order $pq$, if $p\nmid (q-1)$, then $G$ is cyclic.
+\end{thm}
+\begin{proof}
+    If $G$ is abelian, use elements of orders $p,q$. If $G$ not necessarily abelian, then use the conjugation action.
+\end{proof}
+
+
+
+
+\begin{thm}
+    Let $p$ be a prime $\neq 2$, and $G$ be a noncommutative group of order $2p$, then 
+    \begin{equation*}
+        G\cong D_{2p}
+    \end{equation*}
+\end{thm}
+
+\section{Series and Solvability}
+\begin{defn}[composition series]
+    A comp series for $G$ is a normal series
+    \begin{equation*}
+        \{e\}=G_0\subset G_1\subset \dots\subset G_n=G
+    \end{equation*}
+    such that $G_{i+1}/G_i$ is simple.
+\end{defn}
+
+
+\begin{defn}[commutator subgroup]
+    Let $G$ be a group, the commutator subgroup of $G$ is the subgroup \textbf{generated} by all elements 
+    \begin{equation*}
+        ghg^{-1}h^{-1}
+    \end{equation*}
+\end{defn}
+
+
+\begin{prop}
+    Let $[G,G]$ be the commutator subgroup of $G$, then $[G,G]$ is normal in $G$, and the quotient, also called the abelianization of $G$, 
+    \begin{equation*}
+        G^{\text{ab}}=\frac{G}{[G,G]}
+    \end{equation*}
+    is commutative.
+\end{prop}
+
+
+\begin{thm}
+    If $\varphi: G\to H$, where $H$ is commutative, then 
+    \begin{equation*}
+        [G,G]\subset\ker(\varphi)
+    \end{equation*}
+\end{thm}
+
+\begin{defn}
+    A group $G$ is solvable, if ther exists a sequence such that 
+    \begin{equation*}
+        \{e\}=G_0\subset\dots\subset G_k=G
+    \end{equation*}
+    where $G_i$ is normal in $G_{i+1}$, and $G_{i+1}/G_i$ is abelian, or equivalently, cyclic.
+\end{defn}
+
+
+
+
+\begin{prop}
+    All $p$-groups are solvable!
+\end{prop}
+
+\begin{prop}
+    Let $N$ be normal in $G$, then $G$ is solvable if and only if $N, G/N$ are solvable.
+\end{prop}
+
+
+\section{$S_n$ and $A_n$}
+
+\begin{prop}
+    Disjoint cycles commute. For every $\sigma\in S_n$, $\sigma$ can be written as disjoint nontrivial cycles, unique up to rearranging.
+\end{prop}
+
+\begin{prop}
+    Two elements in $S_n$ are conjugate in $S_n$ if and only if they have the same type. Hence the number of conjugacy classes is the number of partitions of $n$ as a sum.
+\end{prop}
+
+\begin{prop}
+    Let $\sigma\in S_n$, and $(a_1\dots a_n)$ is a cycle in $S_n$, then 
+    \begin{equation*}
+        \sigma(a_1\dots a_n)\sigma^{-1}=(\sigma(a_1)\dots\sigma(a_n))
+    \end{equation*}
+    Proof: try $\varphi(a_1)$ on the left hand side.
+\end{prop}
+
+\begin{warn}
+    Very useful!
+\end{warn}
+\begin{example}
+    In $S_4$, we have 
+    \begin{equation*}
+        (1234)(12)(1234)^{-1}=(23)
+    \end{equation*}
+\end{example}
+
+% \begin{prop}
+%     Normal subgroups are unions of conjugacy classes. 
+
+%     One can use this fact to show that there is no normal subgroup of order 30 in $S_5$. 
+% \end{prop}
+
+\begin{defn}[Even permutation]
+    Let $\sigma\in S_n$, then $\sigma$ is even if 
+    \begin{equation*}
+        \prod_{i<j}(x_i-x_j)=\prod_{i<j}(x_{\sigma(i)}-x_{\sigma(j)})
+    \end{equation*}
+\end{defn}
+
+\begin{prop}
+    $A_n$ is always normal in $S_n$, because it is the kernel of the $\varepsilon: S_n\to\{\pm 1\}$ (determining parity).
+\end{prop}
+% \begin{defn}
+%     The alternating group $A_n$ consists of even permutations of $\sigma\in S_n$, and 
+%     \begin{equation*}
+%         [S_n:A_n]=2
+%     \end{equation*}
+% \end{defn}
+
+
+\begin{prop}
+    Let $\sigma\in A_n$, where $n\geq 2$, then the conjugacy class of $\sigma$ in $S_n$ splits into two conjugacy classes in $A_n$ precisely if the type of $\sigma$ consists of distinct odd numbers; or equivalently, the centralizer of $\sigma$ is contained $A_n$. Otherwise, the conjugacy class stays the same.
+\end{prop}
+\begin{example}
+    $S_5$ has even permutations $5, 3, 2+2, 1$, and only $5$-cycle of $S_5$ splits into $2$ conjugacy classes in $A_5$.
+\end{example}
+
+\begin{prop}
+    The group $A_5$ is a simple noncommutative group of order $60$. 
+\end{prop}
+\begin{prop}
+    Every simple group of order $<60$ is commutative, $A_5$ is the smallest simple group that is not commutative.
+\end{prop}
+
+\begin{proof}
+    Any nontrivial normal subgroup consists of nontrivial conjugacy classes and $\{e\}$, the conjugacy classes of $A_5$ has the following size:
+    \begin{equation*}
+        1, 15, 20, 12, 12
+    \end{equation*}
+    Thus any subgroup of $G$, i.e., order that divides $60$ cannot be written as a sum of the numbers above.
+\end{proof}
+
+\begin{prop}
+    The alternating group is generated by $3$-cycles.
+\end{prop}
+
+\begin{prop}
+    Let $n\geq 5$, if a normal subgroup of $A_n$ contains a $3$-cycle, then it contaisn all $3$-cycles.
+\end{prop}
+\begin{proof}
+    It suffices to note that the $3$ cycles form a conjugacy class that doesn't split from $S_n$ to $A_n$.
+\end{proof}
+\begin{prop}
+    The alternating group $A_n$ is simple for $n\geq 5$. As a result, $S_n$ is not solvable for $n\geq 5$.
+\end{prop}
+
+\section{Product of Groups}
+\begin{prop}
+    Let $N,H$ be normal subgroups of $G$, let $[N,H]$ be the commutator of $N,H$, then 
+    \begin{equation*}
+        [N,H]\subset N\cap H
+    \end{equation*}
+    Thus if $N\cap H=\{e\}$, then $N,H$ commute with each other.
+\end{prop}
+A stronger statement is the following:
+
+\begin{thm}
+    Let $N,H$ be normal subgroups of $G$, such that $N\cap H=\{e\}$, then 
+    \begin{equation*}
+        NH\cong N\times H
+    \end{equation*}
+\end{thm}
+
+
+\begin{defn}[Split Short exact sequence]
+    A short exact sequence of groups
+    \[\begin{tikzcd}
+        1 & N & G & H & 1
+        \arrow[from=1-1, to=1-2]
+        \arrow["\varphi", from=1-2, to=1-3]
+        \arrow["\psi", from=1-3, to=1-4]
+        \arrow[from=1-4, to=1-5]
+    \end{tikzcd}\]
+    \textbf{splits} if $H$ is identified with a subgroup of $G$ such that 
+    \begin{equation*}
+        N\cap H=\{e\}
+    \end{equation*}
+\end{defn}
+
+
+\begin{defn}[semidirect product]
+    Let $N$ be a normal subgroup, and let $\theta: H\to\text{Aut}(N)$, then define an operator $\cdot_\theta$ on $N\times H$ as 
+    \begin{equation*}
+        (n_1,h_1)\cdot_\theta(n_2,h_2)=(n_1\theta(h_1)(n_2), h_1h_2)
+    \end{equation*}
+    The semidirect product of $N\rtimes_\theta H$ is the group $N\times H$ with operation $\cdot_\theta$.
+\end{defn}
+
+% \begin{thm}
+%     Let $N,H$ be groups, and $\theta: H\to\text{Aut}(N)$, let $G=N\rtimes_\theta H$, then 
+%     \begin{enumerate}
+%         \item $G$ contains isomorphic copies of $N,H$.
+%         \item The natural projection $G\to H$ is surjective, with kernel $N$, thus $N$ is normal in $G$ and the sequence 
+%         \[\begin{tikzcd}
+%             1 & N & {N\rtimes_\theta H} & H & 1
+%             \arrow[from=1-1, to=1-2]
+%             \arrow[from=1-2, to=1-3]
+%             \arrow[from=1-3, to=1-4]
+%             \arrow[from=1-4, to=1-5]
+%         \end{tikzcd}\]
+%         is split exact.
+%         \item $N\cap H=\{e\}$.
+%         \item $G=NH$.
+%         \item The homomorphism is conjugation: 
+%         \begin{equation*}
+%             \theta(h)(n)=hnh^{-1}
+%         \end{equation*}
+%     \end{enumerate}
+% \end{thm}
+
+\begin{prop}
+    Let $N,H$ be subgroups, and $N$ is normal, suppose that $N\cap H=\{e\}$, and $G=NH$, then let $\theta: H\to\text{Aut}(N)$ be $\theta\mapsto\theta_h$, and 
+    \begin{equation*}
+        \theta_h(n)=nhn^{-1}
+    \end{equation*}
+    Then 
+    \begin{equation*}
+        G\cong N\rtimes_\theta H
+    \end{equation*}
+\end{prop}
+(Recall that the operation defined on $N\otimes_\theta H$ is $(n_1,h_1)\cdot(n_2,h_2)=(n_1\theta_{h_1}(n_2), h_1h_2)$). 
+
+\begin{prop}
+    Let $G$ be a noncommutative group of order $pq$, then there is exactly one group up to isomorphism.
+\end{prop}
+
+\section{Classification of Finite Abelian Groups}
+
+\begin{prop}
+    Let $G$ be abelian, let $H,K$ be subgroups such that $|H|, |N|$ are relatively prime, then 
+    \begin{equation*}
+        H+K\cong H\oplus K
+    \end{equation*}
+\end{prop}
+\begin{proof}
+    Lagrange: $N\cap H=\{e\}$.
+\end{proof}
+\begin{prop}
+    Every finite abelian group is a direct sum of its nontrivial Sylow subgroups.
+\end{prop}
+
+
+\begin{thm}
+    % Let $p$ be prime, and $r\geq 1$, let $G$ be a noncyclic abelian group of order $p^{r+1}$, then let $g\in G$ be an element of order $p^r$, then there exists an element $h\in G$ such that $h\not\in\la g\ra$, such that $|h|=p$.
+
+    If $G$ is finite and abelian, then $G$ is a direct sum of cyclic $p$-groups.
+\end{thm}
+
+
+
+\begin{thm}
+    Let $G$ be finite nontrivial abelian group, then there exists prime integers $p_1,\dots, p_r$, and positive integers $n_{i(j)}$ such that 
+    \begin{equation*}
+        G=\bigoplus_{i,j}\frac{\Z}{p_i^{n_{i(j)}}\Z}
+    \end{equation*}
+    There exists positive integers $1<d_1\mid \dots\mid d_s$ such that $|G|=d_1\dots d_s$, and 
+    \begin{equation*}
+        G\cong\frac{\Z}{d_1\Z}\oplus\dots\oplus\frac{\Z}{d_s\Z}
+    \end{equation*}
+\end{thm}
+
+\begin{example}
+    Finite abelian group of order $360$ has $6$ isomorphism classes.
+\end{example}
+
+
+\begin{thm}
+    Let $F$ be a field, and $G$ be a finite subgroup of the multiplicative group $(F^\times, \cdot)$, then $G$ is cyclic.
+\end{thm}
+\begin{proof}
+    Hard proof. Don't torture yourself.
+\end{proof}
+
+
+\begin{warn}
+    Next one is important.
+\end{warn}
+
+
+\begin{prop}
+    Let $G$ be a finite group of order $n$, then $G$ can be embedded into $S_n$.
+\end{prop}
+\begin{proof}
+    $G$ acts on itself by left multiplication.
+\end{proof}
+
+
+
+\begin{prop}
+    The number of conjugacy classes of $D_n=\la r, s: r^n=s^2=e, rs=sr^{-1}$: 
+    \begin{enumerate}
+        \item $n=$odd, then $\{e\}$ is its own conjugacy class, the pairs of rotations $\{r^k, r^{-k}\}$ are conjugacy classes, the reflections form ONE conjugacy class: 
+        \begin{equation*}
+            1+\frac{n-1}{2}+1=\frac{n+3}{2}
+        \end{equation*}
+        conjugacy classes.
+        \item $n=$even, then $[e], [r^{n/2}]$ forms their own conjugacy classes, the remaining rotations $[r^k, r^{-k}]$, and there are TWO conjugacy classes of reflection:
+        \begin{equation*}
+            1+1+\frac{n-2}{2}+1+1=\frac{n+6}{2}
+        \end{equation*}
+        conjugacy classes.
+    \end{enumerate}
+\end{prop}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\chapter{Ring Theory}
+This corresponds to Aluffi Chapter III.
+
+\begin{defn}[free action]
+    An action by $G$ is free if there exists $x\in X$ such that $gx=x$ then $g=e$.
+\end{defn}
+
+\begin{defn}[faithful action]
+    An action by $G$ is faithful if $gx=x$ for all $x\in X$ implies that $g=e$.
+\end{defn}
+
+
+\begin{defn}[zero-divisor]
+    An element $a\in R$ is a (left) zero-divisor if there exists $b\neq 0$ such that 
+    \begin{equation*}
+        ab=0
+    \end{equation*}
+\end{defn}
+
+\begin{prop}
+    In a ring $R$, $a\in R$ is not a left zero-divisor if and only if the left multiplication by $a$ is injective.
+\end{prop}
+
+\begin{defn}[integral domain]
+    An ID is a nonzero commutative ring such that for all $a,b\in R$, 
+    \begin{equation*}
+        ab=0
+    \end{equation*}
+    implies $a=0$ or $b=0$. In other words, IDs are commutative rings without zero divisors. Equivalently, if $a,b\neq 0$, then $ab\neq 0$.
+\end{defn}
+
+
+\begin{prop}
+    In a ring $R$:
+    \begin{enumerate}
+        \item $u$ is left unit iff the left multiplication by $u$ is surjective. 
+        \item If $u$ is a left unit, then the right multiplication by $u$ is injective, i.e., $u$ is not a right zero-divisor.
+    \end{enumerate}
+\end{prop}
+Notice that in a commutative ring, this means $u$ is a unit iff multiplication by $u$ is bijective.
+
+\begin{defn}[division ring, field]
+    A division ring is a ring in which every nonzero element is a unit.
+
+    A field is a nonzero commutative ring in which every nonzero element is a unit.
+\end{defn}
+
+
+\begin{prop}
+    The group of units in $\Z/n\Z$ is exactly the group $(\Z/n\Z)^*$.
+\end{prop}
+\begin{proof}
+    $m$ is a unit iff multiplication by $m$ is surjective, iff $m$ generates $\Z/n\Z$, iff $m\in(\Z/n\Z)^*$.
+\end{proof}
+
+\begin{defn}[Power Series Ring]
+    The power series ring 
+    \begin{equation*}
+        \sum_{i=0}^\infty a_ix^i
+    \end{equation*}
+    is denoted by $R[[x]]$.
+\end{defn}
+
+\begin{defn}[Monoid Ring]
+    Given a monoid $M$ and a ring $R$, the elements 
+    \begin{equation*}
+        \sum_{m\in M}a_m\cdot m
+    \end{equation*}
+    where $a_m\in R$ and $a_m\neq 0$ for finitely many  terms, forms a ring denoted as $R[M]$.
+\end{defn}
+
+
+
+
+
+\begin{prop}
+    Assume $R$ is a finite commutative ring, then $R$ is an integral domain if and only if $R$ is a field.
+\end{prop}
+
+
+
+
+\begin{prop}
+    $\text{End}_{\text{Ab}}(\Z)\cong\Z$, where $\text{End}_{\text{Ab}}(G)=\text{Hom}_{\text{Ab}}(G,G)$ where $G$ is abelian. 
+\end{prop}
+\begin{proof}
+    $\varphi\mapsto\varphi(1)$.
+\end{proof}
+
+
+
+\begin{thm}
+    Let $I$ be a two-sided ideal of a ring $R$. Then for every ring homomorphism $\varphi: R\to S$ such that $I\subset\ker\varphi$ there exists a unique ring homomorphism $\tilde{\varphi}: R/I\to S$ so that the diagram commutes:
+    \[\begin{tikzcd}
+        R & S \\
+        {R/I}
+        \arrow["\varphi", from=1-1, to=1-2]
+        \arrow["\pi"', from=1-1, to=2-1]
+        \arrow["{\tilde{\varphi}}"', from=2-1, to=1-2]
+    \end{tikzcd}\]
+\end{thm}
+
+\begin{thm}
+    Let $\varphi:R\to S$ be a surjective ring homomorphism, then 
+    \begin{equation*}
+        S\cong\frac{R}{\ker(\varphi)}
+    \end{equation*}
+\end{thm}
+
+
+\begin{prop}
+    Let $I$ be an ideal of a ring $R$, and let $J$ be an ideal of $R$ containing $I$, then $J/I$ is an ideal of $R/I$, and 
+    \begin{equation*}
+        \frac{R/I}{J/I}=\frac{R}{J}
+    \end{equation*}
+\end{prop}
+
+
+\begin{defn}[Noetherian]
+    A commutative ring $R$ is Noetherian if every ideal of $R$ is finitely generated. An ideal $I$ is finitely generated if $I=(a_1,\dots,a_n)$, i.e., every element in $I$ can be written as 
+    \begin{equation*}
+        r_1a_1+\dots+r_na_n
+    \end{equation*}
+    for some $r_1,\dots, r_n\in R$.
+\end{defn}
+
+\begin{prop}
+    Let $\bar{b}$ be the class of $b$ in $R/(a)$, then 
+    \begin{equation*}
+        \frac{R/(a)}{(\bar{b})}\cong\frac{R}{(a,b)}
+    \end{equation*}
+\end{prop}
+\begin{prop}
+    $\Z$ is a PID by taking the smallest positive element $d$ in each ideal, obtaining $(d)$.
+\end{prop}
+
+
+\begin{defn}
+    $I$ is a prime ideal if $R/I$ is an integral domain, and is a maximal ideal if $R/I$ is a field.
+\end{defn}
+\begin{defn}
+    Let $I,J$ be ideals of $R$, then $IJ$ is the ideal \textbf{generated} by elements $ij, i\in I, j\in J$.
+
+    Note that $IJ\subset I\cap J$. 
+\end{defn}
+
+\begin{example}
+    In $\Z$:
+    \begin{equation*}
+        (4)\cap(3)=(12)
+    \end{equation*}
+    and 
+    \begin{equation*}
+        (4)\cap(6)=(12)
+    \end{equation*}
+\end{example}
+\begin{defn}[Long division]
+    Let $f(x)\in R[x]$ be monic, if $g(x)\in R[x]$ be another polynomial, then there exists unique $q,r\in R[x]$, where $\deg(r)<\deg(f)$, such that 
+    \begin{equation*}
+        g(x)=f(x)q(x)+r(x)
+    \end{equation*}
+    Moreover, 
+    \begin{equation*}
+        g(x)+(f(x))=r(x)+(f(x))
+    \end{equation*}
+    as cosets of $(f(x))$.
+\end{defn}
+
+
+
+\begin{prop}
+    Let $I$ be an ideal of commutative $R$, if $R/I$ is finite, then $I$ is prime if and only if maximal.
+\end{prop}
+
+\begin{prop}
+    Let $R$ be a PID, a nonzero ideal $I$ is prime if and only if it is maximal.
+\end{prop}
+\begin{proof}
+    Is simple proof, you just do it.
+\end{proof}
+
+
+\begin{thm}
+    Let $R$ be commutative, let $f(x)\in R[x]$ be a monic polynomial of degree $d$, then 
+    \begin{equation*}
+        \varphi: R[x]\to R^{\oplus d}
+    \end{equation*}
+    where 
+    \begin{equation*}
+        \varphi: g(x)\mapsto r(x)
+    \end{equation*}
+    where $r(x)$ is the remainder $g(x)=f(x)q(x)+r(x)$ induces an isomorphism of \textbf{groups}:
+    \begin{equation*}
+        \frac{R[x]}{(f(x))}\cong R^{\oplus d}
+    \end{equation*}
+\end{thm}
+\textbf{Ring Structure}: can be induced by the map $\varphi$.
+
+\begin{example}
+    Let $f(x)=x-a$ for some $a\in R$, then 
+    \begin{equation*}
+        \frac{R[x]}{(x-a)}\cong R
+    \end{equation*}
+\end{example}
+\begin{example}
+    Let $f(x)=x^2+1$, then there is isomorphism of groups:
+    \begin{equation*}
+        R\oplus R\cong\frac{R[x]}{(x^2+1)}
+    \end{equation*}
+    note that elements on the right are of the form $a_0+a_1x$. One can give a ring structure on $R\oplus R$ by $\varphi$.
+\end{example}
+
+\begin{example}
+    The ideal $(2,x)$ is maximal in $\Z[x]$.
+\end{example}
+
+\begin{example}
+    The maximal ideals in $\C[x]$ are precisely 
+    \begin{equation*}
+        (x-a)
+    \end{equation*}
+    where $a\in\C$.
+\end{example}
+
+\begin{defn}[Krull dimension]
+    Let $R$ be commutative, the Krull dimension is the length of the longest chain of prime ideals in $R$. For example, PIDs but not fields have Krull dimension $1$. 
+    \begin{equation*}
+        (0)\subset (d)
+    \end{equation*}
+    has length $1$.
+
+    Moreover, $k[x_1,\dots,x_n]$ have Kruell dimension $n$:
+    \begin{equation*}
+        (0)\subset (x_1)\subset(x_1,x_2)\subset\dots(x_1,\dots,x_n)
+    \end{equation*}
+\end{defn}
+
+\begin{prop}
+    The product of two fields need not to be a field:
+    \begin{equation*}
+        \F_2\times\F_2
+    \end{equation*}
+    has zero divisors!
+\end{prop}
+
+
+\section{Modules}
+\begin{defn}[module]
+    A $R$-module $M$ is an abelian group with a ring action, satisfying:
+    \begin{enumerate}
+        \item $r(m+n)=rm+rn$
+        \item $(r+s)m=rm+sm$
+        \item $(rs)m=r(sm)$
+        \item $1m=m$.
+    \end{enumerate}
+    A \textbf{submodule} $N$ of $M$ is an abelian group such that for all $r\in R$, $n\in N$,
+    \begin{equation*}
+        rn\in N
+    \end{equation*}
+    A \textbf{homomorphism} of $R$-modules $\varphi: M\to M'$ is such that 
+    \begin{equation*}
+        \begin{cases}
+            \varphi(m+n)=\varphi(m)+\varphi(n)\\
+            \varphi(rm)=r\varphi(m)
+        \end{cases}
+    \end{equation*}
+\end{defn}
+Let $R=k$ be a field, then $R$-modules are called vector spaces over $k$.
+
+\begin{defn}
+    Let $r\in M$ be in the center of $M$, then 
+    \begin{equation*}
+        rM=\{rm: m\in M\}
+    \end{equation*}
+    is a submodule of $M$. If $I$ is an ideal of $R$, then 
+    \begin{equation*}
+        IM=\{\sum_ir_im_i: r\in I, m\in M\}
+    \end{equation*}
+    i.e., generated by $rm, r\in I$ is a submodule.
+\end{defn}
+
+\begin{example}
+    If $R$ is not commutative, then $R/I$ is not a ring, where $I$ is a left ideal, but is defined as a left-module. The multiplication given by $r(a+I)=ra+I$.
+\end{example}
+
+
+
+
+
+\begin{defn}
+    An $R$-algebra is a ring with a ring $R$ action.
+\end{defn}
+
+\begin{thm}
+    Suppose $\varphi: M\to M'$ be a surjective $R$-module homomorphism, then 
+    \begin{equation*}
+        M'\cong\frac{M}{\ker\varphi}
+    \end{equation*}
+\end{thm}
+
+\begin{prop}
+    Let $N$ be a submodule of an $R$-module $M$, and let $P$ be a submodule of $M$ containing $N$. Then $P/N$ is a submodule of $M/N$, and 
+    \begin{equation*}
+        \frac{M/N}{P/N}\cong\frac{M}{P}
+    \end{equation*}
+\end{prop}
+
+\begin{prop}
+    Let $N,P$ be submodules, then $N+P$ is a submodule of $M$, and $N\cap P$ is a submodule of $P$, and 
+    \begin{equation*}
+        \frac{N+P}{N}\cong\frac{P}{N\cap P}
+    \end{equation*}
+\end{prop}
+
+
+\section{Free Modules}
+
+\begin{defn}
+    Let $A$ be a set, then 
+    \begin{equation*}
+        F^R(A)\cong R^{\oplus A}
+    \end{equation*}
+    where $F^R(A)$ denotes the free modules over $A$. Every element is written as 
+    \begin{equation*}
+        \sum_{a\in A}r_aa
+    \end{equation*}
+    (always a finite sum). We say a module $M=\la A\ra$ is finitely generated if $A$ is finite.
+\end{defn}
+
+\begin{example}
+    Let $R=\Z[x_1,x_2, \dots]$, viewed as a $R$-module over itself, it is finitely generated (by $1$). 
+    But the ideal 
+    \begin{equation*}
+        (x_1,x_2,\dots)\subset R
+    \end{equation*}
+    as an $R$-module, is not finitely generated. 
+\end{example}
+
+\begin{defn}[Noetherian Modules]
+    An $R$-module is Noetherian if every submodule of $M$ is finitely generated as an $R$-module. The above example is not Noetherian.
+\end{defn}
+
+
+\begin{prop}
+    Let $M$ be an $R$-module, $N$ be a submodule, then $M$ is Noetherian iff $N,M/N$ are both Noetherian.
+\end{prop}
+
+\begin{defn}[finite, finite-type $R$-algebra]
+    Let $S$ be an $R$-algebra, it is called \textbf{finite} if it is finitely generated as an $R$-module; equivalently, 
+    \begin{equation*}
+        S\cong\frac{R^{\oplus n}}{M}
+    \end{equation*}
+    for some submodule $M$. 
+
+    An $R$-algebra $S$ is called \textbf{finite-type} if it is finitely generated as an $R$-algebra, i.e., 
+    \begin{equation*}
+        S\cong\frac{R[x_1,\dots, x_n]}{I}
+    \end{equation*}
+    for some ideal $I$.
+\end{defn}
+Elements in finite $R$-algebra is of the form:
+\begin{equation*}
+    \sum_{i=1}^nr_is_i
+\end{equation*}
+where $S=\la s_1,\dots, s_n\ra$. Elements in finite-type $R$-algebra is of the form:
+\begin{equation*}
+    r_{11}s_1+r_{12}s_1^2+\dots+r_{21}s_2+r_{22}s_2^2+\dots+r_{nk}s_n^k
+\end{equation*}
+
+
+\begin{prop}
+    The polynomial ring $R[x]$ is finite-type, not finite.
+\end{prop}
+
+
+\begin{prop}
+    Let $R$ be a PID, and $F$ be a finitely generated free module over $R$, and let $M\subset F$ be a submodule, then $M$ is free.
+\end{prop}
+
+
+\begin{defn}[rank of a module]
+    Let $R$ be an integral domain, the rank of $M$ is the maximal number of linearly independent elements of $M$.
+\end{defn}
+
+
+
+\begin{defn}[SES, split]
+    A sequence 
+    \[\begin{tikzcd}
+        0 & A & B & C & 0
+        \arrow[from=1-1, to=1-2]
+        \arrow["f", from=1-2, to=1-3]
+        \arrow["g", from=1-3, to=1-4]
+        \arrow[from=1-4, to=1-5]
+    \end{tikzcd}\]
+    is short exact iff $f$ is injective, $g$ is surjective, and 
+    \begin{equation*}
+        \ker(g)=\im(f)
+    \end{equation*}
+    A SES is said to \textbf{split} if it is isomorphic in a sense that the following diagram commutes:
+    \[\begin{tikzcd}
+        0 & A & B & C & 0 \\
+        0 & {A'} & {A\oplus C} & {C'} & 0
+        \arrow[from=1-1, to=1-2]
+        \arrow["f", from=1-2, to=1-3]
+        \arrow["\cong", tail reversed, from=1-2, to=2-2]
+        \arrow["g", from=1-3, to=1-4]
+        \arrow["\cong", tail reversed, from=1-3, to=2-3]
+        \arrow[from=1-4, to=1-5]
+        \arrow["\cong", tail reversed, from=1-4, to=2-4]
+        \arrow[from=2-1, to=2-2]
+        \arrow[from=2-2, to=2-3]
+        \arrow[from=2-3, to=2-4]
+        \arrow[from=2-4, to=2-5]
+    \end{tikzcd}\]
+\end{defn}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\chapter{Ring Theory II}
+This corresponds to Aluffi Chapter V.
+
+
+\begin{prop}
+    Let $N$ be a submodule of $M$, where $M$ is finitely generated, let $\la m_1,\dots,m_k\ra$ be the elements whose cosets generate $M/N$, then 
+    \begin{equation*}
+        M=N+\la m_1,\dots,m_k\ra
+    \end{equation*}
+\end{prop}
+\begin{proof}
+    This is the same proof that if $N, M/N$ are finitely generated, then $M$ is.
+\end{proof}
+
+
+\begin{prop}
+    Let $R$ be commutative, and $M$ be an $R$-module, then TFAE:
+    \begin{enumerate}
+        \item $M$ is \textbf{Noetherian}.
+        \item $M$ satisfies the \textbf{ascending chain condition}. (sequence of submodules.)
+        \item Every nonempty family of submodules has a maximal element with respect to inclusion.
+    \end{enumerate}
+\end{prop}
+\begin{proof}
+    Noetherian implies acc: given $N_1\subset N_2\subset\dots$, then $N=\bigcup_iN_i$ is finitely generated. 
+\end{proof}
+
+
+\begin{prop}[Hilbert's basis theorem]
+    Let $R$ be a Noetherian ring, then $R[x_1,\dots, x_n]$ is Noetherian. This is the same as If $R$ is Noetherian, then $R[x]$ is also Noetherian.
+\end{prop}
+
+\begin{prop}
+    Let $a,b\in R$, then $(a)=(b)$ iff $a=ub$ for some unit $u$.
+\end{prop}
+
+
+
+\begin{defn}[prime, irreducible elements]
+    Let $R$ be commutative
+    \begin{enumerate}
+        \item Let $R$ be an integral domain, an element $a\in R$ is \textbf{prime} if the ideal $(a)$ is prime.
+        \item An element $a\in R$ is \textbf{irreducible} if $a$ is not a unit and 
+        \begin{equation*}
+            a=bc
+        \end{equation*}
+        implies $b$ is a unit or $c$ is a unit. Equivalently, $a$ is irreducible if $(a)\subset (b)$ implies $(b)=(a)$ or $(b)=(1)=R$, i.e., $(a)$ is maximal in principal ideals.
+    \end{enumerate}
+\end{defn}
+
+\begin{prop}
+    Let $R$ be an \textbf{integral domain}, then 
+    \begin{equation*}
+        \text{nonzero prime elements}\Rightarrow \text{ irreducible}
+    \end{equation*}
+\end{prop}
+
+\begin{defn}[factorization]
+    $r\in R$ has a factorization if there exists \textbf{finite} irreducibles $q_1,\dots, q_n$ such that 
+    \begin{equation*}
+        r=q_1\dots q_n
+    \end{equation*}
+\end{defn}
+
+
+
+
+
+
+% \begin{defn}
+%     Let $R$ be an ID. An element $r\in R$ has a factorization into irreducibles if there exist irreducible elements $q_1,\dots, q_n$ such that $r=q_1\dots q_n$. 
+% \end{defn}
+
+
+
+\begin{prop}
+    
+    Let $R$ be an integral domain, and let $r$ be a nonzero, nonunit element of $R$. Assume that every ascedning chain of principal ideals, 
+    \begin{equation*}
+        (r)\subset (r_1)\subset (r_2)\dots
+    \end{equation*}
+    stabilizes. Then $r$ has a factorization into irreducibles.
+\end{prop}
+Of course if a ring is ACC, then factorizations exist.
+
+
+
+\begin{prop}
+    Factorization exists in Noetherian rings.
+
+\end{prop}
+
+
+\begin{example}  
+    A non-Noetherian ring but factorization still exists:
+    \begin{equation*}
+        \Z[x_1,\dots,x_n]
+    \end{equation*}
+\end{example}
+
+\begin{prop}
+    Let $R$ be Noetherian and $I$ be an ideal, then $R/I$ is also Noetherian.
+\end{prop}
+
+\section{UFD, PID, ED}
+\begin{defn}[gcd]
+    Let $a,b\in R$, then the gcd of $a,b$ is $d$ such that $(d)$ is the smallest principal ideal such that 
+    \begin{equation*}
+        (a,b)\subset (d)
+    \end{equation*}
+\end{defn}
+
+\begin{prop}
+    Let $R$ ba UFD, and $a,b,c\in R$ be nonzero, then 
+    \begin{equation*}
+        (a)\subset(b)\iff m(b)\subset m(a)
+    \end{equation*}
+    where $m(a)$ is the multiset of irreducible factors of $a$. Moreover, the irreducible factors of $bc$ are the collection of irreducible factors of $b$ and $c$.
+\end{prop}
+
+
+
+\begin{prop}
+    Let $R$ be a UFD, then gcd of any $a,b$ exsits.
+\end{prop}
+\begin{example}
+    There exists Noetherian rings that are not UFD.
+    \begin{equation*}
+        \frac{\C[x,y,z,w]}{(xw-yz)}
+    \end{equation*}
+    since $r=xw=yz$.
+\end{example}
+
+
+\begin{prop}
+    In UFD, $a$ is irreducible implies $a$ is prime.
+\end{prop}
+\begin{proof}
+    Assume $bc\in (a)$, then $(bc)\subset (a)$, hence the multiset of irreducible factors of $a$ is contained in the multiset of $b,c$, but $a$ is irreducible implies that $a$ must be among the factors of $b$ or $c$.
+\end{proof}
+
+
+\begin{thm}
+    An integral domain $R$ is a UFD if and only if 
+    \begin{enumerate}
+        \item The acc holds for principal ideals in $R$.
+        \item Every irreducible element of $R$ is prime.
+    \end{enumerate}
+\end{thm}
+
+\begin{thm}
+    If $R$ is a PID, and $a,b\in R$, then $d=\gcd(a,b)$ iff $(a,b)=(d)$. In other words, there exists $r,s\in R$, such that 
+    \begin{equation*}
+        d=ra+sb
+    \end{equation*}
+\end{thm}
+
+
+\begin{example}
+    UFD but not PID:
+    \begin{equation*}
+        \Z[x]
+    \end{equation*}
+\end{example}
+
+\begin{defn}[Euclidean domain]
+    A Euclidean valuation on an integral domain $R$ is an valuation: for all $a\in R$, and all nonzero $b\in R$, there exists $q,r$ such that 
+    \begin{equation*}
+        a=qb+r
+    \end{equation*}
+    with either $r=0$ or $v(r)<v(b)$. An integral domain is a ED if it admits a Euclidean valuation.
+\end{defn}
+
+\section{$R(x)$ and Field of Fractions}
+
+\begin{thm}
+    Let $R$ be a UFD, then $R[x]$ is also a UFD.
+\end{thm}
+\begin{example}
+    $\Z[x],\Z[x_1,\dots,x_n]$ are UFD.
+\end{example}
+
+\begin{defn}[Field of fractions]
+    Let $R$ be an integral domain, then the field of fractions is 
+    \begin{equation*}
+        \text{Frac}(R)=\left\{\frac{a}{r}: a,r\in R, r\neq 0\right\}
+    \end{equation*}
+    where $\frac{a}{r}$ is the equivalence given by $\frac{a}{r}\sim \frac{b}{s}\iff as=br$.
+\end{defn}
+
+
+\begin{defn}
+    The field of fractions $R[x]$ is the field of rational functions with coefficients in $R$: elements are of the form 
+    \begin{equation*}
+        \frac{p(x)}{q(x)}, q(x)\neq 0
+    \end{equation*}
+    \textbf{denoted as $R(x)$.}
+\end{defn}
+
+
+
+
+\begin{defn}[primitive]
+    Let $R$ be a UFD, $f$ is primitive if and only if $\gcd(a_0,\dots, a_d)=1$.
+\end{defn}
+
+
+
+\begin{prop}
+    Let $R$ be a UFD, and $K$ be its field of fractions, let $f\in R[x]$ be a nonconstant, irreducible polynomial, then $f$ is irreducible in $K[x]$.
+\end{prop}
+
+
+
+% \begin{defn}
+%     Let $R$ be a commutative ring, let $f\in R[x]$, then $f$ is primitive if for all principal prime ideals $p$, 
+%     \begin{equation*}
+%         f\not\in pR[x]
+%     \end{equation*}
+%     where $pR[x]$ is an ideal of $R[x]$ of polynomials with coefficients from $p$.
+% \end{defn}
+
+
+
+% \begin{defn}
+%     Let $R$ be a UFD.
+%     The content of a nonzero polynomial $f\in R[x]$ denoted by 
+%     \begin{equation*}
+%         \text{cont}(f)=\gcd(a_0,\dots,a_n)
+%     \end{equation*}
+%     The principal ideal generated by $(\text{cont}f)$ is uniquely determined by $f$.
+% \end{defn}
+
+% \begin{prop}[Gauss's lemma]
+%     Let $R$ be a UFD. Let $f,g\in R[x]$, then 
+%     \begin{equation*}
+%         (\text{cont}(fg))=(\text{cont}(f))(\text{cont}(g))
+%     \end{equation*}
+% \end{prop}
+
+
+
+% \begin{prop}
+%     Let $R$ be a UFD, and $K$ be its field of fractions. Let $f\in R[x]$ be nonconstant, then $f$ is irreducible in $R[x]$ if and only if it is irreducible in $K[x]$ and $\gcd(a_0,\dots, a_n)=1$. 
+% \end{prop}
+
+% \section{}
+
+
+% \begin{prop}
+%     Let $R$ be a UFD, $K$ its field of fractions.  Let 
+%     \begin{equation*}
+%         f(x)=a_0+\dots+a_nx^n\in R[x]
+%     \end{equation*}
+%     let $c=\frac{p}{q}\in K$ be a root of $f$, then $p\mid a_0$ and $q\mid a_n$.  (Note $p/q$ is written in the minimal form).
+% \end{prop}
+
+
+% \begin{prop}
+%     Let $k$ be a field, $f(t)\in k[t]$, be irreducible, then 
+%     \begin{equation*}
+%         F=\frac{k[t]}{(f(t))}
+%     \end{equation*}
+%     is a field.
+% \end{prop}
+
+
+% \begin{defn}
+%     A field is algebraically closed if all the irreducible polynomials in $k[x]$ have degree $1$.
+% \end{defn}
+
+
+% \begin{prop}
+%     Every polynomial $f\in R[x]$ of degree $\geq 3$ is reducible.
+% \end{prop}
+
+% \begin{prop}
+%     Let $f\in\Z[x]$ be a polynomial such $\gcd(a_0,\dots, a_n)=1$ then let $p$ be a prime integer. Assume $f\mod p$ has the same degree as $f$ and is irreducible over $\Z/p\Z$, then $f$ is irreducible over $\Z$.
+% \end{prop}
+
+
+
+
+
+\section{Irreducibility}
+\begin{prop}
+    Let $R$ be an ID, then $f\in R[x]$ of degree $d$ can have at most $d$ roots.
+\end{prop}
+This is not true for non-ID, for example, $x^2+2$ over $\Z/6\Z$.
+
+\begin{prop}
+    Let $k$ be a field, then $f\in k[x]$ of degree $2$ or $3$ is irreducible iff it has no root in $k$.
+\end{prop}
+\begin{example}
+    $t^2+t+1$ is irreducible over $\F_2$ (therefore over $\Q$).
+\end{example}
+
+\begin{prop}[rational root theorem]
+    Let $R$ be a UFD, and $K$ be its field of fractions, let 
+    \begin{equation*}
+        f(x)=a_0+a_1x+\dots+a_nx^n\in R[x]
+    \end{equation*}
+    if $\frac{p}{q}\in K$ is a root, ($\gcd(p,q)=1$), then 
+    \begin{equation*}
+        p\text{ divides } a_0, q\text{ divides } a_n
+    \end{equation*}
+\end{prop}
+
+\begin{prop}
+    Let $k$ be a field, and $f(t)\in k[t]$ be a nonzero irreducible polynomial. Then 
+    \begin{equation*}
+        F=\frac{k[t]}{(f(t))}
+    \end{equation*}
+    is a field, where $k$ embeds into $F$. Moreover, $f(x)\in k[x]$ has a root in $F$, which is 
+    \begin{equation*}
+        t+(f(t))
+    \end{equation*}
+\end{prop}
+
+\begin{prop}
+    A field is algebraically closed 
+    \begin{align*}
+        k \text{ is algebraically closed}&\iff \text{ all irreducible polynomials in $k[x]$ have degree $1$}\\
+        &\iff \text{ every nonconstant polynoimal $f$ factors completely into linear factors}\\
+        &\iff \text{ every nonconstant $f$ has a root in $k$}
+    \end{align*}
+\end{prop}
+
+\begin{thm}
+    Finite fields $\F_{p^n}$ are not algebraically closed. 
+    
+    % In other words, if a field $k$ is algebraically closed, then it is infinite.
+\end{thm}
+
+\begin{example}
+    The nonconstant irreducible polynomials of $\R[x]$ are precisely those of degree $1$ and quadratic $f=ax^2+bx+c$ where $b^2-4ac<0$.
+\end{example}
+
+
+\begin{prop}
+    Let $f\in\Z[x]$ be such that $\gcd(a_0,\dots,a_n)=1$, and let $p$ be prime. If $f\mod p$ has the same degree as $f$, and is irreducible over $\F_p$, then $f$ is irreducible over $\Z$.
+\end{prop}
+\begin{warn}
+    This is important! We can show a polynomial is irreducible over $\Z$ by showing it is irreducible over $\F_p$ for some $p$.
+\end{warn}
+
+\begin{example}
+    There exists reducible polynomial over $\Z$ but irreducible over $\F_p$ for every prime $p$: $x^4+1$. (Hint: Legendre symbol).
+\end{example}
+
+\begin{prop}[Generalized Eisenstein]
+    Let $R$ be a commutative ring, let $p$ be a prime ideal in $R$, let $f\in R[x]$, assume that 
+    \begin{enumerate}
+        \item $a_n\not\in p$.
+        \item $a_i\in p$.
+        \item $a_0\not\in p^2$.
+    \end{enumerate}
+    then $f$ is not the product of polynomials with degree strictly less than $\text{deg}(f)$.
+\end{prop}
+\begin{warn}
+    Generalized Eisenstein works for commutative rings! Some examples:
+    \begin{equation*}
+        \C[x,y], \frac{\C[x_1,x_2,x_3,x_4]}{(x_1x_2-x_3x_4)}
+    \end{equation*}
+\end{warn}
+
+\begin{example}
+    For all $n$ and all primes $p$, the polynomial $x^n-p$ is irreducible over $\Z$.
+\end{example}
+% \begin{proof}
+%     Eisenstein!
+% \end{proof}
+
+
+\begin{example}
+    Let $p$ be a prime, then the cyclotomic polynomial $\Phi_p(x)$ is irreducible.
+    \begin{equation*}
+        1+x+x^2+\dots+x^{p-1}
+    \end{equation*}
+\end{example}
+\begin{proof}
+    \begin{align*}
+        f(x)&=\frac{x^p-1}{x-1}\\
+        f(x+1)&=\frac{(x+1)^p-1}{x}
+    \end{align*}
+    We see that coefficients are now 
+    \begin{equation*}
+        \binom{p}{k}, k=1,\dots, p-1
+    \end{equation*}
+    hence $p$ divides all but leading coefficient.
+\end{proof}
+
+
+
+
+
+
+
+\section{CRT}
+\begin{thm}[CRT]
+    Let $I_1,\dots, I_k$ be ideals of $R$ such that $I_i+I_j=(1)$ for all $i\neq j$. Then 
+    \begin{equation*}
+        \frac{R}{I_1\cap\dots\cap I_k}=\frac{R}{I_1I_2\dots I_k}\cong\frac{R}{I_1}\times\dots\times\frac{R}{I_k}
+    \end{equation*}
+
+    (It uses if $I_i+I_j=(1)$, then $I_1\dots I_k=I_1\cap\dots\cap I_k$).
+\end{thm}
+
+\begin{prop}[CRT in PID]
+    Let $R$ be a PID, and let $a_1,\dots, a_k$ be elemnts such that $\gcd(a_i,a_j)=1$, let $a=a_1\dots a_k$, then 
+    \begin{equation*}
+        \frac{R}{(a)}\cong\frac{R}{(a_1)}\times\dots\times\frac{R}{(a_k)}
+    \end{equation*}
+\end{prop}
+
+
+% \begin{prop}
+%     A positive integer prime $p\in\Z$ splits in $\Z[i]$ iff it is the sum of two squares in $\Z$. (Proof: uses norm).
+% \end{prop}
+
+
+
+% \begin{prop}[Fermat]
+%     A positive odd prime $p\in\Z$ is a sum of two squares iff $p\equiv 1\mod 4$.
+% \end{prop}
+
+
+
+
+
+
+\chapter{Linear Algebra I}
+This corresponds to Aluffi Chapter VI, excluding Section 4-5.
+
+\section{basis, free modules, IBN}
+
+\begin{prop}[Zorn's]
+    Every module $M$ has maximal linealry independent set. In other words, let $S\subset M$ be a linearly independent subset. Then there exists a maximal linealry independent subset of $M$ containing $S$.
+\end{prop}
+
+\begin{defn}[basis]
+    A subset $S\subset M$ is a basis if it is linearly independent and generates $M$. Every element in $M$ can be written as 
+    \begin{equation*}
+        m=\sum_{s_i\in S}r_is_i
+    \end{equation*}
+    where only finitely many terms are nonzero.
+    
+    ($(2)\subset\Z$ is maximal but not a basis).
+\end{defn}
+
+
+\begin{prop}
+    Regarding basis, 
+    \begin{enumerate}
+        \item An $R$-module $M$ is free iff it admits a basis. (Any vector space is free as a $k$-module).
+        \item The converse holds when $R=k$: let $B$ be a maximal linearly independent subset of $M=V$, then $B$ is a basis.
+        \item When $R=k$, let $S$ be a linearly independent subset, then there exists a basis $B$ of $V$ containing $S$. If $B$ is a minimal generating set for $V$, then $B$ is also a basis.
+    \end{enumerate}
+\end{prop}
+
+\begin{prop}
+    Let $R$ be an \textbf{integral domain}, and $M$ a free $R$-module, let $B$ be a maximal linearly independent subset of $M$. Then the rank of $M$ is $|B|$. If $S$ is any independent subset, then 
+    \begin{equation*}
+        |S|\leq|B|
+    \end{equation*}
+\end{prop}
+\begin{example}
+    The basis $\C[x]$ over $\C$ is $\{1,x,\dots\}$, hence an uncountable subset of $\C[x]$ is necessarily linearly dependent.
+\end{example}
+
+\begin{prop}
+    Let $R$ be an \textbf{integral domain}, let $m,n$ be nonnegative integers, 
+    \begin{equation*}
+        R^m \cong R^n\iff m=n
+    \end{equation*}
+    If $R$ satisfies the above, we say it satisfies the invariant basis number property. (All commutative rings satisfy this)!
+\end{prop}
+
+\begin{defn}[rank of a module]
+    Let $R$ be an integral domain, the rank of a free module $M$ is the size of the maximal linearly independent subset of $M$.
+\end{defn}
+
+
+\begin{prop}
+    Let $R$ be an integral domain, and let $M$ be a free $R$-module, assume that $M$ is generated by $S$: $M=\la S\ra$, then $S$ contains a maximal linearly independent subset of $M$.
+\end{prop}
+
+
+\section{Homomorphisms $R^n\to R^m$}
+
+\begin{prop}
+    Let $\alpha:M\to N$ be a homomrophism of finitely generated modules, and let $P$ be a matrix representing it wrt any basis of $M,N$, then with respect to any other choice of bases of $M,N$, $\alpha$ is of the form
+    \begin{equation*}
+        N_1\cdot P\cdot N_2
+    \end{equation*}
+    where $N_1,N_2$ are invertible matrices.
+\end{prop}
+
+\begin{prop}
+    Two matrices $P,Q\in M_{n}(R)$ are equivalent if they are the same up to elementary operations, i.e., iff the same up to multiplications by elementary matrices. In other words, $M,N$ are equivalent if there exists invertible $P_1,P_2$ such that 
+    \begin{equation*}
+        M=P_1NP_2
+    \end{equation*}
+\end{prop}
+\begin{example}
+    The matrix
+\[
+\begin{pmatrix}
+1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 1 \\
+0 & 0 & 1 & 0 \\
+0 & 1 & 0 & 0
+\end{pmatrix}
+\]
+interchanges the second and fourth row of a \(4 \times 4\) matrix. Multiplying on the right by
+\[
+\begin{pmatrix}
+1 & 0 & c \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{pmatrix}
+\]
+adds to the third column of a \(m \times 3\) matrix the \(c\)-multiple of the first column.
+\end{example}
+
+\begin{prop}
+    Let $k$ be a field, then $\text{GL}_n(k)$ is generated by elementary matrices!
+\end{prop}
+
+\begin{prop}
+    Over a field, every $m\times n$ matrix is equivalent to a matrix is equivalent to a matrix of the form:
+    \[ 
+\left( 
+\begin{array}{c|c} 
+I_r & 0 \\ 
+\hline 
+0 & 0 
+\end{array} 
+\right) 
+\]
+ In other words, up to multiplying some invertible matrix $N_1,N_2$ on the left and right, every matrix is of the above form.
+\end{prop}
+
+
+\begin{prop}
+    Let $R$ be commutative, a square matrix $A$ is invertible iff $\det(A)$ is a unit in $R$; The determinant is a homomorphism $\det: \text{GL}_n(R)\to(R^*,\cdot)$, and for $A,B\in M_n(R)$, 
+    \begin{equation*}
+        \det(AB)=\det(BA)
+    \end{equation*}
+\end{prop}
+
+\begin{prop}
+    The row rank of a matrix over a field is equal to its column rank, recall that every matrix is equivalent to a matrix of the form 
+    \[ 
+        \left( 
+        \begin{array}{c|c} 
+        I_r & 0 \\ 
+        \hline 
+        0 & 0 
+        \end{array} 
+        \right) 
+        \]
+    From this we also know that 
+    \begin{equation*}
+        \dim V=\text{ rank of }\alpha +\text{ nullity of }\alpha
+    \end{equation*}
+\end{prop}
+
+
+\begin{defn}[adjoint matrix]
+    Let $M$ be an $n\times n$ matrix, the adjoint matrix $\text{adj}(A)$ is such that 
+    \begin{equation*}
+        A\cdot\text{adj}(A)=\text{adj}(A)A=\det(A)I_n
+    \end{equation*}
+\end{defn}
+
+\begin{prop}[Nakayama's lemma]
+    (Different versions of the same lemma).
+    \begin{enumerate}
+        \item Let $R$ be a commutative ring, $M$ and $R$-module, and let $a\in R$ be a nilpotent element, then
+        \begin{equation*}
+            M=0\iff aM=M
+        \end{equation*}
+        \item Let $J$ be the Jacobson radical of $R$, where $M$ is finitely generated $R$-module. If $M=JM+N$, then $M=N$. (A special case is when $R$ is a local ring and $\mathfrak{m}=J$).
+    \end{enumerate}
+\end{prop}
+
+\section{Invariants in Linear Transformations}
+
+\begin{defn}[similar matrix]
+    Two matrices $A,B$ are similar iff there exists invertible $P$ such that 
+    \begin{equation*}
+        A=PBP^{-1}
+    \end{equation*}
+    For example, $A$ is similar to $A^t$.
+\end{defn}
+\begin{prop}
+    Similar implies equivalent, but equivalent does not imply similar.
+\end{prop}
+
+\begin{prop}
+    Let $\alpha$ be a linear transformation of $R^n$, a free $R$-module, then 
+    \begin{equation*}
+        \det(\alpha)\neq 0\iff \alpha\text{ is injective}
+    \end{equation*}
+\end{prop}
+\begin{prop}
+    For $A,B\in M_n(R)$, 
+    \begin{equation*}
+        \tr(AB)=\tr(BA)
+    \end{equation*}
+    If $A,B$ are similar, then 
+    \begin{equation*}
+        \tr(A)=\tr(B)
+    \end{equation*}
+\end{prop}
+
+\begin{defn}[characteristic polynomial]
+    Let $\alpha\in\text{End}(F)$, where $F=R^n$, then the characteristic polynomial of $\alpha$ is 
+    \begin{equation*}
+        P_\alpha(t)=\det(tI-\alpha)
+    \end{equation*} 
+\end{defn}
+
+\begin{thm}
+    Let $\alpha\in\text{End}(F)$, and $F=R^n$, let $P_\alpha(t)=t^n+a_{n-1}t^{n-1}\dots+a_0$ be characteristic polynomial,
+    \begin{enumerate}
+        \item $P_\alpha(t)$ is of degree $n$.
+        \item $a_{n-1}t^{n-1}$ is such that $a_{n-1}=-\tr(\alpha)$.
+        \item $a_0=(-1)^n\det(\alpha)$.
+        \item If $\alpha,\beta$ are similar, then $\det(\alpha)=\det(\beta)$. 
+        \item We have 
+        \begin{equation*}
+            P_\alpha(t)=t^n-\tr(\alpha)+\dots+(-1)^n\det(\alpha)
+        \end{equation*}
+    \end{enumerate}
+\end{thm}
+
+\begin{thm}
+    Let $\alpha:V\to V$ be an endomorphism over $k$, then 
+    \begin{equation*}
+        \tr(\alpha)=\sum_{i=1}^n\lambda_i
+    \end{equation*}
+    where $\lambda_i$ is the eigevnalues of $V$ over the algebraic closure $\bar{k}$.
+\end{thm}
+
+
+\begin{example}
+    Having the same characteristic polynoimal does not guarantee they are similar:
+    \begin{equation*}
+        \begin{pmatrix}
+            1&0\\
+            0&1
+        \end{pmatrix}, \quad 
+        \begin{pmatrix}
+            1&1\\
+            0&1
+        \end{pmatrix}
+    \end{equation*}
+    are not similar.
+\end{example}
+
+
+\begin{defn}[annihilator ideal]
+    Given $\alpha\in\text{End}(F)$, and $f(x)\in R[x]$, the annihilator ideal of $\alpha$ is 
+    \begin{equation*}
+        \mathcal{A}(\alpha)=\{f\in R[x]: f(\alpha)=0\}
+    \end{equation*}
+\end{defn}
+
+\begin{defn}
+    Let $k$ be a field, the minimal polynomial of $\alpha$ is the monic generator $m_\alpha(t)$ of $\mathcal{A}(\alpha)=((m_\alpha(t)))$. 
+\end{defn}
+
+\begin{prop}
+    If $\alpha,\beta$ are similar, then 
+    \begin{equation*}
+        \mathcal{A}(\alpha)=\mathcal{A}(\beta)
+    \end{equation*}
+\end{prop}
+
+\begin{prop}[Cayley-Hamilton]
+    Let $P_\alpha(t)$ be the characteristic polynomial of $\alpha$, then 
+    \begin{equation*}
+        P_\alpha(\alpha)=0
+    \end{equation*}
+\end{prop}
+
+\begin{prop}
+    If $\alpha,\beta$ are similar, then they have the same eigenvalues. Moreover, $\lambda\in R$ is an eigenvalue of $\alpha$ iff it is a root of the characteristic polynomial of $\alpha$.
+\end{prop}
+
+\begin{prop}
+    If $R$ is algebraically closed, then $\alpha$ has exactly $n$ eigenvalues; more generally, it has at most $n$ eigenvalues.
+\end{prop}
+
+\begin{prop}
+    The dimension of the eigenspace wrt $\lambda$ is always less than or equal to its algebraic multiplicity $(t-\lambda)^k$. If for each $\lambda$, they are equal, then $\alpha$ is diagonalizable with respect to an eigenbasis.
+\end{prop}
+
+\section{The canonical form}
+
+
+\begin{prop}
+    Let $R$ be a PID, then submodules of a free $R$-module $M$ is also free.
+\end{prop}
+
+\begin{prop}
+    If $M$ is finitely generated as an $R$-module, then 
+    \begin{equation*}
+        M\cong\frac{R^{\oplus n}}{N}
+    \end{equation*}
+    for some submodule of $R^{\oplus n}$.
+\end{prop}
+\begin{prop}
+    Recall: every finitely generated $R$-module over a PID (meaning when $R$ is a PID) is a direct sum of cyclic modules. Let $R=k[t]$, then
+    \begin{equation*}
+        \frac{k[t]}{(f(t))}
+    \end{equation*}
+    is cyclic viewed as a $k[t]$-module. (The generator is $1$.).
+\end{prop}
+
+\begin{prop}
+    We call a module finitely generated over a PID if $R$ is a PID and $M$ is finitely generated as an $R$-module, 
+\end{prop}
+
+\begin{prop}
+    There is a one-to-one correspondence 
+    \begin{equation*}
+        \left\{\text{(V,$\alpha$)}: \alpha:V\to V\right\}\leftrightarrow \left\{k[t]-\text{modules of } V\right\}
+    \end{equation*}
+\end{prop}
+The isomorphism $(\rightarrow)$ is given by 
+\begin{equation*}
+    (V,\alpha)\mapsto (k[t]\to\text{End}(V): t\mapsto\alpha)
+\end{equation*}
+and $(\leftarrow)$ is given by 
+\begin{equation*}
+    \left(\varphi:k[t]\to\text{End}(V)\right)\mapsto (V,\varphi(t))
+\end{equation*}
+
+
+
+\begin{prop}
+    Let $k$ be a field, and $V$ finite dimensional vector space, let $\alpha$ be a linear transformation, endow $V$ with the $k[t]$-structure, there exists distinct monic irreducible polynomials $p_i(t)\in k[t]$ such that 
+    \begin{equation*}
+        V\cong\bigoplus_{i,j}\frac{k[t]}{(p_i(t)^{r_{ij}})}
+    \end{equation*}
+    as $k[t]$-modules. Moreover, there exists monic $f_1,\dots, f_m$ such that 
+    \begin{equation*}
+        V\cong\frac{k[t]}{(f_1(t))}\oplus\dots\oplus\frac{k[t]}{(f_m(t))}
+    \end{equation*}
+    as $k[t]$-modules, where $f_1(t)\mid\dots\mid f_m(t)$. The characteristic and minimal polynomials are such that 
+    \begin{equation*}
+        P_\alpha(t)=f_1(t)\dots f_m(t)=\prod_{i,j}p_i(t)^{r_{ij}}
+    \end{equation*}
+    and 
+    \begin{equation*}
+        m_\alpha(t)=f_m(t)
+    \end{equation*}
+\end{prop}
+
+\begin{prop}
+    If $P_\alpha(t)$ factors completely over $k$, i.e., 
+    \begin{equation*}
+        P_\alpha(t)=\prod_{i=1}^s(t-\lambda_i)^{m_i}
+    \end{equation*}
+    where $\lambda_i$ are distinct eigenvalues of $\alpha$, then
+    \begin{equation*}
+        V\cong\bigoplus_{i=1}^s\frac{k[t]}{(t-\lambda_i)^{m_i}}
+    \end{equation*}
+    where $m_i=\sum_jr_{ij}$ in the above expression. Moreover, 
+    \begin{equation*}
+        m_\alpha(t)=\prod_{i=1}^s(t-\lambda_i)^{\max_j\{r_{ij}\}}
+    \end{equation*}
+\end{prop}
+
+
+\begin{thm}
+    The above translated into Jordan form is:
+    \begin{equation*}
+        m_\alpha(t)=\prod_{i=1}^s(t-\lambda_i)^{\text{biggest Jordan block of $\lambda_i$}}
+    \end{equation*}
+    where $\lambda_i$ are distinct eigenvalues. 
+\end{thm}
+
+
+
+
+\begin{example}
+    One use of the Jordan canonical form is the enumeration of all possible similarity classes of transformations with given eigenvalues. For example, there are 5 similarity classes of linear transformations with a single eigenvalue $\lambda$ with algebraic multiplicity 4, over a 4-dimensional vector space: indeed, there are 5 different ways to stack together Jordan blocks corresponding to the same eigenvalue, within a $4 \times 4$ square matrix:
+
+\[
+\begin{pmatrix}
+\lambda & 0 & 0 & 0 \\
+0 & \lambda & 0 & 0 \\
+0 & 0 & \lambda & 0 \\
+0 & 0 & 0 & \lambda
+\end{pmatrix},
+\quad
+\begin{pmatrix}
+\lambda & 1 & 0 & 0 \\
+0 & \lambda & 0 & 0 \\
+0 & 0 & \lambda & 0 \\
+0 & 0 & 0 & \lambda
+\end{pmatrix},
+\quad
+\begin{pmatrix}
+\lambda & 1 & 0 & 0 \\
+0 & \lambda & 1 & 0 \\
+0 & 0 & \lambda & 0 \\
+0 & 0 & 0 & \lambda
+\end{pmatrix},
+\]
+
+\[
+\begin{pmatrix}
+\lambda & 1 & 0 & 0 \\
+0 & \lambda & 0 & 0 \\
+0 & 0 & \lambda & 1 \\
+0 & 0 & 0 & \lambda
+\end{pmatrix},
+\quad
+\begin{pmatrix}
+\lambda & 1 & 0 & 0 \\
+0 & \lambda & 1 & 0 \\
+0 & 0 & \lambda & 1 \\
+0 & 0 & 0 & \lambda
+\end{pmatrix}.
+\]
+\end{example}
+
+\begin{prop}
+    Two matrices are similar if and only if they have the same Jordan form.
+\end{prop}
+
+\begin{prop}
+    The dimension of the eigenspace with respect to $\lambda$ is the \textbf{number} of the Jordan blocks with respect to $\lambda$.
+\end{prop}
+
+\begin{prop}
+    Assume $P_\alpha(t)$ factors completely over $k$, then $\alpha$ is diagonalizable iff either of following :
+    \begin{enumerate}
+        \item The dimension of eigenspace=algebraic multiplicity of $\lambda$ for all eigenvalues $\lambda$ of $\alpha$.
+        \item Minimal polynomial $m_\alpha(t)$ has no repeated roots.
+        \begin{warn}
+            This is important.
+        \end{warn}
+    \end{enumerate}
+\end{prop}
+
+\begin{prop}
+    Let $k$ be algebraically closed, the minimal polynomial coincide with the characteristic iff the Jordan form has a single Jordan block for each distinct eigenvalue.
+\end{prop}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\chapter{Linear Algebra II}
+This corresponds to Aluffi Chapter VIII. (
+Section 2.1, 2.2
+Section 3
+Section 4)
+
+\section{Tensor}
+
+\begin{defn}[bilinear]
+    Let $M,N,P$ be $R$-modules. A function $\varphi: M\times N\to P$ is $R$-bilinear if 
+    \begin{enumerate}
+        \item For all $m\in M$, $n\mapsto(m,n)$ is an $R$-module homomorphism $N\to P$.
+        \item For all $n\in N$, $m\mapsto(m,n)$ is an $R$-module homomorphism $M\to P$.
+    \end{enumerate}
+    In other words, 
+    \begin{equation*}
+        \varphi(m,r_1n_1+r_2n_2)=r_1\varphi(m,n_1)+r_2\varphi(m,r_2)
+    \end{equation*}
+    similarly for $M\to P$.
+\end{defn}
+
+
+
+
+
+\begin{prop}[Tensor product]
+The tensor product can be constructed as follows:
+\begin{enumerate}
+    \item Take the \textbf{free $R$-module} generated by symbols $\{m \otimes n \mid m \in M, n \in N\}$.
+
+    \item \textbf{Quotient} by the submodule generated by the relations (to enforce bilinearity):
+    \begin{itemize}
+        \item $(m_1 + m_2) \otimes n = m_1 \otimes n + m_2 \otimes n$,
+        \item $m \otimes (n_1 + n_2) = m \otimes n_1 + m \otimes n_2$,
+        \item $(r \cdot m) \otimes n = m \otimes (r \cdot n) = r \cdot (m \otimes n)$ for $r \in R$.
+    \end{itemize}
+\end{enumerate}
+Thus, elements of $M \otimes_R N$ are finite sums of the form $\sum_i m_i \otimes n_i$, subject to the above rules.
+
+\textbf{Key Properties of Tensor Products}
+\begin{enumerate}
+    \item \textbf{Bilinearity}: The map $\otimes : M \times N \rightarrow M \otimes_R N$ is $R$-bilinear.
+
+    \item \textbf{Functoriality}: If $f : M \rightarrow M'$ and $g : N \rightarrow N'$ are $R$-linear, there is an induced map:
+    \[
+    f \otimes g : M \otimes_R N \rightarrow M' \otimes_R N', \quad (f \otimes g)(m \otimes n) = f(m) \otimes g(n).
+    \]
+
+    \item \textbf{Associativity}: $(M \otimes_R N) \otimes_R P \cong M \otimes_R (N \otimes_R P)$.
+
+    \item \textbf{Commutativity}: $M \otimes_R N \cong N \otimes_R M$ (if $R$ is commutative).
+
+    \item \textbf{Base Change}: If $S$ is an $R$-algebra, then $M \otimes_R S$ is an $S$-module.
+\end{enumerate}
+\end{prop}
+
+
+\begin{prop}[universal property]
+    Every $R$-bilinear map $\varphi: M \times N \to P$ factors uniquely through the tensor product $M \otimes_R N$,
+\begin{center}
+    \[\begin{tikzcd}
+        {M\times N} & P \\
+        {M\otimes_RN}
+        \arrow["\varphi", from=1-1, to=1-2]
+        \arrow["\otimes"', from=1-1, to=2-1]
+        \arrow["{\exists!\bar{\varphi}}"', from=2-1, to=1-2]
+    \end{tikzcd}\]
+\end{center}
+in such a way that the map $\overline{\varphi}$ is unique.
+\end{prop}
+\begin{example}
+    For all $R$-modules, 
+    \begin{enumerate}
+        \item $R\otimes_RN\cong N$.
+        \item $M\otimes_RN\cong N\otimes_RM$.
+    \end{enumerate}
+\end{example}
+
+\begin{prop}
+    Let $\alpha,\beta:M\otimes N\to P$, if 
+    \begin{equation*}
+        \alpha(m\otimes n)=\beta(m\otimes n)
+    \end{equation*}
+    for all $m\in M, n\in N$, then $\alpha=\beta$. (This means it suffices to check on pure tensors).
+\end{prop}
+
+
+
+\section{Hom and Tensor}
+
+
+\begin{prop}
+    Let $\alpha:M_1\to M_2$ be an $R$-module homomorphism, let $N$ be an $R$-module, there is an induced $R$-linear map 
+    \begin{equation*}
+        \alpha\otimes N: M_1\otimes_R N\to M_2\otimes_R N
+    \end{equation*}
+    On pure tensors, this map is given by 
+    \begin{equation*}
+        m\otimes n\mapsto \alpha(m)\otimes n
+    \end{equation*}
+
+\end{prop}
+
+\begin{thm}
+    For all $R$-modules $M,N,P$, there is an isomorphism of $R$-modules
+    \begin{equation*}
+        \text{Hom}_R(M,\text{Hom}(N,P))\cong\text{Hom}_R(M\otimes_RN,P)
+    \end{equation*}
+\end{thm}
+\begin{proof}
+    This says any bilinear map from $M\times N$ comes from $M\otimes_RN$.
+\end{proof}
+
+
+\begin{prop}
+    For all $R$-modules, $M_1,M_2, N$, we have 
+    \begin{equation*}
+        (M_1\oplus M_2)\otimes_RN\cong (M_1\otimes_RN)\oplus(M_2\otimes_RN)
+    \end{equation*}
+    The same statement is true for $\sum_\alpha M_\alpha\otimes N$. This also implies that 
+    \begin{equation*}
+        R^{\oplus n}\otimes_R R^{\oplus m}\cong R^{\oplus nm}
+    \end{equation*}
+\end{prop}
+
+
+\begin{prop}
+    Let $M,N$ be free $R$-modules of rank $m,n$, then $M\otimes_R N$ has rank $mn$.
+   ( Let $e_1,\dots, e_m$ generate $M$, $v_1,\dots, v_n$ generate $N$, where $M,N$ are free $R$-modules, then $M\otimes_RN$ is generated by $e_i\otimes v_j$, and these $mn$ elements are the basis for $M\otimes_RN$.)
+\end{prop}
+
+
+
+\begin{warn}
+    The next examples are important.
+\end{warn}
+\begin{prop}
+    Let $N$ be an $R$-module, and $I$ be an ideal of $R$, then 
+    \begin{equation*}
+        \frac{R}{I}\otimes_RN\cong\frac{N}{IN}
+    \end{equation*}
+    ($R\otimes_RN\cong N$). Moreover, let $J\subset R$ also be an ideal, then 
+    \begin{equation*}
+        \frac{R}{I}\otimes_R\frac{R}{J}\cong\frac{R}{I+J}
+    \end{equation*}
+\end{prop}
+
+\begin{prop}
+    Let $S$ be a ring with an $R$ action, and $R$ is a ring, then 
+    \begin{equation*}
+        R[x]\otimes_RS\cong S[x]
+    \end{equation*}
+\end{prop}
+
+
+\begin{prop}
+    Let $R, S$ be the above, 
+    \begin{equation*}
+        \frac{R[x]}{(f(x))}\otimes_RS\cong\frac{S[x]}{(f(x))}
+    \end{equation*}
+    For example, 
+    \begin{equation*}
+        \C\otimes_R\C\cong \frac{\R[x]}{(x^2+1)}\otimes_R\C\cong\frac{\C[x]}{(x^2+1)}
+    \end{equation*}
+\end{prop}
+
+
+
+\begin{example}
+    We have 
+    \begin{equation*}
+        \frac{\Z}{m\Z}\otimes_\Z\frac{\Z}{n\Z}\cong\frac{\Z}{\gcd(m,n)}
+    \end{equation*}
+    (Recall that $(m)+(n)=\gcd(m,n)$ in $\Z$, and $(m)\cap(n)=(\text{lcm}(m,n)))$. For example, 
+    \begin{equation*}
+        \frac{\Z}{2\Z}\otimes_\Z\frac{\Z}{3\Z}=0
+    \end{equation*}
+    So if $\gcd(m,n)=0$, then 
+    \begin{equation*}
+        \frac{\Z}{m\Z}\otimes_\Z\frac{\Z}{n\Z}=0
+    \end{equation*}
+\end{example}
+
+
+\begin{defn}[reduced ring]
+    Let $R$ be a ring, it is \textbf{reduced} if there are no nonzero nilpotent elements.
+\end{defn}
+
+
+\section{Multilinear Algebra: Wedge and Symmetric Product}
+Every $\varphi:M_1\times\dots\times M_k\to P$ factors unique through $M_1\otimes\dots\otimes M_k$, and we will denote 
+\begin{equation*}
+    M^{\otimes k}:=M\otimes_R\dots\otimes_R M \text{ $k$ times}
+\end{equation*}
+
+
+\begin{defn}[symmetric and alternating map]
+    Let $\varphi: M^k\to P$, then it is called \textbf{symmetric} if for all $\sigma\in S_k$, and all $m_1,\dots, m_k$, we have 
+    \begin{equation*}
+        \varphi(m_{\sigma(1)},\dots, m_{\sigma(k)})=\varphi(m_1,\dots, m_k)
+    \end{equation*}
+    And $\varphi: M^k\to P$ is called \textbf{alternating} if 
+    \begin{equation*}
+        \varphi(m_1,\dots, m_k)=0 \text{ whenever } m_i=m_j \text{ for some $i\neq j$}
+    \end{equation*}
+\end{defn}
+
+\begin{prop}
+    Let $\varphi:M^k\to P$ be $R$-multilinear, then 
+    \begin{enumerate}
+        \item If $\varphi$ is alternating, then for all $\sigma\in S_k$, 
+        \begin{equation*}
+            \varphi(m_{\sigma(1)},\dots, m_{\sigma(k)})=(-1)^\sigma\varphi(m_1,\dots,m_k)
+        \end{equation*}
+        \item If $2$ is a unit in $R$, and for all $\sigma\in S_k$, $ \varphi(m_{\sigma(1)},\dots, m_{\sigma(k)})=(-1)^\sigma\varphi(m_1,\dots,m_k)$, then $\varphi$ is alternating.
+    \end{enumerate}
+\end{prop}
+It suffices to reduce to the case where $k=2$.
+
+
+\begin{defn}[Wedge product]
+    The module $\bigwedge^k(M)$ is generated by pure alternating tensors:
+    \begin{equation*}
+        e_{i_1}\wedge\dots\wedge e_{i_k}
+    \end{equation*}
+    where $1\leq i_1<\dots<i_l\leq r$. For example, suppose $M=V$ is a $3$-dimensional vector space, then $V\wedge V$ has a basis 
+    \begin{equation*}
+        v_1\wedge v_2, v_1\wedge v_3, v_2\wedge v_3
+    \end{equation*}
+    The dimension of $V\wedge V$ is $\frac{n(n-1)}{2}$ if $\dim(V)=n$.
+\end{defn}
+
+Next we generalize it.
+\begin{prop}
+    Let $R$ be commutative, and $M$ a free $R$-module of rank $n$, then 
+    \begin{equation*}
+        \bigwedge^k(M) \text{ is a free $R$-module of rank }\binom{n}{k}
+    \end{equation*}
+\end{prop}
+
+\begin{example}
+    If $M$ is a free module of rank $n$, then 
+    \begin{equation*}
+        \bigwedge^n(M)\cong R
+    \end{equation*}
+    where the isomorphism $\varphi: (e_{i1},\dots, e_{in})\mapsto\begin{cases}
+        \pm 1 \text{ if $i_1,\dots, i_n$ are distinct}\\
+        0
+    \end{cases}$
+\end{example}
+
+
+
+\begin{prop}
+    Let $\text{Sym}^n(V)$ be the \textbf{symmetric product}. A basis for $\Sym^n(V)$ is given by the \textbf{monomials}:
+\[
+\left\{ e_1^{k_1} e_2^{k_2} \cdots e_d^{k_d} \ \Bigg| \ k_1+\dots+k_d = n, \ k_i \geq 0 \right\},
+\]
+where $e_i^{k_i}$ denotes the symmetric product $e_i\dots e_i$ ($k_i$ times). 
+
+% The 
+% \textbf{Dimension} is the number of such monomials, $\binom{n + d - 1}{d - 1}$.
+\end{prop}
+
+\begin{prop}
+    Let $V$ have dimension $n$ with basis $\{e_1,\dots, e_n\}$, then $\text{Sym}^k(V)$ is spanned by basis:
+    \begin{equation*}
+        \left\{ e_{i_1}\dots e_{i_k}, 1\leq i_1\leq\dots\leq i_{k}\leq n\right\}
+    \end{equation*}
+    (It contains the equality case compared to the wedge product). Moreover, the dimension of $\text{Sym}^kV$ is 
+    \begin{equation*}
+        \binom{n+k-1}{k}
+    \end{equation*}
+\end{prop}
+\begin{example}
+    $\Sym^2(V)$ for $\dim V = 2$
+Let $V$ have basis $\{e_1, e_2, e_3\}$. Then:
+\[
+\Sym^2(V) = \operatorname{span}\{e_1e_1, \ e_1e_2, \ e_2e_2\},
+\]
+where:
+\begin{align*}
+    e_1 \odot e_1 &= e_1 \tensor e_1, \\
+    e_1 \odot e_2 &= \frac{1}{2}(e_1 \tensor e_2 + e_2 \tensor e_1), \\
+    e_2 \odot e_2 &= e_2 \tensor e_2.
+\end{align*}
+\textbf{Dimension}: $\binom{2 + 2 - 1}{2} = 3$.
+\end{example}
+
+\begin{defn}[determinant]
+    Let $F$ be a free $R$-module of rank $n$, then 
+    \begin{equation*}
+        \bigwedge^nF
+    \end{equation*}
+    is called the determinant of $F$, $\det(F)$. (In other words, it is the top exterior power). Recall that 
+    \begin{equation*}
+        \bigwedge^nF\cong R
+    \end{equation*}
+    since it is one-dimensional and spanned by $\{e_1\wedge\dots\wedge e_n\}$.
+\end{defn}
+
+\begin{warn}
+    Again, two matrices are similar if and only if they have the same jordan normal form!
+\end{warn}
+
+
+\begin{warn}
+    Let $M$ be an $n\times n$ matrix over $k$, then factor its characteristic polynomial $p(t)$ over its algebraic closure 
+    \begin{equation*}
+        p(t)=(t-\lambda_1)\dots(t-\lambda_d)
+    \end{equation*}
+    where $\lambda_i$ are its eigenvalues in $\bar{k}$. Then 
+    \begin{equation*}
+        \tr(M)=\sum_{i}\lambda_i, \quad \det(M)=\prod_i\lambda_i
+    \end{equation*}
+
+\end{warn}
+
+
+\begin{prop}
+    Let $M\in\text{GL}_n(k)$, then $M$ is triangularizable iff the characteristic polynomial factors completely into linear factors. It is diagonalizable iff the characteristic polynomial completely factors into linear factors, and the minimal polynomial has no repeated roots.
+\end{prop}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\chapter{Field Theory}
+
+Aluffi Chapter VII. 
+
+
+\begin{defn}[radical]
+    The \textbf{radical} of an ideal $I\subset R$ is 
+    \begin{equation*}
+        \rad(I)=\sqrt{I}=\left\{a\in R: a^n\in I \text{ for some $n$}\right\}
+    \end{equation*}
+
+    An ideal is called radical if for any $a\in R$, $a^n\in I$ for some $n$, then $a\in I$.
+\end{defn}
+
+
+\begin{prop}
+    The radical $\sqrt{I}$ of an ideal $I$ in $R$ is an ideal. Moreover, $\sqrt{I}$ is radical.
+\end{prop}
+
+\begin{example}
+    The nilradical of $R$ is $\sqrt{(0)}$, i.e., the radical of the zero ideal.
+\end{example}
+
+
+
+
+
+
+
+
+\begin{prop}
+    Any ring homomorphism from a field to a nonzero ring is injective.
+\end{prop}
+
+
+\begin{prop}
+    The characteristic of a field is either $0$ or a prime number. (This is also true for integral domains). Moreover, let $k\subset E$ be an extension, then $\text{char}(k)=\text{char}(E)$. Moreover, for such extension, $E$ is a vector space over $k$. 
+\end{prop}
+
+
+
+
+
+
+
+\begin{defn}[finite field extension]
+    A field extension $k\subset F$ is finite of degree $n$, if $F$ has is a dimension $n$ vector space over $k$. We denote 
+    \begin{equation*}
+        [F:k]=\dim_k(F)
+    \end{equation*}
+\end{defn}
+
+\begin{example}
+    Let $k$ be a field, and $f$ is an irreducible polynomial over $k$, then 
+    \begin{equation*}
+        K=\frac{k[t]}{(f(t))}
+    \end{equation*}
+    is an extension in which $f$ has a root. (To see this is a field, we see $f(t)$ is irreducible, which is prime, which is maximal in $k[t]$).
+\end{example}
+
+
+\begin{defn}[simple extension]
+    A field extension $k\subset F$ is simple if there exists $\alpha\in F$ such that $F=k(\alpha)$, where $k(\alpha)$ is the smallest field containing $\alpha$ and $k$. If $k(\alpha)/k$ is a finite extension, then $\alpha$ is algebraic, if infinite, then $\alpha$ is called transcendental.
+\end{defn}
+
+\begin{example}
+    The extension $k\subset\frac{k[t]}{(f(t))}$ is simple because 
+    \begin{equation*}
+        \frac{k[t]}{(f(t))}\cong k(\alpha)
+    \end{equation*}
+    for some $\alpha$ such that $f(\alpha)=0$.
+\end{example}
+
+% \begin{defn}[simple extension]
+%     A field extension $k\subset F$ is simple if there exists an element $\alpha\in F$ such that $F=k(\alpha)$.
+
+%     For example, 
+% \end{defn}
+
+
+\begin{prop}
+    Let $k\subset k(\alpha)$ be a simple extension, then consider the evaluation map 
+    \begin{equation*}
+        \varepsilon: f(t)\mapsto f(\alpha)
+    \end{equation*}
+    Then $\varepsilon$ is not injective iff $k(\alpha)$ is a finite extension, i.e., $\alpha$ is algebraic, thus there exists a monic irreducible polynomial $p$ such that 
+    \begin{equation*}
+        k(\alpha)=\frac{k[t]}{(p(t))}
+    \end{equation*}
+    And $\varepsilon$ is injective iff $\alpha$ is transcendental.
+\end{prop}
+
+
+\begin{prop}[lifting]
+    Let $k_1\subset k_1(\alpha_1), k_2\subset k(\alpha_2)$ be two simple finite extensions, then let $p_1,p_2$ be the minimal polynomials of $\alpha_1,\alpha_2$, let $i: k_1\to k_2$ be an isomorphism such that 
+    \begin{equation*}
+        i(p_1(t))=i(p_2(t))
+    \end{equation*}
+    Then there exists a unique isomorphism $j: k_1(\alpha_1)\to k_2(\alpha_2)$ such that $j=i$ on $k_1$ and 
+    \begin{equation*}
+        j(\alpha_1)=\alpha_2
+    \end{equation*}
+    This says that we can extend isomorphisms between fields into their simple extensions provided that this isomorphism agrees with the structure of the extensions.
+\end{prop}
+
+
+\begin{defn}[Aut group]
+    Let $k\subset F$ be an extension, then the group of automorphisms of this extension, denoted $\text{Aut}_k(F)$ is the group of automorphisms $\varphi:F\to F$ that fixes $k$, $\varphi(x)=x$ for all $x\in k, \varphi\in\text{Aut}_k(F)$.
+\end{defn}
+
+\begin{prop}
+    Let $k\subset k(\alpha)$, and $p(x)$ be the minimal polynomial over $k$, then 
+    \begin{equation*}
+        |\text{Aut}_k(k(\alpha))|=\text{ number of distinct roots of $p$ in $k(\alpha)$}
+    \end{equation*}
+    and 
+    \begin{equation*}
+        |\text{Aut}_k(k(\alpha))|\leq [k(\alpha):k]=\deg(p)
+    \end{equation*}
+    with equality if and only if $p(x)$ factors over $k(\alpha)$ as a product of distinct linear factors.
+\end{prop}
+
+\begin{prop}
+    Let $k\subset k(\alpha)=F$, then $\aut_kF$ acts faithfully and transitively on the set of roots of $p(t)$ in $F$. 
+\end{prop}
+
+\begin{defn}[algebraic extension]
+    Let $k\subset F$, and $\alpha\in F$, then $\alpha$ is algebraic over $k$ iff $k(\alpha)$ is a finite extension; this is equivalent to saying there exists a nonzero $f(x)\in k[x]$ such that $f(\alpha)=0$. If $k(\alpha)/k$ is not finite, then $\alpha$ is transcendental.
+
+    If $\alpha$ is algebraic over $k$, then every element in $k(\alpha)$ can be written as a polynomial in $\alpha$.
+\end{defn}
+
+
+\begin{prop}
+    Finite extensions are algebraic.
+    % Let $k\subset F$ be finite, then it is also an algebraic extension, where for any $\alpha\in F$, 
+    % \begin{equation*}
+    %     [k(\alpha):k]\leq [F: k]
+    % \end{equation*}
+\end{prop}
+\begin{proof}
+    Let $k\subset F$ be finite, then consideer $\alpha\in F$, we have $k\subset k(\alpha)\subset F$, hence $k(\alpha)$ is also finite.
+\end{proof}
+
+
+
+\begin{prop}
+    Let $k\subset E\subset F$, then $k\subset F$ is finite iff both $E/k$ and $F/E$ are finite, in this case 
+    \begin{equation*}
+        [F:k]=[F:E][E:k]
+    \end{equation*}
+    This implies: let $k\subset F$ be finite, and $E$ be an intermediate field, then both $[E:k],[F:E]$ divide $[F:k]$.
+\end{prop}
+
+
+\begin{example}
+    Let $k\subset F$, let $\alpha\in F$ be an algebraic element of odd degree over $k$. Then $\alpha$ can be written as a polynomial in $\alpha^2$. It suffices to show that $k(\alpha^2)=k(\alpha)$. We consider 
+    \begin{equation*}
+        k\subset k(\alpha^2)\subset k(\alpha)
+    \end{equation*}
+    We see that $k(\alpha)/k(\alpha^2)$ has degree at most $2$ because $t^2-\alpha^2$, and the degree must divide $[k(\alpha):k]$, thus it must be $1$.
+\end{example}
+
+
+\begin{defn}[finitely generated field extensions]
+    A field extension $k\subset F$  is finitely generated if there exists $\{\alpha_i\}\subset F$ such that 
+    \begin{equation*}
+        F=k(\alpha_1)\dots(\alpha_n)
+    \end{equation*}
+\end{defn}
+
+
+\begin{prop}
+    Let $k\subset k(\alpha_1,\dots,\alpha_n)$ be finitely generated, then
+    $F/k$ is algebraic iff $F/k$ is finite iff all $\alpha_i$ are algebraic over $k$. (Thus given a finitely generated extension, to show that it is finite, it suffices to show each $\alpha_i$ is algebraic).
+\end{prop}
+
+\begin{prop}
+    If $\alpha,\beta$ are algebraic over $k$, then 
+    \begin{equation*}
+        \alpha+\beta, \alpha\beta, \alpha\beta^{-1}
+    \end{equation*}
+    are all algebraic over $k$. (For example, $k(\alpha+\beta)\subset k(\alpha,\beta)$). This implies that given $k\subset F$, 
+    \begin{equation*}
+        E=\{\alpha\in F: \alpha \text{ algebraic over }k \}
+    \end{equation*}
+    is a field.
+\end{prop}
+
+
+
+% \begin{cor}
+%     Let $k\subset F$ be a field extension, then 
+%     \begin{equation*}
+%         E=\{\alpha\in F: \alpha\text{ is algebraic over $k$}\}
+%     \end{equation*}
+%     is a field extension over $k$.
+% \end{cor}
+
+\begin{prop}
+    (Composite algebraic extensions are algebraic). Let $k\subset E\subset F$, then $k\subset F$ is algebraic iff both $k\subset E$ and $E\subset F$ are algebraic.
+\end{prop}
+
+
+\begin{example}
+    $\Q(\sqrt{2}+\sqrt{3})=\Q(\sqrt{2},\sqrt{3})$.
+\end{example}
+
+\section{Algebraic Closure}
+
+\begin{prop}
+    Recall that $k$ is algebraically closed iff all irreducible polynomials in $k[x]$ have degree $1$, iff every polynomial factors into linear factors, iff every maximal ideal is of the form $(x-c)$ for some $c\in k$.
+\end{prop}
+
+
+\begin{prop}
+    Field $k$ is algebraically closed iff $k$ has no nontrivial algebraic extensions, iff if $k\subset F$, and $\alpha\in F$ is algebraic over $k$, then $\alpha\in k$.
+\end{prop}
+
+
+\begin{defn}[algebraic closure]
+    The $\bar{k}$ of $k$ is such that $\bar{k}$ is an algebraic extension and $\bar{k}$ is algebraically closed. (The requirement that $\bar{k}/k$ is algebraic is to ensure there is no intermediate field that is also algebraically closed). Equivalently, $\bar{k}$ is the smallest field that is algebraically closed containing $k$.
+\end{defn}
+
+\section{splitting, normal, separable}
+
+
+
+
+\begin{defn}[splitting field]
+    Let $f(x)\in k[x]$ be a polynomial of degree $d$, the splitting field of $f$ over $k$ is an extension $F/k$ such that $f$ factors into linear factors over $F$. In other words, 
+    \begin{equation*}
+        F=k(\alpha_1,\dots, \alpha_d)
+    \end{equation*}
+    where $\alpha_i$ are roots of $f$.
+\end{defn}
+
+
+
+\begin{prop}
+    Small fact: let $n=$even, then the $n$th root of unity such that $\om_n^n=1$ also satisfies 
+    \begin{equation*}
+        \om_n^\frac{n}{2}+1=0
+    \end{equation*}
+    For example, the $8$th root of unity $\om_8=e^{\frac{2\pi i}{8}}$ is also a root of 
+    \begin{equation*}
+        f(x)=x^4+1
+    \end{equation*}
+    which is irreducible over $\Q$.
+\end{prop}
+
+\begin{prop}
+    Splitting field of $f$ is unique up to isomorphisms, and 
+    \begin{equation*}
+        [F:k]\leq(\deg(f))!
+    \end{equation*}
+    Recall that if $k\subset k(\alpha)$ is simple extension, the $|\aut_kk(\alpha)|=$ the number of distinct roots of $m_\alpha$, and $|\aut_kk(\alpha)|\leq\deg(m_\alpha)$.
+\end{prop}
+
+\begin{prop}
+    The polynomial $x^n-1$ is not irreducible over $\Q$ for any $n\geq 2$. The polynomial $x^n+1$ is only irreducible if $n=2^k$ for some integer $k$.
+\end{prop}
+
+
+\begin{prop}
+    Let $f(x)\in k[x]$, the splitting field $F$ of $f$ is such that 
+    \begin{equation*}
+        [F:k]\leq (\deg f)!
+    \end{equation*}
+\end{prop}
+\begin{example}
+    The splitting field of $f(x)=x^3-2$ is $\Q(\sqrt[3]{2}, \om_3)$, which is a degree $6=(\deg f)!=3!$ extension. 
+\end{example}
+
+\begin{example}
+    The splitting field of $x^8-1$ is $\Q(\om_8)$, and the minimal polynomial for $\om_8=e^\frac{2\pi i}{8}$ is 
+    \begin{equation*}
+        f(x)=x^4+1
+    \end{equation*}
+    Thus $[Q(\om_8):\Q]=4$. (The splitting field for $x^8-1$ is the same as $x^4+1$). Moreover, the Galois group is 
+    \begin{equation*}
+        \Q(\om_8)=\Q(i,\sqrt{2})
+    \end{equation*}
+    is 
+    \begin{equation*}
+        \gal(\Q(\om_8)/\Q)=\frac{\Z}{2\Z}\times\frac{\Z}{2\Z}
+    \end{equation*}
+\end{example}
+
+\begin{example}
+    The splitting field for $x^4+2$ is 
+    \begin{equation*}
+        \Q(\sqrt[4]{2},i)
+    \end{equation*}
+    and the Galois group is 
+    \begin{equation*}
+        \gal(\Q(\sqrt[4]{2},i)/\Q)\cong D_4
+    \end{equation*}
+    because it is an order $8$ subgroup of $S_4$.
+\end{example}
+
+\begin{warn}
+    Galois group doesn't act transitively on the roots of a random polynomial! They act transitively on the roots of the irreducible factors.
+\end{warn}
+
+\begin{defn}[normal]
+    A field extension $k\subset F$ is normal if every \textbf{irreducible} polynomial $f$ has a root in $F$ iff $f$ splits into product of linear factors over $F$. (If it contains one root, then it contains all the other roots).
+\end{defn}
+
+
+\begin{prop}
+    A field extension $k\subset F$ is \textbf{finite and normal} iff $F$ is the \textbf{splitting field} of some polynomial $f\in k[x]$.
+\end{prop}
+
+\begin{example}
+    If a complex root of an irreducible polynomial can be expressed as a polynomial in $i, \sqrt[4]{2}$, then all the roots can be expressed as a polynomial in them. 
+
+    Proof: $\Q(i, \sqrt[4]{2})$ is the splitting field of $x^4+2$, thus is normal.
+\end{example}
+
+
+
+\begin{defn}[separable]
+    Let $k$ be a field, $f\in k[x]$ is separable if it has no multiple factors over its splitting field.
+\end{defn}
+
+\begin{warn}
+    This following is a classic example. All the bad examples arise from this one (inseparable).
+\end{warn}
+
+\begin{example}[irreducible but not separable]
+    Let $\F_p(t)$ be the field of rational functions in $t$ over $\F_p$. Then the polynomial 
+    \begin{equation*}
+        f(x)=x^p-t\in \F_p(t)[x]
+    \end{equation*}
+    is irreducible, but not separable (cannot be factored into distinct linear factors in its algebraic closure). Let $u=t^{1/p}$ be a root of $f$ in its algebraic closure, then we see 
+    \begin{equation*}
+        f(x)=x^p-t=(x-u)^p
+    \end{equation*}
+\end{example}
+
+
+\begin{prop}
+    Let $f\in k[x]$, then $f$ is separable iff $f, f'$ are relatively prime. If it is inseparable, then $f'=0$.
+\end{prop}
+
+\begin{prop}
+    Irreducible polynomials are separable in characteristic 0. 
+    
+    % In other words, irreducible polynomials are only possibly inseparable over fields of characteristic $p$.
+\end{prop}
+
+\begin{prop}
+    Let $k$ be a field of characteristic $p$, then the Frobenius homomorphism 
+    \begin{equation*}
+        x\mapsto x^p
+    \end{equation*}
+    is a surjective map over finite fields. (It is the identity over $\F_p$).
+\end{prop}
+
+
+
+
+% \begin{defn}
+%     A field is perfect if $\text{char}(k)=0$ or the Frobenius map is surjective.
+% \end{defn}
+
+\begin{prop}
+    Every irreducible polynomial in $k[x]$ is separable $\iff$ char$(k)=0$ \textbf{or} the Frobenius homomorphism is surjective. This implies that every irreducible polynomial is separable in finite fields \textbf{ or } $\Q$.
+\end{prop}
+
+Remark: the reason the example $x^p-t\in\F_p(t)[x]$ works is because $\F_p(t)$ is not a finite field.
+
+\begin{defn}[separable element]
+    Let $k\subset F, \alpha\in F$, then $\alpha$ is called separable iff the minimal polynomial of $\alpha$ is separable over $k$. An extension is called separable if every $\alpha\in F$ is separable. For example, all extensions of $\Q$ or finite fields are separable.
+\end{defn}
+
+\begin{defn}[separable degree]
+    Let $k\subset F\subset\bar{k}$, the separable degree of $F/k$ is the number of different homomorphisms/embeddings $\varphi: F\to\bar{k}$ (such that $\varphi\vert_k=\text{id}_k)$,  denoted $[F:k]_s$.
+\end{defn}
+
+\begin{prop}
+    Let $k\subset k(\alpha)$ be a simple algebraic extension, then $[k(\alpha):k]_s=$ number of distinct roots in $\bar{k}$ of the minimal polynomial $p_\alpha$ of $\alpha$. Moreover, 
+    \begin{equation*}
+        [k(\alpha):k]_s\leq \deg(p_\alpha)
+    \end{equation*}
+    the equality holds iff $\alpha$ i.e., $p_\alpha$ is separable over $k$.
+\end{prop}
+
+\begin{example}
+    For separability degree: 
+    \begin{enumerate}
+        \item Every separability degree is equal to the degree of extension over $\Q$ and finite fields.
+        \item $x^p-t\in\F_p(t)[x]$ has separability degree $1$ but degree of extension $p$.
+    \end{enumerate}
+\end{example}
+
+
+\begin{prop}
+    Let $k\subset F$ be a finite extension, then $F$ is finitely generated: you can just take a basis of $F/k$.
+\end{prop}
+
+% \begin{cor}
+%     Finite fields are perfect, i.e., irred polynomials are separable.
+% \end{cor}
+
+
+\section{Finite fields}
+
+
+% \begin{defn}
+%     Let $F$ be a finite field of characteristic $p$, then $F$ is an extension of $\F_{p}$, i.e., 
+%     \begin{equation*}
+%         F=\F_{p^d}
+%     \end{equation*}
+%     for some $d\in\Z^+$.
+% \end{defn}
+
+\begin{prop}
+    For every prime power $q$, there is a unique field $\F_q$ of size $q$, up to isomorphisms. (This is the splitting field of $x^q-x$ over $\F_p$.)
+\end{prop}
+
+\begin{proof}
+    Existence: we claim that 
+    \begin{equation*}
+        F=\{x\in\bar{\F}_p: x^q=x\}
+    \end{equation*}
+    is a field of $q$ elements. Note that $f(x)=x^q-x\in\F_p[x]$ is separable over $\F_p$, hence it splits into distinct linear factors over $\bar{\F}_p$, i.e., it has $p$ distinct roots.
+
+    (One can show this is a subring, hence an integral domain, hence is a field because it is finite.) 
+    % ($F$ has at most $q$ elements, but $f(x)=x^q-x$ is separable because $f,f'$ are relatively prime. 
+
+    Uniqueness: for every $\F_p\subset F$, this is a finite, hence algebraic extension, thus it can be embedded into $\bar{\F}_p$. And we claim that there's exactly one subfield of $\bar{\F}_p$ with $q$ elements:
+    \begin{equation*}
+        F\subset 0\cup\{x\in\bar{\F}_p: x^q=x\}
+    \end{equation*}
+    This implies $F=RHS$.
+    
+    
+    
+    % for any $F_p\subset F$, we know 
+    % \begin{equation*}
+    %     F=0\cup\{x\in \bar{F}_p: x^{q}=x\}
+    % \end{equation*}
+    % Hence every $F$ can be embedded into $\bar{\F}_p$. 
+
+\end{proof}
+
+\begin{prop}
+    Fix a prime $p$, then 
+    \begin{equation*}
+        F=\F_{p^d}\hookrightarrow \F_{p^e}
+    \end{equation*}
+    iff $d \mid e$. Moreover, $\F_{p^e}$ contains a unique copy of $\F_{p^d}$. (Nothing like $\Q(\sqrt[3]{2}), \Q(\sqrt[3]{2}\om_3)$ will happen). 
+\end{prop}
+
+\begin{example}
+    An extension embedding tree looks like 
+    \[\begin{tikzcd}
+        && {\mathbb{F}_{p^{36}}} \\
+        & {\mathbb{F}_{p^{12}}} && {\mathbb{F}_{p^{18}}} \\
+        {\mathbb{F}_{p^4}} && {\mathbb{F}_{p^6}} && {\mathbb{F}_{p^9}} \\
+        & {\mathbb{F}_{p^2}} && {\mathbb{F}_{p^3}} \\
+        && {\mathbb{F}_p}
+        \arrow[from=2-2, to=1-3]
+        \arrow[from=2-4, to=1-3]
+        \arrow[from=3-1, to=2-2]
+        \arrow[from=3-3, to=2-2]
+        \arrow[from=3-3, to=2-4]
+        \arrow[from=3-5, to=2-4]
+        \arrow[from=4-2, to=3-1]
+        \arrow[from=4-2, to=3-3]
+        \arrow[from=4-4, to=3-3]
+        \arrow[from=4-4, to=3-5]
+        \arrow[from=5-3, to=4-2]
+        \arrow[from=5-3, to=4-4]
+    \end{tikzcd}\]
+\end{example}
+
+\begin{prop}
+    There exist a surjective map $\varphi: \Z/d\Z\to\Z/e\Z$ iff $e \mid d$.
+\end{prop}
+
+\begin{prop}
+    The Galois group $\gal(\F_{p^d}/\F_p)$ is cyclic of order $d$, and it is generated by the Frobenius transformation 
+    \begin{equation*}
+        \sigma: x\mapsto x^p
+    \end{equation*}
+    More generally, let $q$ be a prime power, then 
+    \begin{equation*}
+        \gal(\F_{q^d}/\F_q)=\la \sigma: x\mapsto x^q\ra
+    \end{equation*}
+    is cyclic of order $d$. In other words, 
+    \begin{equation*}
+        |\aut_{\F_p}(\F_{p^d})|=d
+    \end{equation*}
+\end{prop}
+In particular, $\F_q$ is fixed by $\sigma$: for all $x\in\F_q$, we must have 
+\begin{equation*}
+    x^q=x
+\end{equation*}
+(also by Fermat). This completely describes $\F_q$:
+\begin{equation*}
+    \F_q=\{x\in\bar{\F}_q: x^q=x\}
+\end{equation*}
+
+
+
+\begin{prop}
+    Let $n$ be a positive integer, then over $\F_q$, we have 
+    \begin{equation*}
+        x^{q^n}-x=\prod_{f: \deg(f)\mid n}f(x)
+    \end{equation*}
+    where $f$ is irreducible and monic. (All you need to do is to find all the irreducible polynomials of degree dividing $n$).
+
+    These polynomials factor completely over $\F_{q^n}$.
+\end{prop}
+
+
+\begin{example}
+    We will do a few examples: 
+    \begin{enumerate}
+        \item Over $\F_2$, 
+        \begin{equation*}
+            x^2-x=x(x+1)
+        \end{equation*}
+        consisting of all irreducible polynomials of degree $1$ over $\F_2$.
+        \item Over $\F_2$, we have 
+        \begin{equation*}
+            x^4-x=x(x+1)(x^2+x+1)
+        \end{equation*}
+        consisting of all irreducible polynomials of degree $1,2$. ($n=2$).
+        \item Over $\F_2$, when $n=3$, we factor 
+        \begin{equation*}
+            x^8-x=x(x+1)(x^3+x^2+1)(x^3+x+1)
+        \end{equation*}
+        consisting of irreducible polynomials of degree $1,3$.
+        \item over $\F_2$, when $n=6$, we factor 
+        \begin{equation*}
+            x^{64}-x
+        \end{equation*}
+        into two polynomials of degree $1$, one degree $2$, two degree $3$, and $9$ degree $6$ polynomials.
+    \end{enumerate}
+\end{example}
+
+\section{Cyclotomic}
+
+% \begin{thm}
+%     The polynomial
+%     \begin{equation*}
+%         x^{p^d}-x
+%     \end{equation*}
+%     is separable over $\F_p$, and the splitting field of $x^{q^d}-x$ over $\F_p$ is a field with $q^d$ elements. 
+
+%     Conversely, let $F$ be a field with $p^d$ elements, then $F$ is the splitting field of 
+%     \begin{equation*}
+%         x^{q^d}-x
+%     \end{equation*}
+%     over $\F_p$.
+% \end{thm}
+
+
+
+% \begin{cor}
+%     For every $p^d$ for some $d$, ther exists only one finite field of order $p^d$ up to isomorphisms. This is the Galois field of order $p^d$.
+% \end{cor}
+
+
+
+% \begin{cor}
+%     $\F_{p^d}\subset\F_{p^e}$ iff $d\mid e$.
+% \end{cor}
+
+\begin{defn}[$n$th cyclotomic polynomial]
+    Let $\om_n=e^{2\pi i/n}$ be the primitive $n$th root, then $\om_n^m$ is also a primitive $n$th root iff $\gcd(m,n)=1$. This implies that there are $\phi(n)$ primitive $n$th roots of unity, and the polynomial 
+    \begin{equation*}
+        \Phi_n(x)=\prod_{1\leq m\leq n, \gcd(m,n)=1}(x-\om_n^m)
+    \end{equation*}
+    taking over all the primitive $n$th roots of unity, $\Phi_n$ is called the $n$th cyclotomic polynomial. For example, 
+    \begin{equation*}
+        \Phi_p(x)=\frac{x^p-1}{x-1}=x^{p-1}+\dots+1
+    \end{equation*}
+\end{defn}
+
+
+\begin{prop}
+    The cyclotomic polynomials $\Phi_n(x)$ satisfy:
+    \begin{enumerate}
+        \item When $n=p$ for some prime, then 
+        \begin{equation*}
+            \Phi_p(x)=\frac{x^p-1}{x-1}=x^{p-1}+\dots+1
+        \end{equation*}
+        \item When $n$ not prime, 
+        \begin{equation*}
+            x^n-1=\prod_{1\leq d, d \mid n} \Phi_d(x)
+        \end{equation*}
+        In other words,
+        \begin{equation*}
+            \Phi_n(x)=\frac{x^n-1}{\prod_{d\mid n, d<n}\Phi_d(x)}
+        \end{equation*}
+    \end{enumerate}
+\end{prop}
+\begin{proof}
+    Note that the proof involves 
+    \begin{equation*}
+        x^n-1=\prod_{1\leq d, d\mid n}\prod_{d\text{th root of unity}}(x-\om)=\prod_{1\leq d, d\mid n}\Phi_d(x)
+    \end{equation*}
+\end{proof}
+
+
+% Remark: $\Phi_n(x)$ have integer coefficients.
+
+\begin{prop}
+    For all $n$, $\Phi_n(x)$ is irreducible over $\Q$. (And they have integer coefficients).
+\end{prop}
+The proof is hard.
+
+
+\begin{defn}[$n$th cyclotomic field]
+    Let $\om_n=e^\frac{2\pi i}{n}$, then the splitting field $\Q(\om_n)$ of $x^n-1$ is called the $n$th cyclotomic field.
+\end{defn}
+
+\begin{prop}
+    We have 
+    \begin{enumerate}
+        \item \begin{equation*}
+            [\Q(\om_n):\Q]=\phi(n)
+        \end{equation*}
+        \item $\Phi_n(x)$ is the minimal polynomial of $\om_n$.
+        \item \begin{equation*}
+            \aut_\Q(\Q(\om_n))\cong(\Z/n\Z)^\times
+        \end{equation*}
+        where $(\Z/n\Z)^\times$ is the group of units under multiplication.
+    \end{enumerate}
+\end{prop}
+
+\begin{example}
+    $\Q(\om_8)/\Q$ is a degree $4$ extension, with Galois group $\Z/2\Z\times\Z/2\Z$.
+\end{example}
+$\Phi_8(x)=x^4+1$.
+
+\begin{warn}
+    Important theorem.
+\end{warn}
+
+\begin{prop}
+    Finite + separable $\Rightarrow$ simple extension.
+\end{prop}
+
+
+\begin{prop}
+    Transitive subgroups of $S_4$ are as follows:
+    \begin{equation*}
+        S_4, A_4, D_8, \frac{\Z}{4\Z}, \frac{\Z}{2\Z}\times\frac{\Z}{2\Z}
+    \end{equation*}
+\end{prop}
+
+
+
+
+
+
+
+
+
+
+% \begin{cor}
+%     Let $F=\F_q$, then 
+%     \begin{equation*}
+%         x^{q^n}-n
+%     \end{equation*}
+%     factors over $\F_q$ as irreducible polynomials of degree $d$, where $d$ ranges over all divisors of $n$. These polynomials factor completely over $\F_{q^n}$.
+% \end{cor}
+
+\begin{prop}
+    Every finite extension of $\Q$ or of finite fields $\F_q$ is simple.
+\end{prop}
+\begin{proof}
+    Finite+separable$\Rightarrow$ simple.
+\end{proof}
+
+
+
+
+% \section{Cyclotomic}
+
+% \begin{thm}
+%     $\text{Aut}_{\F_p}(\F_{p^d})$ is cyclic, generated by the Frobenius isomorphism.
+% \end{thm}
+
+
+% \begin{defn}
+%     Polynomial 
+%     \begin{equation*}
+%         \Phi_n(x)=\prod_{i=0}^{n-1}(x-\xi_n^i)
+%     \end{equation*}
+%     is called the $n$th cyclotomic polynomial.
+% \end{defn}
+
+% \begin{prop}
+%     If $n=p$ is prime, then 
+%     \begin{equation*}
+%         \Phi_p(x)=x^{p-1}+\dots+x+1=\frac{x^p-1}{x-1}
+%     \end{equation*}
+
+%     For all positive integers $n$, we have 
+%     \begin{equation*}
+%         x^n-1=\pi_{1\leq d\mid n}\Phi_d(x)
+%     \end{equation*}
+% \end{prop}
+
+
+% \begin{prop}
+%     For all positive $n$, $\Phi_n(x)\in\Z[x]$ is irreducible over $\Q$.
+% \end{prop}
+
+% \begin{defn}
+%     The splitting field $\Q(\zeta_n)$  for $x^n-1\in\Q[x]$  is the $n$th cyclotomic field. 
+% \end{defn}
+
+% \begin{prop}
+%     $\text{Aut}_\Q(\Q(\zeta_n))$ is isomorphic to the group $(\Z/n\Z)^\times$
+% \end{prop}
+
+
+
+% \begin{prop}
+%     An algebraic extension $k\subset F$ is simple iff the number of distinct intermediate fields $k\subset E\subset F$ is finite.
+% \end{prop}
+
+% \begin{thm}
+%     Every finite separable is simple.
+% \end{thm}
+
+% One should draw diagrams 
+% \begin{equation*}
+%     k-E-F
+% \end{equation*}
+% and 
+% \begin{equation*}
+%     \text{Aut}_k(F)-\text{Aut}_E(F)-\{e\}
+% \end{equation*}
+% each extension (reversely) corresponds to a subgroup that fixes that extension in the Galois group $\gal(F/k)$.
+
+% \begin{thm}
+%     Let $k\subset F$ be Galois, then $k\subset E\subset F$, $k\subset E$ is Galois iff $\text{Aut}_E(F)$ is normal in $\gal(F/k)$, in this case, 
+%     \begin{equation*}
+%         \gal(E/k)\cong\frac{\gal(F/k)}{\gal(F/E)}
+%     \end{equation*}
+% \end{thm}
+
+
+% \begin{defn}[discriminant]
+%     The discriminant of $f$, separable, irreducible is 
+%     \begin{equation*}
+%         D(f)=\Delta^2f=\prod_{1\leq i<j\leq n}(\alpha_i-\alpha_j)^2
+%     \end{equation*}
+% \end{defn}
+
+% \begin{prop}
+%     Let $k$ be field of char not equal to 2, and $f$ is separable, with discriminant $D$. Then the Galois group of $f$ is contained in $A_n$ iff $D$ is a square in $k$.
+
+%     (We note that $\Delta$ is fixed by the Galois group $G$ iff $G\subset A_n$)
+% \end{prop}
+
+% \begin{prop}
+%     Let $f\in\Q[x]$ be irred of degree $p$, assume that $f$ has $p-2$ real roots and $2$ complex roots, then the Galois group is $S_p$.
+% \end{prop}
+
+
+
+
+\section{Galois I}
+
+
+\begin{defn}[Galois Correspondence]
+    Let $k\subset F$, and $G=\aut_k(F)$, let $H\subset G$ be a subgroup, then $H$ corresponds to an intermediate field extension 
+    \begin{equation*}
+        k\subset F^H\subset F
+    \end{equation*}
+    where 
+    \begin{equation*}
+        F^H=\{x\in F: h\cdot x=x \text{ for all } h\in H\}
+    \end{equation*}
+    the fixed elements of $F$ by $H$. Conversely, given $k\subset E\subset F$, we can identify a subgroup of $G$ 
+    \begin{equation*}
+        H:=\aut_E(F)\subset\aut_k(F)
+    \end{equation*}
+    This establishes a one-to-one correspondence.
+\end{defn}
+
+\begin{prop}
+    We have the following trivial inclusions:
+    \begin{equation*}
+        E\subset F^{\aut_E(F)}, \quad H\subset\aut_{F^H}(F)
+    \end{equation*}
+    Let $E_1E_2$ denote the smallest subfield of $F$ containing $E_1,E_2$, and $\la H_1,H_2\ra$ denote the smallest subgroup containing $H_1,H_2\subset\aut_k(F)$, then 
+    \begin{equation*}
+        \aut_{E_1E_2}(F)=\aut_{E_1}(F)\cap\aut_{E_2}(F)
+    \end{equation*}
+    and 
+    \begin{equation*}
+        F^{\la G_1,G_2\ra}=F^{G_1}\cap F^{G_2}
+    \end{equation*}
+\end{prop}
+
+\begin{prop}
+    Let $k\subset F$ be finite. The degree of the field extension $[F:E]$ is the index of the subgroup $\aut_E(F)$ in $\aut_k(F)$. Equivalently, the size of $H\subset\aut_k(F)$ is the degree $[F:F^H]$, and 
+    \begin{equation*}
+        H=\aut_{F^H}(F)
+    \end{equation*}
+\end{prop}
+
+
+\begin{prop}
+    Let $k\subset F$ be finite, and let $H\subset\aut_k(F)$ be a subgroup, then $F^H\subset F$ is finite and separable, hence simple, and also normal. 
+\end{prop}
+
+
+
+
+\begin{defn}[Galois extension]
+    $k\subset F$ is Galois iff any of the following holds:
+    \begin{enumerate}
+        \item $F$ is the splitting field of a separable polynomial $f\in k[t]$.
+        \item $k\subset F$ is normal and separable.
+        \item $|\aut_k(F)|=[F:k]$.
+        \item $k=F^{\aut_k(F)}$.
+        \item The Galois correspondence $H\mapsto F^H$, $E\mapsto\aut_E(F)$ is a bijection: the map 
+        \begin{equation*}
+            H\mapsto F^H\mapsto \aut_{F^H}F
+        \end{equation*}
+        is the identity.
+        \item $k\subset F$ is separable, and if $k\subset F\subset K$ is an algebraic extension and $\sigma\in\aut_k(K)$, then $\sigma(F)=F$.
+    \end{enumerate}
+\end{defn}
+
+
+\begin{prop}
+    If $k\subset F$ is finite and separable, if it is not Galois, then it can be embedded into some larger field $k\subset K$ in many possible ways, i.e., the last criterion of Galois: $\sigma_1(F)\neq\sigma_2(F)$. If $k\subset F$ is Galois, then all the images of embeddings coincide.
+\end{prop}
+
+\begin{example}
+    The extension $\Q\subset\Q(\sqrt[3]{2})$ is not Galois because there are three embeddings into $\C$ and they do not coincide.
+\end{example}
+
+
+\begin{example}
+    Some examples of Galois extensions: 
+    \begin{enumerate}
+        \item $\Q(i)/\Q$, $\Z/2\Z$.
+        \item $\Q(\om_8)/\Q$, $\Z/2\Z\times\Z/2\Z$.
+        \item Splitting field of $x^4+2$, $D_4$.
+        \item Galois fields such as 
+        \begin{equation*}
+            \frac{\F_2[x]}{(x^3+x^2+1)}/\F_2
+        \end{equation*}
+        with $\Z/3\Z$.
+        \item $\F_p\subset\F_{p^d}$, cyclic $\Z/d\Z$.
+        \item $\Q(\om_n)$ as splitting field of $x^n-1$, which is separable, with $(\Z/n\Z)^\times$ under multiplication.
+    \end{enumerate}
+\end{example}
+
+\begin{prop}
+    Let $k\subset F$ be Galois, and $k\subset E\subset F$, then 
+    \begin{equation*}
+        [F:E]=|\aut_E(F)|
+    \end{equation*}
+    and $E\subset F$ is also Galois. Moreover, 
+    \begin{equation*}
+        [E:k]=[\aut_k(F):\aut_E(F)]
+    \end{equation*}
+\end{prop}
+
+\begin{prop}
+    The Galois correspondence is inclusion-reversing: 
+    \[\begin{tikzcd}
+        F && {\text{Aut}_F(F)=\{e\}} \\
+        E && {\text{Aut}_E(F)} \\
+        k && {\text{Aut}_k(F)}
+        \arrow[no head, from=2-1, to=1-1]
+        \arrow[no head, from=2-3, to=1-3]
+        \arrow[no head, from=3-1, to=2-1]
+        \arrow[no head, from=3-3, to=2-3]
+    \end{tikzcd}\]
+    Note that 
+    \begin{equation*}
+        |\aut_E(F)|=[F:E]
+    \end{equation*}
+\end{prop}
+
+\begin{example}
+    The extension 
+    \begin{equation*}
+        \F_2\subset\F_8\subset\F_{64}
+    \end{equation*}
+    corresponds to subgroup 
+    \begin{equation*}
+        \aut_{\F_{8}}\F_{64}=[\F_{64}:\F_{8}]\cong\frac{\Z}{2\Z}
+    \end{equation*}
+\end{example}
+
+\begin{prop}
+    Let $k\subset F$ be Galois, then $k\subset E\subset F$, $k\subset E$ is Galois iff $\aut_E(F)$ is normal in $\aut_k(F)$. In this case, 
+    \begin{equation*}
+        \aut_k(E)\cong\frac{\aut_k(F)}{\aut_E(F)}
+    \end{equation*}
+    Recall that 
+    \begin{equation*}
+        [E:k]=[\aut_k(F):\aut_E(F)]
+    \end{equation*}
+\end{prop}
+
+
+\begin{prop}
+    Consider $k\subset F$ Galois, and $k\subset K$ any finite extension, then $K\subset KF$ is Galois, and 
+    \begin{equation*}
+        \aut_{K}(KF)\cong\aut_{K\cap F}(F)
+    \end{equation*}
+    \[\begin{tikzcd}
+        & KF \\
+        F && K \\
+        & {F\cap K} \\
+        & k
+        \arrow[no head, from=2-1, to=1-2]
+        \arrow["{\text{Galois}}"', no head, from=2-3, to=1-2]
+        \arrow["{\text{Galois}}", no head, from=3-2, to=2-1]
+        \arrow[no head, from=3-2, to=2-3]
+        \arrow[no head, from=4-2, to=3-2]
+    \end{tikzcd}\]
+\end{prop}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{}
+
+\begin{defn}[symmetric functions]
+    Consider $P_n(x)=(x-t_1)\dots(x-t_n)\in\Z[t_1,\dots,t_n]$, and consider its coefficients
+    \begin{equation*}
+        P_n(x)=x^n-s_1(t_1, \dots, t_n)x^{n-1}+\dots+(-1)^{n}s_n(t_1,\dots, t_n)
+    \end{equation*}
+    are elementary symmetric functions of $t_1,\dots, t_n$. For example, when $n=3$, the symmetric functions are 
+    \begin{equation*}
+        s_1=t_1+t_2+t_3, s_2=t_1t_2+t_1t_3+t_2t_3, s_3=t_1t_2t_3
+    \end{equation*}
+\end{defn}
+
+\begin{prop}
+    Let $k$ be a field, and $\varphi\in k(t_1,\dots,t_n)$, then $\varphi$ is symmetric iff $\varphi$ is a rational function of elementary symmetric functions $s_1,\dots, s_n$.
+\end{prop}
+\begin{proof}
+    Let $k'=k(s_1,\dots, s_n)$ and $F=k(t_1,\dots, t_n)$, then $k'\subset F$ is Galois because $F$ is the splitting field of the separalbe polynomial $P_n(x)$ over $k'$. The symmetric group $S_n$ acts on $F$ by permuting $t_1,\dots, t_n$, and $S_n$ is the identity on $k'$. Thus $S_n$ is a subgroup of $\aut_{k'}(F)$, i.e., $n!\leq [F:k']\leq n!$, where the second inequality follows from degree of $P_n(x)$. This implies that 
+    \begin{equation*}
+        \aut_{k'}(F)=S_n, k'=k(s_1,\dots, s_n)=F^{S_n}
+    \end{equation*}
+    We reiterate: 
+    \begin{equation*}
+        k(s_1,\dots,s_n)\subset k(t_1,\dots,t_n)
+    \end{equation*}
+    is Galois, with Galois group $S_n$.
+\end{proof}
+
+\begin{prop}
+    As a corollary, every finite group $G$ can be realized as the Galois group of some extension.
+\end{prop}
+
+
+\begin{prop}
+    Next we construct Galois extension with Galois group $A_n$: recall 
+    \begin{equation*}
+        \Delta=\prod_{1\leq i<j\leq n}(t_i-t_j)
+    \end{equation*}
+    Then 
+    \begin{equation*}
+        k(s_1,\dots, s_n)(\Delta)\subset k(t_1,\dots, t_n)
+    \end{equation*}
+    is Galois, with Galois group $A_n$.
+\end{prop}
+\begin{proof}
+    $\Delta$ has degree $2$ over $k(s_1,\dots,s_n)$ because 
+    \begin{equation*}
+        \Delta^2=D=\prod_{i<j}(t_i-t_j)^2\in k(s_1,\dots, s_n)
+    \end{equation*}
+    and the only transitive subgroup of index $2$ is $A_n$.
+\end{proof}
+
+
+\begin{prop}
+    Let $k$ be a field of characteristic $0$, and $f(x)\in k[x]$ be an irreducible polynomial. Then $f(x)$ is solvable by radicals iff its Galois group is solvable.
+\end{prop}
+
+\begin{prop}
+    (This may seem repetitive). Let $f(x)\in k[x]$ be an irreducible separable polynomial of degree $n$, then $\gal_k(f(x))$ acts transitively on the set of roots of $f$ in $\bar{k}$, i.e., $\gal_k(f(x))$ can be identified as a subgroup of $S_n$.
+\end{prop}
+
+\begin{example}
+    The only transitive subgroups of $S_3$: $S_3$ and $A_3$. This implie that an irreducible cubic separable polynomial can only have Galois group $A_3$ or $S_3$.
+\end{example}
+
+\begin{example}
+    The only transitive subgroups of $S_4$:
+    \begin{equation*}
+        S_4, A_4, D_8, \Z/2\Z\times\Z/2\Z, \Z/4\Z
+    \end{equation*}
+\end{example}
+\begin{defn}[discriminant]
+    Let $f\in k[x]$ be separable, and $\alpha_1,\dots,\alpha_n$ be its roots in some splitting field, then the \textbf{discriminant} of $f$ is 
+    \begin{equation*}
+        D=\prod_{1\leq i<j\leq n}(\alpha_i-\alpha_j)^2=\Delta^2
+    \end{equation*}
+\end{defn}
+We notice that $D$ is always fixed by Galois group $G$, whereas $\Delta$ is fixed by $G$ iff $G\subset A_n$.
+
+\begin{prop}
+    Let $k$ be field of characteristic $\neq 2$, let $f(x)\in k[x]$ be a separable polynoimal, with discriminant $D$. Then the Galois group of $f(x)$ is contained in $A_n$ iff $D$ is a square in $k$, i.e., $\Delta\in k$.
+\end{prop}
+
+\begin{example}
+    For $S_3$: the Galois group is $A_3$ if $D$ is a square, and $S_3$ if it is not a square. 
+\end{example}
+
+
+
+\begin{prop}
+    Let $f\in\Q[x]$ be an irreducible polynomial of degree $p$, where $p$ is prime. Assume that $f$ has exactly $2$ complex roots, then the Galois group is $S_p$.
+\end{prop}
+\begin{proof}
+    $G$ is a subgroup of $S_p$: complex conjugation gives an order $2$ element of $G$; we also know $p$ divides $|G|$, thus there exists an element of order $p$, which is a $p$-cycle, i.e., they generate $S_p$.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{prop}
+    Every finite abelian group is the Galois group of some extension $F$ over $\Q$. 
+
+    More specifically, every finite abelian group $G$ is the group of some intermediate field of the extension $\Q\subset\Q(\xi_n)$ in a cyclotomic field.
+\end{prop}
+\begin{proof}
+    Classification:
+    \begin{equation*}
+        G\cong\frac{\Z}{n_1\Z}\times\dots\times\frac{\Z}{n_r\Z}
+    \end{equation*}
+
+    Choose distinct $p_i$ such that $p_i\equiv 1\mod n_i$. Let $n=p_1\dots p_r$, by CRT 
+    \begin{equation*}
+        \left(\Z/n\Z\right)^\times\cong \left(\Z/p_1\Z\right)^\times\times\dots\times \left(\Z/p_r\Z\right)^\times
+    \end{equation*}
+    Then $\left(\Z/n\Z\right)^\times$ has a subgroup $H$ such that 
+    \begin{equation*}
+        G\cong\frac{\left(\Z/n\Z\right)^\times}{H}
+    \end{equation*}
+    
+
+    Since $\left(\Z/n\Z\right)^\times\cong\gal(\Q(\zeta_n))$, $H$ corresponds to an intermediate field $F$, where 
+    \begin{equation*}
+        \Q\subset F\subset\Q(\zeta_n)
+    \end{equation*}
+    $H$ is automatically normal, hence $Q\subset F$ is Galois and 
+    \begin{equation*}
+        \gal(F/\Q)=G
+    \end{equation*}
+\end{proof}
+
+\begin{warn}
+    If you are just given irreducible $f$, asked to compute the Galois group of $f$: remember the degree of extension could be as large as $\deg(f)!$. 
+\end{warn}
+
+\begin{warn}
+    Sometimes we get asked to find $\gal(f)$, if it's irreducible, then the Galois group acts transitively on the set of roots, i.e., can be identified with a subgroup of 
+    \begin{equation*}
+        S_{\deg(f)}
+    \end{equation*}
+\end{warn}
+
+
+
+\begin{prop}
+    Let $k\subset F$ be Galois, fix $H\subset\gal(F/k)$, for any element $\alpha\in F$, then 
+    \begin{equation*}
+        \sum_{h\in H}h(\alpha), \quad \prod_{h\in H}h(\alpha)
+    \end{equation*}
+    are in $F^H$. Moreover, if $\alpha$ is such that 
+    \begin{equation*}
+        \{\sigma(\alpha):\sigma\in\gal(F/k)\} \text{ is a basis of } F/k
+    \end{equation*}
+    then $\sum_{h}h(\alpha)$ generates $F^H$.
+\end{prop}
+
+This is $\tr_{F/F^H}(m_\alpha)$, where $m_\alpha$ is the multiplication by $\alpha$, and similarly the determinant.
+
+
+
+
+
+
+
+
+
+\begin{prop}[normal basis theorem]
+    Let $k\subset K$ be a Galois extension of degree $n$, let $\{\sigma_1,\dots,\sigma_n\}$ be the elements of the Galois group, then there exists $w\in K$ such that 
+    \begin{equation*}
+        \{\sigma_1(w),\dots, \sigma_n(w)\}
+    \end{equation*}
+    forms a basis of $K$ over $k$.
+\end{prop}
+
+
+
+
+
+\begin{prop}
+    Let $k\subset k(\alpha)$ be a simple  extension, then for $f(\alpha)=0$, 
+    \begin{equation*}
+        [k(\alpha):k]\leq (\deg(f))
+    \end{equation*}
+    and the splitting field $F$ 
+    \begin{equation*}
+        [F:k]\leq (\deg(f))!
+    \end{equation*}
+\end{prop}
+
+
+
+
+\begin{prop}[Artin-Schreier]
+    Let $k$ be $\text{char}(k)=p$, then $f(x)=x^p-x-a$ is either irreducible over $k$, or $f$ splits into linear factors over $k$. If it is irreducible, let $x_0$ be a root of $f$, then 
+    \begin{equation*}
+        k\subset k(x_0)
+    \end{equation*}
+    is a Galois extension of degree $p$, generated by 
+    \begin{equation*}
+        \sigma: x_0\mapsto x_0+1
+    \end{equation*}
+\end{prop}
+
+
+\begin{prop}
+    Let $F/k$ be finite, then 
+    \begin{equation*}
+        F=k(\alpha_1,\dots, \alpha_n)
+    \end{equation*}
+    i.e., finitely generated as a field extension.
+\end{prop}
+
+
+\begin{prop}
+    When you see char$k=0$, know that $k\subset F$ is separable!
+\end{prop}
+
+\begin{prop}
+    To check separable: check $\gcd(f,f')=1$.
+\end{prop}
+
+
+\begin{prop}
+    Let $\F_p\subset \F_p(\sqrt{a})$,  where $a\in k$, then 
+    \begin{equation*}
+        \F_p(\sqrt{2})\subset\F_{p^2}
+    \end{equation*}
+\end{prop}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\chapter{Field Theory-Hilbert's Nullstellensatz}
+This corresponds to Aluffi Chapter VII 2.2-2.3.
+
+
+\begin{prop}
+    For a field $K$, TFAE:
+    \begin{enumerate}
+        \item $K$ is algebraically closed.
+        \item There is no algebraic extension over $K$ except for the trivial one.
+        \item If $K\subset L$ is any extension, and $\alpha\in L$ is algebraic over $K$, then $\alpha\in K$.
+    \end{enumerate}
+\end{prop}
+
+\begin{defn}[algebraic closure]
+    An algebraic closure of a field $k$ is the algebraic extension such that $\bar{k}$ is algebraically closed.
+\end{defn}
+
+\begin{prop}[Hilbert's Nullstellensatz]
+    Recall that if $K$ is algebraically closed, then every maximal ideal in $K[x]$ is of the form $(x-\alpha),\alpha\in K$.
+\end{prop}
+\begin{prop}
+    Let $K$ be algebraically closed, and $I\subset K[x_1,\dots,x_n]$ be an ideal, then $I$ is maximal iff 
+    \begin{equation*}
+        I=(x_1-c_1,\dots, x_n-c_n)
+    \end{equation*}
+    for some $c_1,\dots,c_n\in K$.
+\end{prop}
+
+% \begin{prop}[Hilbert's Nullstellensatz]
+%     Let $I\subset K[x_1, \dots, x_n]$ be an ideal. Let $f$ be a polynomial in $K[x_1, \dots, x_n]$ such that $f(\mathbf{c}) = 0$ for every zero $\mathbf{c} = (c_1, \ldots, c_n)$ of $I$,  Then there exists an integer $m > 0$ such that $f^m \in I$.
+% \end{prop}
+
+
+
+
+
+
+
+
+
+
+\chapter{Representation Theory of Finite Groups}
+
+
+
+Let $k$ be a field and $G$ be a finite group, a representation $\rho: G\to\text{GL}(V)$ is such that 
+\begin{equation*}
+    \rho(g_1g_2)=\rho(g_1)\circ\rho(g_2)
+\end{equation*}
+And $V$ is a $k[G]$-module, i.e., elements in $k[G]$ are of the form 
+\begin{equation*}
+    \sum_{g\in G}a_gg
+\end{equation*}
+and they act on $V$ by 
+\begin{equation*}
+    \left( \sum_{g\in G}a_gg\right)\cdot v=\sum_{g\in G}a_g\left(\rho(g)(v)\right)
+\end{equation*}
+
+
+
+\begin{prop}
+    The only two-sided ideals of $M_2(\R)$ is $\{0\}$ and $M_2(\R)$.
+\end{prop}
+
+
+\begin{prop}
+    Let $k$ be a field, then every finite-dimensional $k$-algebra is left and right Noetherian and Artinian
+\end{prop}
+
+\begin{prop}
+    Let $R$ be a commutative ring, then if $R$ is Artinian, then $R$ is Noetherian.
+\end{prop}
+Hard proof.
+
+
+
+\begin{defn}[representation]
+    Representation of $G$ over $k$ is a homomorphism $\rho:G\to\gl(V)$ for some vector space $V$ over $k$, a representation can also be defined as a $kG$-module, where elements in the ring $kG$ are of the form 
+    \begin{equation*}
+        \sum_{g\in G}a_gg, a_g\in k
+    \end{equation*}
+    i.e., $k$-linear combinations of group elements.
+
+    An invariant subspace of $W\subset V$ is such that for all $w\in W, g\in G$, we have 
+    \begin{equation*}
+        \rho(g)w\in W
+    \end{equation*}
+    i.e., an $kG$-submodule.
+\end{defn}
+
+\begin{defn}[homomorphism between $kG$-modules]
+    Let $f:V\to W$ be $kG$-modules, then $f$ is a homomorphism iff 
+    \begin{equation*}
+        f(\rho(g)v)=\rho(g)f(v)
+    \end{equation*}
+\end{defn}
+
+\begin{prop}[Mascheke's theorem]
+    Let $V$ be a representation of a finite group $G$ over $k$, and let $|G|$ be invertible (nonzero in characteristic $0$, and not divisible by $p$ in char $p$). Let $W$ be an invariant subspace of $V$, then there exists an invariant subspace $W'$ such that 
+    \begin{equation*}
+        V=W\oplus W'
+    \end{equation*}
+    In other words, if $V$ is not irreducible, then it can be decomposed into irreducible representations.
+\end{prop}
+
+\begin{defn}[semisimple]
+    A $R$-module $M$ is semisimple iff $M$ can be written as a finite direct sum of simple modules.
+    \begin{equation*}
+        M\cong M_1\oplus \dots\oplus M_k
+    \end{equation*}
+    where $M_i$'s are simple $R$-modules.
+\end{defn}
+
+\begin{prop}
+    Let $k$ be a field and $|G|$ is invertible, then every finite-dimensional $kG$-module is semisimple: it can be decomposed into a finite direct sum of simple $kG$-submodules.
+\end{prop}
+
+\begin{prop}
+    Let $\rho$ be a finite-dimensional representation of $G$ over $\C$, then for every $g\in G$, the matrix $\rho(g)$ is diagonalizable.
+\end{prop}
+
+\begin{prop}[Schur's lemma]
+    Let $S_1,S_2$ be simple $R$-modules, where $R$ is a finite-dimensional algebra over $k$ (finite-dimensional vector space but you can multiply things), then 
+    \begin{equation*}
+        \text{Hom}_R(S_1,S_2)=\begin{cases}
+            0, \text{ if } S_1\not\cong S_2\\
+            k, \text{ if } S_1\cong S_2
+        \end{cases}
+    \end{equation*}
+    Equivalently, let $V,W$ be irreducible representations of a finite group $G$, then $V,W$ are $kG$-modules, where $kG$ is a finite-dimensional $k$-algebra. Thus,
+    \begin{equation*}
+        \text{Hom}_k(V,W)=\begin{cases}
+            k, V\cong W\\
+            0, \text{ if not}
+        \end{cases}
+    \end{equation*}
+    any map $\varphi:V\to V$ is a multiplication by scalar $\lambda\in k$. 
+    \begin{warn}
+        This assumes $k$ is algebraically closed!
+    \end{warn}
+\end{prop}
+
+
+\begin{defn}[semisimple ring]
+    A ring $R$ is semisimple iff 
+    \begin{enumerate}
+        \item Every $R$-module is semisimple.
+        \item $R$ can be writte as 
+        \begin{equation*}
+            R\cong I_1\oplus\dots\oplus I_k
+        \end{equation*}
+        where $I_i$ are simple ideals.
+    \end{enumerate}
+\end{defn}
+
+
+\begin{prop}[Artin-Wedderburn]
+    A \textbf{finite-dimensional $k$-algebra $R$} is semisimple iff 
+    \begin{equation*}
+        R\cong M_{n_1}(D_1)\oplus\dots\oplus M_{n_k}(D_k)
+    \end{equation*}
+    where $M_{n_i}(D_i)$ is the matrix rings over division rings $D_i$. If $k$ is algebraically closed, then 
+    \begin{equation*}
+        R\cong M_{n_1}(k)\oplus\dots\oplus M_{n_k}(k)\cong V_1\oplus\dots\oplus V_k
+    \end{equation*}
+    The \textbf{example for finite-dimensional $k$-algebra} is $kG$, where $G$ is finite.
+\end{prop}
+
+\begin{prop}
+    Let $k$ be algebraically closed, and $G$ is finite, then 
+    \begin{equation*}
+        kG\cong M_{n_1}(k)\oplus\dots\oplus M_{n_k}(k)
+    \end{equation*}
+    Thus 
+    \begin{equation*}
+        |G|=\sum_{i=1}^kn_i^2
+    \end{equation*}
+    where $n_i=\dim(V_i)$.
+\end{prop}
+
+
+\section{Characters}
+
+
+\begin{prop}
+    Some basic properties of $\chi$, let $\rho$ be a representation of $G$ over $\C$, and $\chi(g)=\tr(\rho(g))$, then 
+    \begin{enumerate}
+        \item $\chi(1)=\dim\rho$.
+        \item Let $g\in G$ have order $n$, then $\chi(g)$ is a sum of $n$th roots of unity.
+        \item $|\chi(g)|\leq\chi(1)$, with equality iff $\rho(g)$ is a multiplication by scalar.
+        \item $\chi(g)=\chi(1)$ iff $\rho(g)=\text{id}$.
+        \item $\chi(g^{-1})=\overline{\chi(g)}$.
+        \item $\chi(g)=\chi(h)$ if $g,h$ are conjugates.
+        \item If $V,W$ are isomorphic $\C G$-modules, then $\chi_V=\chi_W$.
+    \end{enumerate}
+\end{prop}
+
+We can extend characters onto larger representations:
+\begin{prop}
+    Let $V,W$ be finite dimensional representations of $G$ over $k$ of char $0$, then 
+    \begin{enumerate}
+        \item $V\oplus W$ has character $\chi_V\oplus\chi_W$.
+        \item $V\otimes W$ has character $\chi_V\cdot\chi_W$.
+        \item $V^*$ has character $\chi_{V^*}(g)=\overline{\chi_V(g)}$.
+        \item $\text{Hom}_k(V,W)$ has character $\chi_{V^*}\cdot\chi_W$.
+    \end{enumerate}
+\end{prop}
+
+
+\begin{prop}[Row Orthogonality]
+    Let $G$ be finite, and $V,W$ be irreducible complex representations of $G$ with characters $\chi_V,\chi_W$, then 
+    \begin{equation*}
+        \la \chi_V,\chi_W\ra=\frac{1}{|G|}\sum_{g\in G}\chi_V(g)\overline{\chi_W(g)}=\begin{cases}
+            1, V\cong W\\
+            0, \text{ otherwise }
+        \end{cases}
+    \end{equation*}
+\end{prop}
+
+\begin{prop}
+    Let $V$ be a $\C G$-module, then in any expression 
+    \begin{equation*}
+        V\cong S_1^{n_1}\oplus\dots\oplus S_k^{n_k}
+    \end{equation*}
+    where $S_i$ are non-isomorphic irreducible modules, we have 
+    \begin{equation*}
+        n_i=\la \chi_V,\chi_{S_i}\ra
+    \end{equation*}
+    where $\chi_V,\chi_{S_i}$ are characters of $V,S_i$. 
+\end{prop}
+\begin{warn}
+    We can use the above to decompose any representation into irreducible ones, and the powers $n_i$ can be determined by taking the inner product.
+\end{warn}
+
+\begin{example}
+    Let $V$ be the $2$-dimensional representation of $S_3$, then we can consider $V\otimes V$, then $\chi_2\otimes\chi_2$ is a character of $V\otimes V$, now we decompose $V\otimes V$ into irreducible representations:
+    \begin{equation*}
+        \la \chi_2\otimes\chi_2, \chi_{\text{triv}}\ra=1
+    \end{equation*}
+    and similarly 
+    \begin{equation*}
+        \la \chi_2\otimes\chi_2, \chi_{\text{sgn}}\ra=1,  \la \chi_2\otimes\chi_2, \chi_2\ra=1
+    \end{equation*}
+    Thus we see 
+    \begin{equation*}
+        V\otimes V\cong \C\oplus S\oplus V
+    \end{equation*}
+    where $V$ is the trivial and $S$ is the sign representation.
+\end{example}
+
+\begin{prop}
+    For finite dimensional complex representations $V,W$, then 
+    \begin{equation*}
+        V\cong W\iff \chi_V(g)=\chi_W(g), \text{ for all } g\in G
+    \end{equation*}
+    Moreover, 
+    \begin{equation*}
+        \la \chi,\chi\ra=1
+    \end{equation*}
+    iff $\chi$ is irreducible.
+\end{prop}
+\begin{proof}
+    We write $V\cong S_1^{n_1}\oplus\dots S_k^{n_k}$, then the inner product being $1$ implies 
+    \begin{equation*}
+        \sum_{i=1}^kn_i^2=1
+    \end{equation*}
+    which implies there exists only one nonzero $n_i=1$, i.e., $V\cong S_i$.
+\end{proof}
+
+\begin{prop}[orthogonality]
+    Let $\chi_1,\dots,\chi_k$ be the irreducible complex characters of $G$, with dimensions $d_1,\dots, d_k$, then 
+    \begin{enumerate}
+        \item $|G|=\sum_{i=1}^kd_i^2$.
+        \item $\sum_{i=1}^kd_i\chi_i(g)=0$, if $g\neq 1$.
+    \end{enumerate} 
+\end{prop}
+
+
+\begin{prop}
+    For any commutative ring $R$, the center 
+    \begin{equation*}
+        Z(M_n(R))=\{\lambda I: \lambda\in R\}\cong R
+    \end{equation*}
+\end{prop}
+
+
+\begin{prop}[column orthogonality]
+    Let $\chi_i$ be the irreducible representations of $G$, then 
+    \begin{equation*}
+        \sum_{i=1}^k\chi_i(g)\overline{\chi_i(h)}=\begin{cases}
+            |Z_G(g)|, \text{ if $g,h$ are conjugates } \\
+            0, \text{ if not}
+        \end{cases}
+    \end{equation*}
+    where $Z_G(g)$ is the centralizer of $g$.
+\end{prop}
+
+
+\begin{prop}[all orthogonality relations]
+You have
+    \begin{enumerate}
+    \item Row orthogonality: $\sum_{g\in G}\chi_V(g)\overline{\chi_W(g)}=\begin{cases}
+        |G|, \text{ if $V\cong W$}\\
+        0, \text{ if not}
+    \end{cases}$.
+    \item Dimension orthogonality: $\sum_{i=1}^kd_i\chi_i(g)=0$.
+    \item Column orthogonality: $\sum_{i=1}^k\chi_i(g)\overline{\chi_i(h)}=\begin{cases}
+        |Z_G(g)|, \text{ if $g,h$ are conjugates } \\
+        0, \text{ if not}
+    \end{cases}$.
+\end{enumerate}
+\end{prop}
+
+
+\begin{prop}
+    The dimension of an irreducible complex representation divides $|G|$.
+\end{prop}
+
+
+\begin{prop}[characters of cyclic groups]
+    Let $G=\la g: g^n=1\ra$ be cyclic, and $\om_n$ be the primitive $n$th root of unity, then the irreducible complex characters of $G$ are 
+    \begin{equation*}
+        \chi_i: g\mapsto \om_n^i
+    \end{equation*}
+    where $0\leq i\leq n-1$. These are exactly the $n$ irreducible characters of $G$.
+\end{prop}
+\begin{example}
+    Consider the character table for $\Z/4\Z$, $1\mapsto 1, i, -1, -i$ defines $4$ one-dimensional irreducible representations.
+\end{example}
+
+\begin{prop}
+    Let $V_1,\dots, V_n$ and $W_1,\dots, W_m$ be the irreducible representations of $G_1,G_2$, then 
+    \begin{equation*}
+        V_i\otimes W_j
+    \end{equation*}
+    is the complete list of irreducible representations of $G_1\times G_2$. As a consequence, the character table of $G_1\times G_2$ is the tensor product of the character tables of $G_1$ and $G_2$.
+\end{prop}
+
+
+\begin{prop}
+    $G$ is abelian iff all complex irreducible representations of $G$ are one-dimensional.
+\end{prop}
+\begin{proof}
+    We know cyclic groups have one-dimensional irreducible representations, and every finite abelian group is a direct product of cyclic groups, hence by the above, we know they are again one-dimension. Conversely, consider 
+    \begin{equation*}
+        |G|=\sum_{i=1}^rd_i^2
+    \end{equation*}
+    This implies $r=|G|$, i.e., every conjugacy class has size $1$, i.e., $G$ is abelian.
+\end{proof}
+
+\begin{prop}
+    The one-dimensional irreducible representations of $G$ exactly corresopnd to the one-dimensional representations of $G^{\text{ab}}=\frac{G}{[G:G]}$. 
+    
+    (You put $1$'s at $[G,G]$), think about $D_8$.
+\end{prop}
+
+
+\begin{prop}
+    Let $\chi_1,\dots, \chi_n$ be pairwise distinct one-dimensional characters over $k$, then $\chi_1,\dots, \chi_n$ are linearly independent over $k$.
+\end{prop}
+
+
+
+
+
+
+
+\section{Induction and Restriction}
+
+\begin{defn}[Induced Representation]
+    Let $H$ be a subgroup of $G$, let $V$ be a $kG$-module. Let $g_1H, \dots, g_{[G:H]}H$ be the list of left cosets of $G/H$. Then 
+    \begin{equation*}
+        \text{Ind}_H^G(V)=\bigoplus_{i=1}^{[G:H]}g_i\otimes V
+    \end{equation*}
+    where 
+    \begin{equation*}
+        g_i\otimes V=\{g_i\otimes v: v\in V\}
+    \end{equation*}
+    note that if $g\in G$, then 
+    \begin{equation*}
+        g(g_i\otimes V)=g_j\otimes V
+    \end{equation*}
+    where $gg_i=g_jh$ for some $h\in H$. Note that $g_i\otimes V\cong V$ for each $i$. 
+\end{defn}
+The $g_i\otimes V$ submodules of $\text{Ind}_H^G(V)$ are permuted under the action of $G$, which is transitive.
+
+
+\begin{defn}[Induced character]
+    Let $H$ be a subgroup of $G$, let $V$ be a $\C H$-module with character $\chi$. Then the induced character on $G$ is 
+    \begin{equation*}
+        \text{Ind}_H^G(\chi)(g)=\frac{1}{|H|}\sum_{t\in G: t^{-1}gt\in H}\chi(t^{-1}gt)
+    \end{equation*}
+\end{defn}
+
+\begin{example}
+    Consider $G=S_3$, $H=\la(123)\ra$, and let $\chi$ be the trivial representation on $H$, then 
+    \begin{equation*}
+        \text{Ind}_H^G\chi(g)=\begin{cases}
+            2, g=e\\
+            0, g=(12)\\
+            2, g=(123)
+        \end{cases}
+    \end{equation*}
+\end{example}
+
+\begin{prop}[Frobenius reciprocity]
+    Let $\text{Res}_H^G(V)$ be the restriction of representation of $V$ on $G$ to $H$. Let $H\subset K\subset G$ be subgroups of $G$ and $V$ be a $kH$-module and $W$ be a $kG$-module. 
+    \begin{equation*}
+        \text{Hom}_{kG}(\text{Ind}_H^GV,W)\cong\text{Hom}_{kG}(V,\text{Res}_H^GW)
+    \end{equation*}
+    and similarly, 
+    \begin{equation*}
+        \text{Hom}_{kG}(W,\text{Ind}_H^GV)\cong\text{Hom}_{kG}(\text{Res}_H^GW,V)
+    \end{equation*}
+\end{prop}
+
+\begin{prop}
+    Some more properties of induction and restriction:
+    \begin{enumerate}
+        \item $\text{Ind}_K^G\text{Ind}_H^KV\cong\text{Ind}_H^GV$.
+        \item Similarly for restrictions.
+        \item $\text{Ind}_H^GV\cong\text{Hom}_{kH}(kG, V)$ as $kG$-modules.
+    \end{enumerate}
+\end{prop}
+
+\begin{prop}[Frobenius reciprocity for characters]
+    Let $\psi,\chi$ be complex characters of $G$.
+    \begin{equation*}
+        \la\text{Ind}_H^G\chi, \psi\ra_G=\la \chi,\text{Res}_H^G\psi\ra_H
+    \end{equation*}
+\end{prop}
+
+
+\begin{prop}
+    Let $V$ be a representation of $G$ over $k$ whose characteristic is not $2$, then
+    \begin{equation*}
+        V\otimes V\cong S^2(V)\oplus\wedge^2(V)
+    \end{equation*}
+    Moreover, 
+    \begin{equation*}
+        S^2\chi(g)=\frac{1}{2}(\chi(g)^2-\chi(g^2))
+    \end{equation*}
+    and 
+    \begin{equation*}
+        \wedge^2(g)=\frac{1}{2}(\chi(g)^2-\chi(g^2))
+    \end{equation*}
+\end{prop}
+
+\begin{warn}
+    So how to construct character tables.
+\end{warn}
+\begin{prop}
+    \begin{enumerate}
+        \item Find the number of conjugacy classes of $G$ (to identify the size of the table).
+        \item Take the abelianization $G/[G,G]$ to find all the one-dimensional characters.
+        \item For characters of dimension greater than $1$: 
+        \begin{enumerate}
+            \item Find the natural representations.
+            \item Find representations lifted from quotient groups.
+            \item Representations induced from subgroups.
+            \item Tensor products of other representations.
+            \item Symmetric and alternating powers of representations.
+        \end{enumerate}
+    \end{enumerate}
+    Keep in mind of \textbf{Frobenius Reciprocity} and \textbf{Orthogonality Relations}.
+\end{prop}
+
+
+
+\begin{prop}
+    Suppose an abelian group $G$ admits a faithful representation, then show $G$ is cyclic.
+\end{prop}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% \chapter{Semisimple Algebra}
+
+
+\newpage
+
+
+\end{document}

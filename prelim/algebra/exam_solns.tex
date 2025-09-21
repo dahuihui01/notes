@@ -1,0 +1,2833 @@
+\documentclass[openany]{book}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsfonts,amsthm, amssymb}
+\usepackage{yhmath}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{comment}
+\usepackage{tikz-cd}
+\usepackage{quiver}
+\renewcommand{\familydefault}{ppl}
+\newcommand{\tr}{\text{tr}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\colim}{\text{colim}}
+\DeclareMathOperator{\im}{im}
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+\newcommand{\tor}{\text{Tor}}
+\newcommand{\id}{\text{id}}
+\newcommand{\ext}{\text{Ext}}
+\newcommand{\ptop}{\text{PTop}}
+\newcommand{\pt}{\text{pt}}
+\newcommand{\ach}{\text{Ach}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\gal}{\text{Gal}}
+
+
+\input{hui.tex}
+
+\title{Algebra Qualifying Exam Solutions
+\\ 
+\vspace{0.4cm}
+\large (Accuracy Not Guaranteed)}
+
+
+
+
+\date{\today}
+\author{Hui Sun}
+
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+\newpage
+
+
+\begin{warn}
+    I cannot do Nakayama lemma questions.
+\end{warn}
+
+\begin{warn}
+    I cannot do some of other questions either.
+\end{warn}
+
+
+% \textcolor{blue}{Spring 2018, Spring 2015, Spring 2014}
+
+
+
+\chapter{Exam Dos}
+\begin{prob}
+    Show that there is no simple group of order $132$.
+\end{prob}
+\begin{proof}
+    $132=2^2\cdot 3\cdot 11$. We know that 
+    \begin{equation*}
+        n_{11}=1\text{ or } 12
+    \end{equation*}
+    Suppose that $n_{11}=12$, and $n_3\geq 4$, then there is room for only one $2$-Sylow subgroup.
+\end{proof}
+
+
+
+\begin{prob}
+    Let $R$ be a unique factorization domain. Let $\mathfrak p\subseteq R$ be a nonzero prime ideal. Suppose that $\mathfrak p$ is minimal in the following sense: for any nonzero prime ideal $\mathfrak q$ such that $0\subsetneq\mathfrak q\subseteq\mathfrak p$, we have $\mathfrak p=\mathfrak q$. Show that $\mathfrak p$ is principal.
+\end{prob}
+
+
+
+\begin{prob}
+    Let $F$ be a field, and choose a polynomial
+    \[f(x)=x^n+a_{n-1}x^{n-1}+a_{n-2}x^{n-2}+\cdots+a_2x^2+a_1x+a_0\]
+    in $F[x]$. Show that the splitting field of $f\left(x^2\right)$ contains a square root of $(-1)^na_0$.
+\end{prob}
+
+
+\begin{prob}
+    Let $\alpha$ be an endomorphism of a finite-dimensional vector space $V$. Show that the characteristic polynomial of $\alpha$ is irreducible if and only if there is no nonzero proper subspace $W\subseteq V$ such that $\alpha(W)\subseteq W$.
+\end{prob}
+
+\begin{prob}
+    Let $G$ be a finite group. Let $\rho\colon G\to\operatorname{GL}_n(\mathbb C)$ be a representation of $G$. Show that
+    \[\{g\in G:\left|\tr\rho(g)\right|=n\}\]
+    is a normal subgroup of $G$. (Note that $\rho$ is not assumed to be irreducible.)
+\end{prob}
+
+\begin{prob}
+    Let $n$ be a positive integer, and let $\zeta$ be a primitive $n$th root of unity.
+    \begin{enumerate}
+        \item Show that the extension $\mathbb Q(\zeta,i,\sqrt[4]2)/\mathbb Q$ is Galois.
+        \item Show that the Galois group $\operatorname{Gal}(\mathbb Q(\zeta,i,\sqrt[4]2)/\mathbb Q)$ is not abelian.
+        \item Conclude that there $\sqrt[4]2\notin\mathbb{Q}(\zeta)$.
+    \end{enumerate}
+\end{prob}
+
+
+\chapter{Exam Uno}
+\begin{prob}
+    Show that there is no simple group of order $80$. ($120$).
+\end{prob}
+\begin{proof}
+    $80=2^4\cdot 5$, then consider 
+    \begin{equation*}
+        n_5=1 \text{ or } 16
+    \end{equation*}
+    Suppose that $n_5=16$, then 
+    \begin{equation*}
+        80-4\cdot 16=16
+    \end{equation*}
+    i.e., there is only space for one Sylow-$2$ subgroup. This shows there must exist either a Sylow-$5$ subgroup, or a Sylow-$2$ subgroup.
+\end{proof}
+
+\begin{prob}
+    Choose an automorphism $\sigma$ of $S_4$. If $\tau\in S_4$ is any transposition, show that $\sigma(\tau)$ is still a transposition.
+\end{prob}
+\begin{proof}
+    We first note that if $\tau_1,\tau_2$ are conjugate $\tau_1=s\tau_2s^{-1}$, i.e., they are of the same cycle type, then for any automorphism $\sigma$, 
+    \begin{equation*}
+        \sigma(\tau_1)=\sigma(s)\sigma(\tau_2)\tau(s)^{-1}
+    \end{equation*}
+    they are still of the same cycle type. We first note that $\sigma$ sends a transposition to an order $2$ element: either a transposition or an element of cycle type $2+2$. However, there are $6$ transpositions and $3$ elements of cycle type $2+2$. Namely, if $\sigma$ sends $\tau$ to a product of two transpositions, then this map is no longer bijective.
+\end{proof}
+
+
+\begin{prob}
+    Compute the number of $\mathbb F_2[x]$-modules with eight elements, considered up to isomorphism.
+\end{prob}
+\begin{proof}
+    We know there is a bijection between $\F_2[x]$ modules with a vector space over $\F_2$ with $8$ elements. We know by the classification of finitely generated modules over PID, 
+    \begin{equation*}
+        V\cong\bigoplus_{i=1}^d\frac{\F_2[x]}{(f_i(x))}
+    \end{equation*} 
+    where $f_i\mid f_{i+1}$. Thus we need to choose $f_i$ such that $V$ has $8$ elements: different polynomials will give different $\F_2[x]$ structures. Note that this is different from vector space structures. 
+\end{proof}
+
+\begin{prob}
+    Show that the polynomial $f(x)=x^5-9x+3$ is irreducible over $\mathbb Q$ and compute the Galois group of its splitting field.
+\end{prob}
+\begin{proof}
+    Eisenstein, $S_5$.
+\end{proof}
+
+\begin{prob}
+    Let $F$ be a field of positive characteristic $p$. Choose $a\in F$. Show that the polynomial $x^p-a$ either is irreducible or splits completely into linear factors over $F$.
+\end{prob}
+\begin{proof}
+    Suppose that $x_0\in F$, then 
+    \begin{equation*}
+        x_0^p=a
+    \end{equation*}
+    i.e., $x_0$ is the $p$th root of $a$ in $K$, thus we can write 
+    \begin{equation*}
+        x^p-a=(x-x_0)^p
+    \end{equation*}
+    Suppose $f$ has no root over $F$, then over $\overline{K}$, we can factor $f$ as 
+    \begin{equation*}
+        f(x)=(x-\alpha)^p
+    \end{equation*}
+    where $\alpha\in\overline{F}$. Suppose $f$ is not irreducible, then 
+    \begin{equation*}
+        f(x)=g(x)h(x)
+    \end{equation*}
+    where $\deg(g)=s<p$, and 
+    \begin{equation*}
+        g(x)=(x-\alpha)^s
+    \end{equation*}
+    over $\overline{F}$, this implies that $s\alpha\in F$, which implies that $\alpha\in F$, which is a contradiction.
+\end{proof}
+
+\begin{prob}
+    Fix a complex vector space $V$, and choose a nontrivial finite subgroup $G\subseteq\operatorname{GL}(V)$. If $\dim V=\left|G\right|$, show that there is a nonzero, proper subspace $W\subseteq V$ such that $g(W)\subseteq W$ for all $g\in G$.
+\end{prob}
+\begin{proof}
+    One can consider the representations of $G$, it suffices to show that $V$ is not an irreducible representation of $G$. This is because 
+    \begin{equation*}
+        |G|=\sum_id_i^2
+    \end{equation*}
+    where $d_i$ is dimension of each irreducible representation of $G$. Since $\dim V=|G|$, $V$ must not be irreducible.
+\end{proof}
+
+
+
+
+\chapter{Spring 2025}
+
+
+\textcolor{red}{1,2,3,4,5,6}
+
+
+\begin{prob}[Q1]
+    Let $p$ be an odd prime. Compute the number of $p$-Sylow subgroups of $S_p$. 
+\end{prob}
+\begin{warn}
+    This is not a Sylow question. 
+\end{warn}
+\begin{proof}
+    Prove the following fact: let $N,H$ have prime order $p$, both subgroups of $G$, then $N=H$ or $N\cap H=\{e\}$.
+\end{proof}
+
+
+
+\begin{prob}[Q2]
+    The Jacobson radical of a commutative ring $R$ is the intersection of all maximal ideals of $R$, i.e., 
+    \begin{equation*}
+        J(R)=\bigcap_{\mathfrak{m}\subset R} \mathfrak{m}
+    \end{equation*}
+    where $\mathfrak{m}$ is an maximal ideal. Show that $a\in J(R)$ iff for all $b\in R$, $1-ab$ is a unit.
+\end{prob}
+\begin{proof}
+    \begin{lem}
+        $a\in R$ is a unit iff and only if $a$ is not contained in any maximal ideal. (If $a$ is not in any maximal ideal, then $(a)=R$.)
+    \end{lem}
+\end{proof}
+
+\begin{prob}[Q3]
+    Let $f(x)\in\Q[x]$ be an irreducible degree $5$ polynomial of exactly $3$ real roots, then show that the Galois group of $f$ over $\Q$ is isomorphic to $S_5$.
+\end{prob}
+\begin{proof}
+    Step 1: show that the Galois group contains a transposition.
+    
+    Step 2: show there exists an order $5$ element.
+
+    Step 3: show that these two elements generate $S_5$.
+\end{proof}
+
+
+
+\begin{prob}[Q4]
+    Let $M$ be a complex $n\times n$ matrix such that 
+    \begin{equation*}
+        \tr M=\tr M^2=\dots=\tr M^n=0
+    \end{equation*}
+    Prove that $M$ is nilpotent.
+\end{prob}
+
+
+
+\begin{prob}[Q5]
+    Let \( \xi \in \bigwedge^p V \) be a non-zero \( p \)-vector. Let \( W = \{ v \in V \mid \xi \land v = 0 \} \). Verify that \(\dim W \leq p\) and equality holds only when \( \xi \) is splitting.
+\end{prob}
+\begin{proof}
+    Splittig means that $\xi=v_1\wedge\dots\wedge v_p$ for some $v_i\in V$.
+\end{proof}
+
+
+\begin{prob}[Q6]
+    Let \( \mathbb{F}_p^+ \) be the additive group of the field \( \mathbb{F}_p \) with \( p \) elements. Consider a complex valued function \( f \) on \( \mathbb{F}_p \):
+\[
+f(x) =
+\begin{cases}
+0, & \text{if } x = 0, \\
+1, & \text{if } x \in \mathbb{F}_p^\times \setminus 0 \text{ and } x \text{ is a square}, \\
+-1, & \text{otherwise}.
+\end{cases}
+\]
+Prove that if \( \chi \) is a simple complex character of \( \mathbb{F}_p^+ \) then
+\[
+\left| \langle f, \chi \rangle_{\mathbb{F}_p^+} \right| = p^{-1/2}.
+\]
+\end{prob}
+
+\chapter{Fall 2024}
+
+David Gepner
+
+% \textcolor{red}{1,2,3,4,5,6}
+
+\begin{prob}
+    Let \( p \) be prime and \( G \) a nonabelian group of order \( 2p \). Compute the number of conjugacy classes of elements of \( G \).
+\end{prob}
+
+
+\begin{prob}
+    Recall that a commutative ring \( R \) is \textit{Artinian} if every descending chain of ideals \( I_0 \supseteq I_1 \supseteq I_2 \supseteq \cdots \) is eventually constant. Show that if \( R \) is an Artinian integral domain, then \( R \) is a field.
+\end{prob}
+
+
+
+
+\begin{prob}
+    Let \( K \) be a field and \( f(x) \in K[x] \) an irreducible polynomial. Suppose given a finite extension \( L \) of \( K \) of degree prime to the degree of \( f(x) \). Show that \( f(x) \) is irreducible over \( L \).
+\end{prob}
+
+
+
+\begin{prob}
+    Determine \( m, n \in \mathbb{Z} \setminus \{0\} \) such that fields \( \mathbb{Q}(\sqrt{m}), \mathbb{Q}(\sqrt{n}) \) are isomorphic.
+\end{prob}
+
+
+
+
+\begin{prob}
+    Prove that any two dimensional faithful complex representation of a non-commutative group is irreducible.
+\end{prob}
+
+
+
+
+\begin{prob}
+    Let \( A, B \) be linear operators on a finite dimensional vector space \( V \) over a field of characteristic 0 such that \( A^3 = B^2 \) are the identity and \( AB = BA^2 \). Prove that if \( U \) is an invariant under \( A, B \) subspace of \( V \) then there exists an invariant under \( A, B \) subspace \( W \) of \( V \) such that \( V = U \oplus W \).
+\end{prob}
+
+
+
+\chapter{Fall 2023}
+
+Emily Riehl
+
+\textcolor{red}{3,6}
+
+
+\begin{prob}
+    For any positive integer \( n \), denote by \( A_n \) the group of even permutations on a set of cardinality \( n \).
+
+    \begin{enumerate}
+        \item[(i)] Let \( G \) be a simple group with a proper subgroup \( H \) of index \( n \). Suppose that the order of \( G \) is at least 3. Prove that there exists an injective homomorphism from \( G \) to \( A_n \).
+        
+        \item[(ii)] Prove that \( A_6 \) has no subgroup of order 120. [Hint: You may use the fact that \( A_n \) is simple for \( n \geq 5 \).]
+    \end{enumerate}
+\end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(i)] We note that $G$ has an action on the cosets $g_iH$, since $[G:H]=n$, this is a transitive action that permutes $n$ elements, thus there is a map 
+        \begin{equation*}
+            \rho: G\to S_n
+        \end{equation*}
+        since $G$ is simple, we know $\ker(\rho)=\{e\}$, i.e., 
+        \begin{equation*}
+            G\cong\im(\rho)
+        \end{equation*}
+        It suffices to show that $\im(\rho)$ is contained in $A_n$, suppose not, then $\im(\rho)\cap A_n$ is a subgroup of index $2$ in $\im(\rho)$, hence is normal in $\im(\rho)$, this is a contradiction again to the fact that $G$ is simple. This shows that $\im(\rho)\subset A$, and $\rho$ is faithful, thus $G$ embeds into $A_n$.
+        \item[(ii)] Using (i), suppose there is a subgroup $H$ of order $120$ of $A_6$, since $A_6$ is simple, then $[A_6: H]=3$, we know there exists an injective homomorphism from $A_6$ to $A_3$, which is a contradiction.
+    \end{itemize}
+\end{proof}
+
+
+\begin{prob}
+    Answer the following questions and justify your answers.
+
+    \begin{enumerate}
+        \item[(i)] Is \( X^2 + Y^2 + 1 \) irreducible in the polynomial ring \( \mathbb{C}[X, Y] \)?
+        
+        \item[(ii)] Is \( X^2 + 3X + 2 \) irreducible in the formal power series ring \( \mathbb{Z}[[X]] \)?
+    \end{enumerate}
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item[(i)] It is irreducible. We see 
+        \begin{equation*}
+            X^2+Y^2+1=X^2+(Y-i)(Y+i)
+        \end{equation*}
+        since $(Y-i)$ is irreducible in $\C[Y]$, i.e., prime in $\C[Y]$, we apply generalized Eisenstein, 
+        \begin{equation*}
+            X^2+Y^2+1 \text{ is irreducible in }( \C[Y])[X]
+        \end{equation*} 
+        and we are done by observing $\C[Y][X]=\C[X,Y]$.
+        \item[(ii)] It is also irreducible. We can proceed directly with the definition, since 
+        \begin{equation*}
+            X^2+3X+2=(X+2)(X+1)
+        \end{equation*}
+        and $(X+1)$ is a unit in $\Z[[X]]$, hence it is irreducible. (Alternatively, $f$ is a unit if the constant term $f(0)$ is a unit, thus suppose 
+        \begin{equation*}
+            f=gh
+        \end{equation*}
+        then $g(0)h(0)=f(0)$. If $f(0)$ is irreducible, it implies either $g(0)$ or $h(0)$ is a unit, which implies either $g$ or $h$ is a unit, hence $f$ irreducible.)
+    \end{enumerate}
+\end{proof}
+
+
+\begin{prob}
+    Denote by \( \text{SL}_2(\mathbb{C}) \) the special linear group over the complex number field, i.e., the group of all \( 2 \times 2 \) complex matrices with determinant 1. Prove the following statements.
+
+    \begin{enumerate}
+        \item[(i)] \( \text{SL}_2(\mathbb{C}) \) is generated by elements of the forms
+        \[
+        a=\begin{pmatrix}
+        1 & a \\
+        0 & 1 
+        \end{pmatrix}
+        \]
+        where \( a \in \mathbb{C} \), and
+        \[
+        b=\begin{pmatrix}
+        1 & 0 \\
+        b & 1 
+        \end{pmatrix}
+        \]
+        where \( b \in \mathbb{C} \).
+        
+        \item[(ii)] \( \text{SL}_2(\mathbb{C}) \) is equal to its own commutator subgroup.
+    \end{enumerate}
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item[(i)] We first note that $a,b$ adds a multiple of a row or column to the other. It suffices to multiply an $A$ in SL$_2(\C)$ by these generators to get an generator of this form. Let 
+        \begin{equation*}
+            A=\begin{pmatrix}
+                x & y \\
+                z & w
+                \end{pmatrix}
+        \end{equation*}
+        multiplying by appropriate $b$, (let $b=-z/x$) we can assume that $z=0$, thus 
+        \begin{equation*}
+            A=\begin{pmatrix}
+                x & y \\
+                0 & x^{-1} 
+                \end{pmatrix}
+        \end{equation*} 
+        Now it suffices to scale such $x=1$. We see that it suffices to show that the scaling matrix 
+        \begin{equation*}
+            \begin{pmatrix}
+                1/x & a \\
+                0 & x 
+                \end{pmatrix}
+        \end{equation*}
+        can be generated by $a,b$. This can be done.
+        \[
+\begin{pmatrix}
+x & 0 \\
+0 & \frac{1}{x}
+\end{pmatrix}
+=
+\begin{pmatrix}
+1 & x - 1 \\
+0 & 1
+\end{pmatrix}
+\begin{pmatrix}
+1 & 0 \\
+1 & 1
+\end{pmatrix}
+\begin{pmatrix}
+1 & \frac{1}{x} - 1 \\
+0 & 1
+\end{pmatrix}
+\begin{pmatrix}
+1 & 0 \\
+-1 & 1
+\end{pmatrix}.
+\]
+    
+        \item[(ii)] It suffices to show that the generators $a,b$ are of the form $xyx^{-1}y^{-1}$:
+        latex
+        \begin{equation*}
+            a=\left[\begin{pmatrix}
+                1 & a/2 \\
+                0 & 1
+                \end{pmatrix}, \begin{pmatrix}
+                    1 & 0 \\
+                    1 & 1
+                    \end{pmatrix}\right]
+        \end{equation*}
+    \end{enumerate}
+\end{proof}
+
+
+\begin{prob}
+    Prove that the quotient ring \( \mathbb{Z}[\sqrt{2}]/(3) \) is a field.
+\end{prob}
+\begin{proof}
+    Since $\Z[\sqrt{2}]/(3)$ is finite, it is a field iff it is an integral domain. Hence it suffices to see that $(3)$ is a prime ideal in $\Z[\sqrt{3}]$.
+\end{proof}
+
+
+
+\begin{prob}
+    Compute the Galois group of the splitting field of the polynomial \( X^4 - 3 \) over \( \mathbb{Q} \).
+\end{prob}
+\begin{proof}
+    The Galois extension generated by this polynomial is 
+    \begin{equation*}
+        \Q(\sqrt[4]{3}, i)
+    \end{equation*}
+    Thus the Galois group has order $8$, i.e., a $2$-Sylow subgroup of $S_4$, hence it must be isomorphic to $D_8$.
+\end{proof}
+
+
+
+
+\begin{prob}
+    Compute the character table for the dihedral group \( D_5 \).
+\end{prob}
+
+
+
+
+\chapter{Fall 2022}
+
+I will never be strong enough for 6.
+% (Huaji Li)
+
+
+
+\begin{prob}
+    Find the positive integers \(k, l, m\) such that 
+    \[x^{2k} - x^{3l+1} + x^{3m+2}\] 
+    is divisible by \(x^2 - x + 1\).
+\end{prob}
+\begin{proof}
+    
+\end{proof}
+
+
+
+\begin{prob}
+    Prove that the group of upper triangle matrices $G$ under multiplication is solvable.
+\end{prob}
+\begin{proof}
+    We will construct a sequence 
+    \begin{equation*}
+        I=G_0\subset G_1\subset\dots \subset G_n=G
+    \end{equation*}
+    such that $G_{i+1}/G_i$ is abelian. We take $G_{n-1}=[G,G]$, then we see that $[G,G]$ is generated by upper triangular matrices with diagonal entries all equal to $1$. It is clear that $[G,G]$ is normal in $G$, and the abelianization $G^{ab}=G/[G,G]$ is abelian. Next we take $G_{n-2}=[G_n,G_n]$, we see that 
+    \begin{equation*}
+        G_{n-2}=\left\{(a_{ij}): a_{ii}=1, a_{i,i+1}=0, \text{ for all } i\right\}
+    \end{equation*}
+    This process can be repeated and eventually it will terminate because we will just get $[G_1,G_1]=I$.
+\end{proof}
+
+
+
+
+\begin{prob}
+    Let \(C\) be the ring of continuous functions on the unit segment \([0,1]\). For \(r \in [0,1]\), put 
+    \[\mathfrak{A}_r = \{\varphi \in C \mid \varphi(r) = 0\}.\]
+    Prove that:
+    \begin{itemize}
+        \item[(1)] \(\mathfrak{A}_r\) is a maximal ideal of \(C\); and
+        \item[(2)] every maximal ideal of \(C\) is \(\mathfrak{A}_r\) for some \(r \in [0,1]\).
+    \end{itemize}
+\end{prob}
+
+
+
+
+
+\begin{prob}
+    Prove that the order of a \(2 \times 2\) linear matrix \(A \in GL_2(\mathbb{Z})\) is infinite or equal to one of the values \(\{1, 2, 3, 4, 6\}\). Show that in all cases but when the order is 1, there exists an infinite number of matrices with the same order.
+\end{prob}
+
+
+
+
+\begin{prob}
+    Let \(G\) be a finite group. Show that there exist fields \(F \subseteq E\) such that the field extension \(E/F\) is Galois with group \(G\).
+\end{prob}
+\begin{proof}
+    Let $|G|=n$, then $G$ can be embedded into $S_n$. Let $F=\Q(t_1,\dots,t_n)$ be the field of rational functions in $n$ variables, and let $E$ be the subfield of $F$ that is fixed under the action of $S_n$:
+    \begin{equation*}
+        E=\Q(s_1,\dots, s_n)
+    \end{equation*} 
+    where $s_i$ are elementary symmetric polynomials. We see that $F/E$ is a Galois extension because we can take $f\in E[x]$ as 
+    \begin{equation*}
+        f(x)=(x-t_1)\dots(x-t_n)
+    \end{equation*}
+    and $F$ is the splitting field of $f$. Moreover, every permutation of the roots $t_i$, i.e., every $\sigma\in S_n$, induces a automprhism $F\to F$ that fixes $E$.
+    \begin{equation*}
+        \gal(F/E)=S_n
+    \end{equation*}
+    Let
+    \begin{equation*}
+        F^G=\{x\in F: \sigma(x)=x, \text{ for all } \sigma\in G\}
+    \end{equation*}
+    then we see that 
+    \begin{equation*}
+        \gal(F/F^G)=G
+    \end{equation*}
+\end{proof}
+
+
+
+
+\begin{prob}
+    Let \(F: \text{Rings} \rightarrow \text{Sets}\) be the functor from the category of unital rings to the category of sets taking a ring \(R\) to the set \(F(R) = \{x^2 \mid x \in R\}\). Determine whether \(F\) is representable.
+\end{prob}
+
+
+
+
+
+\chapter{Spring 2022}
+
+
+\begin{prob}
+    Let \(C_m\) and \(C_n\) be finite cyclic groups of order \(m\) and \(n\) respectively, with \(m, n \geq 2\). Prove that the normal subgroup of the free product \(C_m * C_n\) generated by elements of the form \(\sigma \tau^{-1} \tau^{-1}\) has finite index.
+\end{prob}
+
+
+
+\begin{prob}
+    Calculate the group \(\text{Aut}(S_3)\). Are all automorphisms inner automorphisms?
+\end{prob}
+
+
+
+\begin{prob}
+    Let \(A\) be a nilpotent square matrix and let \(f\) be a polynomial in one variable, both over a field. Prove that \(f(A)\) is invertible if and only if \(f(0) \neq 0\).
+\end{prob}
+
+
+
+\begin{prob}
+    Let \(F_q\) denote the field with \(q\) elements. Let \(\alpha \in F_{224}^\times\) be an element of multiplicative order \(2^{24} - 1\). How many roots of the minimal polynomial of \(\alpha\) over the field \(F_4\) are there in the field \(F_{224}\)?
+\end{prob}
+
+
+
+\begin{prob}
+    Let \(f\) be a polynomial with integer coefficients. Prove that if \(f(0)\) and \(f(1)\) are odd then \(f\) has no integral roots.
+\end{prob}
+
+
+
+\begin{prob}
+    Describe any irreducible complex representation of the symmetric group \(S_4\) that has dimension greater than 1.
+\end{prob}
+
+
+
+
+\chapter{Fall 2021}
+
+
+
+\begin{prob}
+    Let \(A\) be a nilpotent \(2 \times 2\)-matrix. Prove that 
+    \[A^2 = 0.\]
+\end{prob}
+
+
+\begin{prob}
+    Prove that every polynomial with integral coefficients of degree \(\geq 1\) has a root in a field \(\mathbb{F}_p\) for infinitely many prime numbers \(p\).
+\end{prob}
+
+
+\begin{prob}
+    Which groups have a proper subgroup that contains all other proper subgroups?
+\end{prob}
+
+
+\begin{prob}
+    Prove that the automorphism group of every noncommutative group is not cyclic.
+\end{prob}
+
+
+\begin{prob}
+    Establish an isomorphism of \(\mathbb{Q}\) algebras 
+    \[\mathbb{Q}(\sqrt{p} + \sqrt{q}) \simeq \mathbb{Q}(\sqrt{p}) \otimes_{\mathbb{Q}} \mathbb{Q}(\sqrt{p}),\] 
+    where \(p, q\) are distinct prime numbers.
+\end{prob}
+
+
+\begin{prob}
+    Let \(p\) is a prime number. Prove that every irreducible complex representation of dimension \(\geq 2\) of every group of order \(p^3\) is faithful.
+\end{prob}
+
+
+
+
+\chapter{Spring 2021}
+
+
+\begin{prob}
+    Let \(n_{1}, n_{2}, \ldots, n_{l}\) be \(l \geq 1\) distinct integers. Prove that the polynomial 
+    \[(x + n_{1})(x + n_{2}) \ldots (x + n_{l}) - 1\] 
+    is irreducible over the rational numbers.
+\end{prob}
+
+
+\begin{prob}
+    Prove that the polynomial \(x^{l} - x - 1\) is irreducible over the rational numbers for every prime integer \(l\).
+\end{prob}
+\begin{proof}
+    It suffices to show that $f(x)=x^l-x-1\mod l$ is irreducible over $\F_l$. Let $\alpha$ be a root of $f(x)$, then $\alpha+k$ is also a root, for all $1<k<p$. Since $0$ is not a root, $f$ has no root over $\F_p$. Now let $\alpha\in\bar{\F}_p$ be a root of $f$, then we see 
+    \begin{equation*}
+        \alpha^{p^p}-\alpha=(\alpha+1)^{p^{p-1}}-\alpha=\alpha^{p^{p-1}}-\alpha+1=\dots=\alpha^p-\alpha=0
+    \end{equation*}
+    This implies $\alpha\in\F_{p^p}$. Since $\alpha\not\in\F_p$, we must have the minimal polynomial of $\alpha$ have degree $p$, because any degree $<p$ would give a subfield of $\F_{p^p}$, which is only $\F_p$. This shows that $f$ is the minimal polynomial, i.e., irreducible. 
+    \begin{equation*}
+        m_\alpha(x)\mid f(x), \quad \deg(m_\alpha)=\deg(f)\Rightarrow f=m_\alpha
+    \end{equation*}
+\end{proof}
+
+
+\begin{prob}
+    \begin{itemize}
+        \item[(a)] Let \(V\) be a vector space over a field \(k\) and \(\psi \in \bigwedge^{n}(V), v \in V, v \neq 0\), be respectively an alternating tensor of degree \(n\) and a vector. Verify that \(\psi \land v = 0\) if and only if \(\psi = v \land \varphi\) for some \(\varphi \in \bigwedge^{n-1}(V)\).
+        
+        \item[(b)] Which of matrices 
+        \[A_{1} = \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}, \quad A_{2} = \begin{pmatrix} \frac{1}{2} & 0 \\ 0 & 2 \end{pmatrix}, \quad A_{3} = \begin{pmatrix} 1 & 0 \\ 2 & 1 \end{pmatrix}\] 
+        are conjugate in the group \(\text{GL}_{2}(\mathbb{C})\)?
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item If $\psi=\varphi$, then it is clear that $\psi\wedge v=0$; now for the reverse direction, we can choose a basis for $V=\{v=v_1, v_2, \dots, v_{m}\}$ such that $v$ is a basis element. Thus we can write a basis for $\bigwedge^n(V)$:
+        \begin{equation*}
+            v_{i_1}\wedge\dots\wedge v_{i_n}
+        \end{equation*}
+        where $1\leq i_j\leq m$ subject to $v_i\wedge v_j=-v_j\wedge v_i$. Then we can write
+        \begin{equation*}
+            \psi=\sum a_{i}v_{i_1}\wedge\dots v_{i_n}
+        \end{equation*}
+        Then 
+        \begin{equation*}
+            \psi\wedge v_1=0
+        \end{equation*}
+        implies that the basis elements that do not contain $v_1$ have coefficients $0$ in $\psi$, and that 
+        \begin{equation*}
+            \psi=v_1\wedge\left(\sum_ia_i v_{i_2}\wedge\dots\wedge v_{i_n}\right)
+        \end{equation*}
+
+        
+        
+        
+        
+        
+        
+        
+        
+        % Suppose that $\psi=\sum_{i}a_iw_i$, where $\{w_i\}$ is basis for $\bigwedge^n(V)$. Then 
+        % \item \begin{equation*}
+        %     \left(\sum_ia_iw_i\right)=\sum_ia_iw_i\wedge v=0
+        % \end{equation*}
+        % This implies that $w_i\wedge v$ is a linearly dependent set in $\bigwedge^{n+1}(V)$. In other words, we can write 
+        % \begin{equation*}
+        %     w_1\wedge v=\sum_{i\geq 2}b_iw_i\wedge v
+        % \end{equation*}
+        % Hence we can write $\psi$ as 
+        % \begin{equation*}
+        %     \psi=a_i w_i
+        % \end{equation*}
+        
+        
+        
+        
+        
+        % $\psi=v_1\wedge\dots\wedge v_n$, and $\psi\wedge v$ is an element in $\bigwedge^{n+1}V$, then we know 
+        % \begin{equation*}
+        %     v_1\wedge\dots\wedge v_n\wedge v=0\iff \{v_1,\dots, v_n, v \} \text{ linearly dependent in $V$}
+        % \end{equation*}
+        % Hence writing $v_1=cv+\sum_{i=2}^na_iv_i$, we have 
+        % \begin{equation*}
+        %     \psi=cv\wedge v_2\wedge\dots\wedge v_n=v\wedge\varphi
+        % \end{equation*}
+        % where $\varphi=cv_2\wedge\dots\wedge v_n$ is an element in $\bigwedge^{n-1}V$.
+        \item Two matrices are conjugate (i.e., they are similar) iff they have the same Jordan form. $A_1,A_3$ are similar.
+    \end{enumerate}
+\end{proof}
+
+
+
+
+\begin{prob}
+    \begin{itemize}
+        \item[(a)] Let \(G\) be a finite group and \(H\) be its proper subgroup. Prove that \(G\) is not a union of conjugates of \(H\).
+        
+        \item[(b)] Prove that if \(G\) is a transitive group of permutations of a finite set \(X\) of \(n\) objects, \(n > 1\), then there exists \(g \in G\) with no fixed points in \(X\).
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item The number of subgroups conjugate to $H$ is $[G:N_G(H)]$, suppose $G$ is a union of conjugates of $H$: 
+        \begin{align*}
+            |G|=[G: N_G(H)]\cdot |H|
+        \end{align*}
+        but at the same time, conjugates of $H$ are subgroups that intersect at least at the identity, hence 
+        \begin{equation*}
+            |G|\leq [G:N_G(H)]\cdot(|H|-1)+1
+        \end{equation*}
+        The only way for them to be equal is when $G=H$.
+        \item Follows directly from (a): there exists $g\in G$ such that 
+        \begin{equation*}
+            g\not\in g_1Hg_1^{-1}
+        \end{equation*}
+        for all $g_1\in G$.
+    \end{enumerate}
+\end{proof}
+
+
+\begin{prob}
+    Let \(E/F\) be an algebraic extension of fields. Prove that \(E(x)/F(x)\) is also algebraic and 
+    \[[E(x):F(x)] = [E:F].\]
+\end{prob}
+
+
+\begin{prob}
+    Prove that every irreducible representation of a finite cyclic group over real numbers has dimension \(\leq 2\).
+\end{prob}
+
+
+
+\chapter{Fall 2020}
+
+\begin{prob}
+    Let \(a_{1},\ldots,a_{n}\) be distinct integers. Prove that the polynomial
+    \[(x-a_{1})^{2}\ldots(x-a_{n})^{2}+1\]
+    is irreducible over the rational numbers.
+\end{prob}
+
+
+\begin{prob}
+    Let \(q\) be a nondegenerate quadratic form on an \(2n\)-dimensional vector space \(V\) which vanishes on an \(n\)-dimensional subspace \(U\). Verify that:
+    \begin{itemize}
+        \item[(1)] there exists such an \(n\)-dimensional subspace \(U^{\prime}\) that \[V=U\oplus U^{\prime}\text{ and }q(U^{\prime})=0;\]
+        \item[(2)] in an appropriate basis of \(V\), \(q\) has the form \[x_{1}x_{2}+x_{3}x_{4}+\cdots+x_{2n-1}x_{2n}.\]
+    \end{itemize}
+\end{prob}
+
+
+\begin{prob}
+    Let \(V\) be a finite dimensional vector space of dimension \(>2\). Are vector spaces \(\bigwedge^{2}(\bigwedge^{2}(V))\) and \(\bigwedge^{4}(V)\) isomorphic?
+\end{prob}
+
+
+\begin{prob}
+    Prove that any group of order 100 is solvable.
+\end{prob}
+
+
+\begin{prob}
+    Prove that any finite group is a Galois group of some extension of fields.
+\end{prob}
+
+
+\begin{prob}
+    Let \(A\) be a semisimple finite dimensional algebra over \(\mathbb{C}\) and \(V\) is an \(A\)-module, finite dimensional over \(\mathbb{C}\). Prove that \(V\) has finitely many \(A\)-submodules if and only if \(V\) is a direct sum of pairwise nonisomorphic simple \(A\)-modules.
+\end{prob}
+
+
+\chapter{ Spring 2020}
+
+
+\begin{prob}
+    Let \(k\) be a field and \(f\in k[[x]]\), \(g\in k[x]\) be a power series and a polynomial respectively. Do exist \(r\in k[x]\), \(h\in k[[x]]\) such that \(f=hg+r\) and either \(r=0\) or \(\deg r<\deg g\)?
+\end{prob}
+
+
+
+\begin{prob}
+    Let \(f\in\mathbb{Z}[x]\) be a polynomial with integer coefficients. Verify that \(f\) does not have integer roots if \(f(0),f(1)\) are odd integers.
+\end{prob}
+
+
+
+
+\begin{prob}
+    Prove that if a linear operator \(B\) on a finite dimensional complex vector space commutes with any linear operator which commutes with a linear operator \(A\) then \(B\) is a complex polynomial of \(A\). That is, \(B=f(A)\) where \(f\in\mathbb{C}[x]\).
+\end{prob}
+
+
+\begin{prob}
+    Let \(G\) be a finite subgroup of \(\mathrm{SL}_{n}(\mathbb{Z})\). Prove that the order of \(G\) divides \[\frac{1}{2}(3^{n}-1)(3^{n}-3)\ldots(3^{n}-3^{n-1}).\] 
+    Hint: Use reduction modulo 3.
+\end{prob}
+
+
+
+\begin{prob}
+    Can an effective complex character of a group of order 8 take the following values 
+    \[(1,-1,2,0,0,0,2,0)?\]
+
+\end{prob}
+
+
+
+\begin{prob}
+    Determine what of the following class functions of \(\mathrm{S}_{3}\)
+    \[f_{1}\colon(e,(12),(13),(23),(123),(132))\mapsto(6,-4,-4,-4,0,0);\]
+    \[f_{2}\colon(e,(12),(13),(23),(123),(132))\mapsto(6,-4,-4,-4,3,3)\]
+    is an effective character of \(\mathrm{S}_{3}\) and find its representation.
+\end{prob}
+
+
+
+
+
+
+
+
+\chapter{Fall 2019}
+
+\textcolor{red}{3,5}
+
+\begin{prob}
+    Let \(\mathbb{F}_{q}\) be a field with \(q\neq 9\) elements and \(a\) be a generator of the cyclic group \(\mathbb{F}^{*}_{q}\). Show that \(\mathrm{SL}_{2}(\mathbb{F}_{q})\) is generated by
+    \[\left(\begin{array}{cc}1&1\\0&1\end{array}\right),\ \left(\begin{array}{cc}1&0\\a&1\end{array}\right).\]
+\end{prob}
+\begin{proof}
+    I will not do all the computation here, but here are a list of matrices one can get using these generators:
+    \begin{equation*}
+        \begin{pmatrix}
+            1&t\\
+            0&1
+        \end{pmatrix}, \quad \begin{pmatrix}
+            1&0\\
+            1&1
+        \end{pmatrix},\quad \begin{pmatrix}
+            0&-1\\
+            1&0
+        \end{pmatrix}
+    \end{equation*}
+    where $t$ is any element in $\F_q$. And one can essentially show that these generate all the upper triangular matrices in $\text{SL}_2(\F_q)$, i.e.,
+    \begin{equation*}
+        \left\{\begin{pmatrix}
+            x&y\\
+            0&x^{-1}
+        \end{pmatrix}: x,y\in\F_q\right\}
+    \end{equation*}
+    and one can show that any matrix in $\text{SL}_2(\F_q)$ is a product of $\begin{pmatrix}
+        0&-1\\
+        1&0
+        \end{pmatrix} $ and upper triangular matrices, then done.
+\end{proof}
+
+
+
+
+\begin{prob}
+    Let \(p,q\) be two prime numbers such that \(p|q-1\). Prove that:
+    \begin{itemize}
+        \item[(a)] there exists an integer \(r\not\equiv 1\mod q\) such that \(r^{p}\equiv 1\mod q\);
+        \item[(b)] there exists (up to an isomorphism) only one noncommutative group of order \(pq\).
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(a)] We want to find there exists $r\in (\Z/q\Z)^\times$ such that $r\neq 1$ such that $r^p\equiv 1\mod q$. If $p\mid(q-1)$, then there exists an element of order $p$ in the group $(\Z/q\Z)^\times$ by Cauchy's theorem, i.e., $r^{p}\equiv 1\mod q$.
+        \item[(b)] We must have $q>p$ then $n_q=1$, and we can write 
+        \begin{equation*}
+            G=N\otimes_\theta P
+        \end{equation*}
+        where $N$ is a normal $q$-subgroup and $P$ is a Sylow $p$-subgroup. We note that 
+        \begin{equation*}
+            \theta: 1\mapsto r
+        \end{equation*}
+        where $r$ is an element of order $p$, which exists by (a). And the group is described as 
+        \begin{equation*}
+            G=\la g,h: g^q=h^p=e: hgh^{-1}=g^{r}\ra
+        \end{equation*}
+        This group is unique because the elements $g\mapsto g^r$ where $r$ is any element wth order $p$ forms a subgroup in $\text{Aut}(\Z/q\Z)$, thus they define isomorphic strucutres of $G$.
+    \end{itemize}
+\end{proof}
+
+
+\begin{prob}
+    Let \(F,L\) be extensions of a field \(K\). Suppose that \(F/K\) is finite. Show that there exists an extension \(E/K\) such that there are monomorphisms of \(F\) into \(E\) and of \(L\) into \(E\) which are identical on \(K\).
+\end{prob}
+
+
+
+\begin{prob}
+    Find all irreducible representations of a finite \(p\)-group over a field of characteristic \(p\).
+\end{prob}
+\begin{proof}
+    Let $G$ any finite $p$-group. Let $V$ be an irreducible representation over $\F_p$, consider the $[\F_pG]$-module $W$ generated by any $v\in V\setminus\{0\}$. We see $W$ is a finite-dimensional vector space over $\F_p$, i.e., 
+    \begin{equation*}
+        |W|=p^d
+    \end{equation*}
+    for some $d\geq 1$. We consider the action of $G$ on $W$, all the orbits of this action either has size $1$ or is a power of $p$, since $G$ is a $p$-group, by the class formula, let $N$ be the number of nontrivial orbits of size $1$, 
+    \begin{equation*}
+        |W|\equiv 1+N\mod p\Rightarrow 1+N\equiv 0\mod p
+    \end{equation*}
+    Hence there exists at least one nontrivial orbit $\{v\}$ of size $1$. We consider the vector space $\bar{W}$ generated by $v$ over $\F_p$: it is one-dimensional vector space contained in $V$, invariant under $G$, since $V$ is irreducible, we must have $V=\bar{W}$. The action of $G$ on $\bar{W}$ is the trivial action, thus all irreducible representations of a finite $p$-group over $\F_p$ are trivial.
+\end{proof}
+
+
+\begin{prob}
+    How many two-sided ideals has the group algebra \(\mathbb{C}[\mathrm{S}_{3}]\), where \(\mathrm{S}_{3}\) is the group of permutations of \(\{1,2,3\}\)?
+\end{prob}
+\begin{proof}
+    By Artin-Wedderburn, $\C[S_3]$ can be decomposed into the following 
+    \begin{equation*}
+        \C[S_3]\cong M_{n_1}(\C)\oplus \dots\oplus M_{n_k}(\C)
+    \end{equation*}
+    We note that $n_1^2+\dots+n_k^2=6$, and each $M_{n_i}$ corresponds to an irreducible representation of dimension $n_i$, hence we see 
+    \begin{equation*}
+        \C[S_3]=\C\oplus\C\oplus M_2(\C)
+    \end{equation*}
+    Thus it has $3$ two sided ideals.
+\end{proof}
+
+
+
+
+\chapter{Spring 2018}
+
+{I will not do 5.}
+
+\textcolor{red}{2,3}
+
+\begin{prob}
+    Let \(F\) be a field of characteristic not equal to 2. Let \(D\) be the non-commutative algebra over \(F\) generated by elements \(i,j\) that satisfy the relations
+    \[i^2 = j^2 = 1, \quad ij = -ji.\]
+    Define \(k = ij.\)
+    \begin{itemize}
+        \item[(a)] Verify that \(D\) is isomorphic to the algebra \(M_2(F)\) of \(2 \times 2\) matrices in such a way that
+        \[1 \leftrightarrow \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}, i \leftrightarrow \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}, j \leftrightarrow \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}, k \leftrightarrow \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}.\]
+        \item[(b)] Write \(q = x + yi + zj + uk\) for \(x,y,z,u \in F\). Verify that the norm
+        \[N(q) = x^2 - y^2 - z^2 + u^2\]
+        corresponds to the determinant under the isomorphism of part (a).
+        \item[(c)] What does the involution \(q \mapsto \bar{q} = x - yi - zj - uk\) on \(D\) correspond to on the matrix side?
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(a)] Let $\varphi$ denote this map, it is clear that $\varphi(i)^2=\varphi(j)^2=I$, and $\varphi(ij)=\varphi(-ji)=\varphi(k)$. Thus it suffices to show that $\varphi$ is a bijecction. Since $D$ is generated by $i,j$ and they each have other $2$, then any element in $D$ is of the form 
+        \begin{equation*}
+            ai+bj
+        \end{equation*}
+        where $a,b\in F$. Then we see $\varphi$ is injective because 
+        \begin{equation*}
+            \varphi(ai+bj)=0\Rightarrow a=b=0
+        \end{equation*}
+        To show $\varphi$ is surjective, it suffices to see that $M_2(F)$ is generated by $\varphi(i),\varphi(j)$. Using the fact the generators of $M_2(F)$ are 
+        \begin{equation*}
+            \left\{\begin{pmatrix}
+                1&0\\
+                0&0
+            \end{pmatrix}, \begin{pmatrix}
+                0&1\\
+                0&0
+            \end{pmatrix}, \begin{pmatrix}
+                0&0\\
+                1&0
+            \end{pmatrix}, \begin{pmatrix}
+                0&0\\
+                0&1
+            \end{pmatrix}\right\}
+        \end{equation*}
+        We see that they can be generated using $\varphi(i),\varphi(j)$, hence also surjective. 
+        \item[(b)] We see that 
+        \begin{equation*}
+            \varphi(q)=\begin{pmatrix}
+                x+y&z+u\\
+                z-u&x-y
+            \end{pmatrix}
+        \end{equation*}
+        Thus $N(q)=\det(\varphi(q))$.
+        \item[(c)] We see 
+        \begin{equation*}
+            \varphi(\overline{q})=\begin{pmatrix}
+                x-y&-(z+u)\\
+                -(z-u)&x+y
+            \end{pmatrix}
+        \end{equation*}
+        This corresponds to taking the adjugate 
+        \begin{equation*}
+            \begin{pmatrix}
+                a&b\\
+                c&d
+            \end{pmatrix}
+            \mapsto
+            \begin{pmatrix}
+                d&-b\\
+                -c&a
+            \end{pmatrix}
+        \end{equation*}
+    \end{itemize}
+\end{proof}
+
+
+
+\begin{prob}
+    Let \(R\) be a commutative ring. An \(R\)-module \(M\) is said to be finitely presented if there exists a right-exact sequence
+    \[R^m \longrightarrow R^n \longrightarrow M \longrightarrow 0\]
+    for some non-negative integers \(m,n\). Prove that any finitely generated projective \(R\)-module \(P\) is finitely presented.
+\end{prob}
+
+
+
+
+
+
+\begin{prob}
+    Let \(R\) be the ring \(\mathbb{Z}[\zeta_p]\), where \(p\) is a prime number and \(\zeta_p\) denotes a primitive \(p\)th root of unity in \(\mathbb{C}\). Prove that if an integer \(n \in \mathbb{Z}\) is divisible by \(1 - \zeta_p\) in \(R\), then \(p\) divides \(n\).
+\end{prob}
+
+
+
+
+\begin{prob}
+    Is \(S_4\) isomorphic to a subgroup of \(\text{GL}_2(\mathbb{C})\)?
+\end{prob}
+\begin{proof}
+    We've done this in Spring 2017 exam. We want to show there is no injective homomorphism from $S_4$ to $\text{GL}_2(\C)$, i.e., it is a representation. The $2$ dimensional representation and the direct sum of $1$-dimensional representations all send $(12)(34)$ to $\begin{pmatrix}
+        1&0\\
+        0&1
+    \end{pmatrix}$.
+\end{proof}
+
+
+
+
+\begin{prob}
+    Let \(n\) be a positive integer and \(A\) an abelian group. Prove that
+    \[\text{Ext}^1(\mathbb{Z}/n\mathbb{Z}, A) \cong A/nA.\]
+\end{prob}
+
+
+
+
+
+\chapter{Fall 2017}
+
+
+\begin{prob}
+    Show that there is no simple group of order 30.
+\end{prob}
+\begin{proof}
+    We know that $n_5=1$ or $6$, if $n_5=1$, then we are done. If $n_5=6$, then there are $30-4\cdot 6=6$ elements of order $\neq 6$, and we know there exists at least one Sylow $2$-subgroup and one Sylow $3$-subgroup, combined with the identity element, we see either $n_2=1$ or $n_3=1$. 
+\end{proof}
+
+
+\begin{prob}
+    Let \(\Lambda\) be a free abelian group of finite rank \(n\), and let \(\Lambda^{\prime}\subset\Lambda\) be a subgroup of the same rank. Let \(x_{1},\ldots,x_{n}\) be a \(\mathbb{Z}\)-basis for \(\Lambda\), and let \(x^{\prime}_{1},\ldots,x^{\prime}_{n}\) be a \(\mathbb{Z}\)-basis for \(\Lambda^{\prime}\). For each \(i\), write \(x^{\prime}_{i}=\sum_{j=1}^{n}a_{ij}x_{j}\), and let \(A:=(a_{ij})\in \text{Mat}_{n\times n}(\mathbb{Z})\). Show that the index \([\Lambda:\Lambda^{\prime}]\) equals \(|\det A|\).
+\end{prob}
+\begin{proof}
+    We notice that $\Lambda=\Z\oplus\dots\oplus\Z$, and $\Lambda'$ is a subgroup of same rank thus 
+    \begin{equation*}
+        \Lambda'=d_1\Z\oplus\dots\oplus d_n\Z
+    \end{equation*}
+    where $d_i$ are integers, up to some basis change (we will argue below why change of basis doesn't affect the equality). We note that 
+    \begin{equation*}
+        [\Lambda:\Lambda']=\left|\prod_{i=1}^nd_i\right|
+    \end{equation*}
+    It suffices to take the basis of $\Lambda$ as $x_i=(0,\dots,0,1,0,\dots,0)$, where only the $i$th entry is nonzero and equal to $1$, and the basis for $\Lambda'$ as $x_j'=(0,\dots, 0,d_j,0,\dots, 0)$, where only the $j$th entry is nonzero and equal to $d_j$. This is because for any change of basis matrix $P$, we have 
+    \begin{equation*}
+        \det(PAP^{-1})=\det(A)
+    \end{equation*} 
+    i.e., we can freely change the basis of $A$. With respect to the basis chosen above, we have 
+    \begin{equation*}
+        A=\begin{pmatrix}
+            d_1&0&\dots&0\\
+            0&d_2&\dots&0\\
+            \dots&\dots&\dots&\dots\\
+            0&\dots&\dots&d_n
+        \end{pmatrix}
+    \end{equation*}
+    This shows that 
+    \begin{equation*}
+        \left|\det A\right|=\left|\prod_{i=1}^nd_i\right|=[\Lambda:\Lambda']
+    \end{equation*}
+    as desired.
+\end{proof}
+
+
+\begin{prob}
+    In this problem all rings are commutative.
+    \begin{itemize}
+        \item[(a)] Let \(R\) be a local ring with maximal ideal \(\mathfrak{m}\), let \(N\) and \(M\) be finitely generated \(R\)-modules, and let \(f\colon N\to M\) be an \(R\)-linear map. Show that \(f\) is surjective if and only if the induced map \(N/\mathfrak{m}N\to M/\mathfrak{m}M\) is.
+        \item[(b)] Recall that a module \(M\) over a ring \(R\) is \textit{projective} if the functor \(\operatorname{Hom}_{R}(M,-)\) is exact. Show that if \(R\) is local and \(M\) is finitely generated projective, then \(M\) is free.
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(a)] If $f$ is surjective, this means for any $y\in M$ there exists $x$ such that $f(x)=y$, hence the induced map $\overline{f}: x+\mathfrak{m}N\mapsto f(x)+\mathfrak{m}M$ is also sujrective: for any $y+\mathfrak{m}M$ there exists $x+\mathfrak{m}M$ such that $\overline{f}(x+\mathfrak{m}M)=y+\mathfrak{m}M$. Conversely, consider $\im(f)\subset M$, since $\overline{f}$ is surjective, we have $M=\im(f)+\mathfrak{m}M$, by Nakayama's lemma, 
+        \begin{equation*}
+            \mathfrak{m}(M/\im(f))=0
+        \end{equation*}
+        implies that $M/\im(f)=0$, i.e., $M=\im(f)$.
+        
+        
+        
+        
+        % \)take any $y\in M$, we know there exists $x$ such that $y-f(x)\in \mathfrak{m}M$
+        \item[(b)] I give up.
+    \end{itemize}
+\end{proof}
+
+
+
+\begin{prob}
+    Compute the Galois group of \(x^{5}-10x+5\) over \(\mathbb{Q}\).
+\end{prob}
+\begin{proof}
+    One can graph this function and see there are only $3$ real roots, we first note 
+    \begin{equation*}
+        \begin{cases}
+            f(-2)<0\\
+            f(-1)>0\\
+            f(1)<0\\
+            f(2)>0
+        \end{cases}
+    \end{equation*}
+    By IVT, there are at least $3$ real roots. By Rolle's theorem, between any roots, there must exists a point $f'(c)=0$, therefore we argue there can be at most 3 real roots because there are only two points $p$ such that $f'(p)=0$. This shows that there are $2$ complex roots, and let $r_1$ be a complex root. By Eisenstein, this polynomial is irreducible, and we know the Galois group $G$ is a subgroup of $S_5$. Because $G$ contains a transposition (sending two complex roots to each other), and an element of order $5$, we know that $G$ must be equal to $S_5$.
+
+    % , therefore a real root $r_2$ has minimal polynomial degree $5$ i.e., the Galois extension has degree 
+    % \begin{equation*}
+    %     \Q\subset\Q(r_1)\subset\Q(r_1,r_2)
+    % \end{equation*}
+    % has degree $125$. Since it contains an element of order $2$ (permuting the two complex roots) and and order $5$, the Galois group must be $S_5$.
+\end{proof}
+
+
+
+
+\begin{prob}
+    Let \(K/k\) be an extension of finite fields with \(\#k=q\), let \(\Phi\colon x\mapsto x^{q}\) denote the \(q\)th power Frobenius map on \(K\), and let \(G:=\text{Gal}(K/k)\).
+    \begin{itemize}
+        \item[(a)] Compute the minimal polynomial of \(\Phi\) as a \(k\)-linear endomorphism of \(K\).
+        \item[(b)] Use (a) to prove the \textit{normal basis theorem} in the case of the extension \(K/k\): there exists \(x\in K\) such that the set \(\{\sigma x\mid\sigma\in G\}\) is a \(k\)-basis for \(K\).
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(a)] Let $|K|=q^n$, we claim that the minimal polynomial is $f(t)=t^n$. This is because $\Phi$ is a generator of $G$, and $G$ has order $n$. (One can prove this fact by assuming there exists some $k<n$ such that $x^{p^k}=x$ for all $x\in K$, then $q^n$ divides $q^k$, which is a contradiction).
+        \item[(b)] We will use some general fact about linear algebra: $T:V\to V$ is a linear map, the minimal polynomial is equal to the characteristic polynomial if and only if there exists a vector $v$ such that  $\{v, Tv,\dots, T^{n-1}v\}$ is a basis for $V$. By (a), we know the minimal polynomial coincide with the characteristic polynomial, since $G$ is cyclic with generator $\Phi$, we see that there exists $x$ such that
+        \begin{equation*}
+            \left\{x,\Phi x,\dots, \Phi^{n-1}x\right\}
+        \end{equation*}
+        is a basis for $K$ over $k$.
+    \end{itemize}
+\end{proof}
+
+
+\begin{prob}
+    Let \(G\) be a finite group with center \(Z\subset G\). Show that if \(G\) admits a faithful irreducible representation \(G\to\text{GL}_{n}(k)\) for some positive integer \(n\) and some field \(k\), then \(Z\) is cyclic.
+\end{prob}
+\begin{proof}
+    We first assume that $k$ is algebraically closed. We know that $\rho(z)$ is a $G$-invariant map: take any $g\in G$,
+    \begin{equation*}
+        \rho(z)(\rho(g)(v))=\rho(g)\rho(z)(v)
+    \end{equation*}
+    therefore $\rho(z)=\lambda I_n$ for some $\lambda\in k^\times$, this shows that $\rho$ embdes $z$ into a group of $k^\times$, i.e., a cyclic group.
+
+    Now for the case where $k$ is not algebraically closed. Then any $\rho\otimes k^a$ is also faithful, and although $\rho\otimes k^a$ might not be irreducible, if $\rho\otimes k^a=\rho_1+\rho_2$, where $\rho_i$ are irreducible, then it follows that both $\rho_1$ and $\rho_2$ are faithful representations of $G$ over $k^a$. This again shows that $Z$ is cyclic.
+\end{proof}
+
+
+
+
+
+
+
+\chapter{Spring 2017}
+
+
+\begin{prob}
+    Let \(A\) be a commutative ring, and define the \textit{nilradical} \(\sqrt{0}\) to be the set of nilpotent elements in \(A\). Show that \(\sqrt{0}\) is equal to the intersection of all prime ideals in \(A\). Show that if \(A\) is reduced, then \(A\) can be embedded into a product of fields.
+\end{prob}
+\begin{proof}
+    Let $\{P_i:i\in I\}$ be the collection of prime ideals in $A$. We first show that 
+    \begin{equation*}
+        \sqrt{0}=\bigcap_{i}P_i
+    \end{equation*}
+    Let $a\in\sqrt{0}$, then for some $n\geq 0$, $a^n=0$, this implies that for all $i\in I$,
+    \begin{equation*}
+        a^n\in P_i\Rightarrow a\in P_i \text{ or } a^{n-1}\in P_i
+    \end{equation*}
+    since $P_i$ is prime. We claim that $a\in P_i$. If not, then $a^{n-1}\in P_i$ which implie $a^{n-2}\in P_i$ $\dots$ which eventually implies $a\in P_i$, which is a contradiction. Hence $\sqrt{0}\subset \bigcap_iP_i$. Now for the reverse inclusion, we use the following lemma:
+    \begin{lem}
+        Let $S$ be a multiplicative set in $A$ such that $0\not\in S$, then there exists a prime ideal $P\subset A$ such that 
+        \begin{equation*}
+            S\cap P=\emptyset
+        \end{equation*}
+    \end{lem}
+    Let $a\in\bigcap_iP_i$, then the set 
+    \begin{equation*}
+        S=\{a, a^2, \dots\}
+    \end{equation*}
+    is a multiplicative set, suppose that $a$ is not nilpotent, i.e., $a\not\in S$, then there exists a prime ideal that does not interserct $S$, which is a contradiction since $a\in P_i$ for all $i$. Thus 
+    \begin{equation*}
+        \sqrt{0}=\bigcap_iP_i
+    \end{equation*}
+
+    Now we show that if $A$ is reduced, then $A$ can be embedded into a product of fields. If $A$ is reduced, then $\sqrt{0}=0$, i.e., if $a\neq0$, then $a$ cannot be in all the prime ideals. Suppose $a\neq 0$, then there exists some $P_i$ such that $a\not\in P_i$. Then we can consider the map 
+    \begin{equation*}
+        A\to \frac{A}{P_i}\to\text{Frac}\left( \frac{A}{P_i}\right)
+    \end{equation*}
+    where 
+    \begin{equation*}
+        a\mapsto a+P_i\mapsto \frac{a+P_i}{1}
+    \end{equation*}
+    Thus we claim that $A$ embeds in 
+    \begin{equation*}
+        A\xrightarrow{\iota}\text{Frac}\left( \frac{A}{P_1}\right)\times \text{Frac}\left( \frac{A}{P_2}\right)\times\dots=\prod_{i\in I}\text{Frac}\left( \frac{A}{P_i}\right)
+    \end{equation*}
+    where $\text{Frac}$ denotes the field of fractions. If $a=0$, then $\iota(a)=(0,\dots, 0)$, if $a\neq 0$, then $a\not\in P_j$ for some $j$, and 
+    \begin{equation*}
+        \iota(a)=\left(0,\dots, 0, \frac{a+P_j}{1},0,\dots, 0\right)
+    \end{equation*}
+    where only the $j$-th entry is nonzero.
+\end{proof}
+
+
+
+\begin{prob}
+    Write down the minimal polynomial for \(\sqrt{2}+\sqrt{3}\) over \(\mathbb{Q}\) and prove that it is reducible over \(\mathbb{F}_{p}\) for every prime number \(p\).
+\end{prob}
+\begin{proof}
+    The minimal polynomial $p_m$ is 
+    \begin{equation*}
+        p_m(t)=(t^2-5)^2-24=t^4-10t^2+1
+    \end{equation*}
+    The roots are $\pm\sqrt{2}\pm\sqrt{3}$, thus this polynomial generates a field extension of $\Q$, 
+    \begin{equation*}
+        \Q(\sqrt{2},\sqrt{3})=\frac{\Q[t]}{(p_m(t))}
+    \end{equation*}
+    We claim that it suffices to show that $\sqrt{2}$ or $\sqrt{3}$ or $\sqrt{6}$ are in $\F_p$ for any prime $p$. Take $\sqrt{2}\in\F_p$ for example, we know $p_m(t)$ is not irreducible over $\Q(\sqrt{2})$, because then it would mean the degree of field extension $[\Q(\sqrt{2},\sqrt{3}): \Q]$ is 8, which is a contradiction.
+    \[\begin{tikzcd}
+        {\mathbb{Q}(\sqrt{2},\sqrt{3})} \\
+        {\mathbb{Q}(\sqrt{2})} \\
+        {\mathbb{Q}}
+        \arrow[from=2-1, to=1-1]
+        \arrow[from=3-1, to=2-1]
+    \end{tikzcd}\]
+    Thus $p_m(t)$ is reducible over $\Q(\sqrt{2})$. Now we show the following.
+    \begin{lem}
+        For any prime $p$, $\sqrt{2}$ or $\sqrt{3}$ or $\sqrt{6}$ are in $\F_p$ for any prime $p$.
+    \end{lem}
+    There exists a homomorphism (Legendre symbol) $\varphi:\F_p^\times\to \{\pm 1\}$, such that 
+    \begin{equation*}
+        \varphi(g)=\begin{cases}
+            1, \text{ if $g$ is a square}\\
+            -1, \text{ otherwise}
+        \end{cases}
+    \end{equation*}
+    Suppose that $2,3$ are not squares, i.e., $sqrt{2},\sqrt{3}\not\in\F_p^\times$, then 
+    \begin{equation*}
+        \varphi(2\cdot 3)=1
+    \end{equation*}
+    which implies $\sqrt{6}\in\F_p^\times$, concluding the proof.
+\end{proof}
+
+\begin{prob}
+    Let \(K/k\) be a finite separable field extension, and let \(L/k\) be any field extension. Show that \(K\otimes_{k}L\) is a product of fields.
+\end{prob}
+\begin{proof}
+    We know $K/k$ implies there exists $\alpha\in K$ such that 
+    \begin{equation*}
+        K=k(\alpha)
+    \end{equation*}
+    moreover, for any $t\in K$, the minimal polynomial of $t$ factors into distinct linear factors. Let $p_\alpha$ be the minimal polynomial of $\alpha$, 
+    \begin{align*}
+        K\otimes_kL&=\frac{k[t]}{(p_\alpha(t))}\otimes_kL\\
+        &=\frac{L[t]}{(p_\alpha(t))}\\
+        &=\frac{L[t]}{(p_\alpha^1(t))\dots(p_\alpha^k(t))}
+    \end{align*}
+    where $p_\alpha^i(t)$ are distinct irreducible factors over in $L[t]$. By Chinese Remainder Theorem, we must have 
+    \begin{equation*}
+        K\otimes_kL=\frac{L[t]}{(p_\alpha^1(t))}\dots\frac{L[t]}{(p_\alpha^k(t))}
+    \end{equation*}
+    i.e., a product of fields.
+\end{proof}
+
+
+\begin{prob}
+    Let \(M\) be an invertible \(n\times n\) matrix with entries in an algebraically closed field \(k\) of characteristic not 2. Show that \(M\) has a square root, i.e. there exists \(N\in\text{Mat}_{n\times n}(k)\) such that \(N^{2}=M\).
+\end{prob}
+\begin{proof}
+    It suffices to show that every Jordan block 
+    \[
+        J_n(\lambda) = 
+        \begin{bmatrix}
+        \lambda & 1       & 0       & \cdots & 0 \\
+        0       & \lambda & 1       & \cdots & 0 \\
+        0       & 0       & \lambda & \ddots & \vdots \\
+        \vdots  & \vdots  & \ddots  & \ddots & 1 \\
+        0       & 0       & \cdots  & 0      & \lambda
+        \end{bmatrix}
+        \]
+        where $\lambda\neq 0$ is a square. We will proceed using inductino. When $n=2$, the square root of 
+        \begin{equation*}
+            \begin{bmatrix}
+                \lambda&1\\
+                0&\lambda
+            \end{bmatrix}=\begin{bmatrix}
+                \lambda^\frac{1}{2}&\frac{1}{2}\lambda^{-\frac{1}{2}}\\
+                0&\lambda^\frac{1}{2}
+            \end{bmatrix}^2
+        \end{equation*} 
+        Now assume that $J_{k}$ is a square up to $k=n-1$, we want to show $J_n$ also has a square root. We claim $J_n$ has the following square 
+        \begin{equation*}
+            J_n=\begin{bmatrix}
+                B^2&x\\
+                0&\lambda
+
+            \end{bmatrix}=\begin{bmatrix}
+                B&x\\
+                0&\lambda^{1/2}
+            \end{bmatrix}^2
+        \end{equation*}
+        where $B$ is a $(n-1)\times (n-1)$ matrix and $x=(x_1,\dots,x_{n-1}), 0=(0,\dots,0)$. It suffices to find such an $x$ exists. Let $b_1,\dots,b_{n-1}$ denote the row vectors of $B$, we must satisfy 
+        \begin{equation*}
+            \begin{cases}
+                b_1\cdot x+x_1\lambda^\frac{1}{2}=0\\
+                \dots\\
+                b_{n-2}\cdot x+x_{n-2}\lambda^\frac{1}{2}=0\\
+                b_{n-1}\cdot x+x_{n-1}\lambda^\frac{1}{2}=1\\
+            \end{cases}
+        \end{equation*}
+        Namely, we need to find $x$ that satisfies 
+        \begin{equation*}
+            (B+\lambda^\frac{1}{2}I)x=\begin{bmatrix}
+                0\\
+                \dots\\
+                0\\
+                1
+            \end{bmatrix}
+        \end{equation*}
+        Since $(B+\lambda^{1/2}I)$ is invertible, there exists a unique solution, hence such $x$ exsits, $J_n$ has a square root!
+\end{proof}
+
+
+
+\begin{prob}
+    Prove directly from the definition of (left) semisimple ring that every such ring is (left) Noetherian and Artinian. (You may freely use facts about semisimple, Noetherian, and Artinian modules.)
+\end{prob}
+\begin{proof}
+    If $R$ is Artinian, then $R$ can be decomposed into a finite sum of simple rings, let $R_1,\dots, R_n$ be simple rings, we can write 
+    \begin{equation*}
+        R=\bigoplus_{i=1}^nR_i
+    \end{equation*}
+    where $R_i$ contains only the trivial ideal and $R_i$ as ideals. Now it is quite clear that every ascending and descending chain of ideals stabilizes because there are only finitely many distinct ideals. 
+\end{proof}
+
+\begin{prob}
+    Let \(G\) be a finite group and \(H\) an abelian subgroup. Show that every irreducible representation of \(G\) over \(\mathbb{C}\) has dimension \(\leq[G:H]\).
+\end{prob}
+\begin{proof}
+    Any irreduicble representation $\rho:H\to\mathbb{C}^\times$ is one-dimensional, and we consider induced representation of $\rho$, $\text{Ind}_H^G\rho$, we note that $\text{Ind}_H^G\rho$ is not necessarily irreducible, hence for any irreducible representation $\tilde{\rho}:G\to\text{GL}_n(\C)$, we have 
+    \begin{equation*}
+        \dim\tilde{\rho}\leq\dim(\text{Ind}_H^G\rho)
+    \end{equation*}
+    and 
+    \begin{equation*}
+        \text{Ind}_H^G\rho=\bigoplus_{i=1}^ng_iH
+    \end{equation*}
+    where $g_i$ are the representatives of the coset and the sum consists of exactly one copy for each coset. Hence we see 
+    \begin{equation*}
+        \dim\tilde{\rho}\leq\dim(\text{Ind}_H^G\rho)=[G:H]
+    \end{equation*}
+\end{proof}
+
+
+
+
+\chapter{Fall 2016}
+
+
+
+\begin{prob}
+    Determine \(\text{Aut}(S_{3})\).
+\end{prob}
+\begin{proof}
+    $\sigma\in\text{Aut}(S_3)$ is determined by where $(12)$ and $(123)$ are sent to. There are $6$ options in total and all of them are homomorphisms (conjugation). It is easy to check that this group is not commutative, i.e., 
+    \begin{equation*}
+        \text{Aut}(S_3)\cong S_3
+    \end{equation*}
+\end{proof}
+
+\begin{prob}
+    A group \(G\) is a semidirect product of subgroups \(N,H\subset G\) if \(N\) is normal and every element of \(G\) has a unique presentation \(nh\), \(n\in N\), \(h\in H\). Find all semidirect products (up to isomorphism) of \(N=\mathbb{Z}/11\mathbb{Z}\), \(H=\mathbb{Z}/5\mathbb{Z}\).
+\end{prob}
+\begin{proof}
+    Let $G=N\rtimes_\theta H$, where 
+    \begin{equation*}
+        \theta: \Z/5\Z\to \text{Aut}(\Z/11\Z)\cong\Z/10\Z
+    \end{equation*}
+    such that
+    \begin{equation*}
+        5\theta(1)\equiv 0\mod 10
+    \end{equation*}
+    Thus $\theta(1)$ could be $0, 2,4,6,8$. When $\theta(1)=0$, this gives the abelian group 
+    \begin{equation*}
+        G\cong\frac{\Z}{5\Z}\times\frac{\Z}{11\Z}
+    \end{equation*}
+    We claim that all nontrivial $\theta$ give rise to the same semidirect product, namely, the following diagram commutes
+    \[\begin{tikzcd}
+        {\Z/5\Z} & {\Z/10\Z} \\
+        {\Z/5\Z} & {\Z/10\Z}
+        \arrow["{\theta'}", from=1-1, to=1-2]
+        \arrow["m"', from=1-1, to=2-1]
+        \arrow["{\text{id}}", from=1-2, to=2-2]
+        \arrow["\theta", from=2-1, to=2-2]
+    \end{tikzcd}\]
+    for $\theta: 1\mapsto 2$ and any $\theta': 1\mapsto 4, 6, 8$, by taking $m$ to be the multiplication map by $2,3,4$ respectively. Hence we see 
+    \begin{equation*}
+        \theta(h)(g)=g^{2^{2h}}
+    \end{equation*}
+    by observing 
+    \[\begin{tikzcd}
+        {\Z/5\Z} & {\Z/10\Z} & {\left(\Z/11\Z\right)^\times} & {\text{Aut}(\Z/11\Z)}
+        \arrow["2", from=1-1, to=1-2]
+        \arrow["{2^2}", from=1-2, to=1-3]
+        \arrow["{2^2\cdot(-)}"', from=1-3, to=1-4]
+    \end{tikzcd}\]
+    In other words,
+    \begin{equation*}
+        G=\left\la g,h: g^{11}=h^5=1, hgh^{-1}=g^{4}\right\ra
+    \end{equation*}
+\end{proof}
+
+\begin{prob}
+    Let \(F\) be a finite field of order \(2^{n}\). Here \(n>0\). Determine all values of \(n\) such that the polynomial \(x^{2}-x+1\) is irreducible in \(F[x]\).
+\end{prob}
+\begin{proof}
+    We know that $x^2-x+1$ is irreducible over $\F_2$, namely, it has no roots in $\F_2$. Since there is only one field of order $4$, we must have 
+    \begin{equation*}
+        \F_4\cong\frac{\F_2}{(x^2-x+1)}
+    \end{equation*}
+    Clearly $x^2-x+1$ is not irreducible over $\F_4$. For any $\F_{2^n}$, we know $(x^2-x+1)$ is irreducible if and only if $\F_4$ does not embed into $\F{2^n}$, i.e., $2\nmid n$. This shows that when $n$ is odd, the polynomial $x^2-x+1$ is irreducible over $\F_{2^n}$.
+\end{proof}
+
+\begin{prob}
+    \begin{itemize}
+        \item[(1)] Determine the Galois group of \(x^{4}-4x^{2}-2\) over \(\mathbb{Q}\).
+        \item[(2)] Let \(G\) be a group of order 8 such that \(G\) is the Galois group of a polynomial of degree 4 over \(\mathbb{Q}\). Show that \(G\) is isomorphic to the Galois group in part (1).
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(1)] The roots of this polynomial is $\pm\sqrt{2\pm\sqrt{6}}$, and notice that 
+        \begin{equation*}
+            \sqrt{2}i=\sqrt{2+\sqrt{6}}\sqrt{2-\sqrt{6}}
+        \end{equation*}
+        This gives the splitting field (Galois extension) of this polynomila as 
+        \begin{equation*}
+            \Q\left(\sqrt{2+\sqrt{6}}, \sqrt{2}i\right)
+        \end{equation*}
+        We see that 
+        \begin{equation*}
+            \Q\left(\sqrt{2+\sqrt{6}}\right)\cap\Q(\sqrt{2}i)=\emptyset
+        \end{equation*}
+        because the first is contained in $\R$ and the second is not. We must have 
+        \begin{equation*}
+            \left[ \Q\left(\sqrt{2+\sqrt{6}}, \sqrt{2}i\right)/\Q\right]=8
+        \end{equation*}
+        By part b, we see $\text{Gal}\cong D_8$.
+        \item[(2)] Any Galois group of a polynomial with $4$ roots in the splitting field embeds into $S_4$, and we notice that $|G|=2^3, |S_4|=2^3\cdot 3$, i.e., $G$ is a Sylow $2$-subgroup of $S_4$, and all Sylow $2$-subgroups are conjugate/isomorphic of one another, hence 
+        \begin{equation*}
+            \text{Gal}\cong D_8
+        \end{equation*}
+    \end{itemize}
+\end{proof}
+
+\begin{prob}
+    Let A be a linear transformation of a finite dimensional vector space over a field of characteristic \(\neq 2\).
+    \begin{itemize}
+        \item[(1)] Define the wedge product linear transformation \(\wedge^{2}A=A\wedge A\).
+        \item[(2)] Prove that
+        \[tr(\wedge^{2}A)=\frac{1}{2}(tr(A)^{2}-tr(A^{2})).\]
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    (Recall we have analogous results for $A\otimes A$).
+    \begin{itemize}
+        \item[(1)] The wedge product $A\wedge A$ is defined on the wedge product of vector spaces $V\wedge V$, so we first define the vector space: let $\{v_1,\dots, v_n\}$ be the basis of $V$, then $\{v_i\wedge v_j\}$ where $i<j$ forms a basis of $V\wedge V$, satisfying:
+        \begin{enumerate}
+            \item $v_i\wedge v_j=-v_j\wedge v_i$
+            \item $(a_iv_i+a_jv_j)\wedge (b_kv_k+b_lv_l)=(a_ib_k)v_i\wedge v_k+(a_ib_l)v_i\wedge v_l+(a_jb_k)v_j\wedge v_k+(a_jb_l)v_j\wedge v_l$
+        \end{enumerate}
+        And $A\wedge A$ where $A:V\to V$ is defined as 
+        \begin{equation*}
+            A\wedge A(v_i\wedge v_j)=Av_i\wedge Av_j
+        \end{equation*}
+        \item[(2)] Consider the matrix representation of $A=(A_{ij})$, on the basis $\{v_i\wedge v_j: i<j\}$, 
+        \begin{align*}
+            A\wedge A(v_i\wedge v_j)&=\sum_{k,l=1}^nA_{ki}A_{lj}(v_k\wedge v_l)\\
+            &=\sum_{k<l}A_{ki}A_{lj}(v_k\wedge v_l)+\sum_{l<k}A_{ki}A_{lj}(v_k\wedge v_l)\\
+            &=\sum_{k<l}A_{ki}A_{lj}(v_k\wedge v_l)-\sum_{l<k}A_{ki}A_{lj}(v_l\wedge v_k)
+        \end{align*}
+        Thus the diagonal term with respect to $v_i\wedge v_j$ is 
+        \begin{equation*}
+            A_{ii}A_{jj}-A_{ji}A_{ij}
+        \end{equation*}
+        Thus 
+        \begin{equation*}
+            \text{Tr}(A\wedge A)=\sum_{i<j}A_{ii}A_{jj}-A_{ji}A_{ij}
+        \end{equation*}
+        Now 
+        \begin{equation*}
+            \text{Tr}(A)^2=\sum_{i=1}^nA_{ii}^2+2\sum_{i<j}A_{ii}A_{jj}
+        \end{equation*}
+        and 
+        \begin{align*}
+            \text{Tr}(A^2)&=\sum_{k,l=1}^nA_{lk}A_{kl}\\
+            &=\sum_{i=1}^nA_{ii}^2+2\sum_{k<l}A_{lk}A_{kl}
+        \end{align*}
+        Thus we see that 
+        \[tr(\wedge^{2}A)=\frac{1}{2}(tr(A)^{2}-tr(A^{2}))\]
+    \end{itemize}
+
+\end{proof}
+
+\begin{prob}
+    Find a table of characters for the alternating group \(A_{5}\).
+\end{prob}
+\begin{proof}
+    \[
+\begin{array}{c|ccccc}
+ & \text{1} & \text{20} & \text{15} & \text{12} & \text{12} \\ 
+ & \text{Id} & (1\,2\,3) & (1\,2)(3\,4) & (1\,2\,3\,4\,5) & (1\,2\,3\,5\,4) \\ 
+\hline
+\chi_1 & 1 & 1 & 1 & 1 & 1 \\ 
+\chi_2 & 3 & 0 & -1 & \phi & 1-\phi \\ 
+\chi_3 & 3 & 0 & -1 & 1-\phi & \phi \\ 
+\chi_4 & 4 & 1 & 0 & -1 & -1 \\ 
+\chi_5 & 5 & -1 & 1 & 0 & 0 \\ 
+\end{array}
+\]
+where $\phi=\frac{1+\sqrt{5}}{2}$.
+\end{proof}
+
+
+\chapter{Spring 2016}
+
+
+\begin{prob}
+    Classify all groups of order 66, up to isomorphism.
+\end{prob}
+\begin{proof}
+    There are a total of $4$ groups. We have $n_{11}=1$, take any Sylow-$3$ subgroup, we can construct a subgroup of order $33$ by taking the semidirect product.
+    \begin{lem}
+        Let $H$ be a subgroup of $G$ such that $[G:H]=p$ is the smallest prime dividing $|G|$, then $H$ is normal.
+    \end{lem}
+    Using the lemma, we know this subgroup $N$ of order $33$ must be normal and isomorphic to $\Z/33\Z$. Take any Sylow $2$-subgroup of $G$, we know 
+    \begin{equation*}
+        G=\frac{\Z}{33\Z}\rtimes_\theta \frac{\Z}{2\Z}
+    \end{equation*}
+    where $\theta: P_2\to\text{Aut}(N)=(\Z/33\Z)^\times$ satisfies 
+    \begin{equation*}
+        2\theta(1)\equiv 1\mod 33
+    \end{equation*}
+    We see there are four numbers in $(\Z/33\Z)^\times$ that satisfy this:
+    \begin{equation*}
+        \theta(1)\mapsto \{1, 10, 23, 32\}
+    \end{equation*}
+    When $\theta(1)=1$, 
+    \begin{equation*}
+        G_1\cong\frac{\Z}{33\Z}\times\frac{\Z}{2\Z}
+    \end{equation*}
+    When $\theta(1)=10$, then 
+    \begin{equation*}
+        G_2=\la g,h: g^{33}=h^2=1, hgh^{-1}=g^{10}\ra
+    \end{equation*}
+    When $\theta(1)=23$, we have 
+    \begin{equation*}
+        G_3=\la g,h: g^{33}=h^2=1, hgh^{-1}=g^{23}\ra
+    \end{equation*}
+    When $\theta(1)=32$, we have 
+    \begin{equation*}
+        G_4=\la g,h: g^{33}=h^2=1, hgh^{-1}=g^{32}\ra
+    \end{equation*}
+\end{proof}
+
+
+\begin{prob}
+    Let \(F\subset K\) be an algebraic extension of fields. Let \(F\subset R\subset K\) where \(R\) is a \(F\)-subspace of \(K\) with the property such that \(\forall a\in R\), \(a^{k}\in R\) for all \(k\geq 2\).
+    \begin{itemize}
+        \item[(1)] Assume that \(\text{char}(F)\neq 2\). Show that \(R\) is a subfield of \(K\).
+        \item[(2)] Give an example such that \(R\) may not be a field if \(\text{char}(F)=2\).
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    I will only do (1), because I can't do (2). It suffices to show that $R$ is closed under multiplication and taking inverses. Let $a,b\in R$, we know 
+    \begin{equation*}
+        (a+b)^2\in R\Rightarrow a^2+b^2+2ab\in R\Rightarrow ab\in R
+    \end{equation*}
+    Since $F\subset K$ is algebraic, for any $a\in R$, there exists a minimal polynomial $p_a(t)$ such that 
+    \begin{equation*}
+        p_a(a)=c_0+c_1a+\dots+c_na^n=0
+    \end{equation*}
+    Multiplying both sides by $a^{-n}$ and equating we get 
+    \begin{equation*}
+        c_0a^{-n}+\dots+c_n=c_0+c_1a+\dots+c_na^n
+    \end{equation*} 
+    i.e., 
+    \begin{equation*}
+        c_0a^{-n}=c_0+c_1a+\dots+c_na^n-c_n-\dots-c_1a^{-(n-1)}
+    \end{equation*}
+    multiplying both sides by $a^{n-1}$, we see that $a^{-1}\in R$, as desired.
+\end{proof}
+
+\begin{prob}
+    Determine the Galois group of \(x^{6}-10x^{3}+1\) over \(\mathbb{Q}\).
+\end{prob}
+\begin{proof}
+    Solving for the roots we see the splitting field for this polynomial is 
+    \begin{equation*}
+        \Q(\sqrt{5+2\sqrt{6}},\sqrt{3}i)
+    \end{equation*}
+    which has degree $12$, i.e., the order of the Galois group. Let 
+    \begin{equation*}
+        \begin{cases}
+            \alpha_1=\sqrt{5+2\sqrt{6}}\\
+            \beta_1=\sqrt{5-2\sqrt{6}}\\
+            \alpha_2=e^\frac{2\pi i}{3}\sqrt{5+2\sqrt{6}}\\
+            \beta_2=e^\frac{2\pi i}{3}\sqrt{5-2\sqrt{6}}\\
+            \alpha_3=e^\frac{4\pi i}{3}\sqrt{5+2\sqrt{6}}\\
+            \beta_3=e^\frac{4\pi i}{3}\sqrt{5-2\sqrt{6}}
+        \end{cases}
+    \end{equation*}
+    We see that there are two choices for $\alpha_1\mapsto \alpha_i,\beta_j$ for any $i,j$. This gives a group of order $12$ and by drawing a hexagon (or by guessing), one can conclude that this is $D_{12}$.
+\end{proof}
+
+\begin{prob}
+    Let \(V\) and \(W\) be two finite dimensional vector spaces over a field \(K\). Show that for any \(q>0\),
+    \[\bigwedge^{q}(V\oplus W)\cong\sum_{i=0}^{q}(\bigwedge^{i}(V)\otimes_{K}\bigwedge^{q-i}(W)).\]
+\end{prob}
+\begin{proof}
+    Any two finite dimensional vector spaces of the same dimension are isomorphic. Hence, it suffices to show that the dimensions are equal. We will convince ourselves it holds for $q=2$. Let $\{v_1,\dots, v_n\}$ be the basis of $V$, and $\{w_1,\dots,w_k\}$ be the basis of $W$, then we begin with the LHS:
+    \begin{equation*}
+        \bigwedge^{2}(V\oplus W)
+    \end{equation*}
+    We note that $V\oplus W$ has basis 
+    \begin{equation*}
+        \left\{(v_i,w_j):1\leq i\leq n, 1\leq j\leq k\right\}
+    \end{equation*}
+    So we reenumerate the $n+k$ basis as 
+    \begin{equation*}
+        \{e_1,\dots, e_{n+k}\}
+    \end{equation*}
+    Then $\bigwedge^{q}(V\oplus W)$ has basis
+    \begin{equation*}
+        \left\{ e_i\wedge e_j: i<j\right\}
+    \end{equation*}
+    There are exactly $1+\dots+(n+k-1)$ basis vectors i.e.,
+    \begin{equation*}
+        \dim\left(\bigwedge^{2}(V\oplus W)\right)=\frac{(n+k-1)(n+k)}{2}
+    \end{equation*}
+    As for the RHS: 
+    \begin{equation*}
+        \dim\left( \sum_{i=0}^{2}(\bigwedge^{i}(V)\otimes_{K}\bigwedge^{2-i}(W))\right)
+        \frac{(k-1)k}{2}+nk+\frac{(n-1)n}{2}
+    \end{equation*}
+    And we observe that two two quantities are equal. Now we do the general case, just like above, 
+    \begin{equation*}
+        \dim\left(\bigwedge^{q}(V\oplus W)\right)=\binom{n+k}{q}
+    \end{equation*}
+    And the RHS:
+    \begin{equation*}
+        \dim\left(\bigwedge^{q-1}(V\oplus W)\wedge (V\oplus W)\right)=\sum_{i=0}^q\binom{n}{i}\binom{k}{q-i}
+    \end{equation*}
+    and it is clear that these two quantities are equal.
+    
+    
+    % Inductive step: suppose that this is true up to $\bigwedge^{q-1}$. Now 
+    % \begin{align*}
+    %     \bigwedge^{q}(V\oplus W)&= \bigwedge^{q-1}(V\oplus W)\wedge (V\oplus W)
+    % \end{align*}
+    % Let's denote the dimension of $ \bigwedge^{q-1}(V\oplus W)$ as $m$, and recall there are $\{e_1,\dots,e_{n+k}\}$ basis vectors for $V\oplus W$, hence we are reenumerate the basis vectors:
+    % \begin{equation*}
+    %     \{f_1,\dots, f_{n+k+m}
+    % \end{equation*}
+
+
+    % \begin{align*}
+    %     \bigwedge^{q}(V\oplus W) \cong  \sum_{i=0}^{q}(\bigwedge^{i}(V)\otimes_{K}\bigwedge^{q-i}(W))
+    % \end{align*}
+
+
+\end{proof}
+
+\begin{prob}
+    Prove that a finite dimensional algebra over a field is a division algebra if and only if it does not have zero divisors.
+\end{prob}
+\begin{proof}
+    Recall a finite dimensional algebra is a ring with a field action, and it is a division algebra if every nonzero element $a\in A$ has an $a^{-1}\in A$. We know $A$ does not have a zero divisor if and only if for any $a\in A$, the multiplication map by $a$ is injective. Since $A$ is a finite dimensional vector space as well, an injective map is necessarily surjective, i.e., multiplication by $a$ is surjective, this happens if and only if $a$ is a unit, i.e., $A$ is a division algebra.
+\end{proof}
+
+
+\begin{prob}
+    Let \(A\) be a semi-simple finite dimensional algebra over \(\mathbb{C}\), and let \(V\) be a direct sum of two isomorphic simple \(A\)-modules. Find the automorphism group of the \(A\)-module \(V\).
+\end{prob}
+\begin{proof}
+    Schur's lemma says that if $S$ is a simple $A$-module, then 
+    \begin{equation*}
+        \text{End}(S,S)\cong\C
+    \end{equation*}
+    Thus 
+    \begin{equation*}
+        \text{End}(V,V)=\text{Mat}_2(\C)
+    \end{equation*}
+    Thus the automorphisms are 
+    \begin{equation*}
+        \text{Aut}(V,V)=\text{GL}_2(\C)
+    \end{equation*}
+\end{proof}
+
+
+
+\chapter{Spring 2015}
+
+\textcolor{red}{2,3,4,5,6}
+
+
+\begin{prob}
+    Let \(K\) be a field of characteristic \(p>0\). Prove that a polynomial \(f(x)=x^{p}-x-a\in K[x]\) either irreducible, or is a product of linear factors. Find this factorization if \(f\) has a root \(x_{0}\in K\).
+\end{prob}
+\begin{proof}
+    We first prove that if $f$ has a root $x_0$, then $f$ factors into linear factors over $K$. Suppose $x_0$ is a root of $f$, then we claim that 
+    \begin{equation*}
+        f(x_0+k)=0
+    \end{equation*}
+    for any $k\in K$. This is because 
+    \begin{align*}
+        f(x_0+k)&=x_0^p+k-x_0-k-a\\
+        &=k^p-k\\
+        &=0
+    \end{align*}
+    Since $K=\F_p$ for some prime $p$. Thus $f$ can be factored completely as 
+    \begin{equation*}
+        f(x)=(x-x_0)(x-(x_0+k_1))\dots(x-(x_0+k_{p-1}))
+    \end{equation*}
+    Conversely, we show that if $f$ doesn't have a root, then $f$ is irreducible. Suppose that $f(x)=g(x)h(x)$, where $g,h$ are irreducible over $K$ and have degree strictly less than $f$. Now we consider the Galois closure $L$ of $f$, suppose $\alpha\in L$ such that 
+    \begin{equation*}
+        f(\alpha)=0\Rightarrow g(\alpha)=0\text{ or } h(\alpha)=0
+    \end{equation*}
+    WLOG, we suppose that $g(\alpha)=0$. Then just like the above, we have $\alpha+k$ as a root of $g$ as well, for any $k\in K$. This shows that 
+    \begin{equation*}
+        g(x)=(x-\alpha)(x-(\alpha+k_1))\dots(x-(\alpha+k_{p-1}))
+    \end{equation*}
+    over $L$. This shows that $g$ has degree $p$, which is a contradiction.
+\end{proof}
+
+
+\begin{prob}
+    Let \(A,B\) be two commuting operators on a finite dimensional space \(V\) over \(\mathbb{C}\) such that \(A^{n}=B^{m}\) is the identity operator on \(V\) for some positive integers \(n,m\). Prove that \(V\) is a direct sum of 1-dimensional invariant subspaces with respect to \(A\) and \(B\) simultaneously.
+\end{prob}
+\begin{proof}
+    Since $A^n=B^m=1I$, then the minimal polynomial of $A$ divides $x^n-1$, and minimal polynomial of $B$ divides $x^m-1$. This shows both $A,B$ are diagonalizable. Since $A,B$ commute, we know we can diagonalize $A,B$ simultaneously: Let $E_\lambda$ be an eigenspace of $A$, then $B$ can be diagnoalized in $E_\lambda$, because eigenvectors of $B$ in $E_\lambda$ are also eigenvectors of $A$. This shows $A,B$ have a common eigenbasis, i.e., $V$ can be decomposed into $1$-dimensional eigenspaces for $A,B$ simultaneously.
+\end{proof}
+
+
+
+\begin{prob}
+    Let \(G\) be a finite \(p\)-group. Determine all irreducible representations of \(G\) over a field \(K\) of characteristic \(p\).
+\end{prob}
+\begin{proof}
+    We claim that the only irreducible representation is the trivial one.  Let $|G|=p^d$, then let $\rho:G\to\text{GL}_n(K)$ be an irreducible representation, this is an action of $G$ on $\F_p^n$, by the Orbit-Stabilizer theorem, the size of the orbit is either $1$ (trivial) or divides $p$. Since there is a trivial orbit, let $N$ denote the size of orbits of size $1$, we know 
+    \begin{equation*}
+        N-1\equiv 0\mod p
+    \end{equation*}
+    This shows there is at least one nontrivial orbit of size $1$, let $v$ be the element in this orbit. Then the vector space $W$ generated by $v$ is also fixed under the action of $G$. Since $W$ is a one-dimensional subspace of $\F_p^n$ that is fixed by $G$, we must have $\rho$ be one-dimensional, and 
+    \begin{equation*}
+        \rho(g)(w)=w
+    \end{equation*}
+    for any $w\in W$, thus $\rho$ is the trivial representation.
+\end{proof}
+
+
+\begin{prob}
+    Prove that the polynomial \(x^{4}+1\) is not irreducible over any field of positive characteristic.
+\end{prob}
+\begin{proof}
+    We note the extension generated by $x^4+1$ is $\Q(\sqrt{2},i)$, thus it suffices to show for $\F_p$ where $p$ is any prmie $p$, we must have either $\sqrt{2}\in\F_p$ or $i\in\F_p$ or $\sqrt{2}i\in\F_p$. We see $f$ is clearly reducible over $\Q(\sqrt{2})$ or $\Q(i)$, and it is also reducible over $\Q(\sqrt{2}i)$ because if it were irreducible, then the degree of extension $\Q(\sqrt{2}, i)$ would be $8$, which is a contradiction. Now for any $\F_p^\times$, we have the Legendre homomorphism:
+    \begin{equation*}
+        \chi(g)=\begin{cases}
+            1, g \text{ is a square}\\
+            -1, g \text{ is not a sqaure}
+        \end{cases}
+    \end{equation*}
+    Hence assume $2$ or $-1$ are not squares, then $-2$ must be a square:
+    \begin{equation*}
+        \chi(2)\chi(-1)=\chi(-2)=1
+    \end{equation*}
+    Thus $\sqrt{2}i$ must be in $\F_p$, hence $f$ is reducible.
+\end{proof}
+
+
+\begin{prob}
+    Prove that a tensor product of irreducible representations over an algebraically closed field is irreducible.
+\end{prob}
+\begin{proof}
+    Let $\rho_1,\rho_2$ be irreducible representations of $G_1,G_2$, then we define its tensor product $\rho_1\otimes\rho_2:G_1\times G_2\to\text{GL}(V_1\otimes V_2)$. Similarly, the characters are defined as 
+    \begin{equation*}
+        \chi_1\otimes\chi_2(g_1,g_2)=\chi_1(g_1)\chi_2(g_2)
+    \end{equation*}
+    For an algebraically closed field, it suffices to show the tensor character has norm $1$. 
+    \begin{align*}
+        \la\chi_1\otimes\chi_2,\chi_1\otimes\chi_2\ra&=\frac{1}{|G_1||G_2|}\sum_{(g_1,g_2)}\chi_1(g_1)\chi_2(g_2)\overline{\chi_1(g_1)}\overline{\chi_2(g_2)}\\
+        &=\frac{1}{|G_1||G_2|}|G_1|\la\chi_1,\chi_1\ra|G_2|\la\chi_2,\chi_2\ra\\
+        &=1
+    \end{align*}
+\end{proof}
+
+
+\begin{prob}
+    Let \(D\) be an algebra over a field \(K\) of characteristic \(\neq 2\) generated by two elements \(i,j\) satisfying relations
+    \[i^{2}=1, j^{2}=1, ij=-ji.\]
+    Prove, that \(D\simeq GL_{2}(K)\).
+\end{prob}
+\begin{proof}
+    The isomorphism is given by 
+    \begin{equation*}
+        \varphi(1)=\begin{pmatrix}
+            1&0\\
+            0&1
+        \end{pmatrix}
+        \varphi(i)=\begin{pmatrix}
+            1&0\\
+            0&-1
+        \end{pmatrix}
+        \varphi(j)=\begin{pmatrix}
+            0&1\\
+            1&0
+        \end{pmatrix}
+    \end{equation*}
+    One can check this is indeed an isomorphism.
+\end{proof}
+
+
+
+
+\chapter{Fall 2014}
+
+
+\textcolor{red}{2}
+
+\begin{prob}
+    \begin{itemize}
+        \item[(a)] Let \(S_n\) be the symmetric group (permutation group) on \(n\) objects. Prove that if \(\sigma \in S_n\) is an \(n\)-cycle and \(\tau \in S_n\) is a transposition (i.e., a 2-cycle), then \(\sigma\) and \(\tau\) generate \(S_n\).
+        \item[(b)] Let \(f_a(x)\) be the polynomial \(x^5 - 5x^3 + a\). Determine an integer \(a\) with \(-4 \leq a \leq 4\) for which \(f_a\) is irreducible over \(\mathbb{Q}\), and the Galois group of [the splitting field of] \(f_a\) over \(\mathbb{Q}\) is \(S_5\). Then explain why the equation \(f_a(x) = 0\) is not solvable in radicals.
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(a)] It suffices to assume that the $n$ cycle is $(1\dots n)$ (up to rearranging the terms), and the transposition is $(12)$. One can show that conjugation gives all the transpositions, hence generate $S_n$.
+        \item[(b)] Take $a=1$, then $f_a(x)$ is irreducible: it doesn't have a root by the Rational Root Theorem and cannot be factored into lower degree polynomial by term matching. Moreover, we see that $f_a'(x)$ has $3$ roots, by Rolle's theorem, there are at most $4$ real roots, this implies that there exists a complex root $r_1$, and since this has odd degree, it must also exist a real root $r_2$. This shows that there exists an element in the Galois group that has order $5$ and a transposition (sending conjugate complex roots to each other). Thus by (a), since the Galois group is a subgroup of $S_5$, we must have it equal to $S_5$. 
+    \end{itemize}
+\end{proof}
+
+
+
+\begin{prob}
+    Let \(R = \mathbb{Q}[X]\), \(I\) and \(J\) the principal ideals generated by \(X^2 - 1\) and \(X^3 - 1\) respectively. Let \(M = R/I\) and \(N = R/J\). Express in simplest terms [the isomorphism type of] the \(R\)-modules \(M \otimes_R N\) and \(\text{Hom}_R(M, N)\). \textbf{Explain.}
+\end{prob}
+\begin{proof}
+    This is tensor product over fields question, finally! We have 
+    \begin{align*}
+        M\otimes_{\Q[x]}N&=\frac{\Q[x]}{(X^2-1)}\otimes_{\Q[x]}\frac{\Q[x]}{(X^3-1)}\\
+        &=\frac{\Q[x]}{\left(\gcd(X^2-1)+(X^3-1)\right)}\\
+        &=\frac{\Q[x]}{(x-1)}\\
+        &=\Q
+    \end{align*}
+
+\end{proof}
+
+
+\begin{prob}
+    Let \(G = S_3\).
+    \begin{itemize}
+        \item[(a)] Prove that \(G\) has an irreducible complex representation of dimension 2,—call it \(\rho\)—but none of higher dimension.
+        \item[(b)] Decompose \(\rho \otimes \rho \otimes \rho\) (as a representation of \(G\)) into a direct sum of irreducible representations.
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(a)] $S_3$ has three conjugacy classes, i.e., $3$ irreducible representations, the only way to write $|S_3|=6$ as a sum of $3$ squares is $1+1+4$, which implies that there exists a irred rep of dimension $2$, and not any higher.
+        \item[(b)] We know that 
+        \begin{equation*}
+            \chi\left[(\rho\otimes\rho\otimes\rho)(g)\right]=\left(\chi(\rho(g))\right)^3
+        \end{equation*}
+        Thus with some trial and error, if we want to write 
+        \begin{equation*}
+            \rho\otimes\rho\otimes\rho=\sum \chi_{\text{triv}}\dots\oplus\chi_{\text{sgn}}\dots \oplus\rho\dots\rho
+        \end{equation*}
+        Then we need to send 
+        \begin{equation*}
+            \rho\otimes\rho\otimes\rho(g)=\begin{cases}
+                8, g=e\\
+                0, g=(12)\\
+                -1, g=(123)
+            \end{cases}
+        \end{equation*}
+        Thus we see that 
+        \begin{equation*}
+            \rho\otimes\rho\otimes\rho=\chi_{\text{triv}}\oplus\chi_{\text{sgn}}\oplus\rho\oplus\rho\oplus\rho
+        \end{equation*}
+    \end{itemize}
+\end{proof}
+
+
+
+\begin{prob}
+    \begin{itemize}
+        \item[(a)] Let \(G\) be a group of order \(p^2q^2\), where \(p\) and \(q\) are distinct odd primes, with \(p > q\). Show that \(G\) has a normal subgroup of order \(p^2\).
+        \item[(b)] Can a solvable group contain a non-solvable subgroup? \textbf{Explain.}
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(a)] $n_p$ can only be $1$ or $q^2$, if $n_p=q^2$, then
+        \begin{equation*}
+            p\mid (q^2-1)=(q+1)(q-1)
+        \end{equation*}
+        i.e., $p$ divides $q+1$ or $q-1$, which are both even, which is a contradiction. This implies $n_p=1$.
+        \item[(b)] Let $H$ be a subgroup of $G$, where $G$ is solvable. Then there exists a sequence 
+        \begin{equation*}
+            \{e\}=G_0\subset G_1\subset\dots G_n=G
+        \end{equation*}
+        such that each $G_i$ is normal in $G_{i+1}$ and $G_{i+1}/G_i$ is abelian/cyclic. If we take 
+        \begin{equation*}
+            H_i=G_i\cap H
+        \end{equation*}
+        then one can show that 
+        \begin{equation*}
+            \{e\}=H_0\subset\dots\subset H_n=H
+        \end{equation*}
+        is a sequence satisfying the above condition, i.e., $H$ is solvabla.
+    \end{itemize}
+\end{proof}
+
+
+
+\begin{prob}
+    \begin{itemize}
+        \item[(a)] Prove that every group of order \(p^2\) (\(p\) a prime) is abelian. Then classify such groups up to isomorphism.
+        \item[(b)] Give an example of a non-abelian group of order \(p^3\) for \(p = 3\). \textbf{Suggestion}: Represent the group as a group of matrices.
+    \end{itemize}
+\end{prob}
+
+\begin{proof}
+    \begin{itemize}
+        \item[(a)] We know any nontrivial $p$-group has a nontrivial center, thus either $Z(G)=p$ or $Z(G)=p^2$. We are done in the latter case. If $Z(G)=p$, then 
+        \begin{equation*}
+            G/Z(G) \text{is cyclic}
+        \end{equation*}
+        which implies $G$ is again abelian, hence we must have $Z(G)=p^2$, as desired.
+        \item[(b)] The Heisenburg group over $\F_3$.
+    \end{itemize}
+\end{proof}
+
+
+
+
+\chapter{Spring 2014}
+
+
+\textcolor{red}{1,2,3}
+
+\begin{prob}
+    Find the number of colouring of faces of a cube in 3 colours. Two colourings are equal if they are the same after a rotation of the cube. [Hint Use the Burnside formula \[|X/G|=\frac{1}{|G|}\sum_{g\in G}|X^{g}|,\] where a group \(G\) acts on a set \(X\), \(X/G\) is the set of orbits, and, for every \(g\in G\), \(X^{g}\) is the fixed subset of \(g\) in \(X\).]
+\end{prob}
+
+
+\begin{prob}
+    Proof that all groups of order \(<60\) are solvable.
+\end{prob}
+
+
+
+\begin{prob}
+    Let \(L/K\) be a Galois extension of degree \(p\) with \(\text{char}K=p\). Show that \(L=K(\theta)\), where \(\theta\) is a root of \(x^{p}-x-a,a\in K\), and, conversely, any such extension is Galois of degree 1 or \(p\).
+\end{prob}
+
+
+
+
+\begin{prob}
+    Proof that a finite dimensional associative algebra over a field is a division algebra if and only if it has no zero divisors.
+\end{prob}
+\begin{proof}
+    A division algebra is one such every nonzero element is a unit. Let $a\in\mathcal{A}$ be any element in the algebra. We have the following equivalences:
+    \begin{align*}
+        a \text{ is not a zero divisor}&\iff \text{multiplication by $a$ is injective}\\
+        &\iff \text{ multiplication by $a$ is surjective since} V \text{ is finite-dim}\\
+        &\iff a \text{ is a unit}\\
+        &\iff \mathcal{A} \text{ is a division algebra}
+    \end{align*}
+
+\end{proof}
+
+
+
+\begin{prob}
+    Find the table of characters for \(S_{4}\).
+\end{prob}
+\begin{proof}
+    \begin{equation*}
+        \begin{array}{c|ccccc}
+            \text{Class} & [1] & [(12)(34)] & [(123)] & [(1234)] \\
+            \text{Size} & 1 & 6 & 3 & 8 & 6 \\
+            \hline
+            \chi^{(1)} & 1 & 1 & 1 & 1 & 1 \\
+            \chi^{(2)} & 1 & -1 & 1 & 1 & -1 \\
+            \chi^{(3)} & 2 & 0 & 2 & -1 & 0 \\
+            \chi^{(4)} & 3 & 1 & -1 & 0 & -1 \\
+            \chi^{(5)} & 3 & -1 & -1 & 0 & 1 \\
+            \end{array}
+    \end{equation*}
+\end{proof}
+
+
+
+
+
+
+
+\chapter{Fall 2011}
+
+
+\begin{prob}
+    \begin{itemize}
+        \item[(a)] Let \(G\) be a group of order 5046. Show that \(G\) cannot be a simple group. You may not appeal to the classification of finite simple groups.
+        \item[(b)] Let \(p\) and \(q\) be prime numbers. Show that any group of order \(p^2q\) is solvable.
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(a)] $5046=29^2\cdot 2\cdot 3$, we must have $n_{29}=1$. This shows $G$ is not simple.
+        \item[(b)] There are two cases: $p<q$ and $p>q$. When $p<q$, we if $n_{q}=p^2$ then $n_p=1$, thus when $n_p=q$, we have $n_q=1$. In other words, you either have a normal group of order $p^2$ or $q$, and both cases are solvable. When $p>q$, then $n_q=1$, also solvable.
+    \end{itemize}
+\end{proof}
+
+
+
+\begin{prob}
+    Consider the special orthogonal group \(G=SO(3,\mathbb{R})\), namely,
+    \[G=\{A\in GL(3,\mathbb{R}): A^T A=\mathrm{I}_3, \det(A)=1\}\]
+    \begin{itemize}
+        \item[(a)] Show that for any element \(A\) in \(G\), there exists a real number \(\alpha\) with \(-1\leq\alpha\leq 3\) such that
+        \[A^3-\alpha A^2+\alpha A-\mathrm{I}_3=0.\]
+        \item[(b)] For which real numbers \(\alpha\) with \(-1\leq\alpha\leq 3\) does there exist an element \(A\) in \(G\) whose minimal polynomial is \(x^3-\alpha x^2+\alpha x-1\)? Explain your answer.
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    This question is quite computational, and I will not list all the computations here.
+    \begin{itemize}
+        \item[(a)] Writing $A$ in a general form, we see that 
+        \begin{equation*}
+            \alpha=\text{tr}(A)
+        \end{equation*}
+        Thus it sufficees to compute the eigenvalues of $A$ (in the algebraic closure). One can show that it takes the above form using the size of these eigenvalues.
+        \item[(b)] It is when there are distinct three eigenvalues, i.e., $\alpha\neq -1, 3$.
+    \end{itemize}
+
+\end{proof}
+
+
+
+\begin{prob}
+    Let \(G\) be a cyclic group of order 100. Let \(K=\mathbb{Q}\), the field of rational numbers, or \(K=F_p\), the finite field with \(p\) elements, \(p\) being a prime number. For each such \(K\), construct a Galois extension \(L/K\) whose Galois group \(\text{Gal}(L/K)\) is isomorphic to \(G\). Explain your construction in detail.
+\end{prob}
+\begin{proof}
+    First we do $K=\F_p$. Let $E$ be the splitting field of $(x^{p^{100}}-x)$, then by definition $E$ is Galois, we see $\F_p\subset E$ (so it is an extension) because if $a\in\F_p$,
+    \begin{equation*}
+        a^p=a\Rightarrow (a^{p^{100}}-a)=0
+    \end{equation*}
+    Thus $\F_p\subset E$. Now $E$ is a degree $100$ extension of $\F_p$, i.e., $\left|\gal(E/\F_p)\right|=100$. Now by the following lemma, we are done.
+    \begin{lem}
+        Let $\F_p\subset E=\F_{p^n}$ be a Galois extension, then the Galois group is cyclic, i.e., is $\Z/n\Z$.
+    \end{lem}
+    This is because the Frobenius map 
+    \begin{equation*}
+        F: a\mapsto a^{p}
+    \end{equation*}
+    has order $n$, therefore is a generator of $\gal(E/\F_p)$. 
+
+    Now let $K=\Q$. We claim that $\Q(\zeta_{101})$ is a Galois extension with 
+    \begin{equation*}
+        \gal(\Q(\zeta_{101})/\Q)=\frac{\Z}{100\Z}=G
+    \end{equation*}
+    It is easy to see that $\Q(\zeta_{101})/\Q$ is Galois, and 
+    \begin{equation*}
+        \gal(\Q(\xi_n)/\Q)=\left(\frac{\Z}{n\Z}\right)^\times
+    \end{equation*}
+    Since $101$ is prime, we know the Galois group $\left(\frac{\Z}{n\Z}\right)^\times=\frac{\Z}{100\Z}$, as desired. (We will do the more general case where cyclic $G$ such that $|G|\neq p-1$ and when $G$ is abelian in the notes).
+\end{proof}
+
+
+
+
+\begin{prob}
+    Let \(\rho:S_3\to\mathbb{C}^2\) be a two-dimensional irreducible representation of the symmetric group \(S_3\). Decompose \(\rho^{\otimes 2}\) and \(\rho^{\otimes 3}\) into a direct sum of irreducible representations of \(S_3\).
+\end{prob}
+\begin{proof}
+    Let $\rho_e, \rho_s, \rho$ denote the trivial, sign, $2$-dimensional representations of $S_3$, then
+    Using the fact that 
+    \begin{equation*}
+        \text{Tr}(\rho\otimes\rho)=(\text{Tr}(\rho))^2, \text{Tr}(\rho\otimes\rho\otimes\rho)=(\text{Tr}(\rho))^3
+    \end{equation*}
+    we see 
+    \begin{equation*}
+        \rho\otimes\rho= \rho_e\oplus\rho_s\oplus\rho
+    \end{equation*}
+    and similarly, 
+    \begin{equation*}
+        \rho\otimes\rho\otimes\rho=\rho_{e}\oplus\rho_s\oplus\rho\oplus\rho\oplus\rho
+    \end{equation*}
+\end{proof}
+
+
+\begin{prob}
+    Let \(A\) be a finite-dimensional semisimple algebra over \(\mathbb{C}\), and \(V\) an \(A\)-module of finite type (i.e., finitely-generated as an \(A\)-module). Prove that \(V\) has only finitely many \(A\)-submodules if and only if \(V\) is a direct sum of pairwise non-isomorphic irreducible (i.e., simple) \(A\)-modules.
+\end{prob}
+\begin{proof}
+    If $V$ is a finite direct sum of non-isomorphic $A$-modules, then there are only finitely many $A$-submodules (for each simple module, the only submodule is $\{e\}$ and itself).
+
+    Conversely, suppose that there are isomorphic copies of $A$ module in the sum of $V$, by Schur's lemma, we know 
+    \begin{equation*}
+        \text{End}(S,S)=\C
+    \end{equation*}
+    Thus if $V=S\oplus S$, then for fixed $\phi$,
+    \begin{equation*}
+        \{(x,\phi(x))\in (S,S)\}
+    \end{equation*}
+    is a submodule. Since there are infiniteyly many $\phi$, there are infinitely many submodules.
+\end{proof}
+
+
+
+\chapter{Spring 2010}
+
+
+
+\begin{prob}
+    Let \(G\) be a non-abelian group of order \(p^3\), here \(p\) is prime. Determine the number of distinct conjugacy classes in \(G\).
+\end{prob}
+\begin{proof}
+    We know that $G$ has nontrivial and abelian, this forces the center $Z(G)$ to have order $p$. Then we take any $g\in G\setminus Z(G)$, then consider the centralizers (stabilizers of $g$), denoted as $Z_g(G)$, then 
+    \begin{equation*}
+        Z(G)\subset Z_g(G)\subset G
+    \end{equation*}
+    Since $Z_g(G)$ is a proper subgroup of $G$ strictly containing $Z(G)$, we must have $|Z_g(G)|=p^2$. By the Orbit-Stabilizer theorem, the conjugacy class of $g\in G\setminus Z(G)$ has size $p$, thus the number of conjugacy classes other than the center is 
+    \begin{equation*}
+        (p^3-p)/p=p^2-1
+    \end{equation*}
+    and each element in $Z(G)$ is its own conjugacy class, i.e., the total number is 
+    \begin{equation*}
+        p^2+p-1
+    \end{equation*}
+\end{proof}
+
+
+\begin{prob}
+    Let \(R\) be a ring such that \(r^3 = r\) for all \(r \in R\). Show that \(R\) is commutative. (Hint: First show that \(r^2\) is central for all \(r \in R\).)
+\end{prob}
+\begin{proof}
+    This question is not so informative and quite computational, so I will skip here.
+\end{proof}
+
+
+
+\begin{prob}
+    Compute Galois groups of the following polynomials.
+    \begin{itemize}
+        \item[(a)] \(x^3 + t^2x - t^3\) over \(k\), where \(k = \mathbb{C}(t)\) is the field of rational functions in one variable over complex numbers \(\mathbb{C}\).
+        \item[(b)] \(x^4 - 14x^2 + 9\) over \(\mathbb{Q}\).
+    \end{itemize}
+\end{prob}
+\begin{itemize}
+    \item[(a)] The polynomial is homogeneous and solving for the roots we take $x=at$ for some $a\in\C$, then we see $x=at$ is a root if and only if 
+    \begin{equation*}
+        a^3+a-1=0
+    \end{equation*}
+    since $\C$ is algebraically closed, we know that there are $3$ roots in $\C$, i.e., $x^3+t^2x-t^3$ completely factors over $\C(t)$. This implies that the Galois group is the trivial group.
+    \item[(b)] Solving for the roots, they are 
+    \begin{equation*}
+        \left\{\pm\sqrt{7+2\sqrt{10}}, \pm\sqrt{7-2\sqrt{10}}\right\}:=\left\{\pm\alpha, \pm\beta\right\}
+    \end{equation*}
+    We note that $\alpha\beta=3$, hence there are only four elements of the Galois group:
+    \begin{equation*}
+        \begin{cases}
+            \alpha\mapsto \alpha, \beta\mapsto \beta\\
+            \alpha\mapsto-\alpha, \beta\mapsto-\beta\\
+            \alpha\mapsto\beta,\beta\mapsto\alpha\\
+            \alpha\mapsto-\beta,\beta\mapsto-\alpha
+        \end{cases}
+    \end{equation*}
+    In other words, the each element is completely determined by where $\alpha$ is sent to. Thus we see the group is 
+    \begin{equation*}
+        \Z/2\Z\times\Z/2\Z
+    \end{equation*}
+\end{itemize}
+
+
+
+\begin{prob}
+    Let \(V\) be a \(n\)-dimensional vector space over a field \(k\). Let \(T \in \text{End}_k(V)\).
+    \begin{itemize}
+        \item[(a)] Show that \(tr(T \otimes T \otimes T) = (tr(T))^3\). Here \(tr(T)\) is the trace of \(T\).
+        \item[(b)] Find a similar formula for the determinant \(\det(T \otimes T \otimes T)\).
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(a)] We will show that $\tr(T\otimes T)=(\tr T)^2$, and the $T\otimes T\otimes$ is done similarly. We will use matrix representation to do an explicit computation. Let $\{v_1,\dots, v_n\}$ be a basis of$V$, then $V\otimes V$ has basis 
+        \begin{equation*}
+            \{v_i\otimes v_j: 1\leq i,j\leq n\}
+        \end{equation*}
+        and 
+        \begin{equation*}
+            T\otimes T(v_i\otimes v_j)=Tv_i\otimes Tv_j
+        \end{equation*}
+        Let $T=(a_{ij})$, then we know 
+        \begin{equation*}
+            (\tr(T))^2=\left(\sum_{i=1}^na_{ii}\right)^2
+        \end{equation*}
+        And we have 
+        \begin{align*}
+            T\otimes T(v_i\otimes v_j)&=\sum_{k=1}^n\sum_{l=1}^na_{ki}a_{lj}v_k\otimes v_l
+        \end{align*}
+        Therefore computing the trace we see 
+        \begin{equation*}
+            \tr(T\otimes T)=\sum_{i=1}^n\sum_{j=1}^na_{ii}a_{jj}=\tr(T)^2
+        \end{equation*}
+        as desired!
+        \item[(b)]  It suffices to figure out this formula by looking at diagonalizable matrices, where $\det(T)=\prod_{i=1}^n\lambda_i$, then it is easy to see that 
+        \begin{equation*}
+            \det(T\otimes T)=\left(\det(T)\right)^{2n}
+        \end{equation*}
+        where $n$ is the dimension.
+        and three times is the same process 
+        \begin{equation*}
+            \det(T\otimes T\otimes T)=\left(\det(T)\right)^{3n^2}
+        \end{equation*}
+    \end{itemize}
+\end{proof}
+
+
+\begin{prob}
+    Classify all non-commutative semi-simple rings with 512 elements. (You can use the fact that finite division rings are fields.)
+\end{prob}
+\begin{proof}
+    By Artin-Wedderburn, we know that this finite semisimple ring can be decomposed into a finite direct sum of matrix rings:
+    \begin{equation*}
+        R\cong M_{n_1}(F_1)\oplus\dots\oplus M_{n_k}(F_k)
+    \end{equation*}
+    where $F_i$ are finite fields. Further more we can assume $n_1\geq n_2\geq\dots\geq n_k$.The total number of elements is 
+    \begin{equation*}
+        F_1^{n_1^2}\dots F_k^{n_k^2}=512=2^9
+    \end{equation*}
+    Thus we see all the components are powers of $2$. Since $R$ is noncommutative, we may assume that $n_1\geq 2$. If $n_1=3$, then $F_1=2$, we have 
+    \begin{equation*}
+        R\cong M_{3}(\F_2)
+    \end{equation*}
+    If $n_1=2$, we can have $n_2=2$, then 
+    \begin{equation*}
+        R\cong M_2(\F_2)\oplus M_2(\F_2)\oplus \F_2
+    \end{equation*}
+    or $n_3=\dots=n_k=1$, then we have (different ways of adding to $5$):
+    \begin{equation*}
+        R\cong M_2(\F_2)\oplus\begin{cases}
+            \F_2\oplus\F_2\oplus\F_2\oplus\F_2\oplus F_2\\
+            \F_{4}\oplus \F_2\oplus\F_2\oplus F_2\\
+            \F_8\oplus\F_2\oplus\F_2\\
+            \F_{16}\oplus\F_2\\
+            \F_8\oplus\F_4\\
+            \F_{16}\oplus F_2\\
+            \F_{32}
+        \end{cases}
+    \end{equation*}
+\end{proof}
+
+
+\begin{prob}
+    Let \(G\) be a group with 24 elements. \textbf{Use representation theory} to show that \(G \neq [G, G]\). (Here \([G, G]\) is the commutator subgroup of \(G\).)
+\end{prob}
+\begin{proof}
+    Let $\rho:G\to\C^\times$ be a one-dimensional representation, then $[G,G]\subset\ker(\rho)$, if $G=[G,G]$, then $\rho$ must be trivial. However, we cannot write 
+    \begin{equation*}
+        |G|=24=1+d_1^2+\dots+d_k^2
+    \end{equation*}
+    where $d_i\geq 2$, hence this is a contradiction.
+\end{proof}
+
+
+
+
+\chapter{Fall 2007}
+
+
+\begin{prob}
+    Let \(G\) be a cyclic group of order 12. Construct a Galois extension \(K\) over \(\mathbb{Q}\) so that the Galois group is isomorphic to \(G\).
+\end{prob}
+\begin{proof}
+    Since $12=13-1$, we know how to construct Galois group 
+    \begin{equation*}
+        \left(\Z/13\Z\right)^\times=\Z/12\Z
+    \end{equation*}
+    The Galois extension is $\Q(\zeta_{13})$, where $\zeta_{13}$ is the $13$th root of unity.
+\end{proof}
+
+
+
+\begin{prob}
+    Prove that no group of order 148 is simple.
+\end{prob}
+\begin{proof}
+    We see that 
+    \begin{equation*}
+        148=2^2\cdot 37
+    \end{equation*}
+    Thus $n_{37}=1$.
+\end{proof}
+
+
+
+\begin{prob}
+    Let \(A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}\) be a real matrix such that \(a,b,c,d > 0\).
+    \begin{itemize}
+        \item[(1)] Prove that \(A\) has two distinct real eigenvalues, \(\lambda > \mu\).
+        \item[(2)] Prove that \(\lambda\) has an eigenvector in the first quadrant and \(\mu\) has an eigenvector in the second quadrant.
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(1)] The eigenvalues are as follows
+        \begin{equation*}
+            \frac{(a+d)\pm\sqrt{(a-d)^2+bc}}{2}
+        \end{equation*}
+        Thus there are two distinct eigenvalues that are both real.
+        \item[(2)] It suffices to plug in $\lambda,\mu$:
+        \begin{equation*}
+            \begin{cases}
+                ax_1+by_1-\lambda x_1=0\\
+                cx_1+by_1-\lambda x_2=0
+            \end{cases} 
+        \end{equation*}
+        We see that 
+        \begin{equation*}
+            y_1=\frac{\lambda-a}{b}x_1
+        \end{equation*}
+        We see that $\lambda>a$, hence $x_1, y_1$ have the same sign, i.e., it has an eigenvector in the first quadrant. Similarly, plugging in $\mu$ we see that $\mu$ has an eigenvalue in the second quadrant.
+    \end{itemize}
+\end{proof}
+
+
+
+
+
+
+
+\begin{prob}
+    Prove the existence of a 1-dimensional invariant subspace for any 5-dimensional representation of the group \(A_4\) (the alternating group of degree 4).
+\end{prob}
+\begin{proof}
+    The $4$ conjugacy classes in $A_4$ are 
+    \begin{equation*}
+        e, (12)(34), (123), (132)
+    \end{equation*} 
+    We now find the one-dimensional representation by observing 
+    \begin{equation*}
+        \frac{A_4}{(\Z/2\Z\times\Z/2\Z)}\cong\Z/3\Z
+    \end{equation*}
+    And we know the character table for $\Z/3\Z$, thus combining and using orthogonality relations, we get 
+    \begin{equation*}
+        \begin{array}{c|cccc}
+            \text{Class size} & 1 & 4 & 3 & 4 \\
+            \text{Representative} & () & (123) & (12)(34) & (132) \\
+            \hline
+            \chi_1 & 1 & 1 & 1 & 1 \\
+            \chi_2 & 1 & \zeta_3 & 1 & \zeta_3^2 \\
+            \chi_3 & 1 & \zeta_3^2 & 1 & \zeta_3 \\
+            \chi_4 & 3 & 0 & -1 & 0 \\
+            \end{array}
+    \end{equation*}
+
+\end{proof}
+
+
+
+Omitted:
+
+\begin{prob}
+    A differentiation of a ring \(R\) is a mapping \(D : R \to R\) such that, for all \(x,y \in R\),
+    \begin{itemize}
+        \item[(1)] \(D(x+y) = D(x) + D(y)\); and
+        \item[(2)] \(D(xy) = D(x)y + xD(y)\).
+    \end{itemize}
+    If \(K\) is a field and \(R\) is a \(K\)-algebra, then its differentiation are supposed to be over \(K\), that is,
+    \begin{itemize}
+        \item[(3)] \(D(x) = 0\) for any \(x \in K\).
+    \end{itemize}
+    Let \(D\) be a differentiation of the \(K\)-algebra \(M_n(K)\) of \(n \times n\)-matrices. Prove that there exists a matrix \(A \in M_n(K)\) such that \(D(X) = AX - XA\) for all \(X \in M_n(K)\).
+\end{prob}
+
+% \begin{proof}
+%     It suffices to consider basis elements of $M_{ij}$, 
+%     \begin{equation*}
+%         A=\sum_{i,j}D(M_{ij})E_{ji}
+%     \end{equation*}
+%     and one can check \(D(X) = AX - XA\) holds.
+% \end{proof}
+
+
+
+\chapter{Spring 2007}
+
+
+
+\begin{prob}
+    Prove that the integer orthogonal group \(O_n(\mathbb{Z})\) is a finite group. (By definition, an \(n \times n\) square matrix \(X\) over \(\mathbb{Z}\) is orthogonal if \(XX^t = I_n\).)
+\end{prob}
+\begin{proof}
+    Let $A\in O_n(\Z)$, since $\det(A)=\pm 1$ and all entries are integers, we can only have one nonzero entry $\pm 1$ in every row, this matrix is necessarily invertible and has $\det=\pm 1$. There a total of 
+    \begin{equation*}
+        2^n\cdot n!
+    \end{equation*}
+    of choices of place $\pm1$ such that each row has one nonzero entry. This shows that $O_n$ is a finite group.
+\end{proof}
+
+\begin{prob}
+    Prove that no group of order 224 is simple.
+\end{prob}
+\begin{proof}
+    We have $224=2^5\cdot 7$, thus $n_7=1,8$ and $n_2=1,7$. If $n_2=n_7=1$, then we are done. Suppose $n_2=7$, then $G$ acts on the Sylow $2$ subgroups, i.e., there exists a map 
+    \begin{equation*}
+        \varphi: G\to S_7
+    \end{equation*}
+    If $\ker(\varphi)\neq \{e\}$, then $\ker(\varphi)$ is a nontrivial normal subgroup ($\ker(\varphi)\neq G$ becuase this action is transitive and nontrivial), and we are done.  Thus it suffces to rule out $\ker(\varphi)=\{e\}$, in this case $\varphi$ is an embedding, i.e., $|G|$ must divide $|S_7$ but this is false thus a contradiction. 
+\end{proof}
+
+
+\begin{prob}
+    Write down the irreducible polynomial for \(\sqrt{2} + \sqrt{3}\) over \(\mathbb{Q}\) and prove that it is reducible modulo \(p\) for every prime \(p\).
+\end{prob}
+\begin{proof}
+    Note this question is exactly the same S2017-Q2. The minimal polynomial $p_m$ is 
+    \begin{equation*}
+        p_m(t)=(t^2-5)^2-24=t^4-10t^2+1
+    \end{equation*}
+    The roots are $\pm\sqrt{2}\pm\sqrt{3}$, thus this polynomial generates a field extension of $\Q$, 
+    \begin{equation*}
+        \Q(\sqrt{2},\sqrt{3})=\frac{\Q[t]}{(p_m(t))}
+    \end{equation*}
+    We claim that it suffices to show that $\sqrt{2}$ or $\sqrt{3}$ or $\sqrt{6}$ are in $\F_p$ for any prime $p$. Take $\sqrt{2}\in\F_p$ for example, we know $p_m(t)$ is not irreducible over $\Q(\sqrt{2})$, because then it would mean the degree of field extension $[\Q(\sqrt{2},\sqrt{3}): \Q]$ is 8, which is a contradiction.
+    \[\begin{tikzcd}
+        {\mathbb{Q}(\sqrt{2},\sqrt{3})} \\
+        {\mathbb{Q}(\sqrt{2})} \\
+        {\mathbb{Q}}
+        \arrow[from=2-1, to=1-1]
+        \arrow[from=3-1, to=2-1]
+    \end{tikzcd}\]
+    Thus $p_m(t)$ is reducible over $\Q(\sqrt{2})$. Now we show the following.
+    \begin{lem}
+        For any prime $p$, $\sqrt{2}$ or $\sqrt{3}$ or $\sqrt{6}$ are in $\F_p$ for any prime $p$.
+    \end{lem}
+    There exists a homomorphism (Legendre symbol) $\varphi:\F_p^\times\to \{\pm 1\}$, such that 
+    \begin{equation*}
+        \varphi(g)=\begin{cases}
+            1, \text{ if $g$ is a square}\\
+            -1, \text{ otherwise}
+        \end{cases}
+    \end{equation*}
+    Suppose that $2,3$ are not squares, i.e., $sqrt{2},\sqrt{3}\not\in\F_p^\times$, then 
+    \begin{equation*}
+        \varphi(2\cdot 3)=1
+    \end{equation*}
+    which implies $\sqrt{6}\in\F_p^\times$, concluding the proof.
+\end{proof}
+
+
+\begin{prob}
+    Find the invertible elements, the zero divisors and the nilpotent elements in the following rings:
+    \begin{itemize}
+        \item[(a)] \(\mathbb{Z}/p^n\mathbb{Z}\), where \(n\) is a natural number, \(p\) is a prime.
+        \item[(b)] the upper triangular matrices over a field.
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    I will denote the invertible elements as $I$, zero divisors as $ZD$ and nilpotent elements are $N$.
+    \begin{itemize}
+        \item[(a)] For $\Z/p^n\Z$,
+        \begin{equation*}
+            I(\Z/p^{n}\Z)=(\Z/p^n\Z)^\times
+        \end{equation*}
+        we know the invertible elements are exactly the ones coprime to $p^n$: for any $a$, there exists integers $b,k$ such that 
+        \begin{equation*}
+            ab+nk=1
+        \end{equation*}
+        if and only if $\gcd(p^n,a)=1$.
+        \begin{equation*}
+            ZD(\Z/p^n\Z)(=\Z/p^n\Z)\setminus I
+        \end{equation*}
+        The ring is commutative and finite, if $g$ is not a unit, then it implies multiplication by $g$ is also not injective, i.e., $g$ is a zero divisor.
+        \begin{equation*}
+            N(\Z/p^n\Z)=\left\{g\in\Z/p^n\Z: g\equiv 0\mod p\right\}
+        \end{equation*}
+        This is because if $g^k=0\mod p^n$ for some $k$, then $g^k=0\mod p\Rightarrow p\mid g^k$. Since $p$ is prime, we must have $p\mod g$, i.e., $N\subset \{g: g\equiv 0\mod p\}$, and it is clear the reverse inclusion holds.
+
+        
+        \item[(b)] The invertible elements 
+        \begin{equation*}
+            I=\left\{A\in M_{n}(k): a_{ii}\neq 0 \text{ for all } 1\leq i\leq n\right\}
+        \end{equation*}
+        The zero divisors:
+        \begin{equation*}
+            ZD=M_n(k)\setminus I
+        \end{equation*}
+        by a dimension argument. And finally
+        \begin{equation*}
+            N=\left\{A\in M_n(k): a_{ii}=0 \text{ for all } 1\leq i\leq n\right\}
+        \end{equation*}
+        One can easily show both inclusions by explicit matrix computations.
+    \end{itemize}
+\end{proof}
+
+
+\begin{prob}
+    Prove that the group \(\text{GL}(2,\mathbb{C})\) does not contain a subgroup isomorphic to \(S_4\).
+\end{prob}
+\begin{proof}
+    We know that $S_4$ embeds into $\text{GL}_2(\C)$ if and only if there exists a homomorphism $\varphi:G\to\text{GL}_2(\C)$ such that $\varphi$ is injective. By definition, $\varphi$ is a representation, and we know there are one irreducible representations of dimension $2$ and two irreducible representations of dimension $1$. We know the character table of $S_4$, recall the following lemma:
+    \begin{lem}
+        Let $\rho\to\text{GL}_n(\C)$ be a representation, if for some $g$,
+        \begin{equation*}
+            \chi(\rho(g))=n
+        \end{equation*}
+        then $\rho(g)=I_n$. In other words, if there is an entry in the character table that is the same as its left most entry (dimension), then it is (the trace of )the identity matrix. 
+    \end{lem}
+    By the character table of $S_4$
+    \[
+\begin{array}{c|ccccc}
+S_4 & (1) & (12) & (123) & (1234) & (12)(34) \vspace{2pt} \\
+\hline
+\chi_{\text{triv}} & 1 & 1 & 1 & 1 & 1 \\
+
+\chi_{sgn}  & 1 & -1 & 1 & -1 & 1 \\
+\chi_\perp & 3 & 1 & 0 & -1 & -1 \\
+\text{sgn}\otimes\chi^\perp & 3 & -1 & 0 & 1 & -1 \\
+\chi^{(5)} & 2 & 0 & -1 & 0 & 2 \\
+\end{array}
+\]
+    We see that the two-dimensional representation $\chi^{(5)}$ is not injective, since $\chi^{(5)}(12)(34)=2$. It suffices to show that if the direct sum of two one-dimensional representations is also not injective: 
+    \begin{equation*}
+        \chi_{\text{triv}}\oplus\chi_{\text{sgn}}(12)(34)=1+1
+    \end{equation*}
+    i.e., it is not injective. This shows that $S_4$ cannot be embedded into $\text{GL}_2(\C)$.
+\end{proof}
+
+
+
+\chapter{Fall 2010}
+
+
+
+% \section*{Algebra Qualifying Exam Fall 2010}
+% \subsection*{September 6, 2010 (150 minutes)}
+
+% Do all problems. All problems are equally weighted. Show all work.
+
+\begin{prob}
+    Let \(G\) be a group. Let \(H\) be a subset of \(G\) that is closed under group multiplication. Assume that \(g^2 \in H\) for all \(g \in G\). Show that \(H\) is a normal subgroup of \(G\) and \(G/H\) is abelian.
+\end{prob}
+\begin{proof}
+    This is purely computational. 
+\end{proof}
+
+\begin{prob}
+    \begin{itemize}
+        \item[(a)] Find the complete factorization of the polynomial \(f(x) = x^6 - 17x^4 + 80x^2 - 100\) in \(\mathbb{Z}[x]\).
+        \item[(b)] For which prime numbers \(p\) does \(f(x)\) have a root in \(\mathbb{Z}/p\mathbb{Z}\) (i.e, \(f(x)\) has a root modulo \(p\))? Explain your answer.
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item Replacing $y=x^2$, we see that 
+        \begin{equation*}
+            f(y)=(y-10)(y-2)(y-5)
+        \end{equation*}
+        Thus we have 
+        \begin{equation*}
+            f(x)=(x^2-10)(x^2-2)(x^2-5)
+        \end{equation*}
+        \item $f(x)$ has a root over $\F_p$ for all prime $p$. This is because one can consider the Legendre symbol $\chi:\F_p\to\{\pm1\}$
+        \begin{equation*}
+            \chi(g)=\begin{cases}
+                1, g \text{ is a square}\\
+                -1, \text{ if not}
+            \end{cases}
+        \end{equation*}
+        where $g\in\F_p$. We see that either $\sqrt{2}$ or $\sqrt{5}$ or $\sqrt{10}$ is in $\F_p$. Suppose both $\sqrt{2}$ or $\sqrt{5}$ are not in $\F_p$, then 
+        \begin{equation*}
+            \chi(10)=\chi(2)\chi(5)=-1\cdot -1=1
+        \end{equation*}
+        In other words, $\sqrt{10}\in\F_p$. This shows that $f$ has a root over $\F_p$ for all $p$.
+    \end{enumerate}
+\end{proof}
+
+\begin{prob}
+    Let \(K = \mathbb{Q}(\sqrt[8]{2}, \sqrt{-1})\) and \(F = \mathbb{Q}(\sqrt{-2})\). Show that \(K\) is Galois over \(F\) and determine the Galois group \(\text{Gal}(K/F)\).
+\end{prob}
+\begin{proof}
+    
+\end{proof}
+
+
+
+
+
+\begin{prob}
+    Let \(\mathbb{F}_q\) be a finite field with \(q = p^n\) elements. Here \(p\) is a prime number. Let \(\varphi : \mathbb{F}_q \rightarrow \mathbb{F}_q\) be given by \(\varphi(x) = x^p\).
+    \begin{itemize}
+        \item[(a)] Show that \(\varphi\) is a linear transformation on \(\mathbb{F}_q\) (as vector space over \(\mathbb{F}_p\)), then determine its minimal polynomial.
+        \item[(b)] Supposed that \(\varphi\) is diagonalizable over \(\mathbb{F}_p\). Show that \(n\) divides \(p - 1\).
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item[(a)] We see that $\varphi$ has characteristic polynomial $p(t)=t^n-1$. Let $m(t)$ be the minimal polynomial, then we use the linear independence of $\varphi^k$!
+        \begin{equation*}
+            a_0\id+a_1\varphi+\dots+a_{n-1}\varphi^{n-1}=0
+        \end{equation*}
+        implies 
+        \begin{equation*}
+            a_0=\dots=a_{n-1}=0
+        \end{equation*}
+        Hence this indicates any polynomial of degree $<n$ that take $\varphi$ to $0$ would have to be identically zero. This gives $m(t)=t^n-1$.
+        \item[(b)] We know $m(t)=t^n-1$ factors into distinct linear factors over $\F_p$. In other words, 
+        \begin{equation*}
+            x^n-1\mid\prod_{a\in\F_p}(x-a)
+        \end{equation*}
+        since $0$ is not a root of $m$, we know 
+        \begin{equation*}
+            x^n-1\mid\prod_{a\neq 0}(x-a)
+        \end{equation*}
+        We claim that 
+        \begin{equation*}
+            \prod_{a\neq 0, a\in\F_p}(x-a)=x^{p-1}-1
+        \end{equation*}
+        This is because every element in $\F_p$ satisfies $x^{p-1}-1$, and $x^{p-1}-1$ has $p-1$ roots. Then 
+        \begin{equation*}
+            x^n-1\mid(x^{p-1}-1)
+        \end{equation*}
+        implies that $n\mid(p-1)$.
+    \end{enumerate}
+\end{proof}
+
+
+
+\begin{prob}
+    Let \(G\) be a non-abelian group of order \(p^3\). Here \(p\) is a prime number.
+    \begin{itemize}
+        \item[(a)] Determine the number of (isomorphic classes of) irreducible complex representations of \(G\), and find their dimensions.
+        \item[(b)] Which of the irreducible complex representations of \(G\) are faithful? Explain your answer.
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    \begin{itemize}
+        \item[(a)] Note that $[G,G]$ has order $p$, thus $G$ has $p^2$ one-dimensional irreducible representations; thus there are $p-1$ $p$-dimensional irreducible representations.
+        \item[(b)] The $p$-dimensional one is faithful: know that $\bar{\rho}:\frac{G}{\ker\rho}\to\text{GL}_p(\C)$ is still irreducible of dimension $p$, if $\ker\rho$ is nontrivial, then $\bar{\rho}$ has dimension $1$, i.e., a contradiction. 
+        
+        The one-dimensional ones are not faithful because if it were, then $G$ embeds into $\C^\times$, and finite subgroups of $\C^\times$ is cyclic, contradiction.
+    \end{itemize}
+\end{proof}
+
+
+
+Omit:
+
+\begin{prob}
+    Let \(A\) be a commutative Noetherian local ring with maximal ideal \(\mathfrak{m}\). Assume \(\mathfrak{m}^n = \mathfrak{m}^{n+1}\) for some \(n > 0\). Show that \(A\) is Artinian.
+\end{prob}
+
+
+
+
+
+
+
+
+\chapter{Spring 2010}
+% \section*{Algebra Qualifying Exam Spring 2010}
+% \subsection*{May 13, 2010 (150 minutes)}
+
+Do all problems. All problems are equally weighted. Show all work.
+
+
+\begin{prob}
+    Let \(G\) be a non-abelian group of order \(p^3\), here \(p\) is prime. Determine the number of distinct conjugacy classes in \(G\).
+\end{prob}
+
+
+
+
+
+\begin{prob}
+    Compute Galois groups of the following polynomials.
+    \begin{itemize}
+        \item[(a)] \(x^3 + t^2x - t^3\) over \(k\), where \(k = \mathbb{C}(t)\) is the field of rational functions in one variable over complex numbers \(\mathbb{C}\).
+        \item[(b)] \(x^4 - 14x^2 + 9\) over \(\mathbb{Q}\).
+    \end{itemize}
+\end{prob}
+
+
+
+\begin{prob}
+    Let \(V\) be a \(n\)-dimensional vector space over a field \(k\). Let \(T \in \text{End}_k(V)\).
+    \begin{itemize}
+        \item[(a)] Show that \(tr(T \otimes T \otimes T) = (tr(T))^3\). Here \(tr(T)\) is the trace of \(T\).
+        \item[(b)] Find a similar formula for the determinant \(\det(T \otimes T \otimes T)\).
+    \end{itemize}
+\end{prob}
+
+
+
+\begin{prob}
+    Classify all non-commutative semi-simple rings with 512 elements. (You can use the fact that finite division rings are fields.)
+\end{prob}
+
+
+\begin{prob}
+    Let \(G\) be a group with 24 elements. \textbf{Use representation theory} to show that \(G \neq [G, G]\). (Here \([G, G]\) is the commutator subgroup of \(G\).)
+\end{prob}
+
+
+Omitted:
+
+\begin{prob}
+    Let \(R\) be a ring such that \(r^3 = r\) for all \(r \in R\). Show that \(R\) is commutative. (Hint: First show that \(r^2\) is central for all \(r \in R\).)
+\end{prob}
+
+
+
+
+
+
+\end{document}
