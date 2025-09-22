@@ -379,6 +379,53 @@ I am too lazy to follow the proof.
 %     is jointly continuous. If $x_n\to x, y_n\to y$, then $B(x_n,y_n)\to B(x,y)$.
 % \end{prop}
 
+\section{9/22 Lecture}
+\begin{defn}[homeomorphism]
+    Let $f:S\to T$, be a map between two topological spaces, then $f$ is called a homeomorphism if it is a continuous bijection with a continuous inverse.
+\end{defn}
+
+\begin{defn}
+    Let $K$ be a family of functions $f: S\to (\tau, \tau_U)$, then $X$ is the weak topology on $S$ if it is the weakest topology making all $f\in K$ continuous: for any $U\in \tau_U$, $f^{-1}(U)$ is open in $X$. 
+\end{defn}
+
+\begin{example}
+    Let $\mathcal{H}$ be a Hilbert space. Then the weak topology on $\mathcal{H}$ is the weakest topology that makes 
+    \begin{equation*}
+        \varphi\mapsto\la\varphi,\psi\ra
+    \end{equation*} 
+    continuous for each $\psi\in\mathcal{H}$.
+\end{example}
+
+
+
+\begin{defn}[Hausdorff]
+    A topological space is called Hausdorff iff for each $x\neq y$, there exists open sets $U_1, U_2$ such that $x\in U_1, y\in U_2$ and $U_1\cap U_2=\varnothing$/. A topological space is called 
+    \begin{enumerate}
+        \item separable if it contains a countable dense subset.
+        \item first countable if each point has a countable neighborhood base. 
+        \item second countable iff it has a countable base.
+    \end{enumerate}
+    We note that every metric space is first countable, and is second countable if it is separable. Finally, any second countable space is separable.
+\end{defn}
+
+
+Now we talk about some nets.
+\begin{defn}[directed system, net]
+    A directed system is an index set $I$ together with an ordering $\prec$ such that 
+    \begin{enumerate}
+        \item $\alpha,\beta\in I$, there is $\gamma\succ\alpha, \gamma\succ\beta$.
+        \item there is a partial ordering.
+    \end{enumerate}
+    A net on a set $S$ is a mapping $I: A\mapsto x_A\in S$ such that $\{x_\alpha\}_{\alpha\in I}$. If $I$ is positive integers then the nets are just sequences $\{x_i\}_{i=1}^\infty$.
+
+    A net $\{x_\alpha\}_{\alpha\in I}$ is said to converge to $x\in S$ if for any neighborhood $N$ of $x$, there is $\beta\in I$ so $x_\alpha\in N$ if $\alpha\succ\beta$.
+\end{defn}
+
+
+
+
+
+
 
 
 
