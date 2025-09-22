@@ -421,8 +421,139 @@ Now we talk about some nets.
     A net $\{x_\alpha\}_{\alpha\in I}$ is said to converge to $x\in S$ if for any neighborhood $N$ of $x$, there is $\beta\in I$ so $x_\alpha\in N$ if $\alpha\succ\beta$.
 \end{defn}
 
+\begin{prop}
+    A function $f: S\to T$ is continuous iff for eery convergent net $\{x_\alpha\}$, the net $\{f(x_\alpha)\}$ converges too. (If $S,T$ are first countable, then the nets can be taken as sequences).
+\end{prop}
+Then we defined compact and FIP for topological spaces, and claimed that they are equal.
+
+\begin{example}
+    The unit ball in $l_2$ is not compact.
+\end{example}
+
+\begin{prop}[Tychnoff]
+    An arbitrary product of compact topological spaces is compact.
+\end{prop}
+
+\begin{prop}[Stone-Weierstrass]
+    Let $B$ be a subalgebra of $C_\R(X)$, where $X$ is Hausdorff, compact that separates points, i.e., if $x\neq y$, this implies $f(x)\neq f(y)$ for some $f\in B$ and $L\in B$, then $B=C_\R(X)$.
+\end{prop}
 
 
+
+
+\begin{example}
+    Let $B$ be the closure of the set $\{e^{ikx}\}_{k=-\infty}^\infty$, on $[-\pi,\pi]$. Then by Stone Weierstrass, we must have $B=C[-\pi,\pi]$.
+\end{example}
+
+
+Harmonic analysis lecture
+\section{Lecture 9/22 Harmonic!}
+We will prove the following Strichartz estimates:
+last time we did
+\begin{equation*}
+    \int_{\R^n}|\hat{F}(\xi,|\xi|)|^2\frac{d\xi}{|\xi|}\lesssim\|F\|_{L^\frac{2(n+1)}{n+3}(\R^{n+1})}
+\end{equation*}
+for any $f\in\mathcal{S}$. And similarly, we will show 
+\begin{equation}\label{1}
+    \int_{\R^n}|\hat{F}(\xi,|\xi|^2)|^2\frac{d\xi}{|\xi|}\lesssim\|F\|_{L^\frac{2(n+2)}{n+4}(\R^{n+1})}
+\end{equation}
+
+
+\begin{prop}[Stein-Tomas]
+    Case of $(\mathbb{S}^{n-1})$: 
+    \begin{equation*}
+        \left(\int_{\mathbb{S}^{n-1}}|\hat{F}(\omega)|^2d\omega\right)^\frac{1}{2}\leq c\|F\|_{L^\frac{2(n+1)}{n+3}}
+    \end{equation*}
+    and for any $L^r$ where $1\leq r\leq\frac{2(n+1)}{n+3}$.
+\end{prop}
+
+
+We recall that the solution to the Scrodinger's equation $\frac{1}{i}\partial_tu=\Delta f$, where $u(t=0)=0$,
+\begin{equation*}
+    u=(e^{-it\Delta}f)(x)=\int_{\R^n}e^{ix\cdot\xi+it|\xi|^2}\hat{f}(\xi)d\xi\coloneq (Tf)(x,t)
+\end{equation*}
+The process of beginning with $n$ variables and turning into $n+1$ variables is why we call this Fourier extension. (On the other hand, the Strichartz estimate is Fourier restriction).
+
+The above is equivalent to the following estimate:
+\begin{equation*}
+    \|u\|_{L^\frac{2(n+2)}{n}(\R^{n+1})}\leq CC\|f\|_{L^2(\R^n)}
+\end{equation*}
+i.e., 
+\begin{equation*}
+    \|Tf\|_{L^\frac{2(n+2)}{2}(\R^{n+1})}\leq C\|f\|_{L^2(\R^n)}
+\end{equation*}
+We now show that this is equivalent to Equation\ref{1}. We consider the dual $T^*$, and by the $TT^*$ method, it suffices to show that 
+\begin{equation*}
+    \|TT^*G\|_{L^\frac{2(n+2)}{n}_{t,x}}\leq \|G\|_{L_{t,x}^\frac{2(n+2)}{n+4}}
+\end{equation*}
+% \begin{equation*}
+%     \|Tf\|_{L^\frac{2(n+2)}{n}}\leq C\|f\|_{L^2(\R^n)}
+% \end{equation*}
+where 
+\begin{align*}
+    TT^*G(x,t)&=\int_s\int_y\int_\xi e^{i(x-y)\cdot\xi+i(t-s)|\xi|^2}G(y,x)d\xi dyds\\
+    =\int K(x,t,y,x)G(y,x)dyds
+\end{align*}
+where 
+\begin{equation*}
+    K(x,t,y,x)=\int_{\R^n}e^{i(x-y)\cdot\xi+\i(t-s)|\xi|^2}d\xi
+\end{equation*}
+It is enough (just like the cone) to prove it for dyadic pieces, where 
+\begin{equation*}
+    K(x,t,y,s)=\int_{\R^n}e^{i(x-y)\cdot\xi+i(t-s)|\xi|^2}\beta(|\xi|)d\xi
+\end{equation*}
+and 
+\begin{equation*}
+    |K|\lesssim |t-s|^{-\frac{n}{2}}
+\end{equation*}
+Now we consider the freezing operators 
+\begin{align*}
+    (W_{t,s}f)(x)&=\int_{\R^n}K(x,t,y,s)f(y)dy\\
+    &=\int\int e^{i(x-y)\cdot\xi+i(t-s)|\xi|^2}\beta(|\xi|)f(y)d\xi dy
+\end{align*}
+thus 
+\begin{equation*}
+    \|W_{t,s}\|_{L_x^\frac{2(n+2)}{n+4}\to L_x^\frac{2(n+2)}{2}}=O\left(|t-s|^\frac{-2}{q}\right)
+\end{equation*}
+
+Let's now prove the Stein-Tomas estimate:
+Let $\Sigma$ be a hypersurface with nonvanishing curvature; but by a partition of unity argument, 
+\begin{equation*}
+    \Sigma=\left\{(\xi', h(\xi')):\xi'\in\R^{n-1}\right\}
+\end{equation*}
+we want to show that 
+\begin{equation*}
+    \left(\int|\hat{F}(\xi', h(\xi'))a(\xi')^{1/2}|^2d\xi'\right)^\frac{1}{2}\leq C\|F\|_{L^r(\R^n)}
+\end{equation*}
+where 
+\begin{equation*}
+    Tf(x',x_n)=\int_{\R^{n-1}}e^{ix'\cdot\xi'+ix_nh(\xi')}(a(\xi'))^\frac{1}{2}f(\xi')d\xi'
+\end{equation*}
+and 
+\begin{equation*}
+    T^*F(\xi')=\hat{F}(\xi',h(\xi'))(a(\xi'))^\frac{1}{2}
+\end{equation*}
+Note $T^*: L^r(\R^n)\to L^2(\R^{n-1})$, and $T:L^2(\R^{n-1})\to L^{r'}(\R^n)$., and 
+\begin{equation*}
+    TT^*: L^r(\R^n)\to L^{r'}(\R^n)
+\end{equation*}
+and 
+\begin{equation*}
+    WF(x)=TT^*F(x)=\int\int e^{i(x'-y')\cdot\xi'+i(x_n-y_n)h(\xi')}G(y', y_n)a(\xi')d\xi'dy'dy_n
+\end{equation*}
+this is the exact same case now, where 
+\begin{equation*}
+    K=\int e^{i(x'-y')\cdot\xi'+i(x_n-y_n)h(\xi')}a(\xi')d\xi'=O(|x_n-y_n|^{-\frac{n-1}{2}})
+\end{equation*}
+i.e., 
+\begin{equation*}
+    \|W_{x_n,y_n}\|_{L^1\to L^\infty}=O(|x_n-y_n|^{-\frac{n-1}{2}})
+\end{equation*}
+and 
+\begin{equation*}
+    \|W_{x_n,y_n}\|_{L^2\to L^2}=O(1)
+\end{equation*}
+thus $W=TT^*$, we have $W: L^r(\R^n)\to L^{r'}(\R^n)$. We have now proven Stein-Tomas.
 
 
 
