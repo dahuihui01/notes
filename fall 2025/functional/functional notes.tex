@@ -446,114 +446,183 @@ Then we defined compact and FIP for topological spaces, and claimed that they ar
 \end{example}
 
 
-Harmonic analysis lecture
-\section{Lecture 9/22 Harmonic!}
-We will prove the following Strichartz estimates:
-last time we did
-\begin{equation*}
-    \int_{\R^n}|\hat{F}(\xi,|\xi|)|^2\frac{d\xi}{|\xi|}\lesssim\|F\|_{L^\frac{2(n+1)}{n+3}(\R^{n+1})}
-\end{equation*}
-for any $f\in\mathcal{S}$. And similarly, we will show 
-\begin{equation}\label{1}
-    \int_{\R^n}|\hat{F}(\xi,|\xi|^2)|^2\frac{d\xi}{|\xi|}\lesssim\|F\|_{L^\frac{2(n+2)}{n+4}(\R^{n+1})}
-\end{equation}
+% Harmonic analysis lecture
+% \section{Lecture 9/22 Harmonic!}
+% We will prove the following Strichartz estimates:
+% last time we did
+% \begin{equation*}
+%     \int_{\R^n}|\hat{F}(\xi,|\xi|)|^2\frac{d\xi}{|\xi|}\lesssim\|F\|_{L^\frac{2(n+1)}{n+3}(\R^{n+1})}
+% \end{equation*}
+% for any $f\in\mathcal{S}$. And similarly, we will show 
+% \begin{equation}\label{1}
+%     \int_{\R^n}|\hat{F}(\xi,|\xi|^2)|^2\frac{d\xi}{|\xi|}\lesssim\|F\|_{L^\frac{2(n+2)}{n+4}(\R^{n+1})}
+% \end{equation}
 
 
-\begin{prop}[Stein-Tomas]
-    Case of $(\mathbb{S}^{n-1})$: 
+% \begin{prop}[Stein-Tomas]
+%     Case of $(\mathbb{S}^{n-1})$: 
+%     \begin{equation*}
+%         \left(\int_{\mathbb{S}^{n-1}}|\hat{F}(\omega)|^2d\omega\right)^\frac{1}{2}\leq c\|F\|_{L^\frac{2(n+1)}{n+3}}
+%     \end{equation*}
+%     and for any $L^r$ where $1\leq r\leq\frac{2(n+1)}{n+3}$.
+% \end{prop}
+
+
+% We recall that the solution to the Scrodinger's equation $\frac{1}{i}\partial_tu=\Delta f$, where $u(t=0)=0$,
+% \begin{equation*}
+%     u=(e^{-it\Delta}f)(x)=\int_{\R^n}e^{ix\cdot\xi+it|\xi|^2}\hat{f}(\xi)d\xi\coloneq (Tf)(x,t)
+% \end{equation*}
+% The process of beginning with $n$ variables and turning into $n+1$ variables is why we call this Fourier extension. (On the other hand, the Strichartz estimate is Fourier restriction).
+
+% The above is equivalent to the following estimate:
+% \begin{equation*}
+%     \|u\|_{L^\frac{2(n+2)}{n}(\R^{n+1})}\leq CC\|f\|_{L^2(\R^n)}
+% \end{equation*}
+% i.e., 
+% \begin{equation*}
+%     \|Tf\|_{L^\frac{2(n+2)}{2}(\R^{n+1})}\leq C\|f\|_{L^2(\R^n)}
+% \end{equation*}
+% We now show that this is equivalent to Equation\ref{1}. We consider the dual $T^*$, and by the $TT^*$ method, it suffices to show that 
+% \begin{equation*}
+%     \|TT^*G\|_{L^\frac{2(n+2)}{n}_{t,x}}\leq \|G\|_{L_{t,x}^\frac{2(n+2)}{n+4}}
+% \end{equation*}
+% % \begin{equation*}
+% %     \|Tf\|_{L^\frac{2(n+2)}{n}}\leq C\|f\|_{L^2(\R^n)}
+% % \end{equation*}
+% where 
+% \begin{align*}
+%     TT^*G(x,t)&=\int_s\int_y\int_\xi e^{i(x-y)\cdot\xi+i(t-s)|\xi|^2}G(y,x)d\xi dyds\\
+%     =\int K(x,t,y,x)G(y,x)dyds
+% \end{align*}
+% where 
+% \begin{equation*}
+%     K(x,t,y,x)=\int_{\R^n}e^{i(x-y)\cdot\xi+\i(t-s)|\xi|^2}d\xi
+% \end{equation*}
+% It is enough (just like the cone) to prove it for dyadic pieces, where 
+% \begin{equation*}
+%     K(x,t,y,s)=\int_{\R^n}e^{i(x-y)\cdot\xi+i(t-s)|\xi|^2}\beta(|\xi|)d\xi
+% \end{equation*}
+% and 
+% \begin{equation*}
+%     |K|\lesssim |t-s|^{-\frac{n}{2}}
+% \end{equation*}
+% Now we consider the freezing operators 
+% \begin{align*}
+%     (W_{t,s}f)(x)&=\int_{\R^n}K(x,t,y,s)f(y)dy\\
+%     &=\int\int e^{i(x-y)\cdot\xi+i(t-s)|\xi|^2}\beta(|\xi|)f(y)d\xi dy
+% \end{align*}
+% thus 
+% \begin{equation*}
+%     \|W_{t,s}\|_{L_x^\frac{2(n+2)}{n+4}\to L_x^\frac{2(n+2)}{2}}=O\left(|t-s|^\frac{-2}{q}\right)
+% \end{equation*}
+
+% Let's now prove the Stein-Tomas estimate:
+% Let $\Sigma$ be a hypersurface with nonvanishing curvature; but by a partition of unity argument, 
+% \begin{equation*}
+%     \Sigma=\left\{(\xi', h(\xi')):\xi'\in\R^{n-1}\right\}
+% \end{equation*}
+% we want to show that 
+% \begin{equation*}
+%     \left(\int|\hat{F}(\xi', h(\xi'))a(\xi')^{1/2}|^2d\xi'\right)^\frac{1}{2}\leq C\|F\|_{L^r(\R^n)}
+% \end{equation*}
+% where 
+% \begin{equation*}
+%     Tf(x',x_n)=\int_{\R^{n-1}}e^{ix'\cdot\xi'+ix_nh(\xi')}(a(\xi'))^\frac{1}{2}f(\xi')d\xi'
+% \end{equation*}
+% and 
+% \begin{equation*}
+%     T^*F(\xi')=\hat{F}(\xi',h(\xi'))(a(\xi'))^\frac{1}{2}
+% \end{equation*}
+% Note $T^*: L^r(\R^n)\to L^2(\R^{n-1})$, and $T:L^2(\R^{n-1})\to L^{r'}(\R^n)$., and 
+% \begin{equation*}
+%     TT^*: L^r(\R^n)\to L^{r'}(\R^n)
+% \end{equation*}
+% and 
+% \begin{equation*}
+%     WF(x)=TT^*F(x)=\int\int e^{i(x'-y')\cdot\xi'+i(x_n-y_n)h(\xi')}G(y', y_n)a(\xi')d\xi'dy'dy_n
+% \end{equation*}
+% this is the exact same case now, where 
+% \begin{equation*}
+%     K=\int e^{i(x'-y')\cdot\xi'+i(x_n-y_n)h(\xi')}a(\xi')d\xi'=O(|x_n-y_n|^{-\frac{n-1}{2}})
+% \end{equation*}
+% i.e., 
+% \begin{equation*}
+%     \|W_{x_n,y_n}\|_{L^1\to L^\infty}=O(|x_n-y_n|^{-\frac{n-1}{2}})
+% \end{equation*}
+% and 
+% \begin{equation*}
+%     \|W_{x_n,y_n}\|_{L^2\to L^2}=O(1)
+% \end{equation*}
+% thus $W=TT^*$, we have $W: L^r(\R^n)\to L^{r'}(\R^n)$. We have now proven Stein-Tomas.
+
+
+
+\section{Lecture 9/24}
+\begin{prop}[Riesz-Markov]
+    Let $X$ be compact and Hausdorff, then for any positive linear functional $l$ on $C(X)$, there is a unique Baire measure $\mu$ such that 
     \begin{equation*}
-        \left(\int_{\mathbb{S}^{n-1}}|\hat{F}(\omega)|^2d\omega\right)^\frac{1}{2}\leq c\|F\|_{L^\frac{2(n+1)}{n+3}}
+        l(f)=\int fd\mu
     \end{equation*}
-    and for any $L^r$ where $1\leq r\leq\frac{2(n+1)}{n+3}$.
+    For example, let $X=[-1,1]$, let $l(f)=f(0)$, then $\mu=\delta_0$. This means that you can continuously extend $l$ so that it is defined on characteristic functions on Baire sets.
+\end{prop}
+% \begin{proof}
+%     A function with values in $(-\infty,\infty]$ is called lower semicontinuous if $\{x: f(x)>a\}$ are open. Let $I^+$ be the nonnegative lower semi-continuous functions. Then $h\in I^+$ is the limit from below of functions in $C_0$. Thus we define 
+%     \begin{equation*}
+%         l^*(h)=\sup_{h\geq g\in C_0}l(g)
+%     \end{equation*}
+%     for general $f\geq 0$, define $l^*(f)=\inf_{f\leq h\in I^*}l^*(h)$. We say $f\in L_l^1$ if for each $\varepsilon>0$, there is $g\in C_0$ so $l^*(|f-g|)<\varepsilon$, define 
+%     \begin{equation*}
+%         l(f)=\lim l(g_n)
+%     \end{equation*}
+%     and $g_n\in C_0$, and $l^*(|f-g_n|)\to 0$. The functional $l^*$ is calle da Radon measure. Let $l$ be a Radon measure on $(a,b)$, we will show that $l$ is the Riemann-Stieltjes integral 
+%     \begin{equation*}
+%         l(f)=\int fd\phi
+%     \end{equation*}
+%     with respect to a nondecreasing function $\phi$, 
+%     \begin{equation*}
+%         \sum f(x_i)[\phi(x_{i+1})-\phi(x_i)]
+%     \end{equation*}
+%     Let $m_k=\min_{x\in I_k}f(X), M_k=\max_{x\in I_k}f(x), I_k[x_k, x_{k+1}]$. Let 
+%     \begin{equation*}
+%         H_x(y)=\begin{cases}
+%             1, y>x\\
+%             0, y\leq x
+%         \end{cases}
+%     \end{equation*}
+%     i.e., $H_{x_1}-H_{x_2}\in L_l^1$. Up to a constant, there is a unique $\phi$ such that $\phi(x_2)-\phi(x_1)=\mu$, 
+%     \begin{equation*}
+%         \phi(x_2)-\phi(x_1)=l^*(H_{x_1}-H_{x_2})
+%     \end{equation*}
+%     and 
+%     \begin{equation*}
+%         \phi(x_2)-\phi(a)-[\phi(x_1)-\phi(a)]=l^*(H_{x_1}-H_a)-l^*(H_{x_2}-H_a)
+%     \end{equation*}
+%     This menas that $\phi$ is nondecreasing. Notice 
+%     \begin{equation*}
+%         \sum m_k(H_{x_k}-H_{x_{k+1}})\leq f(x)\leq \sum M_k(H_{x_k}-H_{x_{k+1}})
+%     \end{equation*}
+%     Then 
+% \end{proof}
+
+
+
+\begin{defn}[weak topology]
+    The weak topology on $X$ is the weakest topology that make each $l\in X^k$ continuous. The neighborhoods 
+    \begin{equation*}
+        \{x: |l_i(x)|<\varepsilon, i=1,\dots, n\}
+    \end{equation*}
+\end{defn}
+
+\begin{prop}
+    We have the following properties:
+    \begin{enumerate}
+        \item The weak topology is weaker than the norm topology.
+        \item For weakly convergent s sequence is norm bounded.
+        \item The weak topology is Hausdorff.
+    \end{enumerate}
 \end{prop}
 
 
-We recall that the solution to the Scrodinger's equation $\frac{1}{i}\partial_tu=\Delta f$, where $u(t=0)=0$,
-\begin{equation*}
-    u=(e^{-it\Delta}f)(x)=\int_{\R^n}e^{ix\cdot\xi+it|\xi|^2}\hat{f}(\xi)d\xi\coloneq (Tf)(x,t)
-\end{equation*}
-The process of beginning with $n$ variables and turning into $n+1$ variables is why we call this Fourier extension. (On the other hand, the Strichartz estimate is Fourier restriction).
-
-The above is equivalent to the following estimate:
-\begin{equation*}
-    \|u\|_{L^\frac{2(n+2)}{n}(\R^{n+1})}\leq CC\|f\|_{L^2(\R^n)}
-\end{equation*}
-i.e., 
-\begin{equation*}
-    \|Tf\|_{L^\frac{2(n+2)}{2}(\R^{n+1})}\leq C\|f\|_{L^2(\R^n)}
-\end{equation*}
-We now show that this is equivalent to Equation\ref{1}. We consider the dual $T^*$, and by the $TT^*$ method, it suffices to show that 
-\begin{equation*}
-    \|TT^*G\|_{L^\frac{2(n+2)}{n}_{t,x}}\leq \|G\|_{L_{t,x}^\frac{2(n+2)}{n+4}}
-\end{equation*}
-% \begin{equation*}
-%     \|Tf\|_{L^\frac{2(n+2)}{n}}\leq C\|f\|_{L^2(\R^n)}
-% \end{equation*}
-where 
-\begin{align*}
-    TT^*G(x,t)&=\int_s\int_y\int_\xi e^{i(x-y)\cdot\xi+i(t-s)|\xi|^2}G(y,x)d\xi dyds\\
-    =\int K(x,t,y,x)G(y,x)dyds
-\end{align*}
-where 
-\begin{equation*}
-    K(x,t,y,x)=\int_{\R^n}e^{i(x-y)\cdot\xi+\i(t-s)|\xi|^2}d\xi
-\end{equation*}
-It is enough (just like the cone) to prove it for dyadic pieces, where 
-\begin{equation*}
-    K(x,t,y,s)=\int_{\R^n}e^{i(x-y)\cdot\xi+i(t-s)|\xi|^2}\beta(|\xi|)d\xi
-\end{equation*}
-and 
-\begin{equation*}
-    |K|\lesssim |t-s|^{-\frac{n}{2}}
-\end{equation*}
-Now we consider the freezing operators 
-\begin{align*}
-    (W_{t,s}f)(x)&=\int_{\R^n}K(x,t,y,s)f(y)dy\\
-    &=\int\int e^{i(x-y)\cdot\xi+i(t-s)|\xi|^2}\beta(|\xi|)f(y)d\xi dy
-\end{align*}
-thus 
-\begin{equation*}
-    \|W_{t,s}\|_{L_x^\frac{2(n+2)}{n+4}\to L_x^\frac{2(n+2)}{2}}=O\left(|t-s|^\frac{-2}{q}\right)
-\end{equation*}
-
-Let's now prove the Stein-Tomas estimate:
-Let $\Sigma$ be a hypersurface with nonvanishing curvature; but by a partition of unity argument, 
-\begin{equation*}
-    \Sigma=\left\{(\xi', h(\xi')):\xi'\in\R^{n-1}\right\}
-\end{equation*}
-we want to show that 
-\begin{equation*}
-    \left(\int|\hat{F}(\xi', h(\xi'))a(\xi')^{1/2}|^2d\xi'\right)^\frac{1}{2}\leq C\|F\|_{L^r(\R^n)}
-\end{equation*}
-where 
-\begin{equation*}
-    Tf(x',x_n)=\int_{\R^{n-1}}e^{ix'\cdot\xi'+ix_nh(\xi')}(a(\xi'))^\frac{1}{2}f(\xi')d\xi'
-\end{equation*}
-and 
-\begin{equation*}
-    T^*F(\xi')=\hat{F}(\xi',h(\xi'))(a(\xi'))^\frac{1}{2}
-\end{equation*}
-Note $T^*: L^r(\R^n)\to L^2(\R^{n-1})$, and $T:L^2(\R^{n-1})\to L^{r'}(\R^n)$., and 
-\begin{equation*}
-    TT^*: L^r(\R^n)\to L^{r'}(\R^n)
-\end{equation*}
-and 
-\begin{equation*}
-    WF(x)=TT^*F(x)=\int\int e^{i(x'-y')\cdot\xi'+i(x_n-y_n)h(\xi')}G(y', y_n)a(\xi')d\xi'dy'dy_n
-\end{equation*}
-this is the exact same case now, where 
-\begin{equation*}
-    K=\int e^{i(x'-y')\cdot\xi'+i(x_n-y_n)h(\xi')}a(\xi')d\xi'=O(|x_n-y_n|^{-\frac{n-1}{2}})
-\end{equation*}
-i.e., 
-\begin{equation*}
-    \|W_{x_n,y_n}\|_{L^1\to L^\infty}=O(|x_n-y_n|^{-\frac{n-1}{2}})
-\end{equation*}
-and 
-\begin{equation*}
-    \|W_{x_n,y_n}\|_{L^2\to L^2}=O(1)
-\end{equation*}
-thus $W=TT^*$, we have $W: L^r(\R^n)\to L^{r'}(\R^n)$. We have now proven Stein-Tomas.
 
 
 

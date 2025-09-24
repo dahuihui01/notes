@@ -163,24 +163,24 @@ Topics: (1) properties of derivatives, (2) directional derivatives, (3) gradient
 \begin{prob}
     Consider the curve in $\R$: $c(t)=(2t, t^2,-t)$. Find the speed of the $c$ at $t=2$ and the tangent line at $t=1$.
 \end{prob}
-% \begin{proof}
-%     The velocity vector of $c$ at $t=2$ is 
-%     \begin{equation*}
-%         c'(t)=(2, 2t, -1)
-%     \end{equation*}
-%     evaluated at $t=2$ is $c'(2)=(2, 4, -1)$. Thus the speed is the length of the velocity vector 
-%     \begin{equation*}
-%         \|c'(2)\|=\left(2^2+4^2+(-1)^2\right)^\frac{1}{2}=\sqrt{21}
-%     \end{equation*}
-%     For the tangent line: the tangent vector is 
-%     \begin{equation*}
-%         c'(1)=(2,2, -1)
-%     \end{equation*}
-%     and $c(1)=(2, 1, -1)$. Thus the tangent line $l$ at $t=1$ is given by 
-%     \begin{equation*}
-%         l(t)=(2,1,-1)+t(2,2,-1)=(2+2t, 1+2t, -1-t)
-%     \end{equation*}
-% \end{proof}
+\begin{proof}
+    The velocity vector of $c$ at $t=2$ is 
+    \begin{equation*}
+        c'(t)=(2, 2t, -1)
+    \end{equation*}
+    evaluated at $t=2$ is $c'(2)=(2, 4, -1)$. Thus the speed is the length of the velocity vector 
+    \begin{equation*}
+        \|c'(2)\|=\left(2^2+4^2+(-1)^2\right)^\frac{1}{2}=\sqrt{21}
+    \end{equation*}
+    For the tangent line: the tangent vector is 
+    \begin{equation*}
+        c'(1)=(2,2, -1)
+    \end{equation*}
+    and $c(1)=(2, 1, -1)$. Thus the tangent line $l$ at $t=1$ is given by 
+    \begin{equation*}
+        l(t)=(2,1,-1)+t(2,2,-1)=(2+2t, 1+2t, -1-t)
+    \end{equation*}
+\end{proof}
 
 
 
@@ -194,85 +194,85 @@ Topics: (1) properties of derivatives, (2) directional derivatives, (3) gradient
    D(f \circ g)(1, 1).
    \]
 \end{prob}
-% \begin{proof}
-%     We have 
-%     \begin{equation*}
-%         f\circ g(x,y)=(\tan(e^{x-y}-1)-e^{x-y}, e^{2(x-y)}-(x-y)^2)
-%     \end{equation*}
-%     and $g(1,1)=(1,0)$, thus using chain rule, we have 
-%     \begin{equation*}
-%         D(f\circ g)(1,1)=Df(1,0)Dg(1,1)
-%     \end{equation*}
-%     where 
-%     \begin{equation*}
-%         Df(u,v)=\begin{bmatrix}
-%             \sec^2(u-1)& -e^v\\
-%             2u&-2v
-%         \end{bmatrix}, \quad Dg(x,y)=\begin{bmatrix}
-%             e^{x-y}&-e^{x-y}\\
-%             1&-1
-%         \end{bmatrix}
-%     \end{equation*}
-%     Hence 
-%     \begin{align*}
-%         D(f\circ g)(1,1)&=\begin{bmatrix}
-%             1&-1\\
-%             2&0
-%         \end{bmatrix}\begin{bmatrix}
-%             1&-1\\
-%             1&-1
-%         \end{bmatrix}\\
-%         &=\begin{bmatrix}
-%             0&0\\
-%             2&-2
-%         \end{bmatrix}
-%     \end{align*}
-% \end{proof}
+\begin{proof}
+    We have 
+    \begin{equation*}
+        f\circ g(x,y)=(\tan(e^{x-y}-1)-e^{x-y}, e^{2(x-y)}-(x-y)^2)
+    \end{equation*}
+    and $g(1,1)=(1,0)$, thus using chain rule, we have 
+    \begin{equation*}
+        D(f\circ g)(1,1)=Df(1,0)Dg(1,1)
+    \end{equation*}
+    where 
+    \begin{equation*}
+        Df(u,v)=\begin{bmatrix}
+            \sec^2(u-1)& -e^v\\
+            2u&-2v
+        \end{bmatrix}, \quad Dg(x,y)=\begin{bmatrix}
+            e^{x-y}&-e^{x-y}\\
+            1&-1
+        \end{bmatrix}
+    \end{equation*}
+    Hence 
+    \begin{align*}
+        D(f\circ g)(1,1)&=\begin{bmatrix}
+            1&-1\\
+            2&0
+        \end{bmatrix}\begin{bmatrix}
+            1&-1\\
+            1&-1
+        \end{bmatrix}\\
+        &=\begin{bmatrix}
+            0&0\\
+            2&-2
+        \end{bmatrix}
+    \end{align*}
+\end{proof}
 
 \begin{prob}[2.5, Q8]
     Let \( f(u, v, w) = (e^{u-w}, \cos (v + u) + \sin (u + v + w)) \) and \( g(x, y) = (e^x, \cos (y - x), e^{-y}). \)  
    Calculate \( f \circ g \) and \( D(f \circ g)(0, 0)\).
 \end{prob}
-% \begin{proof}
-%     We have 
-%     \begin{equation*}
-%         f\circ g =(e^{e^x-\cos(y-x)}, \cos(e^x+\cos(y-x)), \sin(e^{x}+e^{-y}+\cos(y-x)))
-%     \end{equation*}
-%     and $g(0,0)=(1, 1, 1)$. Thus 
-%     \begin{equation*}
-%         D(f\circ g)(0,0)=Df(1,1,1)Dg(0,0)
-%     \end{equation*}
-%     where 
-%     \begin{equation*}
-%         Df(u,v,w)=\begin{bmatrix}
-%             e^{u-w}&0&-e^{u-w}\\
-%             -\sin(v+u)+\cos(u+v+w)&-\sin(v+u)+\cos(u+v+w)&\cos(u+v+w)
-%         \end{bmatrix}
-%     \end{equation*}
-%     and 
-%     \begin{equation*}
-%         Dg(x,y)=\begin{bmatrix}
-%             e^x&0\\
-%             \sin(y-x)&-\sin(y-x)\\
-%             0&-e^{-y}
-%         \end{bmatrix}
-%     \end{equation*}
-%     Thus 
-%     \begin{align*}
-%         D(f\circ g)(0,0)&=\begin{bmatrix}
-%             1&0&-1\\
-%             -\sin 2+\cos 3&-\sin 2+\cos 3&\cos 3
-%         \end{bmatrix}\begin{bmatrix}
-%             1&0\\
-%             0&0\\
-%             0&-1
-%         \end{bmatrix}\\
-%         &=\begin{bmatrix}
-%             1&1\\
-%             -\sin 2+\cos 3&-\cos 3
-%         \end{bmatrix}
-%     \end{align*}
-% \end{proof}
+\begin{proof}
+    We have 
+    \begin{equation*}
+        f\circ g =(e^{e^x-\cos(y-x)}, \cos(e^x+\cos(y-x)), \sin(e^{x}+e^{-y}+\cos(y-x)))
+    \end{equation*}
+    and $g(0,0)=(1, 1, 1)$. Thus 
+    \begin{equation*}
+        D(f\circ g)(0,0)=Df(1,1,1)Dg(0,0)
+    \end{equation*}
+    where 
+    \begin{equation*}
+        Df(u,v,w)=\begin{bmatrix}
+            e^{u-w}&0&-e^{u-w}\\
+            -\sin(v+u)+\cos(u+v+w)&-\sin(v+u)+\cos(u+v+w)&\cos(u+v+w)
+        \end{bmatrix}
+    \end{equation*}
+    and 
+    \begin{equation*}
+        Dg(x,y)=\begin{bmatrix}
+            e^x&0\\
+            \sin(y-x)&-\sin(y-x)\\
+            0&-e^{-y}
+        \end{bmatrix}
+    \end{equation*}
+    Thus 
+    \begin{align*}
+        D(f\circ g)(0,0)&=\begin{bmatrix}
+            1&0&-1\\
+            -\sin 2+\cos 3&-\sin 2+\cos 3&\cos 3
+        \end{bmatrix}\begin{bmatrix}
+            1&0\\
+            0&0\\
+            0&-1
+        \end{bmatrix}\\
+        &=\begin{bmatrix}
+            1&1\\
+            -\sin 2+\cos 3&-\cos 3
+        \end{bmatrix}
+    \end{align*}
+\end{proof}
 
 \begin{prob}[2.5, Q11]
 Let \( f(x, y, z) = (3y + 2, x^2 + y^2, x + z^2) \). Let  
@@ -292,54 +292,54 @@ p'(\pi).
 Df(-1, 0, \pi) \ (c'(\pi)).
 \]
 \end{prob}
-% \begin{proof}
-%     \begin{enumerate}
-%         \item[(a)] We have 
-%         \begin{equation*}
-%             p(t)=(3\sin t+2, 1, \cos t+t^2)
-%         \end{equation*}
-%         and 
-%         \begin{equation*}
-%             p'(t)=(3\cos t+0, -\sin t+2t)
-%         \end{equation*}
-%         thus 
-%         \begin{equation*}
-%             p'(\pi)=(-3,0,2\pi)
-%         \end{equation*}
-%         \item[(b)] We have $c(\pi)=(-1, 0, \pi)$, and $c'(t)=(-\sin t, \cos t, 1)$, and $c'(\pi)=(0,-1, 1)$. And 
-%         \begin{equation*}
-%             Df(x,y,z)=\begin{bmatrix}
-%                 0&3&0\\
-%                 2x&2y&0\\
-%                 1&0&2z
-%             \end{bmatrix}
-%         \end{equation*}
-%         Thus 
-%         \begin{equation*}
-%             Df(-1,0,\pi)=\begin{bmatrix}
-%                 0&3&0\\
-%                 -2&0&0\\
-%                 1&0&2\pi
-%             \end{bmatrix}
-%         \end{equation*}
-%         \item[(c)] We have 
-%         \begin{equation*}
-%             Df(-1,0,\pi)(c'(\pi))=\begin{bmatrix}
-%                 0&3&0\\
-%                 -2&0&0\\
-%                 1&0&2\pi
-%             \end{bmatrix}\begin{bmatrix}
-%                 0\\
-%                 -1\\
-%                 1
-%             \end{bmatrix}=\begin{bmatrix}
-%                 -3\\
-%                 0\\
-%                 2\pi
-%             \end{bmatrix}
-%         \end{equation*}
-%     \end{enumerate}
-% \end{proof}
+\begin{proof}
+    \begin{enumerate}
+        \item[(a)] We have 
+        \begin{equation*}
+            p(t)=(3\sin t+2, 1, \cos t+t^2)
+        \end{equation*}
+        and 
+        \begin{equation*}
+            p'(t)=(3\cos t+0, -\sin t+2t)
+        \end{equation*}
+        thus 
+        \begin{equation*}
+            p'(\pi)=(-3,0,2\pi)
+        \end{equation*}
+        \item[(b)] We have $c(\pi)=(-1, 0, \pi)$, and $c'(t)=(-\sin t, \cos t, 1)$, and $c'(\pi)=(0,-1, 1)$. And 
+        \begin{equation*}
+            Df(x,y,z)=\begin{bmatrix}
+                0&3&0\\
+                2x&2y&0\\
+                1&0&2z
+            \end{bmatrix}
+        \end{equation*}
+        Thus 
+        \begin{equation*}
+            Df(-1,0,\pi)=\begin{bmatrix}
+                0&3&0\\
+                -2&0&0\\
+                1&0&2\pi
+            \end{bmatrix}
+        \end{equation*}
+        \item[(c)] We have 
+        \begin{equation*}
+            Df(-1,0,\pi)(c'(\pi))=\begin{bmatrix}
+                0&3&0\\
+                -2&0&0\\
+                1&0&2\pi
+            \end{bmatrix}\begin{bmatrix}
+                0\\
+                -1\\
+                1
+            \end{bmatrix}=\begin{bmatrix}
+                -3\\
+                0\\
+                2\pi
+            \end{bmatrix}
+        \end{equation*}
+    \end{enumerate}
+\end{proof}
 
 
 \begin{prob}[2.6, Q3]
@@ -361,38 +361,38 @@ f(x, y, z) = e^x + yz, \, (x_0, y_0, z_0) = (1, 1, 1), \quad \mathbf{d} = (1, -1
 f(x, y, z) = xyz, \, (x_0, y_0, z_0) = (1, 0, 1), \quad \mathbf{d} = (1, 0, -1)
 \]
 \end{prob}
-% \begin{proof}
-%     We find $\nabla f$ for all these functions and find the directional directive 
-%     \begin{equation*}
-%         \nabla f(x_0)\cdot \frac{d}{\|d\|}
-%     \end{equation*}
-%     \begin{enumerate}
-%         \item[(a)] We have 
-%         \begin{equation*}
-%             \nabla f(x,y,z)=(yx^{y-1}, x^y\ln x)
-%         \end{equation*}
-%         hence 
-%         \begin{equation*}
-%             \nabla f(e,e)\cdot \frac{d}{\|d\|}=(e^e,e^e)\cdot\left(\frac{5}{13},\frac{12}{13}\right)=\frac{17}{13}e^e
-%         \end{equation*}
-%         \item[(b)] We have 
-%         \begin{equation*}
-%             \nabla f(x,y,z)=(e^x, z, y)
-%         \end{equation*}
-%         hence 
-%         \begin{equation*}
-%             \nabla f(1,1,1)\cdot \frac{1}{\sqrt{3}}(1,-1,1)=\frac{e}{\sqrt{3}}
-%         \end{equation*}
-%         \item[(c)] We have 
-%         \begin{equation*}
-%             \nabla f(x,y,z)=(yz, xz, xy)
-%         \end{equation*}
-%         hence 
-%         \begin{equation*}
-%             \nabla f(1,0,1)\cdot \frac{1}{\sqrt{2}}(1,0,-1)=\frac{1}{\sqrt{2}}(0,1,0)\cdot(1,0,-1)=0
-%         \end{equation*}
-%     \end{enumerate}
-% \end{proof}
+\begin{proof}
+    We find $\nabla f$ for all these functions and find the directional directive 
+    \begin{equation*}
+        \nabla f(x_0)\cdot \frac{d}{\|d\|}
+    \end{equation*}
+    \begin{enumerate}
+        \item[(a)] We have 
+        \begin{equation*}
+            \nabla f(x,y,z)=(yx^{y-1}, x^y\ln x)
+        \end{equation*}
+        hence 
+        \begin{equation*}
+            \nabla f(e,e)\cdot \frac{d}{\|d\|}=(e^e,e^e)\cdot\left(\frac{5}{13},\frac{12}{13}\right)=\frac{17}{13}e^e
+        \end{equation*}
+        \item[(b)] We have 
+        \begin{equation*}
+            \nabla f(x,y,z)=(e^x, z, y)
+        \end{equation*}
+        hence 
+        \begin{equation*}
+            \nabla f(1,1,1)\cdot \frac{1}{\sqrt{3}}(1,-1,1)=\frac{e}{\sqrt{3}}
+        \end{equation*}
+        \item[(c)] We have 
+        \begin{equation*}
+            \nabla f(x,y,z)=(yz, xz, xy)
+        \end{equation*}
+        hence 
+        \begin{equation*}
+            \nabla f(1,0,1)\cdot \frac{1}{\sqrt{2}}(1,0,-1)=\frac{1}{\sqrt{2}}(0,1,0)\cdot(1,0,-1)=0
+        \end{equation*}
+    \end{enumerate}
+\end{proof}
 
 \begin{prob}[2.6, Q6]
 Find a vector which is normal to the curve  
@@ -400,17 +400,17 @@ Find a vector which is normal to the curve
 x^3 + xy + y^3 = 11 \text{ at } (1, 2).
 \]
 \end{prob}
-% \begin{proof}
-%     Consider the function $f(x,y)=x^3+xy+y^3$, then the level set of $f(x,y)=11$ coincides with the curve above. Thus it suffices to compute 
-%     \begin{equation*}
-%         \nabla f(x,y)=(3x^2+y, x+3y^2)
-%     \end{equation*}
-%     and 
-%     \begin{equation*}
-%         \nabla f(1,2)=(5, 13)
-%     \end{equation*}
-%     is perpendicular to the the level curve.
-% \end{proof}
+\begin{proof}
+    Consider the function $f(x,y)=x^3+xy+y^3$, then the level set of $f(x,y)=11$ coincides with the curve above. Thus it suffices to compute 
+    \begin{equation*}
+        \nabla f(x,y)=(3x^2+y, x+3y^2)
+    \end{equation*}
+    and 
+    \begin{equation*}
+        \nabla f(1,2)=(5, 13)
+    \end{equation*}
+    is perpendicular to the the level curve.
+\end{proof}
 
 
 
@@ -420,6 +420,34 @@ Find the rate of change of \( f(x, y, z) = xyz \) in the direction normal to the
 yx^2 + xy^2 + yz^2 = 3 \text{ at } (1, 1, 1).
 \]
 \end{prob}
+\begin{proof}
+    We first find a normal vector to the surface, consider the surface as a level set of the function 
+    \begin{equation*}
+        g(x,y,z)=yx^2+xy^2+yz^2
+    \end{equation*}
+    Thus 
+    \begin{equation*}
+        \nabla g(x,y,z)=(2xy+y^2, x^2+2xy+z^2, 2yz)
+    \end{equation*}
+    hence 
+    \begin{equation*}
+        u=\nabla g(1,1,1)=(3, 4, 2)
+    \end{equation*}
+    is a normal vector to the surface, and we normalize it to get a unit normal vector $n=\frac{u}{\|u\|}=\frac{1}{\sqrt{29}}(3,4,2)$. Now we find the directional derivative of $f(x,y,z)=xyz$ along $(3,4,2)$:
+    \begin{equation*}
+        \nabla f(x,y,z)=(yz, xz, xy)
+    \end{equation*}
+    hence 
+    \begin{equation*}
+        \nabla f(1,1,1)=(1,1,1)
+    \end{equation*}
+    and the directional derivative is 
+    \begin{equation*}
+        \nabla f(1,1,1)\cdot n=\frac{9}{\sqrt{29}}
+    \end{equation*}
+\end{proof}
+
+
 
 \noindent 
 \textbf{Summary}
@@ -428,37 +456,6 @@ yx^2 + xy^2 + yz^2 = 3 \text{ at } (1, 1, 1).
     \item If asked to find along with direction $f$ increases the fastest: find $\nabla f(x_0)$.
     \item If asked to find a normal vector to a surface at a point $x_0$: construct a function such that the surface is the level set of this function, then find $\nabla f(x_0)$.
 \end{itemize}
-
-
-
-% \begin{proof}
-%     We first find a normal vector to the surface, consider the surface as a level set of the function 
-%     \begin{equation*}
-%         g(x,y,z)=yx^2+xy^2+yz^2
-%     \end{equation*}
-%     Thus 
-%     \begin{equation*}
-%         \nabla g(x,y,z)=(2xy+y^2, x^2+2xy+z^2, 2yz)
-%     \end{equation*}
-%     hence 
-%     \begin{equation*}
-%         u=\nabla g(1,1,1)=(3, 4, 2)
-%     \end{equation*}
-%     is a normal vector to the surface, and we normalize it to get a unit normal vector $n=\frac{u}{\|u\|}=\frac{1}{\sqrt{29}}(3,4,2)$. Now we find the directional derivative of $f(x,y,z)=xyz$ along $(3,4,2)$:
-%     \begin{equation*}
-%         \nabla f(x,y,z)=(yz, xz, xy)
-%     \end{equation*}
-%     hence 
-%     \begin{equation*}
-%         \nabla f(1,1,1)=(1,1,1)
-%     \end{equation*}
-%     and the directional derivative is 
-%     \begin{equation*}
-%         \nabla f(1,1,1)\cdot n=\frac{9}{\sqrt{29}}
-%     \end{equation*}
-% \end{proof}
-
-
 
 
 
