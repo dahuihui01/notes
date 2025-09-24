@@ -607,11 +607,10 @@ Then we defined compact and FIP for topological spaces, and claimed that they ar
 
 
 \begin{defn}[weak topology]
-    The weak topology on $X$ is the weakest topology that make each $l\in X^k$ continuous. The neighborhoods 
-    \begin{equation*}
-        \{x: |l_i(x)|<\varepsilon, i=1,\dots, n\}
-    \end{equation*}
+    The weak topology on $X$ is the weakest topology that make each $l\in X^k$ continuous. A sequence converges weakly $x_n\xrightarrow{w} x$ iff $l(x_n)\to l(x)$ for all $l\in X^*$.
 \end{defn}
+
+
 
 \begin{prop}
     We have the following properties:
@@ -621,6 +620,25 @@ Then we defined compact and FIP for topological spaces, and claimed that they ar
         \item The weak topology is Hausdorff.
     \end{enumerate}
 \end{prop}
+\begin{example}
+    Let $\mathcal{H}$ be a Hilbert space, and $\{\varphi_\alpha\}$ an orthonormal base. Given $\psi_n$ a sequence in $\mathcal{H}$. And 
+    \begin{equation*}
+        \varphi_n^{(a)}=(\psi_n,\varphi_\alpha)
+    \end{equation*}
+    where $\psi_n=\sum\psi_n^{(a)}\varphi_\alpha$, then 
+    \begin{equation*}
+        \psi_nx\xrightarrow{w}\psi
+    \end{equation*}
+    iff $\psi_n^{(a)}\to\psi^{(a)}$ and $\{\|\psi_n\|\}$ is bounded. 
+\end{example}
+
+\begin{prop}
+    A linear functional $l$ on a Banach space is weakly continuous iff it is norm continuous.
+\end{prop}
+
+
+
+
 
 
 
