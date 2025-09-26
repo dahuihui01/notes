@@ -1099,6 +1099,114 @@ yx^2 + xy^2 + yz^2 = 3 \text{ at } (1, 1, 1).
 
 
 
+\newpage 
+
+
+\begin{center}
+    \Large Calc III-Week 6 (9/29-10/3)
+\end{center}
+
+\renewcommand\thesection{\arabic{section}}
+
+\noindent
+Topics: (1) Higher-order derivatives, (2) Taylor expansion.
+
+
+\begin{prop}
+    Let $f(x,y)$ be twice continuously differentiable, then 
+    \begin{equation*}
+        \frac{\partial^2 f}{\partial x\partial y}=\frac{\partial^2}{\partial y\partial x}
+    \end{equation*}
+\end{prop}
+
+
+\begin{defn}[First order Taylor expansion]
+    Let $f:U\subset\R^n\to\R$ be differentiable at $a\in U$, then 
+    \begin{equation*}
+        f(x)=f(a)+\sum_{i=1}^n\frac{\partial f}{\partial x_i}(a)(x_i-a_i)+R_1(a,x)
+    \end{equation*}
+    where 
+    \begin{equation*}
+        \frac{R_1(a,x)}{\|x-a\|}\to 0 \text{ as } x\to a
+    \end{equation*}
+\end{defn}
+
+\begin{defn}[Alternative Definition (First-order)]
+    Let $f:U\subset\R^n\to\R$ be differentiable at $a\in U$. Then 
+    \begin{equation*}
+        f(a+h)=f(a)+\sum_{i=1}^nh_i\frac{\partial f}{\partial x_i}(a)+R_1(a,h)
+    \end{equation*}
+    where $R_1(a,h)/\|h\|\to 0$ as $h\to 0$.
+\end{defn}
+
+
+
+\begin{defn}[Second order Taylor expansion]\label{taylor}
+    Let $f:U\subset\R^n\to\R$ be twice continuously differentiable at $a\in U$, then 
+    \begin{equation*}
+        f(x)=f(a)+\sum_{i=1}^n\frac{\partial f}{\partial x_i}(a)(x_i-a_i)+\frac{1}{2}\sum_{i,j=1}^n\frac{\partial^2 f}{\partial x_i\partial x_j}(a)(x_i-a_i)(x_j-a_j)+R_2(a,x)
+    \end{equation*}
+    where 
+    \begin{equation*}
+        \frac{R_2(a,x)}{\|x-a\|}\to 0 \text{ as } x\to a
+    \end{equation*}
+\end{defn}
+
+
+\begin{defn}[Alternative Definition (Second-order)]
+    Let $f:U\subset\R^n\to\R$ have continuous partial derivatives of third order. Then we can write 
+    \begin{equation*}
+        f(a+h)=f(a)+\sum_{i=1}^nh_i\frac{\partial f}{\partial x_i}(a)+\frac{1}{2}\sum_{i,j=1}^nh_ih_j\frac{\partial^2f}{\partial x_i\partial x_j}(a)+R_2(a,h)
+    \end{equation*}
+    where $R_2(a,h)/\|h\|^2\to 0$ as $h\to 0$.
+\end{defn}
+
+
+
+
+
+
+
+
+
+\begin{prob}
+    Find all the second partial derivatives of $f(x,y)=xy+\log(x-y)$.
+
+    \noindent
+    (This includes $\partial^2f/\partial x^2, \partial^2 f/\partial x\partial y, \partial^2f/\partial y\partial x, \partial^2 f/\partial y^2$).
+\end{prob}
+% \begin{proof}
+%     For first-order derivatives:
+%     \begin{equation*}
+%         \frac{\partial f}{\partial x}=y+\frac{1}{x-y}, \quad \frac{\partial f}{\partial y}=x-\frac{1}{x-y}
+%     \end{equation*}
+%     Then 
+%     \begin{align*}
+%         \frac{\partial^2f}{\partial x^2}&=-\frac{1}{(x-y)^2}\\
+%         \frac{\partial^2 f}{\partial x\partial y}&=\frac{\partial^2 f}{\partial y\partial x}=1+\frac{1}{(x-y)^2}\\
+%         \frac{\partial^2f}{\partial y^2}&=\frac{1}{(x-y)^2}
+%     \end{align*}
+% \end{proof}
+
+
+\begin{prob}
+    Write the second-order Taylor expansion for the following function, 
+    \begin{equation*}
+        f(x,y)=e^{x+y}
+    \end{equation*}
+    centered at $(x,y)=(0,0)$.
+\end{prob}
+% \begin{proof}
+%     We first compute all the partial derivatives:
+%     \begin{equation*}
+%         \frac{\partial f}{\partial x}=\frac{\partial f}{\partial y}=\frac{\partial^2f}{\partial x^2}=\frac{\partial^2f}{\partial x\partial y}=\frac{\partial^2f}{\partial y^2}=e^{x+y}
+%     \end{equation*}
+%     then 
+%     \begin{equation*}
+%         f(x)=1+x+y+\frac{1}{2}x^2+xy+\frac{1}{2}y^2+R_2(x)
+%     \end{equation*}
+%     where $R_2(x)/\|x\|\to 0$ as $x\to 0$.
+% \end{proof}
 
 
 

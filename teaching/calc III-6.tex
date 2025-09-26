@@ -1,0 +1,150 @@
+\documentclass[openany]{book}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsfonts,amsthm, amssymb}
+\usepackage{yhmath}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{comment}
+\usepackage{tikz-cd}
+\usepackage{quiver}
+\renewcommand{\familydefault}{ppl}
+\newcommand{\tr}{\text{tr}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\colim}{\text{colim}}
+\DeclareMathOperator{\im}{im}
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+\newcommand{\tor}{\text{Tor}}
+\newcommand{\id}{\text{id}}
+\newcommand{\ext}{\text{Ext}}
+\newcommand{\ptop}{\text{PTop}}
+\newcommand{\pt}{\text{pt}}
+\newcommand{\ach}{\text{Ach}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\gal}{\text{Gal}}
+
+
+\input{hui.tex}
+
+\title{Calc III Sections
+\\ 
+\vspace{0.4cm}
+\large Fall 2025}
+
+
+
+
+\date{\today}
+\author{Hui Sun}
+
+
+\begin{document}
+
+\maketitle
+
+% \tableofcontents
+\newpage
+
+
+\begin{center}
+    \Large Calc III-Week 6 (9/29-10/3)
+\end{center}
+
+\renewcommand\thesection{\arabic{section}}
+
+\noindent
+Topics: 1-9 in Section 3.1 and questions 1-11 in Section 3.2.
+
+
+\begin{prop}
+    Let $f(x,y)$ be twice continuously differentiable, then 
+    \begin{equation*}
+        \frac{\partial^2 f}{\partial x\partial y}=\frac{\partial^2}{\partial y\partial x}
+    \end{equation*}
+\end{prop}
+
+
+\begin{defn}[First order Taylor expansion]
+    Let $f:U\subset\R^n\to\R$ be differentiable at $a\in U$, then 
+    \begin{equation*}
+        f(x)=f(a)+\sum_{i=1}^n\frac{\partial f}{\partial x_i}(a)(x_i-a_i)+R_1(a,x)
+    \end{equation*}
+    where 
+    \begin{equation*}
+        \frac{R_1(a,x)}{\|x-a\|}\to 0 \text{ as } x\to a
+    \end{equation*}
+\end{defn}
+
+\begin{defn}[Alternative Definition (First-order)]
+    Let $f:U\subset\R^n\to\R$ be differentiable at $a\in U$. Then 
+    \begin{equation*}
+        f(a+h)=f(a)+\sum_{i=1}^nh_i\frac{\partial f}{\partial x_i}(a)+R_1(a,h)
+    \end{equation*}
+    where $R_1(a,h)/\|h\|\to 0$ as $h\to 0$.
+\end{defn}
+
+
+
+\begin{defn}[Second order Taylor expansion]\label{taylor}
+    Let $f:U\subset\R^n\to\R$ be twice continuously differentiable at $a\in U$, then 
+    \begin{equation*}
+        f(x)=f(a)+\sum_{i=1}^n\frac{\partial f}{\partial x_i}(a)(x_i-a_i)+\frac{1}{2}\sum_{i,j=1}^n\frac{\partial^2 f}{\partial x_i\partial x_j}(a)(x_i-a_i)(x_j-a_j)+R_2(a,x)
+    \end{equation*}
+    where 
+    \begin{equation*}
+        \frac{R_2(a,x)}{\|x-a\|}\to 0 \text{ as } x\to a
+    \end{equation*}
+\end{defn}
+
+
+
+
+
+
+
+
+\begin{prob}
+    Find all the second partial derivatives of $f(x,y)=xy+\log(x-y)$.
+
+    \noindent
+    (This includes $\partial^2f/\partial x^2, \partial^2 f/\partial x\partial y, \partial^2f/\partial y\partial x, \partial^2 f/\partial y^2$).
+\end{prob}
+
+
+\begin{prob}
+    Write the second-order Taylor expansion for the following function, 
+    \begin{equation*}
+        f(x,y)=e^{x+y}
+    \end{equation*}
+    centered at $(x,y)=(0,0)$.
+\end{prob}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
