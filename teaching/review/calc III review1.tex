@@ -86,7 +86,7 @@
     \end{equation*}
     where $t\in\R$. Alternatively, a line passing through two points $P=(x_1,y_1,z_1), Q=(x_2,y_2,z_2)$ is given by 
     \begin{equation*}
-        l(t)=(x(t), y(t),(z))
+        l(t)=(x(t), y(t), z(t))
     \end{equation*}
     where 
     \begin{equation*}
@@ -344,6 +344,80 @@
 
 
 
+% \begin{defn}[critical point]
+%     Let $f:U\subset\R^n\to\R$, a point $x_0\in U$ is a \textbf{critical point} of $f$ if either $f$ is not differentiable at $x_0$, or $Df(x_0)=0$. A critical point that is not a local extremum is called a saddle point.
+% \end{defn}
+
+% \begin{defn}[quadratic function]
+%     A function $g:\R^n\to\R$ is called a \textbf{quadratic function} if it is given by 
+%     \begin{equation*}
+%         g(h_1,\dots, h_n)=\sum_{i,j=1}^na_{ij}h_ih_j
+%     \end{equation*}
+%     where $(a_{ij})$ is an $n\times n$ matrix. We can also write $g$ as follows:
+%     \begin{equation*}
+%         g(h_1,\dots,h_n)=[h_1,\dots,h_n]\begin{bmatrix}
+%             a_{11}&\dots &a_{1n}\\
+%             \vdots&\ddots &\vdots\\
+%             a_{n_1}&\dots&a_{nn}
+%         \end{bmatrix}\begin{bmatrix}
+%             h_1\\
+%             \vdots\\
+%             h_n
+%         \end{bmatrix}
+%     \end{equation*}
+
+% \end{defn}
+
+% \begin{defn}[Hessian]
+%     Let $f:U\subset\R^n\to\R$, and suppose all the second-order partial derivatives $\frac{\partial f}{\partial x_i\partial x_j}$ exist, then the Hessian matrix of $f$ is the $n\times n$ matrix given by 
+%     \begin{equation*}
+%         Hf=\begin{bmatrix}
+%             \frac{\partial^2 f}{\partial x_1\partial x_1}&\dots&\frac{\partial^2f}{\partial x_1\partial x_n}\\
+%             \vdots&\ddots&\vdots\\
+%             \frac{\partial^2f}{\partial x_nx_1}&\dots&\frac{\partial^2f}{\partial x_n\partial x_n}
+%         \end{bmatrix}
+%     \end{equation*}
+%     The Hessian as a quadratic function is defined by 
+%     \begin{equation*}
+%         Hf(x)(h)=\frac{1}{2}\begin{bmatrix}
+%             h_1&\dots&h_n
+%         \end{bmatrix}Hf(x)\begin{bmatrix}
+%             h_1\\
+%             \dots\\
+%             h_n
+%         \end{bmatrix}
+%     \end{equation*}
+%     where $h=(h_1,\dots,h_n)$.
+% \end{defn}
+
+% \begin{defn}[positive, negative-definite]
+%     A quadratic function $g:\R^n\to\R$ is called \textbf{positive-definite} if $g(h)\geq 0$ for all $h\in\R^n$ and $g(h)=0$ implies $h=0$. Similarly, $g$ is \textbf{negative-definite} if $g(h)\leq 0$ for all $h\in\R^n$ and $g(h)=0$ implies $h=0$. 
+% \end{defn}
+
+% \begin{prop}[extremum]
+%     Let $f\colon U\subset\R^n\to\R$ be in $C^3$, and $x_0$ is a critical point of $f$. The Hessian $Hf(x_0)$ is positive-definite, then $x_0$ is a local minimum of $f$; if $Hf(x_0)$ is negative-definite, then $x_0$ is a local maximum.
+% \end{prop}
+
+% % \begin{prop}
+% %     Let $f(x,y)$ be of $C^2$, and $U$ is open in $\R^2$. A point $(x_0,y_0)$ is a strict local minimum/maximum of $f$ if the following conditions hold:
+% %     \begin{enumerate}
+% %         \item \begin{equation*}
+% %             \frac{\partial f}{\partial x}(x_0,y_0)=\frac{\partial f}{\partial y}(x_0,y_0)=0
+% %         \end{equation*}
+% %         \item Let the discriminant of the Hessian $D$ be defined as follows
+% %         \begin{equation*}
+% %             D=\left(\frac{\partial^2 f}{\partial x^2}\right)\left(\frac{\partial^2 f}{\partial y^2}\right)-\left(\frac{\partial^2 f}{\partial x\partial y}\right)^2
+% %         \end{equation*}
+% %         and $D(x_0,y_0)>0$.
+% %         \item  \begin{equation*}
+% %             \frac{\partial^2f}{\partial x^2}(x_0,y_0)>0
+% %         \end{equation*}
+% %         then $(x_0,y_0)$ is a local maximum. 
+% %     \end{enumerate}
+% %     If 
+% % \end{prop}
+
+
 
 
 
@@ -540,6 +614,11 @@
     \begin{equation*}
         \frac{\partial^2 f}{\partial x\partial y}=\frac{\partial^2f}{\partial y\partial x}
     \end{equation*}
+\end{prop}
+
+
+\begin{prop}[extremums are critical points]
+    Let $f:U\subset\R^n\to\R$ be differentiable, where $U$ is open. If $x_0$ is a local extremum, then $Df(x_0)=0$. 
 \end{prop}
 
 
