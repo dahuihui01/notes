@@ -22,6 +22,7 @@
 \newcommand{\ra}{\rangle}
 \newcommand{\colim}{\text{colim}}
 \DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\disc}{disc}
 \let\oldemptyset\emptyset
 \let\emptyset\varnothing
 \newcommand{\tor}{\text{Tor}}
@@ -32,6 +33,7 @@
 \newcommand{\ach}{\text{Ach}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\gal}{\text{Gal}}
+\newcommand{\fraccomma}{\genfrac{}{}{0pt}{}{}{,}}
 \definecolor{wikipediadarkblue}{rgb}{0.023, 0.270, 0.676}
 \hypersetup{
     colorlinks,
@@ -52,7 +54,7 @@
 
 
 
-
+\author{(Please email hsun95@jh.edu if you see typos)}
 \date{\today}
 
 
@@ -63,7 +65,9 @@
 \tableofcontents
 \newpage
 
+
 \chapter{Definition review}
+
 
 
 \begin{defn}[standard basis in $\R^3$]
@@ -193,13 +197,13 @@
     \end{equation*}
 \end{defn}
 
-\begin{defn}[open set, neighborhood, boundary]
+\begin{defn}[open set, closed set, neighborhood, boundary]
     Let $U\subset\R^n$, we say $U$ is an \textbf{open set} if for every $x_0\in U$, there exists some $r>0$ such that $D_r(x_0)\subset U$, where $D_r(x_0)$ is the open disk of radius $r$ centered at $x_0$:
     \begin{equation*}
         D_r(x_0)=\{x\in\R^n: \|x-x_0\|<r\}
     \end{equation*}
     Some examples of open sets: $\R$, $D_{1}((0,0))$, $(1,2)\subset\R$.
-    A \textbf{neighborhood} of $x_0\in\R^n$ is an open set containing the point $x_0$. A point $x\in\R^n$ is called a \textbf{boundary point} of $A$ if \textit{every} neighborhood of $x$ contains at least one point in $A$ and at least one point not in $A$.
+    A \textbf{neighborhood} of $x_0\in\R^n$ is an open set containing the point $x_0$. A point $x\in\R^n$ is called a \textbf{boundary point} of $A$ if \textit{every} neighborhood of $x$ contains at least one point in $A$ and at least one point not in $A$. A set is \textbf{closed} if it contains all its boundary points. Example of closed set: level sets of a continuous function $f$.
 \end{defn}
 
 
@@ -254,7 +258,7 @@
 \begin{defn}[differentiability in the general setting]
     Let $f:U\subset\R^n\to\R^m$, then $f$ is differentiable at $x_0\in U$ if
     \begin{enumerate}
-        \item[(1)] the partial derivatives $\frac{\partial f_i}{x_j}$ exist for all $1\leq i\leq m, 1\leq j\leq n$. 
+        \item[(1)] the partial derivatives $\frac{\partial f_i}{\partial x_j}$ exist for all $1\leq i\leq m, 1\leq j\leq n$. 
         \item[(2)]
         \begin{equation*}
             \lim_{x\to x_0}\frac{\|f(x)-f(x_0)-T(x-x_0)\|}{\|x-x_0\|}=0
@@ -344,78 +348,133 @@
 
 
 
-% \begin{defn}[critical point]
-%     Let $f:U\subset\R^n\to\R$, a point $x_0\in U$ is a \textbf{critical point} of $f$ if either $f$ is not differentiable at $x_0$, or $Df(x_0)=0$. A critical point that is not a local extremum is called a saddle point.
-% \end{defn}
+\newpage
 
-% \begin{defn}[quadratic function]
-%     A function $g:\R^n\to\R$ is called a \textbf{quadratic function} if it is given by 
-%     \begin{equation*}
-%         g(h_1,\dots, h_n)=\sum_{i,j=1}^na_{ij}h_ih_j
-%     \end{equation*}
-%     where $(a_{ij})$ is an $n\times n$ matrix. We can also write $g$ as follows:
-%     \begin{equation*}
-%         g(h_1,\dots,h_n)=[h_1,\dots,h_n]\begin{bmatrix}
-%             a_{11}&\dots &a_{1n}\\
-%             \vdots&\ddots &\vdots\\
-%             a_{n_1}&\dots&a_{nn}
-%         \end{bmatrix}\begin{bmatrix}
-%             h_1\\
-%             \vdots\\
-%             h_n
-%         \end{bmatrix}
-%     \end{equation*}
+\begin{defn}[critical point]
+    Let $f:U\subset\R^n\to\R$, a point $x_0\in U$ is a \textbf{critical point} of $f$ if either $f$ is not differentiable at $x_0$, or $Df(x_0)=0$. A critical point that is not a local extremum is called a saddle point.
+\end{defn}
 
-% \end{defn}
+\begin{defn}[quadratic function]
+    A function $g:\R^n\to\R$ is called a \textbf{quadratic function} if it is given by 
+    \begin{equation*}
+        g(h_1,\dots, h_n)=\sum_{i,j=1}^na_{ij}h_ih_j
+    \end{equation*}
+    where $(a_{ij})$ is an $n\times n$ matrix. We can also write $g$ as follows:
+    \begin{equation*}
+        g(h_1,\dots,h_n)=[h_1,\dots,h_n]\begin{bmatrix}
+            a_{11}&\dots &a_{1n}\\
+            \vdots&\ddots &\vdots\\
+            a_{n_1}&\dots&a_{nn}
+        \end{bmatrix}\begin{bmatrix}
+            h_1\\
+            \vdots\\
+            h_n
+        \end{bmatrix}
+    \end{equation*}
 
-% \begin{defn}[Hessian]
-%     Let $f:U\subset\R^n\to\R$, and suppose all the second-order partial derivatives $\frac{\partial f}{\partial x_i\partial x_j}$ exist, then the Hessian matrix of $f$ is the $n\times n$ matrix given by 
-%     \begin{equation*}
-%         Hf=\begin{bmatrix}
-%             \frac{\partial^2 f}{\partial x_1\partial x_1}&\dots&\frac{\partial^2f}{\partial x_1\partial x_n}\\
-%             \vdots&\ddots&\vdots\\
-%             \frac{\partial^2f}{\partial x_nx_1}&\dots&\frac{\partial^2f}{\partial x_n\partial x_n}
-%         \end{bmatrix}
-%     \end{equation*}
-%     The Hessian as a quadratic function is defined by 
-%     \begin{equation*}
-%         Hf(x)(h)=\frac{1}{2}\begin{bmatrix}
-%             h_1&\dots&h_n
-%         \end{bmatrix}Hf(x)\begin{bmatrix}
-%             h_1\\
-%             \dots\\
-%             h_n
-%         \end{bmatrix}
-%     \end{equation*}
-%     where $h=(h_1,\dots,h_n)$.
-% \end{defn}
+\end{defn}
 
-% \begin{defn}[positive, negative-definite]
-%     A quadratic function $g:\R^n\to\R$ is called \textbf{positive-definite} if $g(h)\geq 0$ for all $h\in\R^n$ and $g(h)=0$ implies $h=0$. Similarly, $g$ is \textbf{negative-definite} if $g(h)\leq 0$ for all $h\in\R^n$ and $g(h)=0$ implies $h=0$. 
-% \end{defn}
+\begin{defn}[Hessian]
+    Let $f:U\subset\R^n\to\R$, and suppose all the second-order partial derivatives $\frac{\partial f}{\partial x_i\partial x_j}$ exist, then the Hessian matrix of $f$ is the $n\times n$ matrix given by 
+    \begin{equation*}
+        Hf=\begin{bmatrix}
+            \frac{\partial^2 f}{\partial x_1\partial x_1}&\dots&\frac{\partial^2f}{\partial x_1\partial x_n}\\
+            \vdots&\ddots&\vdots\\
+            \frac{\partial^2f}{\partial x_nx_1}&\dots&\frac{\partial^2f}{\partial x_n\partial x_n}
+        \end{bmatrix}
+    \end{equation*}
+    The Hessian as a quadratic function is defined by 
+    \begin{equation*}
+        Hf(x)(h)=\frac{1}{2}\begin{bmatrix}
+            h_1&\dots&h_n
+        \end{bmatrix}Hf(x)\begin{bmatrix}
+            h_1\\
+            \dots\\
+            h_n
+        \end{bmatrix}
+    \end{equation*}
+    where $h=(h_1,\dots,h_n)$.
+\end{defn}
 
-% \begin{prop}[extremum]
-%     Let $f\colon U\subset\R^n\to\R$ be in $C^3$, and $x_0$ is a critical point of $f$. The Hessian $Hf(x_0)$ is positive-definite, then $x_0$ is a local minimum of $f$; if $Hf(x_0)$ is negative-definite, then $x_0$ is a local maximum.
-% \end{prop}
+\begin{defn}[degenerate/nondegenerate points]
+    Let $f:U\subset\R^2\to\R$ be of $C^2$, let $(x_0,y_0)$ be a critical point. We define the \textbf{discriminant}, \boldmath $\disc f$,\unboldmath of the Hessian by
+    \begin{equation*}
+        \disc f=\det (Hf)=\left(\frac{\partial^2f}{\partial x^2}\right)\left(\frac{\partial^2f}{\partial y^2}\right)-\left(\frac{\partial^2f}{\partial x\partial y}\right)^2
+    \end{equation*}
+    If $\disc f\neq 0$, the critical point $(x_0,y_0)$ is called \textbf{nondegenerate}; if $\disc f=0$, the point $(x_0,y_0)$ is called \textbf{degenerate}.
+\end{defn}
 
-% % \begin{prop}
-% %     Let $f(x,y)$ be of $C^2$, and $U$ is open in $\R^2$. A point $(x_0,y_0)$ is a strict local minimum/maximum of $f$ if the following conditions hold:
-% %     \begin{enumerate}
-% %         \item \begin{equation*}
-% %             \frac{\partial f}{\partial x}(x_0,y_0)=\frac{\partial f}{\partial y}(x_0,y_0)=0
-% %         \end{equation*}
-% %         \item Let the discriminant of the Hessian $D$ be defined as follows
-% %         \begin{equation*}
-% %             D=\left(\frac{\partial^2 f}{\partial x^2}\right)\left(\frac{\partial^2 f}{\partial y^2}\right)-\left(\frac{\partial^2 f}{\partial x\partial y}\right)^2
-% %         \end{equation*}
-% %         and $D(x_0,y_0)>0$.
-% %         \item  \begin{equation*}
-% %             \frac{\partial^2f}{\partial x^2}(x_0,y_0)>0
-% %         \end{equation*}
-% %         then $(x_0,y_0)$ is a local maximum. 
-% %     \end{enumerate}
-% %     If 
-% % \end{prop}
+\begin{defn}[positive, negative-definite]
+    A quadratic function $g:\R^n\to\R$ is called \textbf{positive-definite} if $g(h)\geq 0$ for all $h\in\R^n$ and $g(h)=0$ implies $h=0$. Similarly, $g$ is \textbf{negative-definite} if $g(h)\leq 0$ for all $h\in\R^n$ and $g(h)=0$ implies $h=0$. 
+\end{defn}
+
+
+\begin{defn}[global extremum]
+    Let $f:A\to\R$ be a function defined on $A\subset\R^2$ or $A\subset\R^3$. A point $x_0\in A$ is said to be an \textbf{absolute maximum} if $f(x_0)\geq f(x)$ for all $x\in A$. Similarly, $x_0$ is an \textbf{absolute minimum} if $f(x_0)\leq f(x)$ for all $x\in A$. 
+\end{defn}
+
+\begin{defn}[bounded set]
+    A set $D\subset\R^n$ is said to be \textbf{bounded} if there is a number $M>0$ such that $\|x\|\leq M$ for all $x\in D$. 
+\end{defn}
+
+
+
+\begin{prop}[extremum]
+    Let $f\colon U\subset\R^n\to\R$ be in $C^3$, and $x_0$ is a critical point of $f$. If the Hessian $Hf(x_0)$ is positive-definite, then $x_0$ is a local minimum of $f$; if $Hf(x_0)$ is negative-definite, then $x_0$ is a local maximum.
+\end{prop}
+
+\begin{prop}[local minimum]
+    Let $f(x,y)$ be of $C^2$, and $U$ is open in $\R^2$. A point $(x_0,y_0)$ is a strict local \textbf{minimum} of $f$ if the following conditions hold:
+    \begin{enumerate}
+        \item \begin{equation*}
+            \frac{\partial f}{\partial x}(x_0,y_0)=\frac{\partial f}{\partial y}(x_0,y_0)=0
+        \end{equation*}
+        \item \begin{equation*}
+            \disc f(x_0,y_0)>0
+        \end{equation*}
+        where $\disc f$ is the \textbf{discriminant} of the Hessian, defined by 
+        \begin{equation*}
+            \disc f=\det (Hf)=\left(\frac{\partial^2 f}{\partial x^2}\right)\left(\frac{\partial^2 f}{\partial y^2}\right)-\left(\frac{\partial^2 f}{\partial x\partial y}\right)^2
+        \end{equation*}
+        where $Hf$ is the $2\times 2$ Hessian matrix.
+        \item  \begin{equation*}
+            \frac{\partial^2f}{\partial x^2}(x_0,y_0)>0
+        \end{equation*}
+    \end{enumerate}
+\end{prop}
+
+
+\begin{prop}[local maximum]
+    Let $f(x,y)$ be of $C^2$, and $U$ is open in $\R^2$. A point $(x_0,y_0)$ is a strict local \textbf{maximum} of $f$ if the following conditions hold:
+    \begin{enumerate}
+        \item \begin{equation*}
+            \frac{\partial f}{\partial x}(x_0,y_0)=\frac{\partial f}{\partial y}(x_0,y_0)=0
+        \end{equation*}
+        \item \begin{equation*}
+            \disc f(x_0,y_0)>0
+        \end{equation*}
+        where $\disc f$ is the {discriminant} of the Hessian, defined above.
+        \item  \begin{equation*}
+            \frac{\partial^2f}{\partial x^2}(x_0,y_0)<0
+        \end{equation*}
+    \end{enumerate}
+\end{prop}
+
+\begin{prop}[saddle points]
+    Let $f(x,y):U\subset\R^2\to \R$ be of  $C^2$, if $\frac{\partial f}{\partial x}(x_0,y_0)=\frac{\partial f}{\partial y}(x_0,y_0)=0$, and $\disc f(x_0,y_0)<0$, where $\disc f$ is the discriminant, then the critical point $(x_0,y_0)$ is a saddle point, i.e., neither a maximum or a minimum.
+\end{prop}
+
+
+\begin{prop}[continuous functions attain extremum on closed bounded sets]
+    Let $f:D\to\R$ be continuous, where $D$ is closed and bounded in $\R^n$. Then $f$ assumes its absolute maximum and absolute minimum values at some point $x_0, x_1\in D$.
+\end{prop}
+
+
+
+
+
+
+
 
 
 
@@ -498,7 +557,7 @@
 
 
 \begin{prop}[cross product]
-    We have the following properties regarding the cross product: let $a,b\in\in\R^3$,
+    We have the following properties regarding the cross product: let $a,b\in\R^3$,
     \begin{enumerate}
         \item $a\times b$ is perpendicular to vectors $a,b$.
         \item The length of the cross product is the area of the parallelogram:
@@ -1386,7 +1445,7 @@
         \begin{align*}
             \text{Proj}_{v_1}b+\text{Proj}_{v_2}b&=\frac{v_1\cdot b}{v_1\cdot v_1}v_1+\frac{v_2\cdot b}{v_2\cdot v_2}v_2\\
             &=\frac{1}{2}(1,-1,0)+0\\
-            &=\left(\frac{1}{2}, -\frac{1}{2},0\right)
+            &=\left(\frac{1}{2}, -\frac{1}{2}, 0\right)
         \end{align*}
     \end{enumerate}
 \end{proof}
