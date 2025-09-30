@@ -1115,7 +1115,7 @@ Topics: (1) Higher-order derivatives, (2) Taylor expansion.
 \begin{prop}
     Let $f(x,y)$ be twice continuously differentiable, then 
     \begin{equation*}
-        \frac{\partial^2 f}{\partial x\partial y}=\frac{\partial^2}{\partial y\partial x}
+        \frac{\partial^2 f}{\partial x\partial y}=\frac{\partial^2 f}{\partial y\partial x}
     \end{equation*}
 \end{prop}
 
@@ -1171,23 +1171,23 @@ Topics: (1) Higher-order derivatives, (2) Taylor expansion.
 
 
 \begin{prob}
-    Find all the second partial derivatives of $f(x,y)=xy+\log(x-y)$.
+    Find all the second partial derivatives of $f(x,y)=xy+\ln(x-y)$.
 
     \noindent
     (This includes $\partial^2f/\partial x^2, \partial^2 f/\partial x\partial y, \partial^2f/\partial y\partial x, \partial^2 f/\partial y^2$).
 \end{prob}
-% \begin{proof}
-%     For first-order derivatives:
-%     \begin{equation*}
-%         \frac{\partial f}{\partial x}=y+\frac{1}{x-y}, \quad \frac{\partial f}{\partial y}=x-\frac{1}{x-y}
-%     \end{equation*}
-%     Then 
-%     \begin{align*}
-%         \frac{\partial^2f}{\partial x^2}&=-\frac{1}{(x-y)^2}\\
-%         \frac{\partial^2 f}{\partial x\partial y}&=\frac{\partial^2 f}{\partial y\partial x}=1+\frac{1}{(x-y)^2}\\
-%         \frac{\partial^2f}{\partial y^2}&=\frac{1}{(x-y)^2}
-%     \end{align*}
-% \end{proof}
+\begin{proof}
+    For first-order derivatives:
+    \begin{equation*}
+        \frac{\partial f}{\partial x}=y+\frac{1}{x-y}, \quad \frac{\partial f}{\partial y}=x-\frac{1}{x-y}
+    \end{equation*}
+    Then 
+    \begin{align*}
+        \frac{\partial^2f}{\partial x^2}&=-\frac{1}{(x-y)^2}\\
+        \frac{\partial^2 f}{\partial x\partial y}&=\frac{\partial^2 f}{\partial y\partial x}=1+\frac{1}{(x-y)^2}\\
+        \frac{\partial^2f}{\partial y^2}&=\frac{1}{(x-y)^2}
+    \end{align*}
+\end{proof}
 
 
 \begin{prob}
@@ -1197,17 +1197,17 @@ Topics: (1) Higher-order derivatives, (2) Taylor expansion.
     \end{equation*}
     centered at $(x,y)=(0,0)$.
 \end{prob}
-% \begin{proof}
-%     We first compute all the partial derivatives:
-%     \begin{equation*}
-%         \frac{\partial f}{\partial x}=\frac{\partial f}{\partial y}=\frac{\partial^2f}{\partial x^2}=\frac{\partial^2f}{\partial x\partial y}=\frac{\partial^2f}{\partial y^2}=e^{x+y}
-%     \end{equation*}
-%     then 
-%     \begin{equation*}
-%         f(x)=1+x+y+\frac{1}{2}x^2+xy+\frac{1}{2}y^2+R_2(x)
-%     \end{equation*}
-%     where $R_2(x)/\|x\|\to 0$ as $x\to 0$.
-% \end{proof}
+\begin{proof}
+    We first compute all the partial derivatives:
+    \begin{equation*}
+        \frac{\partial f}{\partial x}=\frac{\partial f}{\partial y}=\frac{\partial^2f}{\partial x^2}=\frac{\partial^2f}{\partial x\partial y}=\frac{\partial^2f}{\partial y^2}=e^{x+y}
+    \end{equation*}
+    then 
+    \begin{equation*}
+        f(x)=1+x+y+\frac{1}{2}x^2+xy+\frac{1}{2}y^2+R_2(x)
+    \end{equation*}
+    where $R_2(x)/\|x\|\to 0$ as $x\to 0$.
+\end{proof}
 
 
 
