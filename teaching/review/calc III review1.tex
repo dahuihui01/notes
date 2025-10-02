@@ -395,11 +395,11 @@
 \end{defn}
 
 \begin{defn}[degenerate/nondegenerate points]
-    Let $f:U\subset\R^2\to\R$ be of $C^2$, let $(x_0,y_0)$ be a critical point. We define the \textbf{discriminant}, \boldmath $\disc f$,\unboldmath of the Hessian by
+    Let $f:U\subset\R^2\to\R$ be of $C^2$, let $(x_0,y_0)$ be a critical point. We define the \textbf{discriminant}, \boldmath $\mathcal{D}$,\unboldmath of the Hessian by
     \begin{equation*}
-        \disc f=\det (Hf)=\left(\frac{\partial^2f}{\partial x^2}\right)\left(\frac{\partial^2f}{\partial y^2}\right)-\left(\frac{\partial^2f}{\partial x\partial y}\right)^2
+        \mathcal{D}=\det (Hf)=\left(\frac{\partial^2f}{\partial x^2}\right)\left(\frac{\partial^2f}{\partial y^2}\right)-\left(\frac{\partial^2f}{\partial x\partial y}\right)^2
     \end{equation*}
-    If $\disc f\neq 0$, the critical point $(x_0,y_0)$ is called \textbf{nondegenerate}; if $\disc f=0$, the point $(x_0,y_0)$ is called \textbf{degenerate}.
+    If $\mathcal{D}\neq 0$, the critical point $(x_0,y_0)$ is called \textbf{nondegenerate}; if $\mathcal{D}=0$, the point $(x_0,y_0)$ is called \textbf{degenerate}.
 \end{defn}
 
 \begin{defn}[positive, negative-definite]
@@ -412,7 +412,7 @@
 \end{defn}
 
 \begin{defn}[bounded set]
-    A set $D\subset\R^n$ is said to be \textbf{bounded} if there is a number $M>0$ such that $\|x\|\leq M$ for all $x\in D$. 
+    A set $A\subset\R^n$ is said to be \textbf{bounded} if there is a number $M>0$ such that $\|x\|\leq M$ for all $x\in A$. 
 \end{defn}
 
 
@@ -644,11 +644,11 @@
             \frac{\partial f}{\partial x}(x_0,y_0)=\frac{\partial f}{\partial y}(x_0,y_0)=0
         \end{equation*}
         \item \begin{equation*}
-            \disc f(x_0,y_0)>0
+            \mathcal{D}(x_0,y_0)>0
         \end{equation*}
-        where $\disc f$ is the \textbf{discriminant} of the Hessian, defined by 
+        where $\mathcal{D}$ is the \textbf{discriminant} of the Hessian, defined by 
         \begin{equation*}
-            \disc f=\det (Hf)=\left(\frac{\partial^2 f}{\partial x^2}\right)\left(\frac{\partial^2 f}{\partial y^2}\right)-\left(\frac{\partial^2 f}{\partial x\partial y}\right)^2
+            \mathcal{D}=\det (Hf)=\left(\frac{\partial^2 f}{\partial x^2}\right)\left(\frac{\partial^2 f}{\partial y^2}\right)-\left(\frac{\partial^2 f}{\partial x\partial y}\right)^2
         \end{equation*}
         where $Hf$ is the $2\times 2$ Hessian matrix.
         \item  \begin{equation*}
@@ -665,9 +665,9 @@
             \frac{\partial f}{\partial x}(x_0,y_0)=\frac{\partial f}{\partial y}(x_0,y_0)=0
         \end{equation*}
         \item \begin{equation*}
-            \disc f(x_0,y_0)>0
+            \mathcal{D}(x_0,y_0)>0
         \end{equation*}
-        where $\disc f$ is the {discriminant} of the Hessian, defined above.
+        where $\mathcal{D}$ is the {discriminant} of the Hessian, defined above.
         \item  \begin{equation*}
             \frac{\partial^2f}{\partial x^2}(x_0,y_0)<0
         \end{equation*}
@@ -675,7 +675,7 @@
 \end{prop}
 
 \begin{prop}[saddle points]
-    Let $f(x,y):U\subset\R^2\to \R$ be of  $C^2$, if $\frac{\partial f}{\partial x}(x_0,y_0)=\frac{\partial f}{\partial y}(x_0,y_0)=0$, and $\disc f(x_0,y_0)<0$, where $\disc f$ is the discriminant, then the critical point $(x_0,y_0)$ is a saddle point, i.e., neither a maximum or a minimum.
+    Let $f(x,y):U\subset\R^2\to \R$ be of  $C^2$, if $\frac{\partial f}{\partial x}(x_0,y_0)=\frac{\partial f}{\partial y}(x_0,y_0)=0$, and $\mathcal{D}(x_0,y_0)<0$, where $\mathcal{D}$ is the discriminant, then the critical point $(x_0,y_0)$ is a saddle point, i.e., neither a maximum or a minimum.
 \end{prop}
 
 
@@ -2144,9 +2144,9 @@
     \end{equation*}
     Then 
     \begin{equation*}
-        \disc Hf=f_{xx}f_{yy}-f_{xy}^2=-2(2y-4)-4x^2
+        \mathcal{D}=f_{xx}f_{yy}-f_{xy}^2=-2(2y-4)-4x^2
     \end{equation*}
-    Hence $\disc Hf(0,0)=8>0$, and $f_{xx}(0,0)=-4$ imply that $(0,0)$ is a local maximum.
+    Hence $\mathcal{D}(0,0)=8>0$, and $f_{xx}(0,0)=-4$ imply that $(0,0)$ is a local maximum.
 \end{proof}
 
 
