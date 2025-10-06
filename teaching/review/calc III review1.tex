@@ -170,7 +170,7 @@
 \end{defn}
 
 \begin{defn}[Plane in $\R^3$]\label{plane}
-   If a plane ${P}$ passes through some point $(x_0,y_0,z_0)$, and $n=(A,B,C)$ is a vector orthognal to the plane, then the plane ${P}$ is given by the equation:
+   If a plane ${P}$ passes through some point $(x_0,y_0,z_0)$, and $n=(A,B,C)$ is a vector orthogonal to the plane, then the plane ${P}$ is given by the equation:
     \begin{equation*}
         A(x-x_0)+B(y-y_0)+C(z-z_0)=0
     \end{equation*}
@@ -276,7 +276,7 @@
     The derivative of $f$ at $x_0$ is the $m\times n$ matrix $Df(x_0)$.
 \end{defn}
 
-\begin{defn}[graident]
+\begin{defn}[gradient]
     Let $f:U\subset\R^n\to\R$, the \textbf{gradient} $\nabla f(x)$ is a special case of the general case above when $m=1$, i.e., it is a $1\times n$ matrix 
     \begin{equation*}
         Df(x)=\begin{bmatrix}
@@ -312,7 +312,7 @@
 
 
 \begin{defn}[directional derivative]
-    Let $f:\R^3\to\R$, be differentiable, then the \textbf{directional directive} at $x_0\in\R^3$ in the direction of a \textit{unit vector} $v$ is given by 
+    Let $f:\R^3\to\R$, be differentiable, then the \textbf{directional derivative} at $x_0\in\R^3$ in the direction of a \textit{unit vector} $v$ is given by 
     \begin{equation*}
         \nabla f(x_0)\cdot v=\left[\frac{\partial f}{\partial x_1}(x_0)\right]v_1+\left[\frac{\partial f}{\partial x_2}(x_0)\right]v_2+\left[\frac{\partial f}{\partial x_3}(x_0)\right]v_3
     \end{equation*}
@@ -527,14 +527,14 @@
 \begin{prop}[limits]
     Here are some properties of limits: let $f: U_1\subset\R^n\to\R^m, g: U_2\subset\R^n\to\R^m$,
     \begin{enumerate}
-        \item[(a)] (Uniquess):  \begin{equation*}
+        \item[(a)] (Uniquessness):  \begin{equation*}
             \text{ If } \lim_{x\to x_0}f(x)=b_1, \quad \lim_{x\to x_0}f(x)=b_2
         \end{equation*}
         then we must have 
         \begin{equation*}
             b_1=b_2
         \end{equation*}
-        \item[(b)] (Scalar mutliplication): Let $c\in\R$, if $\lim_{x\to x_0}f(x)=b_1$, then 
+        \item[(b)] (Scalar multiplication): Let $c\in\R$, if $\lim_{x\to x_0}f(x)=b_1$, then 
         \begin{equation*}
             \lim_{x\to x_0}cf(x)=cb_1
         \end{equation*}
@@ -618,7 +618,7 @@
 \end{prop}
 
 \begin{prop}[Equality of mixed partials]
-    If $f(x,y)$ be twice continuously differentiable, then 
+    If $f(x,y)$ is twice continuously differentiable, then 
     \begin{equation*}
         \frac{\partial^2 f}{\partial x\partial y}=\frac{\partial^2f}{\partial y\partial x}
     \end{equation*}
@@ -892,7 +892,7 @@
 
 
 \begin{prob}
-    Use the traingle inequality \ref{traingle} to show the reverse triangle inequality:
+    Use the triangle inequality \ref{traingle} to show the reverse triangle inequality:
     \begin{equation*}
         \bigg|\|a\|-\|b\|\bigg|\leq\|a-b\|
     \end{equation*}
@@ -1562,7 +1562,7 @@
 \begin{proof}
     We can find two vectors in this plane:
     \begin{equation*}
-        \text{PQ}=Q-P=(-1,-1,-1), \quad \text{ PT}=T-Q=(1,1,2)
+        \text{PQ}=Q-P=(-1,-1,-1), \quad \text{ PT}=T-P=(1,1,2)
     \end{equation*}
     then we can find a normal vector $n$ to the plane by taking the cross product:
     \begin{equation*}
@@ -1626,7 +1626,7 @@
 
 
 \begin{prob}
-    Use the traingle inequality \ref{traingle} to show the reverse triangle inequality:
+    Use the triangle inequality \ref{traingle} to show the reverse triangle inequality:
     \begin{equation*}
         \bigg|\|a\|-\|b\|\bigg|\leq\|a-b\|
     \end{equation*}
@@ -2094,7 +2094,7 @@
         \end{equation*}
         similarly,
         \begin{equation*}
-            f_y=-e^x\sin y=0\Rightarrow y=\pi+n\in\Z
+            f_y=-e^x\sin y=0\Rightarrow y=n\pi, n\in\Z
         \end{equation*}
         We see that there is no such $y$ that makes $f_x=f_y=0$ simultaneously. Hence there are no critical points.
         \item We again compute $x,y$ such that $g_x=g_y=0$.
