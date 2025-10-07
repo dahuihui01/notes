@@ -1,0 +1,257 @@
+\documentclass[openany]{book}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsfonts,amsthm, amssymb}
+\usepackage{yhmath}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{comment}
+\usepackage{tikz-cd}
+\usepackage{quiver}
+\renewcommand{\familydefault}{ppl}
+\newcommand{\tr}{\text{tr}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\colim}{\text{colim}}
+\DeclareMathOperator{\im}{im}
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+\newcommand{\tor}{\text{Tor}}
+\newcommand{\id}{\text{id}}
+\newcommand{\ext}{\text{Ext}}
+\newcommand{\ptop}{\text{PTop}}
+\newcommand{\pt}{\text{pt}}
+\newcommand{\ach}{\text{Ach}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\gal}{\text{Gal}}
+
+
+\input{hui.tex}
+
+\title{Calc III Sections
+\\ 
+\vspace{0.4cm}
+\large Fall 2025}
+
+
+
+
+\date{\today}
+\author{Hui Sun}
+
+
+\begin{document}
+
+\maketitle
+
+% \tableofcontents
+\newpage
+
+
+\begin{center}
+    \Large Calc III-Week 7 (10/6-10/10)
+\end{center}
+
+\renewcommand\thesection{\arabic{section}}
+
+\noindent
+Topics: Extremum. 
+
+
+
+
+% \begin{defn}[critical point]
+%     Let $f:U\subset\R^n\to\R$, a point $x_0\in U$ is a \textbf{critical point} of $f$ if either $f$ is not differentiable at $x_0$, or $Df(x_0)=0$. A critical point that is not a local extremum is called a saddle point.
+% \end{defn}
+
+\begin{defn}[quadratic function]
+    A function $g:\R^n\to\R$ is called a \textbf{quadratic function} if it is given by 
+    \begin{equation*}
+        g(h_1,\dots, h_n)=\sum_{i,j=1}^na_{ij}h_ih_j
+    \end{equation*}
+    where $(a_{ij})$ is an $n\times n$ matrix. We can also write $g$ as follows:
+    \begin{equation*}
+        g(h_1,\dots,h_n)=[h_1,\dots,h_n]\begin{bmatrix}
+            a_{11}&\dots &a_{1n}\\
+            \vdots&\ddots &\vdots\\
+            a_{n_1}&\dots&a_{nn}
+        \end{bmatrix}\begin{bmatrix}
+            h_1\\
+            \vdots\\
+            h_n
+        \end{bmatrix}
+    \end{equation*}
+
+\end{defn}
+
+\begin{defn}[Hessian matrix]
+    Let $f:U\subset\R^n\to\R$, and suppose all the second-order partial derivatives $\frac{\partial^2 f}{\partial x_i\partial x_j}$ exist, then the Hessian matrix of $f$ is the $n\times n$ matrix given by 
+    \begin{equation*}
+        Hf=\begin{bmatrix}
+            \frac{\partial^2 f}{\partial x_1\partial x_1}&\dots&\frac{\partial^2f}{\partial x_1\partial x_n}\\
+            \vdots&\ddots&\vdots\\
+            \frac{\partial^2f}{\partial x_nx_1}&\dots&\frac{\partial^2f}{\partial x_n\partial x_n}
+        \end{bmatrix}
+    \end{equation*}
+    The Hessian as a quadratic function is defined by 
+    \begin{equation*}
+        Hf(x)(h)=\frac{1}{2}\begin{bmatrix}
+            h_1&\dots&h_n
+        \end{bmatrix}Hf(x)\begin{bmatrix}
+            h_1\\
+            \dots\\
+            h_n
+        \end{bmatrix}
+    \end{equation*}
+    where $h=(h_1,\dots,h_n)$.
+\end{defn}
+
+\begin{defn}[degenerate/nondegenerate points]
+    Let $f:U\subset\R^2\to\R$ be of $C^2$, let $(x_0,y_0)$ be a critical point. We define the \textbf{discriminant}, \boldmath $\mathcal{D}$,\unboldmath of the Hessian by
+    \begin{equation*}
+        \mathcal{D}=\det (Hf)=\left(\frac{\partial^2f}{\partial x^2}\right)\left(\frac{\partial^2f}{\partial y^2}\right)-\left(\frac{\partial^2f}{\partial x\partial y}\right)^2
+    \end{equation*}
+    If $\mathcal{D}\neq 0$, the critical point $(x_0,y_0)$ is called \textbf{nondegenerate}; if $\mathcal{D}=0$, the point $(x_0,y_0)$ is called \textbf{degenerate}.
+\end{defn}
+
+\begin{defn}[positive, negative-definite]
+    A quadratic function $g:\R^n\to\R$ is called \textbf{positive-definite} if $g(h)\geq 0$ for all $h\in\R^n$ and $g(h)=0$ implies $h=0$. Similarly, $g$ is \textbf{negative-definite} if $g(h)\leq 0$ for all $h\in\R^n$ and $g(h)=0$ implies $h=0$. (The matrix is positive-definite iff it is symmetric $A^T=A$ and the eigenvalues are nonnegative).
+\end{defn}
+
+
+% \begin{defn}[global extremum]
+%     Let $f:A\to\R$ be a function defined on $A\subset\R^2$ or $A\subset\R^3$. A point $x_0\in A$ is said to be an \textbf{absolute maximum} if $f(x_0)\geq f(x)$ for all $x\in A$. Similarly, $x_0$ is an \textbf{absolute minimum} if $f(x_0)\leq f(x)$ for all $x\in A$. 
+% \end{defn}
+
+\begin{defn}[bounded set]
+    A set $A\subset\R^n$ is said to be \textbf{bounded} if there is a number $M>0$ such that $\|x\|\leq M$ for all $x\in A$. 
+\end{defn}
+
+
+
+
+\begin{prop}[extremums are critical points]
+    Let $f:U\subset\R^n\to\R$ be differentiable, where $U$ is open. If $x_0$ is a local extremum, then $Df(x_0)=0$. 
+\end{prop}
+
+
+\begin{prop}[extremum]
+    Let $f\colon U\subset\R^n\to\R$ be in $C^3$, and $x_0$ is a critical point of $f$. If the Hessian $Hf(x_0)$ is positive-definite, then $x_0$ is a local minimum of $f$; if $Hf(x_0)$ is negative-definite, then $x_0$ is a local maximum.
+\end{prop}
+
+
+
+
+\begin{prop}[local minimum]
+    Let $f(x,y)$ be of $C^2$, and $U$ is open in $\R^2$. A point $(x_0,y_0)$ is a strict local \textbf{minimum} of $f$ if the following conditions hold:
+    \begin{enumerate}
+        \item \begin{equation*}
+            \frac{\partial f}{\partial x}(x_0,y_0)=\frac{\partial f}{\partial y}(x_0,y_0)=0
+        \end{equation*}
+        \item \begin{equation*}
+            \mathcal{D}(x_0,y_0)>0
+        \end{equation*}
+        where $\mathcal{D}$ is the \textbf{discriminant} of the Hessian, defined by 
+        \begin{equation*}
+            \mathcal{D}=\det (Hf)=\left(\frac{\partial^2 f}{\partial x^2}\right)\left(\frac{\partial^2 f}{\partial y^2}\right)-\left(\frac{\partial^2 f}{\partial x\partial y}\right)^2
+        \end{equation*}
+        where $Hf$ is the $2\times 2$ Hessian matrix.
+        \item  \begin{equation*}
+            \frac{\partial^2f}{\partial x^2}(x_0,y_0)>0
+        \end{equation*}
+    \end{enumerate}
+    If $ \frac{\partial^2f}{\partial x^2}(x_0,y_0)<0$ in 3, then it becomes a local maximum.
+\end{prop}
+
+
+% \begin{prop}[local maximum]
+%     Let $f(x,y)$ be of $C^2$, and $U$ is open in $\R^2$. A point $(x_0,y_0)$ is a strict local \textbf{maximum} of $f$ if the following conditions hold:
+%     \begin{enumerate}
+%         \item \begin{equation*}
+%             \frac{\partial f}{\partial x}(x_0,y_0)=\frac{\partial f}{\partial y}(x_0,y_0)=0
+%         \end{equation*}
+%         \item \begin{equation*}
+%             \mathcal{D}(x_0,y_0)>0
+%         \end{equation*}
+%         where $\mathcal{D}$ is the {discriminant} of the Hessian, defined above.
+%         \item  \begin{equation*}
+%             \frac{\partial^2f}{\partial x^2}(x_0,y_0)<0
+%         \end{equation*}
+%     \end{enumerate}
+% \end{prop}
+
+\begin{prop}[saddle points]
+    Let $f(x,y):U\subset\R^2\to \R$ be of  $C^2$, if $\frac{\partial f}{\partial x}(x_0,y_0)=\frac{\partial f}{\partial y}(x_0,y_0)=0$, and $\mathcal{D}(x_0,y_0)<0$, where $\mathcal{D}$ is the discriminant, then the critical point $(x_0,y_0)$ is a saddle point, i.e., neither a maximum or a minimum.
+\end{prop}
+
+
+\begin{prop}[continuous functions attain extremum on closed bounded sets]
+    Let $f:D\to\R$ be continuous, where $D$ is closed and bounded in $\R^n$. Then $f$ assumes its absolute maximum and absolute minimum values at some point $x_0, x_1\in D$.
+\end{prop}
+
+
+
+\begin{prob}
+    Is the following matrix positive-definite?
+    \begin{equation*}
+        \begin{bmatrix}
+            1&0\\
+            0&-1
+        \end{bmatrix}
+    \end{equation*}
+\end{prob}
+% \begin{proof}
+%     It is not! Consider the vector $(0,1)$, we have 
+%     \begin{equation*}
+%         [0, 1]
+% \begin{bmatrix}
+%         1&0\\
+%         0&-1
+%     \end{bmatrix}\begin{bmatrix}
+%         0\\
+%         1
+%     \end{bmatrix}
+%     =[0,1]\begin{bmatrix}
+%         0\\
+%         -1
+%     \end{bmatrix}=-1
+% \end{equation*}
+% \end{proof}
+
+
+\begin{prob}
+    Find the critical point of $f(x,y)=y+x\sin y$ and classify whether it is a local max/min or a saddle point.
+\end{prob}
+% \begin{proof}
+%     We compute 
+%     \begin{equation*}
+%         f_x=\sin y, \quad f_y=1+x\cos y
+%     \end{equation*}
+%     Setting them both to $0$ gives 
+%     \begin{equation*}
+%         (1, n\pi), \text{ when $n$ is odd}, \quad (-1,n\pi) \text{ when $n$ is even}
+%     \end{equation*}
+%     Now we compute the discriminant:
+%     \begin{equation*}
+%         f_{xx}=0, \quad f_{xy}=f_{yx}=\cos y, \quad f_{yy}=-x\sin y
+%     \end{equation*}
+%     Thus 
+%     \begin{equation*}
+%         \mathcal{D}=\det\begin{bmatrix}
+%             0&\cos y\\
+%             \cos y&-x\sin y
+%         \end{bmatrix}=-\cos^2y
+%     \end{equation*}
+%     Thus $\mathcal{D}<0$ for all the critical points, hence they are saddle points!
+% \end{proof}
+
+
+
+\end{document}
