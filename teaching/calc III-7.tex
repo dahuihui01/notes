@@ -62,7 +62,7 @@
 \renewcommand\thesection{\arabic{section}}
 
 \noindent
-Topic: Extremum. 
+Topics: (1) quadratic form, (2) constraint. 
 
 
 
@@ -88,19 +88,7 @@ Topic: Extremum.
             h_n
         \end{bmatrix}
     \end{equation*}
-
-\end{defn}
-
-\begin{defn}[Hessian matrix]
-    Let $f:U\subset\R^n\to\R$, and suppose all the second-order partial derivatives $\frac{\partial^2 f}{\partial x_i\partial x_j}$ exist, then the Hessian matrix of $f$ is the $n\times n$ matrix given by 
-    \begin{equation*}
-        Hf=\begin{bmatrix}
-            \frac{\partial^2 f}{\partial x_1\partial x_1}&\dots&\frac{\partial^2f}{\partial x_1\partial x_n}\\
-            \vdots&\ddots&\vdots\\
-            \frac{\partial^2f}{\partial x_nx_1}&\dots&\frac{\partial^2f}{\partial x_n\partial x_n}
-        \end{bmatrix}
-    \end{equation*}
-    The Hessian as a quadratic function is defined by 
+    An example of a quadratic function is defined by 
     \begin{equation*}
         Hf(x)(h)=\frac{1}{2}\begin{bmatrix}
             h_1&\dots&h_n
@@ -110,16 +98,38 @@ Topic: Extremum.
             h_n
         \end{bmatrix}
     \end{equation*}
-    where $h=(h_1,\dots,h_n)$.
+    where $h=(h_1,\dots, h_n)$, and $Hf(x)$ is the Hessian matrix of $f:\R^n\to\R^n$.
 \end{defn}
 
-\begin{defn}[degenerate/nondegenerate points]
-    Let $f:U\subset\R^2\to\R$ be of $C^2$, let $(x_0,y_0)$ be a critical point. We define the \textbf{discriminant}, \boldmath $\mathcal{D}$,\unboldmath of the Hessian by
-    \begin{equation*}
-        \mathcal{D}=\det (Hf)=\left(\frac{\partial^2f}{\partial x^2}\right)\left(\frac{\partial^2f}{\partial y^2}\right)-\left(\frac{\partial^2f}{\partial x\partial y}\right)^2
-    \end{equation*}
-    If $\mathcal{D}\neq 0$, the critical point $(x_0,y_0)$ is called \textbf{nondegenerate}; if $\mathcal{D}=0$, the point $(x_0,y_0)$ is called \textbf{degenerate}.
-\end{defn}
+% \begin{defn}[Hessian matrix]
+%     Let $f:U\subset\R^n\to\R$, and suppose all the second-order partial derivatives $\frac{\partial^2 f}{\partial x_i\partial x_j}$ exist, then the Hessian matrix of $f$ is the $n\times n$ matrix given by 
+%     \begin{equation*}
+%         Hf=\begin{bmatrix}
+%             \frac{\partial^2 f}{\partial x_1\partial x_1}&\dots&\frac{\partial^2f}{\partial x_1\partial x_n}\\
+%             \vdots&\ddots&\vdots\\
+%             \frac{\partial^2f}{\partial x_nx_1}&\dots&\frac{\partial^2f}{\partial x_n\partial x_n}
+%         \end{bmatrix}
+%     \end{equation*}
+%     The Hessian as a quadratic function is defined by 
+%     \begin{equation*}
+%         Hf(x)(h)=\frac{1}{2}\begin{bmatrix}
+%             h_1&\dots&h_n
+%         \end{bmatrix}Hf(x)\begin{bmatrix}
+%             h_1\\
+%             \dots\\
+%             h_n
+%         \end{bmatrix}
+%     \end{equation*}
+%     where $h=(h_1,\dots,h_n)$.
+% \end{defn}
+
+% \begin{defn}[degenerate/nondegenerate points]
+%     Let $f:U\subset\R^2\to\R$ be of $C^2$, let $(x_0,y_0)$ be a critical point. We define the \textbf{discriminant}, \boldmath $\mathcal{D}$,\unboldmath of the Hessian by
+%     \begin{equation*}
+%         \mathcal{D}=\det (Hf)=\left(\frac{\partial^2f}{\partial x^2}\right)\left(\frac{\partial^2f}{\partial y^2}\right)-\left(\frac{\partial^2f}{\partial x\partial y}\right)^2
+%     \end{equation*}
+%     If $\mathcal{D}\neq 0$, the critical point $(x_0,y_0)$ is called \textbf{nondegenerate}; if $\mathcal{D}=0$, the point $(x_0,y_0)$ is called \textbf{degenerate}.
+% \end{defn}
 
 \begin{defn}[positive, negative-definite]
     A quadratic function $g:\R^n\to\R$ is called \textbf{positive-definite} if $g(h)\geq 0$ for all $h\in\R^n$ and $g(h)=0$ implies $h=0$. Similarly, $g$ is \textbf{negative-definite} if $g(h)\leq 0$ for all $h\in\R^n$ and $g(h)=0$ implies $h=0$. (The matrix is positive-definite iff it is symmetric $A^T=A$ and the eigenvalues are nonnegative).
@@ -137,38 +147,38 @@ Topic: Extremum.
 
 
 
-\begin{prop}[extremums are critical points]
-    Let $f:U\subset\R^n\to\R$ be differentiable, where $U$ is open. If $x_0$ is a local extremum, then $Df(x_0)=0$. 
-\end{prop}
+% \begin{prop}[extremums are critical points]
+%     Let $f:U\subset\R^n\to\R$ be differentiable, where $U$ is open. If $x_0$ is a local extremum, then $Df(x_0)=0$. 
+% \end{prop}
 
 
-\begin{prop}[extremum]
-    Let $f\colon U\subset\R^n\to\R$ be in $C^3$, and $x_0$ is a critical point of $f$. If the Hessian $Hf(x_0)$ is positive-definite, then $x_0$ is a local minimum of $f$; if $Hf(x_0)$ is negative-definite, then $x_0$ is a local maximum.
-\end{prop}
+% \begin{prop}[extremum]
+%     Let $f\colon U\subset\R^n\to\R$ be in $C^3$, and $x_0$ is a critical point of $f$. If the Hessian $Hf(x_0)$ is positive-definite, then $x_0$ is a local minimum of $f$; if $Hf(x_0)$ is negative-definite, then $x_0$ is a local maximum.
+% \end{prop}
 
 
 
 
-\begin{prop}[local minimum]
-    Let $f(x,y)$ be of $C^2$, and $U$ is open in $\R^2$. A point $(x_0,y_0)$ is a strict local \textbf{minimum} of $f$ if the following conditions hold:
-    \begin{enumerate}
-        \item \begin{equation*}
-            \frac{\partial f}{\partial x}(x_0,y_0)=\frac{\partial f}{\partial y}(x_0,y_0)=0
-        \end{equation*}
-        \item \begin{equation*}
-            \mathcal{D}(x_0,y_0)>0
-        \end{equation*}
-        where $\mathcal{D}$ is the \textbf{discriminant} of the Hessian, defined by 
-        \begin{equation*}
-            \mathcal{D}=\det (Hf)=\left(\frac{\partial^2 f}{\partial x^2}\right)\left(\frac{\partial^2 f}{\partial y^2}\right)-\left(\frac{\partial^2 f}{\partial x\partial y}\right)^2
-        \end{equation*}
-        where $Hf$ is the $2\times 2$ Hessian matrix.
-        \item  \begin{equation*}
-            \frac{\partial^2f}{\partial x^2}(x_0,y_0)>0
-        \end{equation*}
-    \end{enumerate}
-    If $ \frac{\partial^2f}{\partial x^2}(x_0,y_0)<0$ in 3, then it becomes a local maximum.
-\end{prop}
+% \begin{prop}[local minimum]
+%     Let $f(x,y)$ be of $C^2$, and $U$ is open in $\R^2$. A point $(x_0,y_0)$ is a strict local \textbf{minimum} of $f$ if the following conditions hold:
+%     \begin{enumerate}
+%         \item \begin{equation*}
+%             \frac{\partial f}{\partial x}(x_0,y_0)=\frac{\partial f}{\partial y}(x_0,y_0)=0
+%         \end{equation*}
+%         \item \begin{equation*}
+%             \mathcal{D}(x_0,y_0)>0
+%         \end{equation*}
+%         where $\mathcal{D}$ is the \textbf{discriminant} of the Hessian, defined by 
+%         \begin{equation*}
+%             \mathcal{D}=\det (Hf)=\left(\frac{\partial^2 f}{\partial x^2}\right)\left(\frac{\partial^2 f}{\partial y^2}\right)-\left(\frac{\partial^2 f}{\partial x\partial y}\right)^2
+%         \end{equation*}
+%         where $Hf$ is the $2\times 2$ Hessian matrix.
+%         \item  \begin{equation*}
+%             \frac{\partial^2f}{\partial x^2}(x_0,y_0)>0
+%         \end{equation*}
+%     \end{enumerate}
+%     If $ \frac{\partial^2f}{\partial x^2}(x_0,y_0)<0$ in 3, then it becomes a local maximum.
+% \end{prop}
 
 
 % \begin{prop}[local maximum]
@@ -187,9 +197,13 @@ Topic: Extremum.
 %     \end{enumerate}
 % \end{prop}
 
-\begin{prop}[saddle points]
-    Let $f(x,y):U\subset\R^2\to \R$ be of  $C^2$, if $\frac{\partial f}{\partial x}(x_0,y_0)=\frac{\partial f}{\partial y}(x_0,y_0)=0$, and $\mathcal{D}(x_0,y_0)<0$, where $\mathcal{D}$ is the discriminant, then the critical point $(x_0,y_0)$ is a saddle point, i.e., neither a maximum or a minimum.
-\end{prop}
+% \begin{prop}[saddle points]
+%     Let $f(x,y):U\subset\R^2\to \R$ be of  $C^2$, if $\frac{\partial f}{\partial x}(x_0,y_0)=\frac{\partial f}{\partial y}(x_0,y_0)=0$, and $\mathcal{D}(x_0,y_0)<0$, where $\mathcal{D}$ is the discriminant, then the critical point $(x_0,y_0)$ is a saddle point, i.e., neither a maximum or a minimum.
+% \end{prop}
+
+
+
+
 
 
 \begin{prop}[continuous functions attain extremum on closed bounded sets]
@@ -197,6 +211,22 @@ Topic: Extremum.
 \end{prop}
 
 
+
+\begin{prop}
+        If $f$ has a maximum or minimum
+        at $x_0$ when constrained to a surface $S$, then $\nabla f(x)$ is perpendicular to $S$ at $x_0$.
+\end{prop}
+Consequence of Proposition 2:
+\begin{prop}
+    Let \( f, g : U \subset \mathbb{R}^n \to \mathbb{R} \) and \(\vec{x_0} \in U\) such that \( g({x_0}) = c \). Let \( \mathcal{L}_c \) be the level set for \( g \) with value \( c \) and assume  
+\[
+\nabla g(\vec{x_0}) \neq \vec{0}.
+\] 
+If \( f \) restricted to \( x_c \) has a local minimum or maximum on \( \mathcal{L}_c \) at \( {x_0} \), then there exists \( \lambda \in \mathbb{R} \) such that  
+\[
+\nabla f({x_0}) = \lambda \nabla g({x_0}).
+\]
+\end{prop}
 
 \begin{prob}
     Is the following matrix positive-definite?
@@ -207,50 +237,126 @@ Topic: Extremum.
         \end{bmatrix}
     \end{equation*}
 \end{prob}
-% \begin{proof}
-%     It is not! Consider the vector $(0,1)$, we have 
-%     \begin{equation*}
-%         [0, 1]
-% \begin{bmatrix}
-%         1&0\\
-%         0&-1
-%     \end{bmatrix}\begin{bmatrix}
-%         0\\
-%         1
-%     \end{bmatrix}
-%     =[0,1]\begin{bmatrix}
-%         0\\
-%         -1
-%     \end{bmatrix}=-1
-% \end{equation*}
-% \end{proof}
+\begin{proof}
+    It is not! Consider the vector $(0,1)$, we have 
+    \begin{equation*}
+        [0, 1]
+\begin{bmatrix}
+        1&0\\
+        0&-1
+    \end{bmatrix}\begin{bmatrix}
+        0\\
+        1
+    \end{bmatrix}
+    =[0,1]\begin{bmatrix}
+        0\\
+        -1
+    \end{bmatrix}=-1
+\end{equation*}
+\end{proof}
 
 
 \begin{prob}
     Find the critical point of $f(x,y)=y+x\sin y$ and classify whether it is a local max/min or a saddle point.
 \end{prob}
-% \begin{proof}
-%     We compute 
-%     \begin{equation*}
-%         f_x=\sin y, \quad f_y=1+x\cos y
-%     \end{equation*}
-%     Setting them both to $0$ gives 
-%     \begin{equation*}
-%         (1, n\pi), \text{ when $n$ is odd}, \quad (-1,n\pi) \text{ when $n$ is even}
-%     \end{equation*}
-%     Now we compute the discriminant:
-%     \begin{equation*}
-%         f_{xx}=0, \quad f_{xy}=f_{yx}=\cos y, \quad f_{yy}=-x\sin y
-%     \end{equation*}
-%     Thus 
-%     \begin{equation*}
-%         \mathcal{D}=\det\begin{bmatrix}
-%             0&\cos y\\
-%             \cos y&-x\sin y
-%         \end{bmatrix}=-\cos^2y
-%     \end{equation*}
-%     Thus $\mathcal{D}<0$ for all the critical points, hence they are saddle points!
-% \end{proof}
+\begin{proof}
+    We compute 
+    \begin{equation*}
+        f_x=\sin y, \quad f_y=1+x\cos y
+    \end{equation*}
+    Setting them both to $0$ gives 
+    \begin{equation*}
+        (1, n\pi), \text{ when $n$ is odd}, \quad (-1,n\pi) \text{ when $n$ is even}
+    \end{equation*}
+    Now we compute the discriminant:
+    \begin{equation*}
+        f_{xx}=0, \quad f_{xy}=f_{yx}=\cos y, \quad f_{yy}=-x\sin y
+    \end{equation*}
+    Thus 
+    \begin{equation*}
+        \mathcal{D}=\det\begin{bmatrix}
+            0&\cos y\\
+            \cos y&-x\sin y
+        \end{bmatrix}=-\cos^2y
+    \end{equation*}
+    Thus $\mathcal{D}<0$ for all the critical points, hence they are saddle points!
+\end{proof}
+
+
+\begin{prob}[Marsden-Tromba, III. 2]
+    Let $f(x,y,z)=x-y+z$, find the extremum of $f$ subject to the constraint $x^2+y^2+z^2=2$.
+\end{prob}
+\begin{proof}
+    We compute the gradient of $f$ and $g(x,y,z)=x^2+y^2+z^2$:
+    \begin{equation*}
+        \nabla f(x,y,z)=\begin{bmatrix}
+            1&-1&1
+        \end{bmatrix}\quad \nabla g(x,y,z)=\begin{bmatrix}
+            2x&2y&2z
+        \end{bmatrix}
+    \end{equation*}
+    By the proposition above, we need to have 
+    \begin{align*}
+        \lambda&=2x\\
+        -\lambda&=2y\\
+        \lambda&=2z
+    \end{align*}
+    Equating all $\lambda$ gives 
+    \begin{equation*}
+        x=z=-y
+    \end{equation*}
+    Plugging in the constraint we get 
+    \begin{equation*}
+        3x^2=2
+    \end{equation*}
+    Hence two critical points 
+    \begin{equation*}
+        \left(\sqrt{\frac{2}{3}}, -\sqrt{\frac{2}{3}}, \sqrt{\frac{2}{3}}\right), \quad \left(-\sqrt{\frac{2}{3}}, \sqrt{\frac{2}{3}}, -\sqrt{\frac{2}{3}}\right)
+    \end{equation*}
+    Plugging them in we find the extremums are $\sqrt{6}$ and $-\sqrt{6}$.
+\end{proof}
+
+
+\begin{prob}[Marsden-Tromba, III. 16]
+    Use Lagrange multipliers to find the distance from the point $(2, 0, -1)$ to the plane $3x - 2y + 8z + 1 = 0$.
+\end{prob}
+\begin{proof}
+    Let $(x,y,z)$ be a point on the plane, then we would like the minimize the function 
+    \begin{equation*}
+        f(x,y,z)=(x-2)^2+y^2+(z+1)^2
+    \end{equation*}
+    with the constraint
+    \begin{equation*}
+        3x - 2y + 8z + 1 = 0
+    \end{equation*}
+    Writing $g(x,y,z)=3x - 2y + 8z + 1$, we do the exact same thing as we did above:
+    \begin{equation*}
+        \nabla f=\begin{bmatrix}
+            2x-4&2y&2z+2
+        \end{bmatrix}, \quad \nabla g=\begin{bmatrix}
+            3&-2&8
+        \end{bmatrix}
+    \end{equation*}
+    Then setting 
+    \begin{align*}
+        2x-4&=3\lambda\\
+        2y&=-2\lambda\\
+        2z+2&=8\lambda
+    \end{align*}
+    One can then replace $x,y,z$ with expressions in $\lambda$ in the constraint:
+    \begin{equation*}
+        3x-2y+8z+1=0
+    \end{equation*}
+    which gives 
+    \begin{equation*}
+        \lambda=2/77
+    \end{equation*}
+    Then plugging in $\lambda$ to solve for $x,y,z$, the $\sqrt{f(x,y,z)}$ is the final answer. (I am too lazy to do the computation).
+\end{proof}
+
+
+
+
 
 
 
