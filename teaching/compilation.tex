@@ -1443,73 +1443,73 @@ If \( f \) restricted to \( x_c \) has a local minimum or maximum on \( \mathcal
 \begin{prob}[Marsden-Tromba, III. 2]
 Let $f(x,y,z)=x-y+z$, find the extremum of $f$ subject to the constraint $x^2+y^2+z^2=2$.
 \end{prob}
-% \begin{proof}
-%     We compute the gradient of $f$ and $g(x,y,z)=x^2+y^2+z^2$:
-%     \begin{equation*}
-%         \nabla f(x,y,z)=\begin{bmatrix}
-%             1&-1&1
-%         \end{bmatrix}\quad \nabla g(x,y,z)=\begin{bmatrix}
-%             2x&2y&2z
-%         \end{bmatrix}
-%     \end{equation*}
-%     By the proposition above, we need to have 
-%     \begin{align*}
-%         \lambda&=2x\\
-%         -\lambda&=2y\\
-%         \lambda&=2z
-%     \end{align*}
-%     Equating all $\lambda$ gives 
-%     \begin{equation*}
-%         x=z=-y
-%     \end{equation*}
-%     Plugging in the constraint we get 
-%     \begin{equation*}
-%         3x^2=2
-%     \end{equation*}
-%     Hence two critical points 
-%     \begin{equation*}
-%         \left(\sqrt{\frac{2}{3}}, -\sqrt{\frac{2}{3}}, \sqrt{\frac{2}{3}}\right), \quad \left(-\sqrt{\frac{2}{3}}, \sqrt{\frac{2}{3}}, -\sqrt{\frac{2}{3}}\right)
-%     \end{equation*}
-%     Plugging them in we find the extremums are $\sqrt{6}$ and $-\sqrt{6}$.
-% \end{proof}
+\begin{proof}
+    We compute the gradient of $f$ and $g(x,y,z)=x^2+y^2+z^2$:
+    \begin{equation*}
+        \nabla f(x,y,z)=\begin{bmatrix}
+            1&-1&1
+        \end{bmatrix}\quad \nabla g(x,y,z)=\begin{bmatrix}
+            2x&2y&2z
+        \end{bmatrix}
+    \end{equation*}
+    By the proposition above, we need to have 
+    \begin{align*}
+        \lambda&=2x\\
+        -\lambda&=2y\\
+        \lambda&=2z
+    \end{align*}
+    Equating all $\lambda$ gives 
+    \begin{equation*}
+        x=z=-y
+    \end{equation*}
+    Plugging in the constraint we get 
+    \begin{equation*}
+        3x^2=2
+    \end{equation*}
+    Hence two critical points 
+    \begin{equation*}
+        \left(\sqrt{\frac{2}{3}}, -\sqrt{\frac{2}{3}}, \sqrt{\frac{2}{3}}\right), \quad \left(-\sqrt{\frac{2}{3}}, \sqrt{\frac{2}{3}}, -\sqrt{\frac{2}{3}}\right)
+    \end{equation*}
+    Plugging them in we find the extremums are $\sqrt{6}$ and $-\sqrt{6}$.
+\end{proof}
 
 
 \begin{prob}[Marsden-Tromba, III. 16]
 Use Lagrange multipliers to find the distance from the point $(2, 0, -1)$ to the plane $3x - 2y + 8z + 1 = 0$.
 \end{prob}
-% \begin{proof}
-%     Let $(x,y,z)$ be a point on the plane, then we would like the minimize the function 
-%     \begin{equation*}
-%         f(x,y,z)=(x-2)^2+y^2+(z+1)^2
-%     \end{equation*}
-%     with the constraint
-%     \begin{equation*}
-%         3x - 2y + 8z + 1 = 0
-%     \end{equation*}
-%     Writing $g(x,y,z)=3x - 2y + 8z + 1$, we do the exact same thing as we did above:
-%     \begin{equation*}
-%         \nabla f=\begin{bmatrix}
-%             2x-4&2y&2z+2
-%         \end{bmatrix}, \quad \nabla g=\begin{bmatrix}
-%             3&-2&8
-%         \end{bmatrix}
-%     \end{equation*}
-%     Then setting 
-%     \begin{align*}
-%         2x-4&=3\lambda\\
-%         2y&=-2\lambda\\
-%         2z+2&=8\lambda
-%     \end{align*}
-%     One can then replace $x,y,z$ with expressions in $\lambda$ in the constraint:
-%     \begin{equation*}
-%         3x-2y+8z+1=0
-%     \end{equation*}
-%     which gives 
-%     \begin{equation*}
-%         \lambda=2/77
-%     \end{equation*}
-%     Then plugging in $\lambda$ to solve for $x,y,z$, the $\sqrt{f(x,y,z)}$ is the final answer. (I am too lazy to do the computation).
-% \end{proof}
+\begin{proof}
+    Let $(x,y,z)$ be a point on the plane, then we would like the minimize the function 
+    \begin{equation*}
+        f(x,y,z)=(x-2)^2+y^2+(z+1)^2
+    \end{equation*}
+    with the constraint
+    \begin{equation*}
+        3x - 2y + 8z + 1 = 0
+    \end{equation*}
+    Writing $g(x,y,z)=3x - 2y + 8z + 1$, we do the exact same thing as we did above:
+    \begin{equation*}
+        \nabla f=\begin{bmatrix}
+            2x-4&2y&2z+2
+        \end{bmatrix}, \quad \nabla g=\begin{bmatrix}
+            3&-2&8
+        \end{bmatrix}
+    \end{equation*}
+    Then setting 
+    \begin{align*}
+        2x-4&=3\lambda\\
+        2y&=-2\lambda\\
+        2z+2&=8\lambda
+    \end{align*}
+    One can then replace $x,y,z$ with expressions in $\lambda$ in the constraint:
+    \begin{equation*}
+        3x-2y+8z+1=0
+    \end{equation*}
+    which gives 
+    \begin{equation*}
+        \lambda=2/77
+    \end{equation*}
+    Then plugging in $\lambda$ to solve for $x,y,z$, the $\sqrt{f(x,y,z)}$ is the final answer. (I am too lazy to do the computation).
+\end{proof}
 
 
 
