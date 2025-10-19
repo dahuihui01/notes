@@ -1512,6 +1512,94 @@ Use Lagrange multipliers to find the distance from the point $(2, 0, -1)$ to the
 \end{proof}
 
 
+\newpage
+
+
+\begin{center}
+    \Large Calc III-Week 8 (Fall Break)
+\end{center}
+
+\renewcommand\thesection{\arabic{section}}
+
+\noindent
+Topics: (1) Acceleration and Arc Length, (2) Vector Fields.
+
+\begin{prop}[Newton's second law]
+    Let $c(t)$ be a path of a particle with mass $m$ and $a(t)=c''(t)$ be the acceleration, then 
+    \begin{equation*}
+        F(c(t))=ma(t)
+    \end{equation*}
+    where $F$ is the force applying on the particle.
+\end{prop}
+
+
+\begin{defn}[arc length]
+    Let $c(t)=(x(t), y(t), z(t))$ be a path, then the length of the path in $\R^3$ from $t_0\leq t\leq t_1$ is 
+    \begin{align*}
+        L_{t_0\to t_1}(c)&=\int_{t_0}^{t_1}\left(x(t)^2+y(t)^2+z(t)^2\right)^\frac{1}{2}dt\\
+        &=\int_{t_0}^{t_1}\|c'(t)\|dt
+    \end{align*}
+    More generally, if $c(t)=(x_1(t), \dots, x_n(t))$ is a path in $\R^n$, then 
+    \begin{equation*}
+        L_{t_0\to t_1}(c)=\int_{t_0}^{t_1}\left(\sum_{i=1}^nx_i(t)^2\right)^\frac{1}{2}dt
+    \end{equation*}
+\end{defn}
+
+
+\begin{defn}[vector field]
+    A vector field is a function $F:A\subset\R^n\to\R^n$ that assigns $x\in\R^n$ to another vector $F(x)\in\R^n$.
+\end{defn}
+
+
+
+
+
+
+
+\begin{prob}
+    Find the velocity, speed, and acceleration of the following path at $t=0$:
+    \begin{equation*}
+        c(t)=(\cos t, 2t, -\sin t)
+    \end{equation*}
+\end{prob}
+\begin{proof}
+    The velocity is 
+    \begin{equation*}
+        c'(t)=(-\sin t, 2, -\cos t), \quad c'(0)=(0,2,-1)
+    \end{equation*}
+    And the speed is 
+    \begin{equation*}
+        \|c'(t)\|=\sqrt{5}
+    \end{equation*}
+\end{proof}
+
+\begin{prob}
+    Find the length of the curve above from $t=0$ to $t=2$.
+\end{prob}
+\begin{proof}
+    \begin{align*}
+        L_{0\to 2}\|c'(t)\|dt&=\int_0^2\left(\sin^2t+4+\cos^2t\right)^\frac{1}{2}dt\\
+        &=\int_0^2\sqrt{5}dt\\
+        &=2\sqrt{5}
+    \end{align*}
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
