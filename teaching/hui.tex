@@ -80,7 +80,7 @@
 	},
 	headfont=\normalfont\bfseries\color{huidarkpurple}
 ]{huipurplebox}
-\declaretheorem[style=huipurplebox,name=Proposition]{prop}
+\declaretheorem[style=huipurplebox,name=Proposition, within=chapter]{prop}
 
 
 
@@ -147,9 +147,31 @@
 	},
 	headfont=\normalfont\bfseries\color{huidarkblue}
 ]{huiblueblox}
-\declaretheorem[style=huiblueblox,name=Example]{example}
+\declaretheorem[style=huiblueblox,name=Example, within=chapter]{example}
 
-\declaretheorem[style=huiblueblox,name=Definition]{defn}
+\definecolor{nirdarkgreen}{HTML}{537a57}
+\definecolor{nirlightgreen}{HTML}{e9f7ea}
+
+\declaretheoremstyle[
+	mdframed={
+		backgroundcolor=nirlightgreen,
+		linecolor=nirdarkgreen,
+		rightline=false,
+		topline=false,
+		bottomline=false,
+		linewidth=2pt,
+		innertopmargin=5pt,
+		innerbottommargin=8pt,
+		innerleftmargin=8pt,
+		leftmargin=-2pt,
+		skipbelow=2pt,
+		nobreak
+	},
+	headfont=\normalfont\bfseries\color{nirdarkgreen}
+]{nirgreenbox}
+\declaretheorem[style=nirgreenbox,name=Definition, within=chapter]{defn}
+
+% \declaretheorem[style=huiblueblox,name=Definition, within=chapter]{defn}
 
 
 % \definecolor{huilightblue}{HTML}{edf9ff}
@@ -190,7 +212,7 @@
 % 	},
 % 	headfont=\normalfont\bfseries\color{huidarkblue}
 % ]{huiblueblox}
-\declaretheorem[style=huiblueblox,name=Problem]{prob}
+\declaretheorem[style=huiblueblox,name=Problem, within=chapter]{prob}
 
 
 

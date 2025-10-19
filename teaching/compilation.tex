@@ -10,6 +10,7 @@
 \usepackage{comment}
 \usepackage{tikz-cd}
 \usepackage{quiver}
+\usepackage{hyperref,cleveref}
 \renewcommand{\familydefault}{ppl}
 \newcommand{\tr}{\text{tr}}
 \newcommand{\R}{\mathbb{R}}
@@ -21,6 +22,7 @@
 \newcommand{\ra}{\rangle}
 \newcommand{\colim}{\text{colim}}
 \DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\disc}{disc}
 \let\oldemptyset\emptyset
 \let\emptyset\varnothing
 \newcommand{\tor}{\text{Tor}}
@@ -31,6 +33,15 @@
 \newcommand{\ach}{\text{Ach}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\gal}{\text{Gal}}
+\newcommand{\fraccomma}{\genfrac{}{}{0pt}{}{}{,}}
+\definecolor{wikipediadarkblue}{rgb}{0.023, 0.270, 0.676}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=wikipediadarkblue,
+    urlcolor=red
+}
 
 
 \input{hui.tex}
@@ -50,14 +61,21 @@
 \begin{document}
 
 \maketitle
+\tableofcontents
 
 % \tableofcontents
 \newpage
 
+\chapter{The Geometry of Euclidean Spaces}
 
-\begin{center}
-    \Large Calc III-Week 1 (8/25-29)
-\end{center}
+
+\section*{\centering Week 1 (8/25-29)}
+
+
+
+% \begin{center}
+%     \Large Calc III-Week 1 )
+% \end{center}
 
 \renewcommand\thesection{\arabic{section}}
 \noindent
@@ -226,12 +244,12 @@
 
 
 \newpage
+\section*{\centering Week 2 (9/1-5)}
 
 
-
-\begin{center}
-    \Large Calc III-Week 2 (9/1-5)
-\end{center}
+% \begin{center}
+%     \Large Calc III-Week 2 (9/1-5)
+% \end{center}
 
 
 
@@ -333,13 +351,11 @@ HW is due Sunday 11:59PM.
 % \end{proof}
 
 
-\newpage
 
 
 
-\begin{center}
-    \Large Calc III-Week 3 (9/8-9/12)
-\end{center}
+\chapter{Differentiation}
+\section*{\centering Week 3 (9/8-9/12)}
 
 \renewcommand\thesection{\arabic{section}}
 
@@ -494,10 +510,7 @@ How to find a a limit $\lim_{x\to x_0}f(x)$:
 
 
 \newpage
-
-\begin{center}
-    \Large Calc III-Week 4 (9/15-9/19)
-\end{center}
+\section*{\centering Week 4 (9/15-9/19)}
 
 \renewcommand\thesection{\arabic{section}}
 
@@ -685,10 +698,10 @@ Hence
 
 
 \newpage
-
-\begin{center}
-    \Large Calc III-Week 5 (9/22-9/26)
-\end{center}
+\section*{\centering Week 5 (9/22-9/26)}
+% \begin{center}
+%     \Large Calc III-Week 5 (9/22-9/26)
+% \end{center}
 
 \renewcommand\thesection{\arabic{section}}
 
@@ -1101,10 +1114,11 @@ yx^2 + xy^2 + yz^2 = 3 \text{ at } (1, 1, 1).
 
 \newpage 
 
-
-\begin{center}
-    \Large Calc III-Week 6 (9/29-10/3)
-\end{center}
+\chapter{Higher-Order Derivatives: Maxima and Minima}
+\section*{\centering Week 6 (9/29-10/3)}
+% \begin{center}
+%     \Large Calc III-Week 6 (9/29-10/3)
+% \end{center}
 
 \renewcommand\thesection{\arabic{section}}
 
@@ -1211,11 +1225,11 @@ Topics: (1) Higher-order derivatives, (2) Taylor expansion.
 
 
 \newpage 
+\section*{\centering Week 7 (10/6-10/10)}
 
-
-\begin{center}
-    \Large Calc III-Week 7 (10/6-10/10)
-\end{center}
+% \begin{center}
+%     \Large Calc III-Week 7 (10/6-10/10)
+% \end{center}
 
 \renewcommand\thesection{\arabic{section}}
 
@@ -1412,11 +1426,12 @@ Topics: Extremum.
 
 
 \newpage 
+\section*{\centering Week 7 Additional content}
 
 
-\begin{center}
-    \Large Calc III-Week 7 Additional Content
-\end{center}
+% \begin{center}
+%     \Large Calc III-Week 7 Additional Content
+% \end{center}
 
 \renewcommand\thesection{\arabic{section}}
 
@@ -1513,11 +1528,11 @@ Use Lagrange multipliers to find the distance from the point $(2, 0, -1)$ to the
 
 
 \newpage
+\section*{\centering Week 8 (Fall Break)}
 
-
-\begin{center}
-    \Large Calc III-Week 8 (Fall Break)
-\end{center}
+% \begin{center}
+%     \Large Calc III-Week 8 (Fall Break)
+% \end{center}
 
 \renewcommand\thesection{\arabic{section}}
 
