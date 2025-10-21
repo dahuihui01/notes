@@ -1550,12 +1550,12 @@ Topics: (1) Acceleration and Arc Length, (2) Vector Fields.
 \begin{defn}[arc length]
     Let $c(t)=(x(t), y(t), z(t))$ be a path, then the length of the path in $\R^3$ from $t_0\leq t\leq t_1$ is 
     \begin{align*}
-        L_{t_0\to t_1}(c)&=\int_{t_0}^{t_1}\left(x(t)^2+y(t)^2+z(t)^2\right)^\frac{1}{2}dt\\
+        L_{t_0\to t_1}(c)&=\int_{t_0}^{t_1}\left(x'(t)^2+y'(t)^2+z'(t)^2\right)^\frac{1}{2}dt\\
         &=\int_{t_0}^{t_1}\|c'(t)\|dt
     \end{align*}
     More generally, if $c(t)=(x_1(t), \dots, x_n(t))$ is a path in $\R^n$, then 
     \begin{equation*}
-        L_{t_0\to t_1}(c)=\int_{t_0}^{t_1}\left(\sum_{i=1}^nx_i(t)^2\right)^\frac{1}{2}dt
+        L_{t_0\to t_1}(c)=\int_{t_0}^{t_1}\left(\sum_{i=1}^nx_i'(t)^2\right)^\frac{1}{2}dt
     \end{equation*}
 \end{defn}
 
