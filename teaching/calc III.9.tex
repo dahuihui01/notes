@@ -32,7 +32,7 @@
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\gal}{\text{Gal}}
 \newcommand{\diverg}{\operatorname{div}}
-
+\newcommand{\curl}{\operatorname{curl}}
 
 \input{hui.tex}
 
@@ -84,13 +84,97 @@ computing double and triple integrals
 \begin{defn}[divergence]
     Let ${F}$ be a vector field in $\R^3$ $F=(F_1,F_2,F_3)$, the divergence of ${F}$ is the \textbf{scalar field} (assigns one number to an given point $(x, y, z)$), 
     \begin{equation*}
-        \diverg =\nabla\cdot F=\frac{\partial F_1}{\partial x}+\frac{\partial F_2}{\partial y}+\frac{\partial F_3}{\partial z}
+        \diverg F\coloneq\nabla\cdot F=\frac{\partial F_1}{\partial x}+\frac{\partial F_2}{\partial y}+\frac{\partial F_3}{\partial z}
     \end{equation*}
     More generally, if $F=(F_1,\dots, F_n)$ is a vector field on $\R^n$, its divergence is 
     \begin{equation*}
         \diverg F=\sum_{i=1}^n\frac{\partial F_i}{\partial x_i}=\frac{\partial F_1}{\partial x_1}+\dots+\frac{\partial F_n}{\partial x_n}
     \end{equation*}
 \end{defn}
+
+\begin{remark}
+    We write the divergence as $\nabla\cdot F$ because 
+    \begin{equation*}
+        \nabla=\left(\frac{\partial}{\partial x_1}, \dots, \frac{\partial}{\partial x_n}\right)
+    \end{equation*}
+    and if $F=(F_1,\dots, F_n)$, 
+    \begin{equation*}
+        \diverg F=\frac{\partial F_1}{\partial x_1}+\dots+\frac{\partial F_n}{\partial x_n}=\left(\frac{\partial}{\partial x_1}, \dots, \frac{\partial}{\partial x_n}\right)\cdot(F_1,\dots, F_n)=\nabla\cdot F
+    \end{equation*}
+\end{remark}
+
+
+\begin{defn}[curl]
+    Let $F$ be a vector field in $\R^3$, writing $F=(F_1,F_2,F_3)$, the \textbf{curl} of $F$ is the vector field 
+    \begin{equation*}
+        \curl F\coloneq\nabla\times F=\det\begin{bmatrix}
+            i&j&k\\
+            \frac{\partial}{\partial x}&\frac{\partial}{\partial y}&\frac{\partial}{\partial z}\\
+            F_1&F_2&F_3
+        \end{bmatrix}
+    \end{equation*}
+    If $\curl F=0$, then we say the vector field is \textbf{irrotational}.
+\end{defn}
+% \begin{warn}
+%     Irrotational does not mean the vector field doesn't look like rotations.
+% \end{warn}
+
+\begin{prop}[gradient is irrotational]
+    Let $f\in C^2$, viewing $\nabla f$ as a vector field, then
+    \begin{equation*}
+        \nabla\times(\nabla f)=0
+    \end{equation*}    
+\end{prop}
+
+\begin{prop}[divergence of a curl vanishes]
+    For any $C^2$ vector field $F$, 
+    \begin{equation*}
+        \nabla\cdot(\nabla\times F)=0
+    \end{equation*}
+\end{prop}
+
+
+
+
+\begin{prob}
+    Show that the vector field $V(x,y,z)=(x^2, -y, z)$ is not the curl of any vector field $F$. In other words, there is no vector field $F$ such that 
+    \begin{equation*}
+        V=\curl F
+    \end{equation*}
+\end{prob}
+% \begin{proof}
+%     By the above proposition, if there exists $F$ such that 
+%     \begin{equation*}
+%         V=\curl F
+%     \end{equation*}
+%     then 
+%     \begin{equation*}
+%         \nabla\cdot V=0
+%     \end{equation*}
+%     However, 
+%     \begin{equation*}
+%         \nabla\cdot V(x,y,z)=2x\neq 0 \text{ if } x\neq 0
+%     \end{equation*}
+%     this is a contradiction, hence no such $F$ exists.
+% \end{proof}
+
+
+
+
+\begin{prob}
+    
+\end{prob}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
