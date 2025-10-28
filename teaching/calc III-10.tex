@@ -65,11 +65,7 @@
 \renewcommand\thesection{\arabic{section}}
 
 \noindent
-
-
-vector fields, divergence and curl, double, triple integral
-Topics: (1) Acceleration and Arc Length, (2) Vector Fields.
-computing double and triple integrals
+Topics: (1) Divergence and Curl, (2) Double integrals.
 
 
 
@@ -135,6 +131,77 @@ computing double and triple integrals
 
 
 
+\begin{prop}[Fubini's Theorem]
+    Let $f$ e a continuous function on a rectangular domain $R=[a,b]\times[c,d]$, then 
+    \begin{equation*}
+        \int_a^b\int_c^df(x,y)dydx=\int_c^d\int_a^bf(x,y)dxdy
+    \end{equation*}
+\end{prop}
+
+\begin{prob}
+    Change the order of integration to $dydx$ for the following function:
+    \begin{equation*}
+        \int_0^1\int_{e^y}^{e}\frac{x}{\ln x}dxdy
+    \end{equation*}
+\end{prob}
+% \begin{proof}
+%     It should be 
+%     \begin{equation*}
+%         \int_1^e\int_{0}^{\ln x}\frac{x}{\ln x}dydx
+%     \end{equation*}
+% \end{proof}
+
+
+\begin{prob}
+    Change the order of integrations for the following functions:
+    \begin{enumerate}
+        \item \begin{equation*}
+            \int_0^1\int_x^1f(x,y)dydx
+        \end{equation*}
+        \item \begin{equation*}
+            \int_0^1\int_{-y}^{y^3}f(x,y)dxdy
+        \end{equation*}
+        \item \begin{equation*}
+            \int_0^3\int_{2x}^6f(x,y)dydx
+        \end{equation*}
+        \item \begin{equation*}
+            \int_0^1\int_{-\sqrt{y}}^{y^2}f(x,y)dxdy
+        \end{equation*}
+        \item \begin{equation*}
+            \int_0^8\int_{\sqrt[3]{y}}^2f(x,y)dxdy
+        \end{equation*}
+        \item \begin{equation*}
+            \int_0^1\int_{\ln y}^1f(x,y)dxdy
+        \end{equation*}
+    \end{enumerate}
+\end{prob}
+% \begin{proof}
+%     \begin{enumerate}
+%         \item It should be 
+%         \begin{equation*}
+%             \int_0^1\int_0^yf(x,y)dxdy
+%         \end{equation*}
+%         \item It should be 
+%         \begin{equation*}
+%             \int_{-1}^0\int_{-x}^{1}f(x,y)dydx+\int_{0}^1\int_{\sqrt{x}}^1f(x,y)dydx
+%         \end{equation*}
+%         \item It should be 
+%         \begin{equation*}
+%             \int_0^6\int_0^{\frac{y}{2}}f(x,y)dxdy
+%         \end{equation*}
+%         \item It should be \begin{equation*}
+%             \int_0^1\int_{\sqrt{x}}^1f(x,y)dydx+\int_{-1}^0\int_{x^2}^1f(x,y)dydx
+%         \end{equation*}
+%         \item It should be 
+%         \begin{equation*}
+%             \int_0^2\int_0^{x^3}f(x,y)dydx
+%         \end{equation*}
+%         \item It should be 
+%         \begin{equation*}
+%             \int_{-\infty}^0\int_0^{e^x}f(x,y)dydx+\int_0^1\int_0^1f(x,y)dydx
+%         \end{equation*}
+%     \end{enumerate}
+% \end{proof}
 
 \begin{prob}
     Show that the vector field $V(x,y,z)=(x^2, -y, z)$ is not the curl of any vector field $F$. In other words, there is no vector field $F$ such that 
@@ -161,9 +228,16 @@ computing double and triple integrals
 
 
 
-\begin{prob}
-    
+\begin{prob}[Marsden-Tromba, IV.4, 21]
+    Let $F(x,y,z)=(x^2, x^2y, z+zx)$.
+    \begin{enumerate}
+        \item[(a)] Verify that $\nabla\cdot(\nabla\times F)=0$.
+        \item[(b)] Can there exist a function $f:\R^3\to\R$ such that $F=\nabla f$.  
+    \end{enumerate}
 \end{prob}
+
+
+
 
 
 
