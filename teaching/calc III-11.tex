@@ -70,6 +70,51 @@ Topic: theorem of change of variables.
 
 
 
+\begin{defn}[injective, surjective]
+    Let $T:\R^2\to\R^2$ be a map, then $T$ is \textbf{injective or one-to-one} if 
+    \begin{equation*}
+        Tx=Ty
+    \end{equation*}
+    then
+    \begin{equation*}
+        x=y
+    \end{equation*}
+    $T$ is called \textbf{surjective or onto} if for all $y\in\R^2$, there exists $x\in\R^2$ such that 
+    \begin{equation*}
+        Tx=y
+    \end{equation*}
+\end{defn}
+
+\begin{defn}[linear map]
+    Suppose $T:\R^2\to\R^2$, then $T$ is linear if and only if for all $x,y\in\R^2, \lambda\in\R$.
+    \begin{equation*}
+        \begin{cases}
+            T(x+y)=Tx+Ty\\
+            T(\lambda x)=\lambda Tx
+        \end{cases}
+    \end{equation*}
+\end{defn}
+
+
+
+
+\begin{prop}
+    Let $T:\R^2\to\R^2$ be a linear map, then there exists a $2\times 2$ matrix $A=\begin{pmatrix}
+        a_{11}&a_{12}\\
+        a_{21}&a_{22}
+    \end{pmatrix}$ such that 
+    \begin{equation*}
+        Tx=Ax
+    \end{equation*}
+\end{prop}
+
+
+\begin{prop}
+    Let $T:\R^2\to\R^2$, if $T$ is injective, then it is also surjective. The converse is also true: if $T$ is surjective, then it is also injective.
+\end{prop}
+
+
+
 
 
 
