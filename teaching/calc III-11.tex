@@ -71,18 +71,19 @@ Topic: theorem of change of variables.
 
 
 \begin{defn}[injective, surjective]
-    Let $T:\R^2\to\R^2$ be a map, then $T$ is \textbf{injective or one-to-one} if 
+    Let $T:\R^2\to\R^2$ be a map, then $T$ is \textbf{injective or one-to-one} if for $x,y\in\R^2$
     \begin{equation*}
         Tx=Ty
     \end{equation*}
     then
     \begin{equation*}
-        x=y
+        x=y.
     \end{equation*}
     $T$ is called \textbf{surjective or onto} if for all $y\in\R^2$, there exists $x\in\R^2$ such that 
     \begin{equation*}
         Tx=y
     \end{equation*}
+    If $T$ is both injective and bijective, then we say $T$ is \textbf{bijective}.
 \end{defn}
 
 \begin{defn}[linear map]
@@ -95,6 +96,47 @@ Topic: theorem of change of variables.
     \end{equation*}
 \end{defn}
 
+
+\begin{defn}[Jacobian Determinant]
+    Let $T:D^*\subset\R^2\to\R^2$ be of $C^1$ defined by 
+    \begin{equation*}
+        T:\begin{pmatrix}
+            u\\
+            v
+        \end{pmatrix}\mapsto \begin{pmatrix}
+            x(u,v)\\
+            y(u,v)
+        \end{pmatrix}
+    \end{equation*}
+    The \textbf{Jacobian determinant} of $T$, denoted as $\frac{\partial(x,y)}{\partial(u,v)}$ is the determinant of the matrix $DT(u,v)$:
+    \begin{equation*}
+        \frac{\partial(x,y)}{\partial(u,v)}=\det\begin{bmatrix}
+            \frac{\partial x}{\partial u}& \frac{\partial x}{\partial v}\\
+            \frac{\partial y}{\partial u}&\frac{\partial y}{\partial v}
+        \end{bmatrix}
+    \end{equation*}
+\end{defn}
+
+
+\begin{example}
+    The polar coordinate transformation is given by:
+    \begin{equation*}
+        \begin{pmatrix}
+            x\\
+            y
+        \end{pmatrix}\mapsto \begin{pmatrix}
+            r\cos\theta\\
+            r\sin\theta
+        \end{pmatrix}
+    \end{equation*}
+    The Jacobian matrix is given by 
+    \begin{equation*}
+        \det\begin{bmatrix}
+            \cos\theta&-r\sin\theta\\
+            \sin\theta&r\cos\theta
+        \end{bmatrix}=r
+    \end{equation*}
+\end{example}
 
 
 
@@ -110,8 +152,76 @@ Topic: theorem of change of variables.
 
 
 \begin{prop}
-    Let $T:\R^2\to\R^2$, if $T$ is injective, then it is also surjective. The converse is also true: if $T$ is surjective, then it is also injective.
+    Let $T:\R^2\to\R^2$ be a linear map, then $T$ is injective if and only if it is also surjective if and only if $\det(A)\neq 0$, where $A$ is the matrix associated to $T$.
 \end{prop}
+
+
+\begin{thm}[change of variables formula]
+    Let $D,D^*$ be elementary regions in $\R^2$, suppose $T:D^*\to D$ is bijective. Then for any integral function $f:D\to\R$, the \textbf{change of variable formula} states
+    \begin{equation*}
+        \iint_Df(x,y)dxdy=\iint_{D^*}f(x(u,v),y(u,v))\left|\det(J)\right|dudv
+    \end{equation*}
+    where 
+    \begin{equation*}
+        \det(J)=\left|\frac{\partial(x,y)}{\partial(u,v)}\right|
+    \end{equation*}
+    is the determinant of the Jacobian matrix.
+\end{thm}
+
+\begin{cor}
+    An immediate corollary of the above theorem is the change of variables into polar cooridnates:
+    \begin{equation*}
+        \iint_Df(x,y)dxdy=\iint_{D^*}f(r\cos\theta,r\sin\theta)rdrd\theta
+    \end{equation*}
+\end{cor}
+
+\begin{cor}
+    Let $W,W^*$ be elementary regions in $\R^3$, and suppose $T:W^*\to W$ is bijective. Then the change of varialbes formula for triple integrals states:
+    \begin{equation*}
+        \iiint_Wf(x,y,z)dxdydz=\iiint_{W^*}f(x(u,v,w), y(u,v,w), z(u,v,w))\mid\det(J)\mid dudvdw
+    \end{equation*}
+    where 
+    \begin{equation*}
+        \det(J)=\det\begin{bmatrix}
+            \frac{\partial x}{\partial u}&\frac{\partial x}{\partial v}&\frac{\partial x}{\partial w}\\
+            \frac{\partial y}{\partial u}&\frac{\partial y}{\partial v}&\frac{\partial y}{\partial w}\\
+            \frac{\partial z}{\partial u}&\frac{\partial z}{\partial v}&\frac{\partial z}{\partial w}
+        \end{bmatrix}
+    \end{equation*}
+\end{cor}
+
+
+\begin{prob}
+    Compute the following integral:
+    \begin{equation*}
+        \iint_D(x^2+y^2)^{1/2}dxdy
+    \end{equation*}
+    where $D$ is the disk $D=\{(x,y):x^2+y^2\leq 9\}$.
+\end{prob}
+% \begin{proof}
+%     Writing this in polar coordinates and using the change of variables formula, we have 
+%     \begin{align*}
+%         \iint_D(x^2+y^2)^{1/2}dxdy&=\int_0^{2\pi}\int_{0}^3 (r^2)^{1/2}rdrd\theta\\
+%         &=\int_0^{2\pi}\int_0^3r^2drd\theta\\
+%         &=18\pi
+%     \end{align*}
+% \end{proof}
+
+\begin{prob}[Marsden-Tromba, 6.2, Exercise 19]
+    Compute $\iint_R(x+y)^2e^{x-y}dxdy$, where $R$ is the region bounded by $x+y=1, x+y=4, x-y=-1, x-y=1$.
+\end{prob}
+% \begin{proof}
+%     Writing $u=x+y, v=x-y$, by the change of variables formula, we have 
+%     \begin{align*}
+%         \iint_R(x+y)^2e^{x-y}dxdy&=\int_{-1}^1\int_1^4u^2e^{v}|\det(J)|dudv\\
+%         &=\frac{1}{2}\left(\int_1^4u^2du\right)\left(\int_{-1}^1e^vdv\right)\\
+%         &=\frac{21}{2}\left(e-\frac{1}{e}\right)
+%     \end{align*}
+% \end{proof}
+
+
+
+
 
 
 
