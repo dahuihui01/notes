@@ -1603,6 +1603,8 @@ Topics: (1) Acceleration and Arc Length, (2) Vector Fields.
 
 \newpage 
 
+\chapter{Double and Triple Integrals}
+
 \section*{\centering Week 10 (10/27-31)}
 
 % \begin{center}
@@ -1937,28 +1939,46 @@ Topic: theorem of change of variables.
     \end{equation*}
     where $D$ is the disk $D=\{(x,y):x^2+y^2\leq 9\}$.
 \end{prob}
-% \begin{proof}
-%     Writing this in polar coordinates and using the change of variables formula, we have 
-%     \begin{align*}
-%         \iint_D(x^2+y^2)^{1/2}dxdy&=\int_0^{2\pi}\int_{0}^3 (r^2)^{1/2}rdrd\theta\\
-%         &=\int_0^{2\pi}\int_0^3r^2drd\theta\\
-%         &=18\pi
-%     \end{align*}
-% \end{proof}
+\begin{proof}
+    Writing this in polar coordinates and using the change of variables formula, we have 
+    \begin{align*}
+        \iint_D(x^2+y^2)^{1/2}dxdy&=\int_0^{2\pi}\int_{0}^3 (r^2)^{1/2}rdrd\theta\\
+        &=\int_0^{2\pi}\int_0^3r^2drd\theta\\
+        &=18\pi
+    \end{align*}
+\end{proof}
 
 \begin{prob}[Marsden-Tromba, 6.2, Exercise 19]
     Compute $\iint_R(x+y)^2e^{x-y}dxdy$, where $R$ is the region bounded by $x+y=1, x+y=4, x-y=-1, x-y=1$.
 \end{prob}
-% \begin{proof}
-%     Writing $u=x+y, v=x-y$, by the change of variables formula, we have 
-%     \begin{align*}
-%         \iint_R(x+y)^2e^{x-y}dxdy&=\int_{-1}^1\int_1^4u^2e^{v}|\det(J)|dudv\\
-%         &=\frac{1}{2}\left(\int_1^4u^2du\right)\left(\int_{-1}^1e^vdv\right)\\
-%         &=\frac{21}{2}\left(e-\frac{1}{e}\right)
-%     \end{align*}
-% \end{proof}
+\begin{proof}
+    Writing $u=x+y, v=x-y$, by the change of variables formula, we have 
+    \begin{align*}
+        \iint_R(x+y)^2e^{x-y}dxdy&=\int_{-1}^1\int_1^4u^2e^{v}|\det(J)|dudv\\
+        &=\frac{1}{2}\left(\int_1^4u^2du\right)\left(\int_{-1}^1e^vdv\right)\\
+        &=\frac{21}{2}\left(e-\frac{1}{e}\right)
+    \end{align*}
+\end{proof}
 
 
+\begin{prob}
+    Compute $\iint_RxydA$ where $R$ is the region bounded by $xy=1, xy=3, y=2, y=6$, using the transformation $x=\frac{v}{6u}, y=2u$.
+\end{prob}
+\begin{proof}
+    \begin{align*}
+        \iint_Rxy^2dA&=\int_1^3\int_3^9\frac{v}{6u}4u^2|\det(J)|dvdu\\
+        &=\int_1^3\int_3^9\frac{2v}{9}dvdu\\
+        &=\frac{2}{3}\int_3^9vdv\\
+        &=24
+    \end{align*}
+    where 
+    \begin{equation*}
+        \det(J)=\det\begin{bmatrix}
+            -\frac{v}{6u^2}&\frac{1}{6u}\\
+            2&0
+        \end{bmatrix}=-\frac{1}{3u}
+    \end{equation*}
+\end{proof}
 
 
 
