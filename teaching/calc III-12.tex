@@ -33,6 +33,8 @@
 \newcommand{\gal}{\text{Gal}}
 \newcommand{\diverg}{\operatorname{div}}
 \newcommand{\curl}{\operatorname{curl}}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
 
 \input{hui.tex}
 
@@ -126,7 +128,7 @@ next week, please focus on line integrals, the fundamental theorem of line integ
 \begin{prop}[reparametrization for path integrals]
     Let $c$ be a $C^1$ path and $c'$ be any reparametrization of $c$, and let $f$ be a continuous function on the image of $c$, then 
     \begin{equation*}
-        \int_cf(x,y,z)ds=\int_{c'}(x,y,z)ds
+        \int_cf(x,y,z)ds=\int_{c'}f(x,y,z)ds
     \end{equation*}
 \end{prop}
 
@@ -147,6 +149,13 @@ next week, please focus on line integrals, the fundamental theorem of line integ
         \int_c\nabla f\cdot ds=f(c(b))-f(c(a))
     \end{equation*}
 \end{prop}
+
+\begin{prob}
+    Let $c:[a,b]\to\R^3$ be a $C^1$ path, find a reparametrization $\tilde{c}=c\circ h$, such that $\tilde{c}:[0,1]\to\R^3$.
+\end{prob}
+% \begin{proof}
+%     Define $h(t)=a+(b-a)t$, where $0\leq t\leq 1$.
+% \end{proof}
 
 
 \begin{prob}
@@ -180,11 +189,53 @@ next week, please focus on line integrals, the fundamental theorem of line integ
 
 
 \begin{prob}[Group work]
-    Given vector field $F(x,y)=(1,1)$,
-    Group 1: what is the work done by going up the left side of the heart?
-
-    Group 2: what is the work done by going up the right side of the heart?
+    Given vector field $F(x,y)=(1,1)$, and the following heart is given by the parametrization:
+    \begin{equation*}
+        c(t)=((1-\sin t)\cos t, (1-\sin t)\sin t) \quad \text{ where } 0\leq t\leq 2\pi
+    \end{equation*}
+    Group 1: what is the work done by going up the top of the heart? ($0\leq t\leq \pi$).
+    
+    \noindent
+    Group 2: what is the work done by going up the bottom of the heart? ($\pi\leq t\leq 2\pi$).
+    \begin{center}
+    \begin{tikzpicture}
+        \begin{axis}[
+            axis lines = middle,
+            xlabel = \(x\),
+            ylabel = \(y\),
+            xmin = -2, xmax = 1.5,
+            ymin = -3, ymax = 0.5,
+            width = 5cm,
+            height = 5cm,
+            trig format plots=rad % Use radians for trigonometric functions
+          ]
+          \addplot [
+              domain = 0:2*pi,
+              samples = 200,
+              smooth,
+              thick,
+              red
+            ] ({(1 - sin(x)) * cos(x)}, {(1 - sin(x)) * sin(x)});
+        \end{axis}
+      \end{tikzpicture}
+    \end{center}
 \end{prob}
+% \begin{proof}
+%     No need to actually compute $c'(t)$! For Group 1, we see that 
+%     \begin{align*}
+%         \int_0^\pi F(c(t))\cdot c'(t)dt&=\int_0^\pi x'(t)+y'(t)dt \tag{$c(t)=(x(t),y(t))$}\\
+%         &=x(\pi)+y(\pi)-x(0)-y(0)\\
+%         &=-2
+%     \end{align*}
+%     Similarly, 
+%     \begin{equation*}
+%         \int_{\pi}^{2\pi}F(c(t))\cdot c'(t)dt=2
+%     \end{equation*}
+%     Thus combined 
+%     \begin{equation*}
+%         \int_0^{2\pi}F(c(t))\cdot c'(t)dt=0
+%     \end{equation*}
+% \end{proof}
 
 
 
