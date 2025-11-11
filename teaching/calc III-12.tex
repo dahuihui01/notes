@@ -171,7 +171,25 @@
 % \end{proof}
 
 \begin{prob}
-    Suppose path $c$ has length $l$, and $\|F\|\leq M$. Prove that 
+    Compute the path integral of $f(x,y,z)=2x+y-z$ over the curve $c$, where $c$ is the intersection of the two surfaces below:
+    \begin{equation*}
+        y=x, \quad y^2+z^2=4
+    \end{equation*}
+    Hint: first find a parametrization of $c$, then use the formula of path integral.
+\end{prob}
+% \begin{proof}
+%     Using polar coordinates, we can write $y=2\cos\theta, z=2\sin\theta$, and since $y=x$, we know $x=2\cos\theta$, thus the parametrization is given by 
+%     \begin{equation*}
+%         (2\cos\theta, 2\cos\theta, r\sin\theta), \quad 0\leq \theta\leq 2\pi
+%     \end{equation*}
+    % Now 
+    % \begin{equation*}
+    %     \int_0^{2\pi}2(2\cos t)+2\cos t-2\sin tdts=0
+    % \end{equation*}
+% \end{proof}
+
+\begin{prob}
+    Suppose path $c$ has length $l$, and $F$ is a vector field such that $\|F\|\leq M$. Prove that 
     \begin{equation*}
         \left|\int_c F\cdot ds\right|\leq Ml
     \end{equation*}
