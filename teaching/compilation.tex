@@ -44,6 +44,8 @@
     linkcolor=wikipediadarkblue,
     urlcolor=red
 }
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
 
 
 \input{hui.tex}
@@ -1989,6 +1991,185 @@ Topic: theorem of change of variables.
 
 \chapter{Integrals over Paths and Surfaces}
 \section*{\centering Week 12 (11/10-14)}
+
+
+
+
+
+
+
+
+
+\begin{defn}[path integral]
+    Let $c:[a,b]\to\R^3$ be a path of $C^1$ and $f:\R^3\to\R$ is such that $f\circ c$ is continuous on $[a,b]$, The \textbf{path integral} of $f(x,y,z)$ along the path $c$ is given by 
+    \begin{align*}
+        \int_c fds&=\int_a^bf(c(t))\|c'(t)\|dt\\
+        &=\int_a^bf(x(t),y(t), z(t))\|c'(t)\|dt
+    \end{align*}
+\end{defn}
+
+
+
+\begin{defn}[line integral]
+    Let $F$ be a vector field on $\R^3$ that is continuous on the $C^1$ path $c:[a,b]\to\R^3$, where $c(t)=(x(t), y(t), z(t))$. We define $\int_c F\cdot ds$, the \textbf{line integral} of $F$ along $c$ by the following
+    \begin{align*}
+        \int_c F\cdot ds&=\int_a^bF(c(t))\cdot c'(t)dt\\
+        &=\int_a^b \left(F_1\frac{dx}{dt}+F_2\frac{dy}{dt}+F_3\frac{dz}{dt}\right)dt\\
+        &\coloneq\int_c F_1dx+F_2dy+F_3dz
+    \end{align*}
+    the expression $F_1dx+F_2dy+F_3dz$ is called the \textbf{differential form}.
+\end{defn}
+
+% \begin{defn}[differential form]
+%     We also write the line integral above as 
+%     \begin{equation*}
+%         \int_cF\cdot ds=\int_c F_1dx+F_2dy+F_3dz
+%     \end{equation*}
+%     where $F=(F_1,F_2,F_3)$. 
+% \end{defn}
+
+\begin{example}[work done along a path]
+    The force field $F$ on a particle moving along a path $c:[a,b]\to\R^3$ is given by 
+    \begin{equation*}
+        \text{ work done by } F=\int_a^bF(c(t))\cdot c'(t)dt
+    \end{equation*}
+\end{example}
+
+\begin{defn}[reparametrization]
+    Let $h: I\to I_1$ be a $C^1$ real-valued bijective function. Let $c: I_1\to\R^3$ be a piecewise $C^1$ path. Then we call the composition 
+    \begin{equation*}
+        p=c\circ h: I\to\R^3
+    \end{equation*}
+    a \textbf{ reparametrization} of $c$.
+\end{defn}
+
+\begin{example}
+    Let $c:[0,1]\to\R^3$ be a $C^1$ path, then consider $h: [0,1]\to [0,1]$, where $h(t)=1-t$. Then the path 
+    \begin{equation*}
+        c_{\text{op}}=c\circ h(t)=c(1-t)
+    \end{equation*}
+    is the same path in the opposite direction.
+\end{example}
+
+\begin{prop}[reparametrization for path integrals]
+    Let $c$ be a $C^1$ path and $c'$ be any reparametrization of $c$, and let $f$ be a continuous function on the image of $c$, then 
+    \begin{equation*}
+        \int_cf(x,y,z)ds=\int_{c'}f(x,y,z)ds
+    \end{equation*}
+\end{prop}
+
+\begin{prop}[reparametrization for line integrals]
+    Let $F$ be a vector feld continuous on the $C^1$ path $c:[a,b]\to\R^3$, and let $c':[a',b']\to\R^3$ be a reparametrization of $c$. If $c'$ is orientation-preserving, then 
+    \begin{equation*}
+        \int_{c'}F\cdot ds=\int_c F\cdot ds
+    \end{equation*}
+    If $c'$ is orientation-reversing, then 
+    \begin{equation*}
+        \int_{c'}F\cdot ds=-\int_cF\cdot ds
+    \end{equation*}
+\end{prop}
+
+\begin{prop}[fundamental theorem of line integrals]
+    Suppose $f:\R^3\to\R$ is of $C^1$ and that $c:[a,b]\to\R^3$ is piecewise $C^1$. Then 
+    \begin{equation*}
+        \int_c\nabla f\cdot ds=f(c(b))-f(c(a))
+    \end{equation*}
+\end{prop}
+
+\begin{prob}
+    Let $c:[a,b]\to\R^3$ be a $C^1$ path, find a reparametrization $\tilde{c}=c\circ h$, such that $\tilde{c}:[0,1]\to\R^3$.
+\end{prob}
+% \begin{proof}
+%     Define $h(t)=a+(b-a)t$, where $0\leq t\leq 1$.
+% \end{proof}
+
+
+\begin{prob}
+    Suppose that $\nabla f(x,y,z)=(2x^2, y, -z)$, and that $f(0,1,-1)=2$. What is the value of $f(2, 1, 1)$?
+\end{prob}
+% \begin{proof}
+%     By the fundamental theorem of line integrals, we know 
+%     \begin{align*}
+%         f(2,1,1)&=\int_\ell \nabla f \cdot ds+f(0,1,-1)\\
+%         &=\int_0^1 \nabla f(2t, 1, 2t-1)\cdot (2,0, 2)dt+f(0,1,-1)\\
+%         &=\int_0^1 \left(16t^2+2-4t\right)dt+2\\
+%         &=\frac{22}{3}
+%     \end{align*}
+% \end{proof}
+
+\begin{prob}
+    Suppose path $c$ has length $l$, and $\|F\|\leq M$. Prove that 
+    \begin{equation*}
+        \left|\int_c F\cdot ds\right|\leq Ml
+    \end{equation*}
+    (Hint: Cauchy-Schwarz.)
+\end{prob}
+% \begin{proof}
+%     \begin{align*}
+%         \left|\int_cF\cdot ds\right|&=\left|\int_a^b F(c(t))\cdot c'(t)dt\right|\\
+%         &\leq\int_a^b\left|F(c(t))\cdot c'(t)dt\right|dt\\
+%         &\leq\int_a^b\|F(c(t))\|\cdot\|c'(t)\|dt\\
+%         &\leq Ml
+%     \end{align*}
+% \end{proof}
+
+
+\begin{prob}[Group work]
+    Given vector field $F(x,y)=(1,1)$, and the following heart is given by the parametrization:
+    \begin{equation*}
+        c(t)=((1-\sin t)\cos t, (1-\sin t)\sin t) \quad \text{ where } 0\leq t\leq 2\pi
+    \end{equation*}
+    Group 1: what is the work done by going up the top of the heart? ($0\leq t\leq \pi$).
+    
+    \noindent
+    Group 2: what is the work done by going up the bottom of the heart? ($\pi\leq t\leq 2\pi$).
+    \begin{center}
+    \begin{tikzpicture}
+        \begin{axis}[
+            axis lines = middle,
+            xlabel = \(x\),
+            ylabel = \(y\),
+            xmin = -2, xmax = 1.5,
+            ymin = -3, ymax = 0.5,
+            width = 5cm,
+            height = 5cm,
+            trig format plots=rad % Use radians for trigonometric functions
+          ]
+          \addplot [
+              domain = 0:2*pi,
+              samples = 200,
+              smooth,
+              thick,
+              red
+            ] ({(1 - sin(x)) * cos(x)}, {(1 - sin(x)) * sin(x)});
+        \end{axis}
+      \end{tikzpicture}
+    \end{center}
+\end{prob}
+% \begin{proof}
+%     No need to actually compute $c'(t)$! For Group 1, we see that 
+%     \begin{align*}
+%         \int_0^\pi F(c(t))\cdot c'(t)dt&=\int_0^\pi x'(t)+y'(t)dt \tag{$c(t)=(x(t),y(t))$}\\
+%         &=x(\pi)+y(\pi)-x(0)-y(0)\\
+%         &=-2
+%     \end{align*}
+%     Similarly, 
+%     \begin{equation*}
+%         \int_{\pi}^{2\pi}F(c(t))\cdot c'(t)dt=2
+%     \end{equation*}
+%     Thus combined 
+%     \begin{equation*}
+%         \int_0^{2\pi}F(c(t))\cdot c'(t)dt=0
+%     \end{equation*}
+% \end{proof}
+
+
+
+
+
+
+
+
 
 
 
