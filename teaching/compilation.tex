@@ -1967,14 +1967,14 @@ Topic: theorem of change of variables.
 
 
 \begin{prob}
-    Compute $\iint_RxydA$ where $R$ is the region bounded by $xy=1, xy=3, y=2, y=6$, using the transformation $x=\frac{v}{6u}, y=2u$.
+    Compute $\iint_Rxy^2dA$ where $R$ is the region bounded by $xy=1, xy=3, y=2, y=6$, using the transformation $x=\frac{v}{6u}, y=2u$.
 \end{prob}
 \begin{proof}
     \begin{align*}
         \iint_Rxy^2dA&=\int_1^3\int_3^9\frac{v}{6u}4u^2|\det(J)|dvdu\\
         &=\int_1^3\int_3^9\frac{2v}{9}dvdu\\
-        &=\frac{2}{3}\int_3^9vdv\\
-        &=24
+        &=2\int_3^9\frac{2v}{9}dv\\
+        &=16
     \end{align*}
     where 
     \begin{equation*}
@@ -2079,23 +2079,23 @@ Topic: theorem of change of variables.
 \begin{prob}
     Let $c:[a,b]\to\R^3$ be a $C^1$ path, find a reparametrization $\tilde{c}=c\circ h$, such that $\tilde{c}:[0,1]\to\R^3$.
 \end{prob}
-% \begin{proof}
-%     Define $h(t)=a+(b-a)t$, where $0\leq t\leq 1$.
-% \end{proof}
+\begin{proof}
+    Define $h(t)=a+(b-a)t$, where $0\leq t\leq 1$.
+\end{proof}
 
 
 \begin{prob}
     Suppose that $\nabla f(x,y,z)=(2x^2, y, -z)$, and that $f(0,1,-1)=2$. What is the value of $f(2, 1, 1)$?
 \end{prob}
-% \begin{proof}
-%     By the fundamental theorem of line integrals, we know 
-%     \begin{align*}
-%         f(2,1,1)&=\int_\ell \nabla f \cdot ds+f(0,1,-1)\\
-%         &=\int_0^1 \nabla f(2t, 1, 2t-1)\cdot (2,0, 2)dt+f(0,1,-1)\\
-%         &=\int_0^1 \left(16t^2+2-4t\right)dt+2\\
-%         &=\frac{22}{3}
-%     \end{align*}
-% \end{proof}
+\begin{proof}
+    By the fundamental theorem of line integrals, we know 
+    \begin{align*}
+        f(2,1,1)&=\int_\ell \nabla f \cdot ds+f(0,1,-1)\\
+        &=\int_0^1 \nabla f(2t, 1, 2t-1)\cdot (2,0, 2)dt+f(0,1,-1)\\
+        &=\int_0^1 \left(16t^2+2-4t\right)dt+2\\
+        &=\frac{22}{3}
+    \end{align*}
+\end{proof}
 
 \begin{prob}
     Compute the path integral of $f(x,y,z)=2x+y-z$ over the curve $c$, where $c$ is the intersection of the two surfaces below:
@@ -2104,16 +2104,17 @@ Topic: theorem of change of variables.
     \end{equation*}
     Hint: first find a parametrization of $c$, then use the formula of path integral.
 \end{prob}
-% \begin{proof}
-%     Using polar coordinates, we can write $y=2\cos\theta, z=2\sin\theta$, and since $y=x$, we know $x=2\cos\theta$, thus the parametrization is given by 
-%     \begin{equation*}
-%         (2\cos\theta, 2\cos\theta, r\sin\theta), \quad 0\leq \theta\leq 2\pi
-%     \end{equation*}
-    % Now 
-    % \begin{equation*}
-    %     \int_0^{2\pi}2(2\cos t)+2\cos t-2\sin tdts=0
-    % \end{equation*}
-% \end{proof}
+\begin{proof}
+    Using polar coordinates, we can write $y=2\cos\theta, z=2\sin\theta$, and since $y=x$, we know $x=2\cos\theta$, thus the parametrization is given by 
+    \begin{equation*}
+        c(\theta)=(2\cos\theta, 2\cos\theta, 2\sin\theta), \quad 0\leq \theta\leq 2\pi
+    \end{equation*}
+    Now 
+    \begin{align*}
+        \int_cfds&=\int_0^{2\pi}f(c(\theta))\|c'(\theta)\|d\theta\\
+        &=\int_0^{2\pi}\left(4\cos\theta+2\cos\theta-2\sin\theta\right)\|c'(\theta)\|d\theta
+    \end{align*}
+\end{proof}
 
 \begin{prob}
     Suppose path $c$ has length $l$, and $F$ is a vector field such that $\|F\|\leq M$. Prove that 
@@ -2122,14 +2123,15 @@ Topic: theorem of change of variables.
     \end{equation*}
     (Hint: Cauchy-Schwarz.)
 \end{prob}
-% \begin{proof}
-%     \begin{align*}
-%         \left|\int_cF\cdot ds\right|&=\left|\int_a^b F(c(t))\cdot c'(t)dt\right|\\
-%         &\leq\int_a^b\left|F(c(t))\cdot c'(t)dt\right|dt\\
-%         &\leq\int_a^b\|F(c(t))\|\cdot\|c'(t)\|dt\\
-%         &\leq Ml
-%     \end{align*}
-% \end{proof}
+\begin{proof}
+    \begin{align*}
+        \left|\int_cF\cdot ds\right|&=\left|\int_a^b F(c(t))\cdot c'(t)dt\right|\\
+        &\leq\int_a^b\left|F(c(t))\cdot c'(t)dt\right|dt\\
+        &\leq\int_a^b\|F(c(t))\|\cdot\|c'(t)\|dt\\
+        &\leq Ml
+    \end{align*}
+\end{proof}
+
 
 
 \begin{prob}[Group work]
@@ -2164,22 +2166,22 @@ Topic: theorem of change of variables.
       \end{tikzpicture}
     \end{center}
 \end{prob}
-% \begin{proof}
-%     No need to actually compute $c'(t)$! For Group 1, we see that 
-%     \begin{align*}
-%         \int_0^\pi F(c(t))\cdot c'(t)dt&=\int_0^\pi x'(t)+y'(t)dt \tag{$c(t)=(x(t),y(t))$}\\
-%         &=x(\pi)+y(\pi)-x(0)-y(0)\\
-%         &=-2
-%     \end{align*}
-%     Similarly, 
-%     \begin{equation*}
-%         \int_{\pi}^{2\pi}F(c(t))\cdot c'(t)dt=2
-%     \end{equation*}
-%     Thus combined 
-%     \begin{equation*}
-%         \int_0^{2\pi}F(c(t))\cdot c'(t)dt=0
-%     \end{equation*}
-% \end{proof}
+\begin{proof}
+    No need to actually compute $c'(t)$! For Group 1, we see that 
+    \begin{align*}
+        \int_0^\pi F(c(t))\cdot c'(t)dt&=\int_0^\pi x'(t)+y'(t)dt \tag{$c(t)=(x(t),y(t))$}\\
+        &=x(\pi)+y(\pi)-x(0)-y(0)\\
+        &=-2
+    \end{align*}
+    Similarly, 
+    \begin{equation*}
+        \int_{\pi}^{2\pi}F(c(t))\cdot c'(t)dt=2
+    \end{equation*}
+    Thus combined 
+    \begin{equation*}
+        \int_0^{2\pi}F(c(t))\cdot c'(t)dt=0
+    \end{equation*}
+\end{proof}
 
 
 
