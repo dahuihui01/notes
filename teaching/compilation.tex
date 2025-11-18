@@ -2186,6 +2186,117 @@ Topic: theorem of change of variables.
 
 
 
+\newpage 
+\section*{\centering Week 13 (11/17-21)}
+
+\begin{defn}[parametrization of surface]
+    Let $S$ be a surface in $\R^3$, a \textbf{surface parametrization} is a map $\Phi:D\subset\R^2\to\R^3$, where 
+    \begin{equation*}
+        \Phi(u,v)=(x(u,v), y(u,v), z(u,v))
+    \end{equation*}
+\end{defn}
+
+
+\begin{defn}[regular surface, tangent plane]
+    Let $\Phi(u,v)$ be a parametrization of a surface $S\subset\R^3$.
+    We say $S$ is \textbf{regular} at $\Phi(u_0,v_0)$ if 
+    \begin{equation*}
+        T_u\times T_v\neq 0 \text{ at } (u_0,v_0)
+    \end{equation*}
+    If $S$ is regular at $\Phi(u_0,v_0)$, then we can find the tangent plane by first finding a normal vector to the surface at this point: $n=T_u\times T_v$, then the tangent plane at $(x_0, y_0, z_0)=\Phi(u_0, v_0)$ is given by 
+    \begin{equation*}
+        (x-x_0, y-y_0, z-z_0)\cdot n=0
+    \end{equation*}
+\end{defn}
+
+\begin{defn}[surface area]
+    Let $S\subset\R^3$ be a parametrized surface, then the \textbf{surface area} $A(S)$ of $S$ is given by 
+    \begin{align*}
+        A(S)&=\iint_D\|T_u\times T_v\|dudv\\
+        &=\iint_D\left(\left[\frac{\partial(x,y)}{\partial(u,v)}\right]^2+\left[\frac{\partial(y,z)}{\partial(u,v)}\right]^2+\left[\frac{\partial(x,z)}{\partial(u,v)}\right]^2\right)^{1/2}dudv
+    \end{align*}
+    where $\|T_u\times T_v\|$ is the norm of $T_u\times T_v$, and 
+    \begin{equation*}
+        \frac{\partial(x,y)}{\partial(u,v)}=\det\begin{bmatrix}
+            \frac{\partial x}{\partial u}&\frac{\partial x}{\partial v}\\
+            \frac{\partial y}{\partial u}&\frac{\partial y}{\partial v}
+        \end{bmatrix}, \quad \dots
+    \end{equation*}
+\end{defn}
+
+
+\begin{defn}[integral over a surface]
+    Let $f:\R^3\to\R$ be continuous, i.e., $f$ is a scalar-valued continuous function defined on a parametrized surface $S$ by $\Phi:D\to S\subset\R^3$, we define the integral of $f$ over $S$ as 
+    \begin{equation*}
+        \iint_SfdS=\iint_Df(\Phi(u,v))\|T_u\times T_v\|dudv
+    \end{equation*}
+    A special case is when we take $S$ as the graph of some function $g(x,y)$. Then we have 
+    \begin{equation*}
+        \iint fdS=\iint_D\frac{f(x,y,g(x,y))}{\cos\theta}dxdy
+    \end{equation*}
+    where $\theta$ is the angle between the unit vector $(x,y,g(x,y))$ and the normal vector the surface. (Recall that the normal vector of a graph is given by $n=-\frac{\partial g}{\partial x}i-\frac{\partial g}{\partial y}+k)$.
+\end{defn}
+
+
+
+
+
+% \begin{prob}[Marsden-Tromba, 7.4, Exercise 17]
+%     Find the area of the surface defined by 
+%     \begin{equation*}
+%         x+y+z=1, \quad x^2+2y^2\leq 1
+%     \end{equation*}
+% %     The image of the parametrization
+% % \[
+% % \Phi(u, v) = (x(u, v), y(u, v), z(u, v)) = (a \sin u \cos v, b \sin u \sin v, c \cos u)
+% % \]
+
+% % with \( b < a, 0 \leq u \leq \pi, 0 \leq v \leq 2\pi \) parametrizes an ellipsoid. Show that the image surface is regular at all points.
+% \end{prob}
+% \begin{proof}
+   
+% \end{proof}
+
+
+
+\begin{prob}[Marsden-Tromba, 7.5, Exercise 4]
+    Evalute the following integral:
+    \begin{equation*}
+        \iint_S(x+z)dS
+    \end{equation*}
+    where $S$ is the part of the cylinder $y^2+z^2=4$ with $x\in [0,5]$.
+\end{prob}
+\begin{proof}
+    Let's first parametrize this surface:
+    \begin{equation*}
+        \Phi(t,\theta)=(t, 2\cos\theta, 2\sin\theta), \quad 0\leq t\leq 5, 0\leq\theta\leq 2\pi
+    \end{equation*}
+    and we compute 
+    \begin{equation*}
+        T_t=(1, 0, 0), T_\theta=(0, -2\sin\theta, 2\cos\theta)
+    \end{equation*}
+    and 
+    \begin{align*}
+        \|T_t\times T_\theta\|&=\|(0, -2\cos\theta, -2\sin\theta)\|=2
+    \end{align*}
+    Thus we have 
+    \begin{align*}
+        \iint_Sx+zdS&=\iint_Dt+2\sin\theta\|T_t\times T_\theta\|dtd\theta\\
+        &=2\int_0^{2\pi}\int_0^5t+2\sin\theta dtd\theta\\
+        &=4\pi\int_0^5tdt\\
+        &=50\pi
+    \end{align*}
+\end{proof}
+
+
+
+% \newpage 
+% \section*{\centering Week 14 (Thanksgiving Break)}
+
+% surface integrals over vector fields, green's theorem.
+
+
+
 
 
 
