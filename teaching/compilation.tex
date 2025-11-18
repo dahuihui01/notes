@@ -2257,6 +2257,35 @@ Topic: theorem of change of variables.
    
 % \end{proof}
 
+\begin{prob}
+    Find the tangent plane at $(1,1,2)$ for the following surface parametrized by:
+    \begin{equation*}
+        \Phi(x,y)=(x,y, x^2+y)
+    \end{equation*}
+\end{prob}
+\begin{proof}
+    We compute 
+    \begin{equation*}
+        T_x=(1, 0, 2x), \quad T_y=(0,1, 1)
+    \end{equation*}
+    Then 
+    \begin{equation*}
+        T_x\times T_y=\det\begin{pmatrix}
+            i&j&k\\
+            1&0&2x\\
+            0&1&1
+        \end{pmatrix}=(-2x, -1, 1)
+    \end{equation*}
+    At $(1,1,2)$ the tangent plane is given by 
+    \begin{equation*}
+        (x-1, y-1, z-2)\cdot (-2, -1, 1)=0
+    \end{equation*}
+    Simplifying we get 
+    \begin{equation*}
+        2x+y-z=1
+    \end{equation*}
+\end{proof}
+
 
 
 \begin{prob}[Marsden-Tromba, 7.5, Exercise 4]
