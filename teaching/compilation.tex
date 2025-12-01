@@ -1444,7 +1444,7 @@ Topics: Extremum.
 
 \begin{prop}
     If $f$ has a maximum or minimum
-    at $x_0$ when constrained to a surface $S$, then $\nabla f(x)$ is perpendicular to $S$ at $x_0$.
+    at $x_0$ when constrained to a surface $S$, then $\nabla f(x_0)$ is perpendicular to $S$ at $x_0$.
 \end{prop}
 Consequence of Proposition 11:
 \begin{prop}
@@ -1452,7 +1452,7 @@ Let \( f, g : U \subset \mathbb{R}^n \to \mathbb{R} \) and \(\vec{x_0} \in U\) s
 \[
 \nabla g(\vec{x_0}) \neq \vec{0}.
 \] 
-If \( f \) restricted to \( x_c \) has a local minimum or maximum on \( \mathcal{L}_c \) at \( {x_0} \), then there exists \( \lambda \in \mathbb{R} \) such that  
+If \( f \) restricted to \( \mathcal{L}_c \) has a local minimum or maximum on \( \mathcal{L}_c \) at \( {x_0} \), then there exists \( \lambda \in \mathbb{R} \) such that  
 \[
 \nabla f({x_0}) = \lambda \nabla g({x_0}).
 \]
@@ -1817,7 +1817,7 @@ Topic: theorem of change of variables.
 
 
 \begin{defn}[injective, surjective]
-    Let $T:\R^2\to\R^2$ be a map, then $T$ is \textbf{injective or one-to-one} if for $x,y\in\R^2$
+    Let $T:\R^2\to\R^2$ be a map, then $T$ is \textbf{injective, or one-to-one,} if for $x,y\in\R^2$
     \begin{equation*}
         Tx=Ty
     \end{equation*}
@@ -1864,25 +1864,25 @@ Topic: theorem of change of variables.
 \end{defn}
 
 
-\begin{example}
-    The polar coordinate transformation is given by:
-    \begin{equation*}
-        \begin{pmatrix}
-            x\\
-            y
-        \end{pmatrix}\mapsto \begin{pmatrix}
-            r\cos\theta\\
-            r\sin\theta
-        \end{pmatrix}
-    \end{equation*}
-    The Jacobian matrix is given by 
-    \begin{equation*}
-        \det\begin{bmatrix}
-            \cos\theta&-r\sin\theta\\
-            \sin\theta&r\cos\theta
-        \end{bmatrix}=r
-    \end{equation*}
-\end{example}
+% \begin{example}
+%     The polar coordinate transformation is given by:
+%     \begin{equation*}
+%         \begin{pmatrix}
+%             x\\
+%             y
+%         \end{pmatrix}\mapsto \begin{pmatrix}
+%             r\cos\theta\\
+%             r\sin\theta
+%         \end{pmatrix}
+%     \end{equation*}
+%     The Jacobian matrix is given by 
+%     \begin{equation*}
+%         \det\begin{bmatrix}
+%             \cos\theta&-r\sin\theta\\
+%             \sin\theta&r\cos\theta
+%         \end{bmatrix}=r
+%     \end{equation*}
+% \end{example}
 
 
 

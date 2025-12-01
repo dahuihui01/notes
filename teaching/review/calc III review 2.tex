@@ -1,0 +1,819 @@
+\documentclass[openany]{book}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsfonts,amsthm, amssymb}
+\usepackage{yhmath}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{comment}
+\usepackage{tikz-cd}
+\usepackage{quiver}
+\usepackage{hyperref,cleveref}
+\renewcommand{\familydefault}{ppl}
+\newcommand{\tr}{\text{tr}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\colim}{\text{colim}}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\disc}{disc}
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+\newcommand{\tor}{\text{Tor}}
+\newcommand{\id}{\text{id}}
+\newcommand{\ext}{\text{Ext}}
+\newcommand{\ptop}{\text{PTop}}
+\newcommand{\pt}{\text{pt}}
+\newcommand{\ach}{\text{Ach}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\gal}{\text{Gal}}
+\newcommand{\fraccomma}{\genfrac{}{}{0pt}{}{}{,}}
+\newcommand{\diverg}{\operatorname{div}}
+\newcommand{\curl}{\operatorname{curl}}
+\definecolor{wikipediadarkblue}{rgb}{0.023, 0.270, 0.676}
+\definecolor{wikipediadarkblue}{rgb}{0.023, 0.270, 0.676}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=wikipediadarkblue,
+    urlcolor=red
+}
+
+
+
+\input{hui_r.tex}
+
+\title{Calc III Final Review
+\\ 
+\vspace{0.4cm}
+\large Fall 2025}
+
+
+
+\author{(This document only contains materials after the midterm;\\
+please email hsun95@jh.edu if you see typos)}
+\date{\today}
+
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+\newpage
+
+
+\chapter{Definition Review}
+
+
+
+\begin{defn}[acceleration]
+    Let $c(t)$ be a path, the \textbf{acceleration} $a(t)$ of $c(t)$ is 
+    \begin{equation*}
+        a(t)=c''(t)
+    \end{equation*}
+\end{defn}
+
+
+
+\begin{defn}[arc length]
+    Let $c(t)=(x(t), y(t), z(t))$ be a path, then the length of the path in $\R^3$ from $t_0\leq t\leq t_1$ is 
+    \begin{align*}
+        L_{t_0\to t_1}(c)&=\int_{t_0}^{t_1}\left(x'(t)^2+y'(t)^2+z'(t)^2\right)^\frac{1}{2}dt\\
+        &=\int_{t_0}^{t_1}\|c'(t)\|dt
+    \end{align*}
+    More generally, if $c(t)=(x_1(t), \dots, x_n(t))$ is a path in $\R^n$, then 
+    \begin{equation*}
+        L_{t_0\to t_1}(c)=\int_{t_0}^{t_1}\left(\sum_{i=1}^nx_i'(t)^2\right)^\frac{1}{2}dt
+    \end{equation*}
+\end{defn}
+
+
+\begin{defn}[vector field]
+    A vector field is a function $F:A\subset\R^n\to\R^n$ that assigns $x\in\R^n$ to another vector $F(x)\in\R^n$.
+\end{defn}
+
+
+\begin{defn}[flow line]
+    If $F$ is a vector field, a \textbf{flow line} for $F$ is a path $c(t)$ such that 
+    \begin{equation*}
+        c'(t)=F(c(t))
+    \end{equation*}
+    Intuitively speaking, flow lines are the ``streamlines'' threading through vector fields.
+\end{defn}
+
+
+
+\begin{defn}[divergence]
+    Let ${F}$ be a vector field in $\R^3$ $F=(F_1,F_2,F_3)$, the divergence of ${F}$ is the \textbf{scalar field} (assigns one number to an given point $(x, y, z)$), 
+    \begin{equation*}
+        \diverg F\coloneq\nabla\cdot F=\frac{\partial F_1}{\partial x}+\frac{\partial F_2}{\partial y}+\frac{\partial F_3}{\partial z}
+    \end{equation*}
+    More generally, if $F=(F_1,\dots, F_n)$ is a vector field on $\R^n$, its divergence is 
+    \begin{equation*}
+        \diverg F=\sum_{i=1}^n\frac{\partial F_i}{\partial x_i}=\frac{\partial F_1}{\partial x_1}+\dots+\frac{\partial F_n}{\partial x_n}
+    \end{equation*}
+\end{defn}
+
+
+\begin{defn}[curl]
+    Let $F$ be a vector field in $\R^3$, writing $F=(F_1,F_2,F_3)$, the \textbf{curl} of $F$ is the vector field 
+    \begin{equation*}
+        \curl F\coloneq\nabla\times F=\det\begin{bmatrix}
+            i&j&k\\
+            \frac{\partial}{\partial x}&\frac{\partial}{\partial y}&\frac{\partial}{\partial z}\\
+            F_1&F_2&F_3
+        \end{bmatrix}
+    \end{equation*}
+    If $\curl F=0$, then we say the vector field is \textbf{irrotational}.
+\end{defn}
+
+
+
+\begin{defn}
+    We say a region $D\subset\R^2$ is \boldmath$y$\unboldmath-\textbf{simple} if there are continuous functions $\phi_1,\phi_2$ such that $D$ is the set of pionts $(x,y)$ satisfying
+    \begin{equation*}
+        x\in[a,b], \quad  \phi_1(x)\leq y\leq\phi_2(x)
+    \end{equation*}
+    Similarly, we define $D$ to be \boldmath$x$\textbf{-simple}\unboldmath if there are continuous $\psi_1, \psi_2$ such that $D$ is the set of points $(x,y)$ satisfying 
+    \begin{equation*}
+        y\in[c,d], \quad \psi_1(y)\leq x\leq\psi_2(y)
+    \end{equation*}
+    A \textbf{simple} region is one that is both $x$- and $y$-simple.
+\end{defn}
+
+
+
+\begin{defn}[injective, surjective]
+    Let $T:\R^2\to\R^2$ be a map, we say $T$ is \textbf{injective} or \textbf{one-to-one} on $D^*$, if for $x,y\in D^*$
+    \begin{equation*}
+        Tx=Ty
+    \end{equation*}
+    implies
+    \begin{equation*}
+        x=y.
+    \end{equation*}
+    We say $T$ is \textbf{surjective}, or \textbf{onto} $D$, if for all $y\in D$, there exists $x$ in the domain of $T$ such that 
+    \begin{equation*}
+        Tx=y
+    \end{equation*}
+    If $T$ is both injective and surjective, then we say $T$ is \textbf{bijective}.
+\end{defn}
+
+
+\begin{defn}[Jacobian Determinant]
+    Let $T:D^*\subset\R^2\to\R^2$ be of $C^1$ defined by 
+    \begin{equation*}
+        T:\begin{pmatrix}
+            u\\
+            v
+        \end{pmatrix}\mapsto \begin{pmatrix}
+            x(u,v)\\
+            y(u,v)
+        \end{pmatrix}
+    \end{equation*}
+    The \textbf{Jacobian determinant} of $T$, denoted as $\frac{\partial(x,y)}{\partial(u,v)}$ is the determinant of the matrix $DT(u,v)$:
+    \begin{equation*}
+        \frac{\partial(x,y)}{\partial(u,v)}=\det\left|\begin{matrix}
+            \frac{\partial x}{\partial u}& \frac{\partial x}{\partial v}\\
+            \frac{\partial y}{\partial u}&\frac{\partial y}{\partial v}
+        \end{matrix}\right|
+    \end{equation*}
+\end{defn}
+
+
+
+
+\begin{defn}[path integral]
+    Let $c:[a,b]\to\R^3$ be a path of $C^1$ and $f:\R^3\to\R$ is such that $f\circ c$ is continuous on $[a,b]$, The \textbf{path integral} of $f(x,y,z)$ along the path $c$ is given by 
+    \begin{align*}
+        \int_c fds&=\int_a^bf(c(t))\|c'(t)\|dt\\
+        &=\int_a^bf(x(t),y(t), z(t))\|c'(t)\|dt
+    \end{align*}
+\end{defn}
+
+
+
+\begin{defn}[line integral]
+    Let $F$ be a vector field on $\R^3$ that is continuous on the $C^1$ path $c:[a,b]\to\R^3$, where $c(t)=(x(t), y(t), z(t))$. We define $\int_c F\cdot ds$, the \textbf{line integral} of $F$ along $c$ by the following
+    \begin{align*}
+        \int_c F\cdot ds&=\int_a^bF(c(t))\cdot c'(t)dt\\
+        &=\int_a^b \left(F_1\frac{dx}{dt}+F_2\frac{dy}{dt}+F_3\frac{dz}{dt}\right)dt\\
+        &\coloneq\int_c F_1dx+F_2dy+F_3dz
+    \end{align*}
+    the expression $F_1dx+F_2dy+F_3dz$ is called the \textbf{differential form}. 
+    
+    For example, the work done by a force field $F$ on a particle moving along a path $c$ is given by 
+    \begin{equation*}
+        \text{ work done by } F=\int_a^bF(c(t))\cdot c'(t)dt
+    \end{equation*}
+\end{defn}
+
+% \begin{defn}[differential form]
+%     We also write the line integral above as 
+%     \begin{equation*}
+%         \int_cF\cdot ds=\int_c F_1dx+F_2dy+F_3dz
+%     \end{equation*}
+%     where $F=(F_1,F_2,F_3)$. 
+% \end{defn}
+
+
+\begin{defn}[reparametrization]
+    Let $h: I\to I_1$ be a $C^1$ real-valued bijective function. Let $c: I_1\to\R^3$ be a piecewise $C^1$ path. Then we call the composition 
+    \begin{equation*}
+        p=c\circ h: I\to\R^3
+    \end{equation*}
+    a \textbf{ reparametrization} of $c$.
+
+    For example, let $c:[0,1]\to\R^3$ be a $C^1$ path, then consider $h: [0,1]\to [0,1]$, where $h(t)=1-t$. Then the path 
+    \begin{equation*}
+        c_{\text{op}}=c\circ h(t)=c(1-t)
+    \end{equation*}
+    is the same path in the opposite direction.
+\end{defn}
+
+
+
+\begin{defn}[parametrization of surface]
+    Let $S$ be a surface in $\R^3$, a \textbf{surface parametrization} is a map $\Phi:D\subset\R^2\to\R^3$, where 
+    \begin{equation*}
+        \Phi(u,v)=(x(u,v), y(u,v), z(u,v))
+    \end{equation*}
+\end{defn}
+
+
+\begin{defn}[regular surface, tangent plane]
+    Let $\Phi(u,v)$ be a parametrization of a surface $S\subset\R^3$.
+    We say $S$ is \textbf{regular} at $\Phi(u_0,v_0)$ if 
+    \begin{equation*}
+        T_u\times T_v\neq 0 \text{ at } (u_0,v_0)
+    \end{equation*}
+    where 
+    \begin{equation*}
+        T_u=\frac{\partial\Phi}{\partial u}, \quad T_v=\frac{\partial\Phi}{\partial v}
+    \end{equation*}
+    If $S$ is regular at $\Phi(u_0,v_0)$, then we can find the tangent plane by first finding a normal vector to the surface at this point: $n=T_u\times T_v$, then the tangent plane at $(x_0, y_0, z_0)=\Phi(u_0, v_0)$ is given by 
+    \begin{equation*}
+        (x-x_0, y-y_0, z-z_0)\cdot n=0
+    \end{equation*}
+\end{defn}
+
+\begin{defn}[surface area]
+    Let $S\subset\R^3$ be a parametrized surface, then the \textbf{surface area} $A(S)$ of $S$ is given by 
+    \begin{align*}
+        A(S)&=\iint_D\|T_u\times T_v\|dudv\\
+        &=\iint_D\left(\left[\frac{\partial(x,y)}{\partial(u,v)}\right]^2+\left[\frac{\partial(y,z)}{\partial(u,v)}\right]^2+\left[\frac{\partial(x,z)}{\partial(u,v)}\right]^2\right)^{1/2}dudv
+    \end{align*}
+    where $\|T_u\times T_v\|$ is the norm of $T_u\times T_v$, and 
+    \begin{equation*}
+        \frac{\partial(x,y)}{\partial(u,v)}=\det\left|\begin{matrix}
+            \frac{\partial x}{\partial u}&\frac{\partial x}{\partial v}\\
+            \frac{\partial y}{\partial u}&\frac{\partial y}{\partial v}
+        \end{matrix}\right|, \quad \frac{\partial(y,z)}{\partial(u,v)}=\det\left|\begin{matrix}
+            \frac{\partial y}{\partial u}&\frac{\partial y}{\partial v}\\
+            \frac{\partial z}{\partial u}&\frac{\partial z}{\partial v}
+        \end{matrix}\right|, \quad \frac{\partial(x,z)}{\partial(u,v)}=\det\left|\begin{matrix}
+            \frac{\partial x}{\partial u}&\frac{\partial x}{\partial v}\\
+            \frac{\partial z}{\partial u}&\frac{\partial z}{\partial v}
+        \end{matrix}\right|
+    \end{equation*}
+\end{defn}
+
+
+\begin{defn}[integral over a surface]
+    Let $f:\R^3\to\R$ be continuous, i.e., $f$ is a scalar-valued continuous function defined on a parametrized surface $S$ by $\Phi:D\to S\subset\R^3$, we define the integral of $f$ over $S$ as 
+    \begin{equation*}
+        \iint_SfdS=\iint_Df(\Phi(u,v))\|T_u\times T_v\|dudv
+    \end{equation*}
+    A special case is when we take $S$ as the graph of some function $g(x,y)$. Then we have 
+    \begin{equation*}
+        \iint fdS=\iint_D\frac{f(x,y,g(x,y))}{\cos\theta}dxdy
+    \end{equation*}
+    where $\theta$ is the angle between the unit vector $k$ at $(x,y,g(x,y))$ and the normal vector to the surface. (Recall that the normal vector of a graph is given by $n=-\frac{\partial g}{\partial x}i-\frac{\partial g}{\partial y}j+k)$.
+\end{defn}
+
+
+\begin{defn}[surface integral of vector fields]
+    Let $F$ be a vector field defined on $S$, parametrized by $\Phi$. The surface integral of $F$ over $\Phi:D\to\R^3$, denoted by 
+    \begin{equation*}
+        \iint_\Phi F\cdot dS
+    \end{equation*}
+    is defined by 
+    \begin{equation*}
+        \iint_\Phi F\cdot dS=\iint_DF\cdot(T_u\times T_v)dudv
+    \end{equation*}
+\end{defn}
+
+
+
+\begin{defn}[oriented surface]
+    An oriented surface is a two-sided surface with one side as the \textbf{outside (positive)} and one side as the \textbf{inside (negative)}. Let $\Phi:D\to\R^3$ be a parametrization of an oriented surface $S$, then the parametrization $\Phi$ is said to be orientation-preserving if 
+    \begin{equation*}
+        \frac{T_u\times T_v}{\|T_u\times T_v\|}=n(\Phi(u,v)) 
+    \end{equation*} 
+    at all $(u,v)\in D$ for which $S$ is smooth at $\Phi(u,v)$, where $n(\Phi(u,v))$ is the unit normal vector to $S$ at $(u,v)$ pointing away from the positive side of $S$ ($n$ is given).
+\end{defn}
+
+
+
+
+
+
+
+
+
+
+\chapter{Theorem Review}
+
+
+
+\begin{prop}
+    Let $f$ be constrained to a surface $S$, if $f$ has a max or a min at $x_0$, then $\nabla f(x_0)$ is perpendicular to $S$ at $x_0$.    
+\end{prop}
+
+\begin{prop}[Lagrange]
+    Suppose that $f:U\subset\R^n\to\R$ and $g:U\subset\R^n\to\R$ are $C^1$ functions. Let $x_0\in U$ and $g(x_0)=c$, and let $S$ be the level set for $g$ at $c$, i.e., $S=\{x: g(x)=c\}$. Assume $\nabla g(x_0)\neq 0$, then if $f$ has a local maximum or minimum on $S$ at $x_0$, then there exists some real number $\lambda$ such that
+    \begin{equation}
+        \nabla f(x_0)=\lambda \nabla g(x_0)
+    \end{equation}
+\end{prop}
+
+
+\begin{prop}[Bordered Hessian]
+    Let $f: U\subset\R^2\to\R$ and $g:U\subset\R^2\to\R$ be smooth functions. Let $x_0\in U, g(x_0)=c$, and let $S$ be the level curve of $g$ with value $c$. Assume that $\nabla g(x_0)\neq 0$ and that there exists a real number $\lambda$ such that 
+    \begin{equation*}
+        \nabla f(x_0)=\lambda\nabla g(x_0)
+    \end{equation*}
+    Let $h=f-\lambda g$ and the bordered Hessian determinant is defined by 
+    \begin{equation*}
+        |\bar{H}|=\det\left|\begin{matrix}
+            0&-\frac{\partial g}{\partial x}&-\frac{\partial g}{\partial y}\\
+            -\frac{\partial g}{\partial x} &\frac{\partial^2h}{\partial x^2}&\frac{\partial^2h}{\partial x\partial y}\\
+            -\frac{\partial g}{\partial y} &\frac{\partial^2h}{\partial x\partial y}&\frac{\partial^2h}{\partial y^2}
+        \end{matrix} \right|
+    \end{equation*}
+    For $f$ restricted to the curve $S$, 
+    \begin{enumerate}
+        \item If  $|\bar{H}|>0$, then $x_0$ is a local max.
+        \item If $|\bar{H}|<0$, then $x_0$ is a local min.
+        \item If $|\bar{H}|=0$, then it is inconclusive.
+    \end{enumerate}
+\end{prop}
+
+
+\begin{prop}[Newton's Second Law]
+    Let $F$ be the force acting on a particle of mass $m$, then 
+    \begin{equation*}
+        F=ma
+    \end{equation*}
+    where $a$ is the acceleration.
+\end{prop}
+
+
+
+\begin{prop}[gradient is irrotational]
+    Let $f\in C^2$, viewing $\nabla f$ as a vector field, then
+    \begin{equation*}
+        \nabla\times(\nabla f)=0
+    \end{equation*}    
+\end{prop}
+
+\begin{prop}[divergence of a curl vanishes]
+    For any $C^2$ vector field $F$, 
+    \begin{equation*}
+        \nabla\cdot(\nabla\times F)=0
+    \end{equation*}
+\end{prop}
+
+
+
+\begin{prop}[Fubini's Theorem for rectangles]
+    Let $f$ be a continuous function on a rectangular domain $R=[a,b]\times[c,d]$, then 
+    \begin{equation*}
+        \int_a^b\int_c^df(x,y)dydx=\int_c^d\int_a^bf(x,y)dxdy
+    \end{equation*}
+\end{prop}
+
+\begin{prop}[Fubini's Theorem for general regions]
+    Suppose $D$ is a set of points $(x,y)$ such that $y\in [c,d]$ and $\psi_1(y)\leq x\leq\psi_2(y)$, and similarly for $x\in [a,b]$, $\varphi_1(x)\leq y\leq\varphi_2(x)$. If $f$ is continuous on $D$, then 
+    \begin{equation*}
+        \iint_Df(x,y)dA=\int_a^b\int_{\varphi_1(x)}^{\varphi_2(x)}f(x,y)dydx=\int_c^d\int_{\psi_1(y)}^{\psi_2(y)}f(x,y)dxdy
+    \end{equation*}
+\end{prop}
+
+
+\begin{prop}
+    We have the following identities regarding divergence and curl: 
+    \begin{enumerate}
+        \item $\nabla(f+g)=\nabla f+\nabla g$.
+        \item $\nabla (cf)=c\nabla f$, for constant $c$.
+        \item $\nabla (fg)=f\nabla g+g\nabla f$.
+        \item $\nabla (f/g)=(g\nabla f-f\nabla g)/g^2$, at points $x$ where $g(x)\neq 0$.
+        \item $\diverg (F+G)=\diverg F+\diverg G$.
+        \item $\curl(F+G)=\curl F+\curl G$.
+        \item $\diverg(fF)=f\diverg F+F\cdot\nabla f$.
+        \item $\diverg (F\times G)=G\cdot\curl F-F\cdot\curl G$.
+        \item $\diverg\curl F=0$.
+        \item $\curl(fF)=f\curl F+\nabla f\times F$.
+        \item $\curl\nabla f=0$.
+        \item $\nabla^2(fg)=f\nabla^2g+g\nabla^2f+2(\nabla f\cdot \nabla g)$.
+        \item $\diverg(\nabla f\times\nabla g)=0$.
+        \item $\diverg(f\nabla g-g\nabla f)=f\nabla^2g-g\nabla^2f$.
+    \end{enumerate}
+\end{prop}
+
+
+
+\begin{prop}[integrability]
+    For different assumptions on $f$, we have the following integrability results:
+    \begin{enumerate}
+        \item Let $f$ be continuous and defined on a closed rectangle $R$, then $f$ is integrable over $R$.
+        \item Let $f:R\to\R$ be a bounded function on $R$ and suppose the set of points where $f$ is discontinuous lies on a finite union of graphs of continuous functions, then $f$ is integrable over $R$.
+    \end{enumerate}
+\end{prop}
+
+
+\begin{prop}[Fubini's Theorem for rectangles]
+    For different assumptions on $f$, we have the following Fubini's theorem results:
+    \begin{enumerate}
+        \item   Let $f$ be a continuous function on a rectangular domain $R=[a,b]\times[c,d]$, then 
+        \begin{equation*}
+            \int_a^b\int_c^df(x,y)dydx=\int_c^d\int_a^bf(x,y)dxdy=\iint_Rf(x,y)dA
+        \end{equation*}
+        \item Let $f$ be bounded with domain $R=[a,b]\times[c,d]$ and the discontinuities of $f$ lie on a finite union of graphs of continuous functions. If the integral $\int_a^bfdy$ exists for each $x\in[a,b]$, then 
+        \begin{equation*}
+            \int_a^b\left(\int_c^df(x,y)dy\right)dx
+        \end{equation*}
+        exists and 
+        \begin{equation*}
+            \int_a^b\int_c^df(x,y)dydx=\iint_Rf(x,y)dA
+        \end{equation*}
+        Similar results hold if $\int_a^bfdx$ exists for each $y\in[c,d]$. If both hold simultaneously, then 
+        \begin{equation*}
+            \int_a^b\left(\int_c^df(x,y)dy\right)dx=\int_c^d\left(\int_a^bf(x,y)dx\right)dy=\iint_Rf(x,y)dA
+        \end{equation*}
+    \end{enumerate}
+
+  
+\end{prop}
+
+
+
+\begin{prop}[Fubini's Theorem for general regions]
+    Suppose $D$ is a set of points $(x,y)$ such that $y\in [c,d]$ and $\psi_1(y)\leq x\leq\psi_2(y)$, and similarly for $x\in [a,b]$, $\varphi_1(x)\leq y\leq\varphi_2(x)$. If $f$ is continuous on $D$, then 
+    \begin{equation*}
+        \iint_Df(x,y)dA=\int_a^b\int_{\varphi_1(x)}^{\varphi_2(x)}f(x,y)dydx=\int_c^d\int_{\psi_1(y)}^{\psi_2(y)}f(x,y)dxdy
+    \end{equation*}
+\end{prop}
+
+
+
+\begin{prop}[simple-regions]
+    If $D$ is a $x$-simple region with $y\in[c,d], \psi_1(y)\leq x\leq\psi_2(y)$, and if $f$ is continuous on $D$, then 
+    \begin{equation*}
+        \iint_Df(x,y)dA=\int_c^d\left(\int_{\psi_1(y)}^{\psi_2(y)}f(x,y)dx\right)dy
+    \end{equation*}
+    Similarly, if $D$ is $y$-simple, then
+    \begin{equation*}
+        \iint_Df(x,y)dA=\int_a^b\int_{\phi_1(x)}^{\phi_2(x)}f(x,y)dydx
+    \end{equation*}
+    If $D$ is simple, then the two expressions above are equal.
+\end{prop}
+For example, the area of a $x$-simple region $D$ can be computed as 
+    \begin{equation*}
+        \iint_DdA=\int_c^d\psi_2(y)-\psi_1(y)dy
+    \end{equation*}
+
+\begin{prop}
+    Let $A$ be $2\times 2$ matrix with $\det(A)\neq 0$ and let $T:\R^2\to\R^2$ be the linear map $Tx=Ax$. Then $T$ transforms parallelograms into parallelograms and vertices into vertices.
+\end{prop}
+
+\begin{prop}
+    Let $T:\R^n\to\R^n$ be a linear map, i.e., there exists $n\times n$ matrix $A$ such that $Tx=Ax$, then $T$ is injective iff surjective iff $\det(A)\neq 0$.
+\end{prop}
+
+
+\begin{thm}[change of variables formula]
+    Let $D,D^*$ be elementary regions in $\R^2$, suppose $T:D^*\to D$ is both one-to-one and onto. Then for any integral function $f:D\to\R$, the \textbf{change of variable formula} states
+    \begin{equation*}
+        \iint_Df(x,y)dxdy=\iint_{D^*}f(x(u,v),y(u,v))\left|\det(J)\right|dudv
+    \end{equation*}
+    where 
+    \begin{equation*}
+        \det(J)=\left|\frac{\partial(x,y)}{\partial(u,v)}\right|
+    \end{equation*}
+    is the Jacobian determinant. 
+\end{thm}
+
+\begin{prop}[change of variables-polar coordinates]
+    As a corollary to the theorem above, we have the following change of variables formula for polar coordinates:
+    \begin{equation*}
+        \iint_Df(x,y)dxdy=\iint_{D^*}f(r\cos\theta, r\sin\theta)rdrd\theta
+    \end{equation*}
+\end{prop}
+
+
+
+\begin{prop}[change of variables-triple]
+    Let $W,W^*$ be elementary regions in $\R^3$, and suppose $T:W^*\to W$ is bijective. Then the change of varialbes formula for triple integrals states:
+    \begin{equation*}
+        \iiint_Wf(x,y,z)dxdydz=\iiint_{W^*}f(x(u,v,w), y(u,v,w), z(u,v,w))\mid\det(J)\mid dudvdw
+    \end{equation*}
+    where 
+    \begin{equation*}
+        \det(J)=\det\left|\begin{matrix}
+            \frac{\partial x}{\partial u}&\frac{\partial x}{\partial v}&\frac{\partial x}{\partial w}\\
+            \frac{\partial y}{\partial u}&\frac{\partial y}{\partial v}&\frac{\partial y}{\partial w}\\
+            \frac{\partial z}{\partial u}&\frac{\partial z}{\partial v}&\frac{\partial z}{\partial w}
+        \end{matrix}\right|
+    \end{equation*}
+    is the Jacobian determinant.
+\end{prop}
+
+
+\begin{prop}[change of variables-triple cylindrical]
+    As a corollary to the above, we have the following change of variables formula for cylindrical coordinates:
+    \begin{equation*}
+        \iiint_Wf(x,y,z)dxdydz=\iiint_{W^*}f(r\cos\theta, r\sin\theta, z)rdrd\theta dz
+    \end{equation*}
+    Recall cylinder cooridnates is setting up the following 
+    \begin{equation*}
+        x=r\cos\theta, y=r\sin\theta, z=z
+    \end{equation*}
+\end{prop}
+
+\begin{prop}[change of variables-triple spherical]
+    As a corollary to the above, we have the following change of variables formula for spherical coordinates:
+    \begin{equation*}
+        \iiint_Wf(x,y,z)dxdydz=\iiint_{W^*}f(\rho\sin\phi\cos\theta, \rho\sin\phi\sin\theta, \rho\cos\phi)\rho^2\sin\phi d\rho d\theta d\phi
+    \end{equation*}
+    Recall the spherical cooridnates is setting up the following 
+    \begin{equation*}
+        x=\rho\sin\phi\cos\theta, y=\rho\sin\phi\sin\theta, z=\rho\cos\phi
+    \end{equation*}
+
+
+\end{prop}
+
+
+
+
+
+
+\begin{prop}[reparametrization for path integrals]
+    Let $c$ be a $C^1$ path and $c'$ be any reparametrization of $c$, and let $f$ be a continuous function on the image of $c$, then 
+    \begin{equation*}
+        \int_cf(x,y,z)ds=\int_{c'}f(x,y,z)ds
+    \end{equation*}
+\end{prop}
+
+\begin{prop}[reparametrization for line integrals]
+    Let $F$ be a vector feld continuous on the $C^1$ path $c:[a,b]\to\R^3$, and let $c':[a',b']\to\R^3$ be a reparametrization of $c$. If the reparametrization $c'$ is orientation-preserving, then 
+    \begin{equation*}
+        \int_{c'}F\cdot ds=\int_c F\cdot ds
+    \end{equation*}
+    If $c'$ is orientation-reversing, then 
+    \begin{equation*}
+        \int_{c'}F\cdot ds=-\int_cF\cdot ds
+    \end{equation*}
+\end{prop}
+
+\begin{prop}[fundamental theorem of line integrals]
+    Suppose $f:\R^3\to\R$ is of $C^1$ and that $c:[a,b]\to\R^3$ is piecewise $C^1$. Then 
+    \begin{equation*}
+        \int_c\nabla f\cdot ds=f(c(b))-f(c(a))
+    \end{equation*}
+\end{prop}
+
+
+\begin{prop}[surface integral of vector fields and orientations]
+    Let $S$ be an oriented surface and let $\Phi_1, \Phi_2$ be two regular orientation-preserving parametrizations, with $F$ a continuous vector field defined on $S$. Then 
+    \begin{equation*}
+        \iint_{\Phi_1}F\cdot dS=\iint_{\Phi_2}F\cdot dS
+    \end{equation*}
+    If $\Phi_1$ is orientation-preserving and $\Phi_2$ is orientation-reversing, then 
+    \begin{equation*}
+        \iint_{\Phi_1}F\cdot dS=-\iint_{\Phi_2}F\cdot dS
+    \end{equation*}
+    If $f$ is a real-valued continuous function defined on $S$, and $\Phi_1, \Phi_2$ are parametrizations of $S$, then 
+    \begin{equation*}
+        \iint_{\Phi_1}fdS=\iint_{\Phi_2}fdS
+    \end{equation*}
+\end{prop}
+
+
+\begin{prop}
+    The surface integral of $F$ over a surface $S$ is equal to the integral of the normal component of $F$ over $S$: let $S$ be an oriented smooth surface $S$ and an orientation-preserving parametrization $\Phi$ of, then we denote $\iint_SF\cdot dS=\iint_\Phi F\cdot dS$, and
+    \begin{equation*}
+        \iint_SF\cdot dS=\iint_S\left(F\cdot n\right)dS
+    \end{equation*}
+\end{prop}
+
+
+\begin{prop}
+    Let $S$ be the graph of a function $g(x,y)$, then 
+    \begin{equation*}
+        \iint_SF\cdot dS=\iint_DF\cdot (T_x\times T_y)dxdy=\iint_D\left(F_1\left(-\frac{\partial g}{\partial x}\right)+F_2\left(-\frac{\partial g}{\partial y}\right)+F_3\right)dxdy
+    \end{equation*}
+\end{prop}
+
+\begin{thm}[Green's theorem]
+    Let $F(x,y)=(P(x,y), Q(x,y))$ be a continuously differentiable vector field. For a simple region $D\subset\R^2$ with $\partial D=C$ as its positively oriented boundary, we have 
+    \begin{equation*}
+        \int_{\partial D}F\cdot ds=\iint_D\left(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\right)dxdy
+    \end{equation*}
+\end{thm}
+
+
+\begin{thm}[Green's theorem (curl form)]
+    Let $D\subset\R^2$ be a region to which Green's theorem applies, let $\partial D$ be its positively oriented boundary and let $F(P,Q)$ be a $C^1$ vector field on $D$. Then 
+    \begin{equation*}
+        \int_{\partial D}F\cdot ds=\iint_D\curl F\cdot k dA=\iint_D(\nabla\times F)\cdot kdA
+    \end{equation*}
+\end{thm}
+
+\begin{prop}
+    Let $D\subset\R^2$ be a region where Green's theorem applies and let $\partial D$ be its boundary. Let $n$ denote the outward unit normal to $\partial D$. If $c:[a,b]\to\R^2$, $t\mapsto c(t)=(x(t), y(t))$ is a positively oriented parametrization of $\partial D$, $n$ is given by 
+    \begin{equation*}
+        n=\frac{(y'(t), -x'(t))}{\sqrt{x'(t)^2+y'(t)^2}}
+    \end{equation*}
+    Let $F=(P,Q)$ be a $C^1$ vector field on $D$. Then 
+    \begin{equation*}
+        \int_{\partial D}F\cdot nds=\iint_D\text{div} FdA
+    \end{equation*}
+\end{prop}
+
+
+
+\begin{prop}[area of a region]
+    If $C$ is a simple closed curve that bounds a region to which Green's theorem applies, then the area of the region $D$ bounded by $C=\partial D$ is 
+    \begin{equation*}
+        A=\frac{1}{2}\int_{\partial D}xdy-ydx
+    \end{equation*}
+\end{prop}
+
+
+\begin{thm}[Stokes' theorem]
+    Let $S$ be the oriented surface defined by a $C^2$ function $z=f(x,y)$, where $(x,y)\in D$, a region to which Green's theorem applies, and let $F$ be a $C^1$ vector field on $S$. Then if $\partial S$ denotes the oriented boundary curve of $S$, then 
+    \begin{equation*}
+        \iint_S(\nabla\times F)\cdot dS=\int_{\partial S}F\cdot ds
+    \end{equation*}
+    More generally, let $S$ be an oriented surface defined by a one-to-one parametrization $\Phi: D\subset\R^2\to S$, where $D$ is a region to which Green's theorem applies. Let $\partial S$ denote the oriented boundary of $S$ and let $F$ be a $C^1$ vector field on $S$. Then 
+    \begin{equation*}
+        \iint_S(\nabla\times F)\cdot dS=\int_{\partial S}F\cdot ds
+    \end{equation*}
+\end{thm}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% \chapter{Practice Problems}
+
+% \section{chapter 3}
+
+% \begin{prob}
+%     \textcolor{red}{define $f$}
+%     Let $f(x)=$ on the following domain $D$, 
+%     \begin{equation*}
+%         D=\{(x,y): x^2+4y^2=9\}
+%     \end{equation*}
+%     Find the absolute maximum and minimum of $f$ on this domain $D$.
+% \end{prob}
+
+
+% \begin{prob}[Section 3.4, Exercise 18]
+    
+% \end{prob}
+
+
+% \begin{prob}[Section 3.4, Exercise 20]
+%     A rectangular box with no top is to have a surface area of $16$ $m^2$. Find the dimensions that maximize its volume.
+% \end{prob}
+
+
+% \begin{prob}[Section 3.4, Exercise 30]
+    
+% \end{prob}
+
+% \begin{prob}[Section 3.4, Exercise 31]
+    
+% \end{prob}
+
+
+
+% \begin{prob}
+%     Find the arc lengh of the given segment of a curve.
+%     \begin{equation*}
+%         c(t)=(t, t^2, -t)
+%     \end{equation*}
+%     where $1\leq t\leq 2$.
+% \end{prob}
+
+
+% \section{chapter 4}
+
+% \begin{prob}[Section 4.2, Exercise 16]
+    
+% \end{prob}
+
+% \begin{prob}[Section 4.2, Exercise 17]
+    
+% \end{prob}
+
+
+% \begin{prob}
+%     Let $F(x,y,z)=(x^2, 2xy, z^2)$ and $c(t)=\left(\frac{1}{1-t}, 0, \frac{1}{1-t}\right)$ . Show that $c(t)$ is a flow line for $F$.
+% \end{prob}
+% \begin{proof}
+%     We must show 
+%     \begin{equation*}
+%         c'(t)=F(c(t))
+%     \end{equation*}
+%     We see that 
+%     \begin{align*}
+%         F(c(t))&=\left(\frac{1}{(1-t)^2}, 0, \frac{1}{(1-t)^2}\right)=c'(t)
+%     \end{align*}
+% \end{proof}
+
+
+
+% \begin{prob}
+%     Prove the prop of all the vector identities.
+% \end{prob}
+
+
+
+% \begin{prob}
+%     Show that $F=(x^2+y^2, 2xy, z)$ is not a gradient field. In other words, show that there doesn't exist function $f$ such that 
+%     \begin{equation*}
+%         F=\nabla f
+%     \end{equation*}
+% \end{prob}
+
+% \begin{prob}[Section 4.4, Exercise 39]
+%     Does $\nabla\times F$ have to be perpendicular to $F$?
+% \end{prob}
+
+
+% \begin{prob}[Chapter 4 exercises, 8]
+    
+% \end{prob}
+
+
+
+% \begin{prob}
+%     Show that the vector field $V=(2x, y, -z)$ is not the curl of any vector field.
+% \end{prob}
+% \begin{proof}
+%     Assume the contrary that there exists vector field $F$ such that 
+%     \begin{equation*}
+%         V=\nabla\times F
+%     \end{equation*}
+%     We know the divergence of a curl vanishes, i.e.,  
+%     \begin{equation*}
+%         \nabla \cdot V=0
+%     \end{equation*}
+%     However, 
+%     \begin{align*}
+%         \nabla\cdot V&=2+1-1=2\neq 0
+%     \end{align*}
+%     which is a contradiction.
+% \end{proof}
+
+
+
+% \section{chapter 5}
+
+
+
+
+
+
+
+% \chapter{Answer Key}
+
+
+\end{document}
