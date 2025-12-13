@@ -73,6 +73,350 @@ please email hsun95@jh.edu if you see typos)}
 \chapter{Definition Review}
 
 
+\begin{defn}[standard basis in $\R^3$]
+    The vectors 
+    \begin{equation*}
+        i=(1,0,0), j=(0,1,0), k=(0,0,1)
+    \end{equation*}
+    are called the \textbf{standard basis} vectors of $\R^3$, and for any vector $a=(a_1,a_2,a_3)\in\R^3$, we can write 
+    \begin{equation*}
+        a=a_1i+a_2j+a_3k
+    \end{equation*}
+\end{defn}
+
+
+
+\begin{defn}[Equation of a line]\label{line}
+    A \textbf{line} $l$ in $\R^3$ through the tip of $a=(a_1,a_2,a_3)$ pointing in the direction of a vector $v=(v_1,v_2,v_3)$ is given by 
+    \begin{equation*}
+        l(t)=a+tv=(a_1+tv_1, a_2+tv_2, a_3+tv_3)
+    \end{equation*}
+    where $t\in\R$. Alternatively, a line passing through two points $P=(x_1,y_1,z_1), Q=(x_2,y_2,z_2)$ is given by 
+    \begin{equation*}
+        l(t)=(x(t), y(t), z(t))
+    \end{equation*}
+    where 
+    \begin{equation*}
+        \begin{cases}
+            x(t)=x_1+(x_2-x_1)t\\
+            y(t)=y_1+(y_2-y_1)t\\
+            z(t)=z_1+(z_2-z_1)t
+        \end{cases}
+    \end{equation*}
+\end{defn}
+
+
+
+\begin{defn}[inner product, dot product]
+    Let $a,b\in\R^3$, the \textbf{dot product}, also called the inner product, of $a,b$ is 
+    \begin{equation*}
+        a\cdot b=a_1b_1+a_2b_2+a_3b_3
+    \end{equation*}
+    where $a=(a_1,a_2,a_3), b=(b_1,b_2,b_3)$. The \textbf{norm}, also called the length, of $a$ is 
+    \begin{equation*}
+        \|a\|=(a\cdot a)^\frac{1}{2}
+    \end{equation*}
+    A vector of norm $1$ is called a \textbf{unit vector}. Given any $u\in\R^3$, we can find the unit vector $\frac{u}{\|u\|}$ pointing in the same direction as $u$, this is called ``normalizing'' $u$.
+\end{defn}
+
+
+\begin{defn}[orthogonal projection]
+    The \textbf{orthogonal projection} of vector $v$ onto another vector $a$ is
+    \begin{equation*}
+        \text{Proj}_av=\frac{a\cdot v}{a\cdot a}a
+    \end{equation*}
+    For example, the orthogonal projection of $(1,1,0)$ onto $(1,1,1)$ is 
+    \begin{equation*}
+        \left(\frac{2}{3}, \frac{2}{3},\frac{2}{3}\right)
+    \end{equation*}
+\end{defn}
+
+
+\begin{defn}[orthogonal]
+    Let $a,b\in\R^n$, then $a,b$ are called \textbf{orthogonal} or perpendicular iff 
+    \begin{equation*}
+        a\cdot b=0
+    \end{equation*}
+\end{defn}
+
+
+\begin{defn}[determinant]
+    The \textbf{determinant} of a $2\times 2$ matrix is given by 
+    \begin{equation*}
+        \det\begin{bmatrix}
+            a&b\\
+            c&d
+        \end{bmatrix}=ad-bc
+    \end{equation*}
+    and the determinant of a $3\times 3$ matrix is given by 
+    \begin{equation*}
+        \det\begin{bmatrix}
+            a_{11}&a_{12}&a_{13}\\
+            a_{21}&a_{22}&a_{23}\\
+            a_{31}&a_{32}&a_{33}\\
+        \end{bmatrix}=a_{11}(a_{22}a_{33}-a_{23}a_{32})-a_{12}(a_{21}a_{33}-a_{23}a_{31})+a_{13}(a_{21}a_{32}-a_{22}a_{31})
+    \end{equation*}
+\end{defn}
+
+
+
+\begin{defn}[cross product]
+    Let $a,b\in\R^3$, write $a=(a_1,a_2,a_3), b=(b_1,b_2,b_3)$, then the \textbf{cross product}
+    \begin{equation*}
+        a\times b=\det\begin{bmatrix}
+            i&j&k\\
+            a_1&a_2&a_3\\
+            b_1&b_2&b_3
+        \end{bmatrix}
+    \end{equation*}
+    where $i,j,k$ are the standard vectors in $\R^3$.
+\end{defn}
+
+\begin{defn}[Plane in $\R^3$]\label{plane}
+   If a plane ${P}$ passes through some point $(x_0,y_0,z_0)$, and $n=(A,B,C)$ is a vector orthogonal to the plane, then the plane ${P}$ is given by the equation:
+    \begin{equation*}
+        A(x-x_0)+B(y-y_0)+C(z-z_0)=0
+    \end{equation*}
+    (Notice that a point in ${P}$ and a normal vector to ${P}$ uniquely define a plane in $\R^3$.)
+\end{defn}
+
+
+\begin{defn}[image, graph]
+    The \textbf{image} of a function $f: U\subset\R^n\to\R^m$ is a subset of $\R^m$,
+    \begin{equation*}
+        \text{Image}(f)=\{f(x)\in\R^m: x\in U\}
+    \end{equation*}
+    and the \textbf{graph} of $f$ is a subset of $\R^{n+m}$,
+    \begin{equation*}
+        \text{Graph}(f)=\{(x,f(x)): x\in U\}
+    \end{equation*}
+\end{defn}
+
+
+\begin{defn}[level set]
+    Let $f:U\subset\R^n\to\R^m$, and $c\in\R$ be some constant. Then the \textbf{level set} of $f$ at $c$ is the set 
+    \begin{equation*}
+        \{x\in U: f(x)=c\}\subset\R^n
+    \end{equation*}
+\end{defn}
+
+\begin{defn}[open set, closed set, neighborhood, boundary]
+    Let $U\subset\R^n$, we say $U$ is an \textbf{open set} if for every $x_0\in U$, there exists some $r>0$ such that $D_r(x_0)\subset U$, where $D_r(x_0)$ is the open disk of radius $r$ centered at $x_0$:
+    \begin{equation*}
+        D_r(x_0)=\{x\in\R^n: \|x-x_0\|<r\}
+    \end{equation*}
+    Some examples of open sets: $\R$, $D_{1}((0,0))$, $(1,2)\subset\R$.
+    A \textbf{neighborhood} of $x_0\in\R^n$ is an open set containing the point $x_0$. A point $x\in\R^n$ is called a \textbf{boundary point} of $A$ if \textit{every} neighborhood of $x$ contains at least one point in $A$ and at least one point not in $A$. A set is \textbf{closed} if it contains all its boundary points. Example of closed set: level sets of a continuous function $f$.
+\end{defn}
+
+
+\begin{defn}[limit]
+    Let $f: A\subset\R^n\to\R^m$, where $A$ is open, let $x_0$ be in $A$ or be a boundary point of $A$ and $N$ be a neighborhood of a point $b\in\R^m$. Now let $x$ approach $x_0$, $f$ is said to be \textbf{eventually in $N$} if there exists a neighborhood $U$ of $x_0$ such that 
+    \begin{equation*}
+        \text{ if } x\in U, \text{ then } f(x)\in N
+    \end{equation*}
+    If $f$ is eventually in $N$ for \textit{any} neighborhood $N$ around $b$, then the \textbf{limit} of $f$ as $x\to x_0$ exists, denoted as 
+    \begin{equation*}
+        \lim_{x\to x_0}f(x)=b
+    \end{equation*}
+\end{defn}
+
+\begin{defn}[continuous]
+    Let $f:A\subset\R^n\to\R^m$ and $x_0\in A$, then $f$ is \textbf{continuous at} \boldmath{${x_0}$} \unboldmath if 
+    \begin{equation*}
+        \lim_{x\to x_0}f(x)=f(x_0)
+    \end{equation*}
+\end{defn}
+
+
+\begin{defn}[partial derivative]
+    Let $f:U\subset\R^n\to\R$, where $U$ is open. Then the \textbf{partial derivative} with respect to $x_i$ is defined by 
+    \begin{equation*}
+        \frac{\partial f}{\partial x_i}(x_1, \dots, x_n)=\lim_{h\to 0}\frac{f(x+he_i)-f(x)}{h}
+    \end{equation*}
+    where $e_i=(0,\dots, 1,\dots, 0)$ with $1$ in the $i$th coordinate. 
+\end{defn}
+
+
+
+\begin{defn}[differentiability in two variables]
+    Let $f:\R^2\to\R$, then $f$ is \textbf{differentiable} at $(x_0,y_0)$ if 
+    \begin{enumerate}
+        \item[(1)] $\frac{\partial f}{\partial x},\frac{\partial f}{\partial y}$ exist at $(x_0,y_0)$
+        \item[(2)] 
+        \begin{equation*}
+            \lim_{(x,y)\to(x_0,y_0)}\frac{f(x,y)-f(x_0,y_0)-\left[\frac{\partial f}{\partial x}(x_0,y_0)\right](x-x_0)-\left[\frac{\partial f}{\partial y}(x_0,y_0)\right](y-y_0)}{\|(x,y)-(x_0,y_0)\|}=0
+        \end{equation*}
+    \end{enumerate}
+    The derivative of $f$ at $(x_0,y_0)$ is the $1\times 2$ matrix 
+    \begin{equation*}
+        \begin{bmatrix}\frac{\partial f}{\partial x}(x_0,y_0)&\frac{\partial f}{\partial y}(x_0,y_0)\end{bmatrix}
+    \end{equation*}
+    Moreover, the \textbf{tangent plane} of the graph of $f$ at $(x_0,y_0, f(x_0,y_0))$ is given by 
+    \begin{equation*}
+        z=f(x_0,y_0)+\left[\frac{\partial f}{\partial x}(x_0,y_0)\right](x-x_0)+\left[\frac{\partial f}{\partial y}(x_0,y_0)\right](y-y_0)
+    \end{equation*}
+\end{defn}
+
+\begin{defn}[differentiability in the general setting]
+    Let $f:U\subset\R^n\to\R^m$, then $f$ is differentiable at $x_0\in U$ if
+    \begin{enumerate}
+        \item[(1)] the partial derivatives $\frac{\partial f_i}{\partial x_j}$ exist for all $1\leq i\leq m, 1\leq j\leq n$. 
+        \item[(2)]
+        \begin{equation*}
+            \lim_{x\to x_0}\frac{\|f(x)-f(x_0)-T(x-x_0)\|}{\|x-x_0\|}=0
+        \end{equation*}
+        where $T=Df(x_0)$ is the $m\times n$ matrix 
+        \begin{equation*}
+            Df(x_0)=
+            \begin{bmatrix}
+            \frac{\partial f_1}{\partial x_1}(x_0) & \cdots & \frac{\partial f_1}{\partial x_n}(x_0) \\
+            \vdots & \ddots & \vdots \\
+            \frac{\partial f_m}{\partial x_1}(x_0) & \cdots & \frac{\partial f_m}{\partial x_n}(x_0)
+            \end{bmatrix}
+        \end{equation*}
+    \end{enumerate}
+    The derivative of $f$ at $x_0$ is the $m\times n$ matrix $Df(x_0)$.
+\end{defn}
+
+\begin{defn}[gradient]
+    Let $f:U\subset\R^n\to\R$, the \textbf{gradient} $\nabla f(x)$ is a special case of the general case above when $m=1$, i.e., it is a $1\times n$ matrix 
+    \begin{equation*}
+        Df(x)=\begin{bmatrix}
+            \frac{\partial f}{\partial x_1}&\dots&\frac{\partial f}{\partial x_n}
+        \end{bmatrix}
+    \end{equation*}
+\end{defn}
+
+
+\begin{defn}[path and curve]
+    A \textbf{path} in $\R^n$ is a map $c:[a,b]\to\R^n$, and the image of $c$ is called a \textbf{curve}. We say the path $c$ parametrizes the curve. 
+
+    \noindent For example, $c(t)=(\cos t, \sin t)$ is a path, and the unit circle is a curve.
+\end{defn}
+
+
+\begin{defn}[velocity of a path]
+    Let $c:[a,b]\to\R^n$ be a path, and we can write $c(t)=(c_1(t), \dots, c_n(t))$. If $c$ is differentiable, then we define the \textbf{velocity} of $c$ at any $t_0\in [a,b]$ as 
+    \begin{equation*}
+        c'(t_0)=\left(c_1'(t_0), \dots, c_n'(t_0)\right)
+    \end{equation*}
+    The velocity vector of $c$ at $t_0$ is also a \textbf{tangent} vector to $c$ at $t_0$. The \textbf{speed} of the path $c$ at $t_0$ is the length of the velocity vector $\|c'(t_0)\|$.
+\end{defn}
+
+\begin{defn}[tangent line to a path]\label{tangent path}
+    Let $c:[a,b]\to\R^n$ be a path, if $c'(t_0)\neq 0$, then the \textbf{tangent line} at $x_0$ is given by 
+    \begin{equation*}
+        l(t)=c(t_0)+c'(t_0)(t-t_0)
+    \end{equation*}
+\end{defn}
+
+
+
+
+\begin{defn}[directional derivative]
+    Let $f:\R^3\to\R$, be differentiable, then the \textbf{directional derivative} at $x_0\in\R^3$ in the direction of a \textit{unit vector} $v$ is given by 
+    \begin{equation*}
+        \nabla f(x_0)\cdot v=\left[\frac{\partial f}{\partial x_1}(x_0)\right]v_1+\left[\frac{\partial f}{\partial x_2}(x_0)\right]v_2+\left[\frac{\partial f}{\partial x_3}(x_0)\right]v_3
+    \end{equation*}
+    where $v=(v_1,v_2,v_3)$.
+\end{defn}
+\begin{warn}
+    Make sure you normalize any given direction $v$! This formula works for unit vectors.
+\end{warn}
+
+
+
+\begin{defn}[First order Taylor expansion]
+    Let $f:U\subset\R^n\to\R$ be differentiable at $a\in U$, then 
+    \begin{equation*}
+        f(x)=f(a)+\sum_{i=1}^n\frac{\partial f}{\partial x_i}(a)(x_i-a_i)+R_1(a,x)
+    \end{equation*}
+    where 
+    \begin{equation*}
+        \frac{R_1(a,x)}{\|x-a\|}\to 0 \text{ as } x\to a
+    \end{equation*}
+\end{defn}
+
+\begin{defn}[Second order Taylor expansion]\label{taylor}
+    Let $f:U\subset\R^n\to\R$ be twice continuously differentiable at $a\in U$, then 
+    \begin{equation*}
+        f(x)=f(a)+\sum_{i=1}^n\frac{\partial f}{\partial x_i}(a)(x_i-a_i)+\frac{1}{2}\sum_{i,j=1}^n\frac{\partial^2 f}{\partial x_i\partial x_j}(a)(x_i-a_i)(x_j-a_j)+R_2(a,x)
+    \end{equation*}
+    where 
+    \begin{equation*}
+        \frac{R_2(a,x)}{\|x-a\|}\to 0 \text{ as } x\to a
+    \end{equation*}
+\end{defn}
+
+
+
+\begin{defn}[critical point]
+    Let $f:U\subset\R^n\to\R$, a point $x_0\in U$ is a \textbf{critical point} of $f$ if either $f$ is not differentiable at $x_0$, or $Df(x_0)=0$. A critical point that is not a local extremum is called a saddle point.
+\end{defn}
+
+\begin{defn}[quadratic function]
+    A function $g:\R^n\to\R$ is called a \textbf{quadratic function} if it is given by 
+    \begin{equation*}
+        g(h_1,\dots, h_n)=\sum_{i,j=1}^na_{ij}h_ih_j
+    \end{equation*}
+    where $(a_{ij})$ is an $n\times n$ matrix. We can also write $g$ as follows:
+    \begin{equation*}
+        g(h_1,\dots,h_n)=[h_1,\dots,h_n]\begin{bmatrix}
+            a_{11}&\dots &a_{1n}\\
+            \vdots&\ddots &\vdots\\
+            a_{n_1}&\dots&a_{nn}
+        \end{bmatrix}\begin{bmatrix}
+            h_1\\
+            \vdots\\
+            h_n
+        \end{bmatrix}
+    \end{equation*}
+
+\end{defn}
+
+\begin{defn}[Hessian matrix]
+    Let $f:U\subset\R^n\to\R$, and suppose all the second-order partial derivatives $\frac{\partial^2 f}{\partial x_i\partial x_j}$ exist, then the Hessian matrix of $f$ is the $n\times n$ matrix given by 
+    \begin{equation*}
+        Hf=\begin{bmatrix}
+            \frac{\partial^2 f}{\partial x_1\partial x_1}&\dots&\frac{\partial^2f}{\partial x_1\partial x_n}\\
+            \vdots&\ddots&\vdots\\
+            \frac{\partial^2f}{\partial x_nx_1}&\dots&\frac{\partial^2f}{\partial x_n\partial x_n}
+        \end{bmatrix}
+    \end{equation*}
+    The Hessian as a quadratic function is defined by 
+    \begin{equation*}
+        Hf(x)(h)=\frac{1}{2}\begin{bmatrix}
+            h_1&\dots&h_n
+        \end{bmatrix}Hf(x)\begin{bmatrix}
+            h_1\\
+            \dots\\
+            h_n
+        \end{bmatrix}
+    \end{equation*}
+    where $h=(h_1,\dots,h_n)$.
+\end{defn}
+
+\begin{defn}[degenerate/nondegenerate points]
+    Let $f:U\subset\R^2\to\R$ be of $C^2$, let $(x_0,y_0)$ be a critical point. We define the \textbf{discriminant}, \boldmath $\mathcal{D}$,\unboldmath of the Hessian by
+    \begin{equation*}
+        \mathcal{D}=\det (Hf)=\left(\frac{\partial^2f}{\partial x^2}\right)\left(\frac{\partial^2f}{\partial y^2}\right)-\left(\frac{\partial^2f}{\partial x\partial y}\right)^2
+    \end{equation*}
+    If $\mathcal{D}\neq 0$, the critical point $(x_0,y_0)$ is called \textbf{nondegenerate}; if $\mathcal{D}=0$, the point $(x_0,y_0)$ is called \textbf{degenerate}.
+\end{defn}
+
+\begin{defn}[positive, negative-definite]
+    A quadratic function $g:\R^n\to\R$ is called \textbf{positive-definite} if $g(h)\geq 0$ for all $h\in\R^n$ and $g(h)=0$ implies $h=0$. Similarly, $g$ is \textbf{negative-definite} if $g(h)\leq 0$ for all $h\in\R^n$ and $g(h)=0$ implies $h=0$. 
+\end{defn}
+
+
+\begin{defn}[global extremum]
+    Let $f:A\to\R$ be a function defined on $A\subset\R^2$ or $A\subset\R^3$. A point $x_0\in A$ is said to be an \textbf{absolute maximum} if $f(x_0)\geq f(x)$ for all $x\in A$. Similarly, $x_0$ is an \textbf{absolute minimum} if $f(x_0)\leq f(x)$ for all $x\in A$. 
+\end{defn}
+
+\begin{defn}[bounded set]
+    A set $A\subset\R^n$ is said to be \textbf{bounded} if there is a number $M>0$ such that $\|x\|\leq M$ for all $x\in A$. 
+\end{defn}
 
 \begin{defn}[acceleration]
     Let $c(t)$ be a path, the \textbf{acceleration} $a(t)$ of $c(t)$ is 
@@ -296,12 +640,15 @@ please email hsun95@jh.edu if you see typos)}
     \begin{equation*}
         \iint fdS=\iint_D\frac{f(x,y,g(x,y))}{\cos\theta}dxdy
     \end{equation*}
-    where $\theta$ is the angle between the unit vector $k$ at $(x,y,g(x,y))$ and the normal vector to the surface. (Recall that the normal vector of a graph is given by $n=-\frac{\partial g}{\partial x}i-\frac{\partial g}{\partial y}j+k)$.
+    where $\theta$ is the angle between the unit vector $k$ at $(x,y,g(x,y))$ and the normal vector to the surface. (Recall that the normal vector of a graph is given by $n=-\frac{\partial g}{\partial x}i-\frac{\partial g}{\partial y}j+k)$. More specifically, 
+    \begin{equation*}
+        \frac{1}{\cos\theta}=\sqrt{\left(\frac{\partial g}{\partial x}\right)^2+\left(\frac{\partial g}{\partial y}\right)^2+1}
+    \end{equation*}
 \end{defn}
 
 
-\begin{defn}[surface integral of vector fields]
-    Let $F$ be a vector field defined on $S$, parametrized by $\Phi$. The surface integral of $F$ over $\Phi:D\to\R^3$, denoted by 
+\begin{defn}[flux]
+    Let $F$ be a vector field defined on $S$, parametrized by $\Phi$. The surface integral of $F$, also called \textbf{flux}, over $S$, denoted by 
     \begin{equation*}
         \iint_\Phi F\cdot dS
     \end{equation*}
@@ -322,6 +669,12 @@ please email hsun95@jh.edu if you see typos)}
 \end{defn}
 
 
+\begin{defn}[potential function]
+    Let $F$ be a conservative vector field, then $F=\nabla f$, for some continuously differentiable function real-valued $f$.
+\end{defn}
+
+
+
 
 
 
@@ -331,6 +684,236 @@ please email hsun95@jh.edu if you see typos)}
 
 
 \chapter{Theorem Review}
+
+\begin{prop}[dot product]\label{dot}
+    Let $a,b\in\R^3$, and let $\theta$ be the angle between $a,b$, where $0\leq\theta\leq\pi$, then 
+    \begin{equation*}
+        a\cdot b=\|a\|\|b\|\cos\theta
+    \end{equation*}
+\end{prop}
+
+
+
+
+\begin{prop}[properties of the dot product]
+    Let $a,b,c\in\R^n$, then 
+    \begin{enumerate}
+        \item[(a)] Nonnegativity: $a\cdot a\geq 0$, and $a\cdot a=0$ if and only if $a=0$.
+        \item[(b)] Scalar multiplication: let $\lambda\in\R$, then 
+        \begin{equation*}
+            \lambda(a\cdot b)=\lambda a\cdot b=a\cdot \lambda b
+        \end{equation*}
+        \item[(c)] Distributivity:
+        \begin{equation*}
+            a\cdot(b+c)=a\cdot b+a\cdot c, \quad (a+b)\cdot c=a\cdot c+b\cdot c
+        \end{equation*}
+        \item[(d)] Symmetry: $a\cdot b=b\cdot a$.
+    \end{enumerate}
+\end{prop}
+
+
+
+\begin{prop}[Cauchy-Schwarz]
+    Let $a,b\in\R^n$, then $a\cdot b\in\R$, 
+    \begin{equation*}
+        |a\cdot b|\leq\|a\|\|b\|
+    \end{equation*}
+    where the left hand side is the absolute value of $a\cdot b$, and the right hand side is multiplication of two nonnegative real numbers.
+\end{prop}
+
+
+\begin{prop}[triangle inequality]\label{traingle}
+    Let $a,b\in\R^n$, then 
+    \begin{equation*}
+        \|a+b\|\leq\|a\|+\|b\|
+    \end{equation*}
+\end{prop}
+
+
+
+\begin{prop}[cross product]
+    We have the following properties regarding the cross product: let $a,b\in\R^3$,
+    \begin{enumerate}
+        \item $a\times b$ is perpendicular to vectors $a,b$.
+        \item The length of the cross product is the area of the parallelogram:
+        \begin{equation*}
+            \|a\times b\|=\|a\|\|b\|\sin\theta
+        \end{equation*}
+        where $0\leq\theta\leq\pi$ is the angle between them. 
+        \item $a\times b=-b\times a$, $(a+b)\times c=a\times c+b\times c$, and $a\times (b+c)=a\times b+a\times c$. Moreover, $a\times b=0$ iff $a,b$ are parallel or either $a$ or $b$ are $0$.
+        \item The cross product is \textbf{not} associative! For example, compute 
+        \begin{equation*}
+            (i\times i)\times j, \quad i\times (i\times j)
+        \end{equation*}
+    \end{enumerate}
+\end{prop}
+
+
+
+\begin{prop}[limits]
+    Here are some properties of limits: let $f: U_1\subset\R^n\to\R^m, g: U_2\subset\R^n\to\R^m$,
+    \begin{enumerate}
+        \item[(a)] (Uniquessness):  \begin{equation*}
+            \text{ If } \lim_{x\to x_0}f(x)=b_1, \quad \lim_{x\to x_0}f(x)=b_2
+        \end{equation*}
+        then we must have 
+        \begin{equation*}
+            b_1=b_2
+        \end{equation*}
+        \item[(b)] (Scalar multiplication): Let $c\in\R$, if $\lim_{x\to x_0}f(x)=b_1$, then 
+        \begin{equation*}
+            \lim_{x\to x_0}cf(x)=cb_1
+        \end{equation*}
+        \item[(c)] (Addition): Let $f$ be as in (b), and $\lim_{x\to x_0}g(x)=b_2$, then 
+        \begin{equation*}
+            \lim_{x\to x_0}(f+g)(x)=b_1+b_2
+        \end{equation*}
+        \item[(d)] (Component): Write $f(x)=(f_1(x),\dots, f_n(x))$, if $\lim_{x\to x_0}f(x)=b=(b_1,\dots, b_n)$, then 
+        \begin{equation*}
+            \lim_{x\to x_0}f_i(x)=b_i
+        \end{equation*}
+        for all $i=1,\dots, m$.
+    \end{enumerate}
+    The same set of properties hold for continuity.
+\end{prop}
+
+\begin{prop}[continuity of compositions]
+    Let $g: A\subset\R^n\to\R^m$, and $f: B\subset\R^m\to\R^p$, and $g(A)\subset B$. If $g$ is continuous at $x_0$, $f$ is continuous at $g(x_0)$, then $f\circ g$ is continuous at $x_0$.
+\end{prop}
+
+\begin{prop}[differentiability implies continuity]
+    Let $f:U\subset\R^n\to\R^m$. If $f$ is differentiable at $x_0\in U$, then $f$ is continuous at $x_0$.
+\end{prop}
+
+\begin{prop}[differentiability]
+    Let $f:U\subset\R^n\to\R^m$. Suppose $\partial f_i/\partial x_j$ exists for all $i,j$ and are continuous in a neighborhood of $x_0\in U$, then $f$ is differentiable at $x_0$.
+\end{prop}
+
+
+
+\begin{prop}[properties of derivatives]
+    Let $f:U\subset\R^n\to\R^m$ be differentiable at $x_0$, then the derivative of $f$ at $x_0$ is an $m\times n$ matrix $Df(x_0)=\left(\frac{\partial f_i}{\partial x_j}\right)_{ij}$. The derivative follows the same properties as derivative for single variable functions:
+    \begin{enumerate}
+        \item Let $c\in\R$, then 
+        \begin{equation*}
+            D(cf)(x_0)=cDf(x_0) \tag {multiplication of a matrix by constant $c$}
+        \end{equation*}
+        \item Let $g: U\subset\R^n\to\R^m$ also be differentiable at $x_0$, then 
+        \begin{equation*}
+            D(f+g)(x_0)=Df(x_0)+Dg(x_0) \tag{sum of two matrices}
+        \end{equation*}
+        \item Let $h_1: U\subset\R^n\to\R, h_2: U\subset\R^n\to\R$,then 
+        \begin{equation*}
+            D(h_1h_2)(x_0)=Dh_1(x_0)h_2(x_0)+h_1(x_0)Dh_2(x_0) \tag{product rule}
+        \end{equation*}
+        and if $h_2\neq 0$ on $U$.
+        \begin{equation*}
+            D(h_1/h_2)(x_0)=\frac{Dh_1(x_0)h_2(x_0)-h_1(x_0)Dh_2(x_0)}{h_2^2(x_0)} \tag{quotient rule}
+        \end{equation*}
+        \item Let $g: U\subset\R^n\to\R^m, f:V\subset\R^m\to\R^p$ such that $g(U)\subset V$, then 
+        \begin{equation*}
+            D(f\circ g)(x_0)=Df(g(x_0))Dg(x_0) \tag{chain rule}
+        \end{equation*}
+    \end{enumerate}
+\end{prop}
+
+
+
+\begin{prop}[fastest rate of change]
+    Suppose that $\nabla f(x_0)\neq 0$, then the direction for which $f$ increases the fastest at $x_0$ is along $\nabla f(x_0)$.
+\end{prop}
+
+
+\begin{prop}[gradient is normal, tangent plane]\label{tangent plane}
+    Let $f:\R^3\to\R$ be differentiable, let $S$ be a level surface of $f$, i.e., $S$ is a surface described by 
+    \begin{equation*}
+        f(x,y,z)=k
+    \end{equation*}
+    were $k$ is some constant. Let $(x_0,y_0,z_0)\in S$, then
+    \begin{equation*}
+        \nabla f(x_0,y_0,z_0) \text{ is \textbf{normal} to the level surface at } (x_0,y_0,z_0)
+    \end{equation*}
+    This means if $c(t)$ is a path in $S$, and $v(0)=(x_0,y_0,z_0)$, and if $v$ is a tangent vector to $c(t)$ at $t=0$, then 
+    \begin{equation*}
+        \nabla f(x_0,y_0, z_0)\cdot v=0
+    \end{equation*}
+    Moreover, if $\nabla f(x_0,y_0,z_0)\neq 0$, the \textbf{tangent plane} of $S$ at $(x_0,y_0,z_0)$ is given by 
+    \begin{equation*}
+        \nabla f(x_0,y_0,z_0)\cdot (x-x_0, y-y_0, z-z_0)=0
+    \end{equation*}
+\end{prop}
+
+\begin{prop}[Equality of mixed partials]
+    If $f(x,y)$ is twice continuously differentiable, then 
+    \begin{equation*}
+        \frac{\partial^2 f}{\partial x\partial y}=\frac{\partial^2f}{\partial y\partial x}
+    \end{equation*}
+\end{prop}
+
+
+\begin{prop}[extremums are critical points]
+    Let $f:U\subset\R^n\to\R$ be differentiable, where $U$ is open. If $x_0$ is a local extremum, then $Df(x_0)=0$. 
+\end{prop}
+
+
+\begin{prop}[extremum]
+    Let $f\colon U\subset\R^n\to\R$ be in $C^3$, and $x_0$ is a critical point of $f$. If the Hessian $Hf(x_0)$ is positive-definite, then $x_0$ is a local minimum of $f$; if $Hf(x_0)$ is negative-definite, then $x_0$ is a local maximum.
+\end{prop}
+
+
+
+
+\begin{prop}[local minimum]
+    Let $f(x,y)$ be of $C^2$, and $U$ is open in $\R^2$. A point $(x_0,y_0)$ is a strict local \textbf{minimum} of $f$ if the following conditions hold:
+    \begin{enumerate}
+        \item \begin{equation*}
+            \frac{\partial f}{\partial x}(x_0,y_0)=\frac{\partial f}{\partial y}(x_0,y_0)=0
+        \end{equation*}
+        \item \begin{equation*}
+            \mathcal{D}(x_0,y_0)>0
+        \end{equation*}
+        where $\mathcal{D}$ is the \textbf{discriminant} of the Hessian, defined by 
+        \begin{equation*}
+            \mathcal{D}=\det (Hf)=\left(\frac{\partial^2 f}{\partial x^2}\right)\left(\frac{\partial^2 f}{\partial y^2}\right)-\left(\frac{\partial^2 f}{\partial x\partial y}\right)^2
+        \end{equation*}
+        where $Hf$ is the $2\times 2$ Hessian matrix.
+        \item  \begin{equation*}
+            \frac{\partial^2f}{\partial x^2}(x_0,y_0)>0
+        \end{equation*}
+    \end{enumerate}
+\end{prop}
+
+
+\begin{prop}[local maximum]
+    Let $f(x,y)$ be of $C^2$, and $U$ is open in $\R^2$. A point $(x_0,y_0)$ is a strict local \textbf{maximum} of $f$ if the following conditions hold:
+    \begin{enumerate}
+        \item \begin{equation*}
+            \frac{\partial f}{\partial x}(x_0,y_0)=\frac{\partial f}{\partial y}(x_0,y_0)=0
+        \end{equation*}
+        \item \begin{equation*}
+            \mathcal{D}(x_0,y_0)>0
+        \end{equation*}
+        where $\mathcal{D}$ is the {discriminant} of the Hessian, defined above.
+        \item  \begin{equation*}
+            \frac{\partial^2f}{\partial x^2}(x_0,y_0)<0
+        \end{equation*}
+    \end{enumerate}
+\end{prop}
+
+\begin{prop}[saddle points]
+    Let $f(x,y):U\subset\R^2\to \R$ be of  $C^2$, if $\frac{\partial f}{\partial x}(x_0,y_0)=\frac{\partial f}{\partial y}(x_0,y_0)=0$, and $\mathcal{D}(x_0,y_0)<0$, where $\mathcal{D}$ is the discriminant, then the critical point $(x_0,y_0)$ is a saddle point, i.e., neither a maximum or a minimum.
+\end{prop}
+
+
+\begin{prop}[continuous functions attain extremum on closed bounded sets]
+    Let $f:D\to\R$ be continuous, where $D$ is closed and bounded in $\R^n$. Then $f$ assumes its absolute maximum and absolute minimum values at some point $x_0, x_1\in D$.
+\end{prop}
+
+
+
+
+
+
 
 
 
@@ -673,6 +1256,36 @@ For example, the area of a $x$-simple region $D$ can be computed as
 
 
 
+\begin{prop}
+    Let $F(x,y)=P(x,y)i+Q(x,y)j$ be a vector field in $\R^2$, $F$ is conservative if and only if 
+    \begin{equation*}
+        \frac{\partial Q}{\partial x}=\frac{\partial P}{\partial y}
+    \end{equation*}
+\end{prop}
+
+
+\begin{prop}
+    Let $F$ be a continuously differentiable vector field in $\R^3$ with $\nabla\cdot F=0$, i.e., the divergence of $F$ is $0$. Then there exists a twice continuously differentiable vector field $G$ where 
+    \begin{equation*}
+        F=\curl(G)=\nabla\times G
+    \end{equation*}
+\end{prop}
+
+
+\begin{thm}[Gauus' Theorem]
+    Let $D$ be a bounded solid region in $\R^3$ whose boundary $\partial D$ is a closed oriented surface (normal vector pointing outward), then 
+    \begin{equation*}
+        \iint_{\partial D}F\cdot dS=\iiint_D(\nabla\cdot F)dV
+    \end{equation*}
+    (This is a relation between the flux and the integral of divergence).
+\end{thm}
+
+
+
+
+
+
+\chapter{Practice Problems}
 
 
 
@@ -681,139 +1294,2365 @@ For example, the area of a $x$-simple region $D$ can be computed as
 
 
 
+\section{Chapter 1}
 
 
 
-
-
-
-
-
-
-% \chapter{Practice Problems}
-
-% \section{chapter 3}
-
-% \begin{prob}
-%     \textcolor{red}{define $f$}
-%     Let $f(x)=$ on the following domain $D$, 
-%     \begin{equation*}
-%         D=\{(x,y): x^2+4y^2=9\}
-%     \end{equation*}
-%     Find the absolute maximum and minimum of $f$ on this domain $D$.
-% \end{prob}
-
-
-% \begin{prob}[Section 3.4, Exercise 18]
-    
-% \end{prob}
-
-
-% \begin{prob}[Section 3.4, Exercise 20]
-%     A rectangular box with no top is to have a surface area of $16$ $m^2$. Find the dimensions that maximize its volume.
-% \end{prob}
-
-
-% \begin{prob}[Section 3.4, Exercise 30]
-    
-% \end{prob}
-
-% \begin{prob}[Section 3.4, Exercise 31]
-    
-% \end{prob}
-
-
-
-% \begin{prob}
-%     Find the arc lengh of the given segment of a curve.
-%     \begin{equation*}
-%         c(t)=(t, t^2, -t)
-%     \end{equation*}
-%     where $1\leq t\leq 2$.
-% \end{prob}
-
-
-% \section{chapter 4}
-
-% \begin{prob}[Section 4.2, Exercise 16]
-    
-% \end{prob}
-
-% \begin{prob}[Section 4.2, Exercise 17]
-    
-% \end{prob}
-
-
-% \begin{prob}
-%     Let $F(x,y,z)=(x^2, 2xy, z^2)$ and $c(t)=\left(\frac{1}{1-t}, 0, \frac{1}{1-t}\right)$ . Show that $c(t)$ is a flow line for $F$.
-% \end{prob}
+\begin{prob}[1]
+    Let \( \mathbf{v} = 3\mathbf{i} + 4\mathbf{j} + 5\mathbf{k} \) and \( \mathbf{w} = \mathbf{i} - \mathbf{j} + \mathbf{k} \). Compute  
+    \( \mathbf{v} + \mathbf{w},\; 3\mathbf{v},\; 6\mathbf{v} + 8\mathbf{w},\; -2\mathbf{v},\; \mathbf{v} \cdot \mathbf{w},\; \mathbf{v} \times \mathbf{w} \).  
+    Interpret each operation geometrically by graphing the vectors.
+\end{prob}
 % \begin{proof}
-%     We must show 
-%     \begin{equation*}
-%         c'(t)=F(c(t))
-%     \end{equation*}
-%     We see that 
-%     \begin{align*}
-%         F(c(t))&=\left(\frac{1}{(1-t)^2}, 0, \frac{1}{(1-t)^2}\right)=c'(t)
-%     \end{align*}
+%     \begin{enumerate}
+%         \item \begin{equation*}
+%             v+w=(4, 3, 6)
+%         \end{equation*}
+%         \item \begin{equation*}
+%             3v=(9, 12, 15)
+%         \end{equation*}
+%         \item \begin{equation*}
+%             6v+8w=(26, 16, 38)
+%         \end{equation*}
+%         \item \begin{equation*}
+%             -2v=(-6, -8, -10)
+%         \end{equation*}
+%         \item \begin{equation*}
+%             v\dot w=3-4+5=4
+%         \end{equation*}
+%         \item \begin{equation*}
+%             v\times w=\det\left|\begin{matrix}
+%                 i&j&k\\
+%                 3&4&5\\
+%                 1&-1&1
+%             \end{matrix}\right|=(9, 2, -7)
+%         \end{equation*}
+%     \end{enumerate}
+% \end{proof}
+
+\begin{prob}[4]
+    \begin{enumerate}
+        \item[(a)] Find the equation of the line through \( (0, 1, 0) \) in the direction of \( 3\mathbf{i} + \mathbf{k} \).  
+        \item[(b)] Find the equation of the line passing through \( (0, 1, 1) \) and \( (0, 1, 0) \).  
+        \item[(c)] Find an equation for the plane perpendicular to the vector \( (-1, 1, -1) \) and passing through the point \( (1, 1, 1) \).
+    \end{enumerate}
+\end{prob}
+% \begin{proof}
+%     \begin{enumerate}
+%         \item[(a)] The equation is given by 
+%         \begin{equation*}
+%             l_1(t)=(0,1,0)+t(3, 0, 1)
+%         \end{equation*}
+%         \item[(b)] The equation is given by 
+%         \begin{equation*}
+%             l_2(t)=(0,1,1)+t(0, 0, -1)
+%         \end{equation*}
+%         \item[(c)] The equation of the plane is given by 
+%         \begin{equation*}
+%             (x-1, y-1, z-1)\cdot (-1, 1, -1)=0
+%         \end{equation*}
+%         simplifying we get 
+%         \begin{equation*}
+%             x-y+z=1
+%         \end{equation*}
+%     \end{enumerate}
 % \end{proof}
 
 
 
-% \begin{prob}
-%     Prove the prop of all the vector identities.
-% \end{prob}
+\begin{prob}[12]
+    Show that three vectors \( \mathbf{a}, \mathbf{b}, \mathbf{c} \) lie in the same plane through the origin if and only if there are three scalars \( \alpha, \beta, \gamma \), not all zero, such that
+    \[
+        \alpha \mathbf{a} + \beta \mathbf{b} + \gamma \mathbf{c} = \mathbf{0}.
+    \]
+\end{prob}
 
 
-
-% \begin{prob}
-%     Show that $F=(x^2+y^2, 2xy, z)$ is not a gradient field. In other words, show that there doesn't exist function $f$ such that 
-%     \begin{equation*}
-%         F=\nabla f
-%     \end{equation*}
-% \end{prob}
-
-% \begin{prob}[Section 4.4, Exercise 39]
-%     Does $\nabla\times F$ have to be perpendicular to $F$?
-% \end{prob}
-
-
-% \begin{prob}[Chapter 4 exercises, 8]
-    
-% \end{prob}
-
-
-
-% \begin{prob}
-%     Show that the vector field $V=(2x, y, -z)$ is not the curl of any vector field.
-% \end{prob}
+\begin{prob}[27]
+    \begin{enumerate}
+        \item[(a)] Prove that the area of the triangle in the plane with vertices \((x_1, y_1)\), \((x_2, y_2)\), \((x_3, y_3)\) is the absolute value of  
+        \[
+            \frac{1}{2} \begin{vmatrix}
+            1 & 1 & 1 \\
+            x_1 & x_2 & x_3 \\
+            y_1 & y_2 & y_3
+            \end{vmatrix}.
+        \]
+        \item[(b)] Find the area of the triangle with vertices \((1, 2)\), \((0, 1)\), \((-1, 1)\).
+    \end{enumerate}
+\end{prob}
 % \begin{proof}
-%     Assume the contrary that there exists vector field $F$ such that 
+%     \begin{enumerate}
+%         \item[(a)] The area of the triangle is the half of the area of the paralellogram spanned by the vertices. (Please write out details in your proof).
+%         \item[(b)] Using the result in (a), we get the area is $\frac{\sqrt{11}}{2}$.
+%     \end{enumerate}
+% \end{proof}
+
+
+\begin{prob}[28]
+    Convert the following points from Cartesian to cylindrical and spherical coordinates and plot:  
+
+    \begin{itemize}
+        \item[(a)] \((0, 3, 4)\)
+        \item[(b)] \((-\sqrt{2}, 1, 0)\)
+        \item[(c)] \((0, 0, 0)\)
+        \item[(d)] \((-1, 0, 1)\)
+        \item[(e)] \((-2\sqrt{3}, -2, 3)\)
+    \end{itemize}
+\end{prob}
+% \begin{proof}
+%     The cylindrical cooridnate is the $3$-tuple $(r,\theta, z)$ such that 
 %     \begin{equation*}
-%         V=\nabla\times F
+%         x=r\cos\theta, y=r\sin\theta, z=z
 %     \end{equation*}
-%     We know the divergence of a curl vanishes, i.e.,  
+%     and the spherical coordinate is such that $(\rho,\theta,\phi)$
 %     \begin{equation*}
-%         \nabla \cdot V=0
+%         x=\rho\sin\phi\cos\theta, y=\rho\sin\phi\sin\theta, z=\rho\cos\phi
 %     \end{equation*}
-%     However, 
-%     \begin{align*}
-%         \nabla\cdot V&=2+1-1=2\neq 0
-%     \end{align*}
-%     which is a contradiction.
+%     For example, for (a), you get 
+%     \begin{equation*}
+%         (r,\theta, z)=(3, \pi/2, 4)
+%     \end{equation*}
+%     and 
+%     \begin{equation*}
+%         (\rho,\theta,\phi)=(5, \arccos 4/5, \pi/2)
+%     \end{equation*}
+%     and so on $\dots$
 % \end{proof}
 
 
 
-% \section{chapter 5}
+
+\begin{prob}[36]
+    Find the volume of the parallelepiped spanned by the vectors  
+\[
+\mathbf{u} = (1, 0, 1), \quad \mathbf{v} = (1, 1, 1), \quad \text{and} \quad \mathbf{w} = (-3, 2, 0).
+\]
+\end{prob}
+% \begin{proof}
+%     It is given by the following:
+%     \begin{equation*}
+%         |u\cdot(v\times w)|=3
+%     \end{equation*}
+% \end{proof}
+
+
+\begin{prob}[52]
+    Find a unit vector that has the following property:
+    parallel to the line \( x = 3t + 1, \; y = 16t - 2, \; z = -(t + 2) \)
+\end{prob}
+% \begin{proof}
+%     The direction of the line is along the vector 
+%     \begin{equation*}
+%         v=(3, 16, -1)
+%     \end{equation*}
+%     Normalizing, we get 
+%     \begin{equation*}
+%         \left(\frac{3}{\sqrt{266}}, \frac{16}{\sqrt{266}}, -\frac{1}{\sqrt{266}}\right)
+%     \end{equation*}
+% \end{proof}
+
+
+
+\begin{prob}[53]
+    Find a unit vector that has the following property: 
+    orthogonal to the plane \( x - 6y + z = 12 \).
+\end{prob}
+% \begin{proof}
+%     \begin{equation*}
+%         n=\frac{(1, -6, 1)}{\|(1, -6, 1)\|}=\left(\frac{1}{\sqrt{38}}, -\frac{6}{\sqrt{38}}, \frac{1}{\sqrt{38}}\right)
+%     \end{equation*}
+% \end{proof}
+
+
+\begin{prob}[54]
+    Find a unit vector that has the following property:
+    parallel to both the planes \( 8x + y + z = 1 \) and \( x - y - z = 0 \).
+\end{prob}
+% \begin{proof}
+%     It suffices to find normal vectors $n_1, n_2$ to two planes and take the cross product:
+%     \begin{equation*}
+%         n_1=(8,1,1), \quad n_2=(1,-1, -1)
+%     \end{equation*}
+%     and 
+%     \begin{equation*}
+%         n_1\times n_2=(0, 9, -9)
+%     \end{equation*}
+%     Normalizing we get 
+%     \begin{equation*}
+%         n=\left(0, \frac{1}{\sqrt{2}}, -\frac{1}{\sqrt{2}}\right)
+%     \end{equation*}
+% \end{proof}
+
+
+\section{Chapter 2}
+
+\begin{prob}[2]
+    Describe some appropriate level surfaces and sections of the graphs of:
+
+    \begin{enumerate}
+        \item[(a)] \( f(x, y, z) = 2x^2 + y^2 + z^2 \)
+        \item[(b)] \( f(x, y, z) = x^2 \)
+        \item[(c)] \( f(x, y, z) = xyz \)
+    \end{enumerate}
+\end{prob}
+% \begin{proof}
+%     Good luck with this one.
+% \end{proof}
+
+\begin{prob}[3]
+    Compute the derivative \( Df(\mathbf{x}) \) of each of the following functions:
+
+    \begin{enumerate}
+        \item[(a)] \( f(x, y) = (x^2y, e^{-xy}) \)
+        \item[(b)] \( f(x) = (x, x) \)
+        \item[(c)] \( f(x, y, z) = e^x + e^y + e^z \)
+        \item[(d)] \( f(x, y, z) = (x, y, z) \)
+    \end{enumerate}
+\end{prob}
+% \begin{proof}
+%     \begin{enumerate}
+%         \item[(a)] The derivative matrix is 
+%         \begin{equation*}
+%             Df(x,y)=\begin{bmatrix}
+%                 2xy&x^2\\
+%                 -ye^{-xy}&-xe^{-xy}
+%             \end{bmatrix}
+%         \end{equation*}
+%         \item[(b)] The derivative matrix is 
+%         \begin{equation*}
+%             Df(x)=\begin{bmatrix}
+%                 1\\
+%                 1
+%             \end{bmatrix}
+%         \end{equation*}
+%         \item[(c)] The derivative matrix is 
+%         \begin{equation*}
+%             \begin{bmatrix}
+%                 e^x&e^y&e^z
+%             \end{bmatrix}
+%         \end{equation*}
+%         \item[(d)] The derivative matrix is
+%         \begin{equation*}
+%             \begin{bmatrix}
+%                 1&0&0\\
+%                 0&1&0\\
+%                 0&0&1
+%             \end{bmatrix}
+%         \end{equation*}
+%     \end{enumerate}
+% \end{proof}
+
+\begin{prob}[5]
+    Let \( f(u, v) = (\cos u, v + \sin u) \) and  
+    \( g(x, y, z) = (x^2 + \pi y^2, xz) \). Compute \( D(f \circ g) \) at \((0, 1, 1)\) using the chain rule.
+\end{prob}
+% \begin{proof}
+%     Using the chain rule, we get 
+%     \begin{align*}
+%         D(f\circ g)(0,1,1)&=Df(g(x_0))Dg(x_0)\\
+%         &=Df(\pi, 0)Dg(0,1,1)\\
+%         &=\begin{bmatrix}
+%             0&0\\
+%             -1&1
+%         \end{bmatrix}\begin{bmatrix}
+%             0&2\pi &0\\
+%             1&0&0
+%         \end{bmatrix}\\
+%         &=\begin{bmatrix}
+%             0&0&0\\
+%             1&-2\pi&0
+%         \end{bmatrix}
+%     \end{align*}
+% \end{proof}
+
+\begin{prob}[20]
+    Let \( f: \mathbb{R}^2 \rightarrow \mathbb{R}^4 \) and \( g: \mathbb{R}^2 \rightarrow \mathbb{R}^2 \) be given by
+    \[
+    f(x, y) = (x^2 - y^2, 0, \sin(xy), 1)
+    \]
+    and
+    \[
+    g(x, y) = (ye^{x^2}, xe^{y^2}).
+    \]
+    Compute \( D(f \circ g)(1, 2) \).
+\end{prob}
+% \begin{proof}
+%     We use chain rule again just like the above:
+%     \begin{align*}
+%         D(f\circ g)(1,2)&=Df(2e, e^4)Dg(1,2)
+%     \end{align*}
+%     and you compute :)
+% \end{proof}
+
+
+\begin{prob}[24]
+    Find the plane tangent to the surface \( z = x^2 + y^2 \) at the point \( (1, -2, 5) \). Explain the geometric significance, for this surface, of the gradient of \( f(x, y) = x^2 + y^2 \) (see Exercise 23).
+\end{prob}
+% \begin{proof}
+%     The surface is $x^2+y^2-z=0$, let $g=x^2+y^2-z$, and the gradient is normal to the surface:
+%     \begin{equation*}
+%         \nabla g=(2x, 2y, -1)
+%     \end{equation*}
+%     Thus the plane tangent to the surface is 
+%     \begin{equation*}
+%         (2, -4, -1)\cdot (x-1, y+2, z-5)=0
+%     \end{equation*}
+%     simplifying we get 
+%     \begin{equation*}
+%         2x-4y-z-5=0
+%     \end{equation*}
+% \end{proof}
+
+
+\begin{prob}[26]
+    Find the directional derivative of the given function at the given point and in the direction of the given vector.
+
+    \begin{enumerate}
+        \item[(a)] \( f(x, y, z) = e^x \cos(yz), \quad p_0 = (0, 0, 0), \quad \mathbf{v} = (2, 1, -2) \)
+        \item[(b)] \( f(x, y, z) = xy + yz + zx, \quad p_0 = (1, 1, 2), \quad \mathbf{v} = (10, -1, 2) \)
+    \end{enumerate}
+\end{prob}
+% \begin{proof}
+%     The directional derivative is given by 
+%     \begin{equation*}
+%         D_vf(p_0)=\nabla f(p_0)\cdot\frac{v}{\|v\|}
+%     \end{equation*}
+%     I will not compute them here, but it is important that you normalize the direction vector $v$!
+% \end{proof}
+
+
+\begin{prob}[30]
+    Find the direction in which the function \( w = x^2 + xy \) increases most rapidly at the point \((-1, 1)\). What is the magnitude of \( \nabla w \) at this point? Interpret this magnitude geometrically.
+\end{prob}
+% \begin{proof}
+%     The gradient is the direction that $w$ increases most rapidly, i.e., 
+%     \begin{equation*}
+%         \nabla w=(2x+y, x)
+%     \end{equation*}
+%     evaluated at $(-1,1)$, we get 
+%     \begin{equation*}
+%         \nabla w=(-1, -1), \quad |\nabla w|=\sqrt{2}
+%     \end{equation*}
+%     This magnitude is the maximum rate of change of $w$ at this point.
+% \end{proof}
+
+\begin{prob}[40]
+    Compute an equation for the plane tangent to the graph of
+    \[
+    f(x, y) = \frac{e^x}{x^2 + y^2}
+    \]
+    at \( x = 1, y = 2 \).
+\end{prob}
+% \begin{proof}
+%     The tangent plane to the graph of $f$ is given by 
+%     \begin{equation*}
+%         z=f(1,2)+\frac{\partial f}{\partial x}(1,2)(x-1)+\frac{\partial f}{\partial y}(1,2)(y-2)
+%     \end{equation*}
+% \end{proof}
+
+
+\begin{prob}[59]
+    \begin{enumerate}
+        \item[(a)] In what direction is the directional derivative of  
+        \[
+        f(x, y) = \frac{x^2 - y^2}{x^2 + y^2}
+        \]
+        at \((1, 1)\) equal to zero?  
+        \item[(b)] How about at an arbitrary point \((x_0, y_0)\) in the first quadrant?  
+        \item[(c)] Describe the level curves of \(f\). In particular, discuss them in terms of the result of part (b).
+    \end{enumerate}
+\end{prob}
+% \begin{proof}
+%     \begin{enumerate}
+%         \item[(a)] We first compute $\nabla f(1,1)=(1,-1)$, thus a directional vector such as $(1,1)$ would make the directional derivative of $f$ zero (by taking the dot product).
+%         \item[(b)] You would do the same process as in (a) to obtain a general form for each $(x_0, y_0)$.
+%         \item[(c)] The level curves of $f$ are straight lines through the origin.
+%     \end{enumerate}
+% \end{proof}
+
+
+
+
+
+\section{Chapter 3}
+\begin{prob}[3]
+    Let \( f(x, y) = x^2 - y^2 - xy + 5 \). Find all critical points of \( f \) and determine whether they are local minima, local maxima, or saddle points.
+\end{prob}
+
+\begin{prob}[5]
+    Find the second-order Taylor polynomial for  
+    \[
+    f(x, y) = y^2 e^{-x^2} \text{ at } (1, 1).
+    \]
+\end{prob}
+
+\begin{prob}[15]
+    \( f(x, y) = x^2 - 2xy + 2y^2 \), subject to \( x^2 + y^2 = 1 \).
+\end{prob}
+
+\begin{prob}[17]
+    \( f(x, y) = \cos(x^2 - y^2) \), subject to \( x^2 + y^2 = 1 \).
+\end{prob}
+
+\begin{prob}[24]
+    Determine all values of \( k \) for which the function \( g(x, y, z) = x^2 + kxy + kxz + ky^2 + kz^2 \) has a local minimum at \( (0, 0, 0) \).
+\end{prob}
+
+\begin{prob}[30]
+    Find the maximum and minimum of \( f(x, y) = xy - y + x - 1 \) on the set \( x^2 + y^2 \leq 2 \).
+\end{prob}
+
+\begin{prob}[38]
+    Consider the surface \( S \) given by
+    \[
+    x^2z + x \sin y + ye^{x-1} = 1.
+    \]
+    \begin{enumerate}
+        \item[(a)] Find the equation of the tangent plane to \( S \) at the point \( (1, 0, 1) \).
+        \item[(b)] Is it possible to solve the equation defining \( S \) for the variable \( y \) as a function of the variables \( x \) and \( z \) near \( (1, 0, 1) \)? Why?
+        \item[(c)] Find \( \frac{\partial y}{\partial x} \) at \( (1, 0, 1) \).
+    \end{enumerate}
+\end{prob}
+
+
+
+
+
+\section{Chapter 4}
+\begin{prob}[5]
+    Calculate the tangent and acceleration vectors for the helix \( c(t) = (\cos t, \sin t, t) \) at \( t = \pi/4 \).
+\end{prob}
+
+\begin{prob}[8]
+    \begin{enumerate}
+        \item[(a)]  Let \( c(t) \) be a path with \( \|c(t)\| = \text{constant} \); that is, the curve lies on a sphere. Show that \( c'(t) \) is orthogonal to \( c(t) \).
+        \item[(b)] Let \( c \) be a path whose speed is never zero. Show that \( c \) has constant speed if and only if the acceleration vector \( c'' \) is always perpendicular to the velocity vector \( c' \).
+    \end{enumerate}
+\end{prob}
+
+\begin{prob}[10]
+    Let \( \mathbf{F}(x, y, z) = (\sin(xz), e^{xy}, x^2y^3z^5) \).
+
+    \begin{enumerate}
+        \item[(a)] Find the divergence of \( \mathbf{F} \).
+        \item[(b)] Find the curl of \( \mathbf{F} \).
+    \end{enumerate}
+\end{prob}
+
+\begin{prob}[13]
+    Express the arc length of the curve \( x^2 = y^3 = z^5 \) between \( x = 1 \) and \( x = 4 \) as an integral, using a suitable parametrization.
+\end{prob}
+
+\begin{prob}[34]
+    Let a particle of mass \( m \) move along the elliptical helix  
+    \[
+    c(t) = (4 \cos t, \sin t, t).
+    \]  
+
+    \begin{enumerate}
+        \item[(a)] Find the equation of the tangent line to the helix at \( t = \pi / 4 \).  
+        \item[(b)] Find the force acting on the particle at time \( t = \pi / 4 \).  
+        \item[(c)] Write an expression (in terms of an integral) for the arc length of the curve \( c(t) \) between \( t = 0 \) and \( t = \pi / 4 \).
+    \end{enumerate}
+\end{prob}
+
+\begin{prob}[36]
+    \begin{enumerate}
+        \item[(a)] Write in parametric form the curve that is the intersection of the surfaces \( x^2 + y^2 + z^2 = 3 \) and \( y = 1 \).
+        \item[(b)]  Find the equation of the line tangent to this curve at \((1, 1, 1)\).
+        \item[(c)] Write an integral expression for the arc length of this curve. What is the value of this integral?
+    \end{enumerate}
+\end{prob}
+
+
+\section{Chapter 5}
+
+\begin{prob}[3]
+    Evaluate the integral
+    \[
+    \int_{0}^{1} \int_{\sqrt{x}}^{1} (x+y)^{2} \, dy \, dx.
+    \]
+\end{prob}
+
+\begin{prob}[9]
+    Evaluate the integral
+    \[
+    \int_{0}^{1} \int_{0}^{x} \int_{0}^{y} (y+z) \, dz \, dy \, dx.
+    \]
+\end{prob}
+
+\begin{prob}[11]
+    Evaluate
+    \[
+    \int_{0}^{1} \int_{0}^{(\arcsin y)/y} y \cos(xy) \, dx \, dy.
+    \]
+\end{prob}
+
+\begin{prob}[16]
+    Find
+    \[
+    \iint_{D} y[1-\cos(\pi x/4)] \, dx \, dy,
+    \]
+    where \( D \) is the region in Figure 5.R.1.
+\end{prob}
+
+\begin{prob}[21]
+    Evaluate the integral
+    \[
+    \int_{0}^{1} \int_{0}^{x^2} (x^2 + xy - y^2) \, dy \, dx.
+    \]
+\end{prob}
+
+\begin{prob}[23]
+    Evaluate the integral
+    \[
+    \int_{0}^{1} \int_{x^2}^{x} (x + y)^2 \, dy \, dx.
+    \]
+\end{prob}
+
+\begin{prob}[33]
+    Prove:
+    \[
+    \int_{0}^{x} \left[ \int_{0}^{t} F(u) \, du \right] dt = \int_{0}^{x} (x - u) F(u) \, du.
+    \]
+\end{prob}
+
+
+\section{Chapter 6}
+
+
+
+\begin{prob}[1]
+    \begin{enumerate}
+        \item[(a)]  Find a linear transformation taking the square \( S = [0, 1] \times [0, 1] \) to the parallelogram \( P \) with vertices \((0, 0), (2, 0), (1, 2), (3, 2)\).  
+        \item[(b)]  Write down a change of variables formula appropriate to the transformation you found in part (a).
+    \end{enumerate}
+\end{prob}
+% \begin{proof}
+%     \begin{enumerate}
+%         \item[(a)]  The matrix is given by 
+%         \begin{equation*}
+%             T=\begin{pmatrix}
+%                 2&1\\
+%                 0&2
+%             \end{pmatrix}
+%         \end{equation*}
+%         \item[(b)] Writing the linear transformation as $T(u,v)=(2u+v, 2v)\coloneq(x,y)$, we fine 
+%         \begin{equation*}
+%             \det(J)=\det\left|\begin{matrix}
+%                 \frac{\partial x}{\partial u}&\frac{\partial x}{\partial v}\\
+%                 \frac{\partial y}{\partial u}&\frac{\partial y}{\partial v}
+%             \end{matrix}\right|=4
+%         \end{equation*}
+%         Thus the change of variable formula is 
+%         \begin{equation*}
+%             dxdy=4dudv
+%         \end{equation*}
+%     \end{enumerate}
+% \end{proof}
+
+\begin{prob}[4]
+    In parts (a) to (d), make the indicated change of variables. (Do not evaluate.)
+
+    \begin{enumerate}
+        \item[(a)] \(\displaystyle \int_{0}^{1} \int_{-1}^{1} \int_{-\sqrt{1-y^2}}^{\sqrt{1-y^2}} (x^2 + y^2)^{1/2} \, dx \, dy \, dz\), cylindrical coordinates
+        \item[(b)] \(\displaystyle \int_{-1}^{1} \int_{-\sqrt{1-y^2}}^{\sqrt{1-y^2}} \int_{-\sqrt{4-x^2-y^2}}^{\sqrt{4-x^2-y^2}} xyz \, dz \, dy \, dx\), cylindrical coordinates
+        \item[(c)] \(\displaystyle \int_{-\sqrt{2}}^{\sqrt{2}} \int_{-\sqrt{2-y^2}}^{\sqrt{2-y^2}} \int_{\sqrt{x^2+y^2}}^{\sqrt{4-x^2-y^2}} z^2 \, dz \, dx \, dy\), spherical coordinates
+        \item[(d)] \(\displaystyle \int_{0}^{1} \int_{0}^{\pi/4} \int_{0}^{2\pi} \rho^3 \sin 2\phi \, d\theta \, d\phi \, d\rho\), rectangular coordinates
+    \end{enumerate}
+\end{prob}
+% \begin{proof}
+%     \begin{enumerate}
+%         \item[(a)] 
+%         \begin{equation*}
+%             \int_0^1\int_0^{2\pi}\int_{0}^1r^2drd\theta dz
+%         \end{equation*}
+%         \item[(b)]
+%         \begin{equation*}
+%             \int_0^{2\pi}\int_0^1\int_{\sqrt{4-r^2}}^{\sqrt{4-r^2}}r^3\sin\theta\cos\theta zdzdrd\theta
+%         \end{equation*}
+%         \item[(c)] Spherical coordinates has $(x,y,z)=(\rho\sin\varphi\cos\theta,\rho\sin\varphi\sin\theta,\rho\cos\varphi)$, so
+%         \[dx\,dy\,dz=\rho^2\sin\varphi\,d\rho\,d\theta\,d\varphi.\]
+%         Now, the region lives above the circle $x^2+y^2\le2$ as contained in a large ellipse $x^2+y^2+z^2\le4$ but outside $z^2=x^2+y^2$. Thus, the integral is
+%         \[\int_0^{2\pi}\int_0^{\pi/4}\int_0^4\rho^4\sin\varphi\cos^2\varphi\,d\rho\,d\varphi\,d\theta.\]
+%         \item[(d)] As in (c), we note that $z\,dx\,dy\,dz=\rho^3\sin\varphi\cos\varphi\,d\rho\,d\varphi\,d\theta$. The region here is analogous to the region in (c), so we receive the integral
+%         \[\int_{-1}^{1} \int_{-\sqrt{1-y^2}}^{\sqrt{1-y^2}} \int_{\sqrt{x^2+y^2}}^{\sqrt{1-x^2-y^2}} 2z \, dz \, dx \, dy.\]
+%     \end{enumerate}
+% \end{proof}
+
+\begin{prob}[8]
+    Let \( C_1 \) and \( C_2 \) be two cylinders of infinite extent, of diameter 2, and with axes on the \( x \) and \( y \) axes, respectively. Find the volume of their intersection, \( C_1 \cap C_2 \).
+\end{prob}
+% \begin{proof}
+%     The two cylinders are given by the inequalities $x^2+z^2\le1$ and $y^2+z^2\le1$. We will integrate our volume against $z\in[-1,+1]$. Now, for each $z$, the plane at this value of $z$ intersects $C_1\cap C_2$ by the inequalities
+%     \[\begin{cases}
+%         \left|x\right|\le\sqrt{1-z^2}, \\
+%         \left|y\right|\le\sqrt{1-z^2}.
+%     \end{cases}\]
+%     Thus, our volume is
+%     \[\int_{-1}^1\int_{-\sqrt{1-z^2}}^{\sqrt{1-z^2}}\int_{-\sqrt{1-z^2}}^{\sqrt{1-z^2}}\,dx\,dy\,dz.\]
+%     Evaluating the inner integrals reveals this is
+%     \[4\int_{-1}^1\left(1-z^2\right)\,dz=8\int_0^1\left(1-z^2\right)\,dz.\]
+%     This evaluates to $8\left(1-\frac13\right)=\frac{16}3$.
+% \end{proof}
+
+\begin{prob}[22]
+    Evaluate
+    \[
+    \iint_{B} e^{-x^2-y^2} \, dx \, dy,
+    \]
+    where \( B \) consists of those \( (x, y) \) satisfying \( x^2 + y^2 \leq 1 \) and \( y \leq 0 \).
+\end{prob}
+% \begin{proof}
+%     Using polar cooridnates, we get 
+%     \begin{align*}
+%         \iint_{B} e^{-x^2-y^2} \, dx \, dy&=\int_{\pi}^{2\pi}\int_0^1e^{-r^2}rdrd\theta\\
+%         &=\frac{\pi}{2}\left(1-\frac{1}{e}\right)
+%     \end{align*}
+% \end{proof}
+
+\begin{prob}[24]
+    Evaluate
+    \[
+    \iiint_{D} (x^2 + y^2 + z^2) xyz \, dx \, dy \, dz
+    \]
+    over each of the following regions.
+
+    \begin{enumerate}
+        \item[(a)] The sphere \( D = \{(x, y, z) \mid x^2 + y^2 + z^2 \leq R^2\} \)
+        \item[(b)] The hemisphere \( D = \{(x, y, z) \mid x^2 + y^2 + z^2 \leq R^2 \text{ and } z \geq 0\} \)
+        \item[(c)] The octant \( D = \{(x, y, z) \mid x \geq 0, y \geq 0, z \geq 0, \text{ and } x^2 + y^2 + z^2 \leq R^2\} \)
+    \end{enumerate}
+\end{prob}
+% \begin{proof}
+%     We will convert to spherical coordinates. Note
+%     \begin{align*}
+%         \left(x^2+y^2+z^2\right)xyz\,dx\,dy\,dz &= \rho^2\cdot\rho^3\sin^2\varphi\cos\theta\sin\theta\cos\varphi\cdot\rho^2\sin\varphi\,d\rho\,d\theta\,d\varphi \\
+%         &= \rho^7\cdot\sin^3\varphi\cos\varphi\cdot\sin\theta\cos\theta\,d\rho\,d\theta\,d\varphi.
+%     \end{align*}
+%     \begin{enumerate}
+%         \item[(a)] The integral is
+%         \begin{align*}
+%             & \int_0^R\int_0^{2\pi}\int_0^\pi\rho^7\cdot\sin^3\varphi\cos\varphi\cdot\sin\theta\cos\theta\,d\varphi\,d\theta\,d\rho \\
+%             ={}& \int_0^R\rho^7\,d\rho\int_0^{2\pi}\sin\theta\cos\theta\,d\theta\int_0^\pi\sin^3\varphi\cos\varphi\,d\varphi \\
+%             ={}& \cdot\frac{R^8}8\cdot\frac12\sin^2\theta\bigg|_0^{2\pi}\cdot\frac14\sin^4\varphi\bigg|_0^\pi,
+%         \end{align*}
+%         which vanishes because the $\theta$ factor vanishes.
+%         \item[(b)] Repeating the manipulations in (a), the integral is
+%         \[\cdot\frac{R^8}8\cdot\frac12\sin^2\theta\bigg|_0^{2\pi}\cdot\frac14\sin^4\varphi\bigg|_0^{\pi/2}.\]
+%         This again vanishes because the $\theta$ factor vanishes.
+%         \item[(c)] Repeating the manipulations in (a), the integral is
+%         \[\cdot\frac{R^8}8\cdot\frac12\sin^2\theta\bigg|_0^{\pi/2}\cdot\frac14\sin^4\varphi\bigg|_0^{\pi/2}.\]
+%         This evaluates to $\frac18\cdot R^3\cdot\frac12\cdot\frac14=\frac1{64}R^8$.
+%         \qedhere
+%     \end{enumerate}
+% \end{proof}
+
+
+
+\section{Chapter 7}
+
+\begin{prob}[3]
+    Compute each of the following line integrals:
+    \begin{enumerate}
+        \item[(a)] 
+        \[
+        \int_C (\sin \pi x) \, dy - (\cos \pi y) \, dz,
+        \]
+        where \( C \) is the triangle whose vertices are \((1, 0, 0)\), \((0, 1, 0)\), and \((0, 0, 1)\), in that order.
+    
+        \item[(b)]
+        \[
+        \int_C (\sin z) \, dx + (\cos z) \, dy - (xy)^{1/3} \, dz,
+        \]
+        where \( C \) is the path \( c(\theta) = (\cos^3 \theta, \sin^3 \theta, \theta) \), \( 0 \leq \theta \leq \frac{7\pi}{2} \).
+    \end{enumerate}
+\end{prob}
+
+\begin{prob}[5]
+    Find the work done by the force  
+    \[
+    \mathbf{F}(x, y) = (x^2 - y^2)\,\mathbf{i} + 2xy\,\mathbf{j}
+    \]
+    in moving a particle counterclockwise around the square with corners \((0, 0)\), \((a, 0)\), \((a, a)\), \((0, a)\), \(a > 0\).
+\end{prob}
+% \begin{proof}
+%     By Green's theorem, we have 
+%     \begin{align*}
+%         \int_CF\cdot ds&=\iint_D\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}dA\\
+%         &=\int_0^a\int_0^a4ydxdy\\
+%         &=2a^3
+%     \end{align*}
+% \end{proof}
+
+\begin{prob}[7]
+Find a parametrization for each of the following surfaces:
+
+\begin{enumerate}
+    \item[(a)] \( x^2 + y^2 + z^2 - 4x - 6y = 12 \)
+    \item[(b)] \( 2x^2 + y^2 + z^2 - 8x = 1 \)
+    \item[(c)] \( 4x^2 + 9y^2 - 2z^2 = 8 \)
+\end{enumerate}
+\end{prob}
+% \begin{proof}
+%     \begin{enumerate}
+%         \item[(a)] We would first complete some squares 
+%         \begin{equation*}
+%             (x^2-4x+4)+(y^2-6y+9)+z^2=25
+%         \end{equation*}
+%         Thus the parametrization can be given by 
+%         \begin{equation*}
+%             \Phi(\phi,\theta)=(2+5\sin\phi\cos\theta, 3+5\sin\phi\sin\theta, 5\cos\phi), 0\leq\theta\leq 2\pi, 0\leq\phi\leq\pi
+%         \end{equation*}
+%         \item[(b)] You would do the same as in (a).
+%         \item[(c)] This one is kinda complicated. 
+%     \end{enumerate}
+% \end{proof}
+
+\begin{prob}[12]
+Find \(\displaystyle \iint_S f \, dS\) in each of the following cases:
+
+\begin{enumerate}
+    \item[(a)] \( f(x, y, z) = x \); \( S \) is the part of the plane  
+          \( x + y + z = 1 \) in the positive octant defined by  
+          \( x \geq 0, \; y \geq 0, \; z \geq 0 \)
+    \item[(b)] \( f(x, y, z) = x^2 \); \( S \) is the part of the plane \( x = z \) inside the cylinder \( x^2 + y^2 = 1 \)
+    \item[(c)] \( f(x, y, z) = x \); \( S \) is the part of the cylinder \( x^2 + y^2 = 2x \) with \( 0 \leq z \leq \sqrt{x^2 + y^2} \)
+\end{enumerate}
+\end{prob}
+% \begin{proof}
+%     \begin{enumerate}
+%         \item[(a)] We parametrize the surface by  
+%         \begin{equation*}
+%             \Phi(x,y)=(x,y, 1-x-y), 0\leq x\leq 1, 0\leq y\leq 1-x
+%         \end{equation*}
+%         Then one would compute 
+%         \begin{equation*}
+%             \iint_SfdS=\int_0^1\int_0^{1-x}\|T_x\times T_y\|dydx
+%         \end{equation*}
+%         \item[(b)] One can parametrize the surface as 
+%         \begin{equation*}
+%             \Phi(x,y)=(x,y,x), x^2+y^2\leq 1
+%         \end{equation*}
+%         and use the same formula.
+%         \item[(c)] One can parametrize the surface as follows 
+%         \begin{equation*}
+%             \Phi(\theta,z)=(1+\cos\theta, \sin\theta, z), 0\leq\theta\leq 2\pi, 0\leq z\leq \sqrt{2(1+\cos\theta)}
+%         \end{equation*}
+%         and use the same formula.
+%     \end{enumerate}
+% \end{proof}
+
+
+
+\begin{prob}[16]
+    A paraboloid of revolution \( S \) is parametrized by 
+    \[
+    \Phi(u, v) = (u \cos v, u \sin v, u^2), \quad 0 \leq u \leq 2, \; 0 \leq v \leq 2\pi.
+    \]
+    
+    \begin{enumerate}
+        \item[(a)] Find an equation in \( x, y, \) and \( z \) describing the surface.
+        \item[(b)] What are the geometric meanings of the parameters \( u \) and \( v \)?
+        \item[(c)] Find a unit vector orthogonal to the surface at \( \Phi(u, v) \).
+        \item[(d)] Find the equation for the tangent plane at \( \Phi(u_0, v_0) = (1, 1, 2) \) and express your answer in the following two ways:
+        
+        \begin{enumerate}
+            \item[(i)] parametrized by \( u \) and \( v \); and
+            \item[(ii)] in terms of \( x, y, \) and \( z \).
+        \end{enumerate}
+        
+        \item[(e)] Find the area of \( S \).
+    \end{enumerate}
+\end{prob}
+% \begin{proof}
+%     \begin{enumerate}
+%         \item[(a)] $z=x^2+y^2$.
+%         \item[(b)] $u$ is the radius of the paraboloid and also related to the height, and $v$ is the angle.
+%         \item[(c)] You would compute 
+%         \begin{equation*}
+%             n=\frac{\partial\Phi}{\partial u}\times\frac{\partial\Phi}{\partial v}
+%         \end{equation*}
+%         \item[(d)] You would use the formula for the tangent plane using the normal vector found in (c).
+%         \item[(e)] By the area formula, it is given by 
+%         \begin{equation*}
+%             \text{Area}=\int_0^2\int_0^{2\pi}\|n\| dvdu
+%         \end{equation*}
+%     \end{enumerate}
+% \end{proof}
+
+\begin{prob}[26]
+    Calculate \( \iint_S \mathbf{F} \cdot d\mathbf{S} \), where \( \mathbf{F}(x, y, z) = (x, y, -y) \) and \( S \) is the cylindrical surface defined by \( x^2 + y^2 = 1 \), \( 0 \leq z \leq 1 \), with normal pointing out of the cylinder.
+\end{prob}
+% \begin{proof}
+%     We parametrize the surface as follows:
+%     \begin{equation*}
+%         \Phi(\theta,z)=(\cos\theta, \sin\theta, z), 0\leq\theta\leq 2\pi, 0\leq z\leq 1
+%     \end{equation*}
+%     Then we compute $T_\theta\times T_z$,
+%     \begin{equation*}
+%         T_\theta\times T_z=(\cos\theta, \sin\theta, 0)
+%     \end{equation*}
+%     By the formula for surface integrals of vector fields, we get 
+%     \begin{align*}
+%         \iint_SF\cdot dS&=\int_0^{2\pi}\int_0^1F(\Phi(r,\theta))\cdot T_\theta\times T_z dzd\theta\\
+%         &=\int_0^{2\pi}\int_0^1(\cos\theta, \sin\theta, -\sin\theta)\cdot(\cos\theta, \sin\theta, 0)dzd\theta\\
+%         &=2\pi
+%     \end{align*}
+% \end{proof}
+
+\begin{prob}[27]
+    Let \( S \) be the portion of the cylinder \( x^2 + y^2 = 4 \) between the planes \( z = 0 \) and \( z = x + 3 \). Compute the following:
+    
+    \begin{enumerate}
+        \item[(a)] \( \iint_S x^2 \, dS \)
+        \item[(b)] \( \iint_S y^2 \, dS \)
+        \item[(c)] \( \iint_S z^2 \, dS \)
+    \end{enumerate}
+\end{prob}
+% \begin{proof}
+%     We parametrize the portion of the cylinder as follows:
+%     \begin{equation*}
+%         (2\cos\theta, 2\sin\theta, z), \quad 0\leq\theta\leq 2\pi, 0\leq z\leq 3+2\cos\theta
+%     \end{equation*}
+%     Thus computing $T_\theta, T_z$ and taking the cross product $T_\theta\times T_z$, we have 
+%     \begin{equation*}
+%         \|T_\theta\times T_z\|=2
+%     \end{equation*}
+%     Thus by the formula of surface integral of scalar-valued functions, we get 
+%     \begin{enumerate}
+%         \item[(a)] 
+%         \begin{align*}
+%             \iint_Sx^2dS&=\iint_D4\cos^2\theta\|T_\theta\times T_z\| dA\\
+%             &=\int_0^{2\pi}\int_{0}^{3+2\cos\theta}8\cos^2\theta dzd\theta\\
+%             &=24\pi
+%         \end{align*}
+%         One would do the same for (b) and (c).
+%     \end{enumerate}
+% \end{proof}
+
+
+
+\section{Chapter 8}
+
+\begin{prob}[3]
+    Let \( \mathbf{F} = x^2 y \, \mathbf{i} + z^8 \, \mathbf{j} - 2xyz \, \mathbf{k} \). Evaluate the integral of \( \mathbf{F} \) over the surface of the unit cube.
+\end{prob}
+% \begin{proof}
+%     By Gauss' divergence theorem, we know
+%     \begin{align*}
+%         \int_SF\cdot dS=\int_{V}\nabla\cdot FdV
+%     \end{align*}
+%     where 
+%     \begin{equation*}
+%         \nabla\cdot F=2xy+0-2xy=0
+%     \end{equation*}
+%     hence 
+%     \begin{equation*}
+%         \int_SF\cdot dS=\iiint_{V}\nabla\cdot FdV=0
+%     \end{equation*}
+% \end{proof}
+
+\begin{prob}[4]
+    Verify Green's theorem for the line integral
+    \[
+    \int_C x^2 y \, dx + y \, dy,
+    \]
+    when \( C \) is the boundary of the region between the curves \( y = x \) and \( y = x^3 \), \( 0 \leq x \leq 1 \).
+\end{prob}
+% \begin{proof}
+%     By Green's theorem, we have 
+%     \begin{align*}
+%         \int_Cx^2ydx+ydy&=\int_D\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}dA\\
+%         &=\int_0^1\int_{x^3}^x-x^2dydx\\
+%         &=-\frac{1}{12}
+%     \end{align*}
+% \end{proof}
+
+\begin{prob}[7]
+    \begin{enumerate}
+        \item[(a)] Show that  
+        \[
+        \mathbf{F} = 6xy(\cos z) \, \mathbf{i} + 3x^2(\cos z) \, \mathbf{j} - 3x^2 y(\sin z) \, \mathbf{k}
+        \]
+        is conservative (see Section 8.3). 
+        \item[(b)] Find \( f \) such that \( \mathbf{F} = \nabla f \).  
+        \item[(c)] Evaluate the integral of \( \mathbf{F} \) along the curve \( x = \cos^3 \theta, \; y = \sin^3 \theta, \; z = 0, \; 0 \leq \theta \leq \pi/2 \).
+    \end{enumerate}
+\end{prob}
+% \begin{proof}
+%     \begin{enumerate}
+%         \item[(a)] The idea would be to show $\nabla\times F=0$.
+%         \item[(b)] First integrating $F_1$ with respect to $x$ to get
+%         \begin{equation*}
+%             f=3x^2y\cos z
+%         \end{equation*}
+%         then verify that $\partial f/\partial y=F_2, \partial f/\partial z=F_3$.
+%         \item[(c)] Since $F$ is conservative, the integral of $F$ over a curve only depends on the endpoints, which are $(1,0,0), (0,1,0)$.
+%         \begin{equation*}
+%             \int_cF\cdot ds=f(0,1,0)-f(1,0,0)=0
+%         \end{equation*}
+%     \end{enumerate}
+% \end{proof}
+
+
+\begin{prob}[12]
+    Show that the fields \( \mathbf{F} \) in (a) and (b) are conservative and find a function \( f \) such that \( \mathbf{F} = \nabla f \).  
+
+    \begin{enumerate}
+        \item[(a)] \( \mathbf{F} = (y^2 e^x) \, \mathbf{i} + (2y e^x) \, \mathbf{j} \)
+        \item[(b)] \( \mathbf{F} = (\sin y) \, \mathbf{i} + (x \cos y) \, \mathbf{j} + (e^x) \, \mathbf{k} \)
+    \end{enumerate}
+\end{prob}
+% \begin{proof}
+%     \begin{enumerate}
+%         \item[(a)] We see that 
+%         \begin{equation*}
+%             \frac{\partial Q}{\partial x}=\frac{\partial P}{\partial y}=2ye^x
+%         \end{equation*}
+%         thus $F$ is conservative. We find 
+%         \begin{equation*}
+%             f(x,y)=y^2e^x
+%         \end{equation*}
+%         \item[(b)] This is a typo, $F$ is not conservative, and you can show $\nabla\times F\neq 0$.
+%     \end{enumerate}
+% \end{proof}
+
+\begin{prob}[13]
+    \begin{enumerate}
+        \item[(a)] Let \( f(x, y, z) = 3xy e^z \). Compute \( \nabla f \).  
+        \item[(b)] Let \( \mathbf{c}(t) = (3 \cos^3 t, \sin^2 t, e^t), \; 0 \leq t \leq \pi \). Evaluate
+        \[
+        \int_C \nabla f \cdot d\mathbf{s}.
+        \]
+        \item[(c)] Verify directly Stokes' theorem for gradient vector fields \( \mathbf{F} = \nabla f \).
+    \end{enumerate}
+\end{prob}
+% \begin{proof}
+%     \begin{enumerate}
+%         \item[(a)] \begin{equation*}
+%             \nabla f(x,y,z)=\left(3ye^z, 3xe^z, 3xye^z\right)
+%         \end{equation*} 
+%         \item[(b)] \begin{equation*}
+%             \int_C\nabla f\cdot ds=f(-3, 0, e^\pi)-f(3, 0, 1)=0
+%         \end{equation*}
+%         \item[(c)] Stokes's theorem states that 
+%         \begin{equation*}
+%             \int_CF\cdot ds=\int_S\left(\nabla\times F\right)\cdot ndS
+%         \end{equation*}
+%         where $S$ is the surface for which $C$ is the boundary of. Thus we get 
+%         \begin{equation*}
+%             \int_CF\cdot ds=\int_S\left(\nabla\times F\right)\cdot ndS=\int_S\left(\nabla\times\nabla f\right)\cdot ndS=0
+%         \end{equation*}
+%     \end{enumerate}
+% \end{proof}
+
+\begin{prob}[20]
+    Which of the following are conservative fields on \( \mathbb{R}^3 \)?  
+    For those that are, find a function \( f \) such that \( \mathbf{F} = \nabla f \).  
+
+    \begin{enumerate}
+        \item[(a)] \( \mathbf{F}(x, y, z) = 3x^2 y \, \mathbf{i} + x^3 \, \mathbf{j} + 5 \, \mathbf{k} \)
+        \item[(b)] \( \mathbf{F}(x, y, z) = (x + z) \, \mathbf{i} - (y + z) \, \mathbf{j} + (x - y) \, \mathbf{k} \)
+        \item[(c)] \( \mathbf{F}(x, y, z) = 2xy^3 \, \mathbf{i} + x^2 z^3 \, \mathbf{j} + 3x^2 y z^2 \, \mathbf{k} \)
+    \end{enumerate}
+\end{prob}
+% \begin{proof}
+%     \begin{enumerate}
+%         \item[(a)] It is conservative, one choice of the potential function is
+%         \begin{equation*}
+%             f=x^3y+5z
+%         \end{equation*}
+%         \item[(b)] It is conservative, one choice of the potential function is 
+%         \begin{equation*}
+%             f=\frac{1}{2}x^2-\frac{1}{2}y^2+xz-yz
+%         \end{equation*}
+%         \item[(c)] It is not conservative.
+%     \end{enumerate}
+% \end{proof}
+
+
+
+\begin{prob}[21]
+    Consider the following two vector fields in \( \mathbb{R}^3 \):  
+
+    \begin{enumerate}
+        \item[(i)] \( \mathbf{F}(x, y, z) = y^2 \, \mathbf{i} - z^2 \, \mathbf{j} + x^2 \, \mathbf{k} \)
+        \item[(ii)] \( \mathbf{G}(x, y, z) = (x^3 - 3xy^2) \, \mathbf{i} + (y^3 - 3x^2 y) \, \mathbf{j} + z \, \mathbf{k} \)
+    \end{enumerate}
+
+    \begin{enumerate}
+        \item[(a)] Which of these fields (if any) are conservative on \( \mathbb{R}^3 \)? (That is, which are gradient fields?) Give reasons for your answer.  
+
+        \item[(b)] Find a potential for the fields that are conservative.  
+
+        \item[(c)] Let \( \alpha \) be the path that goes from \( (0, 0, 0) \) to \( (1, 1, 1) \) by following edges of the cube \( 0 \leq x \leq 1 \),  
+        \( 0 \leq y \leq 1 \), \( 0 \leq z \leq 1 \) from \( (0, 0, 0) \) to \( (0, 0, 1) \) to \( (0, 1, 1) \) to \( (1, 1, 1) \).  
+        Let \( \beta \) be the path from \( (0, 0, 0) \) to \( (1, 1, 1) \) directly along the diagonal of the cube.  
+        Find the values of the line integrals  
+        \[
+        \int_{\alpha} \mathbf{F} \cdot d\mathbf{s}, \quad 
+        \int_{\alpha} \mathbf{G} \cdot d\mathbf{s}, \quad 
+        \int_{\beta} \mathbf{F} \cdot d\mathbf{s}, \quad 
+        \int_{\beta} \mathbf{G} \cdot d\mathbf{s}.
+        \]
+    \end{enumerate}
+\end{prob}
+% \begin{proof}
+%     \begin{enumerate}
+%         \item[(a)] $F$ is not conservative, $G$ is conservative. One can verify this by checking
+%         \begin{equation*}
+%             \nabla\times F\neq 0, \quad \nabla\times G=0
+%         \end{equation*}
+%         \item[(b)] Potential for $G$ can be given by 
+%         \begin{equation*}
+%             g(x,y,z)=\frac{1}{4}x^4+\frac{1}{4}y^4-\frac{3}{2}x^2y^2+\frac{1}{2}z^2
+%         \end{equation*}
+%         \item[(c)] Because $G$ is conservative, we know the line integral only depends on the endpoints: 
+%         \begin{equation*}
+%             \int_\alpha G\cdot ds=\int_\beta G\cdot ds=g(1,1,1)-g(0,0,0)=-\frac{1}{2}
+%         \end{equation*}
+%         For $F$, one would have to parametrize each line segment and evaluate, for example, we parametrize $\beta$ by 
+%         \begin{equation*}
+%             \beta(t)=(t,t,t), 0\leq t\leq 1
+%         \end{equation*}
+%         and 
+%         \begin{equation*}
+%             \int_\beta F\cdot ds=\int_0^1(t^2, -t^2, t^2)\cdot \beta'(t)=\int_0^1(t^2, -t^2, t^2)\cdot(1,1,1)dt=\frac{1}{3}
+%         \end{equation*}
+%         Similarly, you do this for every segment of $\alpha$ and get 
+%         \begin{equation*}
+%             \int_\alpha F\cdot ds=0
+%         \end{equation*}
+%     \end{enumerate}
+% \end{proof}
+
+
+
+
+\chapter{Answer Key}
+
+
+
+
+\section{Chapter 1}
+
+\section*{Chapter 1 Review (Page 70)}
+\begin{itemize}
+    \item Exercise 12
+\end{itemize}
+
+
+\begin{prob}[1]
+    Let \( \mathbf{v} = 3\mathbf{i} + 4\mathbf{j} + 5\mathbf{k} \) and \( \mathbf{w} = \mathbf{i} - \mathbf{j} + \mathbf{k} \). Compute  
+    \( \mathbf{v} + \mathbf{w},\; 3\mathbf{v},\; 6\mathbf{v} + 8\mathbf{w},\; -2\mathbf{v},\; \mathbf{v} \cdot \mathbf{w},\; \mathbf{v} \times \mathbf{w} \).  
+    Interpret each operation geometrically by graphing the vectors.
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item \begin{equation*}
+            v+w=(4, 3, 6)
+        \end{equation*}
+        \item \begin{equation*}
+            3v=(9, 12, 15)
+        \end{equation*}
+        \item \begin{equation*}
+            6v+8w=(26, 16, 38)
+        \end{equation*}
+        \item \begin{equation*}
+            -2v=(-6, -8, -10)
+        \end{equation*}
+        \item \begin{equation*}
+            v\dot w=3-4+5=4
+        \end{equation*}
+        \item \begin{equation*}
+            v\times w=\det\left|\begin{matrix}
+                i&j&k\\
+                3&4&5\\
+                1&-1&1
+            \end{matrix}\right|=(9, 2, -7)
+        \end{equation*}
+    \end{enumerate}
+\end{proof}
+
+\begin{prob}[4]
+    \begin{enumerate}
+        \item[(a)] Find the equation of the line through \( (0, 1, 0) \) in the direction of \( 3\mathbf{i} + \mathbf{k} \).  
+        \item[(b)] Find the equation of the line passing through \( (0, 1, 1) \) and \( (0, 1, 0) \).  
+        \item[(c)] Find an equation for the plane perpendicular to the vector \( (-1, 1, -1) \) and passing through the point \( (1, 1, 1) \).
+    \end{enumerate}
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item[(a)] The equation is given by 
+        \begin{equation*}
+            l_1(t)=(0,1,0)+t(3, 0, 1)
+        \end{equation*}
+        \item[(b)] The equation is given by 
+        \begin{equation*}
+            l_2(t)=(0,1,1)+t(0, 0, -1)
+        \end{equation*}
+        \item[(c)] The equation of the plane is given by 
+        \begin{equation*}
+            (x-1, y-1, z-1)\cdot (-1, 1, -1)=0
+        \end{equation*}
+        simplifying we get 
+        \begin{equation*}
+            x-y+z=1
+        \end{equation*}
+    \end{enumerate}
+\end{proof}
+
+
+
+\begin{prob}[12]
+    Show that three vectors \( \mathbf{a}, \mathbf{b}, \mathbf{c} \) lie in the same plane through the origin if and only if there are three scalars \( \alpha, \beta, \gamma \), not all zero, such that
+    \[
+        \alpha \mathbf{a} + \beta \mathbf{b} + \gamma \mathbf{c} = \mathbf{0}.
+    \]
+\end{prob}
+
+
+\begin{prob}[27]
+    \begin{enumerate}
+        \item[(a)] Prove that the area of the triangle in the plane with vertices \((x_1, y_1)\), \((x_2, y_2)\), \((x_3, y_3)\) is the absolute value of  
+        \[
+            \frac{1}{2} \begin{vmatrix}
+            1 & 1 & 1 \\
+            x_1 & x_2 & x_3 \\
+            y_1 & y_2 & y_3
+            \end{vmatrix}.
+        \]
+        \item[(b)] Find the area of the triangle with vertices \((1, 2)\), \((0, 1)\), \((-1, 1)\).
+    \end{enumerate}
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item[(a)] The area of the triangle is the half of the area of the paralellogram spanned by the vertices. (Please write out details in your proof).
+        \item[(b)] Using the result in (a), we get the area is $\frac{\sqrt{11}}{2}$.
+    \end{enumerate}
+\end{proof}
+
+
+\begin{prob}[28]
+    Convert the following points from Cartesian to cylindrical and spherical coordinates and plot:  
+
+    \begin{itemize}
+        \item[(a)] \((0, 3, 4)\)
+        \item[(b)] \((-\sqrt{2}, 1, 0)\)
+        \item[(c)] \((0, 0, 0)\)
+        \item[(d)] \((-1, 0, 1)\)
+        \item[(e)] \((-2\sqrt{3}, -2, 3)\)
+    \end{itemize}
+\end{prob}
+\begin{proof}
+    The cylindrical cooridnate is the $3$-tuple $(r,\theta, z)$ such that 
+    \begin{equation*}
+        x=r\cos\theta, y=r\sin\theta, z=z
+    \end{equation*}
+    and the spherical coordinate is such that $(\rho,\theta,\phi)$
+    \begin{equation*}
+        x=\rho\sin\phi\cos\theta, y=\rho\sin\phi\sin\theta, z=\rho\cos\phi
+    \end{equation*}
+    For example, for (a), you get 
+    \begin{equation*}
+        (r,\theta, z)=(3, \pi/2, 4)
+    \end{equation*}
+    and 
+    \begin{equation*}
+        (\rho,\theta,\phi)=(5, \arccos 4/5, \pi/2)
+    \end{equation*}
+    and so on $\dots$
+\end{proof}
+
+
+
+
+\begin{prob}[36]
+    Find the volume of the parallelepiped spanned by the vectors  
+\[
+\mathbf{u} = (1, 0, 1), \quad \mathbf{v} = (1, 1, 1), \quad \text{and} \quad \mathbf{w} = (-3, 2, 0).
+\]
+\end{prob}
+\begin{proof}
+    It is given by the following:
+    \begin{equation*}
+        |u\cdot(v\times w)|=3
+    \end{equation*}
+\end{proof}
+
+
+\begin{prob}[52]
+    Find a unit vector that has the following property:
+    parallel to the line \( x = 3t + 1, \; y = 16t - 2, \; z = -(t + 2) \)
+\end{prob}
+\begin{proof}
+    The direction of the line is along the vector 
+    \begin{equation*}
+        v=(3, 16, -1)
+    \end{equation*}
+    Normalizing, we get 
+    \begin{equation*}
+        \left(\frac{3}{\sqrt{266}}, \frac{16}{\sqrt{266}}, -\frac{1}{\sqrt{266}}\right)
+    \end{equation*}
+\end{proof}
+
+
+
+\begin{prob}[53]
+    Find a unit vector that has the following property: 
+    orthogonal to the plane \( x - 6y + z = 12 \).
+\end{prob}
+\begin{proof}
+    \begin{equation*}
+        n=\frac{(1, -6, 1)}{\|(1, -6, 1)\|}=\left(\frac{1}{\sqrt{38}}, -\frac{6}{\sqrt{38}}, \frac{1}{\sqrt{38}}\right)
+    \end{equation*}
+\end{proof}
+
+
+\begin{prob}[54]
+    Find a unit vector that has the following property:
+    parallel to both the planes \( 8x + y + z = 1 \) and \( x - y - z = 0 \).
+\end{prob}
+\begin{proof}
+    It suffices to find normal vectors $n_1, n_2$ to two planes and take the cross product:
+    \begin{equation*}
+        n_1=(8,1,1), \quad n_2=(1,-1, -1)
+    \end{equation*}
+    and 
+    \begin{equation*}
+        n_1\times n_2=(0, 9, -9)
+    \end{equation*}
+    Normalizing we get 
+    \begin{equation*}
+        n=\left(0, \frac{1}{\sqrt{2}}, -\frac{1}{\sqrt{2}}\right)
+    \end{equation*}
+\end{proof}
+
+
+\section{Chapter 2}
+
+\begin{prob}[2]
+    Describe some appropriate level surfaces and sections of the graphs of:
+
+    \begin{enumerate}
+        \item[(a)] \( f(x, y, z) = 2x^2 + y^2 + z^2 \)
+        \item[(b)] \( f(x, y, z) = x^2 \)
+        \item[(c)] \( f(x, y, z) = xyz \)
+    \end{enumerate}
+\end{prob}
+\begin{proof}
+    Good luck with this one.
+\end{proof}
+
+\begin{prob}[3]
+    Compute the derivative \( Df(\mathbf{x}) \) of each of the following functions:
+
+    \begin{enumerate}
+        \item[(a)] \( f(x, y) = (x^2y, e^{-xy}) \)
+        \item[(b)] \( f(x) = (x, x) \)
+        \item[(c)] \( f(x, y, z) = e^x + e^y + e^z \)
+        \item[(d)] \( f(x, y, z) = (x, y, z) \)
+    \end{enumerate}
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item[(a)] The derivative matrix is 
+        \begin{equation*}
+            Df(x,y)=\begin{bmatrix}
+                2xy&x^2\\
+                -ye^{-xy}&-xe^{-xy}
+            \end{bmatrix}
+        \end{equation*}
+        \item[(b)] The derivative matrix is 
+        \begin{equation*}
+            Df(x)=\begin{bmatrix}
+                1\\
+                1
+            \end{bmatrix}
+        \end{equation*}
+        \item[(c)] The derivative matrix is 
+        \begin{equation*}
+            \begin{bmatrix}
+                e^x&e^y&e^z
+            \end{bmatrix}
+        \end{equation*}
+        \item[(d)] The derivative matrix is
+        \begin{equation*}
+            \begin{bmatrix}
+                1&0&0\\
+                0&1&0\\
+                0&0&1
+            \end{bmatrix}
+        \end{equation*}
+    \end{enumerate}
+\end{proof}
+
+\begin{prob}[5]
+    Let \( f(u, v) = (\cos u, v + \sin u) \) and  
+    \( g(x, y, z) = (x^2 + \pi y^2, xz) \). Compute \( D(f \circ g) \) at \((0, 1, 1)\) using the chain rule.
+\end{prob}
+\begin{proof}
+    Using the chain rule, we get 
+    \begin{align*}
+        D(f\circ g)(0,1,1)&=Df(g(x_0))Dg(x_0)\\
+        &=Df(\pi, 0)Dg(0,1,1)\\
+        &=\begin{bmatrix}
+            0&0\\
+            -1&1
+        \end{bmatrix}\begin{bmatrix}
+            0&2\pi &0\\
+            1&0&0
+        \end{bmatrix}\\
+        &=\begin{bmatrix}
+            0&0&0\\
+            1&-2\pi&0
+        \end{bmatrix}
+    \end{align*}
+\end{proof}
+
+\begin{prob}[20]
+    Let \( f: \mathbb{R}^2 \rightarrow \mathbb{R}^4 \) and \( g: \mathbb{R}^2 \rightarrow \mathbb{R}^2 \) be given by
+    \[
+    f(x, y) = (x^2 - y^2, 0, \sin(xy), 1)
+    \]
+    and
+    \[
+    g(x, y) = (ye^{x^2}, xe^{y^2}).
+    \]
+    Compute \( D(f \circ g)(1, 2) \).
+\end{prob}
+\begin{proof}
+    We use chain rule again just like the above:
+    \begin{align*}
+        D(f\circ g)(1,2)&=Df(2e, e^4)Dg(1,2)
+    \end{align*}
+    and you compute :)
+\end{proof}
+
+
+\begin{prob}[24]
+    Find the plane tangent to the surface \( z = x^2 + y^2 \) at the point \( (1, -2, 5) \). Explain the geometric significance, for this surface, of the gradient of \( f(x, y) = x^2 + y^2 \) (see Exercise 23).
+\end{prob}
+\begin{proof}
+    The surface is $x^2+y^2-z=0$, let $g=x^2+y^2-z$, and the gradient is normal to the surface:
+    \begin{equation*}
+        \nabla g=(2x, 2y, -1)
+    \end{equation*}
+    Thus the plane tangent to the surface is 
+    \begin{equation*}
+        (2, -4, -1)\cdot (x-1, y+2, z-5)=0
+    \end{equation*}
+    simplifying we get 
+    \begin{equation*}
+        2x-4y-z-5=0
+    \end{equation*}
+\end{proof}
+
+
+\begin{prob}[26]
+    Find the directional derivative of the given function at the given point and in the direction of the given vector.
+
+    \begin{enumerate}
+        \item[(a)] \( f(x, y, z) = e^x \cos(yz), \quad p_0 = (0, 0, 0), \quad \mathbf{v} = (2, 1, -2) \)
+        \item[(b)] \( f(x, y, z) = xy + yz + zx, \quad p_0 = (1, 1, 2), \quad \mathbf{v} = (10, -1, 2) \)
+    \end{enumerate}
+\end{prob}
+\begin{proof}
+    The directional derivative is given by 
+    \begin{equation*}
+        D_vf(p_0)=\nabla f(p_0)\cdot\frac{v}{\|v\|}
+    \end{equation*}
+    I will not compute them here, but it is important that you normalize the direction vector $v$!
+\end{proof}
+
+
+\begin{prob}[30]
+    Find the direction in which the function \( w = x^2 + xy \) increases most rapidly at the point \((-1, 1)\). What is the magnitude of \( \nabla w \) at this point? Interpret this magnitude geometrically.
+\end{prob}
+\begin{proof}
+    The gradient is the direction that $w$ increases most rapidly, i.e., 
+    \begin{equation*}
+        \nabla w=(2x+y, x)
+    \end{equation*}
+    evaluated at $(-1,1)$, we get 
+    \begin{equation*}
+        \nabla w=(-1, -1), \quad |\nabla w|=\sqrt{2}
+    \end{equation*}
+    This magnitude is the maximum rate of change of $w$ at this point.
+\end{proof}
+
+\begin{prob}[40]
+    Compute an equation for the plane tangent to the graph of
+    \[
+    f(x, y) = \frac{e^x}{x^2 + y^2}
+    \]
+    at \( x = 1, y = 2 \).
+\end{prob}
+\begin{proof}
+    The tangent plane to the graph of $f$ is given by 
+    \begin{equation*}
+        z=f(1,2)+\frac{\partial f}{\partial x}(1,2)(x-1)+\frac{\partial f}{\partial y}(1,2)(y-2)
+    \end{equation*}
+\end{proof}
+
+
+\begin{prob}[59]
+    \begin{enumerate}
+        \item[(a)] In what direction is the directional derivative of  
+        \[
+        f(x, y) = \frac{x^2 - y^2}{x^2 + y^2}
+        \]
+        at \((1, 1)\) equal to zero?  
+        \item[(b)] How about at an arbitrary point \((x_0, y_0)\) in the first quadrant?  
+        \item[(c)] Describe the level curves of \(f\). In particular, discuss them in terms of the result of part (b).
+    \end{enumerate}
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item[(a)] We first compute $\nabla f(1,1)=(1,-1)$, thus a directional vector such as $(1,1)$ would make the directional derivative of $f$ zero (by taking the dot product).
+        \item[(b)] You would do the same process as in (a) to obtain a general form for each $(x_0, y_0)$.
+        \item[(c)] The level curves of $f$ are straight lines through the origin.
+    \end{enumerate}
+\end{proof}
 
 
 
 
 
 
+\section{Chapter 3}
+\begin{prob}[3]
+    Let \( f(x, y) = x^2 - y^2 - xy + 5 \). Find all critical points of \( f \) and determine whether they are local minima, local maxima, or saddle points.
+\end{prob}
+\begin{proof}
+    To find the critical points, we need to know where $f_x=2x-y$ and $f_y=-2y-x$ both vanish. Well, if $2x-y=0$ and $-2y-x=0$, then $x=-2y$ and $y=2x$, so
+    \[x=-2(2x)=-4x,\]
+    so $x=0$, so $y=0$. Thus, the only critical point is $(0,0)$.
 
-% \chapter{Answer Key}
+    It remains to determine what kind of critical point $(0,0)$ is. Well, $f_{xx}=2$, so $(0,0)$ cannot be a local maximum, and $f_{yy}=-2$, so $(0,0)$ cannot be a local minimum.
+\end{proof}
+
+\begin{prob}[5]
+    Find the second-order Taylor polynomial for  
+    \[
+    f(x, y) = y^2 e^{-x^2} \text{ at } (1, 1).
+    \]
+\end{prob}
+\begin{proof}
+    The second-order Taylor polynomial is
+    \[f(1,1)+(x-1)f_x(1,1)+(y-1)f_y(1,1)+\frac12(x-1)^2f_{xx}(1,1)+\frac12(y-1)^2f_{yy}(1,1)+(x-1)(y-1)f_{xy}(1,1).\]
+    Thus, we see that we have many derivatives to compute.
+    \begin{itemize}
+        \item Note $f(1,1)=e^{-1}$.
+        \item Note $f_x=-2xy^2e^{-x^2}$, so $f_x(1,1)=-2e^{-1}$.
+        \item Note $f_y=2ye^{-x^2}$, so $f_y(1,1)=2e^{-1}$.
+        \item Note $f_{xx}=\left(4x^2-2\right)y^2e^{-x^2}$, so $f_{xx}(1,1)=2e^{-1}$.
+        \item Note $f_{yy}=2e^{-x^2}$, so $f_{yy}(1,1)=2e^{-1}$.
+        \item Note $f_{xy}=-4xye^{-x^2}$, so $f_{xy}(1,1)=-4e^{-1}$.
+    \end{itemize}
+    Thus, the second-order Taylor polynomial is
+    \[\frac1e\left(1-2(x-1)+2(y-1)+(x-1)^2+(y-1)^2-4(x-1)(y-1)\right).\]
+\end{proof}
+
+\begin{prob}[15]
+    \( f(x, y) = x^2 - 2xy + 2y^2 \), subject to \( x^2 + y^2 = 1 \).
+\end{prob}
+\begin{proof}
+    We use Lagrange multipliers. Our constraint function is $g(x,y)=x^2+y^2-1$, which has gradient $\nabla g=(2x,2y)$. Under this constraint, $f(x,y)=1-2xy+y^2$, which has gradient $(-2y,2y-2x)$, so there is $\lambda$ such that
+    \[\begin{cases}
+        2\lambda x=-2y, \\
+        2\lambda y=2y-2x, \\
+        x^2+y^2=1.
+    \end{cases}\]
+    The first equation gives $-\lambda x=y$, and the second equation gives $(1-\lambda)y=x$. Thus, $(1-\lambda)(-\lambda)x=x$, so $((1-\lambda)(-\lambda)-1)x=0$. Thus, either $x=0$ or $(1-\lambda)(-\lambda)=1$.
+
+    Now, plugging into $x^2+y^2=1$ for $y$ gives
+    \[\left(\lambda^2+1\right)x^2=1.\]
+    We conclude that $x$ is nonzero and equals
+    \[x=\pm\sqrt{\frac1{\lambda^2+1}}.\]
+    To simplify this, recall that $(1-\lambda)(-\lambda)=1$, so $\lambda^2-\lambda-1=0$, so $\lambda=\frac{1\pm\sqrt5}2$. Thus, $x^2=1/\left(\lambda^2+1\right)=1/(\lambda+2)$. But note $(\lambda+2)(\lambda-3)=\lambda^2-\lambda-6=-5$, so $x^2=(3-\lambda)/5$.
+
+    Recall that we want to maximize the function $x^2-2xy+2y^2$, which with $y=-\lambda x$ is $x^2\left(1+2\lambda+2\lambda^2\right)$. But $\lambda^2=\lambda+1$, so we are trying to maximize
+    \[x^2(3+4\lambda)=\frac{(3+4\lambda)(\lambda-3)}5=\frac{(4\lambda^2-9\lambda-9)}5=(\lambda+1).\]
+    Thus, the extremal values are $\lambda=\frac{3\pm\sqrt5}2$, which occur at the points $(x,y)=\pm\left(1/\sqrt{\lambda^2+1},-\lambda/\sqrt{\lambda^2+1}\right)$.
+\end{proof}
+
+\begin{prob}[17]
+    \( f(x, y) = \cos(x^2 - y^2) \), subject to \( x^2 + y^2 = 1 \).
+\end{prob}
+\begin{proof}
+    Under the constraint $x^2+y^2=1$, we have
+    \[\cos\left(x^2-y^2\right)=\cos\left(1-2y^2\right).\]
+    Because $y^2\in[0,1]$, we see that we are finding the extrema of the function $\cos$ in the interval $[-1,1]$.
+    
+    Well, the only critical points of $\cos$ are at multiples of $\pi$, so the only critical point in this interval is $0$. Accordingly, we see that the maximum occurs at $\cos0=1$, which occurs when $1-2y^2=0$, or $(x,y)=(\pm1/\sqrt2,\pm1/\sqrt2)$. Lastly, we have to check the endpoints, for which we note that $\cos1=\cos(-1)$, so $\cos1$ is the minimum, which occurs when $1-2y^2=1$, or $(x,y)=(\pm1,0)$.
+\end{proof}
+
+\begin{prob}[24]
+    Determine all values of \( k \) for which the function \( g(x, y, z) = x^2 + kxy + kxz + ky^2 + kz^2 \) has a local minimum at \( (0, 0, 0) \).
+\end{prob}
+\begin{proof}
+    To be a local minimum, $(0,0,0)$ must be a critical point, which we can compute is the case. To be a local minimum, $g_{xx}=2$ must be nonnegative (which is true), $g_{yy}=2k$ must be nonnegative (which holds if and only if $k\ge0$), and the Hessian should be nonpositive. Well, the Hessian is
+    \[\det\begin{bmatrix}
+        g_{xx} & g_{xy} & g_{xz} \\
+        g_{yx} & g_{yy} & g_{yz} \\
+        g_{zx} & g_{zy} & g_{zz}
+    \end{bmatrix}=\det\begin{bmatrix}
+        2 & k & k \\
+        k & 2k & 0 \\
+        k & 0 & 2k
+    \end{bmatrix}=8k^2-4k^3=4k^2\left(2k-1\right).\]
+    For this to be nonpositive, we see that $k\le1/2$.
+
+    Thus, we see that $g$ has a local minimum at $(0,0,0)$ automatically for $k\in(0,1/2)$. It remains to check $k\in\{0,1/2\}$. At $k=0$, the function is $g(x,y,z)=x^2$, which does not have $(0,0,0)$ as a local minimum (e.g., increasing in the $y$ direction does not change the value of $g$). At $k=1/2$,
+    \[g(x,y,z)=x^2+\frac12xy+\frac12xz+\frac12y^2+\frac12z^2=\frac18(x+2y)^2+\frac18(x+2z)^2+\frac34x^2.\]
+    We can now see that this function has a global minimum at $(0,0,0)$: the only way to get the value of $0$ is for $x+2y=x+2z=x=0$ is for $x=y=z=0$. In total, $g$ has a local minimum at $(0,0,0)$ if and only if $k\in(0,1/2]$.
+\end{proof}
+
+\begin{prob}[30]
+    Find the maximum and minimum of \( f(x, y) = xy - y + x - 1 \) on the set \( x^2 + y^2 \leq 2 \).
+\end{prob}
+\begin{proof}
+    We first find the critical points in the interior of the disk, and then we use Lagrange multipliers to find the extrema on the boundary.
+    \begin{itemize}
+        \item Note that $f_x=y+1$ and $f_y=x-1$, so the only critical point of $f$ is $(x,y)=(1,-1)$. We calculate $f(1,-1)=0$. % (x-1)(y+1)
+        \item We maximize $f(x,y)=(x-1)(y+1)$ with respect to the constraint $g(x,y)=x^2+y^2-2$. Note $\nabla f=(y+1,x-1)$ and $\nabla g=(2x,2y)$, so we want to solve the system
+        \[\begin{cases}
+            2\lambda x=y+1, \\
+            2\lambda y=x-1, \\
+            x^2+y^2=2.
+        \end{cases}\]
+        Note $x=2\lambda y+1$ from the second equation, so we receive the system
+        \[\begin{cases}
+            4\lambda^2y+2\lambda=y+1, \\
+            (2\lambda y+1)^2+y^2=2.
+        \end{cases}\]
+        The first equation gives $y=(1-2\lambda)/\left(4\lambda^2-1\right)=-1/(2\lambda+1)$ as long as $\lambda\notin\{\pm1/2\}$. Thus, provided $\lambda\notin\{\pm1/2\}$, we find $x=2\lambda+1=1/(2\lambda+1)=-y$. Along with $x^2+y^2=2$, we see that $(x,y)\in\{(-1,1),(1,-1)\}$, which have $f(1,-1)=0$ and $f(-1,1)=-4$.
+
+        It remains to handle $\lambda\in\{\pm1/2\}$. In this case, the equation $4\lambda^2y+2\lambda=y+1$ reads $2\lambda=1$, so we actually must have $\lambda=1/2$. Thus, our original system is
+        \[\begin{cases}
+            x=y+1, \\
+            y=x-1, \\
+            x^2+y^2=2.
+        \end{cases}\]
+        The first two equations are equivalent. Plugging into the third equation gives $(y+1)^2+y^2=2$, so $2y^2+2y-1=0$, so $y=\frac{-1\pm\sqrt3}2$ and so $x=y+1=\frac{1\pm\sqrt3}2$. Thus,
+        \[f(x,y)=(x-1)(y+1)=\frac{-1\pm\sqrt3}2\cdot\frac{1\pm\sqrt3}2=\frac12.\]
+    \end{itemize}
+    Gathering everything together, we see that the maximum is $1/2$, and the minimum is $-4$.
+\end{proof}
+
+\begin{prob}[38]
+    Consider the surface \( S \) given by
+    \[
+    x^2z + x \sin y + ye^{z-1} = 1.
+    \]
+    \begin{enumerate}
+        \item[(a)] Find the equation of the tangent plane to \( S \) at the point \( (1, 0, 1) \).
+        \item[(b)] Is it possible to solve the equation defining \( S \) for the variable \( y \) as a function of the variables \( x \) and \( z \) near \( (1, 0, 1) \)? Why?
+        \item[(c)] Find \( \frac{\partial y}{\partial x} \) at \( (1, 0, 1) \).
+    \end{enumerate}
+\end{prob}
+\begin{proof}
+    Define $f(x,y,z)=x^2z+x\sin y+ye^{z-1}$.
+    \begin{enumerate}
+        \item[(a)] The tangent plane is defined by $\nabla f(1,0,1)\cdot(x,y,z)=\nabla f(1,0,1)\cdot(1,0,1)$. Accordingly, we calculate
+        \[\nabla f=\left(2xz+\sin y,x\cos y+e^{z-1},x^2+ye^{z-1}\right),\]
+        so $\nabla f(1,0,1)=(2,2,1)$. Thus, the tangent plane is $2x+2y+z=3$.
+        \item[(b)] Yes. By the implicit function theorem (as in Theorem 11), it is enough to check that $f_y(1,0,1)\ne0$. But in (a), we calculated $f_y(1,0,1)=2$.
+        \item[(c)] As in (b), we may view $y$ as a function of $x$, where $z$ is constantly $1$. Setting $z=1$ leaves us with the curve
+        \[x^2+x\sin y+y=1.\]
+        Viewing $y$ as a function of $x$ and taking the derivative with respect to $x$, we get
+        \[2x+\sin y+x\sin y\cdot y'+y'=0.\]
+        Plugging in $(x,y)=(1,0)$ gives $y'=-2$.
+        \qedhere
+    \end{enumerate}
+\end{proof}
+
+
+
+
+\section{Chapter 4}
+\begin{prob}[5]
+    Calculate the tangent and acceleration vectors for the helix \( c(t) = (\cos t, \sin t, t) \) at \( t = \pi/4 \).
+\end{prob}
+\begin{proof}
+    The tangent vector is $c'(t)=(-\sin t,\cos t,1)$, which is $(-\sqrt2/2,\sqrt2/2,1)$ at $t=\pi/4$. The acceleration vector is $(-\cos t,-\sin t,0)$, which is $(-\sqrt2/2,-\sqrt2/2,0)$ at $t=\pi/4$.
+\end{proof}
+
+\begin{prob}[8]
+    \begin{enumerate}
+        \item[(a)]  Let \( c(t) \) be a path with \( \|c(t)\| = \text{constant} \); that is, the curve lies on a sphere. Show that \( c'(t) \) is orthogonal to \( c(t) \).
+        \item[(b)] Let \( c \) be a path whose speed is never zero. Show that \( c \) has constant speed if and only if the acceleration vector \( c'' \) is always perpendicular to the velocity vector \( c' \).
+    \end{enumerate}
+\end{prob}
+\begin{proof}
+    Write $c(t)=(x(t),y(t),z(t))$ throughout.
+    \begin{enumerate}
+        \item[(a)] We are given that $\lVert c(t)\rVert^2=x(t)^2+y(t)^2+z(t)^2$ is constant, so its derivative vanishes. However, the derivative is
+        \[2c(t)\cdot c'(t)=2x(t)x'(t)+2y(t)y'(t)+2z(t)z'(t).\]
+        It follows that $c'$ is orthogonal to $c$ at all times $t$.
+        \item[(b)] Consider the ``velocity path'' $c'$. By the argument of (a), we know that
+        \[\frac d{dt}\lVert c'(t)\rVert^2=2c'(t)\cdot c''(t).\]
+        Thus, $c'$ has constant magnitude if and only if its derivative vanishes, which is then equivalent to $c'$ and $c''$ being perpendicular.
+        \qedhere
+    \end{enumerate}
+\end{proof}
+
+\begin{prob}[10]
+    Let \( \mathbf{F}(x, y, z) = (\sin(xz), e^{xy}, x^2y^3z^5) \).
+
+    \begin{enumerate}
+        \item[(a)] Find the divergence of \( \mathbf{F} \).
+        \item[(b)] Find the curl of \( \mathbf{F} \).
+    \end{enumerate}
+\end{prob}
+\begin{proof}
+    Set $F_x=\sin(xz)$ and $F_y=e^{xy}$ and $F_z=x^2y^3z^5$ for brevity.
+    \begin{enumerate}
+        \item[(a)] We calculate
+        \begin{align*}
+            \nabla\cdot\mathbf F &= \nabla\cdot\mathbf F \\
+            &= \frac{\partial F_x}{\partial x}+\frac{\partial F_y}{\partial y}+\frac{\partial F_z}{\partial z} \\
+            &= z\cos xz+xe^{xy}+5x^2y^3z^4.
+        \end{align*}
+        \item[(b)] We calculate
+        \begin{align*}
+            \nabla\times\mathbf F &= \det\begin{bmatrix}
+                i & j & k \\
+                \partial/\partial_x & \partial/\partial_y & \partial/\partial_z \\
+                \sin xz & e^{xy} & x^2y^3z^5
+            \end{bmatrix} \\
+            &= \left(3x^2y^2z^5,-2xy^3z^5+x\cos xz,ye^{xy}\right).
+        \end{align*}
+    \end{enumerate}
+\end{proof}
+
+\begin{prob}[13]
+    Express the arc length of the curve \( x^2 = y^3 = z^5 \) between \( x = 1 \) and \( x = 4 \) as an integral, using a suitable parametrization.
+\end{prob}
+\begin{proof}
+    For convenience, we note that each $x$ in the region $1\le x\le 4$ admits a unique $t$ for which $x=t^{15}$, where $1\le t\le 4^{1/15}$. Then $y=x^{2/3}=t^{10}$ and $z=x^{2/5}=t^6$. Thus, we may parameterize the curve by
+    \[c(t)=\left(t^{15},t^{10},t^{6}\right).\]
+    Thus, the arc length is
+    \begin{align*}
+        \int_1^{4^{1/15}}\lVert{c'(t)}\rVert\,dt &= \int_1^{4^{1/15}}\sqrt{\left(15t^{14}\right)^2+\left(10t^9\right)^2+\left(6t^5\right)^2}\,dt \\
+        &= \int_1^{4^{1/15}}\sqrt{225t^{28}+100t^{18}+36t^{10}}\,dt.
+    \end{align*}
+    We remark that different parameterizations will yield different (but equal) integrals. For example, the parameterization $\left(t,t^{2/3},t^{2/5}\right)$ gives the integral
+    \[\int_{1}^{4}\sqrt{1+\frac{4}{9}t^{-\frac{2}{3}}+\frac{4}{25}t^{-\frac{6}{5}}}\,dt.\]
+\end{proof}
+
+\begin{prob}[34]
+    Let a particle of mass \( m \) move along the elliptical helix  
+    \[
+    c(t) = (4 \cos t, \sin t, t).
+    \]  
+
+    \begin{enumerate}
+        \item[(a)] Find the equation of the tangent line to the helix at \( t = \pi / 4 \).  
+        \item[(b)] Find the force acting on the particle at time \( t = \pi / 4 \).  
+        \item[(c)] Write an expression (in terms of an integral) for the arc length of the curve \( c(t) \) between \( t = 0 \) and \( t = \pi / 4 \).
+    \end{enumerate}
+\end{prob}
+\begin{proof}
+    Throughout, it will be useful to know that $c'(t)=(-4\sin t,\cos t,1)$.
+    \begin{enumerate}
+        \item[(a)] The velocity at $t=\pi/4$ is $c'(\pi/4)=(-2\sqrt2,\sqrt2/2,1)$, so the tangent line is given by
+        \[\left(2\sqrt2-2\sqrt2\cdot t,\frac{\sqrt2}2+\frac{\sqrt2}2\cdot t,\frac\pi4+t\right).\]
+        Alternatively, this is cut out by the equations
+        \[\frac{x-2\sqrt2}{-2\sqrt2}=\frac{y-\sqrt2/2}{\sqrt2/2}=z-\frac\pi4.\]
+
+        \item[(b)] The acceleration is $c''(t)=(-4\cos t,-\sin t,0)$, so the force is $(-4m\cos t,-m\sin t,0)$.
+
+        \item[(c)] The arc length is
+        \begin{align*}
+            \int_0^{\pi/4}\lVert c'(t)\rVert \,dt &= \int_0^{\pi/4}\sqrt{\left(-4\sin t\right)^2+(\cos t)^2+1} \,dt \\
+            &= \int_0^{\pi/4}\sqrt{16\sin^2 t+\cos^2 t+1} \,dt.
+        \end{align*}
+    \end{enumerate}
+\end{proof}
+
+\begin{prob}[36]
+    \begin{enumerate}
+        \item[(a)] Write in parametric form the curve that is the intersection of the surfaces \( x^2 + y^2 + z^2 = 3 \) and \( y = 1 \).
+        \item[(b)]  Find the equation of the line tangent to this curve at \((1, 1, 1)\).
+        \item[(c)] Write an integral expression for the arc length of this curve. What is the value of this integral?
+    \end{enumerate}
+\end{prob}
+\begin{proof}
+    The given curve is the intersection of the surfaces $x^2+y^2+z^2=3$ and $y=1$. Plugging in $y$ means that this curve is alternatively given by the intersection of the cylinder $x^2+z^2=2$ and the plane $y=1$, which is a circle.
+    \begin{enumerate}
+        \item[(a)] The circle given as the intersection of $x^2+z^2=2$ and $y=1$ can be parameterized by
+        \[c(t)=\left(\sqrt2\cos t,\sqrt2\sin t,1\right).\]
+        \item[(b)] Using the parameterization of (a), the point $(1,1,1)$ occurs at $t=\pi/4$. Here, the velocity
+        \[c'(t)=\left(-\sqrt2\sin t,\sqrt2\cos t,0\right)\]
+        equals $(-1,1,0)$, so the tangent line is given by
+        \[(1-t,1+t,1).\]
+        Alternatively, the tangent line is given by the equations
+        \[\begin{cases}1-x=y-1,\\ z=1.\end{cases}\]
+        \item[(c)] Using the velocity computed in (b), the arc length is
+        \begin{align*}
+            \int_0^{2\pi}\lVert c'(t)\rVert\,dt &= \int_0^{2\pi}\sqrt{\left(-\sqrt2\sin t\right)^2+\left(\sqrt2\cos t\right)^2+0}\,dt \\
+            &= \int_0^{2\pi}\sqrt{2\sin^2t+2\cos^2t}\,dt.
+        \end{align*}
+        This integral evaluates to $\int_0^{2\pi}\sqrt2\,dt=2\sqrt2\pi$.
+        \qedhere
+    \end{enumerate}
+\end{proof}
+
+
+
+
+
+\section{Chapter 5}
+\begin{prob}[3]
+    Evaluate the integral
+    \[
+    \int_{0}^{1} \int_{\sqrt{x}}^{1} (x+y)^{2} \, dy \, dx.
+    \]
+\end{prob}
+\begin{proof}
+    The domain of integration is the region in the first quadrant above $y=\sqrt x$ but below $y=1$. Thus, we may change the order of integration to instead compute
+    \[\int_0^1\int_{0}^{y^2}(x+y)^2\,dx\,dy.\]
+    Expanding $(x+y)^2=x^2+2xy+y^2$ and valuating the inner integral gives
+    \[\int_{0}^{1}\left(\frac{y^{6}}{3}+y^{5}+y^{4}\right)dy.\]
+    This is $\frac1{21}+\frac16+\frac15=\frac{29}{70}$.
+\end{proof}
+
+\begin{prob}[9]
+    Evaluate the integral
+    \[
+    \int_{0}^{1} \int_{0}^{x} \int_{0}^{y} (y+z) \, dz \, dy \, dx.
+    \]
+\end{prob}
+\begin{proof}
+    Evaluating the integral with respect to $z$ gives
+    \[\int_0^1\int_0^x\frac32y^2\,dy\,dx.\]
+    Evaluating the integral with respect to $y$ gives
+    \[\int_0^1\frac12x^3\,dx.\]
+    This is $\frac18$.
+\end{proof}
+
+\begin{prob}[11]
+    Evaluate
+    \[
+    \int_{0}^{1} \int_{0}^{(\arcsin y)/y} y \cos(xy) \, dx \, dy.
+    \]
+\end{prob}
+\begin{proof}
+    The integral of $\cos x$ with respect to $x$ is $\sin x+C$, so the inner integral is
+    \[\int_{0}^{1} \sin(xy)\bigg|_{0}^{(\arcsin y)/y} \, dy=\int_0^1\sin(\arcsin y)\,dy.\]
+    Note $\sin\arcsin y=y$ in the region $y\in[0,1]$, so the integral is $\frac12$.
+\end{proof}
+
+\begin{prob}[16]
+    Find
+    \[
+    \iint_{D} y[1-\cos(\pi x/4)] \, dx \, dy,
+    \]
+    where \( D \) is the region in Figure 5.R.1.
+\end{prob}
+\begin{proof}
+    The region $D$ is in the first quadrant bounded below by $y=\sqrt x$ and above by $y=2$. It will turn out to be easier to integrate against $x$ first (because $\cos$ is the most complicated function present). Thus, we write the integral as
+    \[\int_0^2\int_0^{y^2}y\left(1-\cos\frac{\pi x}4\right)\,dx\,dy=\int_{0}^{2}y\left(y^{2}-\frac{4}{\pi}\sin\frac{\pi y^{2}}{4}\right)dy.\]
+    This is
+    \[\frac{y^4}4\bigg|_0^2+\frac{8}{\pi^2}\cos\frac{\pi y^2}4\bigg|_0^2,\]
+    which is $4-\frac{16}{\pi^2}$.
+\end{proof}
+
+\begin{prob}[21]
+    Evaluate the integral
+    \[
+    \int_{0}^{1} \int_{0}^{x^2} \left(x^2 + xy - y^2\right) \, dy \, dx.
+    \]
+    Sketch and identify the type of the region (corresponding to the way the integral is written).
+\end{prob}
+\begin{proof}
+    We will not provide a sketch, but we will say that the region is in the first quadrant bounded above by $y=x^2$ and to the right by $x=1$. Evaluating the inner integral gives
+    \[\int_0^1\left(x^2y+\frac12xy^2-\frac13y^3\bigg|_0^{x^2}\right)\,dx=\int_0^1\left(x^4+\frac12x^5-\frac13x^6\right)\,dx.\]
+    This is $\frac15+\frac1{12}-\frac1{21}=\frac15+\frac1{28}=\frac{33}{140}$.
+\end{proof}
+
+\begin{prob}[23]
+    Evaluate the integral
+    \[
+    \int_{0}^{1} \int_{x^2}^{x} (x + y)^2 \, dy \, dx.
+    \]
+    Sketch and identify the type of the region (corresponding to the way the integral is written).
+\end{prob}
+\begin{proof}
+    We will again not provide a sketch, but we will say that the region is in the first quadrant bounded above by $y=x$ and bounded below by $y=x^2$; this region lives in the unit square $[0,1]\times[0,1]$. Now, expanding $(x+y)^2=x^2+2xy+y^2$, we see that evaluating the inner integral gives
+    \[\int_0^1\left(x^2y+xy^2+\frac13y^3\bigg|_{x^2}^x\right)\,dx=\int_0^1\left(x^3+x^3+\frac13x^3-x^4-x^5-\frac13x^6\right)\,dx.\]
+    This is $\frac7{12}-\frac15-\frac16+\frac1{21}=\frac{23}{60}-\frac{1}{6}-\frac{1}{21}=\frac{13}{60}-\frac{1}{21}=\frac{71}{420}$.
+\end{proof}
+
+\begin{prob}[33]
+    Prove:
+    \[
+    \int_{0}^{x} \left[ \int_{0}^{t} F(u) \, du \right] dt = \int_{0}^{x} (x - u) F(u) \, du.
+    \]
+\end{prob}
+\begin{proof}
+    We change the order of integration. The region of integration is bounded by $u,t\ge0$ and $u\le t\le x$. Thus, we could integrate with respect to $t$ first, yielding
+    \[\int_0^x\int_u^xF(u)\,dt\,du.\]
+    Evaluating the inner integral gives $(x-u)F(u)$, so the result follows.
+\end{proof}
+
+
+\section{Chapter 6}
+
+
+
+\begin{prob}[1]
+    \begin{enumerate}
+        \item[(a)]  Find a linear transformation taking the square \( S = [0, 1] \times [0, 1] \) to the parallelogram \( P \) with vertices \((0, 0), (2, 0), (1, 2), (3, 2)\).  
+        \item[(b)]  Write down a change of variables formula appropriate to the transformation you found in part (a).
+    \end{enumerate}
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item[(a)]  The matrix is given by 
+        \begin{equation*}
+            T=\begin{pmatrix}
+                2&1\\
+                0&2
+            \end{pmatrix}
+        \end{equation*}
+        \item[(b)] Writing the linear transformation as $T(u,v)=(2u+v, 2v)\coloneq(x,y)$, we fine 
+        \begin{equation*}
+            \det(J)=\det\left|\begin{matrix}
+                \frac{\partial x}{\partial u}&\frac{\partial x}{\partial v}\\
+                \frac{\partial y}{\partial u}&\frac{\partial y}{\partial v}
+            \end{matrix}\right|=4
+        \end{equation*}
+        Thus the change of variable formula is 
+        \begin{equation*}
+            dxdy=4dudv
+        \end{equation*}
+    \end{enumerate}
+\end{proof}
+
+\begin{prob}[4]
+    In parts (a) to (d), make the indicated change of variables. (Do not evaluate.)
+
+    \begin{enumerate}
+        \item[(a)] \(\displaystyle \int_{0}^{1} \int_{-1}^{1} \int_{-\sqrt{1-y^2}}^{\sqrt{1-y^2}} (x^2 + y^2)^{1/2} \, dx \, dy \, dz\), cylindrical coordinates
+        \item[(b)] \(\displaystyle \int_{-1}^{1} \int_{-\sqrt{1-y^2}}^{\sqrt{1-y^2}} \int_{-\sqrt{4-x^2-y^2}}^{\sqrt{4-x^2-y^2}} xyz \, dz \, dy \, dx\), cylindrical coordinates
+        \item[(c)] \(\displaystyle \int_{-\sqrt{2}}^{\sqrt{2}} \int_{-\sqrt{2-y^2}}^{\sqrt{2-y^2}} \int_{\sqrt{x^2+y^2}}^{\sqrt{4-x^2-y^2}} z^2 \, dz \, dx \, dy\), spherical coordinates
+        \item[(d)] \(\displaystyle \int_{0}^{1} \int_{0}^{\pi/4} \int_{0}^{2\pi} \rho^3 \sin 2\phi \, d\theta \, d\phi \, d\rho\), rectangular coordinates
+    \end{enumerate}
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item[(a)] 
+        \begin{equation*}
+            \int_0^1\int_0^{2\pi}\int_{0}^1r^2drd\theta dz
+        \end{equation*}
+        \item[(b)]
+        \begin{equation*}
+            \int_0^{2\pi}\int_0^1\int_{\sqrt{4-r^2}}^{\sqrt{4-r^2}}r^3\sin\theta\cos\theta zdzdrd\theta
+        \end{equation*}
+        \item[(c)] Spherical coordinates has $(x,y,z)=(\rho\sin\varphi\cos\theta,\rho\sin\varphi\sin\theta,\rho\cos\varphi)$, so
+        \[dx\,dy\,dz=\rho^2\sin\varphi\,d\rho\,d\theta\,d\varphi.\]
+        Now, the region lives above the circle $x^2+y^2\le2$ as contained in a large ellipse $x^2+y^2+z^2\le4$ but outside $z^2=x^2+y^2$. Thus, the integral is
+        \[\int_0^{2\pi}\int_0^{\pi/4}\int_0^4\rho^4\sin\varphi\cos^2\varphi\,d\rho\,d\varphi\,d\theta.\]
+        \item[(d)] As in (c), we note that $z\,dx\,dy\,dz=\rho^3\sin\varphi\cos\varphi\,d\rho\,d\varphi\,d\theta$. The region here is analogous to the region in (c), so we receive the integral
+        \[\int_{-1}^{1} \int_{-\sqrt{1-y^2}}^{\sqrt{1-y^2}} \int_{\sqrt{x^2+y^2}}^{\sqrt{1-x^2-y^2}} 2z \, dz \, dx \, dy.\]
+    \end{enumerate}
+\end{proof}
+
+\begin{prob}[8]
+    Let \( C_1 \) and \( C_2 \) be two cylinders of infinite extent, of diameter 2, and with axes on the \( x \) and \( y \) axes, respectively. Find the volume of their intersection, \( C_1 \cap C_2 \).
+\end{prob}
+\begin{proof}
+    The two cylinders are given by the inequalities $x^2+z^2\le1$ and $y^2+z^2\le1$. We will integrate our volume against $z\in[-1,+1]$. Now, for each $z$, the plane at this value of $z$ intersects $C_1\cap C_2$ by the inequalities
+    \[\begin{cases}
+        \left|x\right|\le\sqrt{1-z^2}, \\
+        \left|y\right|\le\sqrt{1-z^2}.
+    \end{cases}\]
+    Thus, our volume is
+    \[\int_{-1}^1\int_{-\sqrt{1-z^2}}^{\sqrt{1-z^2}}\int_{-\sqrt{1-z^2}}^{\sqrt{1-z^2}}\,dx\,dy\,dz.\]
+    Evaluating the inner integrals reveals this is
+    \[4\int_{-1}^1\left(1-z^2\right)\,dz=8\int_0^1\left(1-z^2\right)\,dz.\]
+    This evaluates to $8\left(1-\frac13\right)=\frac{16}3$.
+\end{proof}
+
+\begin{prob}[22]
+    Evaluate
+    \[
+    \iint_{B} e^{-x^2-y^2} \, dx \, dy,
+    \]
+    where \( B \) consists of those \( (x, y) \) satisfying \( x^2 + y^2 \leq 1 \) and \( y \leq 0 \).
+\end{prob}
+\begin{proof}
+    Using polar cooridnates, we get 
+    \begin{align*}
+        \iint_{B} e^{-x^2-y^2} \, dx \, dy&=\int_{\pi}^{2\pi}\int_0^1e^{-r^2}rdrd\theta\\
+        &=\frac{\pi}{2}\left(1-\frac{1}{e}\right)
+    \end{align*}
+\end{proof}
+
+\begin{prob}[24]
+    Evaluate
+    \[
+    \iiint_{D} (x^2 + y^2 + z^2) xyz \, dx \, dy \, dz
+    \]
+    over each of the following regions.
+
+    \begin{enumerate}
+        \item[(a)] The sphere \( D = \{(x, y, z) \mid x^2 + y^2 + z^2 \leq R^2\} \)
+        \item[(b)] The hemisphere \( D = \{(x, y, z) \mid x^2 + y^2 + z^2 \leq R^2 \text{ and } z \geq 0\} \)
+        \item[(c)] The octant \( D = \{(x, y, z) \mid x \geq 0, y \geq 0, z \geq 0, \text{ and } x^2 + y^2 + z^2 \leq R^2\} \)
+    \end{enumerate}
+\end{prob}
+\begin{proof}
+    We will convert to spherical coordinates. Note
+    \begin{align*}
+        \left(x^2+y^2+z^2\right)xyz\,dx\,dy\,dz &= \rho^2\cdot\rho^3\sin^2\varphi\cos\theta\sin\theta\cos\varphi\cdot\rho^2\sin\varphi\,d\rho\,d\theta\,d\varphi \\
+        &= \rho^7\cdot\sin^3\varphi\cos\varphi\cdot\sin\theta\cos\theta\,d\rho\,d\theta\,d\varphi.
+    \end{align*}
+    \begin{enumerate}
+        \item[(a)] The integral is
+        \begin{align*}
+            & \int_0^R\int_0^{2\pi}\int_0^\pi\rho^7\cdot\sin^3\varphi\cos\varphi\cdot\sin\theta\cos\theta\,d\varphi\,d\theta\,d\rho \\
+            ={}& \int_0^R\rho^7\,d\rho\int_0^{2\pi}\sin\theta\cos\theta\,d\theta\int_0^\pi\sin^3\varphi\cos\varphi\,d\varphi \\
+            ={}& \cdot\frac{R^8}8\cdot\frac12\sin^2\theta\bigg|_0^{2\pi}\cdot\frac14\sin^4\varphi\bigg|_0^\pi,
+        \end{align*}
+        which vanishes because the $\theta$ factor vanishes.
+        \item[(b)] Repeating the manipulations in (a), the integral is
+        \[\cdot\frac{R^8}8\cdot\frac12\sin^2\theta\bigg|_0^{2\pi}\cdot\frac14\sin^4\varphi\bigg|_0^{\pi/2}.\]
+        This again vanishes because the $\theta$ factor vanishes.
+        \item[(c)] Repeating the manipulations in (a), the integral is
+        \[\cdot\frac{R^8}8\cdot\frac12\sin^2\theta\bigg|_0^{\pi/2}\cdot\frac14\sin^4\varphi\bigg|_0^{\pi/2}.\]
+        This evaluates to $\frac18\cdot R^3\cdot\frac12\cdot\frac14=\frac1{64}R^8$.
+        \qedhere
+    \end{enumerate}
+\end{proof}
+
+
+
+
+
+\section{Chapter 7}
+
+\begin{prob}[3]
+    Compute each of the following line integrals:
+    \begin{enumerate}
+        \item[(a)] 
+        \[
+        \int_C (\sin \pi x) \, dy - (\cos \pi y) \, dz,
+        \]
+        where \( C \) is the triangle whose vertices are \((1, 0, 0)\), \((0, 1, 0)\), and \((0, 0, 1)\), in that order.
+    
+        \item[(b)]
+        \[
+        \int_C (\sin z) \, dx + (\cos z) \, dy - (xy)^{1/3} \, dz,
+        \]
+        where \( C \) is the path \( c(\theta) = (\cos^3 \theta, \sin^3 \theta, \theta) \), \( 0 \leq \theta \leq \frac{7\pi}{2} \).
+    \end{enumerate}
+\end{prob}
+\begin{proof}
+    We do the calculations separately.
+    \begin{enumerate}
+        \item[(a)] The vector field is $\mathbf F(x,y,z)=(0,\sin\pi x,-\cos\pi y)$. We must calculate the line integrals over each of the three segments separately.
+        \begin{itemize}
+            \item For the segment from $(1,0,0)$ to $(0,1,0)$, we use the parameterization $c(t)=(1-t,t,0)$ for $t\in[0,1]$, so the integral is
+            \begin{align*}
+                \int_0^1\mathbf F(c(t))\cdot c'(t)\,dt &= \int_0^1(0,\sin\pi (1-t),-\cos\pi t)\cdot (-1,1,0)\,dt \\
+                &= \int_0^1\sin\pi (1-t)\,dt \\
+                &= \frac1\pi\cos\pi(1-t)\bigg|_0^1 \\
+                &= \frac2\pi.
+            \end{align*}
+
+            \item For the segment from $(0,1,0)$ to $(0,0,1)$, we use the parameterization $c(t)=(0,1-t,t)$ for $t\in[0,1]$, so the integral is
+            \begin{align*}
+                \int_0^1\mathbf F(c(t))\cdot c'(t)\,dt &= \int_0^1(0,0,-\cos\pi (1-t))\cdot (0,-1,1)\,dt \\
+                &= \int_0^1-\cos\pi (1-t)\,dt \\
+                &= \frac1\pi\sin\pi(1-t)\bigg|_0^1 \\
+                &= 0.
+            \end{align*}
+
+            \item For the segment from $(0,0,1)$ to $(1,0,0)$, we use the parameterization $c(t)=(t,0,1-t)$ for $t\in[0,1]$, so the integral is
+            \begin{align*}
+                \int_0^1\mathbf F(c(t))\cdot c'(t)\,dt &= \int_0^1(0,\sin\pi t,-1)\cdot (1,0,-1)\,dt \\
+                &= \int_0^11\,dt \\
+                &= 1.
+            \end{align*}
+        \end{itemize}
+        In total, the three pieces sum to $\frac2\pi+1$.
+
+        \item[(b)] The vector field is $\mathbf F(x,y,z)=(\sin z,\cos z,-\sqrt[3]{xy})$. Thus, the integral is
+        \begin{align*}
+            \int_0^{7\pi/2}\mathbf F(c(t))\cdot c'(t)\,dt &= \int_0^{7\pi/2}(\sin\theta,\cos\theta,-\cos\theta\sin\theta)\cdot\left(-3\cos^2\theta\sin\theta,3\sin^2\theta\cos\theta,1\right)\,d\theta \\
+            &= \int_0^{7\pi/2}\left(-\sin\theta\cos\theta\right)\,d\theta \\
+            &= \frac12\cos^2\theta\bigg|_0^{7\pi/2} \\
+            &= \frac12.
+        \end{align*}
+    \end{enumerate}
+\end{proof}
+
+\begin{prob}[5]
+    Find the work done by the force  
+    \[
+    \mathbf{F}(x, y) = (x^2 - y^2)\,\mathbf{i} + 2xy\,\mathbf{j}
+    \]
+    in moving a particle counterclockwise around the square with corners \((0, 0)\), \((a, 0)\), \((a, a)\), \((0, a)\), \(a > 0\).
+\end{prob}
+\begin{proof}
+    By Green's theorem, we have 
+    \begin{align*}
+        \int_CF\cdot ds&=\iint_D\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}dA\\
+        &=\int_0^a\int_0^a4ydxdy\\
+        &=2a^3
+    \end{align*}
+\end{proof}
+
+\begin{prob}[7]
+Find a parametrization for each of the following surfaces:
+
+\begin{enumerate}
+    \item[(a)] \( x^2 + y^2 + z^2 - 4x - 6y = 12 \)
+    \item[(b)] \( 2x^2 + y^2 + z^2 - 8x = 1 \)
+    \item[(c)] \( 4x^2 + 9y^2 - 2z^2 = 8 \)
+\end{enumerate}
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item[(a)] We would first complete some squares 
+        \begin{equation*}
+            (x^2-4x+4)+(y^2-6y+9)+z^2=25
+        \end{equation*}
+        Thus the parametrization can be given by 
+        \begin{equation*}
+            \Phi(\phi,\theta)=(2+5\sin\phi\cos\theta, 3+5\sin\phi\sin\theta, 5\cos\phi), 0\leq\theta\leq 2\pi, 0\leq\phi\leq\pi
+        \end{equation*}
+        \item[(b)] You would do the same as in (a).
+        \item[(c)] This one is kinda complicated. 
+    \end{enumerate}
+\end{proof}
+
+\begin{prob}[12]
+Find \(\displaystyle \iint_S f \, dS\) in each of the following cases:
+
+\begin{enumerate}
+    \item[(a)] \( f(x, y, z) = x \); \( S \) is the part of the plane  
+          \( x + y + z = 1 \) in the positive octant defined by  
+          \( x \geq 0, \; y \geq 0, \; z \geq 0 \)
+    \item[(b)] \( f(x, y, z) = x^2 \); \( S \) is the part of the plane \( x = z \) inside the cylinder \( x^2 + y^2 = 1 \)
+    \item[(c)] \( f(x, y, z) = x \); \( S \) is the part of the cylinder \( x^2 + y^2 = 2x \) with \( 0 \leq z \leq \sqrt{x^2 + y^2} \)
+\end{enumerate}
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item[(a)] We parametrize the surface by  
+        \begin{equation*}
+            \Phi(x,y)=(x,y, 1-x-y), 0\leq x\leq 1, 0\leq y\leq 1-x
+        \end{equation*}
+        Then one would compute 
+        \begin{equation*}
+            \iint_SfdS=\int_0^1\int_0^{1-x}\|T_x\times T_y\|dydx
+        \end{equation*}
+        \item[(b)] One can parametrize the surface as 
+        \begin{equation*}
+            \Phi(x,y)=(x,y,x), x^2+y^2\leq 1
+        \end{equation*}
+        and use the same formula.
+        \item[(c)] One can parametrize the surface as follows 
+        \begin{equation*}
+            \Phi(\theta,z)=(1+\cos\theta, \sin\theta, z), 0\leq\theta\leq 2\pi, 0\leq z\leq \sqrt{2(1+\cos\theta)}
+        \end{equation*}
+        and use the same formula.
+    \end{enumerate}
+\end{proof}
+
+
+
+\begin{prob}[16]
+    A paraboloid of revolution \( S \) is parametrized by 
+    \[
+    \Phi(u, v) = (u \cos v, u \sin v, u^2), \quad 0 \leq u \leq 2, \; 0 \leq v \leq 2\pi.
+    \]
+    
+    \begin{enumerate}
+        \item[(a)] Find an equation in \( x, y, \) and \( z \) describing the surface.
+        \item[(b)] What are the geometric meanings of the parameters \( u \) and \( v \)?
+        \item[(c)] Find a unit vector orthogonal to the surface at \( \Phi(u, v) \).
+        \item[(d)] Find the equation for the tangent plane at \( \Phi(u_0, v_0) = (1, 1, 2) \) and express your answer in the following two ways:
+        
+        \begin{enumerate}
+            \item[(i)] parametrized by \( u \) and \( v \); and
+            \item[(ii)] in terms of \( x, y, \) and \( z \).
+        \end{enumerate}
+        
+        \item[(e)] Find the area of \( S \).
+    \end{enumerate}
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item[(a)] $z=x^2+y^2$.
+        \item[(b)] $u$ is the radius of the paraboloid and also related to the height, and $v$ is the angle.
+        \item[(c)] You would compute 
+        \begin{equation*}
+            n=\frac{\partial\Phi}{\partial u}\times\frac{\partial\Phi}{\partial v}
+        \end{equation*}
+        \item[(d)] You would use the formula for the tangent plane using the normal vector found in (c).
+        \item[(e)] By the area formula, it is given by 
+        \begin{equation*}
+            \text{Area}=\int_0^2\int_0^{2\pi}\|n\| dvdu
+        \end{equation*}
+    \end{enumerate}
+\end{proof}
+
+\begin{prob}[26]
+    Calculate \( \iint_S \mathbf{F} \cdot d\mathbf{S} \), where \( \mathbf{F}(x, y, z) = (x, y, -y) \) and \( S \) is the cylindrical surface defined by \( x^2 + y^2 = 1 \), \( 0 \leq z \leq 1 \), with normal pointing out of the cylinder.
+\end{prob}
+\begin{proof}
+    We parametrize the surface as follows:
+    \begin{equation*}
+        \Phi(\theta,z)=(\cos\theta, \sin\theta, z), 0\leq\theta\leq 2\pi, 0\leq z\leq 1
+    \end{equation*}
+    Then we compute $T_\theta\times T_z$,
+    \begin{equation*}
+        T_\theta\times T_z=(\cos\theta, \sin\theta, 0)
+    \end{equation*}
+    By the formula for surface integrals of vector fields, we get 
+    \begin{align*}
+        \iint_SF\cdot dS&=\int_0^{2\pi}\int_0^1F(\Phi(r,\theta))\cdot T_\theta\times T_z dzd\theta\\
+        &=\int_0^{2\pi}\int_0^1(\cos\theta, \sin\theta, -\sin\theta)\cdot(\cos\theta, \sin\theta, 0)dzd\theta\\
+        &=2\pi
+    \end{align*}
+\end{proof}
+
+\begin{prob}[27]
+    Let \( S \) be the portion of the cylinder \( x^2 + y^2 = 4 \) between the planes \( z = 0 \) and \( z = x + 3 \). Compute the following:
+    
+    \begin{enumerate}
+        \item[(a)] \( \iint_S x^2 \, dS \)
+        \item[(b)] \( \iint_S y^2 \, dS \)
+        \item[(c)] \( \iint_S z^2 \, dS \)
+    \end{enumerate}
+\end{prob}
+\begin{proof}
+    We parametrize the portion of the cylinder as follows:
+    \begin{equation*}
+        (2\cos\theta, 2\sin\theta, z), \quad 0\leq\theta\leq 2\pi, 0\leq z\leq 3+2\cos\theta
+    \end{equation*}
+    Thus computing $T_\theta, T_z$ and taking the cross product $T_\theta\times T_z$, we have 
+    \begin{equation*}
+        \|T_\theta\times T_z\|=2
+    \end{equation*}
+    Thus by the formula of surface integral of scalar-valued functions, we get 
+    \begin{enumerate}
+        \item[(a)] 
+        \begin{align*}
+            \iint_Sx^2dS&=\iint_D4\cos^2\theta\|T_\theta\times T_z\| dA\\
+            &=\int_0^{2\pi}\int_{0}^{3+2\cos\theta}8\cos^2\theta dzd\theta\\
+            &=24\pi
+        \end{align*}
+        One would do the same for (b) and (c).
+    \end{enumerate}
+\end{proof}
+
+
+
+\section{Chapter 8}
+
+\begin{prob}[3]
+    Let \( \mathbf{F} = x^2 y \, \mathbf{i} + z^8 \, \mathbf{j} - 2xyz \, \mathbf{k} \). Evaluate the integral of \( \mathbf{F} \) over the surface of the unit cube.
+\end{prob}
+\begin{proof}
+    By Gauss' divergence theorem, we know
+    \begin{align*}
+        \int_SF\cdot dS=\int_{V}\nabla\cdot FdV
+    \end{align*}
+    where 
+    \begin{equation*}
+        \nabla\cdot F=2xy+0-2xy=0
+    \end{equation*}
+    hence 
+    \begin{equation*}
+        \int_SF\cdot dS=\iiint_{V}\nabla\cdot FdV=0
+    \end{equation*}
+\end{proof}
+
+\begin{prob}[4]
+    Verify Green's theorem for the line integral
+    \[
+    \int_C x^2 y \, dx + y \, dy,
+    \]
+    when \( C \) is the boundary of the region between the curves \( y = x \) and \( y = x^3 \), \( 0 \leq x \leq 1 \).
+\end{prob}
+\begin{proof}
+    By Green's theorem, we have 
+    \begin{align*}
+        \int_Cx^2ydx+ydy&=\int_D\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}dA\\
+        &=\int_0^1\int_{x^3}^x-x^2dydx\\
+        &=-\frac{1}{12}
+    \end{align*}
+\end{proof}
+
+\begin{prob}[7]
+    \begin{enumerate}
+        \item[(a)] Show that  
+        \[
+        \mathbf{F} = 6xy(\cos z) \, \mathbf{i} + 3x^2(\cos z) \, \mathbf{j} - 3x^2 y(\sin z) \, \mathbf{k}
+        \]
+        is conservative (see Section 8.3). 
+        \item[(b)] Find \( f \) such that \( \mathbf{F} = \nabla f \).  
+        \item[(c)] Evaluate the integral of \( \mathbf{F} \) along the curve \( x = \cos^3 \theta, \; y = \sin^3 \theta, \; z = 0, \; 0 \leq \theta \leq \pi/2 \).
+    \end{enumerate}
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item[(a)] The idea would be to show $\nabla\times F=0$.
+        \item[(b)] First integrating $F_1$ with respect to $x$ to get
+        \begin{equation*}
+            f=3x^2y\cos z
+        \end{equation*}
+        then verify that $\partial f/\partial y=F_2, \partial f/\partial z=F_3$.
+        \item[(c)] Since $F$ is conservative, the integral of $F$ over a curve only depends on the endpoints, which are $(1,0,0), (0,1,0)$.
+        \begin{equation*}
+            \int_cF\cdot ds=f(0,1,0)-f(1,0,0)=0
+        \end{equation*}
+    \end{enumerate}
+\end{proof}
+
+
+\begin{prob}[12]
+    Show that the fields \( \mathbf{F} \) in (a) and (b) are conservative and find a function \( f \) such that \( \mathbf{F} = \nabla f \).  
+
+    \begin{enumerate}
+        \item[(a)] \( \mathbf{F} = (y^2 e^x) \, \mathbf{i} + (2y e^x) \, \mathbf{j} \)
+        \item[(b)] \( \mathbf{F} = (\sin y) \, \mathbf{i} + (x \cos y) \, \mathbf{j} + (e^x) \, \mathbf{k} \)
+    \end{enumerate}
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item[(a)] We see that 
+        \begin{equation*}
+            \frac{\partial Q}{\partial x}=\frac{\partial P}{\partial y}=2ye^x
+        \end{equation*}
+        thus $F$ is conservative. We find 
+        \begin{equation*}
+            f(x,y)=y^2e^x
+        \end{equation*}
+        \item[(b)] This is a typo, $F$ is not conservative, and you can show $\nabla\times F\neq 0$.
+    \end{enumerate}
+\end{proof}
+
+\begin{prob}[13]
+    \begin{enumerate}
+        \item[(a)] Let \( f(x, y, z) = 3xy e^z \). Compute \( \nabla f \).  
+        \item[(b)] Let \( \mathbf{c}(t) = (3 \cos^3 t, \sin^2 t, e^t), \; 0 \leq t \leq \pi \). Evaluate
+        \[
+        \int_C \nabla f \cdot d\mathbf{s}.
+        \]
+        \item[(c)] Verify directly Stokes' theorem for gradient vector fields \( \mathbf{F} = \nabla f \).
+    \end{enumerate}
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item[(a)] \begin{equation*}
+            \nabla f(x,y,z)=\left(3ye^z, 3xe^z, 3xye^z\right)
+        \end{equation*} 
+        \item[(b)] \begin{equation*}
+            \int_C\nabla f\cdot ds=f(-3, 0, e^\pi)-f(3, 0, 1)=0
+        \end{equation*}
+        \item[(c)] Stokes's theorem states that 
+        \begin{equation*}
+            \int_CF\cdot ds=\int_S\left(\nabla\times F\right)\cdot ndS
+        \end{equation*}
+        where $S$ is the surface for which $C$ is the boundary of. Thus we get 
+        \begin{equation*}
+            \int_CF\cdot ds=\int_S\left(\nabla\times F\right)\cdot ndS=\int_S\left(\nabla\times\nabla f\right)\cdot ndS=0
+        \end{equation*}
+    \end{enumerate}
+\end{proof}
+
+\begin{prob}[20]
+    Which of the following are conservative fields on \( \mathbb{R}^3 \)?  
+    For those that are, find a function \( f \) such that \( \mathbf{F} = \nabla f \).  
+
+    \begin{enumerate}
+        \item[(a)] \( \mathbf{F}(x, y, z) = 3x^2 y \, \mathbf{i} + x^3 \, \mathbf{j} + 5 \, \mathbf{k} \)
+        \item[(b)] \( \mathbf{F}(x, y, z) = (x + z) \, \mathbf{i} - (y + z) \, \mathbf{j} + (x - y) \, \mathbf{k} \)
+        \item[(c)] \( \mathbf{F}(x, y, z) = 2xy^3 \, \mathbf{i} + x^2 z^3 \, \mathbf{j} + 3x^2 y z^2 \, \mathbf{k} \)
+    \end{enumerate}
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item[(a)] It is conservative, one choice of the potential function is
+        \begin{equation*}
+            f=x^3y+5z
+        \end{equation*}
+        \item[(b)] It is conservative, one choice of the potential function is 
+        \begin{equation*}
+            f=\frac{1}{2}x^2-\frac{1}{2}y^2+xz-yz
+        \end{equation*}
+        \item[(c)] It is not conservative.
+    \end{enumerate}
+\end{proof}
+
+
+
+\begin{prob}[21]
+    Consider the following two vector fields in \( \mathbb{R}^3 \):  
+
+    \begin{enumerate}
+        \item[(i)] \( \mathbf{F}(x, y, z) = y^2 \, \mathbf{i} - z^2 \, \mathbf{j} + x^2 \, \mathbf{k} \)
+        \item[(ii)] \( \mathbf{G}(x, y, z) = (x^3 - 3xy^2) \, \mathbf{i} + (y^3 - 3x^2 y) \, \mathbf{j} + z \, \mathbf{k} \)
+    \end{enumerate}
+
+    \begin{enumerate}
+        \item[(a)] Which of these fields (if any) are conservative on \( \mathbb{R}^3 \)? (That is, which are gradient fields?) Give reasons for your answer.  
+
+        \item[(b)] Find a potential for the fields that are conservative.  
+
+        \item[(c)] Let \( \alpha \) be the path that goes from \( (0, 0, 0) \) to \( (1, 1, 1) \) by following edges of the cube \( 0 \leq x \leq 1 \),  
+        \( 0 \leq y \leq 1 \), \( 0 \leq z \leq 1 \) from \( (0, 0, 0) \) to \( (0, 0, 1) \) to \( (0, 1, 1) \) to \( (1, 1, 1) \).  
+        Let \( \beta \) be the path from \( (0, 0, 0) \) to \( (1, 1, 1) \) directly along the diagonal of the cube.  
+        Find the values of the line integrals  
+        \[
+        \int_{\alpha} \mathbf{F} \cdot d\mathbf{s}, \quad 
+        \int_{\alpha} \mathbf{G} \cdot d\mathbf{s}, \quad 
+        \int_{\beta} \mathbf{F} \cdot d\mathbf{s}, \quad 
+        \int_{\beta} \mathbf{G} \cdot d\mathbf{s}.
+        \]
+    \end{enumerate}
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item[(a)] $F$ is not conservative, $G$ is conservative. One can verify this by checking
+        \begin{equation*}
+            \nabla\times F\neq 0, \quad \nabla\times G=0
+        \end{equation*}
+        \item[(b)] Potential for $G$ can be given by 
+        \begin{equation*}
+            g(x,y,z)=\frac{1}{4}x^4+\frac{1}{4}y^4-\frac{3}{2}x^2y^2+\frac{1}{2}z^2
+        \end{equation*}
+        \item[(c)] Because $G$ is conservative, we know the line integral only depends on the endpoints: 
+        \begin{equation*}
+            \int_\alpha G\cdot ds=\int_\beta G\cdot ds=g(1,1,1)-g(0,0,0)=-\frac{1}{2}
+        \end{equation*}
+        For $F$, one would have to parametrize each line segment and evaluate, for example, we parametrize $\beta$ by 
+        \begin{equation*}
+            \beta(t)=(t,t,t), 0\leq t\leq 1
+        \end{equation*}
+        and 
+        \begin{equation*}
+            \int_\beta F\cdot ds=\int_0^1(t^2, -t^2, t^2)\cdot \beta'(t)=\int_0^1(t^2, -t^2, t^2)\cdot(1,1,1)dt=\frac{1}{3}
+        \end{equation*}
+        Similarly, you do this for every segment of $\alpha$ and get 
+        \begin{equation*}
+            \int_\alpha F\cdot ds=0
+        \end{equation*}
+    \end{enumerate}
+\end{proof}
+
+
+
 
 
 \end{document}
