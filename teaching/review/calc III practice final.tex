@@ -20,7 +20,21 @@
         \[\iint_S \vec{F} \cdot d\vec{S}.\]
     \end{prob}%
     \begin{solution}%
-        Hi.
+        Set $D=[0,\pi/2]\times[0,2]$. We parameterize $S$ by $\Phi\colon D\to\mathbb R^3$ by $\Phi(\theta,v)=(\cos\theta,\sin\theta,v)$. Then $\Phi_u=(-\sin\theta,\cos\theta,0)$ and $\Phi_v=(0,0,1)$, so the normal is given by
+        \[\Phi_u\times\Phi_v=\det\begin{bmatrix}
+            i & j & k \\
+            -\sin\theta & \cos\theta & 0 \\
+            0 & 0 & 1
+        \end{bmatrix}=(\cos\theta,\sin\theta,0).\]
+        Note that this vector is already a unit normal vector. Thus, the flux integral is
+        \begin{align*}
+            \iint_S\vec F\cdot d\vec S &= \iint_D\vec F\cdot \vec n\,dA \\
+            &= \iint_D\vec F(\cos\theta,\sin\theta,v)\cdot(\cos\theta,\sin\theta,0)\,dA \\
+            &= \iint_D\left(\cos^2\theta+\sin^2\theta\right)\,dA \\
+            &= \iint_D\,da \\
+            &= \operatorname{Area}(D).
+        \end{align*}
+        Thus, the flux integral evaluates to $\operatorname{Area}(D)=\pi$.
     \end{solution}
 
 
@@ -28,7 +42,24 @@
         Let \(D\) be the closed disk of radius \(4\) centered at \((0,0)\). Find the maximum and minimum of \(f(x,y) = x^2 + \frac{1}{4}(y+1)^2 + 1\) on \(D\). \\
     \end{prob}
     \begin{solution}%
-        Hi.
+        We find the critical points to bound the function on the interior of $D$ and Lagrange multipliers to bound the function on the boundary of $D$.
+
+        Because it is quick, we start by finding the critical points of $f$. Note that $f_x=2x$ and $f_y=\frac12(y+1)$, so the only critical point occurs at $(x,y)=(0,-1)$. Here, we have $f(0,-1)=1$.
+
+        We now use Lagrange multipliers to maximize the function $f(x,y)=x^2+\frac14(y+1)^2+1$ on the boundary of $D$, which occurs where the constraint $g(x,y)=x^2+y^2-16$ vanishes. Namely, the extrema will occur at pairs $(x,y)$ where $\nabla f=\lambda\nabla g$ for some $\lambda\in\mathbb R$, which gives the equations
+        \[\begin{cases}
+            2\lambda x = 2x, \\
+            2\lambda y = \frac12(y+1), \\
+            x^2+y^2=16.
+        \end{cases}\]
+        The first equation implies that $x=0$ or $\lambda=1$. If $x=0$, then the last equation forces $y=\pm4$, so
+        \[\begin{cases}
+            f(0,+4)=29/4, \\
+            f(0,-4)=13/4.
+        \end{cases}\]
+        Lastly, if $\lambda=1$, then $2\lambda y=\frac12(y+1)$ implies $4y=y+1$, so $y=-1/3$. In this case, $x^2=16-1/9$, so $f(x,y)=16-\frac19+\frac49+1=17+\frac13=\frac{52}3$.
+
+        Comparing all of our values, we see that the minimum is $f(0,-1)=1$, and the maximum is $f(\sqrt{16-1/9},-1/3)=52/3$.
     \end{solution}
 
     \begin{prob}
@@ -39,7 +70,25 @@
         \end{enumerate}
     \end{prob}%
     \begin{solution}%
-        Hi.
+        We do these calculations separately.
+        \begin{enumerate}[label=(\alph*)]
+            \item We do not provide a sketch, but we will give the inequalities. The region should satisfy
+            \[\begin{cases}
+                x^2+y^2 \le 9, \\
+                z \ge 0, \\
+                y+z \le 9.
+            \end{cases}\]
+            To provide some visualization, we note that $x^2+y^2\le9$ produces a cylinder of radius $3$ with axis along the $z$-axis. Then $z\ge0$ cuts off the cylinder below, and $y+z\le9$ chops the cylinder off above diagonally.
+
+            \item We use cylindrical coordinates, where $(x,y,z)=(r\cos\theta,r\sin\theta,z)$. Then $dx\,dy\,dz=r\,dr\,d\theta\,dz$. Our cylinder is cut out by $r\le3$ and $z\in[0,9-y]$, so the volume integral is
+            \begin{align*}
+                V &= \int_0^3\int_0^{2\pi}\int_0^{9-r\sin\theta}dz\,d\theta\,dr \\
+                &= \int_0^3\int_0^{2\pi}(9-r\sin\theta)r\,d\theta\,dr \\
+                &= \int_0^3\left(9r\theta+r^2\cos\theta\right)\bigg|_0^{2\pi}\,dr \\
+                &= \int_0^318\pi r\,dr \\
+                &= {81\pi}.
+            \end{align*}
+        \end{enumerate}
     \end{solution}
 
     \begin{prob}
@@ -49,7 +98,7 @@
         \]
     \end{prob}%
     \begin{solution}%
-        Hi.
+        One can check that $F$ is a conservative vector field, and the intersection is a circle $z^2+y^2=9, x=9$, and we know the line integral of a conservative vector field over any simply closed line is $0$.
     \end{solution}
 
     \begin{prob}
@@ -59,14 +108,31 @@
         \]
     \end{prob}%
     \begin{solution}%
-        Hi.
+        This is an application of Stokes' theorem. We know 
+        \begin{equation*}
+            \int_CF\cdot ds=\int_S\nabla\times F\cdot dS
+        \end{equation*}
+        where $S$ is the rectangle at $x=1$ traced by the four points. And we can compute 
+        \begin{equation*}
+            \nabla\times F=(2, 0, y)
+        \end{equation*}
+        One can also compute the unit normal vector to the rectangle that agrees with the clockwise orientation to be $(-1, 0, 0)$. 
+        This gives 
+        \begin{align*}
+            \int_CF\cdot ds&=\int_S\nabla\times F\cdot dS\\
+            &=\int_0^1\int_0^1(2,0, y)\cdot (-1, 0, 0)dydz\\
+            &=-2.
+        \end{align*}
     \end{solution}
 
     \begin{prob}
         Find \[\lim_{(x,y) \to (1,2)} \frac{y^3 - 4x}{x^3 + 4y^3}.\]
     \end{prob}%
     \begin{solution}%
-        Hi.
+        The function is continuous at $(1,2)$, and we have 
+        \begin{equation*}
+            \lim_{(x,y) \to (1,2)} \frac{y^3 - 4x}{x^3 + 4y^3}=\frac{8-4}{1+32}=\frac{4}{33}.
+        \end{equation*}
     \end{solution}
 
     \begin{prob}
@@ -77,7 +143,19 @@
         \end{enumerate}
     \end{prob}%
     \begin{solution}%
-        Hi.
+        \begin{enumerate}
+            \item[(a)] We can check 
+            \begin{equation*}
+                \frac{\partial Q}{\partial x}=2y+1\neq \frac{\partial P}{\partial y}=2y
+            \end{equation*}
+            thus $F$ is not conservative.
+            \item[(b)] We apply Green's theorem: 
+            \begin{align*}
+                \int_CF\cdot dr&=\int_D\left(\frac{\partial Q}{\partial y}-\frac{\partial P}{\partial x}\right)dA\\
+                &=\int_DdA\\
+                &=\frac{1}{2}
+            \end{align*}
+        \end{enumerate}
     \end{solution}
 
     \begin{prob}
@@ -85,7 +163,23 @@
         Find the flux of the curl of \(\vec{F}\) across the upper hemisphere of \(x^2 + y^2 + z^2 = 1\) oriented upwards. \\
     \end{prob}%
     \begin{solution}%
-        
+        This is an application of Stoke's theorem. 
+        \begin{equation*}
+            \int_SF\cdot dS=\int_{\partial S}F\cdot ds
+        \end{equation*}
+        where $\partial S$ is the boundary parametrized by 
+        \begin{equation*}
+            \partial S=c(t)=(\cos t, \sin t, 0), 0\leq t\leq 2\pi
+        \end{equation*}
+        Thus we have 
+        \begin{align*}
+            \int_SF\cdot dS&=\int_{\partial S}F\cdot ds\\
+            &=\int_{0}^{2\pi}F(c(t))\cdot c'(t)dt\\
+            &=\int_0^{2\pi}(-\sin^3(t), \cos^3(t), 0)\cdot(-\sin t, \cos t, 0)dt\\
+            &=\int_0^{2\pi}\sin^4t+\cos^4tdt\\
+            &=\int_0^{2\pi}\left(1-\frac{1}{2}\sin^2(2t)\right)dt\\
+            &=\frac{3\pi}{2}
+        \end{align*}
     \end{solution}
 \end{enumerate}
 
