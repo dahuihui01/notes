@@ -1,22 +1,35 @@
 \documentclass{article}
 \usepackage{amsmath, amssymb}
 \usepackage{enumitem}
+\usepackage{xcolor}
 
-\newenvironment{prob}{\item}{} % Custom problem environment
+\newenvironment{prob}{\item}{%
+} % Custom problem environment
+\newenvironment{solution}{%
+\noindent\color{blue}\noindent}{}
 
 \begin{document}
+
+\begin{center}
+    \large Calc III Practice Exam
+\end{center}
 
 \begin{enumerate}[label=\arabic*.]
     \begin{prob}
         Let \(\vec{F}(x,y,z) = x\,\mathbf{i} + y\,\mathbf{j} + xe^z\,\mathbf{k}\) and let \(S\) be the part of the cylinder \(x^2 + y^2 = 1\) underneath \(z = 2\) in the first octant. Suppose \(S\) is positively oriented. Calculate
-        \[
-        \iint_S \vec{F} \cdot d\vec{S}.
-        \]
-    \end{prob}
+        \[\iint_S \vec{F} \cdot d\vec{S}.\]
+    \end{prob}%
+    \begin{solution}%
+        Hi.
+    \end{solution}
+
 
     \begin{prob}
-        Let \(D\) be the closed disk of radius \(4\) centered at \((0,0)\). Find the maximum and minimum of \(f(x,y) = x^2 + \frac{1}{4}(y+1)^2 + 1\) on \(D\).
+        Let \(D\) be the closed disk of radius \(4\) centered at \((0,0)\). Find the maximum and minimum of \(f(x,y) = x^2 + \frac{1}{4}(y+1)^2 + 1\) on \(D\). \\
     \end{prob}
+    \begin{solution}%
+        Hi.
+    \end{solution}
 
     \begin{prob}
         Let \(E \subset \mathbb{R}^3\) be the solid region bounded by \(x^2 + y^2 = 9\), \(z = 0\) and \(y + z = 9\).
@@ -24,25 +37,37 @@
             \item Sketch the region \(E\) and express it as an elementary region as a set in terms of inequalities.
             \item Find the volume of \(E\) using a triple integral.
         \end{enumerate}
-    \end{prob}
+    \end{prob}%
+    \begin{solution}%
+        Hi.
+    \end{solution}
 
     \begin{prob}
         Let \(\vec{F} = \langle y e^{xy} - zy, xe^{xy} - xz, -xy \rangle\) be a vector field in \(\mathbb{R}^3\). Let \(C\) be the intersection of the paraboloid \(x = y^2 + z^2\) and the cylinder \(z^2 + y^2 = 9\). Calculate  
         \[
         \int_{C}\vec{F} \cdot d\vec{r}.
         \]
-    \end{prob}
+    \end{prob}%
+    \begin{solution}%
+        Hi.
+    \end{solution}
 
     \begin{prob}
         Find the line integral over \(C\), the lines connecting \((1,0,0)\), \((1,1,0)\), \((1,1,1)\) and \((1,0,1)\), oriented clockwise, for the vector field  
         \[
         \vec{F} = (x \cos(x), xy - z, e^z + y).
         \]
-    \end{prob}
+    \end{prob}%
+    \begin{solution}%
+        Hi.
+    \end{solution}
 
     \begin{prob}
-        Find \(\lim_{(x,y) \to (1,2)} \frac{y^3 - 4x}{x^3 + 4y^3}\).
-    \end{prob}
+        Find \[\lim_{(x,y) \to (1,2)} \frac{y^3 - 4x}{x^3 + 4y^3}.\]
+    \end{prob}%
+    \begin{solution}%
+        Hi.
+    \end{solution}
 
     \begin{prob}
         Let \(\vec{F} = (y^2, 2xy + x)\).
@@ -50,12 +75,18 @@
             \item Is \(\vec{F}\) conservative? If so, find a potential function for \(\vec{F}\). If not, justify your answer.
             \item Let \(C\) be the positively oriented triangle connecting \((0,0)\), \((0,1)\) and \((-1,0)\). Evaluate \(\int_C \vec{F} \cdot d\vec{r}\).
         \end{enumerate}
-    \end{prob}
+    \end{prob}%
+    \begin{solution}%
+        Hi.
+    \end{solution}
 
     \begin{prob}
         Let \(\vec{F}(x,y,z) = (xz - y^3 \cos(z))\,\mathbf{i} + x^3 e^{-z}\,\mathbf{j} + z e^{x^2 + y^2 + z^2}\,\mathbf{k}\).  
-        Find the flux of the curl of \(\vec{F}\) across the upper hemisphere of \(x^2 + y^2 + z^2 = 1\) oriented upwards.
-    \end{prob}
+        Find the flux of the curl of \(\vec{F}\) across the upper hemisphere of \(x^2 + y^2 + z^2 = 1\) oriented upwards. \\
+    \end{prob}%
+    \begin{solution}%
+        
+    \end{solution}
 \end{enumerate}
 
 \end{document}
