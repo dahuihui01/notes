@@ -57,8 +57,7 @@
 
 
 
-\author{(This document only contains materials after the midterm;\\
-please email hsun95@jh.edu if you see typos)}
+\author{(Please email hsun95@jh.edu if you see typos.)}
 \date{\today}
 
 
@@ -2338,11 +2337,6 @@ Find \(\displaystyle \iint_S f \, dS\) in each of the following cases:
 
 \section{Chapter 1}
 
-\section*{Chapter 1 Review (Page 70)}
-\begin{itemize}
-    \item Exercise 12
-\end{itemize}
-
 
 \begin{prob}[1]
     Let \( \mathbf{v} = 3\mathbf{i} + 4\mathbf{j} + 5\mathbf{k} \) and \( \mathbf{w} = \mathbf{i} - \mathbf{j} + \mathbf{k} \). Compute  
@@ -2412,6 +2406,19 @@ Find \(\displaystyle \iint_S f \, dS\) in each of the following cases:
         \alpha \mathbf{a} + \beta \mathbf{b} + \gamma \mathbf{c} = \mathbf{0}.
     \]
 \end{prob}
+\begin{proof}
+    In one direction, suppose we can write $\alpha\mathbf a+\beta\mathbf b+\gamma\mathbf c=\mathbf 0$, where at least one of $\alpha$, $\beta$, or $\gamma$ is nonzero. Without loss of generality, we take $\gamma$ nonzero; dividing out by $\gamma$ and rearranging allows us to write
+    \[\mathbf c=\alpha'\mathbf a+\beta'\mathbf b,\]
+    so it follows that $\mathbf c$ is in the plane (going through the origin) spanned by $\mathbf a$ and $\mathbf b$.
+
+    Conversely, suppose that $\mathbf a$, $\mathbf b$, and $\mathbf c$ all lie in the same plane through the origin. Then we need to find three scalars $(\alpha,\beta,\gamma)$ (not all zero) for which $\alpha\mathbf a+\beta\mathbf b+\gamma\mathbf c=0$. We work in cases.
+    \begin{itemize}
+        \item If $\mathbf a=\mathbf b=\mathbf c=0$, then we can take $(\alpha,\beta,\gamma)=(1,1,1)$.
+        \item Suppose the three vectors $\mathbf a$, $\mathbf b$, and $\mathbf c$ lie in the same plane but at least one is nonzero. Without loss of generality, say that $\mathbf a$ is nonzero. Then there is $\alpha$ for which $\mathbf b=-\alpha\mathbf a$, so $(\alpha,\beta,\gamma)=(\alpha,1,0)$ works.
+        \item Lastly, suppose that two of the vectors in $\{\mathbf a,\mathbf b,\mathbf c\}$ are linearly independent; without loss of generality, suppose that $\mathbf a$ and $\mathbf b$ are linearly independent. Then $\mathbf c$ lives in the plane spanned by $\mathbf a$ and $\mathbf b$, so we may find scalars $\alpha$ and $\beta$ with $\mathbf c=-\alpha\mathbf a-\beta\mathbf b$, so $(\alpha,\beta,\gamma)=(\alpha,\beta,1)$ will work.
+        \qedhere
+    \end{itemize}
+\end{proof}
 
 
 
