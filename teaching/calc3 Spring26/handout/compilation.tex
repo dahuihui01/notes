@@ -95,20 +95,69 @@
 \end{itemize}
 
 
-\begin{defn}[dot product]
-
+\begin{defn}[standard basis of $\R^3$]
+    The following vectors 
+    \begin{equation*}
+        i=(1,0,0), j=(0,1,0), k=(0,0,1)
+    \end{equation*}
+    are called the \textbf{standard basis} vectors of $\R^3$, and for any vector $a=(a_1,a_2,a_3)\in\R^3$, we can write 
+    \begin{equation*}
+        a=a_1i+a_2j+a_3k
+    \end{equation*}
 \end{defn}
 
+
+
+\begin{defn}[dot product]
+    Let $v=(v_1,v_2,v_3), w=(w_1,w_2, w_3)\in\R^3$, the \textbf{dot product} $v\cdot w$ is given by 
+    \begin{equation*}
+        v\cdot w=v_1w_1+v_2w_2+v_3w_3
+    \end{equation*}
+    Alternatively,
+    \begin{equation*}
+        v\cdot w=\|v\|\|w\|\cos\theta
+    \end{equation*}
+    where 
+    \begin{equation*}
+        \theta=\arccos\left(\frac{v\cdot w}{\|v\|\|w\|}\right)
+    \end{equation*}
+\end{defn}
+
+\begin{defn}[length of vector]
+    Let $v=(v_1,v_2,v_3)\in\R^3$, the \textbf{length} or \textbf{norm} of $v$, denoted as $\|v\|$, is 
+    \begin{equation*}
+        \|v\|=\sqrt{v_1^2+v_2^2+v_3^2}=\sqrt{v\dot v}
+    \end{equation*}
+\end{defn}
 
 \begin{defn}[linear combination]
-    
+    Let $v, w\in\R^3$, a \textbf{linear combination} of $v,w$ is a sum 
+    \begin{equation*}
+        av+bw
+    \end{equation*}
+    for some $a,b\in\R$. One can generalize this definition to $n$ vectors: let $v_1, v_2\dots, v_n\in\R^3$, a linear combination of these vectors is a finite sum 
+    \begin{equation*}
+        a_1v_1+a_2v_2+\dots+a_nv_n
+    \end{equation*}
+    for some $a_i\in\R, 1\leq i\leq n$. 
 \end{defn}
 
 
-\begin{defn}[standard basis]
-    
-\end{defn}
-
+\begin{prop}[properties of the dot product]
+    Let $a,b,c\in\R^n$, then 
+    \begin{enumerate}
+        \item[(a)] Nonnegativity: $a\cdot a\geq 0$, and $a\cdot a=0$ if and only if $a=0$.
+        \item[(b)] Scalar multiplication: let $\lambda\in\R$, then 
+        \begin{equation*}
+            \lambda(a\cdot b)=\lambda a\cdot b=a\cdot \lambda b
+        \end{equation*}
+        \item[(c)] Distributivity:
+        \begin{equation*}
+            a\cdot(b+c)=a\cdot b+a\cdot c, \quad (a+b)\cdot c=a\cdot c+b\cdot c
+        \end{equation*}
+        \item[(d)] Symmetry: $a\cdot b=b\cdot a$.
+    \end{enumerate}
+\end{prop}
 
 
 % \noindent
@@ -178,6 +227,40 @@
 \section*{\centering Week 2 (1/26-30)}
 
 
+
+\begin{defn}[cross product]
+    Let $a,b\in\R^3$, write $a=(a_1,a_2,a_3), b=(b_1,b_2,b_3)$, then the \textbf{cross product}
+    \begin{equation*}
+        a\times b=\det\begin{bmatrix}
+            i&j&k\\
+            a_1&a_2&a_3\\
+            b_1&b_2&b_3
+        \end{bmatrix}
+    \end{equation*}
+    where $i,j,k$ are the standard vectors in $\R^3$.
+\end{defn}
+
+
+\begin{prop}[properties of the cross product]
+    We have the following properties regarding the cross product: let $a,b\in\R^3$,
+    \begin{enumerate}
+        \item $a\times a=0$.
+        \item $a\times b=-b\times a$.
+        \item $(a+b)\times c=a\times c+b\times c$, and $a\times (b+c)=a\times b+a\times c$.
+        \item $(\alpha a)\times b=\alpha(a\times b)$ for any $a\in\R$.
+        \item $a\times b$ is perpendicular to vectors $a,b$.
+        \item The length of the cross product is the area of the parallelogram:
+        \begin{equation*}
+            \|a\times b\|=\|a\|\|b\|\sin\theta
+        \end{equation*}
+        where $0\leq\theta\leq\pi$ is the angle between them. 
+        \item $a\times b=0$ iff $a,b$ are parallel or either $a$ or $b$ are $0$.
+        \item The cross product is \textbf{not} associative! For example, compute 
+        \begin{equation*}
+            (i\times i)\times j, \quad i\times (i\times j)
+        \end{equation*}
+    \end{enumerate}
+\end{prop}
 
 
 

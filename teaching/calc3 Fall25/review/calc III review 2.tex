@@ -729,24 +729,26 @@
 \end{prop}
 
 
-
-\begin{prop}[cross product]
+\begin{prop}[properties of the cross product]
     We have the following properties regarding the cross product: let $a,b\in\R^3$,
     \begin{enumerate}
+        \item $a\times a=0$.
+        \item $a\times b=-b\times a$.
+        \item $(a+b)\times c=a\times c+b\times c$, and $a\times (b+c)=a\times b+a\times c$.
+        \item $(\alpha a)\times b=\alpha(a\times b)$ for any $a\in\R$.
         \item $a\times b$ is perpendicular to vectors $a,b$.
         \item The length of the cross product is the area of the parallelogram:
         \begin{equation*}
             \|a\times b\|=\|a\|\|b\|\sin\theta
         \end{equation*}
         where $0\leq\theta\leq\pi$ is the angle between them. 
-        \item $a\times b=-b\times a$, $(a+b)\times c=a\times c+b\times c$, and $a\times (b+c)=a\times b+a\times c$. Moreover, $a\times b=0$ iff $a,b$ are parallel or either $a$ or $b$ are $0$.
+        \item $a\times b=0$ iff $a,b$ are parallel or either $a$ or $b$ are $0$.
         \item The cross product is \textbf{not} associative! For example, compute 
         \begin{equation*}
             (i\times i)\times j, \quad i\times (i\times j)
         \end{equation*}
     \end{enumerate}
 \end{prop}
-
 
 
 \begin{prop}[limits]
