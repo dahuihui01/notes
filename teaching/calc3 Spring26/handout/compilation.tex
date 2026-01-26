@@ -48,7 +48,7 @@
 \pgfplotsset{compat=newest}
 
 
-\input{hui.tex}
+\input{hui_r.tex}
 
 \title{Calc III Section Notes with Answers
 \\ 
@@ -210,14 +210,63 @@
 
 
 \begin{prob}
-    Can you express $w=(1,0)$ as a linear combination of $v_1,v_2$ for difference choices of $v_1,v_2$?
+    Can you express $w=(1,2)$ as a linear combination of $v_1,v_2$ for difference choices of $v_1,v_2$?
     \begin{enumerate}
         \item $v_1=(1,1), v_2=(-2,-2)$.
         \item $v_1=(2,1), v_2=(-1, 0)$.
     \end{enumerate}
 \end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item We first note that $(1,1), (-2,-2)$ lie on the same line through the origin. Hence, any linear combination of $v_1,v_2$ will stay in this line, i.e., of the form $(a,a)$, for some $a\in\R$. Therefore, it is impossible to write $w=(1,2)$ as a linear combination of $v_1,v_2$.
+        \item Suppose $w=a_1v_1+a_2v_2$ for some $a_1,a_2\in\R$, then 
+        \begin{equation*}
+            \begin{cases}
+                2a_1-a_2=1\\
+                a_1=2
+            \end{cases}\Rightarrow \begin{cases}
+                a_1=2\\
+                a_2=3
+            \end{cases}
+        \end{equation*}
+        Thus we can write $w$ as a linear combination of $v_1,v_2$:
+        \begin{equation*}
+            w=2v_1+3v_2
+        \end{equation*}
+    \end{enumerate}
+\end{proof}
 
 
+
+
+
+\begin{prob}
+    Let $u,v\in\R^3$, suppose that $u,v$ are orthongal, show that 
+    \begin{equation*}
+        \|u+v\|^2=\|u\|^2+\|v\|^2
+    \end{equation*}
+    Bonus: is the converse true? (meaning assuming $ \|u+v\|^2=\|u\|^2+\|v\|^2$, is it true that $u\cdot v=0$?)
+\end{prob}
+\begin{proof}
+    We have 
+    \begin{align*}
+        \|u+v\|^2&=(u+v)\cdot(u+v)\\
+        &=u\cdot u+u\cdot v+v\cdot u+v\cdot v\\
+        &=\|u\|^2+\|v\|^2
+    \end{align*}
+    because $u\cdot v=v\cdot u=0$. The converse is also true: we know by definition that
+    \begin{equation*}
+        \|u+v\|^2=\|u\|^2+\|v\|^2+2u\cdot v
+    \end{equation*}
+    given the assumption, we also have 
+    \begin{equation*}
+        \|u+v\|^2=\|u\|^2+\|v\|^2
+    \end{equation*}
+    Thus equating them we get 
+    \begin{equation*}
+        \|u\|^2+\|v\|^2+2u\cdot v=\|u\|^2+\|v\|^2\Rightarrow u\cdot v=0
+    \end{equation*}
+\end{proof}
 
 
 
@@ -281,7 +330,7 @@
 \end{prop}
 
 
-\begin{prop}[determinant and linear combination]
+\begin{prop}[determinant and linear combination]\label{det}
     Let $A=\begin{pmatrix}
         a_1&a_2&a_3\\
         b_1&b_2&b_3\\
@@ -293,6 +342,39 @@
     If any of $a,b,$ or $c$ is a linear combination of the other two vectors, then $\det(A)=0$. (Relevant topic: linear independence).
 \end{prop}
 
+
+
+\begin{prob}
+    Let $\vec{u}=(1,2,3), \vec{v}=(0,1,1)$ be vectors in $\R^3$, compute the area of the parallelogram spanned by these two vectors.
+\end{prob}
+\begin{proof}
+    \begin{equation*}
+        u\times v=\begin{bmatrix}
+            i&j&k\\
+            1&2&3\\
+            0&1&1
+        \end{bmatrix}=-i-j+k=(-1,-1,1)
+    \end{equation*}
+    Thus the area of the parallelogram is 
+    \begin{equation*}
+        \|u\times v\|=\sqrt{3}
+    \end{equation*}
+\end{proof}
+
+
+\begin{prob}
+    Compute the determinant of the following matrix $A$:
+    \begin{equation*}
+        A=\begin{pmatrix}
+            1&0&2\\
+            2&1&-1\\
+            3&1&1
+        \end{pmatrix}
+    \end{equation*}
+\end{prob}
+\begin{proof}
+    Notice that the third row vector $(3,1,1)$ is the sum of the two row vectors above, hence by Proposition \ref{det}, we know we must have $\det(A)=0$.
+\end{proof}
 
 
 
