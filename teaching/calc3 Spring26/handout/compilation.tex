@@ -89,8 +89,8 @@
 \begin{itemize}
     \item TA: Hui.
     \item Email: hsun95@jh.edu.
-    \item Office Hours: Tuesday 4-6 PM, Krieger 211; Friday 1-2 PM Zoom.
-    \item Biweekly Quizzes: 15 min, 10\%.
+    \item Office Hours: Tuesday 2-3 PM, 4-5 pm, Krieger 211.
+    \item Biweekly Quizzes: 10\%.
     \item Attendance: 5\%. (If you can't make it, email me).
 \end{itemize}
 
@@ -227,6 +227,24 @@
 \section*{\centering Week 2 (1/26-30)}
 
 
+\begin{defn}[determinant]
+    Let $A=\begin{pmatrix}
+        a&b\\
+        c&d
+    \end{pmatrix}$ be a $2\times 2$ matrix, the \textbf{determinant} of $A$ is given by 
+    \begin{equation*}
+        \det(A)=ad-bc
+    \end{equation*}
+    Let $A=\begin{pmatrix}
+        a_1&a_2&a_3\\
+        b_1&b_2&b_3\\
+        c_1&c_2&c_3
+    \end{pmatrix}$ be a $3\times 3$ matrix, the \textbf{determinant} of $A$ is given by
+    \begin{equation*}
+        \det(A)=a_1(b_2c_3-b_3c_2)-a_2(b_1c_3-b_3c_1)+a_3(b_1c_2-b_2c_1)
+    \end{equation*}
+\end{defn}
+
 
 \begin{defn}[cross product]
     Let $a,b\in\R^3$, write $a=(a_1,a_2,a_3), b=(b_1,b_2,b_3)$, then the \textbf{cross product}
@@ -249,7 +267,7 @@
         \item $(a+b)\times c=a\times c+b\times c$, and $a\times (b+c)=a\times b+a\times c$.
         \item $(\alpha a)\times b=\alpha(a\times b)$ for any $a\in\R$.
         \item $a\times b$ is perpendicular to vectors $a,b$.
-        \item The length of the cross product is the area of the parallelogram:
+        \item The length of the cross product is the area of the parallelogram spanned by $a,b$:
         \begin{equation*}
             \|a\times b\|=\|a\|\|b\|\sin\theta
         \end{equation*}
@@ -261,6 +279,23 @@
         \end{equation*}
     \end{enumerate}
 \end{prop}
+
+
+\begin{prop}[determinant and linear combination]
+    Let $A=\begin{pmatrix}
+        a_1&a_2&a_3\\
+        b_1&b_2&b_3\\
+        c_1&c_2&c_3
+    \end{pmatrix}$ be a $3\times 3$ matrix, let 
+    \begin{equation*}
+        a=(a_1,a_2, a_3), b=(b_1,b_2,b_3), c=(c_1,c_2,c_3)
+    \end{equation*}
+    If any of $a,b,$ or $c$ is a linear combination of the other two vectors, then $\det(A)=0$. (Relevant topic: linear independence).
+\end{prop}
+
+
+
+
 
 
 
