@@ -389,15 +389,48 @@ Next, work on and \textbf{discuss} the following problems!
 \begin{prob}
     Let $u=(1,2,-1)$, find a nonzero vector that is orthogonal to $u$.
 \end{prob}
+\begin{proof}
+    There are many choices, for example, $v=(1,0,1)$.
+\end{proof}
 
 \begin{prob}
     Let $u=(1,0), v=(2,-1)$, 
     \begin{enumerate}
         \item Using the dot product, what is the angle between $u,v$? (You do not need to simplify your answer).
-        \item Can you find a vector that is orthogonal to both of $u,v$? 
-        \item Can you find vectors that are orthogonal to any basis of $\R^2$? 
+        \item Can you find a nonzero vector in $\R^2$ that is orthogonal to both of $u,v$? 
+        \item Can you find nonzero vectors that are orthogonal to any basis of $\R^2$? (Hint: take $u=(1,0)$, can you draw the set of vectors orthogonal to $u$? A basis of $\R^2$ contains two noncolinear vectors).
     \end{enumerate}
 \end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item We have 
+        \begin{equation*}
+            \cos\theta=\frac{u\cdot v}{\|u\|\|v\|}=\frac{2}{\sqrt{5}}
+        \end{equation*}
+        Hence 
+        \begin{equation*}
+            \theta=\arccos\left(\frac{2}{\sqrt{5}}\right)
+        \end{equation*}
+        \item Suppose there exists a nonzero vector $w=(w_1,w_2)\in\R^2$ such that $w\cdot u=w\cdot v=0$, then this implies
+        \begin{equation*}
+            w\cdot u=w_1=0, \quad w\cdot v=2w_1-w_2=0\Rightarrow w_1=w_2=0
+        \end{equation*}
+        Thus the only vector orthogonal to $u,v$ is the zero vector, hence the answer is no.
+        \item Let $\{a,b\}$ be a basis of $\R^2$, where $a=(a_1,a_2), b=(b_1,b_2)$, we know they are noncolinear, hence 
+        \begin{equation*}
+            \frac{a_1}{b_1}\neq\frac{a_2}{b_2}
+        \end{equation*}
+        Then suppose $w$ is orthogonal to both $a,b$. Then (one can draw a picture), $w$ should be of the form 
+        \begin{equation*}
+            w=(\lambda a_2,-\lambda a_1)=(\zeta b_2, -\zeta b_1)
+        \end{equation*}
+        for some $\lambda,\zeta\in\R$. But this implies 
+        \begin{equation*}
+            \frac{a_1}{b_1}=\frac{a_2}{b_2}=\frac{\zeta}{\lambda}
+        \end{equation*}
+        which is a contradiction to the above. This concludes the proof that no nonzero vector can be orthogonal to a basis in $\R^2$.
+    \end{enumerate}
+\end{proof}
 
 \begin{prob}
     Let 
@@ -410,10 +443,22 @@ Next, work on and \textbf{discuss} the following problems!
     \end{equation*}
     Compute the determinant of $A$.
 \end{prob}
+\begin{proof}
+    We have $\det(A)=10$.
+\end{proof}
 
 \begin{prob}
-    Construct a $3\times 3$ matrix $A$ such that $\det(A)=0$.
+    Construct a nonzero $3\times 3$ matrix $A$ such that $\det(A)=0$.
 \end{prob}
+\begin{proof}
+    \begin{equation*}
+        A=\begin{pmatrix}
+            1&1&1\\
+            2&2&2\\
+            3&3&3
+        \end{pmatrix}
+    \end{equation*}
+\end{proof}
 
 
 
