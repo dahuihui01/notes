@@ -461,6 +461,91 @@ Next, work on and \textbf{discuss} the following problems!
 \end{proof}
 
 
+\newpage 
+\section*{\centering Week 3 (2/2-2/6)}
+Topics: parametric equations, multivariable functions, graphs and level sets.
+
+\begin{defn}[matrix addition, multiplication]
+    Let $A, B$ be $m\times n$ matrices, $C$ be $n\times k$ matrix as follows 
+    \begin{equation*}
+        A=\begin{pmatrix}
+            a_{11}&\dots& a_{1n}\\
+            \vdots&\ddots&\vdots\\
+            a_{m1}&\dots&a_{mn}
+        \end{pmatrix}, \quad B=\begin{pmatrix}
+            b_{11}&\dots&b_{1n}\\
+            \vdots&\ddots&\vdots\\
+            b_{m1}&\dots&b_{mn}
+        \end{pmatrix}
+    \end{equation*}
+    \begin{equation*}
+        C=\begin{pmatrix}
+            c_{11}&\dots&c_{1k}\\
+            \vdots&\ddots&\vdots\\
+            c_{n1}&\dots&c_{nk}
+        \end{pmatrix}
+    \end{equation*}
+    then \textbf{matrix addition} $A+B$ defined as 
+    \begin{equation*}
+        A+B\coloneq\begin{pmatrix}
+            a_{11}+b_{11}&\dots& a_{1n}+b_{1n}\\
+            \vdots&\ddots&\vdots\\
+            a_{m1}+b_{m1}&\dots&a_{mn}+b_{mn}
+        \end{pmatrix}
+    \end{equation*}
+    and \textbf{matrix multiplication} is defined as 
+    \begin{equation*}
+        AC=\begin{pmatrix}
+            \sum_{j=1}^na_{1j}c_{j1}&\dots&\sum_{j=1}^na_{1j}c_{jk}\\
+            \vdots&\ddots&\vdots\\
+            \sum_{j=1}^na_{mj}c_{j1}&\dots&\sum_{j=1}^na_{mj}c_{jk}
+        \end{pmatrix}
+    \end{equation*}
+    \begin{remark}
+        Given matrices $A,B$, for the matrix multiplication $AB$ to be well-defined,
+        \begin{equation*}
+            \text{number of columns of $A$}=\text{number of rows of $B$}
+        \end{equation*}
+    \end{remark}
+\end{defn}
+
+\begin{defn}[matrix as linear transformation]
+    Let $A$ be an $m\times n$ matrix 
+    \begin{equation*}
+        A=\begin{pmatrix}
+            a_{11}&\dots& a_{1n}\\
+            \vdots&\ddots&\vdots\\
+            a_{m1}&\dots&a_{mn}
+        \end{pmatrix}
+    \end{equation*}
+    and let $x\in\R^n$, where $x=(x_1,\dots, x_n)$. Then $A$ applied to $x$ as a linear transformation is given by 
+    \begin{equation*}
+        Ax=\begin{pmatrix}
+            a_{11}&\dots& a_{1n}\\
+            \vdots&\ddots&\vdots\\
+            a_{m1}&\dots&a_{mn}
+        \end{pmatrix}\begin{pmatrix}
+            x_1\\
+            \vdots\\
+            x_n
+        \end{pmatrix}=\begin{pmatrix}
+            \sum_{j=1}^na_{1j}x_j\\
+            \vdots\\
+            \sum_{j=1}^na_{mj}x_j
+        \end{pmatrix}
+    \end{equation*}
+    where 
+    \begin{equation*}
+        \sum_{j=1}^na_{1j}x_j=a_{11}x_1+a_{12}x_2+\dots+a_{1n}x_n, \quad\dots
+    \end{equation*}
+\end{defn}
+
+
+
+
+
+
+
 
 
 
