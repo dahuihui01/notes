@@ -463,7 +463,7 @@ Next, work on and \textbf{discuss} the following problems!
 
 \newpage 
 \section*{\centering Week 3 (2/2-2/6)}
-Topics: parametric equations, multivariable functions, graphs and level sets.
+Topics: parametric equations, multivariable functions, and level sets.
 
 \begin{defn}[matrix addition, multiplication]
     Let $A, B$ be $m\times n$ matrices, $C$ be $n\times k$ matrix as follows 
@@ -539,6 +539,116 @@ Topics: parametric equations, multivariable functions, graphs and level sets.
         \sum_{j=1}^na_{1j}x_j=a_{11}x_1+a_{12}x_2+\dots+a_{1n}x_n, \quad\dots
     \end{equation*}
 \end{defn}
+
+
+\begin{defn}[image, graph]
+    The \textbf{image} of a function $f:U\subset \R^n\to\R^m$ is a subset of $\R^m$,
+    \begin{equation*}
+        \text{Image}(f)=\{f(x)\in\R^m: x\in U\}
+    \end{equation*}
+    and the \textbf{graph} of $f$ is a subset of $\R^{n+m}$,
+    \begin{equation*}
+        \text{Graph}(f)=\{(x,f(x)): x\in U\}
+    \end{equation*}
+\end{defn}
+
+
+\begin{defn}[level set]
+    Let $f:U\subset\R^n\to\R^m$, and $c\in\R$ be some constant. Then the \textbf{level set} of $f$ at $c$ is the set $\mathcal{L}_c$
+    \begin{equation*}
+        \mathcal{L}_c\coloneq\{x\in U: f(x)=c\}\subset\R^n
+    \end{equation*}
+\end{defn}
+
+\begin{defn}[Equation of a line]\label{line}
+    A \textbf{line} $l$ in $\R^3$ through the tip of $a=(a_1,a_2,a_3)$ pointing in the direction of a vector $v=(v_1,v_2,v_3)$ is given by 
+    \begin{equation*}
+        l(t)=a+tv=(a_1+tv_1, a_2+tv_2, a_3+tv_3)
+    \end{equation*}
+    where $t\in\R$. Alternatively, a line passing through two points $P=(x_1,y_1,z_1), Q=(x_2,y_2,z_2)$ is given by 
+    \begin{equation*}
+        l(t)=(x(t), y(t), z(t))
+    \end{equation*}
+    where 
+    \begin{equation*}
+        \begin{cases}
+            x(t)=x_1+(x_2-x_1)t\\
+            y(t)=y_1+(y_2-y_1)t\\
+            z(t)=z_1+(z_2-z_1)t
+        \end{cases}
+    \end{equation*}
+\end{defn}
+
+
+\begin{defn}[Plane in $\R^3$]\label{plane}
+    If a plane ${P}$ passes through some point $(x_0,y_0,z_0)$, and $n=(A,B,C)$ is a vector orthogonal to the plane, then the plane ${P}$ is given by the equation:
+     \begin{equation*}
+         A(x-x_0)+B(y-y_0)+C(z-z_0)=0
+     \end{equation*}
+     \begin{remark}
+        A point ${P}$ in the plane and a normal vector to the plane uniquely determine a plane in $\R^3$. Equivalently, three noncolinear points uniquely determine a plane.
+     \end{remark}
+ \end{defn}
+ \begin{prob}
+    Compute the plane containing all three points:
+    \begin{equation*}
+        (1,0,2), \quad (2, -1, 0), \quad (-1, 2, 3)
+    \end{equation*}
+ \end{prob}
+ \begin{proof}
+    Let $A=(1,0,2), B=(2, -1, 0), C=(-1, 2, 3)$, then consider two vectors in this plane 
+    \begin{equation*}
+        AB=(1,-1,-2), AC=(-2,2,1)
+    \end{equation*}
+    Then taking their cross product we find a normal vector to this plane:
+    \begin{equation*}
+        AB\times AC=\begin{bmatrix}
+            i&j&k\\
+            1&-1&-2\\
+            -2&2&1
+        \end{bmatrix}=3i+3j+0k=(3,3,0)
+    \end{equation*}
+    Thus using the definition above, and point $A$, we know the formula is given by 
+    \begin{equation*}
+        3(x-1)+3(y)=0
+    \end{equation*}
+    One can simplify this to 
+    \begin{equation*}
+        x+y-1=0
+    \end{equation*}
+\end{proof}
+
+ \begin{prob}
+    \begin{enumerate}
+        \item[(a)] Find the equation of the line through \( (1, 1, 0) \) in the direction of \( 2\mathbf{i} - \mathbf{k} \).  
+        \item[(b)] Find the equation of the line passing through \( (0, 1, 1) \) and \( (0, 1, 0) \).  
+        \item[(c)] Find an equation for the plane perpendicular to the vector \( (-1, 1, -1) \) and passing through the point \( (1, 1, 1) \).
+    \end{enumerate}
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item[(a)] The equation is given by 
+        \begin{equation*}
+            l_1(t)=(1,1,0)+t(2, 0, -1), \quad t\in\R
+        \end{equation*}
+        \item[(b)] The equation is given by 
+        \begin{equation*}
+            l_2(t)=(0,1,1)+t(0, 0, -1), \quad t\in\R
+        \end{equation*}
+        \item[(c)] The equation of the plane is given by 
+        \begin{equation*}
+            (x-1, y-1, z-1)\cdot (-1, 1, -1)=0
+        \end{equation*}
+        simplifying we get 
+        \begin{equation*}
+            x-y+z=1
+        \end{equation*}
+    \end{enumerate}
+\end{proof}
+
+
+
+
 
 
 
