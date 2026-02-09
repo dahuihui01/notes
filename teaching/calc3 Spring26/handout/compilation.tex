@@ -647,9 +647,145 @@ Topics: parametric equations, multivariable functions, and level sets.
 \end{proof}
 
 
+\newpage 
+\section*{\centering Week 4 (2/9-2/13)}
+Topic: limits.
 
 
 
+
+
+
+\begin{defn}[limit]
+    Let $f: A\subset\R^n\to\R^m$, where $A$ is open, let $x_0$ be in $A$ or be a boundary point of $A$ and $N$ be a neighborhood of a point $b\in\R^m$. Now let $x$ approach $x_0$, $f$ is said to be \textbf{eventually in $N$} if there exists a neighborhood $U$ of $x_0$ such that 
+    \begin{equation*}
+        \text{ if } x\in U, \text{ then } f(x)\in N
+    \end{equation*}
+    If $f$ is eventually in $N$ for \textit{any} neighborhood $N$ around $b$, then the \textbf{limit} of $f$ as $x\to x_0$ exists, denoted as 
+    \begin{equation*}
+        \lim_{x\to x_0}f(x)=b
+    \end{equation*}
+    Alternatively, if the limit exists, then $\lim_{x\to x'}f(x)=b$ is when $x=(x_1, x_2, \dots, x_n)\to x'=(x_1',x_2',\dots, x_n')$ from \textbf{all directions}, and $f(x)$ approaches $b=(b_1,\dots, b_m)$.
+\end{defn}
+
+
+
+\begin{defn}[continuity]
+    Let $f:A\subset\R^n\to\R^m$ is said to be \textbf{continuous} at $x_0\in A$ if 
+    \begin{equation*}
+        \lim_{x\to x_0}f(x)=f(x_0)
+    \end{equation*}
+    And $f$ is called continuous if $f$ is continuous at every $x_0\in A$.
+\end{defn}
+
+\begin{example}
+    The limit doesn't need to exist! For example, let 
+    \begin{equation*}
+        H(x)=\begin{cases}
+            1, x\geq 0\\
+            -1, x<0
+        \end{cases}
+    \end{equation*}
+    Note the limit doesn't exist at $x=0$.
+\end{example}
+
+
+
+
+\begin{prob}
+    For the following functions, find their (1) image, (2) graph, (3) \textbf{draw their level sets}.
+    \begin{enumerate}
+        \item  Let $f: \R\to\R$, and $f(x)=x^2+1$.
+        \item Let $g: \R^2\to \R$, and $g(x,y)=x^2+y^2$.
+    \end{enumerate}
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item $\text{Image}(f)=\{x^2+1: x\in\R\}$, and $\text{Graph}(f)=\{(x,x^2+1):x\in\R\}$.
+        \item $\text{Image}(g)=\{x^2+y^2, (x,y)\in\R^2\}$, and $\text{Graph}(g)=\{(x,y,x^2+y^2):(x,y)\in\R^2\}$.
+    \end{enumerate}
+\end{proof}
+
+\begin{prob}
+    Compute the following limits:
+    \begin{enumerate}
+        \item \begin{equation*}
+            \lim_{(x,y)\to (0,0)}\frac{\sin xy}{y}
+        \end{equation*}
+       ( Hint: try writing $\frac{\sin xy}{y}=\frac{\sin xy}{xy}\cdot x$, and recall $\lim_{t\to 0}\frac{\sin t}{t}=1$).
+        \item \begin{equation*}
+            \lim_{(x,y)\to(0,0)}\frac{e^{xy}-1}{y}
+        \end{equation*}
+        \item \begin{equation*}
+            \lim_{(x,y)\to(0,0)}\frac{(x-y)^2}{x^2+y^2}
+        \end{equation*}
+    \end{enumerate}
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item Following the hint, we see 
+        \begin{equation*}
+            \lim_{(x,y)\to(0,0)}\frac{\sin xy}{y}=\lim_{(x,y)\to(0,0)}\frac{\sin xy}{xy}x=\lim_{x\to 0}x=0
+        \end{equation*}
+        \item This one uses the exact same trick: \begin{equation*}
+            \lim_{(x,y)\to(0,0)}\frac{e^{xy}-1}{xy}\cdot y=0
+        \end{equation*}
+        \item First letting $x\to 0$ along $y=0$, we see the limit is $1$; letting $x=y\to 0$, we see the limit is $0$, thus the limit doesn't exist!
+    \end{enumerate}
+\end{proof}
+
+
+\begin{prob}
+    Compute the limit of the following functions:
+    \begin{enumerate}
+        \item \begin{equation*}
+            \lim_{(x,y)\to(0,0)}\frac{x}{x+y} 
+        \end{equation*}
+        \item \begin{equation*}
+            \lim_{(x,y)\to(0,0)}\frac{xy}{x+y}
+        \end{equation*}
+        (Hint: try considering $y=x^2-x$ and $y=x$)
+        \item \begin{equation*}
+            \lim_{(x,y)\to (0,0)}\frac{\sin(xy)}{x+y}
+        \end{equation*}
+        % \item $f(x,y)=\frac{x}{x+y}$ as $(x,y)\to (0,0)$.
+        % \item $g(x,y)=\frac{xy}{x+y}$ as $(x,y)\to (0,0)$.
+        % \item $h(x,y)=\frac{\sin(xy)}{x+y}$ as $(x,y)\to (0,0)$. Recall that $\lim_{x\to 0}\frac{\sin(x)}{x}=1$.
+    \end{enumerate}
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item First fix $x=0$, let $y\to 0$, then the limit is $0$; now fix $y=0$, let $x\to 0$, the limit is $1$. The limit doesn't exist!
+        \item Consider $y=x^2-x$, (as $x\to0, y\to 0$), then 
+        \begin{equation*}
+            \lim_{(x,y)\to(0,0)}\frac{xy}{x+y}=\lim_{x\to 0}\frac{x^3-x^2}{x^2}=\lim_{x\to 0}x-1=-1
+        \end{equation*}
+        and consider $y=x$, we see the limit is $0$, thus the limit doesn't exist!
+        \begin{warn}
+            2 does not follow from 1! A student suggests a proof: $\lim_{(x,y)\to(0,0)}=\frac{x}{x+y}\cdot y$, and by 1, the limit $\frac{x}{x+y}$ doesn't exist, this implies the limit of $\frac{xy}{x+y}$ also doesn't exist. This argument is not correct! Consider the following counterexample: $\lim_{y\to 0}\frac{1}{y}$ doesn't exist, but the limit
+            \begin{equation*}
+                \lim_{y\to 0}\frac{1}{y}\cdot y=1
+            \end{equation*}
+            exists! More concretely, if you multiply by any function that doesn't tend to $0$, the argument follows, but it doesn't work when the function tends to $0$!
+        \end{warn}
+        \item We see that 
+        \begin{equation*}
+            \lim_{(x,y)\to(0,0)}\frac{\sin(xy)}{xy}\frac{xy}{x+y}
+        \end{equation*}
+        Note that the limit of $\sin(xy)/(xy)=1$, but the second one doesn't exist, thus the limit doesn't exist!
+    \end{enumerate}
+\end{proof}
+
+
+\noindent
+\begin{idea}
+How to find a a limit $\lim_{x\to x_0}f(x)$:
+\begin{itemize}
+    \item Step 1: Guess what the limit should be.
+    \item Step 2: Try from approaching $x_0$ from different directions.
+    \item Step 3: Try to replace terms with expressions you are familiar with.
+\end{itemize}
+\end{idea}
 
 
 
