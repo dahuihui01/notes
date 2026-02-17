@@ -903,6 +903,12 @@ Topic: derivatives.
     \end{enumerate}
 \end{prop}
 
+\begin{prop}[special case of chain rule]
+    Let $f:\R^3\to\R$ be a function in $3$ variables $u,v,w$, namely, $z=f(u,v,w)$, and if $u=g_1(x), v=g_2(x), w=g_3(x)$, then 
+    \begin{equation*}
+        \frac{\partial z}{\partial x}=\frac{\partial z}{\partial u}\frac{\partial u}{\partial x}+\frac{\partial z}{\partial v}\frac{\partial v}{\partial x}+\frac{\partial z}{\partial w}\frac{\partial w}{\partial x}
+    \end{equation*}
+\end{prop}
 
 \newpage 
 \begin{prob}
@@ -959,6 +965,17 @@ Compute the gradient of $f$ at $(1,2,0)$.
 % \end{proof}
 
 
+\begin{prob}
+    Given $w=2xy+z$, where $x=2t, y=-t, z=t^2$, compute $\frac{\partial w}{\partial t}$.
+\end{prob}
+% \begin{proof}
+%     Using chain rule, we write 
+%     \begin{equation*}
+%         \frac{\partial w}{\partial t}=\frac{\partial w}{\partial x}\frac{\partial x}{\partial t}+\frac{\partial y}{\partial t}\frac{\partial y}{\partial t}+\frac{\partial z}{\partial t}\frac{\partial z}{\partial t}=4y-2x+2t=-6t
+%     \end{equation*}
+
+% \end{proof}
+
 
 
 \begin{prob}[2.5, Q7]
@@ -1006,10 +1023,18 @@ Compute the gradient of $f$ at $(1,2,0)$.
 %     \end{align*}
 % \end{proof}
 
+
+
+
+
+
 \begin{prob}[2.5, Q8]
     Let \( f(u, v, w) = (e^{u-w}, \cos (v + u) + \sin (u + v + w)) \) and \( g(x, y) = (e^x, \cos (y - x), e^{-y}). \)  
    Calculate \( f \circ g \) and \( D(f \circ g)(0, 0)\).
 \end{prob}
+
+
+
 % \begin{proof}
 %     We have 
 %     \begin{equation*}
