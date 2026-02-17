@@ -789,11 +789,267 @@ How to find a a limit $\lim_{x\to x_0}f(x)$:
 \end{idea}
 
 
+\newpage 
+\section*{\centering Week 5 (2/16-2/20)}
+Topic: derivatives.
+
+\begin{defn}[partial derivative]
+    Let $f:U\subset\R^n\to\R$, where $U$ is open. Then the \textbf{partial derivative} with respect to $x_i$ is defined by 
+    \begin{equation*}
+        \frac{\partial f}{\partial x_i}(x_1, \dots, x_n)=\lim_{h\to 0}\frac{f(x+he_i)-f(x)}{h}
+    \end{equation*}
+    where $e_i=(0,\dots, 1,\dots, 0)$ with $1$ in the $i$th coordinate. 
+\end{defn}
 
 
 
 
+\begin{defn}[differentiability in two variables]
+    Let $f:U\subset\R^2\to\R$, then $f$ is \textbf{differentiable} at $(x_0,y_0)\in U$ if 
+    \begin{enumerate}
+        \item[(1)] $\frac{\partial f}{\partial x},\frac{\partial f}{\partial y}$ exist at $(x_0,y_0)$
+        \item[(2)] 
+        \begin{equation*}
+            \lim_{(x,y)\to(x_0,y_0)}\frac{f(x,y)-f(x_0,y_0)-\left[\frac{\partial f}{\partial x}(x_0,y_0)\right](x-x_0)-\left[\frac{\partial f}{\partial y}(x_0,y_0)\right](y-y_0)}{\|(x,y)-(x_0,y_0)\|}=0
+        \end{equation*}
+    \end{enumerate}
+    If $f$ is differentiable at $(x_0, y_0)$, then the derivative of $f$ at $(x_0,y_0)$ is the $1\times 2$ matrix 
+    \begin{equation*}
+        \begin{bmatrix}\frac{\partial f}{\partial x}(x_0,y_0)&\frac{\partial f}{\partial y}(x_0,y_0)\end{bmatrix}
+    \end{equation*}
+\end{defn}
+\begin{warn}
+    It is not enough only require the partial derivatives exist at the point. Consider the following function:
+    \begin{equation*}
+        f(x,y)=\begin{cases}
+            \frac{xy}{x^2+y^2}, & (x,y)\neq (0,0)\\
+            0, & (x,y)=(0,0)
+        \end{cases}
+    \end{equation*}
+    The partitial derivatives exist at $(0,0)$, but $f$ is not differentiable.
+\end{warn}
 
+
+
+\begin{defn}[tangent plane]
+    Let $f:\R^2\to\R$ be differentiable at $(x_0,y_0)$, then the \textbf{tangent plane} to the graph $f$ at $(x_0, y_0)$ is the given by 
+    \begin{equation*}
+        z=f(x_0,y_0)+\frac{\partial f}{\partial x}\bigg\vert_{(x_0,y_0)}(x-x_0)+\frac{\partial f}{\partial y}\bigg\vert_{(x_0,y_0)}(y-y_0)
+    \end{equation*}
+    \begin{remark}
+        The plane given above intersects the graph of $f$ at the point $(x_0, y_0, f(x_0, y_0))$.
+    \end{remark}
+\end{defn}
+
+
+\begin{defn}[differentiability in the general setting]
+    Let $f:U\subset\R^n\to\R^m$, then $f$ is differentiable at $x_0\in U$ if
+    \begin{enumerate}
+        \item[(1)] the partial derivatives $\frac{\partial f_i}{\partial x_j}$ exist for all $1\leq i\leq m, 1\leq j\leq n$. 
+        \item[(2)]
+        \begin{equation*}
+            \lim_{x\to x_0}\frac{\|f(x)-f(x_0)-T(x-x_0)\|}{\|x-x_0\|}=0
+        \end{equation*}
+        where $T=Df(x_0)$ is the $m\times n$ matrix 
+        \begin{equation*}
+            Df(x_0)=
+            \begin{bmatrix}
+            \frac{\partial f_1}{\partial x_1}(x_0) & \cdots & \frac{\partial f_1}{\partial x_n}(x_0) \\
+            \vdots & \ddots & \vdots \\
+            \frac{\partial f_m}{\partial x_1}(x_0) & \cdots & \frac{\partial f_m}{\partial x_n}(x_0)
+            \end{bmatrix}
+        \end{equation*}
+    \end{enumerate}
+    % The derivative of $f$ at $x_0$ is the $m\times n$ matrix $Df(x_0)$.
+    % \begin{remark}
+    %     When $m=1$, the derivative becomes a $1\times n$ matrix, we call this the \textbf{gradient} of $f$.
+    % \end{remark}
+\end{defn}
+
+\begin{defn}[gradient]
+    Let $f:U\subset\R^n\to\R$, the \textbf{gradient} $\nabla f(x)$ is a special case of the general case above when $m=1$, i.e., it is a $1\times n$ matrix 
+    \begin{equation*}
+        Df(x)=\begin{bmatrix}
+            \frac{\partial f}{\partial x_1}&\dots&\frac{\partial f}{\partial x_n}
+        \end{bmatrix}
+    \end{equation*}
+\end{defn}
+
+
+
+\begin{prop}
+    Let $f:U\subset\R^n\to\R^m$ be differentiable at $x_0$, then the derivative of $f$ at $x_0$ is an $m\times n$ matrix $Df(x_0)=\left(\frac{\partial f_i}{\partial x_j}\right)_{ij}$. The derivative follows the same properties as derivative for single variable functions:
+    \begin{enumerate}
+        \item Let $c\in\R$, then 
+        \begin{equation*}
+            D(cf)(x_0)=cDf(x_0) \tag {multiplication of a matrix by constant $c$}
+        \end{equation*}
+        \item Let $g: U\subset\R^n\to\R^m$ also be differentiable at $x_0$, then 
+        \begin{equation*}
+            D(f+g)(x_0)=Df(x_0)+Dg(x_0) \tag{sum of two matrices}
+        \end{equation*}
+        \item Let $h_1: U\subset\R^n\to\R, h_2: U\subset\R^n\to\R$,then 
+        \begin{equation*}
+            D(h_1h_2)(x_0)=Dh_1(x_0)h_2(x_0)+h_1(x_0)Dh_2(x_0) \tag{product rule}
+        \end{equation*}
+        and if $h_2\neq 0$ on $U$.
+        \begin{equation*}
+            D(h_1/h_2)(x_0)=\frac{Dh_1(x_0)h_2(x_0)-h_1(x_0)Dh_2(x_0)}{h_2^2(x_0)} \tag{quotient rule}
+        \end{equation*}
+        \item Let $g: U\subset\R^n\to\R^m, f:V\subset\R^m\to\R^p$ such that $g(U)\subset V$, then 
+        \begin{equation*}
+            D(f\circ g)(x_0)=Df(g(x_0))Dg(x_0) \tag{chain rule}
+        \end{equation*}
+    \end{enumerate}
+\end{prop}
+
+
+\newpage 
+\begin{prob}
+    Compute the plane tangent to the graph of $f(x,y)=x^2y+2xy-y^2$ at $(1,2,2)$.
+\end{prob}
+% \begin{proof}
+%     We have 
+%     \begin{equation*}
+%         \frac{\partial f}{\partial x}(1,2)=2xy+2y\vert_{(1,2)}=8, \quad \frac{\partial f}{\partial y}(1,2)=x^2+2x-2y\vert_{(1,2)}=-1
+%     \end{equation*}
+%     and $f(1,2)=2$, thus the plane is given by
+%     \begin{equation*}
+%         z=2+8(x-1)-(y-2)
+%     \end{equation*}
+%     i.e., $z=8x-y-4$.
+% \end{proof}
+
+
+% \begin{example}
+%     Let $f(x,y,z)=(ze^x, -ye^z)$, then 
+%     \[
+% Df(x, y, z) = 
+% \begin{bmatrix}
+% ze^x & 0 & e^x \\
+% 0 & -e^z & -ye^z
+% \end{bmatrix}
+% \]
+% \end{example}
+
+
+
+\begin{prob}
+    Let \( f : \mathbb{R}^3 \to \mathbb{R} \) be defined by  
+\[
+f(x, y, z) = x^2 y + y \sin(z) + z e^x.
+\]  
+Compute the gradient of $f$ at $(1,2,0)$.
+\end{prob}
+% \begin{proof}
+%     You can compute the partial derivatives 
+%     \begin{align*}
+%         \frac{\partial f}{\partial x} &= 2xy + ze^x, \\
+%         \frac{\partial f}{\partial y} &= x^2 + \sin(z), \\
+%         \frac{\partial f}{\partial z} &= y \cos(z) + e^x.
+%         \end{align*}
+%     thus the gradient is 
+%     \[
+% \nabla f = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \frac{\partial f}{\partial z} \right)=(2xy+ze^x, x^2+\sin z, y\cos z+e^x)
+% \]
+% Hence 
+% \begin{equation*}
+%     \nabla f(1,2,0)=(4, 1, 2+e)
+% \end{equation*}
+% \end{proof}
+
+
+
+
+\begin{prob}[2.5, Q7]
+    Let \( f(u, v) = (\tan (u - 1) - e^v, u^2 - v^2) \) and  
+   \[
+   g(x, y) = (e^{x-y}, x - y).
+   \]  
+   Calculate \( f \circ g \) and  
+   \[
+   D(f \circ g)(1, 1).
+   \]
+\end{prob}
+% \begin{proof}
+%     We have 
+%     \begin{equation*}
+%         f\circ g(x,y)=(\tan(e^{x-y}-1)-e^{x-y}, e^{2(x-y)}-(x-y)^2)
+%     \end{equation*}
+%     and $g(1,1)=(1,0)$, thus using chain rule, we have 
+%     \begin{equation*}
+%         D(f\circ g)(1,1)=Df(1,0)Dg(1,1)
+%     \end{equation*}
+%     where 
+%     \begin{equation*}
+%         Df(u,v)=\begin{bmatrix}
+%             \sec^2(u-1)& -e^v\\
+%             2u&-2v
+%         \end{bmatrix}, \quad Dg(x,y)=\begin{bmatrix}
+%             e^{x-y}&-e^{x-y}\\
+%             1&-1
+%         \end{bmatrix}
+%     \end{equation*}
+%     Hence 
+%     \begin{align*}
+%         D(f\circ g)(1,1)&=\begin{bmatrix}
+%             1&-1\\
+%             2&0
+%         \end{bmatrix}\begin{bmatrix}
+%             1&-1\\
+%             1&-1
+%         \end{bmatrix}\\
+%         &=\begin{bmatrix}
+%             0&0\\
+%             2&-2
+%         \end{bmatrix}
+%     \end{align*}
+% \end{proof}
+
+\begin{prob}[2.5, Q8]
+    Let \( f(u, v, w) = (e^{u-w}, \cos (v + u) + \sin (u + v + w)) \) and \( g(x, y) = (e^x, \cos (y - x), e^{-y}). \)  
+   Calculate \( f \circ g \) and \( D(f \circ g)(0, 0)\).
+\end{prob}
+% \begin{proof}
+%     We have 
+%     \begin{equation*}
+%         f\circ g =(e^{e^x-\cos(y-x)}, \cos(e^x+\cos(y-x)), \sin(e^{x}+e^{-y}+\cos(y-x)))
+%     \end{equation*}
+%     and $g(0,0)=(1, 1, 1)$. Thus 
+%     \begin{equation*}
+%         D(f\circ g)(0,0)=Df(1,1,1)Dg(0,0)
+%     \end{equation*}
+%     where 
+%     \begin{equation*}
+%         Df(u,v,w)=\begin{bmatrix}
+%             e^{u-w}&0&-e^{u-w}\\
+%             -\sin(v+u)+\cos(u+v+w)&-\sin(v+u)+\cos(u+v+w)&\cos(u+v+w)
+%         \end{bmatrix}
+%     \end{equation*}
+%     and 
+%     \begin{equation*}
+%         Dg(x,y)=\begin{bmatrix}
+%             e^x&0\\
+%             \sin(y-x)&-\sin(y-x)\\
+%             0&-e^{-y}
+%         \end{bmatrix}
+%     \end{equation*}
+%     Thus 
+%     \begin{align*}
+%         D(f\circ g)(0,0)&=\begin{bmatrix}
+%             1&0&-1\\
+%             -\sin 2+\cos 3&-\sin 2+\cos 3&\cos 3
+%         \end{bmatrix}\begin{bmatrix}
+%             1&0\\
+%             0&0\\
+%             0&-1
+%         \end{bmatrix}\\
+%         &=\begin{bmatrix}
+%             1&1\\
+%             -\sin 2+\cos 3&-\cos 3
+%         \end{bmatrix}
+%     \end{align*}
+% \end{proof}
 
 
 
