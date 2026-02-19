@@ -1,0 +1,183 @@
+\documentclass[openany]{book}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsfonts,amsthm, amssymb}
+\usepackage{yhmath}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{comment}
+\usepackage{tikz-cd}
+\usepackage{quiver}
+\renewcommand{\familydefault}{ppl}
+\newcommand{\tr}{\text{tr}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\colim}{\text{colim}}
+\DeclareMathOperator{\im}{im}
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+\newcommand{\tor}{\text{Tor}}
+\newcommand{\id}{\text{id}}
+\newcommand{\ext}{\text{Ext}}
+\newcommand{\ptop}{\text{PTop}}
+\newcommand{\pt}{\text{pt}}
+\newcommand{\ach}{\text{Ach}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\gal}{\text{Gal}}
+\newcommand{\diverg}{\operatorname{div}}
+\newcommand{\curl}{\operatorname{curl}}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+
+\input{hui.tex}
+
+\title{Calc III Sections
+\\ 
+\vspace{0.4cm}
+\large Fall 2025}
+
+
+
+
+
+
+\date{\today}
+\author{Hui Sun}
+
+
+\begin{document}
+
+\maketitle
+
+% \tableofcontents
+\newpage
+
+\begin{prob}
+Find the rate of change of \( f(x, y, z) = xyz \) in the direction normal to the surface  
+\[ y x^{2} + x y^{2} + y z^{2} = 3 \] at \((1, 1, 1)\).
+\end{prob}
+\textbf{Solutions:} let $g(x,y,z)=yx^2+xy^2+yz^2$, we know $\nabla g$ is normal to the level surface of $g$. Thus we compute 
+\begin{equation*}
+    \nabla g(x,y,z)=(
+        2xy+y^2,x^2+2xy+z^2,2yz)
+\end{equation*}
+Evaluating at $(1,1,1)$, we get 
+\begin{equation*}
+    \nabla g(1,1,1)=(3,4,2)
+\end{equation*}
+Normalizing
+\begin{equation*}
+    n=\frac{\nabla g(1,1,1)}{\|\nabla g(1,1,1)\|}=\left(\frac{3}{\sqrt{29}},\frac{4}{\sqrt{29}},\frac{2}{\sqrt{29}}\right)
+\end{equation*}
+The rate of change of $f$ along the direction of $\nabla g$ is the directional derivative $D_{n}f$, 
+\begin{align*}
+    D_{n}f&=\nabla f(1,1,1)\cdot n\\
+    &=(yz, xz, xy)\bigg\vert_{(1,1,1)}\cdot\left(\frac{3}{\sqrt{29}},\frac{4}{\sqrt{29}},\frac{2}{\sqrt{29}}\right)\\
+    &=(1,1,1)\cdot\left(\frac{3}{\sqrt{29}},\frac{4}{\sqrt{29}},\frac{2}{\sqrt{29}}\right)\\
+    &=\frac{9}{\sqrt{29}}
+\end{align*}
+
+
+\begin{prob}
+Let \( f \) and \( g \) be functions from \( \mathbb{R}^{3} \) to \( \mathbb{R} \). Suppose \( f \) is differentiable and \( \nabla f(\vec{x}) = g(\vec{x})\vec{x} \). Show that spheres centered at the origin are contained in the level sets for \( f \); that is, \( f \) is constant on such spheres.
+\end{prob}
+\textbf{Solutions:} suppose $x,y$ are two distinct points on a sphere $S$ centered at the origin, we would like to show $f(x)=f(y)$. The sphere is path-connected, meaning for any $x,y\in S$, we can find a path $c(t)$ connecting $x,y$. Thus it suffices to show $f$ is constant on any path $c(t)$ on the sphere. By the chain rule,
+\begin{align*}
+    f'(c(t))&=\nabla f(c(t))\cdot c'(t)\\
+    &=g(c(t))c(t)\cdot c'(t)
+\end{align*}
+We claim $c(t)c'(t)=0$: suppose the sphere has radius $R$, then
+\begin{align*}
+    c(t)\cdot c(t)=R^2
+\end{align*}
+Taking the derivative of both sides, we get 
+\begin{equation*}
+    2c(t)\cdot c'(t)=0\Rightarrow c(t)\cdot c'(t)=0
+\end{equation*}
+Thus 
+\begin{equation*}
+    f'(c(t))=g(c(t))c(t)\cdot c'(t)=0
+\end{equation*}
+showing $f$ is constant on any path $c$ contained in $S$, as desired.
+
+
+
+
+
+\begin{prob}
+Find the tangent plane and normal vector to the hyperboloid \( x^{2} + y^{2} - z^{2} = 18 \) at \((3, 5, -4)\).
+\end{prob}
+\textbf{Solutions:} let's first find a normal vector to the surface. Let $f(x,y,z)=x^2+y^2-z^2$, we know $\nabla f$ is normal to the surface,
+\begin{equation*}
+    \nabla f=(2x, 2y, -2z)
+\end{equation*}
+Evaluating at $(3,5,-4)$, we have 
+\begin{equation*}
+    \nabla f(3, 5, -4)=(6, 10, 8)
+\end{equation*}
+Hence the tangent plane is given by 
+\begin{equation*}
+    6(x-3)+10(y-5)+8(z+4)=0
+\end{equation*}
+Simplifying, the equation of the plane is given by
+\begin{equation*}
+    3x+5y-4z-18=0
+\end{equation*}
+
+
+
+
+
+
+\begin{prob}
+Let \( f : \mathbb{R}^{3} \to \mathbb{R} \) and regard \( Df(x, y, z) \) as a map from \( \mathbb{R}^{3} \) to \( \mathbb{R} \). Show that the kernel (that is, the set of vectors mapped to zero) of \( Df \) is the plane in \( \mathbb{R}^{3} \) orthogonal to \( \nabla f \).
+\end{prob}
+\textbf{Solutions:} fix $(x,y,z)\in\R^3$, consider any vector $v\in\ker Df(x,y,z)$, then
+\begin{equation*}
+    Df(x,y,z)v=\nabla f(x,y,z)\cdot v=0
+\end{equation*}
+If $\nabla f(x,y,z)\neq 0$, then 
+\begin{equation*}
+    \ker Df(x,y,z)=\{v:\nabla f(x,y,z)\cdot v=0\} 
+\end{equation*}
+defines a plane in $\R^3$ orthogonal to $\nabla f$, as desired. (One way to see this defines a plane is writing $\nabla f(x,y,z)=(x_0, y_0, z_0)$, and if $v\in\ker Df(x,y,z)$, then
+\begin{equation*}
+    x_0v_1+y_0v_2+z_0v_3=0
+\end{equation*}
+where $v=(v_1,v_2,v_3)$, thus taking the collection of all such $v$, we see this is plane.)
+
+
+
+
+
+
+
+\begin{prob}
+Let \( w = f(x, y) \) be a function of two variables and let \( x = u + v \) and \( y = u - v \). Show that  
+\[ \frac{\partial^{2} w}{\partial u \partial v} = \frac{\partial^{2} w}{\partial x^{2}} - \frac{\partial^{2} w}{\partial y^{2}}. \]
+\end{prob}
+\textbf{Solutions:} we first note 
+\begin{equation*}
+    \frac{\partial x}{\partial u}=\frac{\partial x}{\partial v}=\frac{\partial y}{\partial u}=1, \quad \frac{\partial y}{\partial v}=-1
+\end{equation*}
+We start with the LHS: using the chain rule,
+\begin{align*}
+    \frac{\partial^2w}{\partial u\partial v}&=\frac{\partial}{\partial u}\left(\frac{\partial w}{\partial v}\right)\\
+    &=\frac{\partial}{\partial u}\left(\frac{\partial w}{\partial x}\frac{\partial x}{\partial v}+\frac{\partial w}{\partial y}\frac{\partial y}{\partial v}\right)\\
+    &=\frac{\partial}{\partial u}\left(\frac{\partial w}{\partial x}-\frac{\partial w}{\partial y}\right)\\
+    &=\frac{\partial}{\partial x}\left(\frac{\partial w}{\partial u}\right)-\frac{\partial }{\partial y}\left(\frac{\partial w}{\partial u}\right)\\
+    &=\frac{\partial}{\partial x}\left(\frac{\partial w}{\partial x}\frac{\partial x}{\partial u}+\frac{\partial w}{\partial y}\frac{\partial y}{\partial u}\right)-\frac{\partial}{\partial y}\left(\frac{\partial w}{\partial x}\frac{\partial x}{\partial u}+\frac{\partial w}{\partial y}\frac{\partial y}{\partial u}\right)\\
+    &=\frac{\partial^2w}{\partial x^2}-\frac{\partial^2}{\partial y^2}
+\end{align*}
+as desired.
+
+
+
+\end{document}
