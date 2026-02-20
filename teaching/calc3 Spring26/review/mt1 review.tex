@@ -237,7 +237,7 @@
 
 
 
-\begin{defn}[differentiability in two variables]
+\begin{defn}[differentiability in two variables]\label{tangent plane of graph}
     Let $f:\R^2\to\R$, then $f$ is \textbf{differentiable} at $(x_0,y_0)$ if 
     \begin{enumerate}
         \item[(1)] $\frac{\partial f}{\partial x},\frac{\partial f}{\partial y}$ exist at $(x_0,y_0)$
@@ -2162,28 +2162,28 @@
         \begin{equation*}
             \frac{x^2-2xy}{x^2-4y^2}=\frac{(x-2y)x}{(x-2y)(x+2y)}=\frac{x}{x+2y}
         \end{equation*}
-        \item[Step 2:] Try the following four paths: take $(x,y)\to (0,0)$ as an example,
+        \item[Step 2:] Try the following four common paths: for example, if $(x,y)\to (0,0)$, then one might consider
         \begin{enumerate}
             \item $x=0, y\to 0$.
             \item $y=0, x\to 0$.
             \item $x=y\to 0$.
             \item $x=-y\to 0$.
         \end{enumerate}
+        (If any two paths give different limits, then the limit doesn't exist.)
         \item[Step 3:] Try to put into expressions that you are familiar with, for example, 
         \begin{equation*}
             \lim_{(x,y)\to(0,0)}\frac{\sin xy}{x}=\lim_{(x,y)\to(0,0)}\frac{\sin xy}{xy}y
         \end{equation*}
         and use the fact that $\lim_{t\to 0}\frac{\sin t}{t}=1$.
     \end{enumerate}
-   
-    If any two paths give different limits, then the limit doesn't exist. Step 2: 
-    \item When asked to find a directional derivative of $f$ along $v$ : make sure you normalize $v$ as $\frac{v}{\|v\|}$.
-    \item When asked to find an equation for a plane: identify a normal vector by
+    \item When asked to find a directional derivative of $f$ along $v$ : make sure you normalize $v$ into a unit vector, i.e., $\frac{v}{\|v\|}$.
+    \item When asked to find an equation for a plane:
     \begin{enumerate}
-        \item taking the cross product of two vectors in the plane \ref{plane}.
-        \item computing the gradient if the plane is the tangent plane to a level surface \ref{tangent plane}.
+        \item identify a normal vector by taking the cross product of two vectors in the plane \ref{plane}.
+        \item identify a normal vector by computing the gradient of $f$ for the tangent plane to a level surface of $f$ \ref{tangent plane}.
+        \item compute partial derivatives for the tangent plane of a graph \ref{tangent plane of graph}. 
     \end{enumerate}
-    \item Let $f:U\subset\R^n\to\R^m$ be differentiable, then $Df$ is an $m\times n$ matrix. Let $A$ be an $m\times n$ matrix and $B$ be a $k\times p$ matrix, then the matrix multiplication $AB$ only makes sense when $n=k$.
+    % \item Let $f:U\subset\R^n\to\R^m$ be differentiable, then $Df$ is an $m\times n$ matrix. Let $A$ be an $m\times n$ matrix and $B$ be a $k\times p$ matrix, then the matrix multiplication $AB$ only makes sense when $n=k$.
 \end{enumerate}
 
 
