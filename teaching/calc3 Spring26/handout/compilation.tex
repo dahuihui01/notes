@@ -1285,35 +1285,35 @@ If \( f \) restricted to \( \mathcal{L}_c \) has a local minimum or maximum on \
 \begin{prob}[Marsden-Tromba, III. 2]
 Let $f(x,y,z)=x-y+z$, find the extremum of $f$ subject to the constraint $x^2+y^2+z^2=2$.
 \end{prob}
-% \begin{proof}
-%     We compute the gradient of $f$ and $g(x,y,z)=x^2+y^2+z^2$:
-%     \begin{equation*}
-%         \nabla f(x,y,z)=\begin{bmatrix}
-%             1&-1&1
-%         \end{bmatrix}\quad \nabla g(x,y,z)=\begin{bmatrix}
-%             2x&2y&2z
-%         \end{bmatrix}
-%     \end{equation*}
-%     By the proposition above, we need to have 
-%     \begin{align*}
-%         \lambda&=2x\\
-%         -\lambda&=2y\\
-%         \lambda&=2z
-%     \end{align*}
-%     Equating all $\lambda$ gives 
-%     \begin{equation*}
-%         x=z=-y
-%     \end{equation*}
-%     Plugging in the constraint we get 
-%     \begin{equation*}
-%         3x^2=2
-%     \end{equation*}
-%     Hence two critical points 
-%     \begin{equation*}
-%         \left(\sqrt{\frac{2}{3}}, -\sqrt{\frac{2}{3}}, \sqrt{\frac{2}{3}}\right), \quad \left(-\sqrt{\frac{2}{3}}, \sqrt{\frac{2}{3}}, -\sqrt{\frac{2}{3}}\right)
-%     \end{equation*}
-%     Plugging them in we find the extremums are $\sqrt{6}$ and $-\sqrt{6}$.
-% \end{proof}
+\begin{proof}
+    We compute the gradient of $f$ and $g(x,y,z)=x^2+y^2+z^2$:
+    \begin{equation*}
+        \nabla f(x,y,z)=\begin{bmatrix}
+            1&-1&1
+        \end{bmatrix}\quad \nabla g(x,y,z)=\begin{bmatrix}
+            2x&2y&2z
+        \end{bmatrix}
+    \end{equation*}
+    By the proposition above, we need to have 
+    \begin{align*}
+        \lambda&=2x\\
+        -\lambda&=2y\\
+        \lambda&=2z
+    \end{align*}
+    Equating all $\lambda$ gives 
+    \begin{equation*}
+        x=z=-y
+    \end{equation*}
+    Plugging in the constraint we get 
+    \begin{equation*}
+        3x^2=2
+    \end{equation*}
+    Hence two critical points 
+    \begin{equation*}
+        \left(\sqrt{\frac{2}{3}}, -\sqrt{\frac{2}{3}}, \sqrt{\frac{2}{3}}\right), \quad \left(-\sqrt{\frac{2}{3}}, \sqrt{\frac{2}{3}}, -\sqrt{\frac{2}{3}}\right)
+    \end{equation*}
+    Plugging them in we find the extremums are $\sqrt{6}$ and $-\sqrt{6}$.
+\end{proof}
 
 
 \begin{prob}[Marsden-Tromba, III. 16]
@@ -1354,6 +1354,48 @@ Use Lagrange multipliers to find the distance from the point $(2, 0, -1)$ to the
 % \end{proof}
 
 
+
+\begin{prob}
+    Find the absolute maximum of $f(x,y)=2x^2y$ inside the disk $D=\{(x,y): x^2+y^2\leq 1\}$.
+\end{prob}
+% \begin{proof}
+%     We first consider the points on the interior $\{(x,y): x^2+y^2<1\}$. We do so by finding the critical points $\nabla f(x,y)=0$.
+%     \begin{equation*}
+%         \nabla f(x,y)=\begin{bmatrix}4xy&2x^2\end{bmatrix}=0
+%     \end{equation*}
+%     which implies $(x,y)=(0,0)$. And $f(0,0)=0$.
+
+%     Now we consider the boundary. Let $g(x,y)=x^2+y^2$, using Lagrange, we set up 
+%     \begin{equation*}
+%         \nabla f=\lambda\nabla g\Rightarrow\begin{bmatrix}
+%             4xy&2x^2
+%         \end{bmatrix}=\lambda\begin{bmatrix}
+%             2x&2y
+%         \end{bmatrix}
+%     \end{equation*}
+%     This implies 
+%     \begin{equation*}
+%         \begin{cases}
+%             4xy=2\lambda x\\
+%             2x^2=2\lambda y
+%         \end{cases}\Rightarrow \begin{cases}
+%             2y=\lambda\\
+%             x^2=\lambda y
+%         \end{cases}, \quad x^2+y^2=1
+%     \end{equation*}
+%     This implies 
+%     \begin{equation*}
+%         (x,y)=\left(\frac{1}{\sqrt{3}}, \frac{\sqrt{2}}{\sqrt{3}}\right)
+%     \end{equation*}
+%     thus 
+%     \begin{equation*}
+%         f(x,y)=\frac{2\sqrt{6}}{9}
+%     \end{equation*}
+%     comparing it with $f(0,0)=0$, we see 
+%     \begin{equation*}
+%         \left(\frac{1}{\sqrt{3}}, \frac{\sqrt{2}}{\sqrt{3}}\right) \text{ is an absolute maximum.}
+%     \end{equation*}
+% \end{proof}
 
 
 \end{document}
