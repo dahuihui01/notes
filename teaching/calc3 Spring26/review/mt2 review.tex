@@ -12,6 +12,8 @@
 \usepackage{quiver}
 \usepackage{hyperref,cleveref}
 \renewcommand{\familydefault}{ppl}
+\newcommand{\curl}{\text{curl}}
+\newcommand{\diverg}{\text{div}}
 \newcommand{\tr}{\text{tr}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\E}{\mathbb{E}}
@@ -71,263 +73,264 @@
 \newpage
 
 
+% \chapter{Definition Review}
+
+
+% \begin{defn}[standard basis in $\R^3$]
+%     The vectors 
+%     \begin{equation*}
+%         i=(1,0,0), j=(0,1,0), k=(0,0,1)
+%     \end{equation*}
+%     are called the \textbf{standard basis} vectors of $\R^3$, and for any vector $a=(a_1,a_2,a_3)\in\R^3$, we can write 
+%     \begin{equation*}
+%         a=a_1i+a_2j+a_3k
+%     \end{equation*}
+% \end{defn}
+
+
+
+
+% \begin{defn}[Equation of a line]\label{line}
+%     A \textbf{line} $l$ in $\R^3$ through the tip of $a=(a_1,a_2,a_3)$ pointing in the direction of a vector $v=(v_1,v_2,v_3)$ is given by 
+%     \begin{equation*}
+%         l(t)=a+tv=(a_1+tv_1, a_2+tv_2, a_3+tv_3)
+%     \end{equation*}
+%     where $t\in\R$. Alternatively, a line passing through two points $P=(x_1,y_1,z_1), Q=(x_2,y_2,z_2)$ is given by 
+%     \begin{equation*}
+%         l(t)=(x(t), y(t), z(t))
+%     \end{equation*}
+%     where 
+%     \begin{equation*}
+%         \begin{cases}
+%             x(t)=x_1+(x_2-x_1)t\\
+%             y(t)=y_1+(y_2-y_1)t\\
+%             z(t)=z_1+(z_2-z_1)t
+%         \end{cases}
+%     \end{equation*}
+% \end{defn}
+
+
+
+% \begin{defn}[inner product, dot product]
+%     Let $a,b\in\R^3$, the \textbf{dot product}, also called the inner product, of $a,b$ is 
+%     \begin{equation*}
+%         a\cdot b=a_1b_1+a_2b_2+a_3b_3
+%     \end{equation*}
+%     where $a=(a_1,a_2,a_3), b=(b_1,b_2,b_3)$. The \textbf{norm}, also called the length, of $a$ is 
+%     \begin{equation*}
+%         \|a\|=(a\cdot a)^\frac{1}{2}
+%     \end{equation*}
+%     A vector of norm $1$ is called a \textbf{unit vector}. Given any $u\in\R^3$, we can find a unit vector $\frac{u}{\|u\|}$ pointing in the same direction as $u$, this is called ``normalizing'' $u$.
+% \end{defn}
+
+
+% \begin{defn}[orthogonal projection]
+%     The \textbf{orthogonal projection} of vector $v$ onto another vector $a$ is
+%     \begin{equation*}
+%         \text{Proj}_av=\frac{a\cdot v}{a\cdot a}a
+%     \end{equation*}
+%     For example, the orthogonal projection of $(1,1,0)$ onto $(1,1,1)$ is 
+%     \begin{equation*}
+%         \left(\frac{2}{3}, \frac{2}{3},\frac{2}{3}\right)
+%     \end{equation*}
+% \end{defn}
+
+
+% \begin{defn}[orthogonal]
+%     Let $a,b\in\R^n$, then $a,b$ are called \textbf{orthogonal} or perpendicular iff 
+%     \begin{equation*}
+%         a\cdot b=0
+%     \end{equation*}
+% \end{defn}
+
+
+% \begin{defn}[determinant]
+%     The \textbf{determinant} of a $2\times 2$ matrix is given by 
+%     \begin{equation*}
+%         \det\begin{bmatrix}
+%             a&b\\
+%             c&d
+%         \end{bmatrix}=ad-bc
+%     \end{equation*}
+%     and the determinant of a $3\times 3$ matrix is given by 
+%     \begin{equation*}
+%         \det\begin{bmatrix}
+%             a_{11}&a_{12}&a_{13}\\
+%             a_{21}&a_{22}&a_{23}\\
+%             a_{31}&a_{32}&a_{33}\\
+%         \end{bmatrix}=a_{11}(a_{22}a_{33}-a_{23}a_{32})-a_{12}(a_{21}a_{33}-a_{23}a_{31})+a_{13}(a_{21}a_{32}-a_{22}a_{31})
+%     \end{equation*}
+% \end{defn}
+
+
+
+% \begin{defn}[cross product]
+%     Let $a,b\in\R^3$, write $a=(a_1,a_2,a_3), b=(b_1,b_2,b_3)$, then the \textbf{cross product}
+%     \begin{equation*}
+%         a\times b=\det\begin{bmatrix}
+%             i&j&k\\
+%             a_1&a_2&a_3\\
+%             b_1&b_2&b_3
+%         \end{bmatrix}
+%     \end{equation*}
+%     where $i,j,k$ are the standard vectors in $\R^3$.
+% \end{defn}
+
+% \begin{defn}[Plane in $\R^3$]\label{plane}
+%    If a plane ${P}$ passes through some point $(x_0,y_0,z_0)$, and $n=(A,B,C)$ is a vector orthogonal to the plane, then the plane ${P}$ is given by the equation:
+%     \begin{equation*}
+%         A(x-x_0)+B(y-y_0)+C(z-z_0)=0
+%     \end{equation*}
+%     (Notice that a point in ${P}$ and a normal vector to ${P}$ uniquely define a plane in $\R^3$.)
+% \end{defn}
+
+
+% \begin{defn}[image, graph]
+%     The \textbf{image} of a function $f: U\subset\R^n\to\R^m$ is a subset of $\R^m$,
+%     \begin{equation*}
+%         \text{Image}(f)=\{f(x)\in\R^m: x\in U\}
+%     \end{equation*}
+%     and the \textbf{graph} of $f$ is a subset of $\R^{n+m}$,
+%     \begin{equation*}
+%         \text{Graph}(f)=\{(x,f(x)): x\in U\}
+%     \end{equation*}
+% \end{defn}
+
+
+% \begin{defn}[level set]
+%     Let $f:U\subset\R^n\to\R^m$, and $c\in\R$ be some constant. Then the \textbf{level set} of $f$ at $c$ is the set 
+%     \begin{equation*}
+%         \{x\in U: f(x)=c\}\subset\R^n
+%     \end{equation*}
+% \end{defn}
+
+% \begin{defn}[open set, closed set, neighborhood, boundary]
+%     Let $U\subset\R^n$, we say $U$ is an \textbf{open set} if for every $x_0\in U$, there exists some $r>0$ such that $D_r(x_0)\subset U$, where $D_r(x_0)$ is the open ball of radius $r$ centered at $x_0$:
+%     \begin{equation*}
+%         D_r(x_0)=\{x\in\R^n: \|x-x_0\|<r\}
+%     \end{equation*}
+%     Some examples of open sets: $\R$, $D_{1}((0,0))$, $(1,2)\subset\R$.
+%     A \textbf{neighborhood} of $x_0\in\R^n$ is an open set containing the point $x_0$. A point $x\in\R^n$ is called a \textbf{boundary point} of $A$ if \textit{every} neighborhood of $x$ contains at least one point in $A$ and at least one point not in $A$. A set is \textbf{closed} if it contains all its boundary points. Example of closed set: level sets of a continuous function $f$.
+% \end{defn}
+
+
+% \begin{defn}[limit]
+%     Let $f: A\subset\R^n\to\R^m$, where $A$ is open, let $x_0$ be in $A$ or be a boundary point of $A$ and $N$ be a neighborhood of a point $b\in\R^m$. Now let $x$ approach $x_0$, $f$ is said to be \textbf{eventually in $N$} if there exists a neighborhood $U$ of $x_0$ such that 
+%     \begin{equation*}
+%         \text{ if } x\in U, \text{ then } f(x)\in N
+%     \end{equation*}
+%     If $f$ is eventually in $N$ for \textit{any} neighborhood $N$ around $b$, then the \textbf{limit} of $f$ as $x\to x_0$ exists, denoted as 
+%     \begin{equation*}
+%         \lim_{x\to x_0}f(x)=b
+%     \end{equation*}
+% \end{defn}
+
+% \begin{defn}[continuous]
+%     Let $f:A\subset\R^n\to\R^m$ and $x_0\in A$, then $f$ is \textbf{continuous at} \boldmath{${x_0}$} \unboldmath if 
+%     \begin{equation*}
+%         \lim_{x\to x_0}f(x)=f(x_0)
+%     \end{equation*}
+% \end{defn}
+
+
+% \begin{defn}[partial derivative]
+%     Let $f:U\subset\R^n\to\R$, where $U$ is open. Then the \textbf{partial derivative} with respect to $x_i$ is defined by 
+%     \begin{equation*}
+%         \frac{\partial f}{\partial x_i}(x_1, \dots, x_n)=\lim_{h\to 0}\frac{f(x+he_i)-f(x)}{h}
+%     \end{equation*}
+%     where $e_i=(0,\dots, 1,\dots, 0)$ with $1$ in the $i$th coordinate. 
+% \end{defn}
+
+
+
+% \begin{defn}[differentiability in two variables]\label{tangent plane of graph}
+%     Let $f:\R^2\to\R$, then $f$ is \textbf{differentiable} at $(x_0,y_0)$ if 
+%     \begin{enumerate}
+%         \item[(1)] $\frac{\partial f}{\partial x},\frac{\partial f}{\partial y}$ exist at $(x_0,y_0)$
+%         \item[(2)] 
+%         \begin{equation*}
+%             \lim_{(x,y)\to(x_0,y_0)}\frac{f(x,y)-f(x_0,y_0)-\left[\frac{\partial f}{\partial x}(x_0,y_0)\right](x-x_0)-\left[\frac{\partial f}{\partial y}(x_0,y_0)\right](y-y_0)}{\|(x,y)-(x_0,y_0)\|}=0
+%         \end{equation*}
+%     \end{enumerate}
+%     The derivative of $f$ at $(x_0,y_0)$ is the $1\times 2$ matrix 
+%     \begin{equation*}
+%         \begin{bmatrix}\frac{\partial f}{\partial x}(x_0,y_0)&\frac{\partial f}{\partial y}(x_0,y_0)\end{bmatrix}
+%     \end{equation*}
+%     Moreover, the \textbf{tangent plane} of the graph of $f$ at $(x_0,y_0, f(x_0,y_0))$ is given by 
+%     \begin{equation*}
+%         z=f(x_0,y_0)+\left[\frac{\partial f}{\partial x}(x_0,y_0)\right](x-x_0)+\left[\frac{\partial f}{\partial y}(x_0,y_0)\right](y-y_0)
+%     \end{equation*}
+% \end{defn}
+
+% \begin{defn}[differentiability in the general setting]
+%     Let $f:U\subset\R^n\to\R^m$, then $f$ is differentiable at $x_0\in U$ if
+%     \begin{enumerate}
+%         \item[(1)] the partial derivatives $\frac{\partial f_i}{\partial x_j}$ exist for all $1\leq i\leq m, 1\leq j\leq n$. 
+%         \item[(2)]
+%         \begin{equation*}
+%             \lim_{x\to x_0}\frac{\|f(x)-f(x_0)-T(x-x_0)\|}{\|x-x_0\|}=0
+%         \end{equation*}
+%         where $T=Df(x_0)$ is the $m\times n$ matrix 
+%         \begin{equation*}
+%             Df(x_0)=
+%             \begin{bmatrix}
+%             \frac{\partial f_1}{\partial x_1}(x_0) & \cdots & \frac{\partial f_1}{\partial x_n}(x_0) \\
+%             \vdots & \ddots & \vdots \\
+%             \frac{\partial f_m}{\partial x_1}(x_0) & \cdots & \frac{\partial f_m}{\partial x_n}(x_0)
+%             \end{bmatrix}
+%         \end{equation*}
+%     \end{enumerate}
+%     The derivative of $f$ at $x_0$ is the $m\times n$ matrix $Df(x_0)$.
+% \end{defn}
+
+% \begin{defn}[gradient]
+%     Let $f:U\subset\R^n\to\R$, the \textbf{gradient} $\nabla f(x)$ is a special case of the general case above when $m=1$, i.e., it is a $1\times n$ matrix 
+%     \begin{equation*}
+%         Df(x)=\begin{bmatrix}
+%             \frac{\partial f}{\partial x_1}&\dots&\frac{\partial f}{\partial x_n}
+%         \end{bmatrix}
+%     \end{equation*}
+% \end{defn}
+
+
+% \begin{defn}[path and curve]
+%     A \textbf{path} in $\R^n$ is a map $c:[a,b]\to\R^n$, and the image of $c$ is called a \textbf{curve}. We say the path $c$ parametrizes the curve. 
+
+%     \noindent For example, $c(t)=(\cos t, \sin t)$ is a path, and the unit circle is a curve.
+% \end{defn}
+
+
+% \begin{defn}[velocity of a path]
+%     Let $c:[a,b]\to\R^n$ be a path, and we can write $c(t)=(c_1(t), \dots, c_n(t))$. If $c$ is differentiable, then we define the \textbf{velocity} of $c$ at any $t_0\in [a,b]$ as 
+%     \begin{equation*}
+%         c'(t_0)=\left(c_1'(t_0), \dots, c_n'(t_0)\right)
+%     \end{equation*}
+%     The velocity vector of $c$ at $t_0$ is also a \textbf{tangent} vector to $c$ at $t_0$. The \textbf{speed} of the path $c$ at $t_0$ is the length of the velocity vector $\|c'(t_0)\|$.
+% \end{defn}
+
+% \begin{defn}[tangent line to a path]\label{tangent path}
+%     Let $c:[a,b]\to\R^n$ be a path, if $c'(t_0)\neq 0$, then the \textbf{tangent line} at $x_0$ is given by 
+%     \begin{equation*}
+%         l(t)=c(t_0)+c'(t_0)(t-t_0)
+%     \end{equation*}
+% \end{defn}
+
+
+
+
+% \begin{defn}[directional derivative]
+%     Let $f:\R^3\to\R$, be differentiable, then the \textbf{directional derivative} at $x_0\in\R^3$ in the direction of a \textit{unit vector} $v$ is given by 
+%     \begin{equation*}
+%         \nabla f(x_0)\cdot v=\left[\frac{\partial f}{\partial x_1}(x_0)\right]v_1+\left[\frac{\partial f}{\partial x_2}(x_0)\right]v_2+\left[\frac{\partial f}{\partial x_3}(x_0)\right]v_3
+%     \end{equation*}
+%     where $v=(v_1,v_2,v_3)$.
+% \end{defn}
+% \begin{warn}
+%     Make sure you normalize any given direction $v$! This formula works for unit vectors.
+% \end{warn}
+
+
 \chapter{Definition Review}
-
-
-\begin{defn}[standard basis in $\R^3$]
-    The vectors 
-    \begin{equation*}
-        i=(1,0,0), j=(0,1,0), k=(0,0,1)
-    \end{equation*}
-    are called the \textbf{standard basis} vectors of $\R^3$, and for any vector $a=(a_1,a_2,a_3)\in\R^3$, we can write 
-    \begin{equation*}
-        a=a_1i+a_2j+a_3k
-    \end{equation*}
-\end{defn}
-
-
-
-
-\begin{defn}[Equation of a line]\label{line}
-    A \textbf{line} $l$ in $\R^3$ through the tip of $a=(a_1,a_2,a_3)$ pointing in the direction of a vector $v=(v_1,v_2,v_3)$ is given by 
-    \begin{equation*}
-        l(t)=a+tv=(a_1+tv_1, a_2+tv_2, a_3+tv_3)
-    \end{equation*}
-    where $t\in\R$. Alternatively, a line passing through two points $P=(x_1,y_1,z_1), Q=(x_2,y_2,z_2)$ is given by 
-    \begin{equation*}
-        l(t)=(x(t), y(t), z(t))
-    \end{equation*}
-    where 
-    \begin{equation*}
-        \begin{cases}
-            x(t)=x_1+(x_2-x_1)t\\
-            y(t)=y_1+(y_2-y_1)t\\
-            z(t)=z_1+(z_2-z_1)t
-        \end{cases}
-    \end{equation*}
-\end{defn}
-
-
-
-\begin{defn}[inner product, dot product]
-    Let $a,b\in\R^3$, the \textbf{dot product}, also called the inner product, of $a,b$ is 
-    \begin{equation*}
-        a\cdot b=a_1b_1+a_2b_2+a_3b_3
-    \end{equation*}
-    where $a=(a_1,a_2,a_3), b=(b_1,b_2,b_3)$. The \textbf{norm}, also called the length, of $a$ is 
-    \begin{equation*}
-        \|a\|=(a\cdot a)^\frac{1}{2}
-    \end{equation*}
-    A vector of norm $1$ is called a \textbf{unit vector}. Given any $u\in\R^3$, we can find a unit vector $\frac{u}{\|u\|}$ pointing in the same direction as $u$, this is called ``normalizing'' $u$.
-\end{defn}
-
-
-\begin{defn}[orthogonal projection]
-    The \textbf{orthogonal projection} of vector $v$ onto another vector $a$ is
-    \begin{equation*}
-        \text{Proj}_av=\frac{a\cdot v}{a\cdot a}a
-    \end{equation*}
-    For example, the orthogonal projection of $(1,1,0)$ onto $(1,1,1)$ is 
-    \begin{equation*}
-        \left(\frac{2}{3}, \frac{2}{3},\frac{2}{3}\right)
-    \end{equation*}
-\end{defn}
-
-
-\begin{defn}[orthogonal]
-    Let $a,b\in\R^n$, then $a,b$ are called \textbf{orthogonal} or perpendicular iff 
-    \begin{equation*}
-        a\cdot b=0
-    \end{equation*}
-\end{defn}
-
-
-\begin{defn}[determinant]
-    The \textbf{determinant} of a $2\times 2$ matrix is given by 
-    \begin{equation*}
-        \det\begin{bmatrix}
-            a&b\\
-            c&d
-        \end{bmatrix}=ad-bc
-    \end{equation*}
-    and the determinant of a $3\times 3$ matrix is given by 
-    \begin{equation*}
-        \det\begin{bmatrix}
-            a_{11}&a_{12}&a_{13}\\
-            a_{21}&a_{22}&a_{23}\\
-            a_{31}&a_{32}&a_{33}\\
-        \end{bmatrix}=a_{11}(a_{22}a_{33}-a_{23}a_{32})-a_{12}(a_{21}a_{33}-a_{23}a_{31})+a_{13}(a_{21}a_{32}-a_{22}a_{31})
-    \end{equation*}
-\end{defn}
-
-
-
-\begin{defn}[cross product]
-    Let $a,b\in\R^3$, write $a=(a_1,a_2,a_3), b=(b_1,b_2,b_3)$, then the \textbf{cross product}
-    \begin{equation*}
-        a\times b=\det\begin{bmatrix}
-            i&j&k\\
-            a_1&a_2&a_3\\
-            b_1&b_2&b_3
-        \end{bmatrix}
-    \end{equation*}
-    where $i,j,k$ are the standard vectors in $\R^3$.
-\end{defn}
-
-\begin{defn}[Plane in $\R^3$]\label{plane}
-   If a plane ${P}$ passes through some point $(x_0,y_0,z_0)$, and $n=(A,B,C)$ is a vector orthogonal to the plane, then the plane ${P}$ is given by the equation:
-    \begin{equation*}
-        A(x-x_0)+B(y-y_0)+C(z-z_0)=0
-    \end{equation*}
-    (Notice that a point in ${P}$ and a normal vector to ${P}$ uniquely define a plane in $\R^3$.)
-\end{defn}
-
-
-\begin{defn}[image, graph]
-    The \textbf{image} of a function $f: U\subset\R^n\to\R^m$ is a subset of $\R^m$,
-    \begin{equation*}
-        \text{Image}(f)=\{f(x)\in\R^m: x\in U\}
-    \end{equation*}
-    and the \textbf{graph} of $f$ is a subset of $\R^{n+m}$,
-    \begin{equation*}
-        \text{Graph}(f)=\{(x,f(x)): x\in U\}
-    \end{equation*}
-\end{defn}
-
-
-\begin{defn}[level set]
-    Let $f:U\subset\R^n\to\R^m$, and $c\in\R$ be some constant. Then the \textbf{level set} of $f$ at $c$ is the set 
-    \begin{equation*}
-        \{x\in U: f(x)=c\}\subset\R^n
-    \end{equation*}
-\end{defn}
-
-\begin{defn}[open set, closed set, neighborhood, boundary]
-    Let $U\subset\R^n$, we say $U$ is an \textbf{open set} if for every $x_0\in U$, there exists some $r>0$ such that $D_r(x_0)\subset U$, where $D_r(x_0)$ is the open ball of radius $r$ centered at $x_0$:
-    \begin{equation*}
-        D_r(x_0)=\{x\in\R^n: \|x-x_0\|<r\}
-    \end{equation*}
-    Some examples of open sets: $\R$, $D_{1}((0,0))$, $(1,2)\subset\R$.
-    A \textbf{neighborhood} of $x_0\in\R^n$ is an open set containing the point $x_0$. A point $x\in\R^n$ is called a \textbf{boundary point} of $A$ if \textit{every} neighborhood of $x$ contains at least one point in $A$ and at least one point not in $A$. A set is \textbf{closed} if it contains all its boundary points. Example of closed set: level sets of a continuous function $f$.
-\end{defn}
-
-
-\begin{defn}[limit]
-    Let $f: A\subset\R^n\to\R^m$, where $A$ is open, let $x_0$ be in $A$ or be a boundary point of $A$ and $N$ be a neighborhood of a point $b\in\R^m$. Now let $x$ approach $x_0$, $f$ is said to be \textbf{eventually in $N$} if there exists a neighborhood $U$ of $x_0$ such that 
-    \begin{equation*}
-        \text{ if } x\in U, \text{ then } f(x)\in N
-    \end{equation*}
-    If $f$ is eventually in $N$ for \textit{any} neighborhood $N$ around $b$, then the \textbf{limit} of $f$ as $x\to x_0$ exists, denoted as 
-    \begin{equation*}
-        \lim_{x\to x_0}f(x)=b
-    \end{equation*}
-\end{defn}
-
-\begin{defn}[continuous]
-    Let $f:A\subset\R^n\to\R^m$ and $x_0\in A$, then $f$ is \textbf{continuous at} \boldmath{${x_0}$} \unboldmath if 
-    \begin{equation*}
-        \lim_{x\to x_0}f(x)=f(x_0)
-    \end{equation*}
-\end{defn}
-
-
-\begin{defn}[partial derivative]
-    Let $f:U\subset\R^n\to\R$, where $U$ is open. Then the \textbf{partial derivative} with respect to $x_i$ is defined by 
-    \begin{equation*}
-        \frac{\partial f}{\partial x_i}(x_1, \dots, x_n)=\lim_{h\to 0}\frac{f(x+he_i)-f(x)}{h}
-    \end{equation*}
-    where $e_i=(0,\dots, 1,\dots, 0)$ with $1$ in the $i$th coordinate. 
-\end{defn}
-
-
-
-\begin{defn}[differentiability in two variables]\label{tangent plane of graph}
-    Let $f:\R^2\to\R$, then $f$ is \textbf{differentiable} at $(x_0,y_0)$ if 
-    \begin{enumerate}
-        \item[(1)] $\frac{\partial f}{\partial x},\frac{\partial f}{\partial y}$ exist at $(x_0,y_0)$
-        \item[(2)] 
-        \begin{equation*}
-            \lim_{(x,y)\to(x_0,y_0)}\frac{f(x,y)-f(x_0,y_0)-\left[\frac{\partial f}{\partial x}(x_0,y_0)\right](x-x_0)-\left[\frac{\partial f}{\partial y}(x_0,y_0)\right](y-y_0)}{\|(x,y)-(x_0,y_0)\|}=0
-        \end{equation*}
-    \end{enumerate}
-    The derivative of $f$ at $(x_0,y_0)$ is the $1\times 2$ matrix 
-    \begin{equation*}
-        \begin{bmatrix}\frac{\partial f}{\partial x}(x_0,y_0)&\frac{\partial f}{\partial y}(x_0,y_0)\end{bmatrix}
-    \end{equation*}
-    Moreover, the \textbf{tangent plane} of the graph of $f$ at $(x_0,y_0, f(x_0,y_0))$ is given by 
-    \begin{equation*}
-        z=f(x_0,y_0)+\left[\frac{\partial f}{\partial x}(x_0,y_0)\right](x-x_0)+\left[\frac{\partial f}{\partial y}(x_0,y_0)\right](y-y_0)
-    \end{equation*}
-\end{defn}
-
-\begin{defn}[differentiability in the general setting]
-    Let $f:U\subset\R^n\to\R^m$, then $f$ is differentiable at $x_0\in U$ if
-    \begin{enumerate}
-        \item[(1)] the partial derivatives $\frac{\partial f_i}{\partial x_j}$ exist for all $1\leq i\leq m, 1\leq j\leq n$. 
-        \item[(2)]
-        \begin{equation*}
-            \lim_{x\to x_0}\frac{\|f(x)-f(x_0)-T(x-x_0)\|}{\|x-x_0\|}=0
-        \end{equation*}
-        where $T=Df(x_0)$ is the $m\times n$ matrix 
-        \begin{equation*}
-            Df(x_0)=
-            \begin{bmatrix}
-            \frac{\partial f_1}{\partial x_1}(x_0) & \cdots & \frac{\partial f_1}{\partial x_n}(x_0) \\
-            \vdots & \ddots & \vdots \\
-            \frac{\partial f_m}{\partial x_1}(x_0) & \cdots & \frac{\partial f_m}{\partial x_n}(x_0)
-            \end{bmatrix}
-        \end{equation*}
-    \end{enumerate}
-    The derivative of $f$ at $x_0$ is the $m\times n$ matrix $Df(x_0)$.
-\end{defn}
-
-\begin{defn}[gradient]
-    Let $f:U\subset\R^n\to\R$, the \textbf{gradient} $\nabla f(x)$ is a special case of the general case above when $m=1$, i.e., it is a $1\times n$ matrix 
-    \begin{equation*}
-        Df(x)=\begin{bmatrix}
-            \frac{\partial f}{\partial x_1}&\dots&\frac{\partial f}{\partial x_n}
-        \end{bmatrix}
-    \end{equation*}
-\end{defn}
-
-
-\begin{defn}[path and curve]
-    A \textbf{path} in $\R^n$ is a map $c:[a,b]\to\R^n$, and the image of $c$ is called a \textbf{curve}. We say the path $c$ parametrizes the curve. 
-
-    \noindent For example, $c(t)=(\cos t, \sin t)$ is a path, and the unit circle is a curve.
-\end{defn}
-
-
-\begin{defn}[velocity of a path]
-    Let $c:[a,b]\to\R^n$ be a path, and we can write $c(t)=(c_1(t), \dots, c_n(t))$. If $c$ is differentiable, then we define the \textbf{velocity} of $c$ at any $t_0\in [a,b]$ as 
-    \begin{equation*}
-        c'(t_0)=\left(c_1'(t_0), \dots, c_n'(t_0)\right)
-    \end{equation*}
-    The velocity vector of $c$ at $t_0$ is also a \textbf{tangent} vector to $c$ at $t_0$. The \textbf{speed} of the path $c$ at $t_0$ is the length of the velocity vector $\|c'(t_0)\|$.
-\end{defn}
-
-\begin{defn}[tangent line to a path]\label{tangent path}
-    Let $c:[a,b]\to\R^n$ be a path, if $c'(t_0)\neq 0$, then the \textbf{tangent line} at $x_0$ is given by 
-    \begin{equation*}
-        l(t)=c(t_0)+c'(t_0)(t-t_0)
-    \end{equation*}
-\end{defn}
-
-
-
-
-\begin{defn}[directional derivative]
-    Let $f:\R^3\to\R$, be differentiable, then the \textbf{directional derivative} at $x_0\in\R^3$ in the direction of a \textit{unit vector} $v$ is given by 
-    \begin{equation*}
-        \nabla f(x_0)\cdot v=\left[\frac{\partial f}{\partial x_1}(x_0)\right]v_1+\left[\frac{\partial f}{\partial x_2}(x_0)\right]v_2+\left[\frac{\partial f}{\partial x_3}(x_0)\right]v_3
-    \end{equation*}
-    where $v=(v_1,v_2,v_3)$.
-\end{defn}
-\begin{warn}
-    Make sure you normalize any given direction $v$! This formula works for unit vectors.
-\end{warn}
-
-
 
 \begin{defn}[First order Taylor expansion]
     Let $f:U\subset\R^n\to\R$ be differentiable at $a\in U$, then 
@@ -353,72 +356,6 @@
 
 
 
-% \begin{defn}[critical point]
-%     Let $f:U\subset\R^n\to\R$, a point $x_0\in U$ is a \textbf{critical point} of $f$ if either $f$ is not differentiable at $x_0$, or $Df(x_0)=0$. A critical point that is not a local extremum is called a saddle point.
-% \end{defn}
-
-% \begin{defn}[quadratic function]
-%     A function $g:\R^n\to\R$ is called a \textbf{quadratic function} if it is given by 
-%     \begin{equation*}
-%         g(h_1,\dots, h_n)=\sum_{i,j=1}^na_{ij}h_ih_j
-%     \end{equation*}
-%     where $(a_{ij})$ is an $n\times n$ matrix. We can also write $g$ as follows:
-%     \begin{equation*}
-%         g(h_1,\dots,h_n)=[h_1,\dots,h_n]\begin{bmatrix}
-%             a_{11}&\dots &a_{1n}\\
-%             \vdots&\ddots &\vdots\\
-%             a_{n_1}&\dots&a_{nn}
-%         \end{bmatrix}\begin{bmatrix}
-%             h_1\\
-%             \vdots\\
-%             h_n
-%         \end{bmatrix}
-%     \end{equation*}
-
-% \end{defn}
-
-% \begin{defn}[Hessian matrix]
-%     Let $f:U\subset\R^n\to\R$, and suppose all the second-order partial derivatives $\frac{\partial^2 f}{\partial x_i\partial x_j}$ exist, then the Hessian matrix of $f$ is the $n\times n$ matrix given by 
-%     \begin{equation*}
-%         Hf=\begin{bmatrix}
-%             \frac{\partial^2 f}{\partial x_1\partial x_1}&\dots&\frac{\partial^2f}{\partial x_1\partial x_n}\\
-%             \vdots&\ddots&\vdots\\
-%             \frac{\partial^2f}{\partial x_nx_1}&\dots&\frac{\partial^2f}{\partial x_n\partial x_n}
-%         \end{bmatrix}
-%     \end{equation*}
-%     The Hessian as a quadratic function is defined by 
-%     \begin{equation*}
-%         Hf(x)(h)=\frac{1}{2}\begin{bmatrix}
-%             h_1&\dots&h_n
-%         \end{bmatrix}Hf(x)\begin{bmatrix}
-%             h_1\\
-%             \dots\\
-%             h_n
-%         \end{bmatrix}
-%     \end{equation*}
-%     where $h=(h_1,\dots,h_n)$.
-% \end{defn}
-
-% \begin{defn}[degenerate/nondegenerate points]
-%     Let $f:U\subset\R^2\to\R$ be of $C^2$, let $(x_0,y_0)$ be a critical point. We define the \textbf{discriminant}, \boldmath $\mathcal{D}$,\unboldmath of the Hessian by
-%     \begin{equation*}
-%         \mathcal{D}=\det (Hf)=\left(\frac{\partial^2f}{\partial x^2}\right)\left(\frac{\partial^2f}{\partial y^2}\right)-\left(\frac{\partial^2f}{\partial x\partial y}\right)^2
-%     \end{equation*}
-%     If $\mathcal{D}\neq 0$, the critical point $(x_0,y_0)$ is called \textbf{nondegenerate}; if $\mathcal{D}=0$, the point $(x_0,y_0)$ is called \textbf{degenerate}.
-% \end{defn}
-
-% \begin{defn}[positive, negative-definite]
-%     A quadratic function $g:\R^n\to\R$ is called \textbf{positive-definite} if $g(h)\geq 0$ for all $h\in\R^n$ and $g(h)=0$ implies $h=0$. Similarly, $g$ is \textbf{negative-definite} if $g(h)\leq 0$ for all $h\in\R^n$ and $g(h)=0$ implies $h=0$. 
-% \end{defn}
-
-
-% \begin{defn}[global extremum]
-%     Let $f:A\to\R$ be a function defined on $A\subset\R^2$ or $A\subset\R^3$. A point $x_0\in A$ is said to be an \textbf{absolute maximum} if $f(x_0)\geq f(x)$ for all $x\in A$. Similarly, $x_0$ is an \textbf{absolute minimum} if $f(x_0)\leq f(x)$ for all $x\in A$. 
-% \end{defn}
-
-% \begin{defn}[bounded set]
-%     A set $A\subset\R^n$ is said to be \textbf{bounded} if there is a number $M>0$ such that $\|x\|\leq M$ for all $x\in A$. 
-% \end{defn}
 
 
 
@@ -433,9 +370,186 @@
 
 
 
+\begin{defn}[critical point]
+    Let $f:U\subset\R^n\to\R$, a point $x_0\in U$ is a \textbf{critical point} of $f$ if either $f$ is not differentiable at $x_0$, or $Df(x_0)=0$. A critical point that is not a local extremum is called a saddle point.
+\end{defn}
+
+\begin{defn}[quadratic function]
+    A function $g:\R^n\to\R$ is called a \textbf{quadratic function} if it is given by 
+    \begin{equation*}
+        g(h_1,\dots, h_n)=\sum_{i,j=1}^na_{ij}h_ih_j
+    \end{equation*}
+    where $(a_{ij})$ is an $n\times n$ matrix. We can also write $g$ as follows:
+    \begin{equation*}
+        g(h_1,\dots,h_n)=[h_1,\dots,h_n]\begin{bmatrix}
+            a_{11}&\dots &a_{1n}\\
+            \vdots&\ddots &\vdots\\
+            a_{n_1}&\dots&a_{nn}
+        \end{bmatrix}\begin{bmatrix}
+            h_1\\
+            \vdots\\
+            h_n
+        \end{bmatrix}
+    \end{equation*}
+
+\end{defn}
+
+\begin{defn}[Hessian matrix]
+    Let $f:U\subset\R^n\to\R$, and suppose all the second-order partial derivatives $\frac{\partial^2 f}{\partial x_i\partial x_j}$ exist, then the Hessian matrix of $f$ is the $n\times n$ matrix given by 
+    \begin{equation*}
+        Hf=\begin{bmatrix}
+            \frac{\partial^2 f}{\partial x_1\partial x_1}&\dots&\frac{\partial^2f}{\partial x_1\partial x_n}\\
+            \vdots&\ddots&\vdots\\
+            \frac{\partial^2f}{\partial x_nx_1}&\dots&\frac{\partial^2f}{\partial x_n\partial x_n}
+        \end{bmatrix}
+    \end{equation*}
+    The Hessian as a quadratic function is defined by 
+    \begin{equation*}
+        Hf(x)(h)=\frac{1}{2}\begin{bmatrix}
+            h_1&\dots&h_n
+        \end{bmatrix}Hf(x)\begin{bmatrix}
+            h_1\\
+            \dots\\
+            h_n
+        \end{bmatrix}
+    \end{equation*}
+    where $h=(h_1,\dots,h_n)$.
+\end{defn}
+
+\begin{defn}[degenerate/nondegenerate points]
+    Let $f:U\subset\R^2\to\R$ be of $C^2$, let $(x_0,y_0)$ be a critical point. We define the \textbf{discriminant}, \boldmath $\mathcal{D}$,\unboldmath of the Hessian by
+    \begin{equation*}
+        \mathcal{D}=\det (Hf)=\left(\frac{\partial^2f}{\partial x^2}\right)\left(\frac{\partial^2f}{\partial y^2}\right)-\left(\frac{\partial^2f}{\partial x\partial y}\right)^2
+    \end{equation*}
+    If $\mathcal{D}\neq 0$, the critical point $(x_0,y_0)$ is called \textbf{nondegenerate}; if $\mathcal{D}=0$, the point $(x_0,y_0)$ is called \textbf{degenerate}.
+\end{defn}
+
+\begin{defn}[positive, negative-definite]
+    A quadratic function $g:\R^n\to\R$ is called \textbf{positive-definite} if $g(h)\geq 0$ for all $h\in\R^n$ and $g(h)=0$ implies $h=0$. Similarly, $g$ is \textbf{negative-definite} if $g(h)\leq 0$ for all $h\in\R^n$ and $g(h)=0$ implies $h=0$. 
+\end{defn}
+
+
+\begin{defn}[global extremum]
+    Let $f:A\to\R$ be a function defined on $A\subset\R^2$ or $A\subset\R^3$. A point $x_0\in A$ is said to be an \textbf{absolute maximum} if $f(x_0)\geq f(x)$ for all $x\in A$. Similarly, $x_0$ is an \textbf{absolute minimum} if $f(x_0)\leq f(x)$ for all $x\in A$. 
+\end{defn}
+
+\begin{defn}[bounded set]
+    A set $A\subset\R^n$ is said to be \textbf{bounded} if there is a number $M>0$ such that $\|x\|\leq M$ for all $x\in A$. 
+\end{defn}
+
+\begin{defn}[acceleration]
+    Let $c(t)$ be a path, the \textbf{acceleration} $a(t)$ of $c(t)$ is 
+    \begin{equation*}
+        a(t)=c''(t)
+    \end{equation*}
+\end{defn}
 
 
 
+\begin{defn}[arc length]
+    Let $c(t)=(x(t), y(t), z(t))$ be a path, then the length of the path in $\R^3$ from $t_0\leq t\leq t_1$ is 
+    \begin{align*}
+        L_{t_0\to t_1}(c)&=\int_{t_0}^{t_1}\left(x'(t)^2+y'(t)^2+z'(t)^2\right)^\frac{1}{2}dt\\
+        &=\int_{t_0}^{t_1}\|c'(t)\|dt
+    \end{align*}
+    More generally, if $c(t)=(x_1(t), \dots, x_n(t))$ is a path in $\R^n$, then 
+    \begin{equation*}
+        L_{t_0\to t_1}(c)=\int_{t_0}^{t_1}\left(\sum_{i=1}^nx_i'(t)^2\right)^\frac{1}{2}dt
+    \end{equation*}
+\end{defn}
+
+
+\begin{defn}[vector field]
+    A vector field is a function $F:A\subset\R^n\to\R^n$ that assigns $x\in\R^n$ to another vector $F(x)\in\R^n$.
+\end{defn}
+
+
+\begin{defn}[flow line]
+    If $F$ is a vector field, a \textbf{flow line} for $F$ is a path $c(t)$ such that 
+    \begin{equation*}
+        c'(t)=F(c(t))
+    \end{equation*}
+    Intuitively speaking, flow lines are the ``streamlines'' threading through vector fields.
+\end{defn}
+
+
+
+\begin{defn}[divergence]
+    Let ${F}$ be a vector field in $\R^3$ $F=(F_1,F_2,F_3)$, the divergence of ${F}$ is the \textbf{scalar field} (assigns one number to an given point $(x, y, z)$), 
+    \begin{equation*}
+        \diverg F\coloneq\nabla\cdot F=\frac{\partial F_1}{\partial x}+\frac{\partial F_2}{\partial y}+\frac{\partial F_3}{\partial z}
+    \end{equation*}
+    More generally, if $F=(F_1,\dots, F_n)$ is a vector field on $\R^n$, its divergence is 
+    \begin{equation*}
+        \diverg F=\sum_{i=1}^n\frac{\partial F_i}{\partial x_i}=\frac{\partial F_1}{\partial x_1}+\dots+\frac{\partial F_n}{\partial x_n}
+    \end{equation*}
+\end{defn}
+
+
+\begin{defn}[curl]
+    Let $F$ be a vector field in $\R^3$, writing $F=(F_1,F_2,F_3)$, the \textbf{curl} of $F$ is the vector field 
+    \begin{equation*}
+        \curl F\coloneq\nabla\times F=\det\begin{bmatrix}
+            i&j&k\\
+            \frac{\partial}{\partial x}&\frac{\partial}{\partial y}&\frac{\partial}{\partial z}\\
+            F_1&F_2&F_3
+        \end{bmatrix}
+    \end{equation*}
+    If $\curl F=0$, then we say the vector field is \textbf{irrotational}.
+\end{defn}
+
+
+
+\begin{defn}
+    We say a region $D\subset\R^2$ is \boldmath$y$\unboldmath-\textbf{simple} if there are continuous functions $\phi_1,\phi_2$ such that $D$ is the set of pionts $(x,y)$ satisfying
+    \begin{equation*}
+        x\in[a,b], \quad  \phi_1(x)\leq y\leq\phi_2(x)
+    \end{equation*}
+    Similarly, we define $D$ to be \boldmath$x$\textbf{-simple} \unboldmath if there are continuous $\psi_1, \psi_2$ such that $D$ is the set of points $(x,y)$ satisfying 
+    \begin{equation*}
+        y\in[c,d], \quad \psi_1(y)\leq x\leq\psi_2(y)
+    \end{equation*}
+    A \textbf{simple} region is one that is both $x$- and $y$-simple.
+\end{defn}
+
+
+
+\begin{defn}[injective, surjective]
+    Let $T:\R^2\to\R^2$ be a map, we say $T$ is \textbf{injective}, or \textbf{one-to-one}, on $D^*$, if for $x,y\in D^*$
+    \begin{equation*}
+        Tx=Ty
+    \end{equation*}
+    implies
+    \begin{equation*}
+        x=y.
+    \end{equation*}
+    We say $T$ is \textbf{surjective}, or \textbf{onto} $D$, if for all $y\in D$, there exists $x$ in the domain of $T$ such that 
+    \begin{equation*}
+        Tx=y
+    \end{equation*}
+    If $T$ is both injective and surjective, then we say $T$ is \textbf{bijective}.
+\end{defn}
+
+
+\begin{defn}[Jacobian Determinant]
+    Let $T:D^*\subset\R^2\to\R^2$ be of $C^1$ defined by 
+    \begin{equation*}
+        T:\begin{pmatrix}
+            u\\
+            v
+        \end{pmatrix}\mapsto \begin{pmatrix}
+            x(u,v)\\
+            y(u,v)
+        \end{pmatrix}
+    \end{equation*}
+    The \textbf{Jacobian determinant} of $T$, denoted as $\frac{\partial(x,y)}{\partial(u,v)}$ is the determinant of the matrix $DT(u,v)$:
+    \begin{equation*}
+        \frac{\partial(x,y)}{\partial(u,v)}=\det\left|\begin{matrix}
+            \frac{\partial x}{\partial u}& \frac{\partial x}{\partial v}\\
+            \frac{\partial y}{\partial u}&\frac{\partial y}{\partial v}
+        \end{matrix}\right|
+    \end{equation*}
+\end{defn}
 
 
 
