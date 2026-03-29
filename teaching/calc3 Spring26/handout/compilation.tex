@@ -89,7 +89,7 @@
 \begin{itemize}
     \item TA: Hui.
     \item Email: hsun95@jh.edu.
-    \item Drop-in Hours: Tuesday 2-3 PM, 4-5 pm, Krieger 211.
+    \item Drop-in Hours: Tuesday 2-3 PM, 5-6 pm, Krieger 211.
     \item Biweekly Quizzes: 10\%.
     \item Attendance: 5\%. (If you can't make it, email me).
 \end{itemize}
@@ -375,18 +375,6 @@ Topics: determinant, cross product.
 \begin{proof}
     Notice that the third row vector $(3,1,1)$ is the sum of the two row vectors above, hence by Proposition \ref{det}, we know we must have $\det(A)=0$.
 \end{proof}
-\newpage
-
-\section*{\centering Week 2 (Section Activity)}
-First, introduce yourself to one another:
-\begin{enumerate}
-    \item Name.
-    \item Pronouns.
-    \item Year.
-    \item Major.
-    \item If you could have a noncat, nondog pet, what would it be?
-\end{enumerate}
-Next, work on and \textbf{discuss} the following problems!
 \begin{prob}
     Let $u=(1,2,-1)$, find a nonzero vector that is orthogonal to $u$.
 \end{prob}
@@ -1590,8 +1578,7 @@ Topics: (1) Divergence and Curl, (2) Double integrals.
     and it is not identically $0$.
 \end{proof}
 
-
-\newpage
+\chapter{Change of Variables Formula}
 
 \section*{\centering Week 11 (3/30-4/3)}
 Topics: Integration and Change of Variables Theorem.
@@ -1608,19 +1595,24 @@ Topics: Integration and Change of Variables Theorem.
         \iint_Df(x,y)dA=\int_a^b\int_{\varphi_1(x)}^{\varphi_2(x)}f(x,y)dydx=\int_c^d\int_{\psi_1(y)}^{\psi_2(y)}f(x,y)dxdy
     \end{equation*}
 \end{prop}
+
+
+
+\newpage
 \begin{prob}
     Change the order of integration to $dydx$ for the following function:
     \begin{equation*}
         \int_0^1\int_{e^y}^{e}\frac{x}{\ln x}dxdy
     \end{equation*}
 \end{prob}
-\begin{proof}
-    It should be 
-    \begin{equation*}
-        \int_1^e\int_{0}^{\ln x}\frac{x}{\ln x}dydx
-    \end{equation*}
-\end{proof}
+% \begin{proof}
+%     It should be 
+%     \begin{equation*}
+%         \int_1^e\int_{0}^{\ln x}\frac{x}{\ln x}dydx
+%     \end{equation*}
+% \end{proof}
 
+\vspace{4cm}
 
 
 \begin{prob}
@@ -1646,33 +1638,33 @@ Topics: Integration and Change of Variables Theorem.
         \end{equation*}
     \end{enumerate}
 \end{prob}
-\begin{proof}
-    \begin{enumerate}
-        \item It should be 
-        \begin{equation*}
-            \int_0^1\int_0^yf(x,y)dxdy
-        \end{equation*}
-        \item It should be 
-        \begin{equation*}
-            \int_{-1}^0\int_{-x}^{1}f(x,y)dydx+\int_{0}^1\int_{\sqrt{x}}^1f(x,y)dydx
-        \end{equation*}
-        \item It should be 
-        \begin{equation*}
-            \int_0^6\int_0^{\frac{y}{2}}f(x,y)dxdy
-        \end{equation*}
-        \item It should be \begin{equation*}
-            \int_0^1\int_{\sqrt{x}}^1f(x,y)dydx+\int_{-1}^0\int_{x^2}^1f(x,y)dydx
-        \end{equation*}
-        \item It should be 
-        \begin{equation*}
-            \int_0^2\int_0^{x^3}f(x,y)dydx
-        \end{equation*}
-        \item It should be 
-        \begin{equation*}
-            \int_{-\infty}^0\int_0^{e^x}f(x,y)dydx+\int_0^1\int_0^1f(x,y)dydx
-        \end{equation*}
-    \end{enumerate}
-\end{proof}
+% \begin{proof}
+%     \begin{enumerate}
+%         \item It should be 
+%         \begin{equation*}
+%             \int_0^1\int_0^yf(x,y)dxdy
+%         \end{equation*}
+%         \item It should be 
+%         \begin{equation*}
+%             \int_{-1}^0\int_{-x}^{1}f(x,y)dydx+\int_{0}^1\int_{\sqrt{x}}^1f(x,y)dydx
+%         \end{equation*}
+%         \item It should be 
+%         \begin{equation*}
+%             \int_0^6\int_0^{\frac{y}{2}}f(x,y)dxdy
+%         \end{equation*}
+%         \item It should be \begin{equation*}
+%             \int_0^1\int_{\sqrt{x}}^1f(x,y)dydx+\int_{-1}^0\int_{x^2}^1f(x,y)dydx
+%         \end{equation*}
+%         \item It should be 
+%         \begin{equation*}
+%             \int_0^2\int_0^{x^3}f(x,y)dydx
+%         \end{equation*}
+%         \item It should be 
+%         \begin{equation*}
+%             \int_{-\infty}^0\int_0^{e^x}f(x,y)dydx+\int_0^1\int_0^1f(x,y)dydx
+%         \end{equation*}
+%     \end{enumerate}
+% \end{proof}
 
 
 
