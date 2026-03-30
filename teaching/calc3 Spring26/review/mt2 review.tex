@@ -509,7 +509,7 @@
     \begin{equation*}
         y\in[c,d], \quad \psi_1(y)\leq x\leq\psi_2(y)
     \end{equation*}
-    A \textbf{simple} region is one that is both $x$- and $y$-simple.
+    An \textbf{elemetnary} region is one that is $x$- or $y$-simple.
 \end{defn}
 
 
@@ -814,7 +814,7 @@ For example, the area of a $x$-simple region $D$ can be computed as
     \begin{equation*}
         \iiint_Wf(x,y,z)dxdydz=\iiint_{W^*}f(x(u,v,w), y(u,v,w), z(u,v,w))\mid\det(J)\mid dudvdw
     \end{equation*}
-    where 
+    where $\det(J)$ is the Jacobian determinant.
     \begin{equation*}
         \det(J)=\det\left|\begin{matrix}
             \frac{\partial x}{\partial u}&\frac{\partial x}{\partial v}&\frac{\partial x}{\partial w}\\
@@ -822,7 +822,6 @@ For example, the area of a $x$-simple region $D$ can be computed as
             \frac{\partial z}{\partial u}&\frac{\partial z}{\partial v}&\frac{\partial z}{\partial w}
         \end{matrix}\right|
     \end{equation*}
-    is the Jacobian determinant.
 \end{prop}
 
 
@@ -831,7 +830,7 @@ For example, the area of a $x$-simple region $D$ can be computed as
     \begin{equation*}
         \iiint_Wf(x,y,z)dxdydz=\iiint_{W^*}f(r\cos\theta, r\sin\theta, z)rdrd\theta dz
     \end{equation*}
-    Recall cylinder cooridnates is setting up the following 
+    Recall cylinder cooridnates is the following 
     \begin{equation*}
         x=r\cos\theta, y=r\sin\theta, z=z
     \end{equation*}
@@ -856,6 +855,254 @@ For example, the area of a $x$-simple region $D$ can be computed as
 
 
 Taylor's Theorem to Change of Variables Theorem.
+
+
+
+\begin{prob}
+    Compute the second-order Taylor polynomial of $f(x,y)=\cos(xy)$ centered at the point $(1,\pi/2)$. 
+\end{prob}
+
+
+
+\begin{prob}
+    \begin{enumerate}
+        \item Write the number $120$ as a sum of three numbers $x,y,z$ so that the sum of the products $xy+yz+xz$ is maximal.
+        \item Write the number $27$ as a sum of three numbers $x,y,z$ so that the product $xyz$ is maximal.
+    \end{enumerate}
+\end{prob}
+
+
+\begin{prob}
+    Find the absolute maximum and minimum of the function $f(x,y)=\sin x+\cos y$ on the rectangle $0\leq x\leq 2\pi, 0\leq y\leq 2\pi$.
+\end{prob}
+
+
+\begin{prob}
+    \begin{enumerate}
+        \item Find the shortest distance between the point $(1,0,-1)$ and the plane $2x+y+z=0$.
+        \item Find the shortest distance between the plane $x+y+z=10$ and the unit sphere. 
+        \item Find the shortest distance between the curve $(\sin t, \cos t, t)$ and the origin.
+    \end{enumerate}
+\end{prob}
+
+\begin{prob}
+    Find the extrema of $f(x,y)=2x-y+z$ subject to the constraint $x+2y+z=1$.
+\end{prob}
+
+
+\begin{prob}
+    Find the absolute maximum and minimum of $f(x,y)=2x^2+y$ on the unit disk $D=\{(x,y): x^2+y^2\leq 1\}$.
+\end{prob}
+
+
+
+\begin{prob}
+    Find the path $c$ such that $c(0)=(0,1,-1)$ and $c'(t)=(t, t^2, -e^t)$.
+\end{prob}
+
+\begin{prob}
+    Find the length of the path 
+    \begin{equation*}
+        c(t)=(\sin t, 2\cos 2, t)
+    \end{equation*}
+    where $0\leq t\leq \pi$.
+\end{prob}
+
+
+\begin{prob}
+    A path $c$ is said to be parametrized by arc length $\|c'(s)\|=1$. 
+    \begin{enumerate}
+        \item Let $c$ be a curve parametrized by arc length, show that the length of $c$ for $a\leq s\leq b$ is $b-a$.
+        \item Parametrize the circle $\{(x,y): x^2+y^2=4\}$ by arc length.
+    \end{enumerate}
+\end{prob}
+
+
+\begin{prob}
+    Consider the vector field $F(x,y,z)=(x^2, z, xy^2)$. Can $F$ be a gradient field?
+\end{prob}
+\begin{proof}
+    We compute its curl:
+    \begin{align*}
+        \curl(F)=\det\begin{bmatrix}
+            i&j&k\\
+            \frac{\partial}{\partial x}&\frac{\partial}{\partial y}&\frac{\partial}{\partial z}\\
+            x^2&z&xy^2
+        \end{bmatrix}=(2xy-1, -y^2, 0)
+    \end{align*}
+    which is not identically zero, hence $F$ cannot be a gradient field.
+\end{proof}
+
+
+
+\newpage
+\begin{prob}
+    Evaluate the following integral 
+    \begin{equation*}
+        \int_D xy+x+1
+    \end{equation*}
+    where $D$ is the region enclosed by $y=-x^2+1$ and $y=x^2-7$.
+\end{prob}
+
+
+
+
+
+
+
+\begin{prob}
+    Evalute the following integrals
+    \begin{enumerate}
+        \item \begin{equation*}
+            \iint_D (xy+y+1) dxdy
+        \end{equation*}
+        \item \begin{equation*}
+            \iint e^\frac{x-y}{x+y}dxdy
+        \end{equation*}
+    \end{enumerate}
+    where $D$ is the triangle with vertices $(0,0), (2,0), (1,1)$.
+\end{prob}
+
+
+\begin{prob}
+    Let $f$ be continuous on an elementary region $D\subset\R^2$, $f\geq 0$. If $\int_D fdA=0$, show that $f=0$.
+\end{prob}
+
+\begin{prob}
+    Find the volume of the tetrahedron bounded by $x=0, y=0, z=0, y+x+z=1$.
+\end{prob}
+
+\begin{prob}
+    Find the volume of the truncated paraboloid bounded by $z=1, z=4, z=x^2+y^2$.
+\end{prob}
+
+
+\begin{prob}
+    Evalute the following integral:
+    \begin{equation*}
+        \int_0^1\int_{\sqrt{y}}^1e^{-x^2}dxdy
+    \end{equation*}
+\end{prob}
+
+
+\begin{prob}
+    Evalute the following integral:
+    \begin{equation*}
+        \int_De^{x-y}dxdy
+    \end{equation*}
+    where $D$ is the triangle bounded by $(0,0), (2,0), (1,1)$.
+\end{prob}
+
+\begin{prob}
+    Evaluate the following integral 
+    \begin{equation*}
+        \iiint_W xdxdydz
+    \end{equation*}
+    where $W$ is the truncated paraboloid $z=1, z=4, z=x^2+y^2$.
+\end{prob}
+
+
+\begin{prob}
+    Evalute the following integral 
+    \begin{equation*}
+        \iiint_W ydxdydz
+    \end{equation*}
+    where $W$ is the solid bounded by $x=0, y=0, z=0, x+y=2, x+y-z=1$.
+\end{prob}
+
+
+\begin{prob}
+    Evalute the following integral 
+    \begin{equation*}
+        \iiint_W zdxdydz
+    \end{equation*}
+    where $W$ is the pyramid with vertices $(0,0,0), (1,0,0), (0,1,0), (1,1,0), (0,0,1)$.
+\end{prob}
+
+
+\begin{prob}
+    Let $Tx=Ax$, where $A$ is a $2\times 2$ matrix. Show that $T$ is one-to-one if and only if $T$ is onto if and only if $\det(A)\neq 0$.
+\end{prob}
+
+
+\begin{prob}
+    Evaluate the following integral
+    \begin{equation*}
+        \iiint_W(x^2+y^2+z)dxdydz
+    \end{equation*}
+    where $W$ is the cylinder $x^2+y^2\leq 2, 1\leq z\leq 2$.
+\end{prob}
+
+\begin{prob}
+    Evaluate the following integral
+    \begin{equation*}
+        \int_0^{\infty}e^{-4x^2}dx
+    \end{equation*}
+\end{prob}
+
+
+\begin{prob}
+    Evaluate the following integral 
+    \begin{equation*}
+        \iint_D\frac{1}{\sqrt{x^2+y^2}}dxdy
+    \end{equation*}
+    where $D$ is the unit disk.
+\end{prob}
+
+
+\begin{prob}
+    Evaluate the following integral 
+    \begin{equation*}
+        \iint_D (x-y)^2e^{x+y}dxdy
+    \end{equation*}
+    where $D$ is the region bounded by $x+y=1, x+y=4, x-y=-2, x-y=1$.
+\end{prob}
+
+
+
+\begin{prob}
+    Evaluate the following integral 
+    \begin{equation*}
+        \iint_D(x^2+y^2)dxdy
+    \end{equation*}
+    where $D$ is the region in the first quadrant bounded by $xy=1, xy=2, x^2-y^2=1, x^2-y^2=4$.
+\end{prob}
+
+
+\begin{prob}
+    Evaluate the following integral 
+    \begin{equation*}
+        \iiint_W (xyz)dxdydz
+    \end{equation*}
+    where $W$ is the ellipsoid $E=\left\{(x,y,z): x^2+\frac{y^2}{4}+z^2\leq 1\right\}$.
+\end{prob}
+
+
+\begin{prob}
+    Evalute the following integral 
+    \begin{equation*}
+        \iiint_W\frac{1}{(x^2+y^2+z^2)^{5/2}}dxdydz
+    \end{equation*}
+    where $W$ is the annulus bounded between $x^2+y^2+z^2=1$ and $x^2+y^2+z^2=4$.
+\end{prob}
+
+\begin{prob}
+    Find the volume bounded by $z\geq\sqrt{x^2+y^2}$ and $z\leq 4-x^2-y^2$.
+\end{prob}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
