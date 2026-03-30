@@ -877,13 +877,13 @@ For example, the area of a $x$-simple region $D$ can be computed as
     \begin{enumerate}
         \item Find the shortest distance between the point $(1,0,-1)$ and the plane $2x+y+z=0$.
         \item Find the shortest distance between the plane $x+y+z=10$ and the unit sphere. 
-        \item Find the shortest distance between the curve $(\sin t, \cos t, t)$ and the origin.
+        \item Find the shortest distance between the curve $(\sin t, \cos t, t+1)$ where $0\leq t\leq 1$ and the origin.
     \end{enumerate}
 \end{prob}
 
-\begin{prob}
-    Find the extrema of $f(x,y)=2x-y+z$ subject to the constraint $x+2y+z=1$.
-\end{prob}
+% \begin{prob}
+%     Find the extrema of $f(x,y)=2x-y+z$ subject to the constraint $x+2y+z=1$.
+% \end{prob}
 
 
 \begin{prob}
@@ -899,7 +899,7 @@ For example, the area of a $x$-simple region $D$ can be computed as
 \begin{prob}
     Find the length of the path 
     \begin{equation*}
-        c(t)=(\sin t, 2\cos 2, t)
+        c(t)=(\sin t, \cos t, t)
     \end{equation*}
     where $0\leq t\leq \pi$.
 \end{prob}
@@ -959,8 +959,14 @@ For example, the area of a $x$-simple region $D$ can be computed as
 \end{prob}
 
 
+% \begin{prob}
+%     Let $f$ be continuous on an elementary region $D\subset\R^2$, $f\geq 0$. If $\int_D fdA=0$, show that $f=0$.
+% \end{prob}
 \begin{prob}
-    Let $f$ be continuous on an elementary region $D\subset\R^2$, $f\geq 0$. If $\int_D fdA=0$, show that $f=0$.
+    Evalute the following integral:
+    \begin{equation*}
+        \int_0^1\int_{\sqrt{y}}^1e^{-x^2}dxdy
+    \end{equation*}
 \end{prob}
 
 \begin{prob}
@@ -972,21 +978,16 @@ For example, the area of a $x$-simple region $D$ can be computed as
 \end{prob}
 
 
-\begin{prob}
-    Evalute the following integral:
-    \begin{equation*}
-        \int_0^1\int_{\sqrt{y}}^1e^{-x^2}dxdy
-    \end{equation*}
-\end{prob}
 
 
-\begin{prob}
-    Evalute the following integral:
-    \begin{equation*}
-        \int_De^{x-y}dxdy
-    \end{equation*}
-    where $D$ is the triangle bounded by $(0,0), (2,0), (1,1)$.
-\end{prob}
+
+% \begin{prob}
+%     Evalute the following integral:
+%     \begin{equation*}
+%         \int_De^{x-y}dxdy
+%     \end{equation*}
+%     where $D$ is the triangle bounded by $(0,0), (2,0), (1,1)$.
+% \end{prob}
 
 \begin{prob}
     Evaluate the following integral 
@@ -1085,6 +1086,464 @@ For example, the area of a $x$-simple region $D$ can be computed as
     Find the volume bounded by $z\geq\sqrt{x^2+y^2}$ and $z\leq 4-x^2-y^2$.
 \end{prob}
 
+
+
+
+
+\chapter{Answer Key}
+
+\begin{prob}
+    Compute the second-order Taylor polynomial of $f(x,y)=\cos(xy)$ centered at the point $(1,\pi/2)$. 
+\end{prob}
+\begin{proof}
+    The second-order Taylor polynomial is given by the formula 
+    \begin{equation*}
+        P(x,y)=f(0,0)+f_x(0,0)x+f_y(0,0)+\frac{1}{2}\left(f_{xx}(0,0)x^2+2f_{xy}(0,0)xy+f_{yy}y^2\right)
+    \end{equation*}
+    Thus we compute 
+    \begin{equation*}
+        f_x=-y\sin(xy), f_y=-x\sin(xy), f_{xx}=-y^2\cos(xy), f_{xy}=-xy\cos(xy), f_{yy}=-x^2\cos(xy)
+    \end{equation*}
+    Thus 
+    \begin{equation*}
+        P(x,y)=1
+    \end{equation*}
+\end{proof}
+
+
+
+\begin{prob}
+    \begin{enumerate}
+        \item Write the number $120$ as a sum of three numbers $x,y,z$ so that the sum of the products $xy+yz+xz$ is maximal.
+        \item Write the number $27$ as a sum of three numbers $x,y,z$ so that the product $xyz$ is maximal.
+    \end{enumerate}
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item We want to maximize $f(x,y,z)=xy+yz+xz$ subject to the constraint $x+y+z=120$. Using Lagrange, let $g(x,y,z)=x+y+z$, set
+        \begin{equation*}
+            \nabla f=\lambda\nabla g\Rightarrow\begin{cases}
+                y+z=\lambda\\
+                x+z=\lambda\\
+                x+y=\lambda\\
+                x+y+z=120
+            \end{cases}\Rightarrow x=y=z40
+        \end{equation*}
+        \item We want to maximize $f(x,y,z)=xyz$ subject to the constraint $x+y+z=27$. Similarly, we set $h(x,y,z)=x+y+z$. THen 
+        \begin{equation*}
+            \nabla f=\lambda\nabla h\Rightarrow\begin{cases}
+                yz=\lambda\\
+                xz=\lambda\\
+                xy=\lambda\\
+                x+y+z=27
+            \end{cases}\Rightarrow \begin{cases}
+                (13.5, 13.5, 0)\\
+                (13.5, 0, 13.5)\\
+                (0, 13.5, 13.5)\\
+                (9,9,9)
+            \end{cases}
+        \end{equation*}
+        It's clear that $(9,9,9)$ gives the maximal product.
+    \end{enumerate}
+\end{proof}
+
+
+\begin{prob}
+    Find the absolute maximum and minimum of the function $f(x,y)=\sin x+\cos y$ on the rectangle $0\leq x\leq 2\pi, 0\leq y\leq 2\pi$.
+\end{prob}
+\begin{proof}
+    We first find the critical points in the interior of the rectangle 
+    \begin{equation*}
+        \nabla f=(\cos x, -\sin y)=(0,0)\Rightarrow x_1=(\pi/2, \pi), x_2=(3\pi/2, \pi)
+    \end{equation*}
+    We see $f(x_1)=0, f(x_2)=-2$. Now we check the boundaries:
+    \begin{enumerate}
+        \item $x=0$: $f(x,y)=\cos y$ is maximized at $(0, 0), (0,2\pi)$ with $f=1$, minimized $(0,\pi)$ with $f=-1$.
+        \item $x=2\pi$, similar to the above.
+        \item $y=0$, $f(x,y)=\sin x$ is maximized at $(0, \pi/2)$ with $f=2$, minimized at $(0, 3\pi/2)$ with $f=0$.
+        \item $y=2\pi$, similar to the above. 
+    \end{enumerate}
+    The absolute maximum is $2$ and minimum is $-2$.
+\end{proof}
+
+\begin{prob}
+    \begin{enumerate}
+        \item Find the shortest distance between the point $(1,0,-1)$ and the plane $2x+y+z=0$.
+        \item Find the shortest distance between the plane $x+y+z=10$ and the unit sphere. 
+        \item Find the shortest distance between the curve $(\sin t, \cos t, t+1)$ where $0\leq t\leq 1$ and the origin.
+    \end{enumerate}
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item We minimize the function $f(x,y,z)=(x-1)^2+y^2+(z+1)^2$, subject to the constraint $2x+y+z=0$. Using Lagrange,
+        \begin{equation*}
+            \nabla f=\lambda\nabla g\Rightarrow\begin{cases}
+                2x-2=2\lambda\\
+                2y=\lambda\\
+                2z+2=\lambda\\
+                2x+y+z=0
+            \end{cases}\Rightarrow\left(\frac{2}{3}, -\frac{1}{6},-\frac{7}{6}\right)
+        \end{equation*}
+        Thus the shortest distance is $\sqrt{1/9+1/36+1/36}=1/\sqrt{6}$.
+        \item This is minimizing the distance between the plane and the center of the unit sphere, i.e., the origin. Thus we are minimizing $f(x,y,z)=x^2+y^2+z^2$ subject to the constraint $x+y+z=10$. Using Lagrange,
+        \begin{equation*}
+            \nabla f=\lambda\nabla g\Rightarrow\begin{cases}
+                2x=\lambda\\
+                2y=\lambda\\
+                2z=\lambda\\
+                x+y+z=10
+            \end{cases}\Rightarrow \left(10/3, 10/3, 10/3\right)
+        \end{equation*}
+        Thus the distance between this point and the sphere (not the origin) is $\sqrt{100/3}-1=\frac{10-\sqrt{3}}{\sqrt{3}}$.
+        \item We minimize the function $f(t)=\sin^2+\cos^2t+t^2+2t+1=(t+1)^2$. Thus it is minimized at $t=0$, for $0\leq t\leq 1$.
+    \end{enumerate}
+\end{proof}
+
+
+% \begin{prob}
+%     Find the extrema of $f(x,y)=2x-y+z$ subject to the constraint $x+2y+z=1$.
+% \end{prob}
+
+
+\begin{prob}
+    Find the absolute maximum and minimum of $f(x,y)=x^2+2y^2$ on the unit disk $D=\{(x,y): x^2+y^2\leq 1\}$.
+\end{prob}
+\begin{proof}
+    We first examine the critical points in the interior $\{(x,y): x^2+y^2<1\}$:
+    \begin{equation*}
+        \nabla f=(2x, 4y)=(0,0)\Rightarrow x_1=(0,0)
+    \end{equation*}
+    We see $f(x_1)=0$. Now let's check the boundary. We will present two methods:
+    \begin{enumerate}
+        \item Parametrize the curve: let $x=\cos t, y=\sin t$, $0\leq t<2\pi$. We have $f(t)=\cos^2t+2\sin^2 t$, Hence
+        \begin{equation*}
+            f'(t)=-2\cos t\sin t+4\sin t\cos t=2\sin t\cos t=\sin(2t)
+        \end{equation*}
+        Setting $f'(t)=0$ gives $t=0,\pi/2, \pi, 3\pi/2$, hence the points $(\pm 1, 0), (0,\pm 1)$.  We see maximum is achieved at $(0,\pm 1)$ with $f=2$, and minimum is achieved at the critical point $x_1=(0,0)$ with $f=0$.
+        \item Lagrange multipliers: 
+        \begin{equation*}
+            \nabla f=\lambda\nabla g\Rightarrow\begin{cases}
+                2x=\lambda 2x\\
+                4y=\lambda 2y\\
+                x^2+y^2+1
+            \end{cases}\Rightarrow (0,\pm1), (\pm 1, 0)
+        \end{equation*} 
+        Again we see maximum is achieved at $(0,\pm 1)$ with $f=2$, and minimum is achieved at the critical point $x_1=(0,0)$ with $f=0$.
+    \end{enumerate}
+\end{proof}
+
+
+
+\begin{prob}
+    Find the path $c$ such that $c(0)=(0,1,-1)$ and $c'(t)=(t, t^2, -e^t)$.
+\end{prob}
+\begin{proof}
+    By taking the antiderivative and using $c(0)=(0,1,-1)$, we find 
+    \begin{equation*}
+        c(t)=(t^2/2, t^3/3+1, -e^{t})
+    \end{equation*}
+\end{proof}
+
+\begin{prob}
+    Find the length of the path 
+    \begin{equation*}
+        c(t)=(\sin t, \cos t, t)
+    \end{equation*}
+    where $0\leq t\leq \pi$.
+\end{prob}
+\begin{proof}
+    Using the arc length formula, we have 
+    \begin{equation*}
+        \int_0^\pi\|c'(t)\|dt=\int_0^\pi 1dt=\pi
+    \end{equation*}
+\end{proof}
+
+
+\begin{prob}
+    A path $c$ is said to be parametrized by arc length $\|c'(s)\|=1$. 
+    \begin{enumerate}
+        \item Let $c$ be a curve parametrized by arc length, show that the length of $c$ for $a\leq s\leq b$ is $b-a$.
+        \item Parametrize the circle $\{(x,y): x^2+y^2=4\}$ by arc length.
+    \end{enumerate}
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item Using the arc length formula, we see
+        \begin{equation*}
+            \int_a^b\|c'(s)\|ds=\int_a^b1ds=b-a
+        \end{equation*}
+        \item We can parametrize as follows:
+        \begin{equation*}
+            c(t)=\left(2\cos\frac{t}{2}, 2\sin\frac{t}{2}\right), 0\leq t\leq 4\pi
+        \end{equation*}
+    \end{enumerate}
+\end{proof}
+
+
+\begin{prob}
+    Consider the vector field $F(x,y,z)=(x^2, z, xy^2)$. Can $F$ be a gradient field?
+\end{prob}
+\begin{proof}
+    We compute its curl:
+    \begin{align*}
+        \curl(F)=\det\begin{bmatrix}
+            i&j&k\\
+            \frac{\partial}{\partial x}&\frac{\partial}{\partial y}&\frac{\partial}{\partial z}\\
+            x^2&z&xy^2
+        \end{bmatrix}=(2xy-1, -y^2, 0)
+    \end{align*}
+    which is not identically zero, hence $F$ cannot be a gradient field.
+\end{proof}
+
+
+
+
+\begin{prob}
+    Evaluate the following integral 
+    \begin{equation*}
+        \iint_D (xy+x+1) dxdy
+    \end{equation*}
+    where $D$ is the region enclosed by $y=-x^2+1$ and $y=x^2-7$.
+\end{prob}
+\begin{proof}
+    This can be seen by drawing a graph: the region we are integration over is 
+    \begin{equation*}
+        -2\leq x\leq 2, \quad x^2-7\leq y\leq -x^2+1
+    \end{equation*}
+    Thus we integrate 
+    \begin{align*}
+        \iint_D (xy+x+1)dxdy&=\int_{-2}^2\int_{x^2-7}^{-x^2+1}(xy+x+1)dydx\\
+        &=\int_{-2}^2(4x^3-2x^2-16x+8)dx\\
+        &=64/3
+    \end{align*}
+\end{proof}
+
+
+
+
+
+
+
+\begin{prob}
+    Evalute the following integrals
+    \begin{enumerate}
+        \item \begin{equation*}
+            \iint_D (xy+y+1) dxdy
+        \end{equation*}
+        \item \begin{equation*}
+            \iint_D e^\frac{x-y}{x+y}dxdy
+        \end{equation*}
+    \end{enumerate}
+    where $D$ is the triangle with vertices $(0,0), (2,0), (1,1)$.
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item We can split this triangle into two down from the middle. Then we see 
+        \begin{align*}
+            \iint_D(xy+y+1)dxdy&=2\int_{0}^1\int_0^x(xy+y+1)dydx\\
+            &=2\int_0^1\left(\frac{x^3}{2}+\frac{x^2}{2}+x\right)dx\\
+            &=38/24
+        \end{align*}
+        \item Let $u=x+y, v=x-y$, using the change of variables formula,
+        \begin{align*}
+            \iint_D e^{v/u}|\det(J)|dudv&=\frac{1}{2}\int_0^2\int_0^u e^{v/u}dvdu\\
+            &=\frac{1}{2}\int_0^2 u(e-1)du\\
+            &=e-1
+        \end{align*}
+    \end{enumerate}
+\end{proof}
+
+
+% \begin{prob}
+%     Let $f$ be continuous on an elementary region $D\subset\R^2$, $f\geq 0$. If $\int_D fdA=0$, show that $f=0$.
+% \end{prob}
+
+\begin{prob}
+    Find the volume of the tetrahedron bounded by $x=0, y=0, z=0, y+x+z=1$.
+\end{prob}
+\begin{proof}
+    It's best if you draw a graph. We see the integral is given by 
+    \begin{align*}
+        \int_0^1\int_0^{1-x}(1-x-y)dydx&=\int_0^1\left(\frac{1}{2}-x+\frac{x^2}{2}\right)dx=1/6
+    \end{align*}
+\end{proof}
+
+
+
+
+
+\begin{prob}
+    Evalute the following integral:
+    \begin{equation*}
+        \int_0^1\int_{\sqrt{y}}^1e^{-x^3}dxdy
+    \end{equation*}
+\end{prob}
+\begin{proof}
+    We change the order of integration:
+    \begin{equation*}
+        0\leq x\leq 1, \quad 0\leq y\leq x^2
+    \end{equation*}
+    Hence 
+    \begin{align*}
+        \int_0^1\int_{\sqrt{y}}^1e^{-x^3}dxdy&=\int_0^1\int_0^{x^2}e^{-x^3}dydx\\
+        &=\int_0^1 x^2e^{-x^3}dx\\
+        &=\frac{1}{3}\left(1-\frac{1}{e}\right)
+    \end{align*}
+\end{proof}
+
+
+% \begin{prob}
+%     Evalute the following integral:
+%     \begin{equation*}
+%         \int_De^{x-y}dxdy
+%     \end{equation*}
+%     where $D$ is the triangle bounded by $(0,0), (2,0), (1,1)$.
+% \end{prob}
+
+\begin{prob}
+    Find the volume of the truncated paraboloid bounded by $z=1, z=4, z=x^2+y^2$.
+\end{prob}
+\begin{proof}
+    We use the cylindrical coordinates: $x=r\cos\theta, y=r\sin\theta, z=z$, then 
+    \begin{align*}
+        \int_0^{2\pi}\int_1^4\int_0^{\sqrt{r}}1\cdot r drdzd\theta=\frac{15\pi}{2}
+    \end{align*} 
+\end{proof}
+
+\begin{prob}
+    Evaluate the following integral 
+    \begin{equation*}
+        \iiint_W xdxdydz
+    \end{equation*}
+    where $W$ is the truncated paraboloid $z=1, z=4, z=x^2+y^2$.
+\end{prob}
+\begin{proof}
+    We can use the same bounds and cylindrical coordinates as above, hence we get 
+    \begin{align*}
+        \iiint_W xdxdydz=\int_0^{2\pi}\int_1^4\int_0^{\sqrt{r}}r^2\cos\theta drdzd\theta=0
+    \end{align*}
+\end{proof}
+
+
+\begin{prob}
+    Evalute the following integral 
+    \begin{equation*}
+        \iiint_W ydxdydz
+    \end{equation*}
+    where $W$ is the solid bounded by $x=0, y=0, z=0, x+y=2, x+y-z=1$.
+\end{prob}
+
+
+
+\begin{prob}
+    Evalute the following integral 
+    \begin{equation*}
+        \iiint_W zdxdydz
+    \end{equation*}
+    where $W$ is the pyramid with vertices $(0,0,0), (1,0,0), (0,1,0), (1,1,0), (0,0,1)$.
+\end{prob}
+
+
+\begin{prob}
+    Let $Tx=Ax$, where $A$ is a $2\times 2$ matrix. Show that $T$ is one-to-one if and only if $T$ is onto if and only if $\det(A)\neq 0$.
+\end{prob}
+\begin{proof}
+    Let
+    \begin{equation*}
+        A=\begin{bmatrix}
+            a&b\\
+            c&d
+        \end{bmatrix}\Rightarrow Ax=\begin{bmatrix}
+            a&b\\
+            c&d
+        \end{bmatrix}\begin{bmatrix}
+            x_1\\
+            x_2
+        \end{bmatrix}=\begin{bmatrix}
+            ax_1+bx_2\\
+            cx_1+dx_2
+        \end{bmatrix}
+    \end{equation*}
+    We know $\det(A)=0$ iff $ad-bc=0$
+
+
+    Then $T$ is one-to-one iff for all $x=(x_1, x_2)\neq 0$, $\begin{bmatrix}
+        ax_1+bx_2\\
+        cx_1+dx_2
+    \end{bmatrix}\neq 0$. 
+
+
+
+
+    $ad-bc=0$
+\end{proof}
+
+
+
+\begin{prob}
+    Evaluate the following integral
+    \begin{equation*}
+        \iiint_W(x^2+y^2+z)dxdydz
+    \end{equation*}
+    where $W$ is the cylinder $x^2+y^2\leq 2, 1\leq z\leq 2$.
+\end{prob}
+
+\begin{prob}
+    Evaluate the following integral
+    \begin{equation*}
+        \int_0^{\infty}e^{-4x^2}dx
+    \end{equation*}
+\end{prob}
+
+
+\begin{prob}
+    Evaluate the following integral 
+    \begin{equation*}
+        \iint_D\frac{1}{\sqrt{x^2+y^2}}dxdy
+    \end{equation*}
+    where $D$ is the unit disk.
+\end{prob}
+
+
+\begin{prob}
+    Evaluate the following integral 
+    \begin{equation*}
+        \iint_D (x-y)^2e^{x+y}dxdy
+    \end{equation*}
+    where $D$ is the region bounded by $x+y=1, x+y=4, x-y=-2, x-y=1$.
+\end{prob}
+
+
+
+\begin{prob}
+    Evaluate the following integral 
+    \begin{equation*}
+        \iint_D(x^2+y^2)dxdy
+    \end{equation*}
+    where $D$ is the region in the first quadrant bounded by $xy=1, xy=2, x^2-y^2=1, x^2-y^2=4$.
+\end{prob}
+
+
+\begin{prob}
+    Evaluate the following integral 
+    \begin{equation*}
+        \iiint_W (xyz)dxdydz
+    \end{equation*}
+    where $W$ is the ellipsoid $E=\left\{(x,y,z): x^2+\frac{y^2}{4}+z^2\leq 1\right\}$.
+\end{prob}
+
+
+\begin{prob}
+    Evalute the following integral 
+    \begin{equation*}
+        \iiint_W\frac{1}{(x^2+y^2+z^2)^{5/2}}dxdydz
+    \end{equation*}
+    where $W$ is the annulus bounded between $x^2+y^2+z^2=1$ and $x^2+y^2+z^2=4$.
+\end{prob}
+
+\begin{prob}
+    Find the volume bounded by $z\geq\sqrt{x^2+y^2}$ and $z\leq 4-x^2-y^2$.
+\end{prob}
 
 
 
