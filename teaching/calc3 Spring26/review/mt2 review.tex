@@ -400,7 +400,7 @@
         Hf=\begin{bmatrix}
             \frac{\partial^2 f}{\partial x_1\partial x_1}&\dots&\frac{\partial^2f}{\partial x_1\partial x_n}\\
             \vdots&\ddots&\vdots\\
-            \frac{\partial^2f}{\partial x_nx_1}&\dots&\frac{\partial^2f}{\partial x_n\partial x_n}
+            \frac{\partial^2f}{\partial x_n\partial x_1}&\dots&\frac{\partial^2f}{\partial x_n\partial x_n}
         \end{bmatrix}
     \end{equation*}
     The Hessian as a quadratic function is defined by 
@@ -1125,7 +1125,7 @@ For example, the area of a $x$-simple region $D$ can be computed as
                 x+z=\lambda\\
                 x+y=\lambda\\
                 x+y+z=120
-            \end{cases}\Rightarrow x=y=z40
+            \end{cases}\Rightarrow x=y=z=40
         \end{equation*}
         \item We want to maximize $f(x,y,z)=xyz$ subject to the constraint $x+y+z=27$. Similarly, we set $h(x,y,z)=x+y+z$. THen 
         \begin{equation*}
@@ -1406,7 +1406,7 @@ For example, the area of a $x$-simple region $D$ can be computed as
 \begin{proof}
     We use the cylindrical coordinates: $x=r\cos\theta, y=r\sin\theta, z=z$, then 
     \begin{align*}
-        \int_0^{2\pi}\int_1^4\int_0^{\sqrt{r}}1\cdot r drdzd\theta=\frac{15\pi}{2}
+        \int_0^{2\pi}\int_1^4\int_0^{\sqrt{z}}1\cdot r drdzd\theta=\frac{15\pi}{2}
     \end{align*} 
 \end{proof}
 
@@ -1420,7 +1420,7 @@ For example, the area of a $x$-simple region $D$ can be computed as
 \begin{proof}
     We can use the same bounds and cylindrical coordinates as above, hence we get 
     \begin{align*}
-        \iiint_W xdxdydz=\int_0^{2\pi}\int_1^4\int_0^{\sqrt{r}}r^2\cos\theta drdzd\theta=0
+        \iiint_W xdxdydz=\int_0^{2\pi}\int_1^4\int_0^{\sqrt{z}}r^2\cos\theta drdzd\theta=0
     \end{align*}
 \end{proof}
 
