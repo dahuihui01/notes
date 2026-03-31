@@ -887,7 +887,7 @@ For example, the area of a $x$-simple region $D$ can be computed as
 
 
 \begin{prob}
-    Find the absolute maximum and minimum of $f(x,y)=2x^2+y$ on the unit disk $D=\{(x,y): x^2+y^2\leq 1\}$.
+    Find the absolute maximum and minimum of $f(x,y)=x^2+2y^2$ on the unit disk $D=\{(x,y): x^2+y^2\leq 1\}$.
 \end{prob}
 
 
@@ -934,7 +934,7 @@ For example, the area of a $x$-simple region $D$ can be computed as
 \begin{prob}
     Evaluate the following integral 
     \begin{equation*}
-        \int_D xy+x+1
+        \iint_D (xy+x+1) dxdy
     \end{equation*}
     where $D$ is the region enclosed by $y=-x^2+1$ and $y=x^2-7$.
 \end{prob}
@@ -952,7 +952,7 @@ For example, the area of a $x$-simple region $D$ can be computed as
             \iint_D (xy+y+1) dxdy
         \end{equation*}
         \item \begin{equation*}
-            \iint e^\frac{x-y}{x+y}dxdy
+            \iint_D e^\frac{x-y}{x+y}dxdy
         \end{equation*}
     \end{enumerate}
     where $D$ is the triangle with vertices $(0,0), (2,0), (1,1)$.
@@ -963,14 +963,14 @@ For example, the area of a $x$-simple region $D$ can be computed as
 %     Let $f$ be continuous on an elementary region $D\subset\R^2$, $f\geq 0$. If $\int_D fdA=0$, show that $f=0$.
 % \end{prob}
 \begin{prob}
-    Evalute the following integral:
-    \begin{equation*}
-        \int_0^1\int_{\sqrt{y}}^1e^{-x^2}dxdy
-    \end{equation*}
+    Find the volume of the tetrahedron bounded by $x=0, y=0, z=0, y+x+z=1$.
 \end{prob}
 
 \begin{prob}
-    Find the volume of the tetrahedron bounded by $x=0, y=0, z=0, y+x+z=1$.
+    Evalute the following integral:
+    \begin{equation*}
+        \int_0^1\int_{\sqrt{y}}^1e^{-x^3}dxdy
+    \end{equation*}
 \end{prob}
 
 \begin{prob}
@@ -1062,16 +1062,12 @@ For example, the area of a $x$-simple region $D$ can be computed as
     \begin{equation*}
         \iint_D(x^2+y^2)dxdy
     \end{equation*}
-    where $D$ is the region in the first quadrant bounded by $xy=1, xy=2, x^2-y^2=1, x^2-y^2=4$.
+    where $D$ is the region in the first quadrant bounded by $xy=1, xy=2, x^2-y^2=1, x^2-y^2=4$. Use the change of variables $u=x^2-y^2, v=xy$.
 \end{prob}
 
 
 \begin{prob}
-    Evaluate the following integral 
-    \begin{equation*}
-        \iiint_W (xyz)dxdydz
-    \end{equation*}
-    where $W$ is the ellipsoid $E=\left\{(x,y,z): x^2+\frac{y^2}{4}+z^2\leq 1\right\}$.
+    Find the volume of the ellipsoid $E=\left\{(x,y,z): x^2+\frac{y^2}{4}+z^2\leq 1\right\}$.
 \end{prob}
 
 
@@ -1084,7 +1080,7 @@ For example, the area of a $x$-simple region $D$ can be computed as
 \end{prob}
 
 \begin{prob}
-    Find the volume bounded by $z\geq\sqrt{x^2+y^2}$ and $z\leq 4-x^2-y^2$.
+    Find the volume of the region bounded by $z\geq\sqrt{x^2+y^2}$ and $z\leq 4-\sqrt{x^2-y^2}$.
 \end{prob}
 
 
