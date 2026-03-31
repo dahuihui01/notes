@@ -998,13 +998,13 @@ For example, the area of a $x$-simple region $D$ can be computed as
 \end{prob}
 
 
-\begin{prob}
-    Evalute the following integral 
-    \begin{equation*}
-        \iiint_W ydxdydz
-    \end{equation*}
-    where $W$ is the solid bounded by $x=0, y=0, z=0, x+y=2, x+y-z=1$.
-\end{prob}
+% \begin{prob}
+%     Evalute the following integral 
+%     \begin{equation*}
+%         \iiint_W ydxdydz
+%     \end{equation*}
+%     where $W$ is the solid bounded by $x=0, y=0, z=0, x+y=2, x+y-z=1$.
+% \end{prob}
 
 
 \begin{prob}
@@ -1080,7 +1080,7 @@ For example, the area of a $x$-simple region $D$ can be computed as
 \end{prob}
 
 \begin{prob}
-    Find the volume of the region bounded by $z\geq\sqrt{x^2+y^2}$ and $z\leq 4-\sqrt{x^2-y^2}$.
+    Find the volume of the region bounded by $z\geq\sqrt{x^2+y^2}$ and $z\leq 4-\sqrt{x^2+y^2}$.
 \end{prob}
 
 
@@ -1094,16 +1094,17 @@ For example, the area of a $x$-simple region $D$ can be computed as
 \end{prob}
 \begin{proof}
     The second-order Taylor polynomial is given by the formula 
-    \begin{equation*}
-        P(x,y)=f(0,0)+f_x(0,0)x+f_y(0,0)+\frac{1}{2}\left(f_{xx}(0,0)x^2+2f_{xy}(0,0)xy+f_{yy}y^2\right)
-    \end{equation*}
+    \begin{align*}
+        P(x,y)&=f((1,\pi/2))+f_x((1,\pi/2))(x-1)+f_y((1,\pi/2))(y-\pi/2)\\
+        &+\frac{1}{2}\left(f_{xx}((1,\pi/2))(x-1)^2+2f_{xy}(1,\pi/2)(x-1)(y-\pi/2)+f_{yy}(1,\pi/2)(y-\pi/2)^2\right)
+    \end{align*}
     Thus we compute 
     \begin{equation*}
         f_x=-y\sin(xy), f_y=-x\sin(xy), f_{xx}=-y^2\cos(xy), f_{xy}=-xy\cos(xy), f_{yy}=-x^2\cos(xy)
     \end{equation*}
     Thus 
     \begin{equation*}
-        P(x,y)=1
+        P(x,y)=-\frac{\pi}{2}(x-1)-(y-\pi/2)-(x-1)(y-\pi/2)
     \end{equation*}
 \end{proof}
 
@@ -1335,11 +1336,13 @@ For example, the area of a $x$-simple region $D$ can be computed as
 \end{prob}
 \begin{proof}
     \begin{enumerate}
-        \item We can split this triangle into two down from the middle. Then we see 
+        \item We see the region can be described by 
+        \begin{equation*}
+            0\leq y\leq 1, \quad y\leq x\leq 2-y
+        \end{equation*}
+        Hence 
         \begin{align*}
-            \iint_D(xy+y+1)dxdy&=2\int_{0}^1\int_0^x(xy+y+1)dydx\\
-            &=2\int_0^1\left(\frac{x^3}{2}+\frac{x^2}{2}+x\right)dx\\
-            &=38/24
+            \iint_D (xy+y+1) dxdy&=\int0^1\int_y^{2-y}(xy+y+1)dxdy=5/3
         \end{align*}
         \item Let $u=x+y, v=x-y$, using the change of variables formula,
         \begin{align*}
@@ -1422,22 +1425,22 @@ For example, the area of a $x$-simple region $D$ can be computed as
 \end{proof}
 
 
-\begin{prob}
-    Evalute the following integral 
-    \begin{equation*}
-        \iiint_W ydxdydz
-    \end{equation*}
-    where $W$ is the solid bounded by $x=0, y=0, z=0, x+y=2, x+y-z=1$.
-\end{prob}
-\begin{proof}
-    We have 
-    \begin{align*}
-        \int_0^2\int_0^{2-x}\int_0^{x+y-1} y dzdydx&=\int_0^2\int_0^{2-x}(xy+y^2-y)dydx\\
-        &=\int_0^2\int_0^{2-y}(xy+y^2-y)dxdy\\
-        &=\int_0^2 \frac{1}{2}(2-y)^2y+y^2(2-y)-y(2-y)dy\\
-        &=2/3
-    \end{align*}
-\end{proof}
+% \begin{prob}
+%     Evalute the following integral 
+%     \begin{equation*}
+%         \iiint_W ydxdydz
+%     \end{equation*}
+%     where $W$ is the solid bounded by $x=0, y=0, z=0, x+y=2, x+y-z=1$.
+% \end{prob}
+% \begin{proof}
+%     We have 
+%     \begin{align*}
+%         \int_0^2\int_0^{2-x}\int_0^{x+y-1} y dzdydx&=\int_0^2\int_0^{2-x}(xy+y^2-y)dydx\\
+%         &=\int_0^2\int_0^{2-y}(xy+y^2-y)dxdy\\
+%         &=\int_0^2 \frac{1}{2}(2-y)^2y+y^2(2-y)-y(2-y)dy\\
+%         &=2/3
+%     \end{align*}
+% \end{proof}
 
 
 
@@ -1599,12 +1602,12 @@ For example, the area of a $x$-simple region $D$ can be computed as
 \begin{proof}
     Using the spherical coordinates, we have 
     \begin{align*}
-        \iiint_W\frac{1}{(x^2+y^2+z^2)^{5/2}}dxdydz&=\int_0^{2\pi}\int_0^\pi\int_0^1\frac{1}{\rho^5}\rho^2\sin\phi d\rho d\phi d\theta=3\pi/2
+        \iiint_W\frac{1}{(x^2+y^2+z^2)^{5/2}}dxdydz&=\int_0^{2\pi}\int_0^\pi\int_1^2\frac{1}{\rho^5}\rho^2\sin\phi d\rho d\phi d\theta=3\pi/2
     \end{align*}
 \end{proof}
 
 \begin{prob}
-    Find the volume of the region bounded by $z\geq\sqrt{x^2+y^2}$ and $z\leq 4-\sqrt{x^2-y^2}$.
+    Find the volume of the region bounded by $z\geq\sqrt{x^2+y^2}$ and $z\leq 4-\sqrt{x^2+y^2}$.
 \end{prob}
 \begin{proof}
     We use cylindrical coordinates
