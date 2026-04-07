@@ -1887,16 +1887,13 @@ Topic: path integrals.
     \begin{equation*}
         p=c\circ h: I\to\R^3
     \end{equation*}
-    a \textbf{ reparametrization} of $c$.
-\end{defn}
-
-\begin{example}
-    Let $c:[0,1]\to\R^3$ be a $C^1$ path, then consider $h: [0,1]\to [0,1]$, where $h(t)=1-t$. Then the path 
+    a \textbf{ reparametrization} of $c$. For example, let $c:[0,1]\to\R^3$ be a $C^1$ path, then consider $h: [0,1]\to [0,1]$, where $h(t)=1-t$. Then the path 
     \begin{equation*}
         c_{\text{op}}=c\circ h(t)=c(1-t)
     \end{equation*}
     is the same path in the opposite direction.
-\end{example}
+\end{defn}
+
 
 \begin{prop}[reparametrization for path integrals]
     Let $c$ be a $C^1$ path and $c'$ be any reparametrization of $c$, and let $f$ be a continuous function on the image of $c$, then 
@@ -1922,6 +1919,8 @@ Topic: path integrals.
         \int_c\nabla f\cdot ds=f(c(b))-f(c(a))
     \end{equation*}
 \end{prop}
+
+\newpage
 
 \begin{prob}
     Let $c:[a,b]\to\R^3$ be a $C^1$ path, find a reparametrization $\tilde{c}=c\circ h$, such that $\tilde{c}:[0,1]\to\R^3$.
