@@ -73,4 +73,98 @@
 \newpage
 
 
+
+\chapter{Basic calculus in the complex domain}
+
+\begin{prop}[Cauchy-Riemann Equations]
+    If $f:\Omega\to\C$ is holomorphic, then $\frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}$ exist and are continuous on $\Omega$, and 
+    \begin{equation*}
+        \frac{\partial f}{\partial x}=\frac{1}{i}\frac{\partial f}{\partial y}
+    \end{equation*}
+    If we write $f=u+iv$, then the above is equivalent to 
+    \begin{equation*}
+        \begin{cases}
+            \frac{\partial u}{\partial x}=\frac{\partial v}{\partial y}\\
+            \frac{\partial v}{\partial x}=-\frac{\partial u}{\partial y}
+        \end{cases}
+    \end{equation*}
+\end{prop}
+
+\begin{prop}[Converse of Cauchy-Riemann]
+    If $f:\Omega\to\C$ is $C^1$ and satisfies Cauchy-Riemann equations, then $f$ is holomorphic.
+\end{prop}
+
+\begin{prop}
+    If $f:\overline{\Omega}\to\C$ is holomorphic, where $z_0\in\Omega$ and $D_r(z_0)\subset\Omega$, then for $z\in D_r(z_0)$, $f$ is given by a convergent power series 
+    \begin{equation*}
+        f(z)=\sum_{k=0}^\infty a_k(z-z_0)^k
+    \end{equation*}
+    where 
+    \begin{equation*}
+        a_k=\frac{1}{2\pi i}\int_{\partial\Omega}\frac{f(\zeta)}{(\zeta-z_0)^{k+1}}d\zeta=\frac{f^{(k)}(z_0)}{k!}
+    \end{equation*}
+\end{prop}
+(This follows from Cauchy integral formula).
+
+
+% \begin{defn}[complex log]
+%     The logorithmic function extended to the complex plane is $\log:\C\setminus\R^-\to\C$, given by 
+%     \begin{equation*}
+%         \log z=\frac{1}{z}\frac{1}{\zeta}d\zeta
+%     \end{equation*}
+% \end{defn}
+
+
+\begin{thm}
+    Let $f:\Omega\to\C$ be holomorphic, where $\Omega$ is open. Let $p\in\Omega$, assume $f'(p)\neq 0$. Then there exists a neighborhood $O$ of $p$ and a neighborhood $U$ of $q=f(p)$ such that $f:O\to U$ is bijective, where the inverse $g=f^{-1}: U\to O$ is holomorphic. For $z\in O, w=f(z)$, we have 
+    \begin{equation*}
+        g'(w)=\frac{1}{f'(z)}
+    \end{equation*}
+\end{thm}
+
+
+\begin{prop}
+    Suppose $\Omega\subset\C$ is convex. Assume $f$ is holomorphic in $\Omega$ and there exists $a\in\C$ such that 
+    \begin{equation*}
+        \text{Re } af'>0 \text{ on } \Omega
+    \end{equation*}
+    then $f$ is one-to-one onto its image $f(\Omega)$.
+\end{prop}
+
+
+\begin{defn}
+    square roots, complex logs
+\end{defn}
+
+
+\chapter{Cauchy integral theorem}
+
+
+
+
+
+
+
+
+
+\chapter{Useful facts}
+\begin{enumerate}
+    \item $e^z$ has the following power series expansion: 
+    \begin{equation*}
+        e^z=\sum_{j=0}^\infty\frac{z^j}{j!}
+    \end{equation*}
+    \item $\cos, \sin$ has the following power series expansions:
+    \begin{equation*}
+        \cos z=
+    \end{equation*}
+    \begin{equation*}
+        \sin z=
+    \end{equation*}
+\end{enumerate}
+
+
+
+
+
+
 \end{document}
