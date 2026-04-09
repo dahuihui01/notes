@@ -139,6 +139,104 @@
 
 \chapter{Cauchy integral theorem}
 
+\begin{thm}
+    If $f\in C^1(\overline{\Omega})$ is holomorphic on $\Omega$, then 
+    \begin{equation*}
+        \int_{\partial\Omega}f(z)dz=0
+    \end{equation*}
+\end{thm}
+
+\begin{thm}
+    If $f\in C^1(\overline{\Omega})$ is holomorphic on $\Omega$ and $z_0\in\Omega$, then 
+    \begin{equation*}
+        f(z_0)=\frac{1}{2\pi i}\int_{\partial\Omega}\frac{f(z)}{z-z_0}dz
+    \end{equation*}
+    One can change $\partial\Omega$ to an simple closed curve $\gamma$ completely contained in $\Omega$.
+\end{thm}
+
+\begin{prop}
+    If $f$ is holomorphic on an open set $\Omega\subset\C$, then 
+    \begin{equation*}
+        f\in C^\infty(\Omega)
+    \end{equation*}
+\end{prop}
+
+
+\begin{thm}[holomorphic implies analytic]
+    If $f\in C^1(\overline{\Omega})$ is holomorphic, then for $z\in D_r(z_0)\subset\Omega$, then $f(z)$ has the convergent power series expansion 
+    \begin{equation*}
+        f(z)=\sum_{n=0}^\infty a_n(z-z_0)^n
+    \end{equation*}
+    where 
+    \begin{equation*}
+        a_n=\frac{1}{2\pi i}\int_{\partial\Omega}\frac{f(\zeta)}{(\zeta-z_0)^{n+1}}d\zeta=\frac{f^{(n)}(z_0)}{n!}
+    \end{equation*}
+\end{thm}
+
+\begin{prop}
+    Let $\Omega\subset\C$ be an open set and let $f_\nu:\Omega\to\C$ be holomorphic. Assume $f_\nu\to f$ locally uniformly, then $f:\Omega\to\C$ is holomorphic and $f_\nu'\to f'$ locally uniformly on $\Omega$.
+\end{prop} 
+
+
+\begin{prop}[maximum principle]
+    Let $\Omega\subset\C$ be connected, open. If $f$ is holomorphic in $\Omega$, then for $z_0\in\Omega$,
+    \begin{equation*}
+        \text{ if } |f(z_0)|=\sup_{z\in\Omega}|f(z)|, \text{ then } f \text{ is constant on $\Omega$}
+    \end{equation*}
+    Moreover, if $\Omega$ is bounded and $f\in C(\overline{\Omega})$, then 
+    \begin{equation*}
+        \sup_{z\in\overline{\Omega}}|f(z)|=\sup_{z\in\partial\Omega}|f(z)|
+    \end{equation*}
+    (In this case, $f$ must attain a maximum in $\overline{\Omega}$). This basically states that either $f$ is constant or $f$ attains maximum on the boundary.
+\end{prop}
+
+
+\begin{prop}
+    Suppose $f$ is holomorphic on the unit disk $D_1(0)$. Assume $|f(z)|\leq 1$ for $|z|<1$, and $f(0)=0$. Then 
+    \begin{equation*}
+        |f(z)|\leq |z|
+    \end{equation*}
+    Moreover, $|f(z)|=|z|$ iff $f(z)=cz$ for some $c$ such that $|c|=1$.
+\end{prop}
+
+\begin{thm}[Liouville's theorem]
+    If $f:\C\to\C$ is holomorphic and bounded, then $f$ is constant.
+\end{thm}
+
+A consequence of Liouville's theorem is the fundamental theorem of algebra:
+\begin{prop}
+    If $p(z)$ is a polynomial of degree $n\geq 1$, then $p(z)$ has at least one root. (Proof: consider $1/p(z)$).
+\end{prop}
+
+There are several properties that also hold for harmonic functions.
+\begin{prop}[mean value property of harmonic functions]
+    If $u\in C^2(\Omega)$ is harmonic, $z_0\in\Omega$, and $\overline{D_r(z_0)}\subset\Omega$, then 
+    \begin{equation*}
+        u(z_0)=\frac{1}{2\pi}\int_0^{2\pi}u(z_0+re^{i\theta})d\theta
+    \end{equation*}
+\end{prop}
+
+
+\begin{prop}
+    Let $\Omega\subset\C$ be connected and open. If $u:\Omega\to\R$ is harmonic in $\Omega$, then for $z_0\in\Omega$,
+    \begin{equation*}
+        u(z_0)=\sup_{z\in\Omega}u(z)\Rightarrow u \text{ is constnat on $\Omega$}
+    \end{equation*}
+    Moreover, if $\Omega$ is bounded, $u\in C(\overline{\Omega})$, then 
+    \begin{equation*}
+        \sup_{z\in\overline{\Omega}}u(z)=\sup_{z\in\partial\Omega}u(z)
+    \end{equation*}
+\end{prop}
+
+\begin{prop}[Liouville for harmonic functions]
+    If $u\in C^2(\C)$ is bounded and harmonic on all of $\C$, then $u$ is constant.
+\end{prop}
+
+\begin{prop}
+    Let $\Omega\subset\C$ be simply connected domain. Then each harmonic function $u\in C^2(\Omega)$ has a harmonic conjugate.
+\end{prop}
+
+
 
 
 
