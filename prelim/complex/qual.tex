@@ -277,8 +277,59 @@ Next is a converse of Cauchy's integral theorem.
 % \end{prop}
 
 
+\begin{defn}[singularities]
+    There are three types of singularities: $p$ is said to be the following for $f:U\to\C$,
+    \begin{enumerate}
+        \item Removable: if there exists $\tilde{f}$ on $U$ such that $\tilde{f}=f$ on $U\setminus p$.
+        \item Pole: if $|f(z)|\to\infty$ as $z\to p$. Equivalently, $p$ is a removable singularity for $1/f$.
+        \item Essential singularity: not removable, not pole, an isolated singularity. $f(z)=e^{1/z}$.
+    \end{enumerate}
+\end{defn}
 
 
+\begin{thm}
+    If $p\in\Omega$ and $f$ is holomorphic on $\Omega\setminus p$ and bounded, then $p$ is a removable singularity.
+\end{thm}
+
+\begin{prop}
+    If $f$ is holomorphic on $\Omega\setminus p$ with a pole at $p$, then there exists $k\in\mathbb{Z}^+$ such that 
+    \begin{equation*}
+        f(z)=\frac{F(z)}{(z-p)^k}
+    \end{equation*}
+    on $\Omega\setminus p$, where $F$ is holomorphic on $\Omega$ and $F(p)\neq 0$.
+\end{prop}
+
+
+\begin{prop}
+    Suppose $f:\Omega\setminus p\to\C$ has an essential singularity at $p$. Then for any neighborhood of $U$ of $p$ in $\Omega$, the image of $U\setminus p$ is dense in $\C$.
+\end{prop}
+
+
+\begin{prop}
+    If $f:\C\to\C$ is holomorphic and $|f(z)|\to\infty$ as $|z|\to\infty$, then $f(z)$ is a polynomial.
+\end{prop}
+
+\begin{prop}
+    Let $f:\mathcal{A}\to\C$ be holomorphic, where the annulus $\mathcal{A}=\{z: r_0\leq |z-z_0|\leq r_1\}$, then $f$ is given by 
+    \begin{equation*}
+        f(z)=\sum_{n=-\infty}^\infty a_n(z-z_0)^n, z\in\mathcal{A} \tag{\text{Laurent series}}
+    \end{equation*}
+    and 
+    \begin{equation*}
+        a_n=\frac{1}{2\pi i}\int_\gamma \frac{f(\zeta)}{(\zeta-z_0)^{n+1}}d\zeta, n\in\mathbb{Z}
+    \end{equation*}
+    where $\gamma$ is any counterclockwise circle centered at $z_0$, of radius $r\in(r_0,r_1)$. 
+\end{prop}
+
+
+
+How does the Laurent series expansion help us?
+\begin{prop}
+    Suppose $f$ is holomorphic on $D_R(z_0)\setminus z_0$, with the above Laurent series. $f$ has a pole at $z_0$ iff $a_n=0$ for all but finitely many $n<0$; $f$ 
+\end{prop}
+
+
+\chapter{Fourier analysis and complex function theory}
 
 
 
