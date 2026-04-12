@@ -300,7 +300,7 @@ Next is a converse of Cauchy's integral theorem.
 \end{prop}
 
 
-\begin{prop}
+\begin{prop}[Casorati-Weierstrass]
     Suppose $f:\Omega\setminus p\to\C$ has an essential singularity at $p$. Then for any neighborhood of $U$ of $p$ in $\Omega$, the image of $U\setminus p$ is dense in $\C$.
 \end{prop}
 
@@ -332,6 +332,306 @@ How does the Laurent series expansion help us?
 \chapter{Fourier analysis and complex function theory}
 
 
+\begin{prop}
+    Let $f\in C(S^1)$, if the Fourier coefficients $\hat{f}(k)$ form a summable series, i.e., if 
+    \begin{equation*}
+        \sum_{k=-\infty}^\infty|\hat{f}(k)|<\infty
+    \end{equation*}
+    then for each $\theta\in S^1$, 
+    \begin{equation*}
+        f(\theta)=\sum_{k=-\infty}^\infty\hat{f}(k)e^{ik\theta}
+    \end{equation*}
+\end{prop}
+
+
+
+\begin{prop}
+    If $f$ is such that $\sum|\hat{f}(k)|<\infty$, then 
+    \begin{equation*}
+        \sum|\hat{f}(k)|^2=\frac{1}{2\pi}\int_{S^1}|f(\theta)|^2d\theta
+    \end{equation*}
+    More generally, if also $g$ is such that $\sum|\hat{g}(k)|<\infty$, 
+    \begin{equation*}
+        \sum\hat{f}(k)\overline{\hat{g}(k)}=\frac{1}{2\pi}\int_{S^1}f(\theta)\overline{g(\theta)}d\theta
+    \end{equation*}
+\end{prop}
+
+\begin{prop}
+    If $f$ is a continuous, piecewise $C^1$ function on $S^1$, then $\sum|\hat{f}(k)|<\infty$.
+\end{prop}
+
+\begin{prop}
+    If $f$ is Riemann integrable on $S^1$, then $S_Nf\to f$ in $L^2$, and 
+    \begin{equation*}
+        \sum|\hat{f}(k)|^2=\|f\|_{L^2}^2
+    \end{equation*}
+\end{prop}
+
+\begin{prop}[Dirichlet boundary problem]
+    If $D\subset\C$ is an open disk and given $f\in C(\partial D)$, there exists a unique $u\in C(\overline{D})\cap C^2(D)$ satisfying 
+    \begin{equation*}
+        \delta u=0 \text{ on } D, u\vert_{\partial D}=f
+    \end{equation*}
+\end{prop}
+
+
+\begin{prop}
+    Assume $u:\Omega^+\cup L\to\C$ is continuous, harmonic on $\Omega^+$, and $u=0$ on $L$. Define $v:\Omega\to\C$ as 
+    \begin{equation*}
+        \begin{cases}
+            v(z)=u(z), z\in \Omega^+\cup L\\
+            -u(\bar{z}), z\in\Omega^-
+        \end{cases}
+    \end{equation*}
+    then $v$ is harmonic on $\Omega$.
+\end{prop}
+
+
+
+\begin{prop}
+    If $f$ is integrable on $\R$, then $\hat{f}$ is continuous on $\R$.
+\end{prop}
+
+The next proposition gives criterion for the Fourier inversion formula.
+\begin{prop}
+    Assume $f$ is bounded and continuous on $\R$, and $f,\hat{f}$ are integrable on $\R$. Then the Fourier inversion formula holds: for all $x\in\R$,
+    \begin{equation*}
+        f(x)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty\hat{f}(\xi)e^{ix\xi}d\xi
+    \end{equation*}
+\end{prop}
+
+We define 
+\begin{equation*}
+    S_Rf(x)=\frac{1}{\sqrt{2\pi}}\int_{-R}^R\hat{f}(\xi)e^{ix\xi}d\xi
+\end{equation*}
+\begin{prop}
+    If $f\in L^2(\R)$, then as $R\to\infty$,
+    \begin{equation*}
+        S_Rf\to f \text{ in } L^2
+    \end{equation*}
+\end{prop}
+
+
+\begin{prop}[uniqueness]
+    If $f\in L^1(\R)$ and $\hat{f}=0$, then 
+    \begin{equation*}
+        f=0
+    \end{equation*}
+\end{prop}
+
+
+\begin{defn}
+    Let $f:\R^+\to\C$ that is integrable on $[0,R]$, for all $R<\infty$, such that 
+    \begin{equation*}
+        \int_0^\infty|f(t)|e^{-at}dt<\infty
+    \end{equation*}
+    for all $a>A$, for some $A\in(-\infty,\infty)$. Then we define the Laplace transform of $f$ 
+    \begin{equation*}
+        \mathcal{L}f(s)=\int_0^\infty f(t)e^{-st}dt, \text{ Re} s>A
+    \end{equation*}
+\end{defn}
+
+
+
+
+
+\chapter{Residue calculus, the argument principle, and two very special
+functions}
+
+\begin{defn}
+    If $f$ has the Laurent series in disk $D_j$ around $p_j\in\Omega$,
+    \begin{equation*}
+        f(z)=\sum_{n=-\infty}^\infty a_n(p_j)(z-p_j)^n
+    \end{equation*}
+    where the coefficient $a_{-1}(p_j)$ is called the residue of $f$ at $p_j$, denoted as $\text{Res}_{p_j}f$. We have 
+    \begin{equation*}
+        \text{Res}_{p_j}f=\frac{1}{2\pi i}\int_{\partial D_j}f(z)dz
+    \end{equation*} 
+
+\end{defn}
+
+
+\begin{prop}[Residue formula]
+    Let $f$ be a meromorphic function on $\Omega$, then for a simple closed curve $C$, we have 
+    \begin{equation*}
+        \int_Cf(z)dz=2\pi i\sum_{j=1}^k\text{Res}(f,z_j)
+    \end{equation*}
+    where the isolated singularities $z_j$'s are contained in $C$.
+\end{prop}
+
+
+\begin{prop}[Residue]
+    If $f$ has a simple pole at $z_0$, then 
+    \begin{equation*}
+        \text{Res}(f,z_0)=\lim_{z\to z_0}(z-z_0)f(z)
+    \end{equation*}
+    If $f$ has a pole of order $n$ at $z_0$, then
+    \begin{equation*}
+        \text{Res}(f,z_0)=\lim_{z\to z_0}\frac{d^{n-1}}{dz^{n-1}}\left((z-z_0)^nf(z)\right)
+    \end{equation*}
+    If $f$ has an essential singularity at $z_0$, then we write $f$ as Laurent series around $z_0$,
+    \begin{equation*}
+        f(z)=\sum_{n=-\infty}^\infty c_n(z-z_0)^n
+    \end{equation*}
+    where 
+    \begin{equation*}
+        \text{Res}(f,z_0)=c_{-1}
+    \end{equation*}
+\end{prop}
+
+
+
+
+Next we talk about the argument principle.
+\begin{prop}
+    Let $f\in C^2(\bar{\Omega})$ be holomorphic in $\Omega$, nowhere zero on $\partial\Omega$, then let $\nu(f,\Omega)$ be a the number of zeros of $f$ in $\Omega$, counted with multiplicity, 
+    \begin{equation*}
+        \nu(f,\Omega)=\frac{1}{2\pi i}\int_{\partial\Omega}\frac{f'(z)}{f(z)}dz
+    \end{equation*}
+\end{prop}
+
+
+
+\begin{prop}
+    Let $C_j$ denote the connected component of $\partial\Omega$, and $\gamma_j=f(C_j)$. Then the winding number of $\gamma_j$ around $0$ satisfies
+    \begin{equation*}
+        \frac{1}{2\pi i}\int_{\gamma_j}\frac{1}{z}dz=\frac{1}{2\pi i}\int_{C_j}\frac{f'(z)}{f(z)}dz
+    \end{equation*}
+\end{prop}
+
+\begin{defn}[winding number]
+    Let $\gamma$ be a curve given by 
+    \begin{equation*}
+        \gamma(t)=r(t)e^{i\theta(t)}
+    \end{equation*}
+    where $r(t),\theta(t)$ both continuous, piecewise $C^1$, and $r(t)>0$. The \textbf{winding number} of $\gamma$ about $0$ is given by 
+    \begin{equation*}
+        n(\gamma,0)=\frac{1}{2\pi i}\int_\gamma\frac{1}{z}dz
+    \end{equation*}
+\end{defn}
+
+\begin{prop}
+    If $\gamma_0,\gamma_1$ are smoothly homotopic in $\C\setminus 0$, then 
+    \begin{equation*}
+        n(\gamma_0,0)=n(\gamma_1,0)
+    \end{equation*}
+\end{prop}
+Combining all the above,
+\begin{equation*}
+    \nu(f,\Omega)=\sum_j n(\gamma_j, 0)
+\end{equation*}
+the number of zeros of $f$, counted with multiplicity, is equal to the sum of the winding numbers of $f(C_j)$ about $0$.
+
+
+The argument principle also works for meromorphic functions.
+\begin{prop}
+    If $f$ is meromorphic on a bounded domain $\Omega$ and $C^1$ on a neighborhood of $\partial\Omega$. Then the number of zeros of $f$ minus the number of poles, counted with multiplicity is equal to the sum of winding numbers of $f(C_j)$ around 0, where $C_j$ are the connected components of $\partial\Omega$.
+\end{prop}
+
+\begin{thm}[Rouche's theorem]
+    Let $f,g\in C^1(\bar{\Omega})$ be holomorphic in $\Omega$, and nowhere zero on $\partial\Omega$. Assume 
+    \begin{equation*}
+        |f(z)-g(z)|<|f(z)|, \text{ for all } z\in\partial\Omega
+    \end{equation*}
+    then 
+    \begin{equation*}
+        \nu(f,\Omega)=\nu(g,\Omega)
+    \end{equation*}
+\end{thm}
+
+
+\begin{thm}[Open mapping theorem]
+    If $\Omega\subset\C$ is open and connected and $f:\Omega\to\C$ is holomorphic and non-constant, then $f$ maps open sets to open sets.
+\end{thm}
+
+
+\begin{defn}[Gamma function]
+    The gamma function $\Gamma$ is given by 
+    \begin{equation*}
+        \Gamma(z)=\int_0^\infty e^{-t}t^{z-1}dt, \text{Re}z>0
+    \end{equation*}
+\end{defn}
+
+\begin{prop}
+    For $z\in\C\setminus\Z$, we have 
+    \begin{equation*}
+        \Gamma(z)\Gamma(1-z)=\frac{\pi}{\sin\pi z}
+    \end{equation*}
+\end{prop}
+\begin{prop}
+    $\Gamma(z)$ has no zeros, so $1/\Gamma(z)$ is an entire function.
+\end{prop}
+
+\begin{prop}
+    For $\text{Re}z>0$, we have 
+    \begin{equation*}
+        \Gamma(z)=\lim_{n\to\infty}n^z\frac{1\cdot 2\cdot\dots n}{z(z+1)\dots(z+n)}
+    \end{equation*}
+\end{prop}
+
+\begin{defn}[Riemann zeta function]
+    The zeta function is 
+    \begin{equation*}
+        \zeta(s)=\sum_{n=1}^\infty n^{-s}, \text{Re}s>1
+    \end{equation*}
+\end{defn}
+
+\begin{prop}[Euler's product formula]
+    Let $\{p_j:j\geq 1\}$ denote the set of prime numbers, then for $\text{Re}s>1$, 
+    \begin{equation*}
+        \zeta(s)=\prod_{j=1}^\infty\frac{1}{1-p_j^{-s}}
+    \end{equation*}
+\end{prop}
+
+\begin{prop}
+    The function $\zeta(s)$ extends to a meromorphic function on $\C$, with one simple pole at $s=1$. Moreover, 
+    \begin{equation*}
+        \zeta(s)-\frac{1}{s-1}
+    \end{equation*}
+    extends to an entire function of $s$.
+\end{prop}
+
+
+
+
+
+
+\chapter{Conformal maps and geometrical aspects of complex function the-
+ory}
+
+\begin{defn}[conformal]
+    We say $f$ is conformal at $z_0$ if $\gamma_1, \gamma_2$ are two smooth paths that intersect at $z_0$, then the images $f(\gamma_j)$ intersect at $f(z_0)$ at the same angle as $\gamma_1$ and $\gamma_2$.
+\end{defn}
+
+
+\begin{prop}
+    A smooth function $f$ on $\Omega$ is holomorphic iff it is conformal and preserves orientation.
+\end{prop}
+
+
+
+\begin{thm}[Riemann mapping theorem]
+    If $\Omega\subset\C$ is a simply connected domain and $\Omega\neq\C$, then there exists a holomorphic diffeomorphism
+    \begin{equation*}
+        F:\Omega\to D
+    \end{equation*}
+    where $D$ is the unit disk. (A holomorphic diffeomorphism is a holomorphic function that has a holomorphic inverse).
+\end{thm}
+
+
+
+
+The following is an improvement of Casorati-Weierstrass theorem.
+\begin{thm}[Picard's theorem]
+    Let $p,q$ be distinct and 
+    \begin{equation*}
+        f:D\setminus\{0\}\to\C\setminus\{p,q\}
+    \end{equation*}    
+    is holomorphic, then the singularity at $0$ is either a pole or a removable singularity.
+\end{thm}
+
+
+
 
 
 
@@ -356,5 +656,10 @@ How does the Laurent series expansion help us?
 
 
 
+
+
+\chapter{Maybe}
+-square roots, logs
+-laplace, mellin transform
 
 \end{document}
