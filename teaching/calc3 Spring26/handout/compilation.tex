@@ -2091,34 +2091,36 @@ Topic: path integrals.
     where $\theta$ is the angle between the unit vector $(x,y,g(x,y))$ and the normal vector the surface. (Recall that the normal vector of a graph is given by $n=-\frac{\partial g}{\partial x}i-\frac{\partial g}{\partial y}+k)$.
 \end{defn}
 
+
+
 \begin{prob}
     Find the tangent plane at $(1,1,2)$ for the following surface parametrized by:
     \begin{equation*}
         \Phi(x,y)=(x,y, x^2+y)
     \end{equation*}
 \end{prob}
-\begin{proof}
-    We compute 
-    \begin{equation*}
-        T_x=(1, 0, 2x), \quad T_y=(0,1, 1)
-    \end{equation*}
-    Then 
-    \begin{equation*}
-        T_x\times T_y=\det\begin{pmatrix}
-            i&j&k\\
-            1&0&2x\\
-            0&1&1
-        \end{pmatrix}=(-2x, -1, 1)
-    \end{equation*}
-    At $(1,1,2)$ the tangent plane is given by 
-    \begin{equation*}
-        (x-1, y-1, z-2)\cdot (-2, -1, 1)=0
-    \end{equation*}
-    Simplifying we get 
-    \begin{equation*}
-        2x+y-z=1
-    \end{equation*}
-\end{proof}
+% \begin{proof}
+%     We compute 
+%     \begin{equation*}
+%         T_x=(1, 0, 2x), \quad T_y=(0,1, 1)
+%     \end{equation*}
+%     Then 
+%     \begin{equation*}
+%         T_x\times T_y=\det\begin{pmatrix}
+%             i&j&k\\
+%             1&0&2x\\
+%             0&1&1
+%         \end{pmatrix}=(-2x, -1, 1)
+%     \end{equation*}
+%     At $(1,1,2)$ the tangent plane is given by 
+%     \begin{equation*}
+%         (x-1, y-1, z-2)\cdot (-2, -1, 1)=0
+%     \end{equation*}
+%     Simplifying we get 
+%     \begin{equation*}
+%         2x+y-z=1
+%     \end{equation*}
+% \end{proof}
 
 \begin{prob}[Marsden-Tromba, 7.5, Exercise 4]
     Evalute the following integral:
@@ -2127,27 +2129,27 @@ Topic: path integrals.
     \end{equation*}
     where $S$ is the part of the cylinder $y^2+z^2=4$ with $x\in [0,5]$.
 \end{prob}
-\begin{proof}
-    Let's first parametrize this surface:
-    \begin{equation*}
-        \Phi(t,\theta)=(t, 2\cos\theta, 2\sin\theta), \quad 0\leq t\leq 5, 0\leq\theta\leq 2\pi
-    \end{equation*}
-    and we compute 
-    \begin{equation*}
-        T_t=(1, 0, 0), T_\theta=(0, -2\sin\theta, 2\cos\theta)
-    \end{equation*}
-    and 
-    \begin{align*}
-        \|T_t\times T_\theta\|&=\|(0, -2\cos\theta, -2\sin\theta)\|=2
-    \end{align*}
-    Thus we have 
-    \begin{align*}
-        \iint_Sx+zdS&=\iint_Dt+2\sin\theta\|T_t\times T_\theta\|dtd\theta\\
-        &=2\int_0^{2\pi}\int_0^5t+2\sin\theta dtd\theta\\
-        &=4\pi\int_0^5tdt\\
-        &=50\pi
-    \end{align*}
-\end{proof}
+% \begin{proof}
+%     Let's first parametrize this surface:
+%     \begin{equation*}
+%         \Phi(t,\theta)=(t, 2\cos\theta, 2\sin\theta), \quad 0\leq t\leq 5, 0\leq\theta\leq 2\pi
+%     \end{equation*}
+%     and we compute 
+%     \begin{equation*}
+%         T_t=(1, 0, 0), T_\theta=(0, -2\sin\theta, 2\cos\theta)
+%     \end{equation*}
+%     and 
+%     \begin{align*}
+%         \|T_t\times T_\theta\|&=\|(0, -2\cos\theta, -2\sin\theta)\|=2
+%     \end{align*}
+%     Thus we have 
+%     \begin{align*}
+%         \iint_Sx+zdS&=\iint_Dt+2\sin\theta\|T_t\times T_\theta\|dtd\theta\\
+%         &=2\int_0^{2\pi}\int_0^5t+2\sin\theta dtd\theta\\
+%         &=4\pi\int_0^5tdt\\
+%         &=50\pi
+%     \end{align*}
+% \end{proof}
 
 
 
