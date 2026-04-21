@@ -1,0 +1,148 @@
+\documentclass[openany]{book}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsfonts,amsthm, amssymb}
+\usepackage{yhmath}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{comment}
+\usepackage{tikz-cd}
+\usepackage{quiver}
+\usepackage{hyperref,cleveref}
+\renewcommand{\familydefault}{ppl}
+\newcommand{\curl}{\text{curl}}
+\newcommand{\diverg}{\text{div}}
+\newcommand{\tr}{\text{tr}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\colim}{\text{colim}}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\disc}{disc}
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+\newcommand{\tor}{\text{Tor}}
+\newcommand{\id}{\text{id}}
+\newcommand{\ext}{\text{Ext}}
+\newcommand{\ptop}{\text{PTop}}
+\newcommand{\pt}{\text{pt}}
+\newcommand{\ach}{\text{Ach}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\gal}{\text{Gal}}
+\newcommand{\fraccomma}{\genfrac{}{}{0pt}{}{}{,}}
+\definecolor{wikipediadarkblue}{rgb}{0.023, 0.270, 0.676}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=blue,
+    urlcolor=red
+}
+
+% \hypersetup{
+%     urlbordercolor={1 0 0}, % Red box for URLs
+%     linkbordercolor=blue, % Blue box for internal links
+%     % the values are in RGB format from 0 to 1
+% }
+
+
+\input{hui_r.tex}
+
+\title{Calc 3 HW12
+\\ 
+\vspace{0.4cm}
+\large Spring 2026}
+
+
+
+% \author{(Please email hsun95@jh.edu if you see typos)}
+% \date{\today}
+
+
+\begin{document}
+
+\maketitle
+
+% \tableofcontents
+% \newpage
+
+\begin{prob}
+    Evaluate the integral
+    \[
+    \int_C (2x^3 - y^3)dx + (x^3 + y^3)dy
+    \]
+    where $C$ is the unit circle and verify Green's Theorem in this case.
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item We compute the line integral normally: we parametrize the circle $C(t)=(\cos t, \sin t), 0\leq t\leq 2\pi$.
+        \begin{align*}
+            \int_C(2x^3 - y^3)dx + (x^3 + y^3)dy&=\int_0^{2\pi}(2\cos^3t-\sin^3t, \cos^3t+\sin^3t)\cdot(-\sin t,\cos t)dt\\
+            &=\int_0^{2\pi}
+        \end{align*}
+    \end{enumerate}
+\end{proof}
+
+
+\begin{prob}
+    Verify Stokes' theorem for the upper hemisphere $z = \sqrt{1 - x^2 - y^2}, \ z \geq 0$, and the radial vector field $\vec{F}(x, y, z) = x\hat{i} + y\hat{j} + z\hat{k}$.
+\end{prob}
+
+\begin{prob}
+    Show that the following vector field is conservative by constructing a potential function:\\
+    $\vec{F}(x, y) = (e^x y^3 + y)\hat{i} + (3e^x y^2 + x)\hat{j}$.
+\end{prob}
+\begin{proof}
+    A potential function can be 
+    \begin{equation*}
+        f=e^xy^3+xy
+    \end{equation*}
+\end{proof}
+
+\begin{prob}
+    \begin{enumerate}
+        \item[(a)] Parameterize the unit sphere $S \subset \mathbb{R}^3$ using the spherical coordinates $(\rho, \varphi, \theta)$. Then determine the orientation of your parameterized sphere by calculating the unit normal at the north pole $(x, y, z) = (0, 0, 1)$.
+        
+        \item[(b)] Reparameterize $S$ so that the unit normal at the north pole points in the other direction. (c) Calculate the vector line integral of the vector field $\vec{F} = x\hat{i} + y\hat{j} + z\hat{k}$ along the equator by orienting it according to each of your two parameterizations above (really, just set the $z$-expression to $0$, thereby fixing $\varphi$, and then writing the equator curve as a function of $\theta$ alone.) Explain geometrically why this quantity is $0$ for both (indeed, all) parameterizations.
+        
+        \item[(c)] Calculate the flux of $\vec{F}$ through $S$, as a vector surface integral, under both parameterizations.
+        
+        \item[(d)] Integrate the divergence of F throughout the closed, unit ball $B$, consisting of $S$ and its interior, for each parameterization (now $\rho$ is not a constant $1$ anymore). Explain why Gauss' Theorem is not violated in both cases, even though your two parameterizations in part (d) will yield different answers.
+    \end{enumerate}
+\end{prob}
+\begin{proof}
+    
+\end{proof}
+
+% \begin{enumerate}
+%     \item Evaluate the integral
+%     \[
+%     \int_C (2x^3 - y^3)dx + (x^3 + y^3)dy
+%     \]
+%     where $C$ is the unit circle and verify Green's Theorem in this case.
+
+%     \item Verify Stokes' theorem for the upper hemisphere $z = \sqrt{1 - x^2 - y^2}, \ z \geq 0$, and the radial vector field $\vec{F}(x, y, z) = x\hat{i} + y\hat{j} + z\hat{k}$.
+
+%     \item Show that the following vector field is conservative by constructing a potential function:\\
+%     $\vec{F}(x, y) = (e^x y^3 + y)\hat{i} + (3e^x y^2 + x)\hat{j}$.
+
+%     \item 
+%     \begin{enumerate}
+%         \item[(a)] Parameterize the unit sphere $S \subset \mathbb{R}^3$ using the spherical coordinates $(\rho, \varphi, \theta)$. Then determine the orientation of your parameterized sphere by calculating the unit normal at the north pole $(x, y, z) = (0, 0, 1)$.
+        
+%         \item[(b)] Reparameterize $S$ so that the unit normal at the north pole points in the other direction. (c) Calculate the vector line integral of the vector field $\vec{F} = x\hat{i} + y\hat{j} + z\hat{k}$ along the equator by orienting it according to each of your two parameterizations above (really, just set the $z$-expression to $0$, thereby fixing $\varphi$, and then writing the equator curve as a function of $\theta$ alone.) Explain geometrically why this quantity is $0$ for both (indeed, all) parameterizations.
+        
+%         \item[(c)] Calculate the flux of $\vec{F}$ through $S$, as a vector surface integral, under both parameterizations.
+        
+%         \item[(d)] Integrate the divergence of F throughout the closed, unit ball $B$, consisting of $S$ and its interior, for each parameterization (now $\rho$ is not a constant $1$ anymore). Explain why Gauss' Theorem is not violated in both cases, even though your two parameterizations in part (d) will yield different answers.
+%     \end{enumerate}
+% \end{enumerate}
+
+
+\end{document}

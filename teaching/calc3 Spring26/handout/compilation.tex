@@ -2153,7 +2153,92 @@ Topic: path integrals.
 
 
 
+\newpage
+\section*{\centering Week 14 (4/20-4/24)}
+Topic: Green and Stokes' Theorems.
 
+
+\begin{thm}[Green's theorem]
+    Let $F(x,y)=(P(x,y), Q(x,y))$ be a continuously differentiable vector field. For a simple region $D\subset\R^2$ with $\partial D=C$ as its positively oriented boundary, we have 
+    \begin{equation*}
+        \int_{\partial D}F\cdot ds=\iint_D\left(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\right)dxdy
+    \end{equation*}
+\end{thm}
+
+
+\begin{thm}[Green's theorem (curl form)]
+    Let $D\subset\R^2$ be a region to which Green's theorem applies, let $\partial D$ be its positively oriented boundary and let $F(P,Q)$ be a $C^1$ vector field on $D$. Then 
+    \begin{equation*}
+        \int_{\partial D}F\cdot ds=\iint_D\curl F\cdot k dA
+    \end{equation*}
+\end{thm}
+
+\begin{prop}
+    Let $D\subset\R^2$ be a region where Green's theorem applies and let $\partial D$ be its boundary. Let $n$ denote the outward unit normal to $\partial D$. If $c:[a,b]\to\R^2$, $t\mapsto c(t)=(x(t), y(t))$ is a positively oriented parametrization of $\partial D$, $n$ is given by 
+    \begin{equation*}
+        n=\frac{(y'(t), -x'(t))}{\sqrt{x'(t)^2+y'(t)^2}}
+    \end{equation*}
+    Let $F=(P,Q)$ be a $C^1$ vector field on $D$. Then 
+    \begin{equation*}
+        \int_{\partial D}F\cdot nds=\iint_D\text{div} FdA
+    \end{equation*}
+\end{prop}
+
+
+
+\begin{prop}[area of a region]
+    If $C$ is a simple closed curve that bounds a region to which Green's theorem applies, then the area of the region $D$ bounded by $C=\partial D$ is 
+    \begin{equation*}
+        A=\frac{1}{2}\int_{\partial D}xdy-ydx
+    \end{equation*}
+\end{prop}
+
+
+\begin{thm}[Stokes' theorem]
+    Let $S$ be the oriented surface defined by a $C^2$ function $z=f(x,y)$, where $(x,y)\in D$, a region to which Green's theorem applies, and let $F$ be a $C^1$ vector field on $S$. Then if $\partial S$ denotes the oriented boundary curve of $S$, then 
+    \begin{equation*}
+        \iint_S(\nabla\times F)\cdot dS=\int_{\partial S}F\cdot ds
+    \end{equation*}
+    More generally, let $S$ be an oriented surface defined by a one-to-one parametrization $\Phi: D\subset\R^2\to S$, where $D$ is a region to which Green's theorem applies. Let $\partial S$ denote the oriented boundary of $S$ and let $F$ be a $C^1$ vector field on $S$. Then 
+    \begin{equation*}
+        \iint_S(\nabla\times F)\cdot dS=\int_{\partial S}F\cdot ds
+    \end{equation*}
+\end{thm}
+
+
+\newpage
+\begin{prob}
+    Let $Q=[0,1]\times[0,1]$ be the unit cube in $\R^2$. Compute the following line integral using Green's theorem
+    \begin{equation*}
+        \int_C(4x-2y)dx+(x)dy
+    \end{equation*}
+    where $C$ is the boundary of $Q$.
+\end{prob}
+\begin{proof}
+    By Green's theorem, we have 
+    \begin{align*}
+        \int_C(4x-2y)dx+(x)dy&=\iint_Q\left(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\right)dxdy\\
+        &=3\iint_Qdxdy\\
+        &=3
+    \end{align*}
+\end{proof}
+
+
+\begin{prob}
+    Let $S$ be the upper hemisphere in $\R^3$ of radius $2$, centered at the origin. Let $F=-yi+xj+zk$, using Stokes' theorem, compute 
+    \begin{equation*}
+        \int_S\text{curl}F\cdot dS
+    \end{equation*}
+\end{prob}
+\begin{proof}
+    Using Stoke's theorem, we have 
+    \begin{align*}
+        \int_S\text{curl}F\cdot dS&=\int_{\partial S}F\cdot dS\\
+        &=\int_0^{2\pi}(-2\sin t, 2\cos t, 0)\cdot (-2\sin t, 2\cos t, 0)dt\\
+        &=\int_0^{2\pi}-4dt\\
+        &=-8\pi
+    \end{align*}
+\end{proof}
 
 
 
