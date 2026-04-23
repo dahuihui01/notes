@@ -107,8 +107,8 @@
     \begin{equation*}
         \nabla\times F=\begin{pmatrix}
             i&j&k\\
-            \frac{\partial}{\partial x}&\frac{\partial}{\partial y}&\frac{\partial}{\partial z}=(0,0,0)
-        \end{pmatrix}
+            \frac{\partial}{\partial x}&\frac{\partial}{\partial y}&\frac{\partial}{\partial z}
+        \end{pmatrix}==(0,0,0)
     \end{equation*}
     Hence 
     \begin{equation*}
@@ -150,7 +150,62 @@
     \end{enumerate}
 \end{prob}
 \begin{proof}
-    
+    \begin{enumerate}
+        \item[(a)] We will begin with the standard spherical parameterization of the sphere: 
+        \begin{equation*}
+            \Phi(\varphi,\theta)=(\sin\varphi\cos\theta,\sin\varphi\sin\theta,\cos\varphi)
+        \end{equation*}
+        where $0\leq\varphi\leq\pi, 0\leq\theta\leq2\pi$. Then we compute 
+        \begin{equation*}
+            T_\varphi=(\cos\varphi\cos\theta, \cos\varphi\sin\theta,-\sin\varphi), \quad T_\theta=(-\sin\varphi\sin\theta, \sin\varphi\cos\theta, 0)
+        \end{equation*}
+        Then we compute the unit normal
+        \begin{equation*}
+            n(\varphi,\theta)=(\sin\varphi\cos\theta, \sin\varphi\sin\theta, \cos\varphi)
+        \end{equation*}
+        at the north pole $(0,0,1)$, i.e., $\varphi=0$, the unit normal is
+        \begin{equation*}
+            n=(0,0,1)
+        \end{equation*}
+        The unit normal points outward away from the origin.
+        \item[(b)] One can reverse the direction of unit normal at the north pole by replacing $\theta$ with $-\theta$,
+        \begin{equation*}
+            \tilde{\Phi}(\varphi,\theta)=(\sin\varphi\cos\theta,-\sin\varphi\sin\theta,\cos\varphi)
+        \end{equation*}
+        where $0\leq\varphi\leq\pi, 0\leq\theta\leq2\pi$. One can repeat this process and compute the unit normal and we will find at the north pole,the unit normal is $(0,0,-1)$, which points inward towards the origin.
+
+        The equator using the first parametrization is setting $\varphi=\pi/2$, $c_1(\theta)=(\cos\theta, \sin\theta, 0)$. Thus the line integral is 
+        \begin{equation*}
+            \int_{c_1}F\cdot ds=\int_0^{2\pi}(\cos\theta,\sin\theta,0)\cdot(-\sin\theta,\cos\theta, 0)d\theta=0
+        \end{equation*}
+        We repeat this process for the second parametrization, $c_2(t)=(\cos\theta,-\sin\theta, 0)$.
+        \begin{equation*}
+            \int_{c_2}F\cdot ds=\int_0^{2\pi}(\cos\theta,-\sin\theta, 0)\cdot(-\sin\theta, -\cos\theta, 0)dt=0
+        \end{equation*}
+        The line integrals are both zero because the vector field $F(c(t))$ corresponds to a point on a sphere and it's orthogonal to the speed vector $c'(t)$, which is tangent to the sphere. This implies $F(c(t))\cdot c'(t)=0$.
+        \item[(c)] Using the first parameterization, 
+        \begin{align*}
+            \iint_S F\cdot(T_\varphi\times T_\theta)d\varphi d\theta&=\int_0^{2\pi}\int_0^\pi (\sin\varphi\cos\theta,\sin\varphi\sin\theta,\cos\varphi)\cdot \sin\varphi (\sin\varphi\cos\theta,\sin\varphi\sin\theta,\cos\varphi)d\varphi d\theta\\
+            &=\int_0^{2\pi}\int_0^\pi \sin\varphi d\varphi d\theta=4\pi
+        \end{align*}
+        Similarly, we find the flux using the second parameterization as 
+        \begin{equation*}
+            \iint_S F\cdot(\tilde{T}_\varphi\times \tilde{T}_\theta)d\varphi d\theta=-4\pi
+        \end{equation*}
+        \item[(d)] Let's first compute the divergence of $F$: 
+        \begin{equation*}
+            \nabla\cdot F=3
+        \end{equation*}
+        Now using the first parametrization, the Jacobian determinant is $\rho^2\sin\varphi$, thus 
+        \begin{align*}
+            \iiint_B(\nabla\cdot F)dV=\int_0^{2\pi}\int_0^\pi\int_0^13\rho^2\sin\varphi d\rho d\varphi d\theta=4\pi
+        \end{align*}
+        Using the second parameterization, the Jacobian determinant is $-\rho^2\sin\varphi$,
+        \begin{equation*}
+            \iiint_B(\nabla\cdot F)dV=-4\pi
+        \end{equation*}
+        Gauss's theorem equates the flux through the boundary of a surface with the surface integral of the divergence of the vector field. It agrees with our computation in (c).
+    \end{enumerate}
 \end{proof}
 
 % \begin{enumerate}
