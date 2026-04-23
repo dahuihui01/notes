@@ -84,12 +84,16 @@
         \item We compute the line integral normally: we parametrize the circle $C(t)=(\cos t, \sin t), 0\leq t\leq 2\pi$.
         \begin{align*}
             \int_C(2x^3 - y^3)dx + (x^3 + y^3)dy&=\int_0^{2\pi}(2\cos^3t-\sin^3t, \cos^3t+\sin^3t)\cdot(-\sin t,\cos t)dt\\
-            &=\int_0^{2\pi}
+            &=\int_0^{2\pi}-2\cos^3t\sin t+\sin^4t+\cos^4t+\sin^3\cos tdt\\
+            &=\int_0^{2\pi}\sin^4t+\cos^4tdt+\left[\frac{1}{2}\cos^4t+\frac{1}{4}\sin^4t\right]_0^{2\pi}\\
+            &=\frac{3\pi}{2}
         \end{align*}
+        where the last line follows from writing $\sin^2=(1-\cos 2t)/2, \cos^2=(1+\cos 2t)/2$ and expanding.
         \item We use Green's theorem: 
         \begin{align*}
             \int_C(2x^3 - y^3)dx + (x^3 + y^3)dy&=\iint_D3x^2+3y^2dxdy\\
-            &=\int_{0}^{2\pi}\int_0^13
+            &=\int_{0}^{2\pi}\int_0^13r^3drd\theta\\
+            &=\frac{3\pi}{2}
         \end{align*}
     \end{enumerate}
 \end{proof}
@@ -98,16 +102,40 @@
 \begin{prob}
     Verify Stokes' theorem for the upper hemisphere $z = \sqrt{1 - x^2 - y^2}, \ z \geq 0$, and the radial vector field $\vec{F}(x, y, z) = x\hat{i} + y\hat{j} + z\hat{k}$.
 \end{prob}
+\begin{enumerate}
+    \item We evalute the surface integral: 
+    \begin{equation*}
+        \nabla\times F=\begin{pmatrix}
+            i&j&k\\
+            \frac{\partial}{\partial x}&\frac{\partial}{\partial y}&\frac{\partial}{\partial z}=(0,0,0)
+        \end{pmatrix}
+    \end{equation*}
+    Hence 
+    \begin{equation*}
+        \iint_S(\nabla\times F)\cdot dS=0
+    \end{equation*}
+    \item Now we use Stoke's theorem. The boundary is given by $c(t)=(\cos t, \sin t, 0), 0\leq t\leq 2\pi$. Thus 
+    \begin{align*}
+        \iint_S\nabla\times Fd\cdot dS&=\int_c F\cdot ds\\
+        &=\int_0^{2\pi}(\cos t, \sin t, 0)\cdot (-\sin t, \cos t, 0)dt\\
+        &=0
+    \end{align*}
+\end{enumerate}
 
 \begin{prob}
     Show that the following vector field is conservative by constructing a potential function:\\
     $\vec{F}(x, y) = (e^x y^3 + y)\hat{i} + (3e^x y^2 + x)\hat{j}$.
 \end{prob}
 \begin{proof}
+    We require 
+    \begin{equation*}
+        \frac{\partial f}{\partial x}=e^xy^3+y, \quad \frac{\partial f}{\partial y}=3e^xy^2+x
+    \end{equation*}
     A potential function can be 
     \begin{equation*}
         f=e^xy^3+xy
     \end{equation*}
+    where we see $F=\nabla f$. 
 \end{proof}
 
 \begin{prob}
