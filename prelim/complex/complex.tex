@@ -94,17 +94,17 @@
     If $f:\Omega\to\C$ is $C^1$ and satisfies Cauchy-Riemann equations, then $f$ is holomorphic.
 \end{prop}
 
-\begin{prop}
-    If $f:\overline{\Omega}\to\C$ is holomorphic, where $z_0\in\Omega$ and $D_r(z_0)\subset\Omega$, then for $z\in D_r(z_0)$, $f$ is given by a convergent power series 
-    \begin{equation*}
-        f(z)=\sum_{k=0}^\infty a_k(z-z_0)^k
-    \end{equation*}
-    where 
-    \begin{equation*}
-        a_k=\frac{1}{2\pi i}\int_{\partial\Omega}\frac{f(\zeta)}{(\zeta-z_0)^{k+1}}d\zeta=\frac{f^{(k)}(z_0)}{k!}
-    \end{equation*}
-\end{prop}
-(This follows from Cauchy integral formula).
+% \begin{prop}
+%     If $f:\overline{\Omega}\to\C$ is holomorphic, where $z_0\in\Omega$ and $D_r(z_0)\subset\Omega$, then for $z\in D_r(z_0)$, $f$ is given by a convergent power series 
+%     \begin{equation*}
+%         f(z)=\sum_{k=0}^\infty a_k(z-z_0)^k
+%     \end{equation*}
+%     where 
+%     \begin{equation*}
+%         a_k=\frac{1}{2\pi i}\int_{\partial\Omega}\frac{f(\zeta)}{(\zeta-z_0)^{k+1}}d\zeta=\frac{f^{(k)}(z_0)}{k!}
+%     \end{equation*}
+% \end{prop}
+% (This follows from Cauchy integral formula).
 
 
 % \begin{defn}[complex log]
@@ -115,12 +115,12 @@
 % \end{defn}
 
 
-\begin{thm}
+\begin{prop}
     Let $f:\Omega\to\C$ be holomorphic, where $\Omega$ is open. Let $p\in\Omega$, assume $f'(p)\neq 0$. Then there exists a neighborhood $O$ of $p$ and a neighborhood $U$ of $q=f(p)$ such that $f:O\to U$ is bijective, where the inverse $g=f^{-1}: U\to O$ is holomorphic. For $z\in O, w=f(z)$, we have 
     \begin{equation*}
         g'(w)=\frac{1}{f'(z)}
     \end{equation*}
-\end{thm}
+\end{prop}
 
 
 \begin{prop}
@@ -132,9 +132,6 @@
 \end{prop}
 
 
-\begin{defn}
-    square roots, complex logs
-\end{defn}
 
 
 \chapter{Cauchy integral theorem}
@@ -154,13 +151,6 @@
     One can change $\partial\Omega$ to an simple closed curve $\gamma$ completely contained in $\Omega$.
 \end{thm}
 
-\begin{prop}
-    If $f$ is holomorphic on an open set $\Omega\subset\C$, then 
-    \begin{equation*}
-        f\in C^\infty(\Omega)
-    \end{equation*}
-\end{prop}
-
 
 \begin{thm}[holomorphic implies analytic]
     If $f\in C^1(\overline{\Omega})$ is holomorphic, then for $z\in D_r(z_0)\subset\Omega$, then $f(z)$ has the convergent power series expansion 
@@ -172,6 +162,15 @@
         a_n=\frac{1}{2\pi i}\int_{\partial\Omega}\frac{f(\zeta)}{(\zeta-z_0)^{n+1}}d\zeta=\frac{f^{(n)}(z_0)}{n!}
     \end{equation*}
 \end{thm}
+
+\begin{prop}
+    If $f$ is holomorphic on an open set $\Omega\subset\C$, then 
+    \begin{equation*}
+        f\in C^\infty(\Omega)
+    \end{equation*}
+\end{prop}
+
+
 
 \begin{prop}
     Let $\Omega\subset\C$ be an open set and let $f_\nu:\Omega\to\C$ be holomorphic. Assume $f_\nu\to f$ locally uniformly, then $f:\Omega\to\C$ is holomorphic and $f_\nu'\to f'$ locally uniformly on $\Omega$.
@@ -191,13 +190,13 @@
 \end{prop}
 
 
-\begin{prop}
-    Suppose $f$ is holomorphic on the unit disk $D_1(0)$. Assume $|f(z)|\leq 1$ for $|z|<1$, and $f(0)=0$. Then 
-    \begin{equation*}
-        |f(z)|\leq |z|
-    \end{equation*}
-    Moreover, $|f(z)|=|z|$ iff $f(z)=cz$ for some $c$ such that $|c|=1$.
-\end{prop}
+% \begin{prop}
+%     Suppose $f$ is holomorphic on the unit disk $D_1(0)$. Assume $|f(z)|\leq 1$ for $|z|<1$, and $f(0)=0$. Then 
+%     \begin{equation*}
+%         |f(z)|\leq |z|
+%     \end{equation*}
+%     Moreover, $|f(z)|=|z|$ iff $f(z)=cz$ for some $c$ such that $|c|=1$.
+% \end{prop}
 
 \begin{thm}[Liouville's theorem]
     If $f:\C\to\C$ is holomorphic and bounded, then $f$ is constant.
@@ -325,8 +324,9 @@ Next is a converse of Cauchy's integral theorem.
 
 How does the Laurent series expansion help us?
 \begin{prop}
-    Suppose $f$ is holomorphic on $D_R(z_0)\setminus z_0$, with the above Laurent series. $f$ has a pole at $z_0$ iff $a_n=0$ for all but finitely many $n<0$; $f$ 
+    Suppose $f$ is holomorphic on $D_R(z_0)\setminus z_0$, with the above Laurent series. $f$ has a pole at $z_0$ iff $a_n=0$ for all but finitely many $n<0$; $f$ has an essential singularity iff $a_n\neq 0$ for infinitely many $n$.
 \end{prop}
+
 
 
 \chapter{Fourier analysis and complex function theory}
