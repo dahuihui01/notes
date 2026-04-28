@@ -1,0 +1,450 @@
+\documentclass[openany]{book}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsfonts,amsthm, amssymb}
+\usepackage{yhmath}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{comment}
+\usepackage{tikz-cd}
+\usepackage{quiver}
+\usepackage{hyperref,cleveref}
+\renewcommand{\familydefault}{ppl}
+\newcommand{\curl}{\text{curl}}
+\newcommand{\diverg}{\text{div}}
+\newcommand{\tr}{\text{tr}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\colim}{\text{colim}}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\disc}{disc}
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+\newcommand{\tor}{\text{Tor}}
+\newcommand{\id}{\text{id}}
+\newcommand{\ext}{\text{Ext}}
+\newcommand{\ptop}{\text{PTop}}
+\newcommand{\pt}{\text{pt}}
+\newcommand{\ach}{\text{Ach}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\gal}{\text{Gal}}
+\newcommand{\fraccomma}{\genfrac{}{}{0pt}{}{}{,}}
+\definecolor{wikipediadarkblue}{rgb}{0.023, 0.270, 0.676}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=blue,
+    urlcolor=red
+}
+
+% \hypersetup{
+%     urlbordercolor={1 0 0}, % Red box for URLs
+%     linkbordercolor=blue, % Blue box for internal links
+%     % the values are in RGB format from 0 to 1
+% }
+
+
+\input{hui_r.tex}
+
+\begin{document}
+
+\title{Complex Analysis Qualifying Exam Review
+\\ 
+\vspace{0.4cm}
+\large Spring 2026}
+
+
+
+% \author{(Please email hsun95@jh.edu if you see typos)}
+% \date{\today}
+
+
+
+
+\chapter{Fall 2025}
+
+\begin{prob}
+Problem 5. Let \(\{f_{n}\}\) be a sequence of holomorphic functions on the open unit disk \(\mathbb{D} = \{z \in \mathbb{C}: |z| < 1\}\) , and suppose that \(f_{n} \to f\) uniformly on compact subsets of \(\mathbb{D}\) , where \(f: \mathbb{D} \to \mathbb{C}\) is continuous. Prove that \(f\) is holomorphic on \(\mathbb{D}\) .
+\end{prob}
+
+\begin{prob}
+Problem 6. Use contour integration to evaluate
+\[\int_{0}^{\infty}\frac{x^{2}}{x^{4} + 1} dx.\]
+\end{prob}
+
+\begin{prob}
+Problem 7. Let \(f\) be an analytic function on the open unit disk \(\mathbb{D} = \{z\in \mathbb{C}:|z|< 1\}\) , and suppose that \(|f(z)|\geq \sqrt{|z|}\) for all \(z\in \mathbb{D}\) . Show that \(|f(z)|\geq 1\) for all \(z\in \mathbb{D}\) .
+\end{prob}
+
+\begin{prob}
+Problem 8. Determine how many solutions \(z^{7} - 7z^{4} + z^{3} - 3z = 1\) are in the annulus \(1< |z|< 2\) .
+\end{prob}
+
+
+
+\chapter{Spring 2025}
+\begin{prob}
+1. Let \(f(z)\) be holomorphic on \(\mathbb{C}\backslash \mathbb{R}\) . \(f\) is continuous at each point of \(\mathbb{R}\) . Show that \(f\) extends to an entire analytic function. (Hint: Use Morera's theorem.)
+\end{prob}
+
+\begin{prob}
+Problem 2. Evaluate \(\mathrm{p.v.}\int_{-\infty}^{\infty}\frac{e^{ix}}{x^{2}}\mathrm{d}x\) by residue theory.
+\end{prob}
+
+\begin{prob}
+Problem 3. Let \(f:\Omega \to \mathbb{C}\) be a non- constant holomorphic function defined on a connected open set \(\Omega \subset \mathbb{C}\) , and suppose that \(f\) is open (i.e., maps open sets to open sets). Additionally, suppose that for some \(z_{0}\in \Omega\) , we have \(f^{\prime}(z_{0}) = 0\) . Show that \(f\) is not injective on \(\Omega\) .
+\end{prob}
+
+\begin{prob}
+Problem 4. Let \(f:\mathbb{D}\to \mathbb{C}\) be a holomorphic function on the open unit disk
+\[\mathbb{D} = \{z\in \mathbb{C}:|z|< 1\} ,\]
+and suppose that
+\[|f(z)|\leq M\quad \mathrm{for~all~}z\in \mathbb{D},\]
+for some constant \(M > 0\) . Prove the estimate that for all \(z\in \mathbb{D}\)
+\[|f^{\prime}(z)|\leq \frac{M}{(1 - |z|)^{2}}.\]
+\end{prob}
+
+\chapter{Spring 2024}
+\begin{prob}
+    Show that a holomorphic function cannot have a constant modulus without reducing to a constant.
+\end{prob}
+
+\begin{prob}
+    How many roots does the equation \(z^{7} - 2z^{5} + 6z^{3} - z + 1 = 0\) have in the disk \(|z|< 1\) ? Hint: Look for the biggest term when \(|z| = 1\) and apply Rouche's theorem
+\end{prob}
+
+\begin{prob}
+    Compute using residue calculus the following integral for \(|a| > 1\)
+\[\int_{0}^{\pi /2}\frac{dx}{a + \sin^{2}(x)}.\]
+\end{prob}
+
+\begin{prob}
+    Consider the infinite product for \(\alpha\) not an integer
+\[\prod_{n = -\infty}^{\infty}\left(1 + \frac{z}{n + \alpha}\right)e^{-z / (n + \alpha)}.\]
+1. Show that the infinite product above is well-defined.
+2. Show that there exists an entire function \(h\) such that
+\[\sin (\pi (n + \alpha)) = e^{h(z)}\prod_{n = -\infty}^{\infty}\left(1 + \frac{z}{n + \alpha}\right)e^{-z / (n + \alpha)}.\]
+\end{prob}
+
+\begin{prob}
+Let \(f:[0,1]\to [0,1]\) be a continuous function and \(\phi :\mathbb{R}\to \mathbb{R}\) be a \(C^1\) function with \(\phi (0) = 0\) . Show that
+\[\int_{0}^{1}\phi \circ f\,dx = \int_{\mathbb{R}}|\{x\in [0,1]:f(x) > t\} |\phi '(t)dt.\]
+\end{prob}
+
+\chapter{Fall 2023}
+
+\begin{prob}
+a) Show that if an entire function \(f\) satisfies \(|f(z)|< \sqrt{|z|}\) for all \(z\in \mathbb{C}\) , then \(f(z)\) is a constant function.
+b) Why isn't the function \(z^{1 / 2}\) a counterexample for Part a?
+\end{prob}
+
+\begin{prob}
+    For \(a\in (- 1,0)\) , evaluate the following integral using residue theory,
+\[\int_{0}^{\infty}\frac{x^{a}}{1 + x} dx;\]
+you will justify why this improper integral exists before doing the calculation.
+\end{prob}
+
+\begin{prob}
+    Let \(f\) be a nonnegative harmonic function in a neighborhood of the disk \(D(P,R)\) centered at \(P\) and of radius \(R\) . Show the following Harnack inequality: for all \(z\in D(P,R)\)
+\[\frac{R - |z - P|}{R + |z - P|} f(P)\leq f(z)\leq \frac{R + |z - P|}{R - |z - P|} f(P).\]
+Using the previous Harnack inequality, prove the classical Liouville theorem: every bounded and harmonic function on all of \(\mathbb{R}^2\) must be constant.
+\end{prob}
+
+
+\chapter{Spring 2023}
+
+\begin{prob}
+\[\mathrm{Evaluate}\int_{0}^{\infty}\frac{\sin^{2}x}{x^{2}} dx.\]
+\end{prob}
+
+\begin{prob}
+a). Let \(R(z) = \frac{p(z)}{q(z)}\) where \(p\) and \(q\) are polynomials (thus holomorphic). Let \(f\) be holomorphic on \(\mathbb{C}\setminus \{p_1,\ldots ,p_k\}\) and suppose that \(f\) has a pole at each of the points \(\{p_1,\ldots ,p_k\}\) . If \(|f(z)|\leq |R(z)|\) for all \(z\) at which \(f(z)\) and \(R(z)\) are defined, prove that \(f\) is a rational function.
+b). Find all the isolated singularities on \(\mathbb{C}\cup \{\infty \}\) and calculate their residues for the functions \(\begin{array}{r}f(z) = \frac{(z^2 - 1)^2}{z^2(z - \alpha)(z - \beta)} \end{array}\) \(\alpha \beta = 1\) \(\alpha \neq \beta\)
+\end{prob}
+
+\begin{prob}
+a). Let \(f:U = \{z:0< |z|< 1\} \to \mathbb{C}\) be holomorphic and nonconstant. If there exists a sequence \(\{z_n\} \subset U\) which converges to 0 and satisfies that \(f(z_n) = 0\) , then prove that 0 is an essential singularity of \(f\) .
+b). Find all entire functions \(f\) such that \(\lim_{|z|\to \infty}f(z) = \infty\) .
+\end{prob}
+
+\begin{prob}
+Assume that \(f\) is holomorphic on \(0< r< |z - a|< R< +\infty\) and continuous on \(r\leq |z - a|\leq R\) . If \(f(z) = 0\) at \(|z - a| = R\) , prove that \(f(z)\equiv 0\) .
+\end{prob}
+
+\chapter{Fall 2022}
+
+\begin{prob}
+For \(- 1< a< 0\) , evaluate
+\[\int_{0}^{\infty}\frac{x^{a}}{1 + x} dx\]
+by residue theory.
+\end{prob}
+
+\begin{prob}
+Let \(f\) be holomorphic and one-to-one on an open set \(\Omega \subset \mathbb{C}\) . Show that \(f^{\prime}(z)\neq 0\) for all \(z\in \Omega\) .
+\end{prob}
+
+\begin{prob}
+Let \(f:D(0,1)\to \mathbb{C}\) be a non-constant holomorphic function which satisfies \(\operatorname {Re}f(z)\geq 0\) for all \(z\in D(0,1)\) . Here \(D(0,1) = \{z\in \mathbb{C}:|z|< 1\}\) is the unit disk.
+(1) Show that \(\operatorname {Re}f(z) > 0\) for all \(z\in D(0,1)\)
+(2) If \(f(0) = a\in \mathbb{R}_{+}\) , show that
+\[a\frac{1 - |z|}{1 + |z|}\leq |f(z)|\leq a\frac{1 + |z|}{1 - |z|}.\]
+\end{prob}
+
+\begin{prob}
+Let \(D(0,1)\subset \mathbb{C}\) be the unit disk and \(f\) be continuous on \(\partial D(0,1)\) . Show that
+\[u(z) = \frac{1}{2\pi}\int_{0}^{2\pi} \frac{1-|z|^2}{|e^{i\theta}-z|^2} f(e^{i\theta}) d\theta\]
+is harmonic on \(D(0,1)\) and continuous up to the boundary \(\partial D(0,1)\) .
+\end{prob}
+
+\chapter{Spring 2022}
+
+\begin{prob}
+Using residue theory, evaluate
+\[\int_{0}^{\infty}\frac{x^{\frac{1}{2}}}{x^{2} + x + 1} dx.\]
+\end{prob}
+
+\begin{prob}
+Let \(f\) be holomorphic on \(D(0,1)\) and continuous on \(\overline{D} (0,1)\) . Suppose \(|f(z)| = 1\) for \(|z| = 1\) . Prove that \(f\) must be a rational function.
+\end{prob}
+
+\begin{prob}
+Let \(f:D(0,1)\to D(0,1)\) be a holomorphic function satisfying
+\[f(0) = f^{\prime}(0) = \dots = f^{(n - 1)}(0) = 0.\]
+Show that
+1) \(|f(z)|\leq |z|^n\) for \(z\in D(0,1)\) 
+2) If either there is some \(P\in D(0,1)\backslash \{0\}\) such that \(|f(P)| = |P|^n\) or \(|f^{(n)}(0)| = n!\) , then \(f(z) = e^{i\theta}z^n\) for some \(\theta \in \mathbb{R}\).
+\end{prob}
+
+\begin{prob}
+1) Let \(f\) be a non-negative harmonic function on a neighborhood of \(\overline{D} (P,R)\) . Show that
+\[\frac{R - |z - P|}{R + |z - P|} f(P)\leq f(z)\leq \frac{R + |z - P|}{R - |z - P|} f(P)\quad \forall z\in D(P,R).\]
+2) By using the Harnack inequality in 1), prove the following Liouville theorem:
+Let \(f\) be harmonic on all of \(\mathbb{C}\) . If \(f\) is bounded from below, then \(f\) must be a constant.
+\end{prob}
+
+
+\chapter{Fall 2021}
+\begin{prob}
+    Show that there does not exist a solution to
+\[\Delta u = u^{3}\]
+on \(\mathbb{R}^{d}\) that is positive everywhere and satisfies \(u(x) \to 0\) as \(|x| \to \infty\) .
+\end{prob}
+
+\begin{prob}
+    Prove that for \(0 < \operatorname{Re}(z) < 1\) ,
+\[\Gamma (z)\Gamma (1 - z) = \frac{\pi}{\sin(\pi z)},\]
+when
+\[\Gamma (z) = \int_{0}^{\infty} t^{z - 1} e^{-t} dt.\]
+\end{prob}
+
+\begin{prob}
+    Let \(f(x) = e^{-\frac{x^{2}}{2}}\) . Compute the Fourier transform
+\[\hat{f} (\xi) = \frac{1}{\sqrt{2\pi}}\int f(x)e^{-ix\xi}dx.\]
+\end{prob}
+
+\begin{prob}
+    Describe all the fractional linear transformations that map \(\mathbb{R} \cup \{\infty \}\) to \(\mathbb{R} \cup \{\infty \}\) .
+\end{prob}
+
+
+\chapter{Spring 2021}
+
+
+\begin{prob}
+Suppose \(U \subset \mathbb{C}\) is an open set. Suppose \(f\) and \(g\) are functions holomorphic on \(U \subset \mathbb{C}\) . Show that if
+\[|f(z)|^4 + |g(z)|^4\]
+attains a maximum for some \(z_0 \in U\) , then \(f\) and \(g\) are constant on \(U\) .
+\end{prob}
+
+\begin{prob}
+Suppose \(f\) is holomorphic on \(\{z: 0 < |z| < 1\}\) , and that
+\[|f(z)| \leq (\log \frac{1}{|z|})^{80} \quad \text{in} \quad \{z: |z| \leq \tfrac{1}{2}\} .\]
+Show that \(f\) has a removable singularity at \(z = 0\) .
+\end{prob}
+
+\begin{prob}
+Let \(f(x) = \frac{1}{x^2 + 1}\) . Use a contour integral consisting of the interval \([- R, R] \subset \mathbb{R}\) and a semicircle of radius \(R\) to compute the Fourier transform
+\[\hat{f} (\xi) = \frac{1}{\sqrt{2\pi}} \int f(x) e^{-ix\xi} dx.\]
+\end{prob}
+
+\begin{prob}
+Let \(D = \{z \in \mathbb{C}: |z| < 1\}\) and \(f: D \to D\) be a holomorphic function. Prove
+\[\frac{|f(z)| - |z|}{1 - |f(0)||z|} \leq |f(z)| \leq \frac{|f(0)| + |z|}{1 - |f(0)||z|}.\]
+\end{prob}
+
+
+
+\chapter{Fall 2020}
+
+\begin{prob}
+Problem 4. Compute the integrals
+1) \(\frac{1}{2\pi i}\oint_{\gamma}\frac{e^{z}}{z(z + 2)^{2}} dz\) , where \(\gamma\) is the negatively oriented triangle with vertices \(1\pm i\) and \(-3\).
+2) \(p.v.\int_{-\infty}^{\infty}\frac{e^{ix}}{x} dx.\)
+\end{prob}
+
+\begin{prob}
+Problem 5.
+1). Evaluate \(\int_{0}^{1}\frac{1}{x^{2} + 4}\sqrt{\frac{x}{1 - x}} dx.\)
+2). Let \(f(z) = e^{z + \frac{1}{z}}\) . Prove that \(\operatorname{Res}_{f}(0) = \sum_{k = 0}^{\infty}\frac{1}{k!(k + 1)!}\).
+\end{prob}
+
+\begin{prob}
+Problem 6. Let \(f(z)\) be an entire function satisfying \(|f(z)|\leq |f(z^{2})|\) for all \(z\) . Show that \(\frac{1}{f(z)}\) is bounded and is an entire function, unless \(f(z)\equiv 0\).
+\end{prob}
+
+
+\chapter{Spring 2020}
+\begin{prob}
+    Compute the integrals
+\[a)\int_{-\infty}^{\infty}\frac{x^{4}}{x^{10} + 1} dx;\qquad b)\quad p.v.\int_{-\infty}^{\infty}\frac{x + 2}{x^{4} + 3x^{3} + x^{2} + 3x} dx.\]
+\end{prob}
+
+\begin{prob}
+    Show that if \(f:\mathbb{C}\to \mathbb{C}\) is an entire function such that \(f(\mathbb{C})\cap \{ix:x\in \mathbb{R},x\geq 0\} = \emptyset\) , then \(f\) is a constant.
+\end{prob}
+
+\begin{prob}
+    Let \(U\) be a simply connected domain in \(\mathbb{C}\) . Let \(u_{n}\) be a sequence of holomorphic functions on \(U\) such that
+\[\int_{U}|u_{n}(z) - u(z)|dz\to 0.\]
+Prove that \(u\) is a holomorphic function on \(U\) .
+\end{prob}
+
+
+\end{document}
+
+
+
+
+\section*{Complex Analysis (Tenth set)}
+\textit{Choose three of four problems and show all work with each problem on a new page.}
+
+\begin{prob}
+1. Evaluate \(\int_{0}^{\infty} \frac{\log x}{x^{2} + 2} dx\) by contour integration using the positively oriented contour from \(-R\) to \(R\) on the real axis (indented at the origin) and the positively oriented semicircle \(|z| = R\) , \(\operatorname{Im}z > 0\) . Choose an appropriate branch of logarithm.
+\end{prob}
+
+\begin{prob}
+2. Let \(f(z)\) be an entire function such that
+\[\max_{|z| = R}|f(z)|\leq AR^k +B,\]
+for positive constants \(A\) , \(B\) and all \(R > 1000\) . Show that \(f\) is a polynomial of degree at most \(k\) .
+\end{prob}
+
+\begin{prob}
+3a. Define what is meant by a normal family of holomorphic functions on an open (possibly unbounded) domain \(U\) .
+b. Suppose \(\mathcal{F}\) is a normal family of holomorphic functions on the open unit disk \(D\) . Show that the family
+\[\mathcal{F}' = \{f':f\in \mathcal{F}\}\]
+is also a normal family on \(D\) .
+\end{prob}
+
+\begin{prob}
+4. Let \(f\) be a holomorphic function in the punctured disk \(\{z:0< |z|< 2\}\) satisfying
+\[|f(z)|\leq (\log \frac{1}{|z|})^{100}\text{ in }\{|z|\leq 1 / 2\},\]
+\[|f(z)| = 1 \text{ on }|z| = 1.\]
+a. Show that f has a removable singularity at the origin.
+b. Show that if \(f(z)\neq 0\) in \(|z|< 1\) , then \(f\) is constant.
+c. (Extra credit) True or false, explain.
+\(f = \alpha z^{n}\) for \(\alpha \in \mathbb{C}\) , \(|\alpha | = 1\) and an integer \(n\geq 0\).
+\end{prob}
+
+\section*{Real and Complex Analysis (Mixed)}
+\textit{Please answer three questions from the real analysis section and three questions from the complex analysis section.}
+
+\subsection*{1. REAL ANALYSIS}
+\begin{prob}
+Question 1.1. Suppose that \(f_{j} \in L^{2}(\mathbb{R}^{d})\) , \(j = 1, 2, \ldots\) , and \(f \in L^{2}(\mathbb{R}^{d})\) satisfy
+\[\lim_{j\to \infty}\int_{\mathbb{R}^d}f_jg = \int_{\mathbb{R}^d}fg\]
+for all \(g \in L^{2}(\mathbb{R}^{d})\) . That is, \(f_{j}\) converges to \(f\) weakly in \(L^{2}\) . Suppose that the sequence satisfies the uniform bound
+\[\sup_{x\in \mathbb{R}^d}(1 + |x|)^d |f_j(x)|\leq M< \infty . \quad (A)\]
+Show that \(\| f_j\| _2 \to \| f\| _2\) and conclude that \(\| f_j - f\| _2 \to 0\) . That is \(f_j\) converges to \(f\) strongly in \(L^{2}(\mathbb{R}^{d})\) . Show by example that condition (A) is necessary.
+\end{prob}
+
+\begin{prob}
+Question 1.2. Fix a measurable function \(f: \mathbb{R}^{2} \to \mathbb{R}\) and, for every \(x, y \in \mathbb{R}\) , let
+\[f_{x}: \mathbb{R} \to \mathbb{R} \text{ and } f_{y}: \mathbb{R} \to \mathbb{R}\]
+be given by \(f_{x}(z) = f(x, z)\) and \(f_{y}(z) = f(z, y)\) . Show that there exists such an \(f\) so that \(f_{x} \in L^{1}(\mathbb{R})\) for a.e. \(x\) and \(f_{y} \in L^{1}(\mathbb{R})\) for a.e. \(y\) but
+\[\int_{\mathbb{R}}\left(\int_{\mathbb{R}}f_{x}(y)dy\right)dx\neq \int_{\mathbb{R}}\left(\int_{\mathbb{R}}f_{y}(x)dx\right)dy.\]
+What does Fubini's theorem imply about such \(f\) ? What about Tonelli's theorem?
+\end{prob}
+
+\begin{prob}
+Question 1.3. Let \(f_{i}: [0, 1] \to \mathbb{R}\) , \(i = 1, 2, \ldots\) , be an increasing sequence of continuous functions that is uniformly bounded, i.e., for all \(x \in [0, 1]\) and \(i \geq 1\) , \(f_{i}(x) \leq f_{i + 1}(x) \leq M < \infty\) for some fixed \(M\) . Show that \(\lim_{i \to \infty} f_{i}(x) = g(x)\) is continuous if and only if the \(f_{i}\) converge uniformly to \(g\) .
+\end{prob}
+
+\begin{prob}
+Question 1.4. Show that \(\lim_{t \to \infty} \int_{1}^{t} \frac{\sin(x)}{x} dx\) exists. Does \(f(x) = \frac{\sin(x)}{x}\) belong to \(L^{1}((1, \infty))\) ?
+\end{prob}
+
+\subsection*{2. COMPLEX ANALYSIS}
+\begin{prob}
+Question 2.1. Determine all holomorphic automorphisms of the upper half plane \(\mathcal{U} = \{z: \operatorname{Im} z > 0\}\) .
+\end{prob}
+
+\begin{prob}
+Question 2.2. Let \(f(z)\) be holomorphic on \(\mathbb{C} \setminus \mathbb{R}\) and continuous on \(\mathbb{C}\) . Show that \(f\) extends to an entire analytic function.
+\end{prob}
+
+\begin{prob}
+Question 2.3. Evaluate \(\int_{0}^{\infty} \frac{x^{- \frac{1}{3}}}{1 + x} dx\) .
+\end{prob}
+
+\begin{prob}
+Question 2.4. Show that the punctured unit disk \(\{z: 0 < |z| < 1\}\) and the annulus \(\{z: 1 < |z| < 2\}\) cannot be conformally equivalent.
+\end{prob}
+
+\section*{More Problems}
+\begin{prob}
+Suppose that \(f,g\) are entire functions with \(|f(z)|\leq |g(z)|\) for all \(z\in \mathbb{C}\) . Prove that there is a constant \(c\in \mathbb{C}\) such that \(f = cg\) .
+\end{prob}
+
+\begin{prob}
+Problem 5. This problem is about the integral
+\[I = \int_{-\infty}^{\infty}\frac{\sin x}{x} dx.\]
+Show directly that \(I\) is a convergent improper Riemann integral.
+Use a contour integral to evaluate \(I\) .
+\end{prob}
+
+\begin{prob}
+Problem 6. Let \(f\) and \(g\) be functions holomorphic defined on a domain \(U\subseteq \mathbb{C}\) . Set \(\phi (z) = |f(z)| + |g(z)|\) for \(z\in U\) . If \(\phi\) assumes a maximum value on \(U\) , show that both \(f\) and \(g\) are constants on \(U\) .
+\end{prob}
+
+\begin{prob}
+Problem 7. Let \(U\subseteq \mathbb{C}\) be an open set and
+\[A^{2}(U) = \{f\text{ holomorphic on }U:\int_{U}|f(z)|^{2}d x d y< \infty \}.\]
+Define
+\[(f,g) = \int_{U}f(z)\overline{g(z)} dxdy,\quad \forall f,g\in A^{2}(U).\]
+Prove that \(A^{2}(U)\) is a Hilbert space when equipped with this inner product.
+\end{prob}
+
+\begin{prob}
+Let \(f\) be an entire function. Suppose that for each \(z_0 \in \mathbb{C}\) , the power series expansion
+\[f(z) = \sum_{n = 0}^{\infty}c_n(z - z_0)^n\]
+has at least one coefficient \(c_n = 0\) . Show that \(f\) is a polynomial.
+\end{prob}
+
+\begin{prob}
+Problem 5. Let \(U\) be an open subset of \(\mathbb{C}\) . Let \(z_0\) be a point in \(U\) , and suppose that \(f\) is a meromorphic function on \(U\) with a pole at \(z_0\) . Prove that there is no holomorphic function \(g: U \setminus \{z_0\} \to \mathbb{C}\) such that \(e^{g(z)} = f(z)\) for all \(z \in U \setminus \{z_0\}\) .
+\end{prob}
+
+\begin{prob}
+Problem 6. Suppose \(f\) is holomorphic in an annulus \(r < |z| < R\) , and there exists a sequence of holomorphic polynomials \(p_n\) converging to \(f\) uniformly on compact subset of the annulus. Show that \(f\) can be extended to the disc \(\{|z| < R\}\) as a holomorphic function.
+\end{prob}
+
+\begin{prob}
+Problem 7. Let \(U\) be an open subset of \(\mathbb{C}\) . We use the notion
+\[\| f\|_{L^2 (U)} = \left(\int_U|f|^2 dxdy\right)^{1 / 2}.\]
+Let \(f: U \to \mathbb{C}\) be a holomorphic function. Show that for any compact set \(K \subset U\) , there is a constant \(C_K\) , such that
+\[\sup_{z \in K}|f(z)| \leq C_K \| f\|_{L^2 (U)}.\]
+Prove that \(\{f\text{ holomorphic on }U: \| f\|_{L^2 (U)} \leq 1\}\) is a normal family.
+Suppose \(U\) is the punctured disc \(D(0,1) - \{0\}\) . If \(f\) is holomorphic on \(U\) and \(\| f\|_{L^2 (U)} < \infty\) , prove that \(z = 0\) is a removable singularity of \(f\) .
+
+\end{prob}
+
+
+\end{document}

@@ -1,0 +1,177 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\title{Review of Complex Analysis: Singularities, Residues, and Theorems}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Cauchy Theorem and Applications}
+
+\textbf{Cauchy Theorem:} [cite: 7]
+If $f: U \rightarrow \mathbb{C}$ is holomorphic, then[cite: 8, 9]:
+$$\int_{\gamma} f(z) dz = 0$$ [cite: 10]
+This can be applied to evaluate real integrals[cite: 12].
+
+\subsection*{Example: Sine Integral}
+Show that $\int_{0}^{\infty} \frac{1-\cos x}{x^{2}} dx = \frac{\pi}{2}$[cite: 15].
+\textbf{Strategy:} Integrate $f(z) = \frac{1-e^{iz}}{z^{2}}$ over a semicircular contour with an indentation at the origin[cite: 21].
+\begin{itemize}
+    \item By Cauchy's Theorem: $\int_{-R}^{-\epsilon} \dots + \int_{\gamma_{\epsilon}} \dots + \int_{\epsilon}^{R} \dots + \int_{\gamma_{R}} \dots = 0$[cite: 22].
+    \item As $R \to \infty$, the large arc integral goes to 0[cite: 25, 221].
+    \item The integral over the small arc $\gamma_{\epsilon}$ contributes $\pi$ in the limit[cite: 30].
+    \item Taking the real part yields the result $I = \pi/2$[cite: 33].
+\end{itemize}
+
+---
+
+\section{Integral Formulas and Power Series}
+
+\textbf{Cauchy Integral Formula:} [cite: 45]
+For $z \in D$:
+$$f(z) = \frac{1}{2\pi i} \int_{C} \frac{f(w)}{w-z} dw$$ [cite: 40]
+
+\textbf{General Formula for Derivatives:}
+$$f^{(n)}(z) = \frac{n!}{2\pi i} \int_{C} \frac{f(w)}{(w-z)^{n+1}} dw$$ [cite: 46]
+
+\textbf{Cauchy Inequality:} [cite: 55]
+If $f$ is holomorphic on a disc of radius $R$ centered at $z_0$, then:
+$$|f^{(n)}(z_0)| \le \frac{n! \|f\|_C}{R^n}$$ [cite: 51]
+where $\|f\|_C = \sup_{z \in C} |f(z)|$[cite: 54].
+
+\textbf{Liouville's Theorem:} [cite: 101]
+An entire and bounded function is constant[cite: 61].
+\begin{itemize}
+    \item \textit{Extension:} If $|f(z)| \le A|z|^k + B$, then $f$ is a polynomial of degree $\le k$[cite: 122, 123].
+\end{itemize}
+
+\textbf{Identity Theorem:} [cite: 66]
+If $f$ is holomorphic in $U$ and $f(z_n) = 0$ for a sequence $z_n \to z \in U$, then $f \equiv 0$[cite: 63, 66].
+
+---
+
+\section{Singularities and Residues}
+
+\subsection*{Classification of Singularities}
+\begin{itemize}
+    \item \textbf{Removable:} $f$ is bounded near $z_0$[cite: 228, 230].
+    \item \textbf{Pole:} $|f(z)| \to \infty$ as $z \to z_0$[cite: 232, 233].
+    \item \textbf{Essential:} Image $f(U \setminus \{z_0\})$ is dense in $\mathbb{C}$ (Casorati-Weierstrass)[cite: 234, 236].
+\end{itemize}
+
+\subsection*{Residue Calculus}
+For a pole of order $n$ at $z_0$[cite: 210]:
+$$\text{res}_{z_0} f = \lim_{z \to z_0} \frac{1}{(n-1)!} \left(\frac{d}{dz}\right)^{n-1} (z-z_0)^n f(z)$$
+\textbf{Residue Theorem:} [cite: 211]
+$$\int_{C} f(z) dz = 2\pi i \sum_{k=1}^N \text{res}_{z_k} f$$
+
+---
+
+\section{Problem Solutions from Past Exams}
+
+\textbf{Problem (Spring '10):} $f$ is entire. For every $z_0$, at least one coefficient $c_n$ in the power series expansion at $z_0$ is 0. Show $f$ is a polynomial[cite: 85, 87].
+\textit{Solution:} For each $z \in \mathbb{C}$, there exists $n$ such that $f^{(n)}(z) = 0$[cite: 88]. Since $\mathbb{C}$ is uncountable, there exists a specific $k$ such that $f^{(k)}(z) = 0$ for uncountably many $z$[cite: 88, 90]. By the identity theorem, $f^{(k)} \equiv 0$, so $f$ is a polynomial[cite: 92, 94].
+
+\textbf{Problem (2017 Sp 5):} If $f, g$ are entire and $|f(z)| \le |g(z)|$ for all $z$, then $f = cg$[cite: 138, 140].
+\textit{Solution:} Consider $h = f/g$. If $g(z) = 0$, the singularity is removable because $h$ is bounded[cite: 149]. Since $h$ is then a bounded entire function, $h(z) = c$ by Liouville's Theorem[cite: 144].
+
+\textbf{Problem (2016 Sp 7):} Count zeros of $2z^5 - 6z^2 + z + 1 = 0$ in $1 \le |z| < 2$[cite: 273, 277].
+\textit{Solution:} Use \textbf{Rouché's Theorem}[cite: 239].
+\begin{itemize}
+    \item In $|z| < 1$: Compare $g(z) = -6z^2$ with $f(z) = 2z^5 + z + 1$. $|g| > |f|$ on $|z|=1$, so there are 2 zeros[cite: 274, 275].
+    \item In $|z| < 2$: Compare $g(z) = 2z^5$ with $f(z) = -6z^2 + z + 1$. $|g| > |f|$ on $|z|=2$ ($64 > 27$), so there are 5 zeros[cite: 275, 276, 279].
+    \item Result: $5 - 2 = 3$ zeros in the annulus[cite: 280].
+\end{itemize}
+
+
+
+\newpage
+\section{Cauchy Theorem and Integral Formulas}
+
+\subsection*{Cauchy Theorem}
+If $f: U \rightarrow \mathbb{C}$ is holomorphic, then for any closed contour $\gamma$:
+$$\int_{\gamma} f(z) \, dz = 0$$
+This is used to evaluate real integrals, such as $\int_{0}^{\infty} \frac{1-\cos x}{x^2} dx = \pi/2$, by integrating $f(z) = \frac{1-e^{iz}}{z^2}$ over an indented semicircular contour.
+
+\subsection*{Cauchy Integral Formula}
+For $z \in D$:
+$$f(z) = \frac{1}{2\pi i} \int_{C} \frac{f(w)}{w-z} \, dw$$
+The generalized formula for derivatives is:
+$$f^{(n)}(z) = \frac{n!}{2\pi i} \int_{C} \frac{f(w)}{(w-z)^{n+1}} \, dw$$
+
+\subsection*{Cauchy Inequality}
+If $f$ is holomorphic on a disc of radius $R$ centered at $z_0$:
+$$|f^{(n)}(z_0)| \le \frac{n! \|f\|_C}{R^n}$$
+where $\|f\|_C = \sup_{z \in C} |f(z)|$.
+
+---
+
+\section{Theorems on Entire Functions}
+
+\begin{itemize}
+    \item \textbf{Liouville's Theorem:} An entire and bounded function is constant.
+    \item \textbf{Growth Estimate:} If $|f(z)| \le A R^k + B$, then $f$ is a polynomial of degree at most $k$.
+    \item \textbf{Identity Theorem:} If $f$ is holomorphic in $U$ and $f(z_n) = 0$ for a sequence $z_n \to z \in U$, then $f \equiv 0$.
+    \item \textbf{Morera's Theorem:} If $f$ is continuous on a disc and $\int_{T} f = 0$ for every triangle $T$, then $f$ is holomorphic.
+\end{itemize}
+
+
+\section{Singularities and Residues}
+
+\subsection*{Classification}
+\begin{itemize}
+    \item \textbf{Removable:} $f$ is bounded near $z_0$.
+    \item \textbf{Pole:} $|f(z)| \to \infty$ as $z \to z_0$.
+    \item \textbf{Essential:} The image of the neighborhood is dense in $\mathbb{C}$ (Casorati-Weierstrass).
+\end{itemize}
+
+\subsection*{Residue Calculation}
+For a pole of order $n$ at $z_0$:
+$$\text{res}_{z_0} f = \lim_{z \to z_0} \frac{1}{(n-1)!} \left(\frac{d}{dz}\right)^{n-1} (z-z_0)^n f(z)$$
+\textbf{Residue Formula:}
+$$\int_{C} f(z) \, dz = 2\pi i \sum_{k=1}^N \text{res}_{z_k} f$$
+
+---
+
+\section{Exam Problem Solutions}
+
+\subsection*{Power Series Coefficients (Spring '10)}
+\textbf{Problem:} $f$ is entire, and at each $z \in \mathbb{C}$, at least one coefficient $c_n$ in the power series expansion at $z$ is zero. Show $f$ is a polynomial.
+\textbf{Solution:} For each $z$, $f^{(n)}(z) = 0$ for some $n$. Since the plane is an uncountable union of the sets $S_n = \{z : f^{(n)}(z) = 0\}$, at least one $S_k$ must be uncountable. By the identity theorem, $f^{(k)} \equiv 0$, so $f$ is a polynomial.
+
+\subsection*{Rouché's Theorem (2016 Sp 7)}
+\textbf{Problem:} Determine the number of zeros of $2z^5 - 6z^2 + z + 1 = 0$ in $1 \le |z| < 2$.
+\begin{itemize}
+    \item \textbf{On $|z|=1$:} Let $g(z) = -6z^2$. Since $|-6z^2| = 6$ and $|2z^5 + z + 1| \le 4$, there are 2 zeros in $|z| < 1$.
+    \item \textbf{On $|z|=2$:} Let $g(z) = 2z^5$. Since $|2z^5| = 64$ and $|-6z^2 + z + 1| \le 27$, there are 5 zeros in $|z| < 2$.
+    \item \textbf{Result:} There are $5 - 2 = 3$ zeros in the annulus $1 \le |z| < 2$.
+\end{itemize}
+
+\subsection*{Unbounded Zeros (2016 Sp 6)}
+\textbf{Problem:} If $f$ is entire and its zero set is unbounded, show $f$ has an essential singularity at $\infty$.
+\textbf{Solution:} If $f$ had a pole or removable singularity at $\infty$, it would be a polynomial. However, a non-zero polynomial has only finitely many zeros. Thus, the singularity must be essential.
+
+\end{document}
+
+\subsection{Power Series Coefficients (Spring '10)}
+\textbf{Problem:} $f$ is entire, and at every $z_0$, at least one coefficient $c_n$ in the power series expansion is zero. Show $f$ is a polynomial[cite: 83, 85, 87].
+\\ \textbf{Solution:} For each $z \in \mathbb{C}$, there is an $n$ such that $f^{(n)}(z) = 0$[cite: 88]. Since $\mathbb{C}$ is uncountable, there must be some $k$ such that the set $\{z \mid f^{(k)}(z) = 0\}$ is uncountable[cite: 88, 90]. By the identity theorem, $f^{(k)} \equiv 0$, meaning $f$ is a polynomial[cite: 92, 94].
+
+\subsection{Rouché's Theorem (2016 Sp 7)}
+\textbf{Problem:} Count zeros of $2z^5 - 6z^2 + z + 1 = 0$ for $1 \le |z| < 2$[cite: 260, 273].
+\begin{itemize}
+    \item \textbf{On $|z|=1$:} Let $g(z) = -6z^2$[cite: 274]. $|g| = 6$ while the rest of the terms are $|2z^5 + z + 1| \le 2+1+1 = 4$[cite: 274, 281]. Thus, there are 2 zeros in $|z| < 1$[cite: 275].
+    \item \textbf{On $|z|=2$:} Let $g(z) = 2z^5$[cite: 276]. $|g| = 64$ while $|-6z^2 + z + 1| \le 6(4) + 2 + 1 = 27$[cite: 275]. Thus, there are 5 zeros in $|z| < 2$[cite: 279].
+    \item \textbf{Conclusion:} There are $5 - 2 = 3$ zeros in the region $1 \le |z| < 2$[cite: 280].
+\end{itemize}
+
+\subsection{Unbounded Zeros (2016 Sp 6)}
+\textbf{Problem:} If $f$ is entire and its zero set $Z$ is unbounded, prove $f$ has an essential singularity at $\infty$[cite: 283, 286, 287].
+\\ \textbf{Solution:} If $f$ had a pole or removable singularity at $\infty$, it would be a polynomial[cite: 295, 297, 311]. A polynomial (not identically zero) has only finitely many zeros, contradicting that $Z$ is unbounded[cite: 312].
+
+\end{document}
