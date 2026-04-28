@@ -630,26 +630,35 @@ The following is an improvement of Casorati-Weierstrass theorem.
 \end{thm}
 
 
+\begin{prop}[Schwarz Lemma]
+    Let $f:\mathbb{D}\to\mathbb{D}$ is holomorphic with $f(0)=0$, then 
+    \begin{enumerate}
+        \item $|f(z)|\leq |z|$ for all $z\in\mathbb{D}$.
+        \item For some $z_0\neq 0$, if $|f(z_0)|=|z_0|$, then $f$ is a rotation.
+        \item We have $|f'(0)|\leq 1$, and if it attains equality, then it implies $f$ is a rotation.
+    \end{enumerate}
+\end{prop}
 
 
 
 
 
 
-\chapter{Useful facts}
-\begin{enumerate}
-    \item $e^z$ has the following power series expansion: 
-    \begin{equation*}
-        e^z=\sum_{j=0}^\infty\frac{z^j}{j!}
-    \end{equation*}
-    \item $\cos, \sin$ has the following power series expansions:
-    \begin{equation*}
-        \cos z=
-    \end{equation*}
-    \begin{equation*}
-        \sin z=
-    \end{equation*}
-\end{enumerate}
+
+% \chapter{Useful facts}
+% \begin{enumerate}
+%     \item $e^z$ has the following power series expansion: 
+%     \begin{equation*}
+%         e^z=\sum_{j=0}^\infty\frac{z^j}{j!}
+%     \end{equation*}
+%     \item $\cos, \sin$ has the following power series expansions:
+%     \begin{equation*}
+%         \cos z=
+%     \end{equation*}
+%     \begin{equation*}
+%         \sin z=
+%     \end{equation*}
+% \end{enumerate}
 
 
 
@@ -658,7 +667,19 @@ The following is an improvement of Casorati-Weierstrass theorem.
 
 
 \chapter{Maybe}
--square roots, logs
--laplace, mellin transform
+\begin{prop}
+    Let $\Omega$ be simply connected. If $1\in\Omega, 0\not\in\Omega$, then it has a branch of $\log$, where $F(z)=\log z$ such that 
+    \begin{enumerate}
+        \item $F$ is holomorphic.
+        \item $e^{F(z)}=z$ for all $z\in\Omega$.
+    \end{enumerate}
+    On $\C\setminus(-\infty,0]$, where 
+    \begin{equation*}
+        \log z=\log r+i\theta
+    \end{equation*}
+    is called the principal branch.
+\end{prop}
+
+
 
 \end{document}
