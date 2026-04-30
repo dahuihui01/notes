@@ -173,7 +173,7 @@
 
 
 \begin{prop}
-    Let $\Omega\subset\C$ be an open set and let $f_\nu:\Omega\to\C$ be holomorphic. Assume $f_\nu\to f$ locally uniformly, then $f:\Omega\to\C$ is holomorphic and $f_\nu'\to f'$ locally uniformly on $\Omega$.
+    Let $\Omega\subset\C$ be an open set and let $f_\nu:\Omega\to\C$ be holomorphic. Assume $f_\nu\to f$ locally uniformly, then $f:\Omega\to\C$ is holomorphic (and $f_\nu'\to f'$ locally uniformly on $\Omega$).
 \end{prop} 
 
 
@@ -201,12 +201,10 @@
 \begin{thm}[Liouville's theorem]
     If $f:\C\to\C$ is holomorphic and bounded, then $f$ is constant.
 \end{thm}
-
 A consequence of Liouville's theorem is the fundamental theorem of algebra:
 \begin{prop}
     If $p(z)$ is a polynomial of degree $n\geq 1$, then $p(z)$ has at least one root. (Proof: consider $1/p(z)$).
 \end{prop}
-
 There are several properties that also hold for harmonic functions.
 \begin{prop}[mean value property of harmonic functions]
     If $u\in C^2(\Omega)$ is harmonic, $z_0\in\Omega$, and $\overline{D_r(z_0)}\subset\Omega$, then 
@@ -234,7 +232,6 @@ There are several properties that also hold for harmonic functions.
 \begin{prop}
     Let $\Omega\subset\C$ be simply connected domain. Then each harmonic function $u\in C^2(\Omega)$ has a harmonic conjugate.
 \end{prop}
-
 Next is a converse of Cauchy's integral theorem.
 \begin{thm}[Morera's theorem]
     Let $g:\Omega\to\C$ be continuous, and 
@@ -245,18 +242,18 @@ Next is a converse of Cauchy's integral theorem.
 \end{thm}
 
 
-\begin{thm}[Schwarz reflection principle]
+\begin{prop}[Schwarz reflection principle]
     Assume $f:\Omega^+\cup L\to\C$ is continuous, holomorphic in $\Omega^+$, and real-valued on $L$. Define $g:\Omega\to\C$ by
     \begin{equation*}
         g(z)=f(z), z\in\Omega^+\cup L, \overline{f(\overline{z})}, z\in\Omega^-
     \end{equation*}
     Then $g$ is holomorphic on $\Omega$.
-\end{thm}
+\end{prop}
 
 
-\begin{thm}[Goursat's theorem]
+\begin{prop}[Goursat's theorem]
     If $f:\Omega\to\C$ is complex-differentiable at each point of $\Omega$, then $f$ is holomorphic.
-\end{thm}
+\end{prop}
 
 
 
@@ -286,9 +283,9 @@ Next is a converse of Cauchy's integral theorem.
 \end{defn}
 
 
-\begin{thm}
+\begin{prop}
     If $p\in\Omega$ and $f$ is holomorphic on $\Omega\setminus p$ and bounded, then $p$ is a removable singularity.
-\end{thm}
+\end{prop}
 
 \begin{prop}
     If $f$ is holomorphic on $\Omega\setminus p$ with a pole at $p$, then there exists $k\in\mathbb{Z}^+$ such that 
@@ -319,9 +316,6 @@ Next is a converse of Cauchy's integral theorem.
     \end{equation*}
     where $\gamma$ is any counterclockwise circle centered at $z_0$, of radius $r\in(r_0,r_1)$. 
 \end{prop}
-
-
-
 How does the Laurent series expansion help us?
 \begin{prop}
     Suppose $f$ is holomorphic on $D_R(z_0)\setminus z_0$, with the above Laurent series. $f$ has a pole at $z_0$ iff $a_n=0$ for all but finitely many $n<0$; $f$ has an essential singularity iff $a_n\neq 0$ for infinitely many $n$.
