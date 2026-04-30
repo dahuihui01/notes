@@ -385,7 +385,6 @@ How does the Laurent series expansion help us?
 \begin{prop}
     If $f$ is integrable on $\R$, then $\hat{f}$ is continuous on $\R$.
 \end{prop}
-
 The next proposition gives criterion for the Fourier inversion formula.
 \begin{prop}
     Assume $f$ is bounded and continuous on $\R$, and $f,\hat{f}$ are integrable on $\R$. Then the Fourier inversion formula holds: for all $x\in\R$,
@@ -393,7 +392,6 @@ The next proposition gives criterion for the Fourier inversion formula.
         f(x)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty\hat{f}(\xi)e^{ix\xi}d\xi
     \end{equation*}
 \end{prop}
-
 We define 
 \begin{equation*}
     S_Rf(x)=\frac{1}{\sqrt{2\pi}}\int_{-R}^R\hat{f}(\xi)e^{ix\xi}d\xi
@@ -473,10 +471,6 @@ functions}
     \end{equation*}
 \end{prop}
 
-
-
-
-Next we talk about the argument principle.
 \begin{prop}
     Let $f\in C^2(\bar{\Omega})$ be holomorphic in $\Omega$, nowhere zero on $\partial\Omega$, then let $\nu(f,\Omega)$ be a the number of zeros of $f$ in $\Omega$, counted with multiplicity, 
     \begin{equation*}
@@ -515,10 +509,7 @@ Combining all the above,
     \nu(f,\Omega)=\sum_j n(\gamma_j, 0)
 \end{equation*}
 the number of zeros of $f$, counted with multiplicity, is equal to the sum of the winding numbers of $f(C_j)$ about $0$.
-
-
-The argument principle also works for meromorphic functions.
-\begin{prop}
+\begin{prop}[Argument principle for meromorphic functions]
     If $f$ is meromorphic on a bounded domain $\Omega$ and $C^1$ on a neighborhood of $\partial\Omega$. Then the number of zeros of $f$ minus the number of poles, counted with multiplicity is equal to the sum of winding numbers of $f(C_j)$ around 0, where $C_j$ are the connected components of $\partial\Omega$.
 \end{prop}
 
@@ -534,9 +525,9 @@ The argument principle also works for meromorphic functions.
 \end{thm}
 
 
-\begin{thm}[Open mapping theorem]
+\begin{prop}[Open mapping theorem]
     If $\Omega\subset\C$ is open and connected and $f:\Omega\to\C$ is holomorphic and non-constant, then $f$ maps open sets to open sets.
-\end{thm}
+\end{prop}
 
 
 \begin{defn}[Gamma function]
@@ -545,6 +536,14 @@ The argument principle also works for meromorphic functions.
         \Gamma(z)=\int_0^\infty e^{-t}t^{z-1}dt, \text{Re}z>0
     \end{equation*}
 \end{defn}
+
+\begin{defn}[Riemann zeta function]
+    The zeta function is 
+    \begin{equation*}
+        \zeta(s)=\sum_{n=1}^\infty n^{-s}, \text{Re}s>1
+    \end{equation*}
+\end{defn}
+
 
 \begin{prop}
     For $z\in\C\setminus\Z$, we have 
@@ -563,12 +562,6 @@ The argument principle also works for meromorphic functions.
     \end{equation*}
 \end{prop}
 
-\begin{defn}[Riemann zeta function]
-    The zeta function is 
-    \begin{equation*}
-        \zeta(s)=\sum_{n=1}^\infty n^{-s}, \text{Re}s>1
-    \end{equation*}
-\end{defn}
 
 \begin{prop}[Euler's product formula]
     Let $\{p_j:j\geq 1\}$ denote the set of prime numbers, then for $\text{Re}s>1$, 
@@ -610,10 +603,6 @@ The argument principle also works for meromorphic functions.
     \end{equation*}
     where $D$ is the unit disk. (A holomorphic diffeomorphism is a holomorphic function that has a holomorphic inverse).
 \end{thm}
-
-
-
-
 The following is an improvement of Casorati-Weierstrass theorem.
 \begin{thm}[Picard's theorem]
     Let $p,q$ be distinct and 
@@ -660,19 +649,19 @@ The following is an improvement of Casorati-Weierstrass theorem.
 
 
 
-\chapter{Maybe}
-\begin{prop}
-    Let $\Omega$ be simply connected. If $1\in\Omega, 0\not\in\Omega$, then it has a branch of $\log$, where $F(z)=\log z$ such that 
-    \begin{enumerate}
-        \item $F$ is holomorphic.
-        \item $e^{F(z)}=z$ for all $z\in\Omega$.
-    \end{enumerate}
-    On $\C\setminus(-\infty,0]$, where 
-    \begin{equation*}
-        \log z=\log r+i\theta
-    \end{equation*}
-    is called the principal branch.
-\end{prop}
+% \chapter{Maybe}
+% \begin{prop}
+%     Let $\Omega$ be simply connected. If $1\in\Omega, 0\not\in\Omega$, then it has a branch of $\log$, where $F(z)=\log z$ such that 
+%     \begin{enumerate}
+%         \item $F$ is holomorphic.
+%         \item $e^{F(z)}=z$ for all $z\in\Omega$.
+%     \end{enumerate}
+%     On $\C\setminus(-\infty,0]$, where 
+%     \begin{equation*}
+%         \log z=\log r+i\theta
+%     \end{equation*}
+%     is called the principal branch.
+% \end{prop}
 
 
 
