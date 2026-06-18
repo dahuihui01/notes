@@ -30,9 +30,8 @@
 	},
 	headfont=\normalfont\bfseries\color{huidarkpink}
 ]{huipinkbox}
-\declaretheorem[style=huipinkbox,name=Theorem,within=chapter]{thm}
+\declaretheorem[style=huipinkbox,name=Theorem]{thm}
 \declaretheorem[style=huipinkbox,name=Theorem,sibling=thm]{theorem}
-\declaretheorem[style=huipinkbox,name=Proposition,sibling=thm]{prop}
 
 
 
@@ -81,7 +80,7 @@
 	},
 	headfont=\normalfont\bfseries\color{huidarkpurple}
 ]{huipurplebox}
-\declaretheorem[style=huipurplebox,name=Proposition,within=chapter]{prop}
+\declaretheorem[style=huipurplebox,name=Proposition]{prop}
 
 
 
@@ -148,9 +147,31 @@
 	},
 	headfont=\normalfont\bfseries\color{huidarkblue}
 ]{huiblueblox}
-\declaretheorem[style=huiblueblox,name=Example,within=chapter]{example}
+\declaretheorem[style=huiblueblox,name=Example]{example}
 
-\declaretheorem[style=huiblueblox,name=Definition,within=chapter]{defn}
+\definecolor{nirdarkgreen}{HTML}{537a57}
+\definecolor{nirlightgreen}{HTML}{e9f7ea}
+
+\declaretheoremstyle[
+	mdframed={
+		backgroundcolor=nirlightgreen,
+		linecolor=nirdarkgreen,
+		rightline=false,
+		topline=false,
+		bottomline=false,
+		linewidth=2pt,
+		innertopmargin=5pt,
+		innerbottommargin=8pt,
+		innerleftmargin=8pt,
+		leftmargin=-2pt,
+		skipbelow=2pt,
+		nobreak
+	},
+	headfont=\normalfont\bfseries\color{nirdarkgreen}
+]{nirgreenbox}
+\declaretheorem[style=nirgreenbox,name=Definition]{defn}
+
+% \declaretheorem[style=huiblueblox,name=Definition, within=chapter]{defn}
 
 
 % \definecolor{huilightblue}{HTML}{edf9ff}
@@ -191,7 +212,7 @@
 % 	},
 % 	headfont=\normalfont\bfseries\color{huidarkblue}
 % ]{huiblueblox}
-\declaretheorem[style=huiblueblox,name=Problem,within=chapter]{prob}
+\declaretheorem[style=huiblueblox,name=Problem]{prob}
 
 
 
@@ -212,8 +233,8 @@
 % 	},
 % 	headfont=\normalfont\bfseries\color{huidarkblue}
 % ]{huiblueblox}
-\declaretheorem[style=huiblueblox,name=Exercise,within=chapter]{exer}
-\declaretheorem[style=huipinkbox, name=Corollary, within=chapter]{cor}
+\declaretheorem[style=huiblueblox,name=Exercise]{exer}
+\declaretheorem[style=huipinkbox, name=Corollary]{cor}
 
 
 
@@ -404,3 +425,5 @@
 	\fi}
 ]{warn}
 \makeatother
+
+\newtheorem{remark}{Remark}

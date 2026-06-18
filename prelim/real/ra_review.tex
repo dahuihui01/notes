@@ -18,7 +18,7 @@
 \usepackage{tikz-cd}
 
 
-\input{hui copy.tex}
+\input{hui_r.tex}
 
 \title{Real Analysis 605 MT Review}
 \date{\today}
@@ -73,9 +73,9 @@
 
     A subset $E_1$ of $E$ is said to be relatively open with respect to $E$ if it can be written as $E_1=E\cap G$ for some open set $G$. 
 \end{defn}
-\begin{defn}[$A_\delta$, $A_\sigma$ sets]
-    A set $A$ is said to be of type $A_\delta$ if it can be written as a countable intersection of sets and to be of type $A_\sigma$ if it can be written as a countable union of sets. Then $G_\delta$ implies a countable intersection of open sets, and $F_\sigma$ implies the countable union of closed sets.
-\end{defn}
+% \begin{defn}[$A_\delta$, $A_\sigma$ sets]
+%     A set $A$ is said to be of type $A_\delta$ if it can be written as a countable intersection of sets and to be of type $A_\sigma$ if it can be written as a countable union of sets. Then $G_\delta$ implies a countable intersection of open sets, and $F_\sigma$ implies the countable union of closed sets.
+% \end{defn}
 \begin{defn}[perfect set]
     $C$ is called a perfect set if it is a closed set such that every point in $C$ is a limit point.
 \end{defn}
@@ -172,7 +172,7 @@
     \end{equation*}
     Let $\Gamma$ be any partition, define 
     \begin{equation*}
-        L=\sup_\Gamma\sum_{i=1}^m\left((\phi(t_i)-\phi(t_{i-1}))^2+(\psi(t_i)-\psi(t_{i-1}))^2\right)^{1/2}
+        L=\sup_\Gamma\sum_{i=1}^m\left[(\phi(t_i)-\phi(t_{i-1}))^2+(\psi(t_i)-\psi(t_{i-1}))^2\right]^{1/2}
     \end{equation*}
     then $C$ is rectifiable if $L<+\infty$.
 \end{defn}
@@ -196,6 +196,9 @@
         L_\Gamma=\sum_{i=1}^mm_i[\phi(x_i)-\phi(x_{i-1})], U_\Gamma=\sum_{i=1}^mM_i[\phi(x_i)-\phi(x_{i-1})]
     \end{equation*}
 \end{defn}
+
+
+\newpage
 \begin{defn}[Lebesgue outer measure]
     For let $S$ be a collection of $n$-dimensional intervals that cover $E$, then the Lebesgue outer measure of $E$ is given by
     \begin{equation*}
@@ -252,16 +255,15 @@
     \end{equation*}
 \end{prop}
 \begin{prop}
-    Every open set in $\R^1$ can be written as a countable union of disjoint open intervals.
-
-    Moreover, every open set in $\R^n$ can be written as a countable union of nonoverlapping closed cubes. 
+    Every open set in $\R^1$ can be written as a countable union of disjoint open intervals. Moreover, every open set in $\R^n$ can be written as a countable union of nonoverlapping closed cubes. 
 \end{prop}
+
 \begin{thm}[Heine-Borel]
     A set $E\subset\R^n$ is compact if and only if it is closed and bounded. (A set $E$ is compact iff every sequence of points of $E$ has a subsequence that converges to a point of $E$, i.e., compact implies sequentially compact).
 \end{thm}
-\begin{prop}
-    $M=\limsup_{x\to x_0}$ if and only if there exists $\{x_k\}$ in $E-\{x_0\}$ such that $x_k\to x_0$ and $f(x_k)\to M$ and if $M'>M$, there exists $\delta>0$ such that $f(x)<M'$ for $x\in B(x_0,\delta)\cap E$.
-\end{prop}
+% \begin{prop}
+%     $M=\limsup_{x\to x_0}$ if and only if there exists $\{x_k\}$ in $E-\{x_0\}$ such that $x_k\to x_0$ and $f(x_k)\to M$ and if $M'>M$, there exists $\delta>0$ such that $f(x)<M'$ for $x\in B(x_0,\delta)\cap E$.
+% \end{prop}
 \begin{thm}
     If $E$ is compact and $f$ is continuous in $E$ relative to $E$, then the following hold:
     \begin{enumerate}
@@ -276,12 +278,12 @@
 \begin{prop}
     Let $y=Tx$ be a transformation of $\R^n$ that is continuous in $E$. If $E$ is compact, then the image $TE$ is also compact.
 \end{prop}
-\begin{prop}
-    A bounded $f$ is Riemann integral on $I$ if and only if given any $\varepsilon>0$, there is a partition $\Gamma$ of $I$, such that 
-    \begin{equation*}
-        0\leq U_\Gamma-L_\Gamma<\varepsilon
-    \end{equation*}
-\end{prop}
+% \begin{prop}
+%     A bounded $f$ is Riemann integral on $I$ if and only if given any $\varepsilon>0$, there is a partition $\Gamma$ of $I$, such that 
+%     \begin{equation*}
+%         0\leq U_\Gamma-L_\Gamma<\varepsilon
+%     \end{equation*}
+% \end{prop}
 \begin{prop}
     Let $f,g$ be of bounded variation on $[a,b]$, then for any real constant $c$, we have 
     \begin{equation*}
@@ -309,18 +311,18 @@
         P=\frac{1}{2}[V+f(b)-f(a)], \quad N=\frac{1}{2}[V-f(b)+f(a)]
     \end{equation*}
 \end{prop}
-\begin{thm}[Jordan's theorem]
+\begin{prop}[Jordan's theorem]
     A function $f$ is of bounded variation on $[a,b]$ if and only if it can be written as the difference of two bounded increasing functions on $[a,b]$.
-\end{thm}
-\begin{thm}
+\end{prop}
+\begin{prop}
     Every function of bounded variation has at most a countable number of discontinuities, and they are all jump or removable discontinuities.
-\end{thm}
+\end{prop}
 \begin{prop}
     If $f$ is continuous on $[a,b]$, then 
     \begin{equation*}
         V=\lim_{|\Gamma|\to 0}S_\Gamma
     \end{equation*}
-    If $f$ has a conitnuous derivative $f'$ on $[a,b]$, then 
+    If $f$ has a continuous derivative $f'$ on $[a,b]$, then 
     \begin{equation*}
         V=\int_a^b|f'|, P=\int_a^b\{f'\}^+, N=\int_a^b\{f'\}^-
     \end{equation*}
@@ -374,9 +376,11 @@
 \begin{thm}[Mean-Value Theorem]
     If $f$ is continuous on $[a,b]$ and $\phi$ is bounded and increasing on $[a,b]$, there exists $\xi\in [a,b]$ such that 
     \begin{equation*}
-        \int_a^bd\phi=f(\xi)[\phi(b)-\phi(a)]
+        \int_a^bfd\phi=f(\xi)[\phi(b)-\phi(a)]
     \end{equation*}
 \end{thm}
+
+\newpage
 \begin{prop}
     For an interval $I$, the exterior measure $|I|_e$ is the volume of $I$.
 \end{prop}
