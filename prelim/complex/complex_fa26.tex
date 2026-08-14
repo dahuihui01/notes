@@ -1,0 +1,194 @@
+\documentclass[openany]{book}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsfonts,amsthm, amssymb}
+\usepackage{yhmath}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{comment}
+\usepackage{tikz-cd}
+\usepackage{quiver}
+\usepackage{hyperref,cleveref}
+\renewcommand{\familydefault}{ppl}
+\newcommand{\curl}{\text{curl}}
+\newcommand{\diverg}{\text{div}}
+\newcommand{\tr}{\text{tr}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\colim}{\text{colim}}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\disc}{disc}
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+\newcommand{\tor}{\text{Tor}}
+\newcommand{\id}{\text{id}}
+\newcommand{\ext}{\text{Ext}}
+\newcommand{\ptop}{\text{PTop}}
+\newcommand{\pt}{\text{pt}}
+\newcommand{\ach}{\text{Ach}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\gal}{\text{Gal}}
+\newcommand{\fraccomma}{\genfrac{}{}{0pt}{}{}{,}}
+\definecolor{wikipediadarkblue}{rgb}{0.023, 0.270, 0.676}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=blue,
+    urlcolor=red
+}
+
+% \hypersetup{
+%     urlbordercolor={1 0 0}, % Red box for URLs
+%     linkbordercolor=blue, % Blue box for internal links
+%     % the values are in RGB format from 0 to 1
+% }
+
+
+\input{hui_r.tex}
+
+\title{Complex Analysis Qualifying Exam Review
+\\ 
+\vspace{0.4cm}
+\large Spring 2026}
+
+
+
+% \author{(Please email hsun95@jh.edu if you see typos)}
+% \date{\today}
+
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+\newpage
+
+
+
+
+\chapter{Cauchy's integral formula}
+
+\begin{prob}
+    Evaluate the following integral:
+    \begin{equation*}
+        \int_0^\infty\frac{1-\cos x}{x^2}dx
+    \end{equation*}
+\end{prob}
+% \begin{proof}
+%     The answer is 
+%     \begin{equation*}
+%         \int_0^\infty\frac{1-\cos x}{x^2}dx=\frac{\pi}{2}
+%     \end{equation*}
+%     We use the contour of a semicircle skipping $x=0$. Let $f(z)=\frac{1-e^{iz}}{z^2}$, then by Cauchy's integral formula, we have 
+%     \begin{align*}
+%         \int_{\gamma_R}f(z)dz+\int_{\gamma_\varepsilon}f(z)dz+\int_{|z|>\varepsilon}f(z)dz=0\tag{1}
+%     \end{align*}
+% where 
+% \begin{equation*}
+%     \lim_{\varepsilon\to 0}\int_{|z|>\varepsilon}f(z)dz=2\int_0^\infty\frac{1-\cos x}{x^2}dx
+% \end{equation*}
+% Hence it suffices to compute the first two terms in (1). Let $z=Re^{i\theta}$, we see that 
+% \begin{align*}
+%     \left|\int_{\gamma_R}f(z)dz\right|&=\left|\int_0^{\pi}\frac{1-e^{iRe^{i\theta}}}{R^2e^{2i\theta}}iRe^{i\theta}d\theta\right|\\
+%     &\leq\int_0^\pi\frac{2}{R}d\theta\to 0
+% \end{align*}
+% as $R\to\infty$.
+% Similarly, we can compute $\int_{\gamma_\varepsilon}f(z)dz$ by setting $z=\varepsilon e^{i\theta}$ and letting $\varepsilon\to 0$. 
+% \begin{align*}
+%     \int_{\gamma_\varepsilon}f(z)dz&=\int_\pi^{0}\frac{1-e^{i\varepsilon e^{i\theta}}}{\varepsilon^2e^{2i\theta}}i\varepsilon e^{i\theta}d\theta\\
+%     &=i\int_\pi^0\frac{1-e^{i\varepsilon e^{i\theta}}}{\varepsilon e^{i\theta}}d\theta\to -\pi
+% \end{align*}
+% as $\varepsilon\to 0$, since
+% \begin{equation*}
+%     \lim_{a\to 0}\frac{1-e^{ia}}{a}=-i
+% \end{equation*}
+% \end{proof}
+
+
+\begin{prob}
+    Let $U$ be a region. Suppose $f$ is holomorphic in $U$, and a sequence $\{z_n\}\subset U$ converges to some $z\in U$. If $f(z_n)=0$ for all $n$, show that $f\equiv 0$.
+\end{prob}
+% \begin{proof}
+%     Since $z_n\to z$, we know $f(z)=\lim_{z_n\to z}f(z_n)=0$. Assume $f$ is not identically zero, then writing it as a power series, we have 
+%     \begin{align*}
+%         f(w)=(w-z)^ng(w)
+%     \end{align*}
+%     where $g(w)=a_n+a_{n+1}(w-z)+a_{n+2}(w-z)^2+\dots$, for some $a_n\neq 0$. We know $g(z)=a_n\neq 0$, hence there exists a neighborhood $V$ around $z$ such that $g(w)\neq 0$ whenever $w\in V$. Hence, if $w\in V$, then $f(w)=0$ iff $w=z$. This is a contradiction to $z_n\to z$ and $f(z_n)=0$ for all $n$.
+% \end{proof}
+
+% \begin{warn}
+%     This shows that a nonzero holomorphic function has isolated zeros.
+% \end{warn}
+
+\begin{prob}[Spring 2018, Q4]
+    Let $f$ be an entire function, suppose that for each $z_0$, the power series expansion 
+    \begin{equation*}
+        f(z)=\sum_{n=0}^\infty a_n(z-z_0)^n
+    \end{equation*}
+    has at least one coefficient $a_n=0$. Show that $f$ must be a polynomial.
+\end{prob}
+\begin{proof}
+    It suffices to show that for some $k\in\mathbb{N}$, $f^{(k)}\equiv 0$ because
+    \begin{equation*}
+        a_n=\frac{1}{n!}f^{(n)}(z_0)
+    \end{equation*}
+    We first observe that 
+    \begin{equation*}
+        \bigcup_{n\in\mathbb{N}}\{z: f^{(n)}=0\}=\C
+    \end{equation*}
+    Then there must exist some $k\in\mathbb{N}$ such that 
+    \begin{equation*}
+        \{z: f^{(k)}=0\} \text{ is uncountable}
+    \end{equation*}
+    Thus $f^{(k)}$ has uncountably many zeros, which implies $f\equiv 0$, as desired.
+\end{proof}
+
+\begin{prob}[Fall 2019, Q2]
+    Let $f$ be an entire function such that 
+    \begin{equation*}
+        \sup_{|z|>R}|f(z)|\leq AR^k+B
+    \end{equation*}
+    for positive constants $A,B$ and all $R$ large. Then show $f$ is a polynomial with degree at most $k$.
+\end{prob}
+\begin{proof}
+    This problem is a direct application of Cauchy's inequality. Writing $f(z)$ as a power series around $0$, we have 
+    \begin{equation*}
+        f(z)=\sum_{n=0}^\infty a_nz^n
+    \end{equation*}
+    where 
+    \begin{equation*}
+        a_n=\frac{1}{n!}f^{(n)}(0)
+    \end{equation*}
+    It suffices to show that for any $m>k$, we have 
+    \begin{equation*}
+        f^{(m)}(0)= 0
+    \end{equation*}
+    Using Cauchy's inequality, we get 
+    \begin{align*}
+        |f^{(m)}(0)|&\leq\frac{m!\sup_{|z|=R}|f(z)|}{R^m}\\
+        &\leq \frac{m!(AR^k+B)}{R^m}\to 0
+    \end{align*}
+    as $R\to\infty$ because $m>k$. Hence we are done.
+\end{proof}
+
+
+\begin{prob}[Fall 2018, Q4]
+    Suppose $f,g$ are both entire functions such that $|f(z)|\leq |g(z)|$ for all $z\in\C$. Show that there exists $c\in\C$ such that $f=cg$.
+\end{prob}
+\begin{proof}
+    We will use Liouville's theorem. It suffices to show that 
+\end{proof}
+
+\chapter{Basic calculus in the complex domain}
+
+
+\end{document}
