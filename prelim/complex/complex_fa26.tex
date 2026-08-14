@@ -185,8 +185,21 @@
     Suppose $f,g$ are both entire functions such that $|f(z)|\leq |g(z)|$ for all $z\in\C$. Show that there exists $c\in\C$ such that $f=cg$.
 \end{prob}
 \begin{proof}
-    We will use Liouville's theorem. It suffices to show that 
+    We will use Liouville's theorem. It suffices to show that $h=f/g$ continuously extends to an entire function. Suppose $g(z_0)=0$ for some $z_0$, then we know $f(z_0)=0$, hence writing 
+    \begin{equation*}
+        f(z)=(z-z_0)^ns(z), \quad g(z)=(z-z_0)^m t(z)
+    \end{equation*}
+    where $s(z_0)\neq 0, t(z_0)\neq 0$. We must have $n\geq m$, suppose if not, i.e., $m>n$, then 
+    \begin{equation*}
+        |s(z)|\leq|z-z_0|^{m-n}|t(z)|
+    \end{equation*}
+    which is a contradiction by letting $z=z_0$. Thus $z_0$ is a removable singularity for $h=f/g$. This implies $h$ can be extended to an entire function, as desired.
 \end{proof}
+
+
+\begin{prob}
+    
+\end{prob}
 
 \chapter{Basic calculus in the complex domain}
 
