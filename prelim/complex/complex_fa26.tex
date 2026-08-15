@@ -173,51 +173,51 @@ are in the annulus
         \int_0^\infty\frac{1-\cos x}{x^2}dx
     \end{equation*}
 \end{prob}
-% \begin{proof}
-%     The answer is 
-%     \begin{equation*}
-%         \int_0^\infty\frac{1-\cos x}{x^2}dx=\frac{\pi}{2}
-%     \end{equation*}
-%     We use the contour of a semicircle skipping $x=0$. Let $f(z)=\frac{1-e^{iz}}{z^2}$, then by Cauchy's integral formula, we have 
-%     \begin{align*}
-%         \int_{\gamma_R}f(z)dz+\int_{\gamma_\varepsilon}f(z)dz+\int_{|z|>\varepsilon}f(z)dz=0\tag{1}
-%     \end{align*}
-% where 
-% \begin{equation*}
-%     \lim_{\varepsilon\to 0}\int_{|z|>\varepsilon}f(z)dz=2\int_0^\infty\frac{1-\cos x}{x^2}dx
-% \end{equation*}
-% Hence it suffices to compute the first two terms in (1). Let $z=Re^{i\theta}$, we see that 
-% \begin{align*}
-%     \left|\int_{\gamma_R}f(z)dz\right|&=\left|\int_0^{\pi}\frac{1-e^{iRe^{i\theta}}}{R^2e^{2i\theta}}iRe^{i\theta}d\theta\right|\\
-%     &\leq\int_0^\pi\frac{2}{R}d\theta\to 0
-% \end{align*}
-% as $R\to\infty$.
-% Similarly, we can compute $\int_{\gamma_\varepsilon}f(z)dz$ by setting $z=\varepsilon e^{i\theta}$ and letting $\varepsilon\to 0$. 
-% \begin{align*}
-%     \int_{\gamma_\varepsilon}f(z)dz&=\int_\pi^{0}\frac{1-e^{i\varepsilon e^{i\theta}}}{\varepsilon^2e^{2i\theta}}i\varepsilon e^{i\theta}d\theta\\
-%     &=i\int_\pi^0\frac{1-e^{i\varepsilon e^{i\theta}}}{\varepsilon e^{i\theta}}d\theta\to -\pi
-% \end{align*}
-% as $\varepsilon\to 0$, since
-% \begin{equation*}
-%     \lim_{a\to 0}\frac{1-e^{ia}}{a}=-i
-% \end{equation*}
-% \end{proof}
+\begin{proof}
+    The answer is 
+    \begin{equation*}
+        \int_0^\infty\frac{1-\cos x}{x^2}dx=\frac{\pi}{2}
+    \end{equation*}
+    We use the contour of a semicircle skipping $x=0$. Let $f(z)=\frac{1-e^{iz}}{z^2}$, then by Cauchy's integral formula, we have 
+    \begin{align*}
+        \int_{\gamma_R}f(z)dz+\int_{\gamma_\varepsilon}f(z)dz+\int_{|z|>\varepsilon}f(z)dz=0\tag{1}
+    \end{align*}
+where 
+\begin{equation*}
+    \lim_{\varepsilon\to 0}\int_{|z|>\varepsilon}f(z)dz=2\int_0^\infty\frac{1-\cos x}{x^2}dx
+\end{equation*}
+Hence it suffices to compute the first two terms in (1). Let $z=Re^{i\theta}$, we see that 
+\begin{align*}
+    \left|\int_{\gamma_R}f(z)dz\right|&=\left|\int_0^{\pi}\frac{1-e^{iRe^{i\theta}}}{R^2e^{2i\theta}}iRe^{i\theta}d\theta\right|\\
+    &\leq\int_0^\pi\frac{2}{R}d\theta\to 0
+\end{align*}
+as $R\to\infty$.
+Similarly, we can compute $\int_{\gamma_\varepsilon}f(z)dz$ by setting $z=\varepsilon e^{i\theta}$ and letting $\varepsilon\to 0$. 
+\begin{align*}
+    \int_{\gamma_\varepsilon}f(z)dz&=\int_\pi^{0}\frac{1-e^{i\varepsilon e^{i\theta}}}{\varepsilon^2e^{2i\theta}}i\varepsilon e^{i\theta}d\theta\\
+    &=i\int_\pi^0\frac{1-e^{i\varepsilon e^{i\theta}}}{\varepsilon e^{i\theta}}d\theta\to -\pi
+\end{align*}
+as $\varepsilon\to 0$, since
+\begin{equation*}
+    \lim_{a\to 0}\frac{1-e^{ia}}{a}=-i
+\end{equation*}
+\end{proof}
 
 
 \begin{prob}
     Let $U$ be a region. Suppose $f$ is holomorphic in $U$, and a sequence $\{z_n\}\subset U$ converges to some $z\in U$. If $f(z_n)=0$ for all $n$, show that $f\equiv 0$.
 \end{prob}
-% \begin{proof}
-%     Since $z_n\to z$, we know $f(z)=\lim_{z_n\to z}f(z_n)=0$. Assume $f$ is not identically zero, then writing it as a power series, we have 
-%     \begin{align*}
-%         f(w)=(w-z)^ng(w)
-%     \end{align*}
-%     where $g(w)=a_n+a_{n+1}(w-z)+a_{n+2}(w-z)^2+\dots$, for some $a_n\neq 0$. We know $g(z)=a_n\neq 0$, hence there exists a neighborhood $V$ around $z$ such that $g(w)\neq 0$ whenever $w\in V$. Hence, if $w\in V$, then $f(w)=0$ iff $w=z$. This is a contradiction to $z_n\to z$ and $f(z_n)=0$ for all $n$.
-% \end{proof}
+\begin{proof}
+    Since $z_n\to z$, we know $f(z)=\lim_{z_n\to z}f(z_n)=0$. Assume $f$ is not identically zero, then writing it as a power series, we have 
+    \begin{align*}
+        f(w)=(w-z)^ng(w)
+    \end{align*}
+    where $g(w)=a_n+a_{n+1}(w-z)+a_{n+2}(w-z)^2+\dots$, for some $a_n\neq 0$. We know $g(z)=a_n\neq 0$, hence there exists a neighborhood $V$ around $z$ such that $g(w)\neq 0$ whenever $w\in V$. Hence, if $w\in V$, then $f(w)=0$ iff $w=z$. This is a contradiction to $z_n\to z$ and $f(z_n)=0$ for all $n$.
+\end{proof}
 
-% \begin{warn}
-%     This shows that a nonzero holomorphic function has isolated zeros.
-% \end{warn}
+\begin{warn}
+    This shows that a nonzero holomorphic function has isolated zeros.
+\end{warn}
 
 \begin{prob}[Spring 2018, Q4]
     Let $f$ be an entire function, suppose that for each $z_0$, the power series expansion 
@@ -324,9 +324,6 @@ are in the annulus
 \end{proof}
 
 
-\begin{prob}
-    
-\end{prob}
 
 \chapter{Residue formula}
 \begin{prob}
@@ -343,15 +340,15 @@ are in the annulus
         \int_{-\infty}^\infty\frac{e^{ax}}{1+e^x}dx
     \end{equation*}
 \end{prob}
-% \begin{proof}
-%     Use rectangles and the residue at $\pi i$.
-% \end{proof}
+\begin{proof}
+    Use rectangles and the residue at $\pi i$.
+\end{proof}
 
 
 
 
 
-\begin{prob} 
+\begin{prob}
     Assume that $f:\mathbb{C}\to\mathbb{C}$ is an entire function, not identically equal to $0$, and let \[ Z=\{z\in\mathbb{C}:f(z)=0\}. \] Prove that if $Z$ is unbounded, then $f$ has an essential singularity at $\infty$.
 \end{prob}
 
