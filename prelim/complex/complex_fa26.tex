@@ -112,6 +112,9 @@ for all $z\in\mathbb{D}$. Show that
 \qquad\text{for all }z\in\mathbb{D}.
 \]
 \end{prob}
+\begin{proof}
+    Maximum modulus principle.
+\end{proof}
 
 \begin{prob}{8}
 Determine how many solutions
@@ -127,37 +130,38 @@ are in the annulus
     Rouche's theorem.
 \end{proof}
 
-\chapter{Spring 2025}
-\begin{prob}
-Let $f(z)$ be holomorphic on $\mathbb{C}\setminus\mathbb{R}$. $f$ is continuous at each point of $\mathbb{R}$. Show that $f$ extends to an entire analytic function. (Hint: Use Morera's theorem.)
-\end{prob}
+% \chapter{Spring 2025}
+% \begin{prob}
+% Let $f(z)$ be holomorphic on $\mathbb{C}\setminus\mathbb{R}$. $f$ is continuous at each point of $\mathbb{R}$. Show that $f$ extends to an entire analytic function. (Hint: Use Morera's theorem.)
+% \end{prob}
 
-\begin{prob}
-Evaluate
-\[
-\operatorname{p.v.}\int_{-\infty}^{\infty}\frac{e^{ix}}{x^2}\,dx
-\]
-by residue theory.
-\end{prob}
 
-\begin{prob}
-Let $f:\Omega\to\mathbb{C}$ be a non-constant holomorphic function defined on a connected open set $\Omega\subset\mathbb{C}$, and suppose that $f$ is open (i.e., maps open sets to open sets). Additionally, suppose that for some $z_0\in\Omega$, we have $f'(z_0)=0$. Show that $f$ is not injective on $\Omega$.
-\end{prob}
+% \begin{prob}
+% Evaluate
+% \[
+% \operatorname{p.v.}\int_{-\infty}^{\infty}\frac{e^{ix}}{x^2}\,dx
+% \]
+% by residue theory.
+% \end{prob}
 
-\begin{prob}
-Let $f:\mathbb{D}\to\mathbb{C}$ be a holomorphic function on the open unit disk
-\[
-\mathbb{D}=\{z\in\mathbb{C}:|z|<1\},
-\]
-and suppose that
-\[
-|f(z)|\leq M \qquad \text{for all }z\in\mathbb{D},
-\]
-for some constant $M>0$. Prove the estimate that for all $z\in\mathbb{D}$,
-\[
-|f'(z)|\leq\frac{M}{(1-|z|)^2}.
-\]
-\end{prob}
+% \begin{prob}
+% Let $f:\Omega\to\mathbb{C}$ be a non-constant holomorphic function defined on a connected open set $\Omega\subset\mathbb{C}$, and suppose that $f$ is open (i.e., maps open sets to open sets). Additionally, suppose that for some $z_0\in\Omega$, we have $f'(z_0)=0$. Show that $f$ is not injective on $\Omega$.
+% \end{prob}
+
+% \begin{prob}
+% Let $f:\mathbb{D}\to\mathbb{C}$ be a holomorphic function on the open unit disk
+% \[
+% \mathbb{D}=\{z\in\mathbb{C}:|z|<1\},
+% \]
+% and suppose that
+% \[
+% |f(z)|\leq M \qquad \text{for all }z\in\mathbb{D},
+% \]
+% for some constant $M>0$. Prove the estimate that for all $z\in\mathbb{D}$,
+% \[
+% |f'(z)|\leq\frac{M}{(1-|z|)^2}.
+% \]
+% \end{prob}
 
 
 
@@ -273,6 +277,37 @@ for some constant $M>0$. Prove the estimate that for all $z\in\mathbb{D}$,
 \end{proof}
 
 
+\begin{prob}[Fall 2023, Q1]
+    \begin{enumerate}
+        \item[(a)] Show that if an entire function $f$ satisfies
+        \[
+            |f(z)| \leq \sqrt{|z|}
+        \]
+        for all $z \in \mathbb{C}$, then $f(z)$ is a constant function.
+    
+        \item[(b)] Why isn't the function $z^{1/2}$ a counterexample for Part (a)?
+    \end{enumerate}
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item[(a)] We write $f$ as the Taylor series about $0$, 
+        \begin{equation*}
+            f(z)=\sum_{n=0}^\infty a_nz^n
+        \end{equation*}
+        where 
+        \begin{equation*}
+            a_n=\frac{1}{n!}f^{(n)}(0)
+        \end{equation*}
+        Using Cauchy's inequality, for any $R$ large, if $n\geq 1$,
+        \begin{align*}
+            |f^{(n)}(0)|\leq\frac{n!\sup_{|z|=R}|f(z)|}{R^n}\to 0
+        \end{align*}
+        as $R\to\infty$. Thus $f(z)=a_0$, for some $a_0\in\C$.
+        \item[(b)] The function is not entire.
+    \end{enumerate}
+\end{proof}
+
+
 \begin{prob}[Fall 2018, Q4]
     Suppose $f,g$ are both entire functions such that $|f(z)|\leq |g(z)|$ for all $z\in\C$. Show that there exists $c\in\C$ such that $f=cg$.
 \end{prob}
@@ -301,11 +336,113 @@ for some constant $M>0$. Prove the estimate that for all $z\in\mathbb{D}$,
     \end{equation*}
 \end{prob}
 
+
+\begin{prob}
+    Compute the following integral: fix $0<a<1$, 
+    \begin{equation*}
+        \int_{-\infty}^\infty\frac{e^{ax}}{1+e^x}dx
+    \end{equation*}
+\end{prob}
+\begin{proof}
+    Use rectangles and the residue at $\pi i$.
+\end{proof}
+
+\begin{prob}[Fall 2023, Q2]
+    Compute the following integral: fix $-1<a<0$, 
+    \begin{equation*}
+        \int_0^\infty\frac{x^a}{1+x}dx
+    \end{equation*}
+\end{prob}
+\begin{proof}
+   Method 1: let $x=e^u$.
+
+   Method 2: use a keyhole contour.
+\end{proof}
+
+
+
 \begin{prob} 
     Assume that $f:\mathbb{C}\to\mathbb{C}$ is an entire function, not identically equal to $0$, and let \[ Z=\{z\in\mathbb{C}:f(z)=0\}. \] Prove that if $Z$ is unbounded, then $f$ has an essential singularity at $\infty$.
 \end{prob}
 
 
+
+
+
+\chapter{Spring 2026}
+\begin{prob}
+Let $f$ be a holomorphic function on $\{z:|z|<1\}$ that extends to a continuous
+function on $\{z:|z|\leq 1\}$ and maps the closed unit disk to itself.
+Furthermore, suppose
+\[
+f(0)=f'(0)=\cdots=f^{(n-1)}(0)=0.
+\]
+Show that:
+\begin{enumerate}
+    \item[(1)]
+    \[
+    |f(z)|\leq |z|^n \qquad \text{for all } |z|\leq 1.
+    \]
+
+    \item[(2)] If there is some $P\in D(0,1)\setminus\{0\}$ such that
+    \[
+    |f(P)|=|P|^n
+    \]
+    or if
+    \[
+    |f^{(n)}(0)|=n!,
+    \]
+    then
+    \[
+    f(z)=e^{i\theta}z^n.
+    \]
+\end{enumerate}
+\end{prob}
+
+\begin{prob}
+Let $-1<a<0$. Compute
+\[
+\int_0^\infty \frac{x^a}{1+x}\,dx.
+\]
+\end{prob}
+
+\begin{prob}
+Two parts.
+
+\begin{enumerate}
+    \item[(1)] Let
+    \[
+    f:U=\{z:0<|z|<1\}\longrightarrow\mathbb{C}
+    \]
+    be holomorphic and nonconstant. If there exists a sequence
+    $\{z_n\}\subset U$ that converges to $0$ and satisfies
+    \[
+    f(z_n)=0,
+    \]
+    then prove that $0$ is an essential singularity of $f$.
+
+    \item[(2)] Show that if $f$ is an entire function that satisfies
+    \[
+    \lim_{|z|\to\infty}f(z)=\infty,
+    \]
+    then $f$ is a polynomial.
+\end{enumerate}
+\end{prob}
+
+\begin{prob}
+Describe all injective holomorphic maps that map
+\[
+\mathbb{C}\cup\{\infty\}
+\quad\text{to}\quad
+\mathbb{C}\cup\{\infty\}
+\]
+and also map
+\[
+\mathbb{R}\cup\{\infty\}
+\quad\text{to}\quad
+\mathbb{R}\cup\{\infty\}.
+\]
+\end{prob}
 
 
 
