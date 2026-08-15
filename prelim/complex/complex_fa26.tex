@@ -83,6 +83,9 @@ Let $\{f_n\}$ be a sequence of holomorphic functions on the open unit disk
 and suppose that $f_n\to f$ uniformly on compact subsets of $\mathbb{D}$, where
 $f:\mathbb{D}\to\mathbb{C}$ is continuous. Prove that $f$ is holomorphic on $\mathbb{D}$.
 \end{prob}
+\begin{proof}
+    Morera's theorem.
+\end{proof}
 
 \begin{prob}{6}
 Use contour integration to evaluate
@@ -90,6 +93,9 @@ Use contour integration to evaluate
 \int_0^\infty \frac{x^2}{x^4+1}\,dx.
 \]
 \end{prob}
+\begin{proof}
+    Use residue theorem for $z_1=e^\frac{\pi i}{4}, z_2=e^\frac{3\pi i}{4}$.
+\end{proof}
 
 \begin{prob}{7}
 Let $f$ be an analytic function on the open unit disk
@@ -100,9 +106,7 @@ and suppose that
 \[
 |f(z)|\geq \sqrt{|z|}
 \]
-for all $z\in\mathbb{D}$.
-
-Show that
+for all $z\in\mathbb{D}$. Show that
 \[
 |f(z)|\geq 1
 \qquad\text{for all }z\in\mathbb{D}.
@@ -117,6 +121,41 @@ z^7-7z^4+z^3-3z=1
 are in the annulus
 \[
 1<|z|<2.
+\]
+\end{prob}
+\begin{proof}
+    Rouche's theorem.
+\end{proof}
+
+\chapter{Spring 2025}
+\begin{prob}
+Let $f(z)$ be holomorphic on $\mathbb{C}\setminus\mathbb{R}$. $f$ is continuous at each point of $\mathbb{R}$. Show that $f$ extends to an entire analytic function. (Hint: Use Morera's theorem.)
+\end{prob}
+
+\begin{prob}
+Evaluate
+\[
+\operatorname{p.v.}\int_{-\infty}^{\infty}\frac{e^{ix}}{x^2}\,dx
+\]
+by residue theory.
+\end{prob}
+
+\begin{prob}
+Let $f:\Omega\to\mathbb{C}$ be a non-constant holomorphic function defined on a connected open set $\Omega\subset\mathbb{C}$, and suppose that $f$ is open (i.e., maps open sets to open sets). Additionally, suppose that for some $z_0\in\Omega$, we have $f'(z_0)=0$. Show that $f$ is not injective on $\Omega$.
+\end{prob}
+
+\begin{prob}
+Let $f:\mathbb{D}\to\mathbb{C}$ be a holomorphic function on the open unit disk
+\[
+\mathbb{D}=\{z\in\mathbb{C}:|z|<1\},
+\]
+and suppose that
+\[
+|f(z)|\leq M \qquad \text{for all }z\in\mathbb{D},
+\]
+for some constant $M>0$. Prove the estimate that for all $z\in\mathbb{D}$,
+\[
+|f'(z)|\leq\frac{M}{(1-|z|)^2}.
 \]
 \end{prob}
 
@@ -196,7 +235,13 @@ are in the annulus
     \begin{equation*}
         \{z: f^{(k)}=0\} \text{ is uncountable}
     \end{equation*}
-    Thus $f^{(k)}$ has uncountably many zeros, which implies $f\equiv 0$, as desired.
+    Thus $f^{(k)}$ has uncountably many zeros, which implies $f\equiv 0$. 
+    \begin{lem}
+        Let $f$ be a nonzero holomorphic function, then $f$ cannot have uncountably many zeros.
+    \end{lem}
+    \begin{proof}
+        Let $Z=\{z\in\C: f(z)=0\}$, we know that $Z$ contains no limit point. We can tile the complex plane using unit squares and suppose $Z$ is uncountable, the intersection of $Z$ with one of the tiles needs to be uncountable. This is a contradiction because this intersection is compact and discrete, hence must be finite.
+    \end{proof}
 \end{proof}
 
 \begin{prob}[Fall 2019, Q2]
@@ -248,7 +293,20 @@ are in the annulus
     
 \end{prob}
 
-\chapter{Basic calculus in the complex domain}
+\chapter{Residue formula}
+\begin{prob}
+    Compute 
+    \begin{equation*}
+        \int_{0}^\infty\frac{1}{1+x^2}dx
+    \end{equation*}
+\end{prob}
+
+\begin{prob} 
+    Assume that $f:\mathbb{C}\to\mathbb{C}$ is an entire function, not identically equal to $0$, and let \[ Z=\{z\in\mathbb{C}:f(z)=0\}. \] Prove that if $Z$ is unbounded, then $f$ has an essential singularity at $\infty$.
+\end{prob}
+
+
+
 
 
 \end{document}
