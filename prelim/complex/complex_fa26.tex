@@ -325,7 +325,7 @@ as $\varepsilon\to 0$, since
 
 
 
-\chapter{Residue formula}
+\chapter{Singularities}
 \begin{prob}
     Compute 
     \begin{equation*}
@@ -344,6 +344,16 @@ as $\varepsilon\to 0$, since
     Use rectangles and the residue at $\pi i$.
 \end{proof}
 
+\begin{prob}[Spring 2015, Q6]
+    Suppose $f$ is a nonconstant entire funcion, then show that $f(\C)$ is dense in $\C$.
+\end{prob}
+\begin{proof}
+    Suppose there exists $w\in\C$ such that for a small $r>0$, $D_r(w)\cap f(\C)=\varnothing$. Then we consider the function 
+    \begin{equation*}
+        \frac{1}{f(z)-w}
+    \end{equation*}
+    This function is entire and bounded, implying $f$ is constant, which is a contradiction.
+\end{proof}
 
 
 
@@ -353,6 +363,13 @@ as $\varepsilon\to 0$, since
 \end{prob}
 
 
+\begin{prob}
+    Suppose $f$ is an injective entire function, show $f$ is linear.
+\end{prob}
+
+
+
+\chapter{Conformal mapping}
 
 
 
