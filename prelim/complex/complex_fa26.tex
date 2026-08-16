@@ -20,6 +20,7 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\F}{\mathbb{F}}
+\newcommand{\D}{\mathbb{D}}
 \newcommand{\la}{\langle}
 \newcommand{\ra}{\rangle}
 \newcommand{\colim}{\text{colim}}
@@ -74,8 +75,10 @@
 
 
 
+
+
 \chapter{Fall 2025}
-\begin{prob}{5}
+\begin{prob}[Theorem 5.2, Stein, Chapter 2]
 Let $\{f_n\}$ be a sequence of holomorphic functions on the open unit disk
 \[
 \mathbb{D}=\{z\in\mathbb{C}:|z|<1\},
@@ -84,6 +87,17 @@ and suppose that $f_n\to f$ uniformly on compact subsets of $\mathbb{D}$, where
 $f:\mathbb{D}\to\mathbb{C}$ is continuous. Prove that $f$ is holomorphic on $\mathbb{D}$.
 \end{prob}
 \begin{proof}
+    This is an immediate consequence of Morera's theorem. Take an arbitrary triangle $T$ contained in $\D$, we know for any $n$,
+    \begin{equation*}
+        \int_T f_n(z)dz=0
+    \end{equation*}
+    by Goursat's theorem. By assumption, $f_n\to f$ uniformly, thus 
+    \begin{equation*}
+        \int_T f(z)dz=\lim_{n\to\infty}\int_T f_n(z)dz=0
+    \end{equation*}
+    By Morera's theorem, $f$ is holomorphic in $\D$.
+
+
     Morera's theorem.
 \end{proof}
 
@@ -166,6 +180,65 @@ are in the annulus
 
 
 \chapter{Cauchy's integral formula}
+
+\begin{prop}[Cauchy's theorem]
+    Let $f:U\to\C$ be holomorphic in $U$, if $\gamma$ is a closed smooth curve whose interior is contained in $U$, then 
+    \begin{equation*}
+        \int_\gamma f(z)dz=0
+    \end{equation*}
+\end{prop}
+
+\begin{prop}[Cauchy's integral formula]
+    Let $f:U\to C$ be holomorphic in $U$ which contains the closure of a disk $D_r(z_0)$, for some $z_0\in U$. Then for any $z\in D_r(z_0)$, 
+    \begin{equation*}
+        f(z)=\frac{1}{2\pi i}\int_\gamma \frac{f(w)}{w-z}dw
+    \end{equation*}
+    where $\gamma=z_0+re^{i\theta}, \theta\in[0,2\pi]$. Moreover, 
+    \begin{equation*}
+        f^{(n)}(z)=\frac{n!}{2\pi i}\int_\gamma\frac{f(w)}{(w-z)^{n+1}}dw
+    \end{equation*}
+\end{prop}
+
+\begin{prop}[Cauchy's inequality]
+    Let $f:U\to C$ be holomorphic in $U$ which contains the closure of a disk $D_r(z_0)$, for some $z_0\in U$. Then 
+    \begin{equation*}
+        |f^{(n)}(z_0)|\leq\frac{n!\sup_{\substack{|z|=r}}|f(z)|}{r^n}
+    \end{equation*}
+\end{prop}
+
+
+
+\begin{prop}[Liouville's theorem]
+    Let $f:\C\to\C$ be a bounded entire function, then $f$ must be constant.
+\end{prop}
+
+
+\begin{prop}[Holomorphic and analytic]
+    Let $f:U\to C$ be holomorphic in $U$ which contains the closure of a disk $D_r(z_0)$, for some $z_0\in U$. Then $f$ has a power series expansion at $z_0$:
+    \begin{equation*}
+        f(z)=\sum_{n=0}^\infty a_n(z-z_0)^n
+    \end{equation*}
+    for all $z\in D_r(z_0)$, where 
+    \begin{equation*}
+        a_n=\frac{f^{(n)}(z_0)}{n!}
+    \end{equation*}
+    This combined with the previous theorem gives a bound on the coefficients:
+    \begin{equation*}
+        |a_n|\leq\frac{\sup_{|z|=r}|f(z)|}{r^n}
+    \end{equation*}
+\end{prop}
+
+\begin{prop}[Morera's theorem]
+    Suppose $f$ is a continuous function in an open set $U$, if for any triangle $T$ contained in $D$, 
+    \begin{equation*}
+        \int_T f(z)dz=0
+    \end{equation*}
+    then $f$ is holomorphic.
+\end{prop}
+
+
+
+
 
 \begin{prob}
     Evaluate the following integral:
@@ -325,7 +398,83 @@ as $\varepsilon\to 0$, since
 
 
 
+\begin{prob}[Spring 2015, Q6]
+    Suppose $f$ is a nonconstant entire funcion, then show that $f(\C)$ is dense in $\C$.
+\end{prob}
+\begin{proof}
+    Suppose there exists $w\in\C$ such that for a small $r>0$, $D_r(w)\cap f(\C)=\varnothing$. Then we consider the function 
+    \begin{equation*}
+        \frac{1}{f(z)-w}
+    \end{equation*}
+    This function is entire and bounded, implying $f$ is constant, which is a contradiction.
+\end{proof}
+
+
+
+
+
+
 \chapter{Singularities}
+\begin{defn}[singularities]
+
+\end{defn}
+
+
+\begin{defn}[residue]
+    If $f$ has a pole of order $n$ at $z_0$, then 
+    \begin{equation*}
+        \text{res}_{z_0}f=\lim_{z\to z_0}\frac{1}{(n-1)!}\left(\frac{d}{dz}\right)^{n-1}(z-z_0)^nf(z)
+    \end{equation*}
+\end{defn}
+
+\begin{prop}[Removable singularity]
+    Let $f$ be a holomorphic function defined on $D_r(z_0)\setminus\{z_0\}$. We say $f$ has a removable singularity at $z_0$ iff 
+    \begin{equation*}
+        \lim_{z\to z_0}(z-z_0)f(z)=0
+    \end{equation*}
+    iff there exists a neighborhood $N$ of $z_0$ where $f$ is bounded on $N$.
+\end{prop}
+
+\begin{prop}[Pole]
+    Let $f$ be a holomorphic function defined on $D_r(z_0)\setminus\{z_0\}$. We say $f$ has a pole at $z_0$ iff 
+    \begin{equation*}
+        \lim_{z\to z_0}|f(z)|=\infty
+    \end{equation*}
+    iff there exists a non-vanishing holomorphic function $h$ and a unique $n$ such that 
+    \begin{equation*}
+        f(z)=(z-z_0)^{-n}h(z)
+    \end{equation*}
+\end{prop}
+
+
+
+
+
+\begin{prop}[Residue theorem]
+    Suppose $f$ is holomorphic in an open set containing a smooth closed curve $\gamma$ and its interior, except for poles at points $z_1,\dots, z_n$ inside of $\gamma$. Then 
+    \begin{equation*}
+        \int_{\gamma}f(z)dz=2\pi i\sum_{i=1}^n\text{res}_{z_i}f
+    \end{equation*}
+\end{prop}
+
+
+\begin{prop}[Casorati-Weierstrass]
+    Let $f$ be a holomorphic function defined on $D_r(z_0)\setminus\{z_0\}$ and suppose $f$ has an essential singularity at $z_0$, then the image of $f$ is dense in $\C$.
+\end{prop}
+
+
+
+\begin{prop}[Argument principle]
+    
+\end{prop}
+
+\begin{prop}[Rouche's theorem]
+    
+\end{prop}
+
+
+
+
 \begin{prob}
     Compute 
     \begin{equation*}
@@ -344,19 +493,6 @@ as $\varepsilon\to 0$, since
     Use rectangles and the residue at $\pi i$.
 \end{proof}
 
-\begin{prob}[Spring 2015, Q6]
-    Suppose $f$ is a nonconstant entire funcion, then show that $f(\C)$ is dense in $\C$.
-\end{prob}
-\begin{proof}
-    Suppose there exists $w\in\C$ such that for a small $r>0$, $D_r(w)\cap f(\C)=\varnothing$. Then we consider the function 
-    \begin{equation*}
-        \frac{1}{f(z)-w}
-    \end{equation*}
-    This function is entire and bounded, implying $f$ is constant, which is a contradiction.
-\end{proof}
-
-
-
 
 \begin{prob}
     Assume that $f:\mathbb{C}\to\mathbb{C}$ is an entire function, not identically equal to $0$, and let \[ Z=\{z\in\mathbb{C}:f(z)=0\}. \] Prove that if $Z$ is unbounded, then $f$ has an essential singularity at $\infty$.
@@ -369,7 +505,88 @@ as $\varepsilon\to 0$, since
 
 
 
+
+
+\begin{prob}[Spring 2017, Q6]
+    Let $f:U\to\mathbb{C}$ be a non-constant holomorphic function where
+    $U\subset\mathbb{C}$ is an open set containing the closure $\overline{D}$ of
+    the unit disk
+    \[
+    D=\{z\in\mathbb{C}:|z|<1\}.
+    \]
+    If $|f(z)|=1$ for all $z\in\partial D$, then prove that
+    \[
+    D\subset f(\overline{D}).
+    \]
+    \end{prob}
+\begin{proof}
+    Argument+maximum modulus.
+\end{proof}
+
+
+\begin{prob}[Fall 2015, Q4]
+    Let $U\subset\mathbb{C}$ be an open set containing $\overline{D(P,r)}$. Prove
+that if $f:U\to\mathbb{C}$ is a holomorphic function such that $f$ is nowhere
+zero on $\partial D(P,r)$ and $g:U\to\mathbb{C}$ is a holomorphic function
+sufficiently uniformly close to $f$ on $\partial D(P,r)$, then the number of
+zeros of $f$ in $D(P,r)$ equals the number of zeros of $g$ in $D(P,r)$
+(counting multiplicity).
+\end{prob}
+\begin{proof}
+    Argument.
+\end{proof}
+
+\begin{prob}[Spring 2021, Q1]
+Suppose $U\subset\mathbb{C}$ is an open set. Suppose $f$ and $g$ are functions
+holomorphic on $U\subset\mathbb{C}$. Show that if
+\[
+|f(z)|^4+|g(z)|^4
+\]
+attains a maximum for some $z_0\in U$, then $f$ and $g$ are constant on $U$.
+\end{prob}
+\begin{proof}
+    MMP.
+\end{proof}
+
+
+
+
+
 \chapter{Conformal mapping}
+
+\begin{defn}[automorphisms of the disk]
+    Let $a\in\mathbb{D}$, the following function is an automorphism of the disk:
+    \begin{equation*}
+        \phi_a(z)=\frac{z-a}{1-\bar{a}z}
+    \end{equation*}
+    We have $\phi_{a}\circ\phi_{-a}=\text{id}$. Moreover, if $f$ is a holomorphic function on $\mathbb{D}$, then $g(0)=0$ if we let
+    \begin{equation*}
+        g=\phi_{f(a)}\circ f\circ\phi_{-a}
+    \end{equation*}
+\end{defn}
+
+\begin{prop}[Open mapping theorem]
+    If $\Omega\subset\C$ is open and connected and $f:\Omega\to\C$ is a nonconstant holomorphic function, then $f$ maps open sets to open sets.
+\end{prop}
+
+\begin{prop}[Maximum modulus principle]
+    
+\end{prop}
+
+\begin{prop}[Schwarz's lemma]
+    
+\end{prop}
+
+
+\begin{prop}[Corollary of Schwarz's lemma]
+    
+\end{prop}
+
+
+\begin{prop}[Riemann mapping theorem]
+    
+\end{prop}
+
 \begin{prob}[Spring 2019, Q4]
 Show that the punctured unit disk
 \[
@@ -408,7 +625,7 @@ and
 \begin{prob}[Fall 2019, Q4]
 Let $f(z)$ be a holomorphic function on
 \[
-D:=\{z\in\mathbb{C}:|z|<1\},
+\D:=\{z\in\mathbb{C}:|z|<1\},
 \]
 with $|f(z)|<1$, and suppose $f(\alpha)=0$ for some $|\alpha|<1$.
 Show that for $z\in D$,
@@ -417,19 +634,27 @@ Show that for $z\in D$,
 \]
 \end{prob}
 \begin{proof}
-    Schwarz's lemma.
+    Schwarz lemma.
 \end{proof}
 
 
 \begin{prob}[Spring 2016, Q5]
-Let $f:D\to D$ be a holomorphic function where
+Let $f:\D\to \D$ be a holomorphic function where
 \[
-D=\{z\in\mathbb{C}:|z|<1\}
+\D=\{z\in\mathbb{C}:|z|<1\}
 \]
 is the unit disk. Prove that if $f$ has at least $2$ fixed points then $f$ is the identity map.
 \end{prob}
 \begin{proof}
-    Schwarz's lemma.
+    Let $z_1,z_2\in\D$ be such that $f(z_1)=z_1, f(z_2)=z_2$. Then we consider the composite 
+    \begin{equation*}
+        g=\phi_{z_1}\circ f\circ\phi_{-z_1}
+    \end{equation*}
+    It is clear that $g$ fixes $0$, and if we let $z_2'\neq 0$ be such that $\phi_{-z_1}(z_2')=z_2$, then it is clear that $g$ fixes $z_2'$ as well. We see that 
+    \begin{equation*}
+        g(0)=0, \quad |g(z)|\leq 1, g(z_2')=z_2'
+    \end{equation*}
+    hence applying the Schwarz lemma, there exists $|c|=1$ such that $g(z)=cz$, which implies $g$ is constant. This shows $f$ is constant as well.
 \end{proof}
 
 
@@ -466,6 +691,11 @@ Show that:
     \]
 \end{enumerate}
 \end{prob}
+% \begin{proof}
+%     Method 1: let $x=e^u$.
+ 
+%     Method 2: use a keyhole contour.
+%  \end{proof}
 
 \begin{prob}[Also Fall 2023, Q2]
 Let $-1<a<0$. Compute
@@ -496,11 +726,7 @@ Two parts.
     then $f$ is a polynomial.
 \end{enumerate}
 \end{prob}
-% \begin{proof}
-%     Method 1: let $x=e^u$.
- 
-%     Method 2: use a keyhole contour.
-%  \end{proof}
+
 
 \begin{prob}
 Describe all injective holomorphic maps that map
@@ -516,6 +742,16 @@ and also map
 \mathbb{R}\cup\{\infty\}.
 \]
 \end{prob}
+\begin{proof}
+    Let $f$ be such a function, then by the Open Mapping Theorem, $f$ is open. Now viewing $\C\cup\{\infty\}$ as the (compact) Riemann sphere, $f(\C)$ is both open and closed, thus must be an automorphism. Since $f$ also fixes $\R\cup\{\infty\}$, let $\mathbb{H}$ denote the upper half plane, then either $\mathbb{H}\mapsto\mathbb{H}$ or $\mathbb{H}\mapsto -\mathbb{H}$. In the first case, we know $f$ must take the form 
+    \begin{equation*}
+        f(z)=\frac{az+b}{cz+d}
+    \end{equation*}
+    where $a,b,c,d\in\R, ad-bc=1$. In the second case, $f$ can be written as the composite of the function $z\mapsto -z$ and a mobius transformation. Combined, all the maps are of the form 
+    \begin{equation*}
+        \left\{\frac{az+b}{cz+d}: a,b,c,d\in\R, ad-bc=\pm 1\right\}
+    \end{equation*}
+\end{proof}
 
 
 
