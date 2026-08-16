@@ -461,19 +461,46 @@ as $\varepsilon\to 0$, since
 \begin{prop}[Casorati-Weierstrass]
     Let $f$ be a holomorphic function defined on $D_r(z_0)\setminus\{z_0\}$ and suppose $f$ has an essential singularity at $z_0$, then the image of $f$ is dense in $\C$.
 \end{prop}
+Proof?
 
 
 
 \begin{prop}[Argument principle]
-    
+    Let $f$ be a meromorphic function in an open set containing a smooth closed curve $\gamma$ and its interior. If $f$ has no poles and never vanishes on $\gamma$, then 
+    \begin{equation*}
+        \frac{1}{2\pi i}\int_\gamma \frac{f'(z)}{f(z)}=(\# \text{zeros of $f$ inside $\gamma$}) - (\#\text{poles of $f$ inside $\gamma$})
+    \end{equation*}
+    where zeros and poles are counted with multiplicities.
 \end{prop}
 
 \begin{prop}[Rouche's theorem]
-    
+    Let $f$ be a meromorphic function in an open set containing a smooth closed curve $\gamma$ and its interior. If 
+    \begin{equation*}
+        |g(z)|<|f(z)| \text{ for all } z\in \gamma
+    \end{equation*}
+    then $f,f+g$ have the same number of zeros inside of $\gamma$.
 \end{prop}
 
 
 
+
+\begin{prop}[Open mapping theorem]
+    If $f$ is holomorphic and non-constant in a region $\Omega$, then $f$ is open.
+\end{prop}
+
+\begin{prop}[Maximum modulus principle]
+    If $f$ is holomorphic on a region $\Omega$ with compact closure $\bar{\Omega}$ and continuous on $\bar{\Omega}$, then 
+    \begin{equation*}
+        \sup_{z\in\Omega}|f(z)|\leq\sup_{z\in\partial\Omega}|f(z)|
+    \end{equation*}
+    (There are many equivalent statements of MMP, the idea is the same: a nonconstant holomorphic function $f$ cannot attain the maximum in the interior of the compact set).
+\end{prop}
+
+
+there are more here
+\begin{prop}
+    
+\end{prop}
 
 \begin{prob}
     Compute 
@@ -565,27 +592,39 @@ attains a maximum for some $z_0\in U$, then $f$ and $g$ are constant on $U$.
     \end{equation*}
 \end{defn}
 
-\begin{prop}[Open mapping theorem]
-    If $\Omega\subset\C$ is open and connected and $f:\Omega\to\C$ is a nonconstant holomorphic function, then $f$ maps open sets to open sets.
-\end{prop}
 
-\begin{prop}[Maximum modulus principle]
-    
-\end{prop}
-
-\begin{prop}[Schwarz's lemma]
-    
+\begin{prop}[Schwarz lemma]
+    Let $f:\D\to\D$ be holomorphic with $f(0)=0$, then 
+    \begin{enumerate}
+        \item $|f(z)|\leq|z|$ for all $z\in\D$.
+        \item If $|f(z_0)|=|z_0|$ for some $z_0\neq 0$, then $f(z)=cz$ for some $|c|=1$.
+        \item $|f'(0)|\leq 1$ and if equality holds, then $f(z)=cz$ for some $|c|=1$.
+    \end{enumerate}
 \end{prop}
 
 
 \begin{prop}[Corollary of Schwarz's lemma]
-    
+    If $f$ is an automorphism of $\D$, then there exist $\theta\in\R$ and $a\in\D$ such that 
+    \begin{equation*}
+        f(z)=e^{i\theta}\frac{z-a}{1-\bar{a}z}
+    \end{equation*}
+    Namely, the only automorphisms of $\D$ that fix the origin are rotations.
 \end{prop}
 
 
-\begin{prop}[Riemann mapping theorem]
-    
+\begin{prop}[Automorphisms of $\mathbb{H}$]
+    $f$ is an automorphism of $\mathbb{H}$ iff it is of the form
+    \begin{equation*}
+        f(z)=\frac{az+b}{cz+d}
+    \end{equation*}
+    where $a,b,c,d\in\R, ad-bc=1$.
 \end{prop}
+
+
+
+% \begin{prop}[Riemann mapping theorem]
+    
+% \end{prop}
 
 \begin{prob}[Spring 2019, Q4]
 Show that the punctured unit disk
