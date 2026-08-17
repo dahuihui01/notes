@@ -95,10 +95,7 @@ $f:\mathbb{D}\to\mathbb{C}$ is continuous. Prove that $f$ is holomorphic on $\ma
     \begin{equation*}
         \int_T f(z)dz=\lim_{n\to\infty}\int_T f_n(z)dz=0
     \end{equation*}
-    By Morera's theorem, $f$ is holomorphic in $\D$.
-
-
-    Morera's theorem.
+    By Morera's theorem, $f$ is holomorphic in $\D$. 
 \end{proof}
 
 \begin{prob}{6}
@@ -493,9 +490,9 @@ as $\varepsilon\to 0$, since
 
 
 there are more here
-\begin{prop}
+\begin{thm}
     
-\end{prop}
+\end{thm}
 
 \begin{prob}
     Compute 
@@ -613,17 +610,55 @@ attains a maximum for some $z_0\in U$, then $f$ and $g$ are constant on $U$.
 
 
 
+\begin{prob}[Fall 2019, Q4]
+    Let $f$ be a holomorphic function in the punctured disk
+    \[
+    \{z:0<|z|<2\}
+    \]
+    satisfying
+    \[
+    |f(z)|\leq
+    \left(\log\frac{1}{|z|}\right)^{100}
+    \qquad\text{in } \{z:|z|\leq 1/2\},
+    \]
+    and
+    \[
+    |f(z)|=1 \qquad\text{on } |z|=1.
+    \]
+    
+    \begin{enumerate}
+        \item[(a)] Show that $f$ has a removable singularity at the origin.
+    
+        \item[(b)] Show that if $f(z)\neq 0$ in $|z|<1$, then $f$ is constant.
+    \end{enumerate}
+    \end{prob}
+    \begin{proof}
+        \begin{enumerate}
+            \item[(a)] We can compute 
+            \begin{equation*}
+                \lim_{z\to 0}|zf(z)|=0
+            \end{equation*}
+            \item[(b)] To show $f$ is constant, one typically should think of Liouville's or MMP (in this case $f$ is not entire, hence it's MMP). We note that $1/f$ defined on $\D$ is a holomorphic function if $f(z)\neq 0$ in $|z|<1$. Morevoer, 
+            \begin{equation*}
+                |f(z)|\geq 1
+            \end{equation*}
+            for $|z|\leq 1/2$. However, $|f(z)|=1$ on $|z|=1$, which is a contradiction to MMP.
+        \end{enumerate}
+    \end{proof}
+
+
+
 
 \chapter{Conformal mapping}
 
 \begin{defn}[automorphisms of the disk]
     Let $a\in\mathbb{D}$, the following function is an automorphism of the disk:
     \begin{equation*}
-        \phi_a(z)=\frac{z-a}{1-\bar{a}z}
+        \phi_a(z)=\frac{a-z}{1-\bar{a}z}
     \end{equation*}
-    We have $\phi_{a}\circ\phi_{-a}=\text{id}$. Moreover, if $f$ is a holomorphic function on $\mathbb{D}$, then $g(0)=0$ if we let
+    We have $\phi_{a}\circ\phi_{a}=\text{id}$. Moreover, if $f$ is a holomorphic function on $\mathbb{D}$, then $g(0)=0$ if we let
     \begin{equation*}
-        g=\phi_{f(a)}\circ f\circ\phi_{-a}
+        g=\phi_{f(a)}\circ f\circ\phi_{a}
     \end{equation*}
 \end{defn}
 
@@ -641,7 +676,7 @@ attains a maximum for some $z_0\in U$, then $f$ and $g$ are constant on $U$.
 \begin{prop}[Corollary of Schwarz's lemma]
     If $f$ is an automorphism of $\D$, then there exist $\theta\in\R$ and $a\in\D$ such that 
     \begin{equation*}
-        f(z)=e^{i\theta}\frac{z-a}{1-\bar{a}z}
+        f(z)=e^{i\theta}\frac{a-z}{1-\bar{a}z}
     \end{equation*}
     Namely, the only automorphisms of $\D$ that fix the origin are rotations.
 \end{prop}
@@ -672,29 +707,27 @@ and the annulus
 \]
 cannot be conformally equivalent.
 \end{prob}
+\begin{proof}
+    Suppose $f:\D\setminus\{0\}\to\mathcal{A}$ is a conformal map, where $\mathcal{A}$ denotes the annulus. Intuitively, we will show how the punctured point $0$ is different from a punctured disk. Since $|f(z)|<2$, we know $f$ has a removable singularity at $z=0$, where we denote its holomorphic extension as $\tilde{f}$. We first note by continuity $1\leq|\tilde{f}(z)|\leq 2$.
+    \begin{enumerate}
+        \item We claim $\tilde{f}(0)\neq 2$ because that'd imply an interior point attained the maximum, contradiction to MMP.
+        \item Similarly, $\tilde{f}(0)\neq 1$ as we consider $1/\tilde{f}$, which is holomorphic on $\D$ and $|1/\tilde{f}(z)|\leq 1$. It would again imply $1/\tilde{f}$ attained maximum at an interior point.
+    \end{enumerate}
+    Thus $1<|\tilde{f}(z)|<2$. Now there must exist $z_0\in\D$ such that 
+    \begin{equation*}
+        \tilde{f}(z_0)=\tilde{f}(0)
+    \end{equation*}
+    Now we choose $\varepsilon>0$ small enough, such that $D_\varepsilon(0)\cap D_\varepsilon(z_0)=\varnothing$. By the Open Mapping Theorem, we know 
+    \begin{equation*}
+        f(D_\varepsilon(0)), f(D_\varepsilon(z_0)) \text{ are open sets containing} f(z_0)=\tilde{f}(0) 
+    \end{equation*}
+    Letting $D_\delta(f(z_0))$ denote an open disk contained in both of the open sets, then 
+    \begin{equation*}
+        f^{-1}(D_\delta(f(z_0)))\subset D_\varepsilon(0), f^{-1}(D_\delta(f(z_0)))\subset D_\varepsilon(z_0)
+    \end{equation*}
+    which is a contradiction.
+\end{proof}
 
-\begin{prob}[Fall 2019, Q4]
-Let $f$ be a holomorphic function in the punctured disk
-\[
-\{z:0<|z|<2\}
-\]
-satisfying
-\[
-|f(z)|\leq
-\left(\log\frac{1}{|z|}\right)^{100}
-\qquad\text{in } \{z:|z|\leq 1/2\},
-\]
-and
-\[
-|f(z)|=1 \qquad\text{on } |z|=1.
-\]
-
-\begin{enumerate}
-    \item[(a)] Show that $f$ has a removable singularity at the origin.
-
-    \item[(b)] Show that if $f(z)\neq 0$ in $|z|<1$, then $f$ is constant.
-\end{enumerate}
-\end{prob}
 
 \begin{prob}[Fall 2019, Q4]
 Let $f(z)$ be a holomorphic function on
@@ -702,13 +735,25 @@ Let $f(z)$ be a holomorphic function on
 \D:=\{z\in\mathbb{C}:|z|<1\},
 \]
 with $|f(z)|<1$, and suppose $f(\alpha)=0$ for some $|\alpha|<1$.
-Show that for $z\in D$,
+Show that for $z\in\D$,
 \[
 |f(z)|\leq \left|\frac{z-\alpha}{1-\overline{\alpha}z}\right|.
 \]
 \end{prob}
 \begin{proof}
-    Schwarz lemma.
+    We consider the following composite function:
+    \begin{equation*}
+        g=f\circ\phi_\alpha(z)
+    \end{equation*}
+    It is clear that $g(0)=0$ and $|g(z)|<1$. Applying Schwarz lemma, we get 
+    \begin{equation*}
+        |f\circ\phi_\alpha(z)|\leq|z|
+    \end{equation*}
+    Since $\phi_\alpha$ is an automorphism of $\D$, replacing $z$ with $\phi_\alpha(z)$ gives
+    \begin{equation*}
+        |f(z)|\leq|\phi_\alpha(z)|
+    \end{equation*}
+    as desired.
 \end{proof}
 
 
@@ -722,9 +767,9 @@ is the unit disk. Prove that if $f$ has at least $2$ fixed points then $f$ is th
 \begin{proof}
     Let $z_1,z_2\in\D$ be such that $f(z_1)=z_1, f(z_2)=z_2$. Then we consider the composite 
     \begin{equation*}
-        g=\phi_{z_1}\circ f\circ\phi_{-z_1}
+        g=\phi_{z_1}\circ f\circ\phi_{z_1}
     \end{equation*}
-    It is clear that $g$ fixes $0$, and if we let $z_2'\neq 0$ be such that $\phi_{-z_1}(z_2')=z_2$, then it is clear that $g$ fixes $z_2'$ as well. We see that 
+    It is clear that $g$ fixes $0$, and if we let $z_2'\neq 0$ be such that $\phi_{z_1}(z_2')=z_2$, then it is clear that $g$ fixes $z_2'$ as well. We see that 
     \begin{equation*}
         g(0)=0, \quad |g(z)|\leq 1, g(z_2')=z_2'
     \end{equation*}
