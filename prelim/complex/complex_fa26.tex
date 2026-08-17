@@ -86,17 +86,17 @@ Let $\{f_n\}$ be a sequence of holomorphic functions on the open unit disk
 and suppose that $f_n\to f$ uniformly on compact subsets of $\mathbb{D}$, where
 $f:\mathbb{D}\to\mathbb{C}$ is continuous. Prove that $f$ is holomorphic on $\mathbb{D}$.
 \end{prob}
-\begin{proof}
-    This is an immediate consequence of Morera's theorem. Take an arbitrary triangle $T$ contained in $\D$, we know for any $n$,
-    \begin{equation*}
-        \int_T f_n(z)dz=0
-    \end{equation*}
-    by Goursat's theorem. By assumption, $f_n\to f$ uniformly, thus 
-    \begin{equation*}
-        \int_T f(z)dz=\lim_{n\to\infty}\int_T f_n(z)dz=0
-    \end{equation*}
-    By Morera's theorem, $f$ is holomorphic in $\D$. 
-\end{proof}
+% \begin{proof}
+%     This is an immediate consequence of Morera's theorem. Take an arbitrary triangle $T$ contained in $\D$, we know for any $n$,
+%     \begin{equation*}
+%         \int_T f_n(z)dz=0
+%     \end{equation*}
+%     by Goursat's theorem. By assumption, $f_n\to f$ uniformly, thus 
+%     \begin{equation*}
+%         \int_T f(z)dz=\lim_{n\to\infty}\int_T f_n(z)dz=0
+%     \end{equation*}
+%     By Morera's theorem, $f$ is holomorphic in $\D$. 
+% \end{proof}
 
 \begin{prob}{6}
 Use contour integration to evaluate
@@ -104,9 +104,9 @@ Use contour integration to evaluate
 \int_0^\infty \frac{x^2}{x^4+1}\,dx.
 \]
 \end{prob}
-\begin{proof}
-    Use residue theorem for $z_1=e^\frac{\pi i}{4}, z_2=e^\frac{3\pi i}{4}$.
-\end{proof}
+% \begin{proof}
+%     Use residue theorem for $z_1=e^\frac{\pi i}{4}, z_2=e^\frac{3\pi i}{4}$.
+% \end{proof}
 
 \begin{prob}{7}
 Let $f$ be an analytic function on the open unit disk
@@ -123,9 +123,9 @@ for all $z\in\mathbb{D}$. Show that
 \qquad\text{for all }z\in\mathbb{D}.
 \]
 \end{prob}
-\begin{proof}
-    Maximum modulus principle.
-\end{proof}
+% \begin{proof}
+%     Maximum modulus principle.
+% \end{proof}
 
 \begin{prob}{8}
 Determine how many solutions
@@ -137,9 +137,9 @@ are in the annulus
 1<|z|<2.
 \]
 \end{prob}
-\begin{proof}
-    Rouche's theorem.
-\end{proof}
+% \begin{proof}
+%     Rouche's theorem.
+% \end{proof}
 
 % \chapter{Spring 2025}
 % \begin{prob}
@@ -243,51 +243,51 @@ are in the annulus
         \int_0^\infty\frac{1-\cos x}{x^2}dx
     \end{equation*}
 \end{prob}
-\begin{proof}
-    The answer is 
-    \begin{equation*}
-        \int_0^\infty\frac{1-\cos x}{x^2}dx=\frac{\pi}{2}
-    \end{equation*}
-    We use the contour of a semicircle skipping $x=0$. Let $f(z)=\frac{1-e^{iz}}{z^2}$, then by Cauchy's integral formula, we have 
-    \begin{align*}
-        \int_{\gamma_R}f(z)dz+\int_{\gamma_\varepsilon}f(z)dz+\int_{|z|>\varepsilon}f(z)dz=0\tag{1}
-    \end{align*}
-where 
-\begin{equation*}
-    \lim_{\varepsilon\to 0}\int_{|z|>\varepsilon}f(z)dz=2\int_0^\infty\frac{1-\cos x}{x^2}dx
-\end{equation*}
-Hence it suffices to compute the first two terms in (1). Let $z=Re^{i\theta}$, we see that 
-\begin{align*}
-    \left|\int_{\gamma_R}f(z)dz\right|&=\left|\int_0^{\pi}\frac{1-e^{iRe^{i\theta}}}{R^2e^{2i\theta}}iRe^{i\theta}d\theta\right|\\
-    &\leq\int_0^\pi\frac{2}{R}d\theta\to 0
-\end{align*}
-as $R\to\infty$.
-Similarly, we can compute $\int_{\gamma_\varepsilon}f(z)dz$ by setting $z=\varepsilon e^{i\theta}$ and letting $\varepsilon\to 0$. 
-\begin{align*}
-    \int_{\gamma_\varepsilon}f(z)dz&=\int_\pi^{0}\frac{1-e^{i\varepsilon e^{i\theta}}}{\varepsilon^2e^{2i\theta}}i\varepsilon e^{i\theta}d\theta\\
-    &=i\int_\pi^0\frac{1-e^{i\varepsilon e^{i\theta}}}{\varepsilon e^{i\theta}}d\theta\to -\pi
-\end{align*}
-as $\varepsilon\to 0$, since
-\begin{equation*}
-    \lim_{a\to 0}\frac{1-e^{ia}}{a}=-i
-\end{equation*}
-\end{proof}
+% \begin{proof}
+%     The answer is 
+%     \begin{equation*}
+%         \int_0^\infty\frac{1-\cos x}{x^2}dx=\frac{\pi}{2}
+%     \end{equation*}
+%     We use the contour of a semicircle skipping $x=0$. Let $f(z)=\frac{1-e^{iz}}{z^2}$, then by Cauchy's integral formula, we have 
+%     \begin{align*}
+%         \int_{\gamma_R}f(z)dz+\int_{\gamma_\varepsilon}f(z)dz+\int_{|z|>\varepsilon}f(z)dz=0\tag{1}
+%     \end{align*}
+% where 
+% \begin{equation*}
+%     \lim_{\varepsilon\to 0}\int_{|z|>\varepsilon}f(z)dz=2\int_0^\infty\frac{1-\cos x}{x^2}dx
+% \end{equation*}
+% Hence it suffices to compute the first two terms in (1). Let $z=Re^{i\theta}$, we see that 
+% \begin{align*}
+%     \left|\int_{\gamma_R}f(z)dz\right|&=\left|\int_0^{\pi}\frac{1-e^{iRe^{i\theta}}}{R^2e^{2i\theta}}iRe^{i\theta}d\theta\right|\\
+%     &\leq\int_0^\pi\frac{2}{R}d\theta\to 0
+% \end{align*}
+% as $R\to\infty$.
+% Similarly, we can compute $\int_{\gamma_\varepsilon}f(z)dz$ by setting $z=\varepsilon e^{i\theta}$ and letting $\varepsilon\to 0$. 
+% \begin{align*}
+%     \int_{\gamma_\varepsilon}f(z)dz&=\int_\pi^{0}\frac{1-e^{i\varepsilon e^{i\theta}}}{\varepsilon^2e^{2i\theta}}i\varepsilon e^{i\theta}d\theta\\
+%     &=i\int_\pi^0\frac{1-e^{i\varepsilon e^{i\theta}}}{\varepsilon e^{i\theta}}d\theta\to -\pi
+% \end{align*}
+% as $\varepsilon\to 0$, since
+% \begin{equation*}
+%     \lim_{a\to 0}\frac{1-e^{ia}}{a}=-i
+% \end{equation*}
+% \end{proof}
 
 
 \begin{prob}
     Let $U$ be a region. Suppose $f$ is holomorphic in $U$, and a sequence $\{z_n\}\subset U$ converges to some $z\in U$. If $f(z_n)=0$ for all $n$, show that $f\equiv 0$.
 \end{prob}
-\begin{proof}
-    Since $z_n\to z$, we know $f(z)=\lim_{z_n\to z}f(z_n)=0$. Assume $f$ is not identically zero, then writing it as a power series, we have 
-    \begin{align*}
-        f(w)=(w-z)^ng(w)
-    \end{align*}
-    where $g(w)=a_n+a_{n+1}(w-z)+a_{n+2}(w-z)^2+\dots$, for some $a_n\neq 0$. We know $g(z)=a_n\neq 0$, hence there exists a neighborhood $V$ around $z$ such that $g(w)\neq 0$ whenever $w\in V$. Hence, if $w\in V$, then $f(w)=0$ iff $w=z$. This is a contradiction to $z_n\to z$ and $f(z_n)=0$ for all $n$.
-\end{proof}
+% \begin{proof}
+%     Since $z_n\to z$, we know $f(z)=\lim_{z_n\to z}f(z_n)=0$. Assume $f$ is not identically zero, then writing it as a power series, we have 
+%     \begin{align*}
+%         f(w)=(w-z)^ng(w)
+%     \end{align*}
+%     where $g(w)=a_n+a_{n+1}(w-z)+a_{n+2}(w-z)^2+\dots$, for some $a_n\neq 0$. We know $g(z)=a_n\neq 0$, hence there exists a neighborhood $V$ around $z$ such that $g(w)\neq 0$ whenever $w\in V$. Hence, if $w\in V$, then $f(w)=0$ iff $w=z$. This is a contradiction to $z_n\to z$ and $f(z_n)=0$ for all $n$.
+% \end{proof}
 
-\begin{warn}
-    This shows that a nonzero holomorphic function has isolated zeros.
-\end{warn}
+% \begin{warn}
+%     This shows that a nonzero holomorphic function has isolated zeros.
+% \end{warn}
 
 \begin{prob}[Spring 2018, Q4]
     Let $f$ be an entire function, suppose that for each $z_0$, the power series expansion 
@@ -296,27 +296,27 @@ as $\varepsilon\to 0$, since
     \end{equation*}
     has at least one coefficient $a_n=0$. Show that $f$ must be a polynomial.
 \end{prob}
-\begin{proof}
-    It suffices to show that for some $k\in\mathbb{N}$, $f^{(k)}\equiv 0$ because
-    \begin{equation*}
-        a_n=\frac{1}{n!}f^{(n)}(z_0)
-    \end{equation*}
-    We first observe that 
-    \begin{equation*}
-        \bigcup_{n\in\mathbb{N}}\{z: f^{(n)}=0\}=\C
-    \end{equation*}
-    Then there must exist some $k\in\mathbb{N}$ such that 
-    \begin{equation*}
-        \{z: f^{(k)}=0\} \text{ is uncountable}
-    \end{equation*}
-    Thus $f^{(k)}$ has uncountably many zeros, which implies $f\equiv 0$. 
-    \begin{lem}
-        Let $f$ be a nonzero holomorphic function, then $f$ cannot have uncountably many zeros.
-    \end{lem}
-    \begin{proof}
-        Let $Z=\{z\in\C: f(z)=0\}$, we know that $Z$ contains no limit point. We can tile the complex plane using unit squares and suppose $Z$ is uncountable, the intersection of $Z$ with one of the tiles needs to be uncountable. This is a contradiction because this intersection is compact and discrete, hence must be finite.
-    \end{proof}
-\end{proof}
+% \begin{proof}
+%     It suffices to show that for some $k\in\mathbb{N}$, $f^{(k)}\equiv 0$ because
+%     \begin{equation*}
+%         a_n=\frac{1}{n!}f^{(n)}(z_0)
+%     \end{equation*}
+%     We first observe that 
+%     \begin{equation*}
+%         \bigcup_{n\in\mathbb{N}}\{z: f^{(n)}=0\}=\C
+%     \end{equation*}
+%     Then there must exist some $k\in\mathbb{N}$ such that 
+%     \begin{equation*}
+%         \{z: f^{(k)}=0\} \text{ is uncountable}
+%     \end{equation*}
+%     Thus $f^{(k)}$ has uncountably many zeros, which implies $f\equiv 0$. 
+%     \begin{lem}
+%         Let $f$ be a nonzero holomorphic function, then $f$ cannot have uncountably many zeros.
+%     \end{lem}
+%     \begin{proof}
+%         Let $Z=\{z\in\C: f(z)=0\}$, we know that $Z$ contains no limit point. We can tile the complex plane using unit squares and suppose $Z$ is uncountable, the intersection of $Z$ with one of the tiles needs to be uncountable. This is a contradiction because this intersection is compact and discrete, hence must be finite.
+%     \end{proof}
+% \end{proof}
 
 \begin{prob}[Fall 2019, Q2]
     Let $f$ be an entire function such that 
@@ -325,26 +325,26 @@ as $\varepsilon\to 0$, since
     \end{equation*}
     for positive constants $A,B$ and all $R$ large. Then show $f$ is a polynomial with degree at most $k$.
 \end{prob}
-\begin{proof}
-    This problem is a direct application of Cauchy's inequality. Writing $f(z)$ as a power series around $0$, we have 
-    \begin{equation*}
-        f(z)=\sum_{n=0}^\infty a_nz^n
-    \end{equation*}
-    where 
-    \begin{equation*}
-        a_n=\frac{1}{n!}f^{(n)}(0)
-    \end{equation*}
-    It suffices to show that for any $m>k$, we have 
-    \begin{equation*}
-        f^{(m)}(0)= 0
-    \end{equation*}
-    Using Cauchy's inequality, we get 
-    \begin{align*}
-        |f^{(m)}(0)|&\leq\frac{m!\sup_{|z|=R}|f(z)|}{R^m}\\
-        &\leq \frac{m!(AR^k+B)}{R^m}\to 0
-    \end{align*}
-    as $R\to\infty$ because $m>k$. Hence we are done.
-\end{proof}
+% \begin{proof}
+%     This problem is a direct application of Cauchy's inequality. Writing $f(z)$ as a power series around $0$, we have 
+%     \begin{equation*}
+%         f(z)=\sum_{n=0}^\infty a_nz^n
+%     \end{equation*}
+%     where 
+%     \begin{equation*}
+%         a_n=\frac{1}{n!}f^{(n)}(0)
+%     \end{equation*}
+%     It suffices to show that for any $m>k$, we have 
+%     \begin{equation*}
+%         f^{(m)}(0)= 0
+%     \end{equation*}
+%     Using Cauchy's inequality, we get 
+%     \begin{align*}
+%         |f^{(m)}(0)|&\leq\frac{m!\sup_{|z|=R}|f(z)|}{R^m}\\
+%         &\leq \frac{m!(AR^k+B)}{R^m}\to 0
+%     \end{align*}
+%     as $R\to\infty$ because $m>k$. Hence we are done.
+% \end{proof}
 
 
 \begin{prob}[Fall 2023, Q1]
@@ -358,53 +358,53 @@ as $\varepsilon\to 0$, since
         \item[(b)] Why isn't the function $z^{1/2}$ a counterexample for Part (a)?
     \end{enumerate}
 \end{prob}
-\begin{proof}
-    \begin{enumerate}
-        \item[(a)] We write $f$ as the Taylor series about $0$, 
-        \begin{equation*}
-            f(z)=\sum_{n=0}^\infty a_nz^n
-        \end{equation*}
-        where 
-        \begin{equation*}
-            a_n=\frac{1}{n!}f^{(n)}(0)
-        \end{equation*}
-        Using Cauchy's inequality, for any $R$ large, if $n\geq 1$,
-        \begin{align*}
-            |f^{(n)}(0)|\leq\frac{n!\sup_{|z|=R}|f(z)|}{R^n}\to 0
-        \end{align*}
-        as $R\to\infty$. Thus $f(z)=a_0$, for some $a_0\in\C$.
-        \item[(b)] The function is not entire.
-    \end{enumerate}
-\end{proof}
+% \begin{proof}
+%     \begin{enumerate}
+%         \item[(a)] We write $f$ as the Taylor series about $0$, 
+%         \begin{equation*}
+%             f(z)=\sum_{n=0}^\infty a_nz^n
+%         \end{equation*}
+%         where 
+%         \begin{equation*}
+%             a_n=\frac{1}{n!}f^{(n)}(0)
+%         \end{equation*}
+%         Using Cauchy's inequality, for any $R$ large, if $n\geq 1$,
+%         \begin{align*}
+%             |f^{(n)}(0)|\leq\frac{n!\sup_{|z|=R}|f(z)|}{R^n}\to 0
+%         \end{align*}
+%         as $R\to\infty$. Thus $f(z)=a_0$, for some $a_0\in\C$.
+%         \item[(b)] The function is not entire.
+%     \end{enumerate}
+% \end{proof}
 
 
 \begin{prob}[Fall 2018, Q4]
     Suppose $f,g$ are both entire functions such that $|f(z)|\leq |g(z)|$ for all $z\in\C$. Show that there exists $c\in\C$ such that $f=cg$.
 \end{prob}
-\begin{proof}
-    We will use Liouville's theorem. It suffices to show that $h=f/g$ continuously extends to an entire function. Suppose $g(z_0)=0$ for some $z_0$, then we know $f(z_0)=0$, hence writing 
-    \begin{equation*}
-        f(z)=(z-z_0)^ns(z), \quad g(z)=(z-z_0)^m t(z)
-    \end{equation*}
-    where $s(z_0)\neq 0, t(z_0)\neq 0$. We must have $n\geq m$, suppose if not, i.e., $m>n$, then 
-    \begin{equation*}
-        |s(z)|\leq|z-z_0|^{m-n}|t(z)|
-    \end{equation*}
-    which is a contradiction by letting $z=z_0$. Thus $z_0$ is a removable singularity for $h=f/g$. This implies $h$ can be extended to an entire function, as desired.
-\end{proof}
+% \begin{proof}
+%     We will use Liouville's theorem. It suffices to show that $h=f/g$ continuously extends to an entire function. Suppose $g(z_0)=0$ for some $z_0$, then we know $f(z_0)=0$, hence writing 
+%     \begin{equation*}
+%         f(z)=(z-z_0)^ns(z), \quad g(z)=(z-z_0)^m t(z)
+%     \end{equation*}
+%     where $s(z_0)\neq 0, t(z_0)\neq 0$. We must have $n\geq m$, suppose if not, i.e., $m>n$, then 
+%     \begin{equation*}
+%         |s(z)|\leq|z-z_0|^{m-n}|t(z)|
+%     \end{equation*}
+%     which is a contradiction by letting $z=z_0$. Thus $z_0$ is a removable singularity for $h=f/g$. This implies $h$ can be extended to an entire function, as desired.
+% \end{proof}
 
 
 
 \begin{prob}[Spring 2015, Q6]
     Suppose $f$ is a nonconstant entire funcion, then show that $f(\C)$ is dense in $\C$.
 \end{prob}
-\begin{proof}
-    Suppose there exists $w\in\C$ such that for a small $r>0$, $D_r(w)\cap f(\C)=\varnothing$. Then we consider the function 
-    \begin{equation*}
-        \frac{1}{f(z)-w}
-    \end{equation*}
-    This function is entire and bounded, implying $f$ is constant, which is a contradiction.
-\end{proof}
+% \begin{proof}
+%     Suppose there exists $w\in\C$ such that for a small $r>0$, $D_r(w)\cap f(\C)=\varnothing$. Then we consider the function 
+%     \begin{equation*}
+%         \frac{1}{f(z)-w}
+%     \end{equation*}
+%     This function is entire and bounded, implying $f$ is constant, which is a contradiction.
+% \end{proof}
 
 
 
@@ -489,10 +489,12 @@ as $\varepsilon\to 0$, since
 \end{prop}
 
 
-there are more here
-\begin{thm}
-    
-\end{thm}
+\begin{prop}[Mean-value property]
+    If \( f \) is holomorphic in a disc \( D_R(z_0) \), then
+    \[
+    f(z_0) = \frac{1}{2\pi} \int_0^{2\pi} f(z_0 + re^{i\theta}) \, d\theta, \quad \text{for any } 0 < r < R.
+    \]
+\end{prop}
 
 \begin{prob}
     Compute 
@@ -500,25 +502,25 @@ there are more here
         \int_{0}^\infty\frac{1}{1+x^2}dx
     \end{equation*}
 \end{prob}
-\begin{proof}
-    Let $f(z)=\frac{1}{1+z^2}$.
-    Using a semicircle along the real axis and applying the residue theorem, 
-    \begin{equation*}
-        \int_{|x|<R}\frac{1}{1+x^2}dx+\int_{\gamma_R}f(z)dz=2\pi i \text{res}_if
-    \end{equation*}
-    where $\gamma_R$ is the semicircle arc. We first show that $\int_{\gamma_R}$ goes to zero as $R\to\infty$.
-    \begin{align*}
-        \left|\int_{\gamma_R}\frac{1}{1+z^2}dz\right|&=\left|\int_0^{2\pi}\frac{1}{1+R^2 e^{2i\theta}}iRe^{i\theta}d\theta \right|=O\left(\frac{1}{R}\right)
-    \end{align*}
-    Then we compute 
-    \begin{align*}
-        \text{res}_if=\lim_{z\to i}(z-i)f(z)=\pi
-    \end{align*}
-    Hence letting $R\to\infty$, we see 
-    \begin{equation*}
-        \int_0^\infty\frac{1}{1+x^2}dx=\frac{\pi}{2}
-    \end{equation*}
-\end{proof}
+% \begin{proof}
+%     Let $f(z)=\frac{1}{1+z^2}$.
+%     Using a semicircle along the real axis and applying the residue theorem, 
+%     \begin{equation*}
+%         \int_{|x|<R}\frac{1}{1+x^2}dx+\int_{\gamma_R}f(z)dz=2\pi i \text{res}_if
+%     \end{equation*}
+%     where $\gamma_R$ is the semicircle arc. We first show that $\int_{\gamma_R}$ goes to zero as $R\to\infty$.
+%     \begin{align*}
+%         \left|\int_{\gamma_R}\frac{1}{1+z^2}dz\right|&=\left|\int_0^{2\pi}\frac{1}{1+R^2 e^{2i\theta}}iRe^{i\theta}d\theta \right|=O\left(\frac{1}{R}\right)
+%     \end{align*}
+%     Then we compute 
+%     \begin{align*}
+%         \text{res}_if=\lim_{z\to i}(z-i)f(z)=\pi
+%     \end{align*}
+%     Hence letting $R\to\infty$, we see 
+%     \begin{equation*}
+%         \int_0^\infty\frac{1}{1+x^2}dx=\frac{\pi}{2}
+%     \end{equation*}
+% \end{proof}
 
 
 
@@ -529,37 +531,47 @@ there are more here
         \int_{-\infty}^\infty\frac{e^{ax}}{1+e^x}dx
     \end{equation*}
 \end{prob}
-\begin{proof}
-    Let $f(z)=\frac{e^{az}}{1+e^z}$. We notice that if we use the same semicircle contour then we'd enclose more and more residues, hence now we will use a rectangle contour along the following four lines: real axis, $R+it, t\in[0,2\pi]$, $-R+it, t\in[2\pi, 0]$, and $s+2\pi i, s\in [R,-R]$. We notice that 
-    \begin{equation*}
-        \frac{e^{a(x+2\pi i)}}{1+e^{x+2\pi i}}=e^{2a\pi i}\frac{e^{ax}}{1+e^x}=e^{2a\pi i}f(z)
-    \end{equation*}
-    thus denoting the two vertical lines as $\gamma_{R_+}, \gamma_{R_-}$, the residue formula implies 
-    \begin{equation*}
-        \left(1-e^{2a\pi i}\right)\int_{|z|<R}f(z)dz+\int_{\gamma_{R_+}}f(z)dz+\int_{\gamma_{R_-}}f(z)dz=2\pi i\text{res}_{\pi i}f
-    \end{equation*}
-    We first evaluate 
-    \begin{equation*}
-        \text{res}_{\pi i}f=\lim_{z\to\pi i}(z-\pi i)f(z)=-e^{a\pi i}
-    \end{equation*}
-    Now we show the two vertical pieces tend to $0$:
-    \begin{align*}
-        \left|\int_{\gamma_{R_+}}f(z)dz\right|&=\int_0^{2\pi}\left|\frac{e^{a(R+it)}}{1+e^{R+it}}\right| dt\\
-        &\leq Ce^{(a-1)R}\to 0
-    \end{align*}
-    as $R\to\infty$.
-\end{proof}
+% \begin{proof}
+%     Let $f(z)=\frac{e^{az}}{1+e^z}$. We notice that if we use the same semicircle contour then we'd enclose more and more residues, hence now we will use a rectangle contour along the following four lines: real axis, $R+it, t\in[0,2\pi]$, $-R+it, t\in[2\pi, 0]$, and $s+2\pi i, s\in [R,-R]$. We notice that 
+%     \begin{equation*}
+%         \frac{e^{a(x+2\pi i)}}{1+e^{x+2\pi i}}=e^{2a\pi i}\frac{e^{ax}}{1+e^x}=e^{2a\pi i}f(z)
+%     \end{equation*}
+%     thus denoting the two vertical lines as $\gamma_{R_+}, \gamma_{R_-}$, the residue formula implies 
+%     \begin{equation*}
+%         \left(1-e^{2a\pi i}\right)\int_{|z|<R}f(z)dz+\int_{\gamma_{R_+}}f(z)dz+\int_{\gamma_{R_-}}f(z)dz=2\pi i\text{res}_{\pi i}f
+%     \end{equation*}
+%     We first evaluate 
+%     \begin{equation*}
+%         \text{res}_{\pi i}f=\lim_{z\to\pi i}(z-\pi i)f(z)=-e^{a\pi i}
+%     \end{equation*}
+%     Now we show the two vertical pieces tend to $0$:
+%     \begin{align*}
+%         \left|\int_{\gamma_{R_+}}f(z)dz\right|&=\int_0^{2\pi}\left|\frac{e^{a(R+it)}}{1+e^{R+it}}\right| dt\\
+%         &\leq Ce^{(a-1)R}\to 0
+%     \end{align*}
+%     as $R\to\infty$.
+% \end{proof}
 
 
 
 \begin{prob}
     Assume that $f:\mathbb{C}\to\mathbb{C}$ is an entire function, not identically equal to $0$, and let \[ Z=\{z\in\mathbb{C}:f(z)=0\}. \] Prove that if $Z$ is unbounded, then $f$ has an essential singularity at $\infty$.
 \end{prob}
+% \begin{proof}
+%     If $Z$ is unbounded, then we can find a sequence $z_n\in Z$ such that $|z_n|\to\infty$, which means $f(z_n)=0$. This shows that $\infty$ cannot be a pole. Moreover, if $\infty$ is a removable singularity, then $f$ is bounded for $|z|$ sufficiently large. Using the fact that $f$ is bounded on all compact subsets of $\C$, we see that $f$ is a bounded entire function, thus is identically zero. This is a contradiction.
+% \end{proof}
 
 
 \begin{prob}
     Suppose $f$ is an injective entire function, show $f$ is linear.
 \end{prob}
+% \begin{proof}
+%     From the previous problem, we know $\infty$ cannot be a removable singularity. Moreover, $\infty$ cannot be an essential singularity because $f$ wouldn't be injective due to Great Picard's theorem. Thus $|f(z)|\to\infty$ as $|z|\to\infty$. 
+%     \begin{lem}
+%         Let $f$ be an entire function such that $|f(z)|\to\infty$ as $|z|\to\infty$, then $f$ must be a polynomial.
+%     \end{lem}
+%     (We will prove this in the Spring 2026 exam.) Suppose $f$ has degree $\geq 2$, then for any $w\in\C$, $f(z)-w$ has at least two roots. (For $f(z)-w$ to have repeated roots, $f'(z)=0$, which only happens at finitely many points because f' is a polynomial). We can choose $w$ such that $f(z)-w$ has two distinct roots, contradicting the fact that $f$ is injective. 
+% \end{proof}
 
 
 
@@ -568,44 +580,32 @@ there are more here
 
 \begin{prob}[Spring 2017, Q6]
     Let $f:U\to\mathbb{C}$ be a non-constant holomorphic function where
-    $U\subset\mathbb{C}$ is an open set containing the closure $\overline{D}$ of
+    $U\subset\mathbb{C}$ is an open set containing the closure $\overline{\D}$ of
     the unit disk
     \[
-    D=\{z\in\mathbb{C}:|z|<1\}.
+    \D=\{z\in\mathbb{C}:|z|<1\}.
     \]
-    If $|f(z)|=1$ for all $z\in\partial D$, then prove that
+    If $|f(z)|=1$ for all $z\in\partial\D$, then prove that
     \[
-    D\subset f(\overline{D}).
+    \D\subset f(\overline{\D}).
     \]
     \end{prob}
-\begin{proof}
-    Argument+maximum modulus.
-\end{proof}
+% \begin{proof}
+%     We first show that $f$ must have at least one zero. Suppose not, then $1/f$ is holomorphic in $\D$, and 
+%     \begin{equation*}
+%         |1/f|\geq 1
+%     \end{equation*}
+%     for $z\in\D$. This is because $|f(z)|=1$ for $|z|=1$ implies $|f(z)|\leq 1$ for $z\in\D$. This is a contradiction because $|1/f|=1$ on $|z|=1$. Hence $f$ has at least one zero. Now it suffices to show for any $w\in\D$, there exists some $z\in\D$ such that $w=f(z)$. We consider the function $f(z)-w$. It is clear that 
+%     \begin{equation*}
+%         |f(z)-w|<1=|f(z)|
+%     \end{equation*}
+%     for $|z|=1$. Thus $f(z)-w$ and $f$ have the same number of zeros in $\D$, as desired.
+% \end{proof}
 
 
-\begin{prob}[Fall 2015, Q4]
-    Let $U\subset\mathbb{C}$ be an open set containing $\overline{D(P,r)}$. Prove
-that if $f:U\to\mathbb{C}$ is a holomorphic function such that $f$ is nowhere
-zero on $\partial D(P,r)$ and $g:U\to\mathbb{C}$ is a holomorphic function
-sufficiently uniformly close to $f$ on $\partial D(P,r)$, then the number of
-zeros of $f$ in $D(P,r)$ equals the number of zeros of $g$ in $D(P,r)$
-(counting multiplicity).
-\end{prob}
-\begin{proof}
-    Argument.
-\end{proof}
 
-\begin{prob}[Spring 2021, Q1]
-Suppose $U\subset\mathbb{C}$ is an open set. Suppose $f$ and $g$ are functions
-holomorphic on $U\subset\mathbb{C}$. Show that if
-\[
-|f(z)|^4+|g(z)|^4
-\]
-attains a maximum for some $z_0\in U$, then $f$ and $g$ are constant on $U$.
-\end{prob}
-\begin{proof}
-    MMP.
-\end{proof}
+
+
 
 
 
@@ -632,19 +632,19 @@ attains a maximum for some $z_0\in U$, then $f$ and $g$ are constant on $U$.
         \item[(b)] Show that if $f(z)\neq 0$ in $|z|<1$, then $f$ is constant.
     \end{enumerate}
     \end{prob}
-    \begin{proof}
-        \begin{enumerate}
-            \item[(a)] We can compute 
-            \begin{equation*}
-                \lim_{z\to 0}|zf(z)|=0
-            \end{equation*}
-            \item[(b)] To show $f$ is constant, one typically should think of Liouville's or MMP (in this case $f$ is not entire, hence it's MMP). We note that $1/f$ defined on $\D$ is a holomorphic function if $f(z)\neq 0$ in $|z|<1$. Morevoer, 
-            \begin{equation*}
-                |f(z)|\geq 1
-            \end{equation*}
-            for $|z|\leq 1/2$. However, $|f(z)|=1$ on $|z|=1$, which is a contradiction to MMP.
-        \end{enumerate}
-    \end{proof}
+% \begin{proof}
+%         \begin{enumerate}
+%             \item[(a)] We can compute 
+%             \begin{equation*}
+%                 \lim_{z\to 0}|zf(z)|=0
+%             \end{equation*}
+%             \item[(b)] To show $f$ is constant, one typically should think of Liouville's or MMP (in this case $f$ is not entire, hence it's MMP). We note that $1/f$ defined on $\D$ is a holomorphic function if $f(z)\neq 0$ in $|z|<1$. Morevoer, 
+%             \begin{equation*}
+%                 |f(z)|\geq 1
+%             \end{equation*}
+%             for $|z|\leq 1/2$. However, $|f(z)|=1$ on $|z|=1$, which is a contradiction to MMP.
+%         \end{enumerate}
+% \end{proof}
 
 
 
@@ -692,9 +692,6 @@ attains a maximum for some $z_0\in U$, then $f$ and $g$ are constant on $U$.
 
 
 
-% \begin{prop}[Riemann mapping theorem]
-    
-% \end{prop}
 
 \begin{prob}[Spring 2019, Q4]
 Show that the punctured unit disk
@@ -707,26 +704,26 @@ and the annulus
 \]
 cannot be conformally equivalent.
 \end{prob}
-\begin{proof}
-    Suppose $f:\D\setminus\{0\}\to\mathcal{A}$ is a conformal map, where $\mathcal{A}$ denotes the annulus. Intuitively, we will show how the punctured point $0$ is different from a punctured disk. Since $|f(z)|<2$, we know $f$ has a removable singularity at $z=0$, where we denote its holomorphic extension as $\tilde{f}$. We first note by continuity $1\leq|\tilde{f}(z)|\leq 2$.
-    \begin{enumerate}
-        \item We claim $\tilde{f}(0)\neq 2$ because that'd imply an interior point attained the maximum, contradiction to MMP.
-        \item Similarly, $\tilde{f}(0)\neq 1$ as we consider $1/\tilde{f}$, which is holomorphic on $\D$ and $|1/\tilde{f}(z)|\leq 1$. It would again imply $1/\tilde{f}$ attained maximum at an interior point.
-    \end{enumerate}
-    Thus $1<|\tilde{f}(z)|<2$. Now there must exist $z_0\in\D$ such that 
-    \begin{equation*}
-        \tilde{f}(z_0)=\tilde{f}(0)
-    \end{equation*}
-    Now we choose $\varepsilon>0$ small enough, such that $D_\varepsilon(0)\cap D_\varepsilon(z_0)=\varnothing$. By the Open Mapping Theorem, we know 
-    \begin{equation*}
-        f(D_\varepsilon(0)), f(D_\varepsilon(z_0)) \text{ are open sets containing} f(z_0)=\tilde{f}(0) 
-    \end{equation*}
-    Letting $D_\delta(f(z_0))$ denote an open disk contained in both of the open sets, then 
-    \begin{equation*}
-        f^{-1}(D_\delta(f(z_0)))\subset D_\varepsilon(0), f^{-1}(D_\delta(f(z_0)))\subset D_\varepsilon(z_0)
-    \end{equation*}
-    which is a contradiction.
-\end{proof}
+% \begin{proof}
+%     Suppose $f:\D\setminus\{0\}\to\mathcal{A}$ is a conformal map, where $\mathcal{A}$ denotes the annulus. Intuitively, we will show how the punctured point $0$ is different from a punctured disk. Since $|f(z)|<2$, we know $f$ has a removable singularity at $z=0$, where we denote its holomorphic extension as $\tilde{f}$. We first note by continuity $1\leq|\tilde{f}(z)|\leq 2$.
+%     \begin{enumerate}
+%         \item We claim $\tilde{f}(0)\neq 2$ because that'd imply an interior point attained the maximum, contradiction to MMP.
+%         \item Similarly, $\tilde{f}(0)\neq 1$ as we consider $1/\tilde{f}$, which is holomorphic on $\D$ and $|1/\tilde{f}(z)|\leq 1$. It would again imply $1/\tilde{f}$ attained maximum at an interior point.
+%     \end{enumerate}
+%     Thus $1<|\tilde{f}(z)|<2$. Now there must exist $z_0\in\D$ such that 
+%     \begin{equation*}
+%         \tilde{f}(z_0)=\tilde{f}(0)
+%     \end{equation*}
+%     Now we choose $\varepsilon>0$ small enough, such that $D_\varepsilon(0)\cap D_\varepsilon(z_0)=\varnothing$. By the Open Mapping Theorem, we know 
+%     \begin{equation*}
+%         f(D_\varepsilon(0)), f(D_\varepsilon(z_0)) \text{ are open sets containing} f(z_0)=\tilde{f}(0) 
+%     \end{equation*}
+%     Letting $D_\delta(f(z_0))$ denote an open disk contained in both of the open sets, then 
+%     \begin{equation*}
+%         f^{-1}(D_\delta(f(z_0)))\subset D_\varepsilon(0), f^{-1}(D_\delta(f(z_0)))\subset D_\varepsilon(z_0)
+%     \end{equation*}
+%     which is a contradiction.
+% \end{proof}
 
 
 \begin{prob}[Fall 2019, Q4]
@@ -740,21 +737,21 @@ Show that for $z\in\D$,
 |f(z)|\leq \left|\frac{z-\alpha}{1-\overline{\alpha}z}\right|.
 \]
 \end{prob}
-\begin{proof}
-    We consider the following composite function:
-    \begin{equation*}
-        g=f\circ\phi_\alpha(z)
-    \end{equation*}
-    It is clear that $g(0)=0$ and $|g(z)|<1$. Applying Schwarz lemma, we get 
-    \begin{equation*}
-        |f\circ\phi_\alpha(z)|\leq|z|
-    \end{equation*}
-    Since $\phi_\alpha$ is an automorphism of $\D$, replacing $z$ with $\phi_\alpha(z)$ gives
-    \begin{equation*}
-        |f(z)|\leq|\phi_\alpha(z)|
-    \end{equation*}
-    as desired.
-\end{proof}
+% \begin{proof}
+%     We consider the following composite function:
+%     \begin{equation*}
+%         g=f\circ\phi_\alpha(z)
+%     \end{equation*}
+%     It is clear that $g(0)=0$ and $|g(z)|<1$. Applying Schwarz lemma, we get 
+%     \begin{equation*}
+%         |f\circ\phi_\alpha(z)|\leq|z|
+%     \end{equation*}
+%     Since $\phi_\alpha$ is an automorphism of $\D$, replacing $z$ with $\phi_\alpha(z)$ gives
+%     \begin{equation*}
+%         |f(z)|\leq|\phi_\alpha(z)|
+%     \end{equation*}
+%     as desired.
+% \end{proof}
 
 
 \begin{prob}[Spring 2016, Q5]
@@ -764,113 +761,113 @@ Let $f:\D\to \D$ be a holomorphic function where
 \]
 is the unit disk. Prove that if $f$ has at least $2$ fixed points then $f$ is the identity map.
 \end{prob}
-\begin{proof}
-    Let $z_1,z_2\in\D$ be such that $f(z_1)=z_1, f(z_2)=z_2$. Then we consider the composite 
-    \begin{equation*}
-        g=\phi_{z_1}\circ f\circ\phi_{z_1}
-    \end{equation*}
-    It is clear that $g$ fixes $0$, and if we let $z_2'\neq 0$ be such that $\phi_{z_1}(z_2')=z_2$, then it is clear that $g$ fixes $z_2'$ as well. We see that 
-    \begin{equation*}
-        g(0)=0, \quad |g(z)|\leq 1, g(z_2')=z_2'
-    \end{equation*}
-    hence applying the Schwarz lemma, there exists $|c|=1$ such that $g(z)=cz$, which implies $g$ is constant. This shows $f$ is constant as well.
-\end{proof}
-
-
-
-
-
-
-\chapter{Spring 2026}
-\begin{prob}
-Let $f$ be a holomorphic function on $\{z:|z|<1\}$ that extends to a continuous
-function on $\{z:|z|\leq 1\}$ and maps the closed unit disk to itself.
-Furthermore, suppose
-\[
-f(0)=f'(0)=\cdots=f^{(n-1)}(0)=0.
-\]
-Show that:
-\begin{enumerate}
-    \item[(1)]
-    \[
-    |f(z)|\leq |z|^n \qquad \text{for all } |z|\leq 1.
-    \]
-
-    \item[(2)] If there is some $P\in D(0,1)\setminus\{0\}$ such that
-    \[
-    |f(P)|=|P|^n
-    \]
-    or if
-    \[
-    |f^{(n)}(0)|=n!,
-    \]
-    then
-    \[
-    f(z)=e^{i\theta}z^n.
-    \]
-\end{enumerate}
-\end{prob}
 % \begin{proof}
-%     Method 1: let $x=e^u$.
+%     Let $z_1,z_2\in\D$ be such that $f(z_1)=z_1, f(z_2)=z_2$. Then we consider the composite 
+%     \begin{equation*}
+%         g=\phi_{z_1}\circ f\circ\phi_{z_1}
+%     \end{equation*}
+%     It is clear that $g$ fixes $0$, and if we let $z_2'\neq 0$ be such that $\phi_{z_1}(z_2')=z_2$, then it is clear that $g$ fixes $z_2'$ as well. We see that 
+%     \begin{equation*}
+%         g(0)=0, \quad |g(z)|\leq 1, g(z_2')=z_2'
+%     \end{equation*}
+%     hence applying the Schwarz lemma, there exists $|c|=1$ such that $g(z)=cz$, which implies $g$ is constant. This shows $f$ is constant as well.
+% \end{proof}
+
+
+
+
+
+
+% \chapter{Spring 2026}
+% \begin{prob}
+% Let $f$ be a holomorphic function on $\{z:|z|<1\}$ that extends to a continuous
+% function on $\{z:|z|\leq 1\}$ and maps the closed unit disk to itself.
+% Furthermore, suppose
+% \[
+% f(0)=f'(0)=\cdots=f^{(n-1)}(0)=0.
+% \]
+% Show that:
+% \begin{enumerate}
+%     \item[(1)]
+%     \[
+%     |f(z)|\leq |z|^n \qquad \text{for all } |z|\leq 1.
+%     \]
+
+%     \item[(2)] If there is some $P\in D(0,1)\setminus\{0\}$ such that
+%     \[
+%     |f(P)|=|P|^n
+%     \]
+%     or if
+%     \[
+%     |f^{(n)}(0)|=n!,
+%     \]
+%     then
+%     \[
+%     f(z)=e^{i\theta}z^n.
+%     \]
+% \end{enumerate}
+% \end{prob}
+% % \begin{proof}
+% %     Method 1: let $x=e^u$.
  
-%     Method 2: use a keyhole contour.
-%  \end{proof}
+% %     Method 2: use a keyhole contour.
+% %  \end{proof}
 
-\begin{prob}[Also Fall 2023, Q2]
-Let $-1<a<0$. Compute
-\[
-\int_0^\infty \frac{x^a}{1+x}\,dx.
-\]
-\end{prob}
+% \begin{prob}[Also Fall 2023, Q2]
+% Let $-1<a<0$. Compute
+% \[
+% \int_0^\infty \frac{x^a}{1+x}\,dx.
+% \]
+% \end{prob}
 
-\begin{prob}
-Two parts.
+% \begin{prob}
+% Two parts.
 
-\begin{enumerate}
-    \item[(1)] Let
-    \[
-    f:U=\{z:0<|z|<1\}\longrightarrow\mathbb{C}
-    \]
-    be holomorphic and nonconstant. If there exists a sequence
-    $\{z_n\}\subset U$ that converges to $0$ and satisfies
-    \[
-    f(z_n)=0,
-    \]
-    then prove that $0$ is an essential singularity of $f$.
+% \begin{enumerate}
+%     \item[(1)] Let
+%     \[
+%     f:U=\{z:0<|z|<1\}\longrightarrow\mathbb{C}
+%     \]
+%     be holomorphic and nonconstant. If there exists a sequence
+%     $\{z_n\}\subset U$ that converges to $0$ and satisfies
+%     \[
+%     f(z_n)=0,
+%     \]
+%     then prove that $0$ is an essential singularity of $f$.
 
-    \item[(2)] Show that if $f$ is an entire function that satisfies
-    \[
-    \lim_{|z|\to\infty}f(z)=\infty,
-    \]
-    then $f$ is a polynomial.
-\end{enumerate}
-\end{prob}
+%     \item[(2)] Show that if $f$ is an entire function that satisfies
+%     \[
+%     \lim_{|z|\to\infty}f(z)=\infty,
+%     \]
+%     then $f$ is a polynomial.
+% \end{enumerate}
+% \end{prob}
 
 
-\begin{prob}
-Describe all injective holomorphic maps that map
-\[
-\mathbb{C}\cup\{\infty\}
-\quad\text{to}\quad
-\mathbb{C}\cup\{\infty\}
-\]
-and also map
-\[
-\mathbb{R}\cup\{\infty\}
-\quad\text{to}\quad
-\mathbb{R}\cup\{\infty\}.
-\]
-\end{prob}
-\begin{proof}
-    Let $f$ be such a function, then by the Open Mapping Theorem, $f$ is open. Now viewing $\C\cup\{\infty\}$ as the (compact) Riemann sphere, $f(\C)$ is both open and closed, thus must be an automorphism. Since $f$ also fixes $\R\cup\{\infty\}$, let $\mathbb{H}$ denote the upper half plane, then either $\mathbb{H}\mapsto\mathbb{H}$ or $\mathbb{H}\mapsto -\mathbb{H}$. In the first case, we know $f$ must take the form 
-    \begin{equation*}
-        f(z)=\frac{az+b}{cz+d}
-    \end{equation*}
-    where $a,b,c,d\in\R, ad-bc=1$. In the second case, $f$ can be written as the composite of the function $z\mapsto -z$ and a mobius transformation. Combined, all the maps are of the form 
-    \begin{equation*}
-        \left\{\frac{az+b}{cz+d}: a,b,c,d\in\R, ad-bc=\pm 1\right\}
-    \end{equation*}
-\end{proof}
+% \begin{prob}
+% Describe all injective holomorphic maps that map
+% \[
+% \mathbb{C}\cup\{\infty\}
+% \quad\text{to}\quad
+% \mathbb{C}\cup\{\infty\}
+% \]
+% and also map
+% \[
+% \mathbb{R}\cup\{\infty\}
+% \quad\text{to}\quad
+% \mathbb{R}\cup\{\infty\}.
+% \]
+% \end{prob}
+% \begin{proof}
+%     Let $f$ be such a function, then by the Open Mapping Theorem, $f$ is open. Now viewing $\C\cup\{\infty\}$ as the (compact) Riemann sphere, $f(\C)$ is both open and closed, thus must be an automorphism. Since $f$ also fixes $\R\cup\{\infty\}$, let $\mathbb{H}$ denote the upper half plane, then either $\mathbb{H}\mapsto\mathbb{H}$ or $\mathbb{H}\mapsto -\mathbb{H}$. In the first case, we know $f$ must take the form 
+%     \begin{equation*}
+%         f(z)=\frac{az+b}{cz+d}
+%     \end{equation*}
+%     where $a,b,c,d\in\R, ad-bc=1$. In the second case, $f$ can be written as the composite of the function $z\mapsto -z$ and a mobius transformation. Combined, all the maps are of the form 
+%     \begin{equation*}
+%         \left\{\frac{az+b}{cz+d}: a,b,c,d\in\R, ad-bc=\pm 1\right\}
+%     \end{equation*}
+% \end{proof}
 
 
 
