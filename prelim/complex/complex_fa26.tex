@@ -457,7 +457,6 @@ as $\varepsilon\to 0$, since
 \begin{prop}[Casorati-Weierstrass]
     Let $f$ be a holomorphic function defined on $D_r(z_0)\setminus\{z_0\}$ and suppose $f$ has an essential singularity at $z_0$, then the image of $f$ is dense in $\C$.
 \end{prop}
-Proof?
 
 
 
@@ -504,6 +503,27 @@ there are more here
         \int_{0}^\infty\frac{1}{1+x^2}dx
     \end{equation*}
 \end{prob}
+\begin{proof}
+    Let $f(z)=\frac{1}{1+z^2}$.
+    Using a semicircle along the real axis and applying the residue theorem, 
+    \begin{equation*}
+        \int_{|x|<R}\frac{1}{1+x^2}dx+\int_{\gamma_R}f(z)dz=2\pi i \text{res}_if
+    \end{equation*}
+    where $\gamma_R$ is the semicircle arc. We first show that $\int_{\gamma_R}$ goes to zero as $R\to\infty$.
+    \begin{align*}
+        \left|\int_{\gamma_R}\frac{1}{1+z^2}dz\right|&=\left|\int_0^{2\pi}\frac{1}{1+R^2 e^{2i\theta}}iRe^{i\theta}d\theta \right|=O\left(\frac{1}{R}\right)
+    \end{align*}
+    Then we compute 
+    \begin{align*}
+        \text{res}_if=\lim_{z\to i}(z-i)f(z)=\pi
+    \end{align*}
+    Hence letting $R\to\infty$, we see 
+    \begin{equation*}
+        \int_0^\infty\frac{1}{1+x^2}dx=\frac{\pi}{2}
+    \end{equation*}
+\end{proof}
+
+
 
 
 \begin{prob}
@@ -513,8 +533,26 @@ there are more here
     \end{equation*}
 \end{prob}
 \begin{proof}
-    Use rectangles and the residue at $\pi i$.
+    Let $f(z)=\frac{e^{az}}{1+e^z}$. We notice that if we use the same semicircle contour then we'd enclose more and more residues, hence now we will use a rectangle contour along the following four lines: real axis, $R+it, t\in[0,2\pi]$, $-R+it, t\in[2\pi, 0]$, and $s+2\pi i, s\in [R,-R]$. We notice that 
+    \begin{equation*}
+        \frac{e^{a(x+2\pi i)}}{1+e^{x+2\pi i}}=e^{2a\pi i}\frac{e^{ax}}{1+e^x}=e^{2a\pi i}f(z)
+    \end{equation*}
+    thus denoting the two vertical lines as $\gamma_{R_+}, \gamma_{R_-}$, the residue formula implies 
+    \begin{equation*}
+        \left(1-e^{2a\pi i}\right)\int_{|z|<R}f(z)dz+\int_{\gamma_{R_+}}f(z)dz+\int_{\gamma_{R_-}}f(z)dz=2\pi i\text{res}_{\pi i}f
+    \end{equation*}
+    We first evaluate 
+    \begin{equation*}
+        \text{res}_{\pi i}f=\lim_{z\to\pi i}(z-\pi i)f(z)=-e^{a\pi i}
+    \end{equation*}
+    Now we show the two vertical pieces tend to $0$:
+    \begin{align*}
+        \left|\int_{\gamma_{R_+}}f(z)dz\right|&=\int_0^{2\pi}\left|\frac{e^{a(R+it)}}{1+e^{R+it}}\right| dt\\
+        &\leq Ce^{(a-1)R}\to 0
+    \end{align*}
+    as $R\to\infty$.
 \end{proof}
+
 
 
 \begin{prob}
@@ -525,6 +563,7 @@ there are more here
 \begin{prob}
     Suppose $f$ is an injective entire function, show $f$ is linear.
 \end{prob}
+
 
 
 
