@@ -267,10 +267,45 @@
 
 \newpage
 \section*{\centering Week 2 (9/7-9/11)}
+\begin{prob}
+    Compute the following integral:
+    \begin{equation*}
+        \int_1^3\frac{\ln x}{x(1+\ln^2x)}dx
+    \end{equation*}
+\end{prob}
+% \begin{proof}
+%     Let $u=1+\ln^2 x$, then $du=\frac{2\ln x}{x}dx$, and 
+%     \begin{align*}
+%         \int_1^3\frac{\ln x}{x(1+\ln^2x)}dx&=\int_{1}^{1+\ln^23}\frac{1}{2u}du=\frac{1}{2}\ln(1+\ln^23)
+%     \end{align*}
+% \end{proof}
 
 
+\begin{prob}
+    Compute the following integral:
+    \begin{equation*}
+        \int_0^{1/2}\frac{x}{\sqrt{1-x^4}}dx
+    \end{equation*}
+\end{prob}
+% \begin{proof}
+%     Let $u=x^2, du=2xdx$, then 
+%     \begin{equation*}
+%         \int_0^{1/2}\frac{x}{\sqrt{1-x^4}}dx=\int_0^{1/4}\frac{1}{2\sqrt{1-u^2}}du=\frac{1}{2}\left(\arcsin 1/4-\arcsin 0\right)
+%     \end{equation*}
+% \end{proof}
 
-
+\begin{prob}
+    Compute the following integral:
+    \begin{equation*}
+        \int_1^2\frac{e^x}{(1+e^x)\ln(1+e^x)}dx
+    \end{equation*}
+\end{prob}
+% \begin{proof}
+%     Let $u=\ln(1+e^x)$, then $du=\frac{e^x}{1+e^x}dx$, thus 
+%     \begin{equation*}
+%         \int_1^2\frac{e^x}{(1+e^x)\ln(1+e^x)}dx=\int_{\ln(1+e)}^{\ln(1+e^2)}\frac{1}{u}du=\ln\left(\frac{\ln(1+e^2)}{\ln(1+e)}\right)
+%     \end{equation*}
+% \end{proof}
 
 
 \end{document}
