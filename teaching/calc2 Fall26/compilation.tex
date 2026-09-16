@@ -310,6 +310,97 @@
 
 \newpage
 \section*{\centering Week 3 (9/14-9/18)}
+% Ball example.
+
+% For the washer method, if rotated about the $x$-axis, integrate wrt $x$; if rotated about the $y$-axis, integrate wrt $y$.
+\begin{prob}
+    Compute the area enclosed by the following curves:
+    \begin{enumerate}
+        \item \begin{equation*}
+            y=\frac{1}{x}, y=\frac{1}{x^2}, x=2
+        \end{equation*}
+        \item \begin{equation*}
+            x=1-y^2, x=y^2-1
+        \end{equation*}
+        \item \begin{equation*}
+            x=\frac{\pi}{2}, x=\pi, y=\sin x, y=x
+        \end{equation*}
+        \item \begin{equation*}
+            y=\sqrt[3]{2x}, y=\frac{1}{8}x^2, x=0, x=6
+        \end{equation*}
+    \end{enumerate}
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item \begin{equation*}
+            \int_1^2\left(\frac{1}{x}-\frac{1}{x^2}\right)dx
+        \end{equation*}
+        \item \begin{equation*}
+            \int_{-1}^1(1-y^2)-(y^2-1)dy
+        \end{equation*}
+        \item \begin{equation*}
+            \int_{\pi/2}^\pi\left(x-\sin x\right)dx
+        \end{equation*}
+        \item \begin{equation*}
+            \int_0^4\left(\sqrt[3]{2x}-x^2/8\right)dx+\int_4^6\left(x^2/8-\sqrt[3]{2x}\right)dx
+        \end{equation*}
+    \end{enumerate}
+\end{proof}
+
+
+\begin{prob}
+    Write down the integrals for the following solids of revolution using the washer method. DO NOT SOLVE.
+    \begin{enumerate}
+        \item $y=x, y=x^3, x\geq 0$, rotated about the $x$-axis.
+        \item $y^2=x, x^2=y$, rotated about $y=1$.
+        \item $y^2=x, x^2=y$, rotated about the $y$-axis.
+        \item $x=0, y=x^2, y=-2x+3$ around the $y$-axis.
+    \end{enumerate}
+\end{prob}
+\begin{proof}
+    \begin{enumerate}
+        \item The cross-sectional area in the $x$-direction is $\pi(x^2-(x^3)^2)$, thus 
+        \begin{equation*}
+            S=\int_0^{1}\pi(x^2-x^6)dx
+        \end{equation*}
+        \item The cross-sectional area along the $x$-axis is 
+        \begin{equation*}
+            A=\pi\left[(1-x^2)^2-(1-\sqrt{x})^2\right]
+        \end{equation*}
+        Thus the solid volume is 
+        \begin{equation*}
+            S=\int_0^1\pi\left[(1-x^2)^2-(1-\sqrt{x})^2\right]dx
+        \end{equation*}
+        \item The cross-sectional area along the $y$-axis is 
+        \begin{equation*}
+            \pi\left[(\sqrt{y})^2-(y^2)^2\right]dy
+        \end{equation*}
+        Thus the solid volume is 
+        \begin{equation*}
+            S=\int_0^1\pi\left[(\sqrt{y})^2-(y^2)^2\right]dy
+        \end{equation*}
+        \item This needs to be separated into two terms:
+        \begin{equation*}
+            S=\int_0^1\pi(\sqrt{y})^2dy+\int_1^3\pi\left(\frac{(3-y)}{2}\right)^2dy
+        \end{equation*}
+    \end{enumerate}
+\end{proof}
+
+% The solid obtained by rotating the disk of radius 1 centered at $(2,0)$ in the $xy$-plane around the $y$-axis.
+
+
+% \textbf{Solutions:} We can use the cylindrical shell method for both.
+% \begin{enumerate}
+%     \item Setting $x^2=-2x+3$, we see these two curves intersect at $x=1$ in the first quadrant. One can draw a picture to see $-2x+3\geq x^2$ on $[0,1]$. Thus, 
+%     \begin{equation}
+%         \text{Vol}=\int_0^1 (-2x+3-x^2)\cdot (2\pi x)dx
+%     \end{equation}
+%     \item For a fixed $x\in [1,3]$, we see the ``height'' is given by $2\sqrt{1-(x-2)^2}$, thus 
+%     \begin{equation*}
+%         \text{Vol}=\int_1^3 2\sqrt{1-(x-2)^2}\cdot (2\pi x)dx
+%     \end{equation*}
+% \end{enumerate}
+
 
 
 
