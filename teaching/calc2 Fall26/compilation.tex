@@ -395,21 +395,21 @@
         \int(\ln x)^2dx
     \end{equation*}
 \end{prob}
-% \begin{proof}
-%     We do integration by parts twice:
-%     \begin{align*}
-%         \begin{cases}
-%             u=(\ln x)^2, dv=dx\\
-%             du=\frac{2\ln x}{x}dx, v=x
-%         \end{cases}
-%     \end{align*}
-%     Thus 
-%     \begin{align*}
-%         \int(\ln x)^2dx&=x(\ln x)^2-\int 2\ln xdx\\
-%         &=x(\ln x)^2-2\left(x\ln x-\int 1dx\right)\\
-%         &=x(\ln x)^2-2x\ln x+2x+C
-%     \end{align*}
-% \end{proof}
+\begin{proof}
+    We do integration by parts twice:
+    \begin{align*}
+        \begin{cases}
+            u=(\ln x)^2, dv=dx\\
+            du=\frac{2\ln x}{x}dx, v=x
+        \end{cases}
+    \end{align*}
+    Thus 
+    \begin{align*}
+        \int(\ln x)^2dx&=x(\ln x)^2-\int 2\ln xdx\\
+        &=x(\ln x)^2-2\left(x\ln x-\int 1dx\right)\\
+        &=x(\ln x)^2-2x\ln x+2x+C
+    \end{align*}
+\end{proof}
 
 \begin{prob}
     Recall 
@@ -421,22 +421,22 @@
         \int e^{2\theta}\sin(3\theta)d\theta
     \end{equation*}
 \end{prob}
-% \begin{proof}
-%     Let $f'=e^x, g=\sin x$, then 
-%     \begin{align*}
-%         \int e^x\sin xdx&=e^x\sin x-\int e^x\cos xdx\\
-%         &=-\left(e^x\cos x+\int e^x\sin x\right) \tag{IBP twice}
-%     \end{align*}
-%     This gives the implies result. Equivalently, we let $u=\sin x, du=\cos xdx, dv=e^xdx, v=e^x$. Now we compute
-%     \begin{align*}
-%         \int e^{2\theta}\sin(3\theta)d\theta&=\frac{1}{2}e^{2\theta}\sin(3\theta)-\frac{3}{2}\int e^{2\theta}\cos(3\theta)d\theta\\
-%         &=\frac{1}{2}e^{2\theta}\sin(3\theta)-\frac{3}{2}\left(\frac{1}{2}e^{2\theta}\cos(3\theta)+\frac{3}{2}\int e^{2\theta}\sin(3\theta)d\theta\right)
-%     \end{align*}
-%     which implies 
-%     \begin{equation*}
-%         \int e^{2\theta}\sin 3\theta d\theta=\frac{4}{13}\left(\frac{1}{2}e^{2\theta}\sin 3\theta-\frac{3}{4}e^{2\theta}\cos 3\theta\right)+C
-%     \end{equation*}
-% \end{proof}
+\begin{proof}
+    Let $f'=e^x, g=\sin x$, then 
+    \begin{align*}
+        \int e^x\sin xdx&=e^x\sin x-\int e^x\cos xdx\\
+        &=-\left(e^x\cos x+\int e^x\sin x\right) \tag{IBP twice}
+    \end{align*}
+    This gives the implies result. Equivalently, we let $u=\sin x, du=\cos xdx, dv=e^xdx, v=e^x$. Now we compute
+    \begin{align*}
+        \int e^{2\theta}\sin(3\theta)d\theta&=\frac{1}{2}e^{2\theta}\sin(3\theta)-\frac{3}{2}\int e^{2\theta}\cos(3\theta)d\theta\\
+        &=\frac{1}{2}e^{2\theta}\sin(3\theta)-\frac{3}{2}\left(\frac{1}{2}e^{2\theta}\cos(3\theta)+\frac{3}{2}\int e^{2\theta}\sin(3\theta)d\theta\right)
+    \end{align*}
+    which implies 
+    \begin{equation*}
+        \int e^{2\theta}\sin 3\theta d\theta=\frac{4}{13}\left(\frac{1}{2}e^{2\theta}\sin 3\theta-\frac{3}{4}e^{2\theta}\cos 3\theta\right)+C
+    \end{equation*}
+\end{proof}
 
 \begin{prob}
     Compute 
@@ -444,14 +444,14 @@
         \int_0^1(x^2+1)e^{-x}dx
     \end{equation*}
 \end{prob}
-% \begin{proof}
-%     \begin{align*}
-%         \int_0^1(x^2+1)e^{-x}dx&=-e^{-x}(x^2+1)\big\vert_0^1+\int_0^1 e^{-x}2xdx\\
-%         &=(1-2e^{-1})-e^{-x}2x\big\vert_0^1+\int_0^1 e^{-x}2dx\\
-%         &=1-4e^{-1}-2e^{-x}\big\vert_0^1\\
-%         &=3-6e^{-1}
-%     \end{align*}
-% \end{proof}
+\begin{proof}
+    \begin{align*}
+        \int_0^1(x^2+1)e^{-x}dx&=-e^{-x}(x^2+1)\big\vert_0^1+\int_0^1 e^{-x}2xdx\\
+        &=(1-2e^{-1})-e^{-x}2x\big\vert_0^1+\int_0^1 e^{-x}2dx\\
+        &=1-4e^{-1}-2e^{-x}\big\vert_0^1\\
+        &=3-6e^{-1}
+    \end{align*}
+\end{proof}
 
 
 
