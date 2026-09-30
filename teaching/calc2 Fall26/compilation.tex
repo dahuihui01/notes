@@ -491,4 +491,143 @@
 
 
 
+
+\newpage 
+\section*{\centering Week 4 (9/28-10/2)}
+Section 7.2 and 7.3
+\begin{prop}
+For $\sin, \cos$:
+\[
+\sin^2 x = \frac{1}{2}(1-\cos 2x)
+\qquad \text{and} \qquad
+\cos^2 x = \frac{1}{2}(1+\cos 2x)
+\]
+\begin{equation*}
+    2\sin x\cos x=\sin 2x
+\end{equation*}
+For example, $\int\sin^4x$.
+\end{prop}
+
+\begin{prop}
+    For $\tan, \sec$:
+    \begin{equation*}
+        \tan^2+1=\sec^2x \qquad \text{and} \qquad \sec^2x=\tan^2x+1
+    \end{equation*}
+    \[
+\int \tan x\,dx = \ln|\sec x| + C \qquad \text{and} \qquad \int \sec x\,dx = \ln|\sec x + \tan x| + C
+\]
+For example, $\int\tan^3x$.
+\end{prop}
+
+
+\begin{prop}
+    \begin{equation*}
+        \text{(a)}\qquad
+\sin A \cos B
+=
+\frac{1}{2}\left[\sin(A-B)+\sin(A+B)\right]
+    \end{equation*}
+    \[
+\text{(b)}\qquad
+\sin A \sin B
+=
+\frac{1}{2}\left[\cos(A-B)-\cos(A+B)\right]
+\]
+\[
+\text{(c)}\qquad
+\cos A \cos B
+=
+\frac{1}{2}\left[\cos(A-B)+\cos(A+B)\right]
+\]
+\end{prop}
+
+\begin{prob}
+    $\displaystyle \int \tan^2 x\,dx$
+\end{prob}
+\begin{proof}
+    \begin{align*}
+        \int \tan^2 x\,dx&=\int(\sec^2x-1)dx\\
+        &=\tan x-x+C
+    \end{align*}
+\end{proof}
+
+
+\begin{prob}
+    $\displaystyle \int x\sin^2(x^2)\,dx$
+\end{prob}
+\begin{proof}
+    First let $u=x^2$, then 
+    \begin{align*}
+        \int x\sin^2(x^2)\,dx&=\frac{1}{2}\int \sin^2 udu\\
+        &=\frac{1}{4}\int 1-\cos 2udu\\
+        &=\frac{x^2}{4}-\frac{\sin(2x^2)}{8}+C
+    \end{align*}
+\end{proof}
+
+
+\begin{prob}
+    $\displaystyle \int \tan^3 x \sec x\,dx$
+\end{prob}
+\begin{proof}
+    The power of $\tan$ is odd, so we want to save a factor of $\tan x\sec x$:
+    \begin{align*}
+        \int \tan^3 x \sec x\,dx&=\int \tan^2(\tan x\sec x)dx\\
+        &=\int(1-\sec^2x)(\tan x\sec x)dx\\
+        &=\int(1-u^2)du
+    \end{align*}
+\end{proof}
+
+
+
+
+\begin{prob}
+    $\displaystyle \int \sin 3x \sin 6x\,dx$
+\end{prob}
+\begin{proof}
+    \begin{align*}
+        \int \sin 3x \sin 6x\,dx&=\frac{1}{2}\left(\cos (3x)-\cos 9x\right)\\
+        &=\frac{1}{6}\sin 3x-\frac{1}{18}\sin 9x+C
+    \end{align*}
+\end{proof}
+
+
+\begin{prob}
+    $\displaystyle \int \frac{x}{\sqrt{x^2-7}}\,dx$
+\end{prob}
+\begin{proof}
+    Let $x=\sqrt{7}\sec \theta$, then 
+    \begin{align*}
+        \int \frac{x}{\sqrt{x^2-7}}\,dx&=\int\frac{\sqrt{7}\sec \theta}{\sqrt{7}\tan\theta}\sqrt{7}\sec\theta\tan\theta d\theta\\
+        &=\int \sqrt{7}\sec^2d\theta\\
+        &=\sqrt{7}\tan\theta+C\\
+        &=\sqrt{x^2-7}+C
+    \end{align*}
+\end{proof}
+
+\begin{prob}
+    $\displaystyle \int_0^1 \sqrt{x^2+1}\,dx$
+\end{prob}
+\begin{proof}
+    We let $x=\tan\theta$, then $dx=\sec^2\theta d\theta$, thus 
+    \begin{align*}
+        \int_0^1 \sqrt{x^2+1}\,dx&=\int_0^{\frac{\pi}{4}}\sec\theta\cdot\sec^2\theta d\theta
+    \end{align*}
+    then one would use integraion by parts $u=\sec\theta, dv=\sec^2\theta d\theta$, to find 
+    \begin{align*}
+        \int_0^1 \sqrt{x^2+1}\,dx&=\sec \theta\tan \theta-\int\sec x\tan^2xdx\\
+        &=\sec \theta\tan \theta-\int\sec^3\theta d\theta+\int\sec\theta d\theta
+    \end{align*}
+    which implies 
+    \begin{equation*}
+        \int_0^1 \sqrt{x^2+1}\,dx=\frac{1}{2}\left(\sec\theta\tan\theta+\ln|\sec\theta+\tan\theta|\right)\bigg\vert_0^{\pi/4}
+    \end{equation*}
+\end{proof}
+
+
+
+
+
+
+
+
 \end{document}
