@@ -614,7 +614,7 @@ For example, $\int\tan^3x$.
     \end{align*}
     then one would use integraion by parts $u=\sec\theta, dv=\sec^2\theta d\theta$, to find 
     \begin{align*}
-        \int_0^1 \sqrt{x^2+1}\,dx&=\sec \theta\tan \theta-\int\sec x\tan^2xdx\\
+        \int_0^1 \sqrt{x^2+1}\,dx&=\sec \theta\tan \theta-\int\sec\theta\tan^2\theta d\theta\\
         &=\sec \theta\tan \theta-\int\sec^3\theta d\theta+\int\sec\theta d\theta
     \end{align*}
     which implies 
@@ -622,6 +622,10 @@ For example, $\int\tan^3x$.
         \int_0^1 \sqrt{x^2+1}\,dx=\frac{1}{2}\left(\sec\theta\tan\theta+\ln|\sec\theta+\tan\theta|\right)\bigg\vert_0^{\pi/4}
     \end{equation*}
 \end{proof}
+
+
+
+
 
 
 
