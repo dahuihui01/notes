@@ -718,6 +718,210 @@ Section 7.4 Partial Fractions.
 
 
 
+\newpage 
+Ways to solve integrals so far: u-substitution, integration by parts, trig substitution, partial fractions, improper integrals.
+\section*{\centering Week 6 (10/12-10/16)}
+\begin{prob}
+    Compute the following improper integral:
+    \begin{equation*}
+        \int_1^\infty\frac{\ln x}{x}dx
+    \end{equation*}
+\end{prob}
+% \begin{proof}
+%     We compute 
+%     \begin{equation*}
+%         \lim_{t\to\infty}\int_1^t\frac{\ln x}{x}dx
+%     \end{equation*}
+%     where
+%     \begin{align*}
+%         \int_1^t\frac{\ln x}{x}dx&=\int_0^{\ln t}udu=\frac{\ln^2t}{2}\to\infty \quad\text{ as } t\to\infty
+%     \end{align*}
+% \end{proof}
+
+\begin{prob}
+    Compute the following improper integral:
+    \begin{equation*}
+        \int_2^\infty ye^{-3y}dy
+    \end{equation*}
+\end{prob}
+% \begin{proof}
+%     We are computing 
+%     \begin{equation*}
+%         \lim_{s\to\infty}\int_2^s ye^{-3y}dy
+%     \end{equation*}
+%     where
+%     \begin{align*}
+%         \int_2^s ye^{-3y}dy&=-\frac{ye^{-3y}}{3}\bigg\vert_2^s+\int_2^s\frac{e^{-3y}}{3}dy\\
+%         &=\left[\frac{-(3s+1)e^{-3s}}{9}+\frac{7}{9}e^{-6}\right]_2^s\\
+%         &=\frac{7e^{-6}}{9} \quad \text{ as } s\to\infty
+%     \end{align*}
+% \end{proof}
+
+
+\begin{defn}[Midpoint Rule]
+    \[
+        \int_a^b f(x)\,dx
+        \approx M_n
+        = \Delta x \left[
+        f(\bar{x}_1)+f(\bar{x}_2)+\cdots+f(\bar{x}_n)
+        \right],
+        \]
+        
+        where
+        \[
+        \Delta x = \frac{b-a}{n},
+        \]
+        
+        and
+        \[
+        \bar{x}_i = \frac{1}{2}(x_{i-1}+x_i)
+        = \text{midpoint of }[x_{i-1},x_i].
+        \]
+\end{defn}
+
+\begin{defn}[Trapezoidal Rule]
+\[
+    \int_a^b f(x)\,dx
+    \approx T_n
+    = \frac{\Delta x}{2}
+    \left[
+    f(x_0)+2f(x_1)+2f(x_2)+\cdots
+    +2f(x_{n-1})+f(x_n)
+    \right],
+    \]
+    
+    where
+    \[
+    \Delta x = \frac{b-a}{n},
+    \qquad
+    x_i = a+i\Delta x.
+    \]
+\end{defn}
+
+
+\begin{defn}[Simpson's Rule]
+    \[
+\begin{aligned}
+\int_a^b f(x)\,dx
+\approx S_n
+= \frac{\Delta x}{3}\big[
+&f(x_0)+4f(x_1)+2f(x_2)+4f(x_3)+\cdots\\
+&+2f(x_{n-2})+4f(x_{n-1})+f(x_n)
+\big],
+\end{aligned}
+\]
+
+where \(n\) is even and
+\[
+\Delta x = \frac{b-a}{n}.
+\]
+\end{defn}
+
+
+\begin{prop}[Error Bound for Simpson's Rule]
+    Suppose that
+\[
+|f''(x)| \leq K
+\qquad \text{for } a \leq x \leq b.
+\]
+If $E_T$ and $E_M$ are the errors in the
+Trapezoidal and Midpoint Rules, then
+\[
+\boxed{
+|E_T| \leq \frac{K(b-a)^3}{12n^2}
+}
+\qquad \text{and} \qquad
+\boxed{
+|E_M| \leq \frac{K(b-a)^3}{24n^2}
+}.
+\]  
+Now suppose that
+\[
+|f^{(4)}(x)| \leq C
+\qquad \text{for } a\leq x\leq b.
+\]
+If \(E_S\) is the error involved in using Simpson's Rule,
+then
+\[
+\boxed{
+\left|E_S\right| \leq \frac{C(b-a)^5}{180n^4}
+}.
+\]
+\end{prop}
+\begin{prob}
+    Consider the following integral 
+    \begin{equation*}
+        \int_0^1 \cos(x^2)dx
+    \end{equation*}
+    Given $n$, one can compute $M_n, T_n$. How large does $n$ have to be for the errors of $M_n$ or $T_n$ to be no more than $0.0001$?
+\end{prob}
+% \begin{proof}
+%     One can take the derivative to find 
+%     \begin{equation*}
+%         f'(x)=-2x\sin(x^2), \quad f''(x)=-2\sin(x^2)-4x^2\cos(x^2)
+%     \end{equation*}
+%     thus $|f''(x)|\leq 6$. This gives 
+%     \begin{equation*}
+%         0.0001\leq\frac{6}{12n^2}\Rightarrow n\geq\sqrt{5000}
+%     \end{equation*}
+%     for the trapezoidal estimation; 
+%     \begin{equation*}
+%         0.0001\leq\frac{6}{24n^2}\Rightarrow n\geq 50
+%     \end{equation*}
+% \end{proof}
+
+
+\begin{defn}[limit of sequences]
+    Let $\{a_n\}$ be a sequence, then we say $a_n$ converges to a limit $L$ if given any $\varepsilon>0$, we can find $N$ large enough such that for $n\geq N$, we have 
+    \begin{equation*}
+        |a_n-L|<\varepsilon
+    \end{equation*}
+\end{defn}
+
+\begin{prob}
+    Does the following sequence have a limit? If so, compute it.
+    \begin{equation*}
+        a_n=\sin\left(\frac{n\pi}{2}\right)
+    \end{equation*}
+\end{prob}
+% \begin{proof}
+%     The sequence looks like 
+%     \begin{equation*}
+%         \{1, 0, -1, 0, 1, 0, \dots\}
+%     \end{equation*}
+%     so the limit doesn't exist.
+% \end{proof}
+
+\begin{prob}
+    Does the following sequence have a limit? If so, compute it.
+    \begin{equation*}
+        \ln(n+1)-\ln (n)
+    \end{equation*}
+\end{prob}
+% \begin{proof}
+%     Choose $n$ large enough,
+%     \begin{equation*}
+%         \ln\left(\frac{n+1}{n}\right)=\ln\left(\frac{1+\frac{1}{n}}{1}\right)\to 0
+%     \end{equation*}
+%     as $n\to\infty$.
+% \end{proof}
+
+
+\begin{prob}
+    Does the following sequence have a limit? If so, compute it.
+    \begin{equation*}
+        a_n=\sqrt{n^2+1}-n
+    \end{equation*}
+\end{prob}
+% \begin{proof}
+%     We see 
+%     \begin{align*}
+%         \sqrt{n^2+1}-n&=\frac{(\sqrt{n^2+1}-n)(\sqrt{n^2+1}+n)}{\sqrt{n^2+1}+n}\\
+%         &=\frac{1}{\sqrt{n^2+1}+n}\to 0
+%     \end{align*}
+%     as $n\to\infty$.
+% \end{proof}
+
 
 
 
