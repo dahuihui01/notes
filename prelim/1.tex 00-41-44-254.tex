@@ -1,0 +1,45 @@
+\chapter{Set Theory}
+
+We will review some definitions that we might forget.
+
+\begin{defn}[order relation or simple order]
+    An ordered relation $C$ is one such that 
+    \begin{enumerate}
+        \item For every $x,y\in A$, either $xCy$ or $yCx$.
+        \item $xCx$ is not true for all $x$.
+        \item If $xCy, yCz$, then $xCz$. 
+    \end{enumerate}
+\end{defn}
+
+\begin{defn}[well-ordered set]
+    A set $A$ with an order relation $<$ is called well-ordered if every set has a smallest element.
+\end{defn}
+If $A$ is a well-ordered set, then any subset of $A$ with restricted order is a well-ordered set. And if $A,B$ are well-ordered sets, then the directionary product of $A\times B$ is well-ordered.
+
+\begin{thm}
+    Let $A$ by any set, then there exists a order relation on $A$ such that $A$ is well-ordered.
+\end{thm}
+
+\begin{defn}[strict partial order, partial order]
+    Given a set $A$, a relation $\prec$ is called a stric partial order if 
+    \begin{enumerate}
+        \item There is no $x\in A$, such that $x\prec x$.
+        \item For $x\prec y, y\prec z$, we have $x\prec z$.
+    \end{enumerate}
+    A partial order $\leq$ is such that 
+    \begin{enumerate}
+        \item $x\leq x$ for all $x$
+        \item If $x\leq y, y\leq x$, then $x=y$.
+        \item If $x\leq y, y\leq z$, then we have $x\leq z$.
+    \end{enumerate}
+\end{defn}
+Note that a strict partial order is a order relation without the comparability.
+\begin{prop}
+    Let $A$ be a strictly partially ordered set, then there exists a maximal simply ordered subset $B$ of $A$.
+\end{prop}
+\begin{lem}[Zorn's lemma]
+    Let $A$ be a strictly partially ordered set. If every simply ordered subset of $A$ has an upper bound in $A$, then there exists a maximal element in $A$.
+\end{lem}
+
+
+
