@@ -1148,11 +1148,21 @@ You can think of the power series as a function who is only defined in some regi
         f(x)=1+x+x^2+x^3+\dots
     \end{equation*}
 \end{example}
-Why do we care about power series? Next topic: Taylor series. Sometimes we can write a complicated function with a power series.
+Why do we care about power series? Next topic: Taylor series. Sometimes we can write a complicated function with a power series. One nice thing about power series is that we can differentiate/integrate more easily!
 \begin{example}
     You will learn to compute this later:
     \begin{equation*}
         e^x=\sum_{n=0}^\infty\frac{1}{n!}x^n
+    \end{equation*}
+    for all $x\in\R$.
+\end{example}
+\begin{example}
+    \begin{equation*}
+        \sin(x)=\sum_{n=0}^\infty(-1)^n\frac{x^{2n+1}}{(2n+1)!}=x-\frac{x^3}{3!}+\frac{x^6}{6!}
+    \end{equation*}
+    for all $x\in\R$. For $x$ close to $0$, we know intuitively why 
+    \begin{equation*}
+        \lim_{x\to 0}\frac{\sin x}{x}=1
     \end{equation*}
 \end{example}
 Are there functions that don't have a power series expansion?
@@ -1165,6 +1175,17 @@ Are there functions that don't have a power series expansion?
         \end{cases}
     \end{equation*}
 \end{example}
+\begin{prop}
+    Given a power series $\sum_{n=0}^\infty c_n(x-a)^n$, one of three following must happen:
+    \begin{enumerate}
+        \item The series converges for all $x\in\R$.
+        \item The series only converges for $x=a$.
+        \item There exists an $R>0$ such that whenever $|x-a|<R$, the series converges; when $|x-a|>R$, the series diverges; when $|x-a|=R$, we don't know.
+    \end{enumerate}
+\end{prop}
+
+
+
 
 
 
