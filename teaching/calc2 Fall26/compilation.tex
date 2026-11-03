@@ -1057,6 +1057,17 @@ then either both series converge or both diverge.
 \end{prob}
 \begin{proof}
     We use the limit comparison test.
+    \begin{equation*}
+        \lim_{n\to\infty}\frac{\sin\left(\frac{1}{n}\right)}{\frac{1}{n}}=1
+    \end{equation*}
+    Thus applying the limit commparison theorem, we know the series 
+    \begin{equation*}
+        \sum_{n=1}^\infty\sin\left(\frac{1}{n}\right) \text{ and } \sum_{n=1}^\infty\frac{1}{n}
+    \end{equation*}
+    either both converge or both diverge. Since $\sum_{n=1}^\infty\frac{1}{n}$ diverges, we know 
+    \begin{equation*}
+        \sum_{n=1}^\infty\sin\left(\frac{1}{n}\right) \text{ diverges}
+    \end{equation*}
 \end{proof}
 
 
@@ -1081,14 +1092,16 @@ then the series is convergent.
 \end{prop}
 
 
-\begin{prob}
-    Determine whether the series is convergent or divergent.
-    \[
-        \sum_{n=1}^{\infty} (-1)^n \frac{\sqrt{n}}{2n+3}
-        \]
-\end{prob}
-convergent.
-
+% \begin{prob}
+%     Determine whether the series is convergent or divergent.
+%     \[
+%         \sum_{n=1}^{\infty} (-1)^n \frac{\sqrt{n}}{2n+3}
+%         \]
+% \end{prob}
+% \begin{proof}
+    
+% \end{proof}
+% convergent.
 
 
 \begin{prob}
@@ -1097,6 +1110,63 @@ convergent.
     \sum_{n=1}^{\infty} (-1)^{n+1} n e^{-n}
     \]
 \end{prob}
-convergent.
+\begin{proof}
+    We'd like to use the alternating series test. We need to check 
+    \begin{equation*}
+        b_n=\frac{n}{e^n}
+    \end{equation*}
+    satisfy 
+    \begin{enumerate}
+        \item $\lim_{n\to\infty}b_n=0$.
+        \item $b_{n+1}\leq b_n$ for all $n$.
+    \end{enumerate}
+    For the first check:
+    \begin{equation*}
+        \lim_{n\to\infty}b_n=\lim_{n\to\infty}\frac{n}{e^n}=\lim_{n\to\infty}\frac{1}{e^n}=0
+    \end{equation*}
+    by L'Hospital. For the second check, 
+    \begin{equation*}
+        \frac{b_{n+1}}{b_n}=\frac{(n+1)e^n}{e^{n+1}n}=\frac{n+1}{n}\cdot\frac{1}{e}\leq 1
+    \end{equation*}
+    for all $n$. Thus the alternating series test applies, hence the series is convergent.
+\end{proof}
+
+
+\newpage
+\section*{\centering Week 9 (11/2-11/6)}
+\begin{defn}
+    A power series centered at $x=0$ is an infinite series $\sum_{n=0}^\infty c_nx^n$, where $c_n$ are constant coefficients. A power series centered at $x=a$ is of the form $\sum_{n=0}^\infty c_n(x-a)^n$.
+\end{defn}
+You can think of the power series as a function who is only defined in some regions. (For a function to make sense, we need to assign a finite value to every point of $x$, but that is not necessarily the case for power series, hence limited domain).
+\begin{example}
+    If $|x|<1$, the geometric series 
+    \begin{equation*}
+        \sum_{n=0}^\infty x^n=\frac{1}{1-x}
+    \end{equation*}
+    where the LHS is a power series centered at $0$, with $c_n=1$.
+    \begin{equation*}
+        f(x)=1+x+x^2+x^3+\dots
+    \end{equation*}
+\end{example}
+Why do we care about power series? Next topic: Taylor series. Sometimes we can write a complicated function with a power series.
+\begin{example}
+    You will learn to compute this later:
+    \begin{equation*}
+        e^x=\sum_{n=0}^\infty\frac{1}{n!}x^n
+    \end{equation*}
+\end{example}
+Are there functions that don't have a power series expansion?
+\begin{example}
+    A smooth function that doesn't have a power series expansion:
+    \begin{equation*}
+        f(x)=\begin{cases}
+            e^{-\frac{1}{x^2}}, x\neq 0\\
+            0, x=0
+        \end{cases}
+    \end{equation*}
+\end{example}
+
+
+
 
 \end{document}
