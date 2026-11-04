@@ -1183,10 +1183,57 @@ Are there functions that don't have a power series expansion?
         \item There exists an $R>0$ such that whenever $|x-a|<R$, the series converges; when $|x-a|>R$, the series diverges; when $|x-a|=R$, we don't know.
     \end{enumerate}
 \end{prop}
+This radius of convergence is closely related to series convergence and all the tests introduced before such as ratio and root tests.
+\begin{example}
+    \begin{equation*}
+        \sum_{n=0}^\infty n!x^n
+    \end{equation*}
+\end{example}
 
 
 
+\begin{prob}
+    Find the radius of convergence for the following power series
+    \begin{equation*}
+        \sum_{n=1}^{\infty} n^n x^n
+    \end{equation*}
+\end{prob}
+\begin{proof}
+    \begin{equation*}
+        \lim_{n\to\infty}\left|\frac{a_{n+1}}{a_n}\right|=\lim_{n\to\infty}(n+1)\left(1+\frac{1}{n}\right)^n|x|=\infty
+    \end{equation*}
+    for any $x\neq 0$. Hence the radius of convergence is $0$.
+\end{proof}
 
+
+\begin{prob}
+    Find for which $x$ the following power series converge.
+    \begin{equation*}
+        \sum_{n=1}^{\infty} \frac{x^{2n}}{n!}
+    \end{equation*}
+\end{prob}
+\begin{proof}
+    For $x\neq 0$,
+    \begin{equation*}
+        \lim_{n\to\infty}\left|\frac{a_{n+1}}{a_n}\right|=\lim_{n\to\infty}\frac{x^2}{n+1}=0
+    \end{equation*}
+    for any fixed $x\neq 0$, this converges. It also converges at $x=0$. Thus the power series converge for all $x\in\R$.
+\end{proof}
+
+\begin{prob}
+    If $k$ is a positive integer, find the radius of convergence
+of the series
+\[
+\sum_{n=0}^{\infty} \frac{(n!)^k}{(kn)!} x^n.
+\]
+\end{prob}
+\begin{proof}
+\begin{equation*}
+    \lim_{n\to\infty}\frac{(n+1)!^k(kn)!}{(kn+k)!(n!)^k}|x|=\lim_{n\to\infty}\frac{(n+1)^k}{(kn+1)\dots(kn+k)}|x|=\frac{1}{k^k}|x|
+\end{equation*}
+which means the radius of convergence is $k^k$.
+    
+\end{proof}
 
 
 
